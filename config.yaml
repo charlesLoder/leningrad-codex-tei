@@ -1,0 +1,44 @@
+project:
+  name: leningrad-epidoc
+  version: "0.1.0"
+
+paths:
+  alignments: data/alignments/
+  audit: data/audit/
+  images: data/images/
+  output: edition/
+  seed: data/seed/lci_recs.json
+  word_stream: data/word_stream.json
+  uxlc: data/uxlc/
+  provenance: data/provenance.json
+
+images:
+  base_url: "https://manuscripts.sefaria.org/leningrad-color/"
+  naming: "BIB_LENCDX_F{folio}.jpg"
+
+seed:
+  upstream_url: "https://github.com/bdenckla/codex-index-leningrad"
+  commit: "main"
+  snapshot_commit: "748ee2fee5536722b2323b22e71a879f597cf1c0"
+  file: "UXLC-utils-sparse/data/lci_recs.json"
+
+uxlc:
+  download_url: "https://www.tanach.us/Books/Tanach.xml.zip"
+
+ai:
+  model: "gemini-3.8-flash"
+  temperature: 1.0
+  max_retries: 3
+  inference: "batch"
+  code_execution: true
+  base_delay: 5
+  timeout_ms: 600000
+  fallback_to_standard: false
+  image_transport: "encode"
+  thinking_level: "low"
+
+validation:
+  odd: schema/leningrad.odd
+  cross_checks:
+    word_count_tolerance: 0
+    text_match_required: true
