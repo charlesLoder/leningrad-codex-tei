@@ -12,22 +12,21 @@ from leningrad_codex_tei.schemas import AlignmentMethod
 from leningrad_codex_tei.stages.align import (
     ChatResult,
     ModelResponse,
+    _generate_with_flex,
     _image_part_from_bytes,
     _image_part_from_upload,
     _mime_for_suffix,
     _parse_epilog_xml,
     _place_words,
-    _generate_with_flex,
     _request_alignment,
     _resolve_image,
     ai_snapshot,
     align_folio_ai,
+    batch_job_dir,
     batch_result_file_name,
     build_alignment_record,
     build_batch_request_line,
     build_conversation,
-    batch_job_dir,
-    resolve_batch_job_dir,
     check_image_transport,
     column_count_for,
     compute_seed_slice,
@@ -36,6 +35,7 @@ from leningrad_codex_tei.stages.align import (
     job_state_name,
     load_alignment,
     materialize_batch_result,
+    resolve_batch_job_dir,
     save_alignment,
     save_conversation,
     service_tier_for,
@@ -43,7 +43,6 @@ from leningrad_codex_tei.stages.align import (
     text_from_batch_response,
     write_poll_record,
 )
-
 
 
 def _document_order_placements(
@@ -188,7 +187,7 @@ def test_column_count_hint() -> None:
 
 
 def _placements_to_xml(placements: list[tuple[int, int, int]]) -> str:
-    """Render placements as the EpiDoc XML the model is asked to produce."""
+    """Render placements as the TEI XML the model is asked to produce."""
     by_line: list[tuple[int, int, list[int]]] = []
     for atom, col, line in placements:
         if not by_line or by_line[-1][:2] != (col, line):
@@ -309,7 +308,9 @@ def test_place_words_assigns_atoms_sequentially() -> None:
     ]
 
 
-def test_save_load_alignment_persists_raw_response(tmp_path, seed_slice, word_stream) -> None:
+def test_save_load_alignment_persists_raw_response(
+    tmp_path, seed_slice, word_stream
+) -> None:
     rec = _alignment(seed_slice, word_stream)
     raw_xml = '<cb n="1" /><lb n="1" />x y'
     rec.model_response = raw_xml
@@ -325,7 +326,9 @@ def test_save_load_alignment_persists_raw_response(tmp_path, seed_slice, word_st
     assert loaded.section_milestones
 
 
-def test_load_alignment_backfills_raw_from_file(tmp_path, seed_slice, word_stream) -> None:
+def test_load_alignment_backfills_raw_from_file(
+    tmp_path, seed_slice, word_stream
+) -> None:
     rec = _alignment(seed_slice, word_stream)
     rec.model_response = '<cb n="1" /><lb n="1" />x y'
     dest = tmp_path / "alignments" / "001B.json"
@@ -384,11 +387,11 @@ def test_align_folio_ai_writes_conversation(seed_slice, word_stream, config) -> 
 
 def test_model_response_from_generate_response() -> None:
     resp = types.GenerateContentResponse.model_construct(
-        text="<cb n=\"1\" />",
+        text='<cb n="1" />',
         candidates=[
             types.Candidate.model_construct(
                 content=types.Content.model_construct(
-                    parts=[types.Part.model_construct(text="<cb n=\"1\" />")]
+                    parts=[types.Part.model_construct(text='<cb n="1" />')]
                 ),
                 index=0,
             )
@@ -402,11 +405,11 @@ def test_model_response_from_generate_response() -> None:
     )
 
     mr = ModelResponse.from_generate_response(resp)
-    assert mr.text == "<cb n=\"1\" />"
+    assert mr.text == '<cb n="1" />'
     assert mr.usage_metadata["total_token_count"] == 1540
     assert mr.usage_metadata["thoughts_token_count"] == 90
     assert mr.usage_metadata["prompt_token_count"] == 1200
-    assert mr.parts == [{"text": "<cb n=\"1\" />"}]
+    assert mr.parts == [{"text": '<cb n="1" />'}]
 
 
 def test_build_and_save_conversation(tmp_path) -> None:
@@ -417,18 +420,18 @@ def test_build_and_save_conversation(tmp_path) -> None:
         model="gemini-3.7-flash",
         prompt_version="align-v3",
         inference="flex",
-        response_text="<cb n=\"1\" />",
+        response_text='<cb n="1" />',
         usage_metadata={"total_token_count": 10, "prompt_token_count": 4},
-        parts=[{"text": "<cb n=\"1\" />"}],
+        parts=[{"text": '<cb n="1" />'}],
     )
     dest = save_conversation(conv, tmp_path / "alignments", "001B")
     assert dest == tmp_path / "alignments" / "conversations" / "001B.json"
     saved = json.loads(dest.read_text())
-    assert saved["response"] == "<cb n=\"1\" />"
+    assert saved["response"] == '<cb n="1" />'
     assert saved["usage_metadata"]["total_token_count"] == 10
     assert saved["messages"][0]["parts"][0]["image"].endswith("001B.jpg")
     assert saved["messages"][0]["parts"][1]["text"] == "map text"
-    assert saved["messages"][1]["parts"] == [{"text": "<cb n=\"1\" />"}]
+    assert saved["messages"][1]["parts"] == [{"text": '<cb n="1" />'}]
 
 
 def test_mime_for_suffix() -> None:
@@ -499,11 +502,11 @@ def test_generate_with_flex_uses_chat_and_returns_history(config) -> None:
         types.Content(role="model", parts=[types.Part(text="hello")]),
     ]
     response = types.GenerateContentResponse.model_construct(
-        text="<cb n=\"1\" /><lb n=\"1\" />x",
+        text='<cb n="1" /><lb n="1" />x',
         candidates=[
             types.Candidate.model_construct(
                 content=types.Content.model_construct(
-                    parts=[types.Part(text="<cb n=\"1\" /><lb n=\"1\" />x")]
+                    parts=[types.Part(text='<cb n="1" /><lb n="1" />x')]
                 ),
                 index=0,
             )
@@ -537,7 +540,7 @@ def test_generate_with_flex_uses_chat_and_returns_history(config) -> None:
     assert calls["send"] == 1
     assert calls["get_history"] == 1
     assert isinstance(result, ChatResult)
-    assert result.response.text == "<cb n=\"1\" /><lb n=\"1\" />x"
+    assert result.response.text == '<cb n="1" /><lb n="1" />x'
     assert result.response.usage_metadata["total_token_count"] == 11
     assert [c["role"] for c in result.history] == ["user", "model"]
     assert result.history[0]["parts"][0]["text"] == "hi"
@@ -570,7 +573,9 @@ def test_image_part_from_upload_uses_uri(tmp_path) -> None:
 
     part = _image_part_from_upload(type("Client", (), {"files": FakeFiles()})(), image)
     assert part.file_data is not None
-    assert part.file_data.file_uri == "https://generativelanguage.googleapis.com/files/abc"
+    assert (
+        part.file_data.file_uri == "https://generativelanguage.googleapis.com/files/abc"
+    )
     assert part.file_data.mime_type == "image/jpeg"
 
 
@@ -588,7 +593,7 @@ def test_request_alignment_encode_transport_inlines_bytes(
         captured["message"] = message
         return ChatResult(
             response=ModelResponse(
-                text="<cb n=\"1\" /><lb n=\"1\" />x", usage_metadata={}, parts=[]
+                text='<cb n="1" /><lb n="1" />x', usage_metadata={}, parts=[]
             ),
             history=[],
         )
@@ -597,7 +602,7 @@ def test_request_alignment_encode_transport_inlines_bytes(
 
     monkeypatch.setattr(align_mod, "_generate_with_flex", fake_generate)
     result = _request_alignment(seed_slice, word_stream, config, "prompt")
-    assert result.response.text == "<cb n=\"1\" /><lb n=\"1\" />x"
+    assert result.response.text == '<cb n="1" /><lb n="1" />x'
     image_part = captured["message"][0]
     assert image_part.inline_data is not None
     assert image_part.inline_data.data == b"payload"
@@ -618,7 +623,7 @@ def test_request_alignment_upload_transport_uses_uri(
         captured["message"] = message
         return ChatResult(
             response=ModelResponse(
-                text="<cb n=\"1\" /><lb n=\"1\" />x", usage_metadata={}, parts=[]
+                text='<cb n="1" /><lb n="1" />x', usage_metadata={}, parts=[]
             ),
             history=[],
         )
@@ -635,7 +640,7 @@ def test_request_alignment_upload_transport_uses_uri(
         align_mod, "_model_client", lambda _cfg: type("Client", (), {})()
     )
     result = _request_alignment(seed_slice, word_stream, config, "prompt")
-    assert result.response.text == "<cb n=\"1\" /><lb n=\"1\" />x"
+    assert result.response.text == '<cb n="1" /><lb n="1" />x'
     assert resolved["seen"] == [image]
     image_part = captured["message"][0]
     assert image_part.file_data is not None
@@ -645,7 +650,10 @@ def test_request_alignment_upload_transport_uses_uri(
 def test_inference_config_validation() -> None:
     assert AiConfig(model="x", inference="standard").inference == "standard"
     assert AiConfig(model="x", inference="flex").inference == "flex"
-    assert AiConfig(model="x", inference="batch", image_transport="encode").inference == "batch"
+    assert (
+        AiConfig(model="x", inference="batch", image_transport="encode").inference
+        == "batch"
+    )
     with pytest.raises(ValueError):
         AiConfig(model="x", inference="bogus")
     with pytest.raises(ValueError):
@@ -745,7 +753,10 @@ def test_submit_batch_writes_jsonl_and_record(seed_slice, word_stream, config) -
 
     client = type("Client", (), {"files": FakeFiles(), "batches": FakeBatches()})()
     record = submit_batch(
-        [seed_slice], word_stream, config, client=client,
+        [seed_slice],
+        word_stream,
+        config,
+        client=client,
         now=datetime(2026, 1, 2, 3, 4, 5),
     )
     assert record["job_name"] == "batches/123"
@@ -756,7 +767,9 @@ def test_submit_batch_writes_jsonl_and_record(seed_slice, word_stream, config) -
     dest = job_dir / "submit.json"
     assert dest.exists()
     assert find_latest_batch_record(config.paths.alignments / "batch") == dest
-    assert batch_job_dir(config.paths.alignments / "batch", "20260102T030405") == job_dir
+    assert (
+        batch_job_dir(config.paths.alignments / "batch", "20260102T030405") == job_dir
+    )
     resolved_dir, resolved = resolve_batch_job_dir(
         config.paths.alignments / "batch", "20260102T030405"
     )
@@ -799,8 +812,13 @@ def test_materialize_batch_result_saves_alignment(
     xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
     config.ai.inference = "batch"
     rec = materialize_batch_result(
-        "001B", xml, {"001B": seed_slice}, word_stream, config,
-        prompt="map it", job_name="batches/123",
+        "001B",
+        xml,
+        {"001B": seed_slice},
+        word_stream,
+        config,
+        prompt="map it",
+        job_name="batches/123",
     )
     assert rec.folio == "001B"
     assert (config.paths.alignments / "001B.json").exists()
@@ -817,10 +835,17 @@ def test_materialize_batch_result_saves_raw_on_failure(
     config.ai.inference = "batch"
     with pytest.raises(ValueError):
         materialize_batch_result(
-            "001B", "not xml at all", {"001B": seed_slice}, word_stream, config,
-            prompt="map it", job_name="batches/123",
+            "001B",
+            "not xml at all",
+            {"001B": seed_slice},
+            word_stream,
+            config,
+            prompt="map it",
+            job_name="batches/123",
         )
-    assert (config.paths.alignments / "raw" / "001B.xml").read_text() == "not xml at all"
+    assert (
+        config.paths.alignments / "raw" / "001B.xml"
+    ).read_text() == "not xml at all"
     conv = json.loads(
         (config.paths.alignments / "conversations" / "001B.json").read_text()
     )
