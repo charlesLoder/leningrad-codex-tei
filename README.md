@@ -1,4 +1,4 @@
-# Leningrad Epidoc
+# Leningrad Codex TEI
 
 The Leningrad Codex (LC) encoded as a TEI document.
 
@@ -15,7 +15,7 @@ The full edition is generated into `edition/`.
 
 For a ready-to-use bundle, every release ships a zip of the complete Codex:
 
-https://github.com/charlesLoder/leningrad-epidoc/releases/latest/download/leningrad-codex.zip`
+https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip`
 
 ## Installation
 
@@ -27,8 +27,8 @@ Prerequisites:
 Clone the project:
 
 ```bash
-git clone https://github.com/charlesLoder/leningrad-epidoc
-cd leningrad-epidoc
+git clone https://github.com/charlesLoder/leningrad-codex-tei
+cd leningrad-codex-tei
 ```
 
 From the project root:

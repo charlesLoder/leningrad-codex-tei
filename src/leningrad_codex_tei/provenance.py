@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
 
-from leningrad_epidoc.schemas import (
+from leningrad_codex_tei.schemas import (
     AuditTrail,
     FolioStatus,
     IndexProvenance,

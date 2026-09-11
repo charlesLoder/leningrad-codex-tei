@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from leningrad_epidoc.config import (
+from leningrad_codex_tei.config import (
     AiConfig,
     Config,
     ImageConfig,
@@ -37,7 +37,7 @@ def seed_fixture() -> dict:
 def config(tmp_path: Path) -> Config:
     """Hermetic Config whose every output path lives under tmp_path."""
     return Config(
-        project_name="leningrad-epidoc",
+        project_name="leningrad-codex-tei",
         project_version="0.1.0-dev",
         paths=PathsConfig(
             uxlc=tmp_path / "uxlc",
@@ -65,13 +65,13 @@ def config(tmp_path: Path) -> Config:
 
 @pytest.fixture
 def word_stream(uxlc_fixture_dir: Path):
-    from leningrad_epidoc.stages.word_stream import build_word_stream
+    from leningrad_codex_tei.stages.word_stream import build_word_stream
 
     return build_word_stream(uxlc_fixture_dir, book_order=["Genesis"])
 
 
 @pytest.fixture
 def seed_slice(seed_fixture: dict, word_stream):
-    from leningrad_epidoc.stages.align import compute_seed_slice
+    from leningrad_codex_tei.stages.align import compute_seed_slice
 
     return compute_seed_slice(seed_fixture, "001B", word_stream)  # Genesis 1:1 – 2:2

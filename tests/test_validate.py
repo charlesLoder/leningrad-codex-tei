@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from leningrad_epidoc.schemas import AlignmentRecord
-from leningrad_epidoc.stages.align import build_alignment_record
-from leningrad_epidoc.stages.validate import ValidationResult, validate_folio
+from leningrad_codex_tei.schemas import AlignmentRecord
+from leningrad_codex_tei.stages.align import build_alignment_record
+from leningrad_codex_tei.stages.validate import ValidationResult, validate_folio
 
 
 def _document_order_placements(atom_start: int, atom_end: int) -> list[tuple[int, int, int]]:

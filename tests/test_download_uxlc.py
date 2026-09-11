@@ -9,8 +9,8 @@ from pathlib import Path
 
 import pytest
 
-from leningrad_epidoc.config import Config
-from leningrad_epidoc.stages.uxlc import download_uxlc
+from leningrad_codex_tei.config import Config
+from leningrad_codex_tei.stages.uxlc import download_uxlc
 
 UXLC_URL = "https://example.invalid/Books/Tanach.xml.zip"
 

@@ -8,9 +8,9 @@ from pathlib import Path
 
 import click
 
-from leningrad_epidoc.config import Config, load_config
-from leningrad_epidoc.provenance import append_run, update_pipeline_provenance
-from leningrad_epidoc.schemas import (
+from leningrad_codex_tei.config import Config, load_config
+from leningrad_codex_tei.provenance import append_run, update_pipeline_provenance
+from leningrad_codex_tei.schemas import (
     FolioStatus,
     IndexProvenance,
     PipelineRun,
@@ -19,15 +19,15 @@ from leningrad_epidoc.schemas import (
     UxlcProvenance,
     WordStreamProvenance,
 )
-from leningrad_epidoc.stages import align as align_stage
-from leningrad_epidoc.stages import download as download_stage
-from leningrad_epidoc.stages import index as index_stage
-from leningrad_epidoc.stages import tei as tei_stage
-from leningrad_epidoc.stages import uxlc as uxlc_stage
-from leningrad_epidoc.stages import validate as validate_stage
-from leningrad_epidoc.stages import vendor_seed as vendor_seed_stage
-from leningrad_epidoc.stages import word_stream as stream_stage
-from leningrad_epidoc.util.git import repo_hash as _repo_hash
+from leningrad_codex_tei.stages import align as align_stage
+from leningrad_codex_tei.stages import download as download_stage
+from leningrad_codex_tei.stages import index as index_stage
+from leningrad_codex_tei.stages import tei as tei_stage
+from leningrad_codex_tei.stages import uxlc as uxlc_stage
+from leningrad_codex_tei.stages import validate as validate_stage
+from leningrad_codex_tei.stages import vendor_seed as vendor_seed_stage
+from leningrad_codex_tei.stages import word_stream as stream_stage
+from leningrad_codex_tei.util.git import repo_hash as _repo_hash
 
 
 def _file_sha(path: Path) -> str:

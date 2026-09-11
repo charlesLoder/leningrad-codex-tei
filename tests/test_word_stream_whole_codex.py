@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from leningrad_epidoc.stages.word_stream import (
+from leningrad_codex_tei.stages.word_stream import (
     CANONICAL_BOOK_ORDER,
     build_word_stream,
 )

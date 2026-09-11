@@ -5,8 +5,8 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
-from leningrad_epidoc.config import Config
-from leningrad_epidoc.util import net
+from leningrad_codex_tei.config import Config
+from leningrad_codex_tei.util import net
 
 
 def image_url(config: Config, folio: str) -> str:

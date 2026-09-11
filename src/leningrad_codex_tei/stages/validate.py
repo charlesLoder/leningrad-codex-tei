@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from leningrad_epidoc.schemas import AlignmentRecord, WordStream
-from leningrad_epidoc.stages.align import SeedSlice
+from leningrad_codex_tei.schemas import AlignmentRecord, WordStream
+from leningrad_codex_tei.stages.align import SeedSlice
 
 
 @dataclass

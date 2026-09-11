@@ -7,9 +7,9 @@ import json
 import pytest
 from google.genai import types
 
-from leningrad_epidoc.config import AiConfig
-from leningrad_epidoc.schemas import AlignmentMethod
-from leningrad_epidoc.stages.align import (
+from leningrad_codex_tei.config import AiConfig
+from leningrad_codex_tei.schemas import AlignmentMethod
+from leningrad_codex_tei.stages.align import (
     ChatResult,
     ModelResponse,
     _image_part_from_bytes,
@@ -369,7 +369,7 @@ def test_align_folio_ai_writes_conversation(seed_slice, word_stream, config) -> 
     conv = json.loads(conv_path.read_text())
     assert conv["folio"] == "001B"
     assert conv["model"] == config.ai.model
-    from leningrad_epidoc.stages.align import PROMPT_VERSION
+    from leningrad_codex_tei.stages.align import PROMPT_VERSION
 
     assert conv["prompt_version"] == PROMPT_VERSION
     assert conv["inference"] == config.ai.inference
@@ -593,7 +593,7 @@ def test_request_alignment_encode_transport_inlines_bytes(
             history=[],
         )
 
-    import leningrad_epidoc.stages.align as align_mod
+    import leningrad_codex_tei.stages.align as align_mod
 
     monkeypatch.setattr(align_mod, "_generate_with_flex", fake_generate)
     result = _request_alignment(seed_slice, word_stream, config, "prompt")
@@ -627,7 +627,7 @@ def test_request_alignment_upload_transport_uses_uri(
         resolved["seen"].append(path)
         return "https://.../uploaded", "image/jpeg"
 
-    import leningrad_epidoc.stages.align as align_mod
+    import leningrad_codex_tei.stages.align as align_mod
 
     monkeypatch.setattr(align_mod, "_generate_with_flex", fake_generate)
     monkeypatch.setattr(align_mod, "_resolve_image", fake_resolve)
@@ -663,7 +663,7 @@ def test_thinking_level_config_validation() -> None:
 
 
 def test_request_config_sets_thinking_level(config) -> None:
-    from leningrad_epidoc.stages.align import _request_config
+    from leningrad_codex_tei.stages.align import _request_config
 
     config.ai.thinking_level = "low"
     cfg = _request_config(config, None)
@@ -831,19 +831,19 @@ def test_materialize_batch_result_saves_raw_on_failure(
 def test_prompt_version_is_sha_of_prompt() -> None:
     import hashlib
 
-    from leningrad_epidoc.stages.align import ALIGN_PROMPT, PROMPT_VERSION
+    from leningrad_codex_tei.stages.align import ALIGN_PROMPT, PROMPT_VERSION
 
     assert PROMPT_VERSION == hashlib.sha256(ALIGN_PROMPT.encode("utf-8")).hexdigest()
     assert len(PROMPT_VERSION) == 64
 
 
 def test_ensure_align_prompt_clean_blocks_when_dirty(monkeypatch) -> None:
-    import leningrad_epidoc.stages.align as align_mod
+    import leningrad_codex_tei.stages.align as align_mod
 
     def _dirty(*a, **k):
         raise RuntimeError("uncommitted changes to align.py: commit or revert")
 
-    monkeypatch.setattr("leningrad_epidoc.util.git.require_file_clean", _dirty)
+    monkeypatch.setattr("leningrad_codex_tei.util.git.require_file_clean", _dirty)
     with pytest.raises(RuntimeError, match="commit or revert"):
         align_mod.ensure_align_prompt_clean()
 

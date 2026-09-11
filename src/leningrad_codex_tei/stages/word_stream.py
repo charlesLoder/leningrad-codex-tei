@@ -16,7 +16,7 @@ from pathlib import Path
 
 from lxml import etree
 
-from leningrad_epidoc.schemas import Word, WordStream
+from leningrad_codex_tei.schemas import Word, WordStream
 
 CANONICAL_BOOK_ORDER = [
     "Genesis",

@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from leningrad_epidoc.stages.word_stream import build_word_stream
+from leningrad_codex_tei.stages.word_stream import build_word_stream
 
 
 def words_by_verse(ws) -> dict[tuple[int, int], list[tuple[int, str]]]:

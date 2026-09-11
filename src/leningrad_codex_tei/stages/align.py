@@ -20,8 +20,8 @@ from pathlib import Path
 from google.genai import Client, errors, types
 from lxml import etree
 
-from leningrad_epidoc.config import Config
-from leningrad_epidoc.schemas import (
+from leningrad_codex_tei.config import Config
+from leningrad_codex_tei.schemas import (
     AlignmentMethod,
     AlignmentRecord,
     ColumnRecord,
@@ -117,7 +117,7 @@ ALIGN_PROMPT_PATH = Path(__file__).resolve()
 
 
 def ensure_align_prompt_clean() -> None:
-    from leningrad_epidoc.util.git import require_file_clean
+    from leningrad_codex_tei.util.git import require_file_clean
 
     require_file_clean(ALIGN_PROMPT_PATH)
 

@@ -6,11 +6,11 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from leningrad_epidoc.schemas import AlignmentRecord, PipelineRun, RunStage
+from leningrad_codex_tei.schemas import AlignmentRecord, PipelineRun, RunStage
 
 TEMPLATE_DIR = Path(__file__).resolve().parents[3] / "templates"
 
-REPO_URL = "https://github.com/charlesLoder/leningrad-epidoc"
+REPO_URL = "https://github.com/charlesLoder/leningrad-codex-tei"
 
 
 def repo_snapshot_url(repo_hash: str) -> str | None:

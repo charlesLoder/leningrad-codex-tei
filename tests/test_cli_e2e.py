@@ -12,12 +12,12 @@ import yaml
 from click.testing import CliRunner
 from lxml import etree
 
-from leningrad_epidoc.cli import cli
-from leningrad_epidoc.config import Config
-from leningrad_epidoc.schemas import WordStream
-from leningrad_epidoc.stages import align as align_stage
-from leningrad_epidoc.stages.align import SeedSlice
-from leningrad_epidoc.util import net
+from leningrad_codex_tei.cli import cli
+from leningrad_codex_tei.config import Config
+from leningrad_codex_tei.schemas import WordStream
+from leningrad_codex_tei.stages import align as align_stage
+from leningrad_codex_tei.stages.align import SeedSlice
+from leningrad_codex_tei.util import net
 
 FIXTURES = Path(__file__).parent / "fixtures"
 JPEG_BYTES = b"\xff\xd8\xff\xe0fake-jpeg\xff\xd9"
@@ -40,7 +40,7 @@ def _write_config(tmp_path: Path) -> Path:
     conf.write_text(
         yaml.safe_dump(
             {
-                "project": {"name": "leningrad-epidoc", "version": "0.1.0-dev"},
+                "project": {"name": "leningrad-codex-tei", "version": "0.1.0-dev"},
                 "paths": {
                     "uxlc": str(uxlc),
                     "seed": str(tmp_path / "seed" / "lci_recs.json"),
@@ -225,12 +225,12 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     ]
     changes = root.findall(".//t:revisionDesc/t:change", ns)
     assert len(changes) == 1
-    assert changes[0].get("who") == "#leningrad-epidoc"
+    assert changes[0].get("who") == "#leningrad-codex-tei"
     assert "Aligned Genesis 1:1" in (changes[0].text or "")
     resp = root.find(".//t:titleStmt/t:respStmt", ns)
     assert resp is not None
     assert (
-        resp.get("{http://www.w3.org/XML/1998/namespace}id") == "leningrad-epidoc"
+        resp.get("{http://www.w3.org/XML/1998/namespace}id") == "leningrad-codex-tei"
     )
     graphic = root.find(".//t:sourceDesc/t:p/t:graphic", ns)
     assert graphic is not None

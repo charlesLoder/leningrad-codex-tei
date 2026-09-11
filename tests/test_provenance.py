@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from leningrad_epidoc.provenance import (
+from leningrad_codex_tei.provenance import (
     append_run,
     audit_path,
     load_audit,
@@ -12,7 +12,7 @@ from leningrad_epidoc.provenance import (
     save_pipeline_provenance,
     update_pipeline_provenance,
 )
-from leningrad_epidoc.schemas import (
+from leningrad_codex_tei.schemas import (
     FolioStatus,
     IndexProvenance,
     PipelineProvenance,

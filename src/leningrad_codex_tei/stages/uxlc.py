@@ -7,8 +7,8 @@ import zipfile
 from pathlib import Path
 from urllib.parse import urlparse
 
-from leningrad_epidoc.config import Config
-from leningrad_epidoc.util import net
+from leningrad_codex_tei.config import Config
+from leningrad_codex_tei.util import net
 
 
 def download_uxlc(config: Config, fetcher=None, out_dir: Path | None = None) -> dict:

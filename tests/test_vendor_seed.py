@@ -7,7 +7,7 @@ import json
 
 import pytest
 
-from leningrad_epidoc.stages.vendor_seed import vendor_seed
+from leningrad_codex_tei.stages.vendor_seed import vendor_seed
 
 
 def test_vendor_seed_writes_pinned_seed(config, seed_fixture: dict) -> None:

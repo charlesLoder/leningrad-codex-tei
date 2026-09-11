@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from leningrad_epidoc.stages.download import download_image
+from leningrad_codex_tei.stages.download import download_image
 
 JPEG_BYTES = b"\xff\xd8\xff\xe0fake-jpeg\xff\xd9"
 

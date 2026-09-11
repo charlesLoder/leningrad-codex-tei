@@ -7,9 +7,9 @@ from datetime import datetime
 import pytest
 from lxml import etree
 
-from leningrad_epidoc.schemas import PipelineRun, RunStage
-from leningrad_epidoc.stages.align import build_alignment_record
-from leningrad_epidoc.stages.tei import (
+from leningrad_codex_tei.schemas import PipelineRun, RunStage
+from leningrad_codex_tei.stages.align import build_alignment_record
+from leningrad_codex_tei.stages.tei import (
     changes_from_audit,
     render_folio_tei,
     repo_snapshot_url,
@@ -100,7 +100,7 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     changes = root.findall(f".//{_q('revisionDesc')}/{_q('change')}")
     assert len(changes) == 1
     assert changes[0].get("when") == "2026-08-27T00:00:01"
-    assert changes[0].get("who") == "#leningrad-epidoc"
+    assert changes[0].get("who") == "#leningrad-codex-tei"
     assert "Aligned Genesis 1:1" in (changes[0].text or "")
     fs = changes[0].find(_q("fs"))
     assert fs is not None
@@ -118,7 +118,7 @@ def test_ids_are_folio_prefixed_and_unique(alignment, changes) -> None:
     )
     root = etree.fromstring(xml.encode())
     ids = [_id(el) for el in root.iter() if _id(el) is not None]
-    body_ids = [i for i in ids if i != "leningrad-epidoc"]
+    body_ids = [i for i in ids if i != "leningrad-codex-tei"]
     assert body_ids
     assert all(i.startswith("f001B-") for i in body_ids)
     assert len(set(body_ids)) == len(body_ids)
@@ -194,7 +194,7 @@ def test_application_element_carries_pipeline_version(alignment, changes) -> Non
     apps = root.findall(f".//{_q('application')}")
     assert len(apps) == 1
     app = apps[0]
-    assert app.get("ident") == "leningrad-epidoc"
+    assert app.get("ident") == "leningrad-codex-tei"
     assert app.get("version") == "9.9.9"
     assert app.get("when") == "2026-08-27T00:00:03"
     assert app.find(_q("ab")) is None
@@ -214,7 +214,7 @@ def test_repo_ptr_points_at_snapshot(alignment, changes) -> None:
     root = etree.fromstring(xml.encode())
     ptr = root.find(f".//{_q('application')}/{_q('ptr')}")
     assert ptr.get("target") == (
-        "https://github.com/charlesLoder/leningrad-epidoc"
+        "https://github.com/charlesLoder/leningrad-codex-tei"
         "/commit/37961352d8841b661861f5fbd1eeb0a34bdab142"
     )
     assert repo_snapshot_url("unknown") is None
@@ -434,8 +434,8 @@ def test_publication_stmt_has_mit_availability(
     assert availability.get("status") == "free"
     assert availability.find(_q("licence")).text == "MIT License"
     ptr = availability.find(f"{_q('p')}/{_q('ptr')}")
-    assert ptr.get("target") == "https://github.com/charlesLoder/leningrad-epidoc"
+    assert ptr.get("target") == "https://github.com/charlesLoder/leningrad-codex-tei"
     pub = root.find(f".//{_q('publicationStmt')}")
     assert pub is not None
-    assert pub.find(_q("authority")).text == "leningrad-epidoc"
+    assert pub.find(_q("authority")).text == "leningrad-codex-tei"
     assert pub.find(_q("p")) is None

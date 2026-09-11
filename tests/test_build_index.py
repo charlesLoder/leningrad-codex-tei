@@ -6,7 +6,7 @@ from pathlib import Path
 
 from lxml import etree
 
-from leningrad_epidoc.stages.index import build_index
+from leningrad_codex_tei.stages.index import build_index
 
 TEI = "http://www.tei-c.org/ns/1.0"
 

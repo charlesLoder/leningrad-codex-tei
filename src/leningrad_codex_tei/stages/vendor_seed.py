@@ -6,8 +6,8 @@ import hashlib
 import json
 from urllib.parse import urlparse
 
-from leningrad_epidoc.config import Config
-from leningrad_epidoc.util import net
+from leningrad_codex_tei.config import Config
+from leningrad_codex_tei.util import net
 
 
 def seed_url(config: Config) -> str:
