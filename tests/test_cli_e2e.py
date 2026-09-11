@@ -232,12 +232,13 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert (
         resp.get("{http://www.w3.org/XML/1998/namespace}id") == "leningrad-codex-tei"
     )
-    graphic = root.find(".//t:sourceDesc/t:p/t:graphic", ns)
+    graphic = root.find(".//t:facsimile/t:surface/t:graphic", ns)
     assert graphic is not None
     assert graphic.get("url").endswith("BIB_LENCDX_F001B.jpg")
-    idno = root.find(".//t:sourceDesc/t:p/t:idno[@type='sha256']", ns)
-    assert idno is not None
-    assert len(idno.text) == 64
+    surface = root.find(".//t:facsimile/t:surface", ns)
+    assert surface is not None
+    assert surface.get("{http://www.w3.org/XML/1998/namespace}id") == "surf-001B"
+    assert root.find(".//t:sourceDesc/t:msDesc", ns) is not None
     assert root.find(".//t:application", ns).get("version") == "0.1.0-dev"
 
     # index over the single folio

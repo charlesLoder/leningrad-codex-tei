@@ -120,7 +120,11 @@ def test_ids_are_folio_prefixed_and_unique(alignment, changes) -> None:
     )
     root = etree.fromstring(xml.encode())
     ids = [_id(el) for el in root.iter() if _id(el) is not None]
-    body_ids = [i for i in ids if i != "leningrad-codex-tei"]
+    assert "leningrad-codex-tei" in ids
+    assert "surf-001B" in ids
+    body_ids = [
+        i for i in ids if i not in ("leningrad-codex-tei", "surf-001B")
+    ]
     assert body_ids
     assert all(i.startswith("f001B-") for i in body_ids)
     assert len(set(body_ids)) == len(body_ids)
@@ -380,7 +384,7 @@ def test_source_image_from_audit_prefers_latest() -> None:
     assert source_image_from_audit([]) is None
 
 
-def test_source_image_renders_graphic_in_source_desc(
+def test_source_image_renders_graphic_in_facsimile(
     alignment, changes
 ) -> None:
     xml = render_folio_tei(
@@ -393,15 +397,18 @@ def test_source_image_renders_graphic_in_source_desc(
         source_image={"url": "https://example.org/001B.jpg", "sha256": "abc123"},
     )
     root = etree.fromstring(xml.encode())
-    graphic = root.find(f".//{_q('sourceDesc')}/{_q('p')}/{_q('graphic')}")
+    surface = root.find(f".//{_q('facsimile')}/{_q('surface')}")
+    assert surface is not None
+    assert _id(surface) == "surf-001B"
+    graphic = surface.find(_q("graphic"))
     assert graphic is not None
     assert graphic.get("url") == "https://example.org/001B.jpg"
-    idno = root.find(f".//{_q('sourceDesc')}/{_q('p')}/{_q('idno')}")
-    assert idno.get("type") == "sha256"
-    assert idno.text == "abc123"
+    ms_desc = root.find(f".//{_q('sourceDesc')}/{_q('msDesc')}")
+    assert ms_desc is not None
+    assert root.find(f".//{_q('sourceDesc')}/{_q('p')}") is None
 
 
-def test_source_desc_omits_graphic_without_image(
+def test_facsimile_omits_graphic_without_image(
     alignment, changes
 ) -> None:
     xml = render_folio_tei(
@@ -413,10 +420,12 @@ def test_source_desc_omits_graphic_without_image(
         pipeline_version="9.9.9",
     )
     root = etree.fromstring(xml.encode())
-    assert root.find(f".//{_q('sourceDesc')}/{_q('p')}/{_q('graphic')}") is None
-    fallback = root.find(f".//{_q('sourceDesc')}/{_q('p')}")
-    assert fallback is not None
-    assert "not recorded" in (fallback.text or "")
+    surface = root.find(f".//{_q('facsimile')}/{_q('surface')}")
+    assert surface is not None
+    assert _id(surface) == "surf-001B"
+    assert surface.find(_q("graphic")) is None
+    ms_desc = root.find(f".//{_q('sourceDesc')}/{_q('msDesc')}")
+    assert ms_desc is not None
 
 
 def test_publication_stmt_has_mit_availability(
