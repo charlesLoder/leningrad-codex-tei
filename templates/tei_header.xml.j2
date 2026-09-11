@@ -35,6 +35,9 @@
     <revisionDesc>
       {% for change in changes %}
       <change when="{{ change.when }}" who="#leningrad-codex-tei">{{ change.text }}
+        {% if change.prompt_url %}
+        <ptr type="prompt" target="{{ change.prompt_url }}"/>
+        {% endif %}
         {% if change.features %}
         <fs type="ai-params">
           {% for feature in change.features %}

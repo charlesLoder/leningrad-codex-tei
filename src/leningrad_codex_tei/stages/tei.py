@@ -12,12 +12,21 @@ TEMPLATE_DIR = Path(__file__).resolve().parents[3] / "templates"
 
 REPO_URL = "https://github.com/charlesLoder/leningrad-codex-tei"
 
+PROMPT_REPO_PATH = "src/leningrad_codex_tei/stages/align.py"
+
 
 def repo_snapshot_url(repo_hash: str) -> str | None:
     """GitHub snapshot URL for a repo hash, or None when unknown."""
     if not repo_hash or repo_hash == "unknown":
         return None
     return f"{REPO_URL}/commit/{repo_hash.removesuffix('-dirty')}"
+
+
+def prompt_snapshot_url(repo_hash: str | None) -> str | None:
+    """GitHub blob URL for the align prompt at a repo hash, or None."""
+    if not repo_hash or repo_hash == "unknown":
+        return None
+    return f"{REPO_URL}/blob/{repo_hash.removesuffix('-dirty')}/{PROMPT_REPO_PATH}"
 
 _env = Environment(
     loader=FileSystemLoader(str(TEMPLATE_DIR)),
@@ -119,6 +128,7 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
                 "when": run.timestamp.isoformat() if run.timestamp else "",
                 "text": _change_text(run),
                 "features": _ai_features(run),
+                "prompt_url": prompt_snapshot_url(run.repo_hash),
             }
         )
     changes.reverse()
@@ -154,7 +164,6 @@ _AI_PARAM_ORDER = (
     "model",
     "temperature",
     "prompt_version",
-    "repo_hash",
     "inference",
     "code_execution",
     "max_retries",
@@ -172,7 +181,6 @@ def _ai_features(run: PipelineRun) -> list[dict]:
         "model": run.model,
         "temperature": run.temperature,
         "prompt_version": run.prompt_version,
-        "repo_hash": run.repo_hash,
     }
     ai = (
         (run.result_summary or {}).get("ai")
