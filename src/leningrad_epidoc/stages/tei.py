@@ -70,10 +70,10 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     """
     verse_by_loc: dict[tuple[int, int], dict] = {}
     for vm in record.verse_milestones:
-        verse_number = vm.verse.rsplit(" ", 1)[-1].split(":")[-1]
+        ref = _milestone_id(vm.verse)
         verse_by_loc[(vm.column, vm.line)] = {
-            "n": verse_number,
-            "id": _milestone_id(vm.verse),
+            "n": ref,
+            "id": ref,
         }
     section_by_loc: dict[tuple[int, int], tuple[str, str]] = {}
     for sm in record.section_milestones:

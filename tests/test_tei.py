@@ -137,11 +137,11 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
 
     verse_ms = root.findall(f".//{_q('milestone')}[@unit='verse']")
     assert [(m.get("n"), m.get("id"), _id(m)) for m in verse_ms] == [
-        ("1", None, "f001B-v-Genesis-1-1"),
-        ("2", None, "f001B-v-Genesis-1-2"),
-        ("3", None, "f001B-v-Genesis-1-3"),
-        ("1", None, "f001B-v-Genesis-2-1"),
-        ("2", None, "f001B-v-Genesis-2-2"),
+        ("Genesis-1-1", None, "f001B-v-Genesis-1-1"),
+        ("Genesis-1-2", None, "f001B-v-Genesis-1-2"),
+        ("Genesis-1-3", None, "f001B-v-Genesis-1-3"),
+        ("Genesis-2-1", None, "f001B-v-Genesis-2-1"),
+        ("Genesis-2-2", None, "f001B-v-Genesis-2-2"),
     ]
 
     section_ms = root.findall(f".//{_q('milestone')}[@unit='section']")
@@ -160,21 +160,21 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
         elif tag == "milestone":
             seen.append(f"{el.get('unit')}:{el.get('n') or el.get('subtype')}")
     assert seen == [
-        "verse:1",
+        "verse:Genesis-1-1",
         "f001B-w-1",
         "f001B-w-2",
         "f001B-w-3",
-        "verse:2",
+        "verse:Genesis-1-2",
         "f001B-w-4",
         "f001B-w-5",
-        "verse:3",
+        "verse:Genesis-1-3",
         "f001B-w-6",
         "section:pe",
-        "verse:1",
+        "verse:Genesis-2-1",
         "f001B-w-7",
         "f001B-w-8",
         "section:samekh",
-        "verse:2",
+        "verse:Genesis-2-2",
         "f001B-w-9",
         "f001B-w-10",
     ]
