@@ -78,7 +78,10 @@ class ChatResult:
 
 ALIGN_PROMPT = """Map the <TEXT> onto the columns and lines of the image according to the TEI XML schema.
 
-This folio is {folio}, the {side} of the leaf, and contains {columns} column(s) of Hebrew text. The text contained on this folio is {range}.
+This folio is {folio}, the {side} of the leaf, and contains {columns} column(s) of Hebrew text.
+Hebrew is written right-to-left, so the rightmost column on the folio is the first column.
+
+The text contained on this folio is {range}.
 
 ## Example Output
 
@@ -98,10 +101,36 @@ You do NOT need a high fidelity understanding of the text on the page since you 
 
 ## Instructions
 
+- Determine the number of lines in the columns.
 - Copy the words from <TEXT> into the lines exactly as written: do not add, remove, split or join words.
 - It is possible that some words at the beginning or end of the text may not appear on the folio; that's ok
 - Do not output verse numbers, chapter markers or pe/samekh markers.
 - Do not consider the meaning of the text, just the visual placement of the words on the folio.
+
+## Important
+
+If the line numbers in each column aren't the same, then it is likely there is a blank line somewhere.
+
+It is possible that a line is blank. That should receive it's own milestone.
+
+Example:
+
+```xml
+<lb n="5" />
+<lb n="6" />
+אֶלֹהִים אָמַר מֹשֶׁה
+```
+
+It is also possible that the words do not take up the entire line.
+
+```xml
+<lb n="5" />
+בָּה
+<lb n="6" />
+אֶלֹהִים אָמַר מֹשֶׁה
+```
+
+Be careful to count the lines correctly.
 
 ## Response
 
