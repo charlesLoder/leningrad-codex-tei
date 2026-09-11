@@ -73,7 +73,7 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
 
     pbs = root.findall(f".//{_q('pb')}")
     assert len(pbs) == 1
-    assert _id(pbs[0]) == "pb-001B"
+    assert _id(pbs[0]) == "f001B-pb-001B"
     assert pbs[0].get("n") == "001B"
 
     assert len(root.findall(f".//{_q('cb')}")) == 3
@@ -82,7 +82,7 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     assert ab is not None
 
     words = root.findall(f".//{_q('w')}")
-    assert [_id(w) for w in words] == [f"w-{i}" for i in range(1, 11)]
+    assert [_id(w) for w in words] == [f"f001B-w-{i}" for i in range(1, 11)]
     assert {etree.QName(w.getparent()).localname for w in words} == {"ab"}
     assert [w.text for w in words] == [
         "בְּרֵאשִׁ֖ית",
@@ -107,6 +107,23 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     assert fs.get("type") == "ai-params"
 
 
+def test_ids_are_folio_prefixed_and_unique(alignment, changes) -> None:
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="0.1.0-dev",
+    )
+    root = etree.fromstring(xml.encode())
+    ids = [_id(el) for el in root.iter() if _id(el) is not None]
+    body_ids = [i for i in ids if i != "leningrad-epidoc"]
+    assert body_ids
+    assert all(i.startswith("f001B-") for i in body_ids)
+    assert len(set(body_ids)) == len(body_ids)
+
+
 def test_verse_and_section_milestones(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
@@ -120,17 +137,17 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
 
     verse_ms = root.findall(f".//{_q('milestone')}[@unit='verse']")
     assert [(m.get("n"), m.get("id"), _id(m)) for m in verse_ms] == [
-        ("1", None, "v-Genesis-1-1"),
-        ("2", None, "v-Genesis-1-2"),
-        ("3", None, "v-Genesis-1-3"),
-        ("1", None, "v-Genesis-2-1"),
-        ("2", None, "v-Genesis-2-2"),
+        ("1", None, "f001B-v-Genesis-1-1"),
+        ("2", None, "f001B-v-Genesis-1-2"),
+        ("3", None, "f001B-v-Genesis-1-3"),
+        ("1", None, "f001B-v-Genesis-2-1"),
+        ("2", None, "f001B-v-Genesis-2-2"),
     ]
 
     section_ms = root.findall(f".//{_q('milestone')}[@unit='section']")
     assert [(m.get("subtype"), _id(m)) for m in section_ms] == [
-        ("pe", "s-Genesis-1-3"),
-        ("samekh", "s-Genesis-2-1"),
+        ("pe", "f001B-s-Genesis-1-3"),
+        ("samekh", "f001B-s-Genesis-2-1"),
     ]
 
     # document order: the verse milestone precedes its verse's first word,
@@ -144,22 +161,22 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
             seen.append(f"{el.get('unit')}:{el.get('n') or el.get('subtype')}")
     assert seen == [
         "verse:1",
-        "w-1",
-        "w-2",
-        "w-3",
+        "f001B-w-1",
+        "f001B-w-2",
+        "f001B-w-3",
         "verse:2",
-        "w-4",
-        "w-5",
+        "f001B-w-4",
+        "f001B-w-5",
         "verse:3",
-        "w-6",
+        "f001B-w-6",
         "section:pe",
         "verse:1",
-        "w-7",
-        "w-8",
+        "f001B-w-7",
+        "f001B-w-8",
         "section:samekh",
         "verse:2",
-        "w-9",
-        "w-10",
+        "f001B-w-9",
+        "f001B-w-10",
     ]
 
 

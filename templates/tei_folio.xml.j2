@@ -6,23 +6,23 @@
     <body>
       <div type="edition">
         {% for milestone in page_milestones %}
-        <pb xml:id="pb-{{ milestone.folio }}" n="{{ milestone.folio }}"/>
+        <pb xml:id="f{{ folio }}-pb-{{ milestone.folio }}" n="{{ milestone.folio }}"/>
         {% endfor %}
         <ab>
         {% for col in columns %}
           {% if columns|length > 1 %}
-        <cb xml:id="cb-{{ col.column_number }}" n="{{ col.column_number }}"/>
+        <cb xml:id="f{{ folio }}-cb-{{ col.column_number }}" n="{{ col.column_number }}"/>
           {% endif %}
           {% for line in col.lines %}
-          <lb xml:id="lb-{{ col.column_number }}-{{ line.line_number }}" n="{{ line.line_number }}"/>
+          <lb xml:id="f{{ folio }}-lb-{{ col.column_number }}-{{ line.line_number }}" n="{{ line.line_number }}"/>
             {% if line.verse_milestone %}
-            <milestone unit="verse" n="{{ line.verse_n }}" xml:id="v-{{ line.verse_id }}"/>
+            <milestone unit="verse" n="{{ line.verse_n }}" xml:id="f{{ folio }}-v-{{ line.verse_id }}"/>
             {% endif %}
             {% for atom in line.atoms %}
-            <w xml:id="w-{{ atom.atom }}">{{ atom.text }}</w>
+            <w xml:id="f{{ folio }}-w-{{ atom.atom }}">{{ atom.text }}</w>
             {% endfor %}
             {% if line.section_milestone %}
-            <milestone unit="section" subtype="{{ line.section_milestone }}" xml:id="s-{{ line.section_id }}"/>
+            <milestone unit="section" subtype="{{ line.section_milestone }}" xml:id="f{{ folio }}-s-{{ line.section_id }}"/>
             {% endif %}
           {% endfor %}
         {% endfor %}

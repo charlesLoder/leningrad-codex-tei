@@ -220,8 +220,8 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
         (s.get("subtype"), s.get("{%s}id" % "http://www.w3.org/XML/1998/namespace"))
         for s in section
     ] == [
-        ("pe", "s-Genesis-1-3"),
-        ("samekh", "s-Genesis-2-1"),
+        ("pe", "f001B-s-Genesis-1-3"),
+        ("samekh", "f001B-s-Genesis-2-1"),
     ]
     changes = root.findall(".//t:revisionDesc/t:change", ns)
     assert len(changes) == 1
