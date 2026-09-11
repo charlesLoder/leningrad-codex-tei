@@ -84,15 +84,17 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     words = root.findall(f".//{_q('w')}")
     assert [_id(w) for w in words] == [f"f001B-w-{i}" for i in range(1, 11)]
     assert {etree.QName(w.getparent()).localname for w in words} == {"ab"}
+    # generate-tei emits SBL-sequenced Hebrew; only words whose marks
+    # arrive out of order differ from the raw fixture text.
     assert [w.text for w in words] == [
         "בְּרֵאשִׁ֖ית",
         "בָּרָ֣א",
         "אֱלֹהִ֑ים",
         "וְהָאָ֗רֶץ",
         "בְּעֵ֖דֶן",
-        "אֽוֹר׃",
+        "\u05d0\u05bd\u05b9\u05d5\u05e8\u05c3",  # sequenced: holam precedes vav
         "אֶחָד",
-        "י֔וֹם",
+        "\u05d9\u0594\u05b9\u05d5\u05dd",  # sequenced: holam precedes vav
         "כֶּתֶב",
         "דָּבָר",
     ]

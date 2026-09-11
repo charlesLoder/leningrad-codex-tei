@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from leningrad_codex_tei.schemas import AlignmentRecord, PipelineRun, RunStage
+from leningrad_codex_tei.util.hebrew import sequence_texts
 
 TEMPLATE_DIR = Path(__file__).resolve().parents[3] / "templates"
 
@@ -76,6 +78,9 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     The verse and section milestones are supplied by the alignment record
     (derived once from UXLC by align-folio); this stage only attaches them to
     the matching column+line for rendering.
+
+    Word text is sequenced here, after validate, so alignment checks run on
+    the raw atom stream while emitted TEI carries SBL-ordered Hebrew.
     """
     verse_by_loc: dict[tuple[int, int], dict] = {}
     for vm in record.verse_milestones:
@@ -89,8 +94,11 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
         section_by_loc[(sm.column, sm.line)] = (sm.subtype, _milestone_id(sm.verse))
 
     flat = [(cix, line) for cix, col in enumerate(record.columns) for line in col.lines]
+    sequenced = sequence_texts([w.text for _, line in flat for w in line.atoms])
+    it = iter(sequenced)
     annotated: list[tuple[int, dict]] = []
     for cix, line in flat:
+        atoms = [replace(w, text=next(it)) for w in line.atoms]
         loc = (record.columns[cix].column_number, line.line_number)
         verse = verse_by_loc.get(loc)
         section = section_by_loc.get(loc)
@@ -101,7 +109,7 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             "verse_id": verse["id"] if verse else None,
             "section_milestone": section[0] if section else None,
             "section_id": section[1] if section else None,
-            "atoms": line.atoms,
+            "atoms": atoms,
         }
         annotated.append((cix, entry))
 
