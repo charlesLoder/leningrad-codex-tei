@@ -1,0 +1,20 @@
+name: release-bundle
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: zip -r leningrad-codex.zip edition/
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: leningrad-codex.zip
+          generate_release_notes: true

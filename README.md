@@ -15,7 +15,7 @@ The full edition is generated into `edition/`.
 
 For a ready-to-use bundle, every release ships a zip of the complete Codex:
 
-https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip`
+<https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip>
 
 ## Installation
 
