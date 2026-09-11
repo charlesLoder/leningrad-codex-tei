@@ -100,8 +100,9 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     """Flatten columns into line entries carrying ADR 0002 milestone info.
 
     The verse and section milestones are supplied by the alignment record
-    (derived once from UXLC by align-folio); this stage only attaches them to
-    the matching column+line for rendering.
+    (derived once from UXLC by align-folio); this stage interleaves them at
+    word boundaries so a verse starting or ending mid-line is emitted
+    between its words rather than at the line edge.
 
     Word text is sequenced here, after validate, so alignment checks run on
     the raw atom stream while emitted TEI carries SBL-ordered Hebrew.
@@ -111,16 +112,16 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     a derived ``pc-{atom}`` id (``pc-{atom}-{n}`` when one atom yields
     several marks) so validation stays atom-faithful.
     """
-    verse_by_loc: dict[tuple[int, int], dict] = {}
+    verse_by_atom: dict[int, dict] = {}
     for vm in record.verse_milestones:
         ref = _milestone_id(vm.verse)
-        verse_by_loc[(vm.column, vm.line)] = {
+        verse_by_atom[vm.atom] = {
             "n": ref,
             "id": ref,
         }
-    section_by_loc: dict[tuple[int, int], tuple[str, str]] = {}
+    section_by_atom: dict[int, tuple[str, str]] = {}
     for sm in record.section_milestones:
-        section_by_loc[(sm.column, sm.line)] = (sm.subtype, _milestone_id(sm.verse))
+        section_by_atom[sm.atom] = (sm.subtype, _milestone_id(sm.verse))
 
     flat = [(cix, line) for cix, col in enumerate(record.columns) for line in col.lines]
     sequenced = sequence_texts([w.text for _, line in flat for w in line.atoms])
@@ -130,6 +131,9 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
         atoms = [replace(w, text=next(it)) for w in line.atoms]
         tokens: list[dict] = []
         for w in atoms:
+            verse = verse_by_atom.get(w.atom)
+            if verse is not None:
+                tokens.append({"kind": "verse", "n": verse["n"], "id": verse["id"]})
             base, marks = split_trailing_punct(w.text)
             if base:
                 tokens.append({"kind": "w", "atom": w.atom, "text": base})
@@ -143,16 +147,11 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
                 )
             if not base and not marks:
                 tokens.append({"kind": "w", "atom": w.atom, "text": w.text})
-        loc = (record.columns[cix].column_number, line.line_number)
-        verse = verse_by_loc.get(loc)
-        section = section_by_loc.get(loc)
+            section = section_by_atom.get(w.atom)
+            if section is not None:
+                tokens.append({"kind": "section", "subtype": section[0], "id": section[1]})
         entry = {
             "line_number": line.line_number,
-            "verse_milestone": verse is not None,
-            "verse_n": verse["n"] if verse else None,
-            "verse_id": verse["id"] if verse else None,
-            "section_milestone": section[0] if section else None,
-            "section_id": section[1] if section else None,
             "atoms": atoms,
             "tokens": tokens,
         }

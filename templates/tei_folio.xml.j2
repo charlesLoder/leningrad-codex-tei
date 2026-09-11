@@ -23,19 +23,17 @@
           {% endif %}
           {% for line in col.lines %}
           <lb xml:id="f{{ folio }}-lb-{{ col.column_number }}-{{ line.line_number }}" n="{{ line.line_number }}"/>
-            {% if line.verse_milestone %}
-            <milestone unit="verse" n="{{ line.verse_n }}" xml:id="f{{ folio }}-v-{{ line.verse_id }}"/>
-            {% endif %}
             {% for tok in line.tokens %}
             {% if tok.kind == "w" %}
             <w xml:id="f{{ folio }}-w-{{ tok.atom }}">{{ tok.text }}</w>
-            {% else %}
+            {% elif tok.kind == "pc" %}
             <pc type="{{ tok.pc_type }}" xml:id="f{{ folio }}-{{ tok.pc_id }}">{{ tok.text }}</pc>
+            {% elif tok.kind == "verse" %}
+            <milestone unit="verse" n="{{ tok.n }}" xml:id="f{{ folio }}-v-{{ tok.id }}"/>
+            {% elif tok.kind == "section" %}
+            <milestone unit="section" subtype="{{ tok.subtype }}" xml:id="f{{ folio }}-s-{{ tok.id }}"/>
             {% endif %}
             {% endfor %}
-            {% if line.section_milestone %}
-            <milestone unit="section" subtype="{{ line.section_milestone }}" xml:id="f{{ folio }}-s-{{ line.section_id }}"/>
-            {% endif %}
           {% endfor %}
         {% endfor %}
         </ab>

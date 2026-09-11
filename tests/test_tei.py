@@ -194,6 +194,37 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
     ]
 
 
+def test_verse_milestone_mid_line(seed_slice, word_stream, changes) -> None:
+    placements = [(1, 1, 1), (2, 1, 1), (3, 1, 1), (4, 1, 1), (5, 1, 2)]
+    slice_words = word_stream.words[:5]
+    rec = build_alignment_record(seed_slice, slice_words, placements)
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 1:2",
+        record=rec,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="0.1.0-dev",
+    )
+    root = etree.fromstring(xml.encode())
+    seen: list[str] = []
+    for el in root.iter():
+        tag = etree.QName(el).localname
+        if tag == "w":
+            seen.append(_id(el) or "")
+        elif tag == "milestone" and el.get("unit") == "verse":
+            seen.append(f"verse:{el.get('n')}")
+    assert seen == [
+        "verse:Genesis-1-1",
+        "f001B-w-1",
+        "f001B-w-2",
+        "f001B-w-3",
+        "verse:Genesis-1-2",
+        "f001B-w-4",
+        "f001B-w-5",
+    ]
+
+
 def test_application_element_carries_pipeline_version(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
