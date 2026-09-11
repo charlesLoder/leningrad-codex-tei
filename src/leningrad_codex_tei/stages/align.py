@@ -76,7 +76,7 @@ class ChatResult:
     history: list[dict]
 
 
-ALIGN_PROMPT = """Map the <TEXT> onto the columns and lines of the image according to the EpiDoc XML schema.
+ALIGN_PROMPT = """Map the <TEXT> onto the columns and lines of the image according to the TEI XML schema.
 
 This folio is {folio}, the {side} of the leaf, and contains {columns} column(s) of Hebrew text. The text contained on this folio is {range}.
 
@@ -105,7 +105,7 @@ You do NOT need a high fidelity understanding of the text on the page since you 
 
 ## Response
 
-Return ONLY the EpiDoc XML, with no commentary and no markdown fences.
+Return ONLY the TEI XML, with no commentary and no markdown fences.
 
 <TEXT>
 {text}
@@ -245,10 +245,10 @@ def _is_marker_token(token: str) -> bool:
 
 
 def _parse_epilog_xml(raw_text: str) -> list[tuple[int, int, int]]:
-    """Parse the model's EpiDoc XML into per-line word counts.
+    """Parse the model's TEI XML into per-line word counts.
 
-    Returns a list of ``(column, line, word_count)`` in document order. EpiDoc
-    milestones (chapter/verse/section) and echoed <TEXT> metadata (verse
+    Returns a list of ``(column, line, word_count)`` in document order.
+    Milestones (chapter/verse/section) and echoed <TEXT> metadata (verse
     numbers, chapter markers, pe/samekh) are ignored when counting words.
     """
     text = raw_text.strip()
@@ -511,7 +511,7 @@ def align_folio_ai(
 ) -> AlignmentRecord:
     """Ask a vision model to map the slice's words onto columns and lines.
 
-    The model returns EpiDoc XML carrying each word inside ``<cb>/<lb>``
+    The model returns TEI XML carrying each word inside ``<cb>/<lb>``
     lines. We count the words per line, assign the source atoms sequentially,
     and assemble the alignment record.
     """

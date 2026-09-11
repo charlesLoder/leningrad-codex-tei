@@ -1,4 +1,4 @@
-"""generate-tei stage: render a per-folio EpiDoc file from templates."""
+"""generate-tei stage: render a per-folio TEI file from templates."""
 
 from __future__ import annotations
 
@@ -29,6 +29,7 @@ def prompt_snapshot_url(repo_hash: str | None) -> str | None:
     if not repo_hash or repo_hash == "unknown":
         return None
     return f"{REPO_URL}/blob/{repo_hash.removesuffix('-dirty')}/{PROMPT_REPO_PATH}"
+
 
 _env = Environment(
     loader=FileSystemLoader(str(TEMPLATE_DIR)),
@@ -143,13 +144,21 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
                 else:
                     pc_id = f"pc-{w.atom}-{i + 1}"
                 tokens.append(
-                    {"kind": "pc", "atom": w.atom, "text": char, "pc_type": punct_type, "pc_id": pc_id}
+                    {
+                        "kind": "pc",
+                        "atom": w.atom,
+                        "text": char,
+                        "pc_type": punct_type,
+                        "pc_id": pc_id,
+                    }
                 )
             if not base and not marks:
                 tokens.append({"kind": "w", "atom": w.atom, "text": w.text})
             section = section_by_atom.get(w.atom)
             if section is not None:
-                tokens.append({"kind": "section", "subtype": section[0], "id": section[1]})
+                tokens.append(
+                    {"kind": "section", "subtype": section[0], "id": section[1]}
+                )
         entry = {
             "line_number": line.line_number,
             "atoms": atoms,

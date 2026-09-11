@@ -1,1 +1,1 @@
-"""Leningrad Codex EpiDoc pipeline."""
+"""Leningrad Codex TEI pipeline."""

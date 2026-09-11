@@ -1,4 +1,4 @@
-"""Leningrad Codex EpiDoc pipeline — CLI entry point."""
+"""Leningrad Codex TEI pipeline — CLI entry point."""
 
 from __future__ import annotations
 
@@ -62,7 +62,7 @@ def _load_pipeline(config: Config, folio: str):
 )
 @click.pass_context
 def cli(ctx: click.Context, config_path: str) -> None:
-    """Pipeline for generating an EpiDoc-encoded Leningrad Codex."""
+    """Pipeline for generating an TEI-encoded Leningrad Codex."""
     ctx.obj = load_config(Path(config_path))
 
 
@@ -201,11 +201,19 @@ def _apply_ai_overrides(
 
 
 @cli.command()
-@click.option("--folio", default=None, help="Start folio (e.g. 001B). Aligns --limit folios from here.")
-@click.option("--limit", type=int, default=None, help="Folios to align from --folio. Default 1.")
+@click.option(
+    "--folio",
+    default=None,
+    help="Start folio (e.g. 001B). Aligns --limit folios from here.",
+)
+@click.option(
+    "--limit", type=int, default=None, help="Folios to align from --folio. Default 1."
+)
 @click.option("--all", "all_", is_flag=True, help="Align all folios in seed order.")
 @click.option("--model", default=None, help="Override ai.model.")
-@click.option("--temperature", type=float, default=None, help="Override ai.temperature.")
+@click.option(
+    "--temperature", type=float, default=None, help="Override ai.temperature."
+)
 @click.option(
     "--inference",
     type=click.Choice(["standard", "flex", "batch"]),
@@ -283,7 +291,9 @@ def align_folio(
         if folio is None:
             if limit is not None:
                 raise click.ClickException("--limit requires --folio")
-            raise click.ClickException("Missing selection: pass --folio FOLIO [--limit N] or --all")
+            raise click.ClickException(
+                "Missing selection: pass --folio FOLIO [--limit N] or --all"
+            )
         if limit is None:
             limit = 1
         if limit < 1:
@@ -453,7 +463,9 @@ def download_batch(config: Config, batch: str | None) -> None:
         click.echo(
             f"download-batch: {key} -> {config.paths.alignments / f'{key}.json'}"
         )
-    click.echo(f"download-batch: materialized {done}/{len(lines)} folios ({failed} failed)")
+    click.echo(
+        f"download-batch: materialized {done}/{len(lines)} folios ({failed} failed)"
+    )
 
 
 @cli.command()

@@ -4,7 +4,7 @@ The Leningrad Codex (LC) encoded as a TEI document.
 
 ## Goals
 
-- **Accessibility** — Make the Leningrad Codex available online as an open, EpiDoc-encoded scholarly edition permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
+- **Accessibility** — Make the Leningrad Codex available online as an open, TEI-encoded scholarly edition permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
 - **Transparency** — Make transparent the process by which the artifact came to be, especially how AI was utilized ([read more](#transparency)).
 - **Reproducibility** — Make the results of the process reproducible ([read more](#reproducibility)).
 - **Community** — Make this a community driven project.
