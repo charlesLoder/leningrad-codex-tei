@@ -2,6 +2,14 @@
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   {% include "tei_header.xml.j2" %}
 
+  <facsimile>
+    <surface xml:id="surf-{{ folio }}">
+      {% if source_image %}
+      <graphic url="{{ source_image.url }}"/>
+      {% endif %}
+    </surface>
+  </facsimile>
+
   <text>
     <body>
       <div type="edition">
