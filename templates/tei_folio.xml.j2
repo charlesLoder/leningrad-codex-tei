@@ -26,8 +26,12 @@
             {% if line.verse_milestone %}
             <milestone unit="verse" n="{{ line.verse_n }}" xml:id="f{{ folio }}-v-{{ line.verse_id }}"/>
             {% endif %}
-            {% for atom in line.atoms %}
-            <w xml:id="f{{ folio }}-w-{{ atom.atom }}">{{ atom.text }}</w>
+            {% for tok in line.tokens %}
+            {% if tok.kind == "w" %}
+            <w xml:id="f{{ folio }}-w-{{ tok.atom }}">{{ tok.text }}</w>
+            {% else %}
+            <pc type="{{ tok.pc_type }}" xml:id="f{{ folio }}-{{ tok.pc_id }}">{{ tok.text }}</pc>
+            {% endif %}
             {% endfor %}
             {% if line.section_milestone %}
             <milestone unit="section" subtype="{{ line.section_milestone }}" xml:id="f{{ folio }}-s-{{ line.section_id }}"/>

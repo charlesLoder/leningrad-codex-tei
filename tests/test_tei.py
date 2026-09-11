@@ -14,6 +14,7 @@ from leningrad_codex_tei.stages.tei import (
     render_folio_tei,
     repo_snapshot_url,
     source_image_from_audit,
+    split_trailing_punct,
 )
 
 TEI = "http://www.tei-c.org/ns/1.0"
@@ -86,18 +87,25 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     assert {etree.QName(w.getparent()).localname for w in words} == {"ab"}
     # generate-tei emits SBL-sequenced Hebrew; only words whose marks
     # arrive out of order differ from the raw fixture text.
+    # Trailing sof-pasuq / paseq live in pc, never inside w.
     assert [w.text for w in words] == [
         "בְּרֵאשִׁ֖ית",
         "בָּרָ֣א",
         "אֱלֹהִ֑ים",
         "וְהָאָ֗רֶץ",
         "בְּעֵ֖דֶן",
-        "\u05d0\u05bd\u05b9\u05d5\u05e8\u05c3",  # sequenced: holam precedes vav
+        "\u05d0\u05bd\u05b9\u05d5\u05e8",  # sequenced: holam precedes vav; sof-pasuq split to pc
         "אֶחָד",
         "\u05d9\u0594\u05b9\u05d5\u05dd",  # sequenced: holam precedes vav
         "כֶּתֶב",
         "דָּבָר",
     ]
+
+    pcs = root.findall(f".//{_q('pc')}")
+    assert [(p.get("type"), _id(p), p.text) for p in pcs] == [
+        ("sof-pasuq", "f001B-pc-6", "׃"),
+    ]
+    assert all("׃" not in (w.text or "") and "׀" not in (w.text or "") for w in words)
 
     changes = root.findall(f".//{_q('revisionDesc')}/{_q('change')}")
     assert len(changes) == 1
@@ -426,6 +434,37 @@ def test_facsimile_omits_graphic_without_image(
     assert surface.find(_q("graphic")) is None
     ms_desc = root.find(f".//{_q('sourceDesc')}/{_q('msDesc')}")
     assert ms_desc is not None
+
+
+def test_split_trailing_punct() -> None:
+    assert split_trailing_punct("הָאָרֶץ׃") == ("הָאָרֶץ", [("׃", "sof-pasuq")])
+    assert split_trailing_punct("אֱלֹהִים׀") == ("אֱלֹהִים", [("׀", "paseq")])
+    assert split_trailing_punct("בְּרֵאשִׁית") == ("בְּרֵאשִׁית", [])
+    assert split_trailing_punct("מִלָּה׀׃") == (
+        "מִלָּה",
+        [("׀", "paseq"), ("׃", "sof-pasuq")],
+    )
+    assert split_trailing_punct("") == ("", [])
+
+
+def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="9.9.9",
+    )
+    root = etree.fromstring(xml.encode())
+    ab = root.find(f".//{_q('div')}[@type='edition']/{_q('ab')}")
+    assert ab is not None
+    tags = [(etree.QName(el).localname, _id(el)) for el in ab.iter() if _id(el)]
+    words = [i for t, i in tags if t == "w"]
+    pcs = [i for t, i in tags if t == "pc"]
+    assert words == [f"f001B-w-{i}" for i in range(1, 11)]
+    assert pcs == ["f001B-pc-6"]
+    assert tags.index(("pc", "f001B-pc-6")) == tags.index(("w", "f001B-w-6")) + 1
 
 
 def test_publication_stmt_has_mit_availability(

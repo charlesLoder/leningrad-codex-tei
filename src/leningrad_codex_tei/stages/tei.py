@@ -38,6 +38,30 @@ _env = Environment(
 )
 
 
+SOF_PASUQ = "\u05c3"
+PASEQ = "\u05c0"
+
+_PUNCT_TYPES = {
+    SOF_PASUQ: "sof-pasuq",
+    PASEQ: "paseq",
+}
+
+
+def split_trailing_punct(text: str) -> tuple[str, list[tuple[str, str]]]:
+    """Split trailing sof-pasuq / paseq off a sequenced atom string.
+
+    Returns (word_text, [(punct_char, punct_type), ...]) in document order.
+    """
+    marks: list[tuple[str, str]] = []
+    cut = len(text)
+    while cut > 0 and text[cut - 1] in _PUNCT_TYPES:
+        char = text[cut - 1]
+        marks.append((char, _PUNCT_TYPES[char]))
+        cut -= 1
+    marks.reverse()
+    return text[:cut], marks
+
+
 def render_folio_tei(
     *,
     folio: str,
@@ -81,6 +105,11 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
 
     Word text is sequenced here, after validate, so alignment checks run on
     the raw atom stream while emitted TEI carries SBL-ordered Hebrew.
+
+    Trailing sof-pasuq / paseq are split off each sequenced atom into
+    ``pc`` tokens. The ``w`` keeps the UXLC atom number; each ``pc`` takes
+    a derived ``pc-{atom}`` id (``pc-{atom}-{n}`` when one atom yields
+    several marks) so validation stays atom-faithful.
     """
     verse_by_loc: dict[tuple[int, int], dict] = {}
     for vm in record.verse_milestones:
@@ -99,6 +128,21 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     annotated: list[tuple[int, dict]] = []
     for cix, line in flat:
         atoms = [replace(w, text=next(it)) for w in line.atoms]
+        tokens: list[dict] = []
+        for w in atoms:
+            base, marks = split_trailing_punct(w.text)
+            if base:
+                tokens.append({"kind": "w", "atom": w.atom, "text": base})
+            for i, (char, punct_type) in enumerate(marks):
+                if len(marks) == 1:
+                    pc_id = f"pc-{w.atom}"
+                else:
+                    pc_id = f"pc-{w.atom}-{i + 1}"
+                tokens.append(
+                    {"kind": "pc", "atom": w.atom, "text": char, "pc_type": punct_type, "pc_id": pc_id}
+                )
+            if not base and not marks:
+                tokens.append({"kind": "w", "atom": w.atom, "text": w.text})
         loc = (record.columns[cix].column_number, line.line_number)
         verse = verse_by_loc.get(loc)
         section = section_by_loc.get(loc)
@@ -110,6 +154,7 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             "section_milestone": section[0] if section else None,
             "section_id": section[1] if section else None,
             "atoms": atoms,
+            "tokens": tokens,
         }
         annotated.append((cix, entry))
 
