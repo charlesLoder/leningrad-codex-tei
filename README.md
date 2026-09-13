@@ -4,10 +4,10 @@ The Leningrad Codex (LC) encoded as a TEI document.
 
 ## Goals
 
-- **Accessibility** — Make the Leningrad Codex available online as an open, TEI-encoded scholarly edition permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
-- **Transparency** — Make transparent the process by which the artifact came to be, especially how AI was utilized ([read more](#transparency)).
+- **Accessibility** — Make the Leningrad Codex available online as an open, TEI-encoded document, permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
+- **Transparency** — Make transparent the process by which the document was generated, with special regard to how AI was utilized ([read more](#transparency)).
 - **Reproducibility** — Make the results of the process reproducible ([read more](#reproducibility)).
-- **Community** — Make this a community driven project.
+- **Community** — Make this a community driven project ([read more](#community)).
 
 ## Download
 
@@ -87,58 +87,59 @@ Pass `--help` to any command to see more information.
 
 ## Accessibility
 
-The primary aim of this project is to make the Leningrad Codex encoded as an EpiDoc (TEI) document freely available.
+The primary aim of this project is to make the Leningrad Codex encoded as an TEI document freely available.
 
 This is accomplished through:
 
-- permissive licensing (MIT)
-- public hosting of the repository on Github
+- Permissive licensing (MIT)
+- Public hosting of the repository on Github
 
 Additional measures are taken to make this project accessible to scholars who may not be familiar or comfortable with the above:
 
-- a quick [download link](#download) of the XML files
-- an online viewer available at <LINK_TBD>
+- A quick [download link](#download) of the XML files
+- An online viewer available at <LINK_TBD>
 
 ## Transparency
 
-Beyond making the artifact (i.e. the LC as XML) accessible, the project seeks to make the process of how the artifact was generated transparent.
+Beyond making the document accessible, the project seeks to make the process of how the artifact was generated transparent.
 
 This is accomplished through:
 
-- the version control system (i.e. git)
+- The version control system (i.e. git)
 - TEI headers
-- making the pipeline and prompts used available
+- Making the pipeline and prompts used available
 
 ### AI Usage
 
 AI tools played an integral role in this project, being used for:
 
-- generating the code in this repository
-- aligning the biblical text to the columns and lines of a folio
+- Generating the code in this repository
+- Aligning the biblical text to the columns and lines of a folio
 
 The former is of little importance to the aims of this project, but a number of different models and strategies were employed in creating the code for the pipeline.
 
 The latter is fully documented in a few different ways:
 
-- The facsimile image used (URL and sha256) is documented in the TEI header `sourceDesc`, in a `graphic` element with an `idno` of type `sha256`.
-- The model and parameters (temperature, inference mode, code execution, prompt version) are documented in the TEI header, in an `fs` of type `ai-params` inside the `revisionDesc` `change` for the alignment event.
-- The repo hash is documented in the TEI header, allowing users to verify the prompt used, e.g. in folio 001B the repo hash is documented in the header, so users can examine the `ALIGN_PROMPT` at the same hash.
+- The facsimile image used (URL and sha256) is documented in the TEI header.
+- The model and parameters are documented in the TEI header.
+- The prompt is linked to a commit sha.
 
 The project exclusively used Google's product offerings because the Gemini line of models:
 
-- do well at image transcription
-- are relatively cheap
-- provide tools for code execution (see [Google's Agentic Vision](https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/))
-- offer multiple inference options like batch or flex inference to save on costs
+- Do well at image transcription
+- Are relatively cheap
+- Provide tools for code execution (see [Google's Agentic Vision](https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/))
+- Offer multiple inference options like batch or flex inference to save on costs
 
 ## Reproducibility
 
 This projects also aims to make this work reproducible by providing the pipeline used to generate the document, with the realization that AI outputs are not always reproducible.
 
-Future researchers can easily configure the pipeline to use different models, inference strategies, etc. to test
+Future researchers can easily configure the pipeline to use different models, inference strategies, etc.
 
 ## Community
 
-This project is not affiliated with any institution or organization. It is inteded to be a community driven endeavor.
+This project is not affiliated with any institution or organization.
+It is inteded to be a community driven endeavor.
 
 See the [contributing guide](./CONTRIBUTING.MD) for more information.
