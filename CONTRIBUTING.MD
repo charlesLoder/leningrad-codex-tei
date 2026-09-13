@@ -60,4 +60,4 @@ uv run leningrad align-folio --folio 001B --limit 10
 
 ## Creating a Pull Request
 
-Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests)
+Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests).
