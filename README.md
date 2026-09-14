@@ -97,7 +97,9 @@ This is accomplished through:
 Additional measures are taken to make this project accessible to scholars who may not be familiar or comfortable with the above:
 
 - A quick [download link](#download) of the XML files
-- An online viewer available at <LINK_TBD>
+- An online viewer is available at https://leningrad-codex-tei.netlify.app
+
+The code for the viewer is stored in `/site`.
 
 ## Transparency
 
