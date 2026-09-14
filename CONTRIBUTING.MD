@@ -58,6 +58,44 @@ For example, doing the first 10 folios would be:
 uv run leningrad align-folio --folio 001B --limit 10
 ```
 
+If using batch inference, check the status of the batch job using:
+
+```bash
+uv run leningrad download-batch
+```
+
+And then validate the output with:
+
+```bash
+uv run leningrad validate
+```
+
+### Generating the TEI document
+
+The next step is to generate the TEI documents in `/edition`.
+
+> [!NOTE]
+> Contributor information at this step is derived from git's `user.name` and `user.email`. Update according to your preferences
+
+Run the following to generate the XML files:
+
+```bash
+uv run leningrad generate-tei
+```
+
+And then update the index with:
+
+```bash
+uv run leningrad build-index
+```
+
+### Commit
+
+Ensure everything looks correct and commit.
+
+For version 1 of this project, all alignment of the folios should be done by AI.
+If you notice errors in the alignment, make a new issue or PR, and it can be corrected later.
+
 ## Creating a Pull Request
 
 Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests).
