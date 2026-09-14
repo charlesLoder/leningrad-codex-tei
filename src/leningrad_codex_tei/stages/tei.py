@@ -205,7 +205,21 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
         cols.setdefault(
             cix, {"column_number": record.columns[cix].column_number, "lines": []}
         )["lines"].append(entry)
-    return [cols[k] for k in sorted(cols)]
+    result: list[dict] = []
+    for k in sorted(cols):
+        col = cols[k]
+        col["lines"].sort(key=lambda e: e["line_number"])
+        filled: list[dict] = []
+        for entry in col["lines"]:
+            if filled and entry["line_number"] > filled[-1]["line_number"] + 1:
+                for missing in range(filled[-1]["line_number"] + 1, entry["line_number"]):
+                    filled.append(
+                        {"line_number": missing, "atoms": [], "tokens": []}
+                    )
+            filled.append(entry)
+        col["lines"] = filled
+        result.append(col)
+    return result
 
 
 def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:

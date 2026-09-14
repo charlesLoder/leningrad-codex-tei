@@ -575,3 +575,26 @@ def test_align_change_uses_pipeline_who_without_contributor() -> None:
         ),
     ]
     assert changes_from_audit(runs)[0]["who"] == "#leningrad-codex-tei"
+
+
+def test_blank_lines_preserved(seed_slice, word_stream, changes) -> None:
+    placements = [(1, 1, 1), (2, 1, 1), (3, 1, 1), (4, 1, 3), (5, 1, 3)]
+    slice_words = word_stream.words[:5]
+    rec = build_alignment_record(seed_slice, slice_words, placements)
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 1:2",
+        record=rec,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="9.9.9",
+    )
+    root = etree.fromstring(xml.encode())
+    lbs = root.findall(f".//{_q('lb')}")
+    assert [lb.get("n") for lb in lbs] == ["1", "2", "3"]
+    ab = root.find(f".//{_q('div')}[@type='edition']/{_q('ab')}")
+    assert ab is not None
+    kids = list(ab)
+    idx = next(i for i, el in enumerate(kids) if etree.QName(el).localname == "lb" and el.get("n") == "2")
+    assert etree.QName(kids[idx + 1]).localname == "lb"
+    assert kids[idx + 1].get("n") == "3"
