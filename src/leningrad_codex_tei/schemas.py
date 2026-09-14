@@ -109,6 +109,8 @@ class PipelineRun:
     checks: dict | None = None
     result_summary: dict | None = None
     timestamp: datetime | None = None
+    contributor_name: str | None = None
+    contributor_email: str | None = None
 
 
 class FolioStatus(str, Enum):

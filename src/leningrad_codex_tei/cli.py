@@ -27,7 +27,16 @@ from leningrad_codex_tei.stages import uxlc as uxlc_stage
 from leningrad_codex_tei.stages import validate as validate_stage
 from leningrad_codex_tei.stages import vendor_seed as vendor_seed_stage
 from leningrad_codex_tei.stages import word_stream as stream_stage
+from leningrad_codex_tei.util.git import contributor_info as _contributor_info
 from leningrad_codex_tei.util.git import repo_hash as _repo_hash
+
+
+def _current_contributor() -> dict | None:
+    """Human contributor from git config, or None when unconfigured."""
+    try:
+        return _contributor_info()
+    except Exception:
+        return None
 
 
 def _file_sha(path: Path) -> str:
@@ -302,6 +311,7 @@ def align_folio(
         if folio not in ordered:
             raise click.ClickException(f"unknown folio {folio!r}")
         folios = ordered[ordered.index(folio) : ordered.index(folio) + limit]
+    contributor = _current_contributor()
     if config.ai.inference == "batch":
         slices = [align_stage.compute_seed_slice(seed, page, stream) for page in folios]
         batch_record = align_stage.submit_batch(slices, stream, config)
@@ -315,6 +325,8 @@ def align_folio(
                     temperature=config.ai.temperature,
                     prompt_version=align_stage.PROMPT_VERSION,
                     repo_hash=_repo_hash(),
+                    contributor_name=(contributor or {}).get("name"),
+                    contributor_email=(contributor or {}).get("email"),
                     result_summary={
                         "batch_job": batch_record["job_name"],
                         "upload_path": batch_record["upload_path"],
@@ -347,6 +359,8 @@ def align_folio(
                 temperature=config.ai.temperature,
                 prompt_version=align_stage.PROMPT_VERSION,
                 repo_hash=_repo_hash(),
+                contributor_name=(contributor or {}).get("name"),
+                contributor_email=(contributor or {}).get("email"),
                 result_summary={
                     "method": record.alignment_method.value,
                     "atoms": sl.atom_end - sl.atom_start + 1,
@@ -441,6 +455,7 @@ def download_batch(config: Config, batch: str | None) -> None:
             click.echo(f"download-batch: {key} failed: {exc} (raw saved)", err=True)
             continue
         sl = slices[key]
+        contributor = _current_contributor()
         append_run(
             config.paths.audit,
             key,
@@ -450,6 +465,8 @@ def download_batch(config: Config, batch: str | None) -> None:
                 temperature=config.ai.temperature,
                 prompt_version=stored_prompt_version or align_stage.PROMPT_VERSION,
                 repo_hash=_repo_hash(),
+                contributor_name=(contributor or {}).get("name"),
+                contributor_email=(contributor or {}).get("email"),
                 result_summary={
                     "method": result.alignment_method.value,
                     "atoms": sl.atom_end - sl.atom_start + 1,
@@ -496,6 +513,7 @@ def validate(config: Config, folio: str | None) -> None:
 def generate_tei(config: Config, folio: str | None) -> None:
     """Generate per-folio TEI XML from alignment records."""
     folios = [folio] if folio else _alignment_folios(config)
+    contributor = _current_contributor()
     for page in folios:
         _seed, _stream, sl, record = _load_pipeline(config, page)
         trail = append_run(
@@ -504,6 +522,8 @@ def generate_tei(config: Config, folio: str | None) -> None:
             PipelineRun(
                 stage=RunStage.GENERATE_TEI,
                 repo_hash=_repo_hash(),
+                contributor_name=(contributor or {}).get("name"),
+                contributor_email=(contributor or {}).get("email"),
                 result_summary={
                     "folio": page,
                     "range": f"{sl.start_ref} – {sl.stop_ref}",
@@ -518,6 +538,7 @@ def generate_tei(config: Config, folio: str | None) -> None:
             record=record,
             page_milestones=[{"folio": page}],
             changes=tei_stage.changes_from_audit(trail.runs),
+            contributors=tei_stage.contributors_from_audit(trail.runs),
             pipeline_version=config.project_version,
             repo_hash=repo,
             generated_when=generate_ts.isoformat() if generate_ts else None,

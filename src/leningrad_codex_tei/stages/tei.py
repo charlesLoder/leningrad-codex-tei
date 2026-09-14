@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 from pathlib import Path
+import re
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -63,6 +64,37 @@ def split_trailing_punct(text: str) -> tuple[str, list[tuple[str, str]]]:
     return text[:cut], marks
 
 
+def contributor_xml_id(name: str | None, email: str | None) -> str:
+    """Stable ``respStmt`` id for a human contributor (TEI ``who`` target)."""
+    base = re.sub(r"[^a-z0-9]+", "-", (name or email or "contributor").lower()).strip("-")
+    return f"contrib-{base}" if base else "contrib-unknown"
+
+
+def _run_contributor(run: PipelineRun) -> dict | None:
+    if not run.contributor_name and not run.contributor_email:
+        return None
+    name = run.contributor_name or run.contributor_email
+    return {
+        "name": name,
+        "email": run.contributor_email,
+        "xml_id": contributor_xml_id(run.contributor_name, run.contributor_email),
+    }
+
+
+def contributors_from_audit(runs: list[PipelineRun]) -> list[dict]:
+    """Distinct human contributors across runs, first-seen order."""
+    seen: dict[str, dict] = {}
+    for run in runs:
+        contrib = _run_contributor(run)
+        if contrib is None:
+            continue
+        xml_id = contrib["xml_id"]
+        if xml_id in seen:
+            continue
+        seen[xml_id] = contrib
+    return list(seen.values())
+
+
 def render_folio_tei(
     *,
     folio: str,
@@ -74,6 +106,7 @@ def render_folio_tei(
     repo_hash: str = "unknown",
     generated_when: str | None = None,
     source_image: dict | None = None,
+    contributors: list[dict] | None = None,
 ) -> str:
     """Render a well-formed TEI document for one folio."""
     template = _env.get_template("tei_folio.xml.j2")
@@ -89,6 +122,7 @@ def render_folio_tei(
         repo_snapshot_url=repo_snapshot_url(repo_hash),
         generated_when=generated_when,
         source_image=source_image,
+        contributors=contributors or [],
     )
 
 
@@ -175,23 +209,38 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
 
 
 def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
-    """Align-folio production events as revisionDesc changes, most recent first.
+    """Production events as revisionDesc changes, most recent first.
 
-    Only alignment runs belong in the artifact: downloads, checks, and
-    rendering mechanics stay in the audit trail.
+    Alignment runs record the machine event; generate-tei runs with a
+    contributor record the human encoder. Downloads, checks, and other
+    mechanics stay in the audit trail.
     """
     changes: list[dict] = []
     for run in runs:
-        if run.stage != RunStage.ALIGN_FOLIO:
-            continue
-        changes.append(
-            {
-                "when": run.timestamp.isoformat() if run.timestamp else "",
-                "text": _change_text(run),
-                "features": _ai_features(run),
-                "prompt_url": prompt_snapshot_url(run.repo_hash),
-            }
-        )
+        if run.stage in (RunStage.ALIGN_FOLIO, RunStage.DOWNLOAD_BATCH):
+            contrib = _run_contributor(run)
+            changes.append(
+                {
+                    "when": run.timestamp.isoformat() if run.timestamp else "",
+                    "who": f"#{contrib['xml_id']}" if contrib else "#leningrad-codex-tei",
+                    "text": _change_text(run),
+                    "features": _ai_features(run),
+                    "prompt_url": prompt_snapshot_url(run.repo_hash),
+                }
+            )
+        elif run.stage == RunStage.GENERATE_TEI:
+            contrib = _run_contributor(run)
+            if contrib is None:
+                continue
+            changes.append(
+                {
+                    "when": run.timestamp.isoformat() if run.timestamp else "",
+                    "who": f"#{contrib['xml_id']}",
+                    "text": f"Encoded by {contrib['name']}.",
+                    "features": [],
+                    "prompt_url": None,
+                }
+            )
     changes.reverse()
     return changes
 

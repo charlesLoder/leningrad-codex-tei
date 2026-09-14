@@ -12,6 +12,7 @@ import yaml
 from click.testing import CliRunner
 from lxml import etree
 
+import leningrad_codex_tei.cli as cli_module
 from leningrad_codex_tei.cli import cli
 from leningrad_codex_tei.config import Config
 from leningrad_codex_tei.schemas import WordStream
@@ -94,7 +95,9 @@ def _placements_to_xml(
     return "\n".join(parts)
 
 
-def _run_pipeline(runner: CliRunner, conf: Path) -> None:
+def _run_pipeline(
+    runner: CliRunner, conf: Path, contributor: dict | None = None
+) -> None:
     def fake(url: str) -> bytes:
         assert url.startswith("https://"), url
         if "lci_recs.json" in url:
@@ -138,8 +141,13 @@ def _run_pipeline(runner: CliRunner, conf: Path) -> None:
         side_effect=fake_align,
     )
     clean_patch = patch.object(align_stage, "ensure_align_prompt_clean", lambda: None)
+    # Hermetic: contributor identity comes from ambient git config, so pin it.
+    contrib_patch = patch.object(
+        cli_module, "_current_contributor", lambda: contributor
+    )
     align_patch.start()
     clean_patch.start()
+    contrib_patch.start()
     try:
         for args in commands:
             result = runner.invoke(cli, args)
@@ -148,6 +156,7 @@ def _run_pipeline(runner: CliRunner, conf: Path) -> None:
     finally:
         align_patch.stop()
         clean_patch.stop()
+        contrib_patch.stop()
 
 
 def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
@@ -270,3 +279,45 @@ def test_validate_failure_does_not_mark_aligned(tmp_path: Path) -> None:
     last_validate = [r for r in audit["runs"] if r["stage"] == "validate"][-1]
     assert last_validate["result_summary"]["passed"] is False
     assert audit["status"] == "aligned"  # unchanged: failure does not downgrade
+
+
+def test_pipeline_records_git_contributor(tmp_path: Path) -> None:
+    """git user.name/user.email surface as respStmt + change + index entry."""
+    conf = _write_config(tmp_path)
+    _run_pipeline(
+        CliRunner(),
+        conf,
+        contributor={"name": "Test Scribe", "email": "scribe@example.org"},
+    )
+    ns = {"t": "http://www.tei-c.org/ns/1.0"}
+    root = etree.fromstring((tmp_path / "out" / "001B.xml").read_text().encode())
+
+    stmts = root.findall(".//t:titleStmt/t:respStmt", ns)
+    assert [s.get("{http://www.w3.org/XML/1998/namespace}id") for s in stmts] == [
+        "leningrad-codex-tei",
+        "contrib-test-scribe",
+    ]
+    pers = stmts[1].find("t:persName", ns)
+    assert pers.text == "Test Scribe"
+    assert pers.get("ref") == "mailto:scribe@example.org"
+
+    changes = root.findall(".//t:revisionDesc/t:change", ns)
+    assert len(changes) == 2
+    assert all(c.get("who") == "#contrib-test-scribe" for c in changes)
+    encoded = [c for c in changes if "Encoded by Test Scribe." in (c.text or "")]
+    assert len(encoded) == 1
+    encoded_when = encoded[0].get("when")
+    assert encoded_when
+
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    gen = [r for r in audit["runs"] if r["stage"] == "generate-tei"][-1]
+    assert gen["contributor_name"] == "Test Scribe"
+    assert gen["contributor_email"] == "scribe@example.org"
+
+    index_root = etree.fromstring((tmp_path / "out" / "index.xml").read_text().encode())
+    entries = index_root.findall("entry")
+    assert len(entries) == 1
+    assert entries[0].get("contributor") == "Test Scribe"
+    assert entries[0].get("when") == encoded_when
+    assert entries[0].findtext("persName") == "Test Scribe"
+    assert entries[0].find("date").get("when") == entries[0].get("when")

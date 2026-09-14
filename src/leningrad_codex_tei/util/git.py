@@ -32,6 +32,36 @@ def repo_hash(cwd: Path | None = None) -> str:
         return "unknown"
 
 
+def _git_config(key: str, cwd: Path | None = None) -> str | None:
+    try:
+        proc = subprocess.run(
+            ["git", "config", key],
+            cwd=cwd,
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        if proc.returncode != 0:
+            return None
+        value = proc.stdout.strip()
+        return value or None
+    except Exception:
+        return None
+
+
+def contributor_info(cwd: Path | None = None) -> dict | None:
+    """Resolve the human contributor from git config.
+
+    Returns ``{"name": ..., "email": ...}`` (email may be None), or None
+    when neither ``user.name`` nor ``user.email`` is configured.
+    """
+    name = _git_config("user.name", cwd)
+    email = _git_config("user.email", cwd)
+    if name is None and email is None:
+        return None
+    return {"name": name or email, "email": email}
+
+
 def file_is_dirty(path: Path | str, cwd: Path | None = None) -> bool:
     try:
         proc = subprocess.run(

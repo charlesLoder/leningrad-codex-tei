@@ -58,6 +58,8 @@ def _pipeline_run(data: dict) -> PipelineRun:
         checks=data.get("checks"),
         result_summary=data.get("result_summary"),
         timestamp=datetime.fromisoformat(data["timestamp"]) if data.get("timestamp") else None,
+        contributor_name=data.get("contributor_name"),
+        contributor_email=data.get("contributor_email"),
     )
 
 

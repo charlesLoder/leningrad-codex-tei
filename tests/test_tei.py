@@ -11,6 +11,7 @@ from leningrad_codex_tei.schemas import PipelineRun, RunStage
 from leningrad_codex_tei.stages.align import build_alignment_record
 from leningrad_codex_tei.stages.tei import (
     changes_from_audit,
+    contributors_from_audit,
     render_folio_tei,
     repo_snapshot_url,
     source_image_from_audit,
@@ -520,3 +521,57 @@ def test_publication_stmt_has_mit_availability(
     assert pub is not None
     assert pub.find(_q("authority")).text == "leningrad-codex-tei"
     assert pub.find(_q("p")) is None
+
+
+def test_contributor_respStmt_and_change(alignment) -> None:
+    runs = [
+        PipelineRun(
+            stage=RunStage.ALIGN_FOLIO,
+            result_summary={"method": "stub", "atoms": 10, "range": "Genesis 1:1"},
+            timestamp=datetime(2026, 8, 27, 1, 2, 3),
+        ),
+        PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Test Scribe",
+            contributor_email="scribe@example.org",
+            timestamp=datetime(2026, 8, 27, 1, 2, 6),
+        ),
+    ]
+    contributors = contributors_from_audit(runs)
+    assert contributors == [
+        {
+            "name": "Test Scribe",
+            "email": "scribe@example.org",
+            "xml_id": "contrib-test-scribe",
+        }
+    ]
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes_from_audit(runs),
+        contributors=contributors,
+        pipeline_version="9.9.9",
+    )
+    root = etree.fromstring(xml.encode())
+    stmts = root.findall(f".//{_q('titleStmt')}/{_q('respStmt')}")
+    assert [_id(s) for s in stmts] == ["leningrad-codex-tei", "contrib-test-scribe"]
+    pers = stmts[1].find(_q("persName"))
+    assert pers.text == "Test Scribe"
+    assert pers.get("ref") == "mailto:scribe@example.org"
+    changes = root.findall(f".//{_q('revisionDesc')}/{_q('change')}")
+    assert len(changes) == 2
+    assert changes[0].get("who") == "#contrib-test-scribe"
+    assert "Encoded by Test Scribe." in (changes[0].text or "")
+
+
+def test_align_change_uses_pipeline_who_without_contributor() -> None:
+    runs = [
+        PipelineRun(
+            stage=RunStage.ALIGN_FOLIO,
+            result_summary={"method": "stub", "atoms": 10, "range": "Genesis 1:1"},
+            timestamp=datetime(2026, 8, 27, 1, 2, 3),
+        ),
+    ]
+    assert changes_from_audit(runs)[0]["who"] == "#leningrad-codex-tei"
