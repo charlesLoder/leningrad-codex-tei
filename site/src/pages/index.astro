@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import folios from '../data/folios.json';
+import { abbreviateRange } from '../lib/tei';
+import { folioRangeKeys } from '../lib/verses';
+
+const cards = folios.map((f) => {
+  const { start, end } = folioRangeKeys(f.range);
+  return { ...f, start, end };
+});
+---
+<Base title="Leningrad Codex Viewer">
+  <section class="hero">
+    <h1>Leningrad Codex TEI</h1>
+    <p>
+      Read the Leningrad Codex TEI online.
+    </p>
+    <p>
+      <a class="btn primary" href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">Download whole edition (.zip)</a>
+    </p>
+    <div class="controls">
+      <input id="q" type="search" placeholder="Filter by folio or verse (e.g. 002A, Gen 3:15)…" autocomplete="off" />
+    </div>
+    <p id="count" class="result-count" aria-live="polite"></p>
+  </section>
+
+  <ol class="folio-grid" id="grid">
+    {cards.map((f) => (
+      <li data-search={`${f.folio} ${f.title} ${f.range}`.toLowerCase()} data-start={f.start ?? ''} data-end={f.end ?? ''}>
+        <a class="folio-card" href={`/folio/${f.folio}/`}>
+          <h2>{f.folio}</h2>
+          <p class="range">{abbreviateRange(f.range)}</p>
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  <script>
+    import { parseVerseQuery } from '../lib/verses';
+    const q = document.querySelector('#q') as HTMLInputElement | null;
+    const grid = document.querySelector('#grid');
+    const count = document.querySelector('#count');
+    const rows = [...(grid?.querySelectorAll('li') ?? [])].map((li) => ({
+      el: li as HTMLElement,
+      search: (li as HTMLElement).dataset.search ?? '',
+      start: (li as HTMLElement).dataset.start ? Number((li as HTMLElement).dataset.start) : null,
+      end: (li as HTMLElement).dataset.end ? Number((li as HTMLElement).dataset.end) : null,
+    }));
+    const apply = () => {
+      const raw = (q?.value ?? '').trim();
+      const needle = raw.toLowerCase();
+      const span = parseVerseQuery(raw);
+      let visible = 0;
+      for (const row of rows) {
+        let show: boolean;
+        if (!raw) show = true;
+        else if (span && row.start !== null && row.end !== null) show = span.start <= row.end && row.start <= span.end;
+        else if (span) show = false;
+        else show = row.search.includes(needle);
+        row.el.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      }
+      if (count) count.textContent = !raw ? `${rows.length} folios` : visible === 0 ? `No published folio matches “${raw}”.` : `${visible} of ${rows.length} folios`;
+    };
+    q?.addEventListener('input', apply);
+    apply();
+  </script>
+</Base>

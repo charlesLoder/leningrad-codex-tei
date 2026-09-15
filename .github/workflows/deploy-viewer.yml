@@ -1,0 +1,19 @@
+name: deploy-viewer
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy viewer to Netlify
+        # TODO: create a build hook (Site settings → Build & deploy → Build hooks)
+        if: ${{ secrets.NETLIFY_SITE_BUILD_HOOK != '' }}
+        # and store its URL in the NETLIFY_SITE_BUILD_HOOK repo secret.
+        run: curl -sS -X POST "$NETLIFY_SITE_BUILD_HOOK"
+        env:
+          NETLIFY_SITE_BUILD_HOOK: ${{ secrets.NETLIFY_SITE_BUILD_HOOK }}

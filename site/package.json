@@ -1,0 +1,24 @@
+{
+  "name": "leningrad-viewer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/sync-edition.mjs && astro build",
+    "preview": "astro preview",
+    "sync": "node scripts/sync-edition.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.2",
+    "openseadragon": "^6.1.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/openseadragon": "^5.0.2"
+  }
+}

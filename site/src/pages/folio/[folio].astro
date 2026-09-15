@@ -1,0 +1,167 @@
+---
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import Base from '../../layouts/Base.astro';
+import { parseFolioXml, folioSideLabel, abbreviateRange } from '../../lib/tei';
+import folios from '../../data/folios.json';
+
+export function getStaticPaths() {
+  return folios.map((f) => ({ params: { folio: f.folio } }));
+}
+
+const { folio } = Astro.params;
+const here = dirname(fileURLToPath(import.meta.url));
+const xmlPath = join(here, '../../../../edition', `${folio}.xml`);
+const xml = readFileSync(xmlPath, 'utf8');
+const doc = parseFolioXml(xml);
+const entry = folios.find((f) => f.folio === folio);
+
+const idx = folios.findIndex((f) => f.folio === folio);
+const prev = idx > 0 ? folios[idx - 1] : null;
+const next = idx >= 0 && idx < folios.length - 1 ? folios[idx + 1] : null;
+---
+
+<Base title={`${folio} · Leningrad Codex Viewer`} description={doc.title}>
+  <section class="folio-head">
+    <h1>Folio {folioSideLabel(folio ?? '')}</h1>
+    <p class="range">{entry ? abbreviateRange(entry.range) : doc.title}</p>
+    <div class="pager">
+      <span>{next ? <a class="btn" data-direction="next" href={`/folio/${next.folio}/`}>← {next.folio}</a> : <span />}</span>
+      <span>{prev ? <a class="btn" data-direction="prev" href={`/folio/${prev.folio}/`}>{prev.folio} →</a> : <span />}</span>
+    </div>
+    <div class="folio-toolbar">
+      {doc.graphicUrl && <a class="btn primary" target="_blank" rel="noopener noreferrer" href={doc.graphicUrl}>Facsimile image <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg></a>}
+      <a class="btn" href={`/edition/${folio}.xml`} target="_blank">Raw TEI XML</a>
+      <label class="toggle"><input type="checkbox" id="toggle-verses" /> Verse markers</label>
+    </div>
+  </section>
+
+  <div class="columns" data-cols={String(doc.columns.length)}>
+    {doc.columns.map((col) => (
+      <section class="column">
+        <h2>Column {col.n}</h2>
+        {col.lines.map((line) => (
+          <div class="tei-line">
+            <div class="gutter">
+              <span class="ln">{line.n}</span>
+              {[...new Map(line.tokens.flatMap((t) => t.marks).filter((mk) => mk.kind === 'verse').map((mk) => [mk.ref, mk])).values()].map((mk) => (
+                <span class="verse-tag" data-verse={mk.ref} title="Highlight verse">{mk.ref}</span>
+              ))}
+            </div>
+            <p class="he">
+              {line.tokens.map((t, i) => (
+                <>
+                  {t.kind === "sof-pasuq" && i > 0 ? '\u00A0' : ""}
+                  <span class={`${t.kind === 'w' ? '' : t.kind}${t.text.endsWith("־") ? ' maqaf' : ''}`.trim()} data-verse={t.verse}>
+                    {t.text}
+                  </span>
+                  {t.marks.filter((mk) => mk.kind === 'section').map((mk) => (
+                    <span class="section-tag" data-verse={t.verse} title="Paragraph division">
+                      {mk.subtype === 'samekh' ? 'ס' : mk.subtype === 'pe' ? 'פ' : mk.subtype}
+                    </span>
+                  ))}{line.tokens[i + 1]?.kind === "sof-pasuq" ? "" : ' '}
+                </>
+              ))}
+            </p>
+          </div>
+        ))}
+      </section>
+    ))}
+  </div>
+
+  {doc.graphicUrl && (
+    <figure class="facsimile">
+      <div id="facsimile-viewer" class="osd-viewer" data-url={doc.graphicUrl} aria-label={`Zoomable facsimile of folio ${folio}`}>
+        <div class="osd-toolbar" role="toolbar" aria-label="Facsimile image controls">
+          <button type="button" data-osd="zoom-in" title="Zoom in" aria-label="Zoom in"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg></button>
+          <button type="button" data-osd="zoom-out" title="Zoom out" aria-label="Zoom out"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /></svg></button>
+          <button type="button" data-osd="home" title="Reset view" aria-label="Reset view"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-9 9 9" /><path d="M9 21V12h6v9" /></svg></button>
+          <button type="button" data-osd="fullpage" title="Toggle fullscreen" aria-label="Toggle fullscreen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6" /><path d="M9 21H3v-6" /><line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" /></svg></button>
+        </div>
+      </div>
+      <figcaption>Facsimile via Sefaria — drag to pan, scroll to zoom.</figcaption>
+      <noscript>
+        <a href={doc.graphicUrl} target="_blank" rel="noopener noreferrer">
+          <img src={doc.graphicUrl} alt={`Facsimile of folio ${folio}`} loading="lazy" />
+        </a>
+      </noscript>
+    </figure>
+  )}
+
+  <script>
+    import OpenSeadragon from 'openseadragon';
+
+    const toggle = document.querySelector('#toggle-verses') as HTMLInputElement | null;
+    const apply = (on: boolean) => {
+      document.querySelectorAll('.verse-tag').forEach((el) => {
+        (el as HTMLElement).style.display = on ? '' : 'none';
+      });
+    };
+    toggle?.addEventListener('change', (e) => apply((e.target as HTMLInputElement).checked));
+    apply(toggle?.checked ?? false);
+
+    const columns = document.querySelector('.columns');
+    const highlight = (ref: string | null, on: boolean) => {
+      if (!ref) return;
+      columns?.querySelectorAll(`span[data-verse="${ref}"]`).forEach((el) => {
+        el.classList.toggle('hl', on);
+      });
+    };
+    columns?.addEventListener('mouseover', (e) => {
+      const tag = (e.target as HTMLElement).closest('.verse-tag') as HTMLElement | null;
+      highlight(tag?.dataset.verse ?? null, true);
+    });
+    columns?.addEventListener('mouseout', (e) => {
+      const tag = (e.target as HTMLElement).closest('.verse-tag') as HTMLElement | null;
+      highlight(tag?.dataset.verse ?? null, false);
+    });
+
+    const viewerEl = document.querySelector('#facsimile-viewer') as HTMLElement | null;
+    const facsimileUrl = viewerEl?.dataset.url;
+    if (viewerEl && facsimileUrl) {
+      const viewer = OpenSeadragon({
+        element: viewerEl,
+        tileSources: { type: 'image', url: facsimileUrl },
+        crossOriginPolicy: false,
+        drawer: 'canvas',
+        navigatorDrawer: 'canvas',
+        showNavigationControl: false,
+        showNavigator: true,
+        navigatorPosition: 'BOTTOM_RIGHT',
+        maxZoomPixelRatio: 2,
+        visibilityRatio: 0.8,
+      });
+      viewerEl.querySelectorAll('[data-osd]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const action = (btn as HTMLElement).dataset.osd;
+          if (action === 'zoom-in') {
+            viewer.viewport.zoomBy(1.4);
+            viewer.viewport.applyConstraints();
+          } else if (action === 'zoom-out') {
+            viewer.viewport.zoomBy(1 / 1.4);
+            viewer.viewport.applyConstraints();
+          } else if (action === 'home') {
+            viewer.viewport.goHome();
+          } else if (action === 'fullpage') {
+            viewer.setFullPage(!viewer.isFullPage());
+          }
+        });
+      });
+      viewer.addHandler('open-failed', () => {
+        viewerEl.querySelector('.osd-toolbar')?.remove();
+        viewerEl.innerHTML = '';
+        const link = document.createElement('a');
+        link.href = facsimileUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        const img = document.createElement('img');
+        img.src = facsimileUrl;
+        img.alt = 'Facsimile folio image';
+        img.loading = 'lazy';
+        link.appendChild(img);
+        viewerEl.appendChild(link);
+      });
+    }
+  </script>
+</Base>

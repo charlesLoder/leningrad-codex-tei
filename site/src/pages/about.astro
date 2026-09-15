@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="About · Leningrad Codex TEI" description="About the Leningrad Codex TEI project: goals, method, transparency, and reuse.">
+  <section class="hero">
+    <h1>About</h1>
+    <p>
+      The <a href="https://en.wikipedia.org/wiki/Leningrad_Codex">Leningrad Codex</a> is the oldest
+      complete manuscript of the Hebrew Bible. Many projects have transcribed its biblical text;
+      few have encoded its layout. This project treats the codex not just as a text, but as an object.
+    </p>
+    <p>
+      <a class="btn primary" href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">Download whole edition (.zip)</a>
+      <a class="btn" href="https://github.com/charlesLoder/leningrad-codex-tei">GitHub repository</a>
+    </p>
+  </section>
+
+  <div class="prose">
+    <h2>Goals</h2>
+    <ul class="goals">
+      <li><strong>Accessibility</strong> — the codex as an open, TEI-encoded document under a permissive MIT license, with a quick download link and this online viewer.</li>
+      <li><strong>Transparency</strong> — the generation process is documented, with special regard to how AI was used.</li>
+      <li><strong>Reproducibility</strong> — the pipeline that produced the edition is published and configurable.</li>
+      <li><strong>Community</strong> — an unaffiliated, community-driven endeavor. See the <a href="https://github.com/charlesLoder/leningrad-codex-tei/blob/main/CONTRIBUTING.MD">contributing guide</a>.</li>
+    </ul>
+
+    <h2>Method</h2>
+    <p>
+      The Text Encoding Initiative (TEI) provides the framework for encoding the manuscript in a
+      machine-readable way using XML. Recent advances in AI, combined with existing open data, make
+      this work feasible at scale: multi-modal models draft the columnar layout of each folio side,
+      which is then cross-checked and corrected.
+    </p>
+    <p>
+      Each folio side is one TEI document carrying the main biblical text only — the ketiv
+      consonantal text as written — with verse milestones marking where each verse begins and
+      samekh/pe paragraph-division markers inline. Per-word biblical references are derived at
+      index time, not stored per word.
+    </p>
+
+    <h2>Data</h2>
+    <p>
+      The biblical text in the document was not transcribed directly from the images.
+      The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christoper V. Kimball and accessible on the <a href="https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html">tanach.us</a> site.
+      For this reason, the text in the edition may differ from the images in the manuscript. That is an intentional choice.
+    </p>
+    <p>
+      The text determined to be on each folio was derived from Ben Denckla's index of the <a href="https://github.com/bdenckla/MAM-basics" target="_blank">Leningrad Codex</a>.
+    </p>
+
+    <h2>Transparency &amp; AI use</h2>
+    <p>AI tools were integral to this project, used for:</p>
+    <ul>
+      <li>Generating the code in the repository</li>
+      <li>Aligning the biblical text to the columns and lines of a folio</li>
+    </ul>
+    <p>The alignment work is fully documented per folio:</p>
+    <ul>
+      <li>The facsimile image used (URL and sha256) is recorded in the TEI header</li>
+      <li>The model and parameters are recorded in the TEI header</li>
+      <li>The prompt is linked to a commit sha</li>
+    </ul>
+    <p>
+      The pipeline and prompts are published in the repository, and the full history is visible
+      in git. The project used Google's Gemini models for their image-transcription quality,
+      cost, and batch inference options.
+    </p>
+
+    <h2>Reproducibility</h2>
+    <p>
+      The pipeline that generated the edition is published so future researchers can re-run it
+      and configure it to different models and inference strategies — with the caveat that AI
+      outputs are not always reproducible. See the
+      <a href="https://github.com/charlesLoder/leningrad-codex-tei#pipeline">pipeline docs</a> in the repository.
+    </p>
+
+    <h2>Reuse</h2>
+    <p>
+      The edition is MIT licensed. Browse it <a href="/">folio by folio</a>, fetch raw TEI
+      per folio at <code>/edition/Fxxx[A|B].xml</code>, read the manifest at
+      <code>/edition/index.xml</code>, or grab the{" "}
+      <a href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">whole-edition zip</a>.
+      Agents should prefer the XML over scraping this site — see <a href="/llms.txt">/llms.txt</a>.
+    </p>
+
+    <h2>The Author</h2>
+    <p>
+      I'm Charles Loder, the initial author of this project. You can find more about my work and contact me through my social media profiles:
+      <ul>
+        <li><a href="https://github.com/charlesLoder" target="_blank">GitHub</a></li>
+        <li><a href="https://independentresearcher.academia.edu/CharlesLoder" target="_blank">Academia.edu</a></li>
+        <li><a href="https://x.com/charles_loder" target="_blank">Twitter</a></li>
+        <li><a href="https://bsky.app/profile/charlesloder.bsky.social" target="_blank">Bluesky</a></li>
+      </ul>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .prose {
+    margin: 0 auto;
+    max-width: 44rem;
+    padding-bottom: 3rem;
+  }
+  .prose h2 {
+    margin: 1.8rem 0 0.5rem;
+    font-size: 1.3rem;
+  }
+  .prose p, .prose li {
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .prose p { margin: 0.6rem 0; }
+  .prose ul { padding-inline-start: 1.4rem; margin: 0.6rem 0; }
+  .prose li { margin: 0.3rem 0; }
+  .prose code {
+    font-size: 0.9em;
+    background: var(--accent-soft);
+    border-radius: 0.3rem;
+    padding: 0 0.35rem;
+  }
+  .hero .btn { margin-inline-end: 0.5rem; }
+</style>
