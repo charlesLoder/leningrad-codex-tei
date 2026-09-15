@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Schema for Leningrad Codex (Iteration 1)</title>
+        <author>Your Name</author>
+      </titleStmt>
+      <publicationStmt>
+        <p>Private draft</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Born digital</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <schemaSpec ident="leningradSchema" start="TEI" prefix="tei_">
+        
+        <!-- Module 1: Required baseline infrastructure -->
+        <moduleRef key="tei"/>
+
+        <!-- Module 2: The Metadata Header (titleStmt respStmt credits the
+             human contributor resolved from git user.name/user.email plus
+             static source credits for the UXLC base text (Kimball) and the
+             folio index (Denckla); the UXLC source credit carries the
+             edition version/build/date parsed from the UXLC editionStmt;
+             persName/@ref carries a mailto: address; revisionDesc/change
+             records the contributor via @who plus the contributor date) -->
+        <moduleRef key="header" include="teiHeader fileDesc titleStmt title respStmt resp publicationStmt authority availability licence sourceDesc encodingDesc appInfo application revisionDesc change"/>
+        <moduleRef key="msdescription" include="msDesc msIdentifier settlement repository idno"/>
+        <moduleRef key="namesdates" include="persName"/>
+        <moduleRef key="iso-fs" include="fs f string"/>
+
+        <!-- Module 3: Basic Text Structure -->
+        <moduleRef key="textstructure" include="TEI text body div"/>
+
+        <!-- Module 4: Core Elements (Milestones & Prose) -->
+        <moduleRef key="core" include="p title pb cb lb milestone ptr name label"/>
+
+        <!-- Module 5: Words and punctuation (generate-tei splits trailing
+             sof-pasuq / paseq off each UXLC atom into pc; w keeps the atom) -->
+        <moduleRef key="analysis" include="w pc"/>
+        <moduleRef key="link" include="ab"/>
+
+        <!-- Custom constraint: Make sure 'n' and 'unit' are required on milestones -->
+        <elementSpec ident="milestone" mode="change">
+          <attList>
+            <attDef ident="unit" mode="change" usage="req"/>
+            <attDef ident="n" mode="change" usage="req"/>
+          </attList>
+        </elementSpec>
+
+        <elementSpec ident="pc" mode="change">
+          <attList>
+            <attDef ident="type" mode="change" usage="req">
+              <valList type="closed">
+                <valItem ident="sof-pasuq"/>
+                <valItem ident="paseq"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+
+        <!-- Custom constraint: Require 'n' on lines and columns -->
+        <elementSpec ident="lb" mode="change">
+          <attList>
+            <attDef ident="n" mode="change" usage="req"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="cb" mode="change">
+          <attList>
+            <attDef ident="n" mode="change" usage="req"/>
+          </attList>
+        </elementSpec>
+
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>
