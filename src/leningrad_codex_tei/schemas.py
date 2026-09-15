@@ -23,10 +23,21 @@ class Word:
 
 
 @dataclass
+class UxlcEdition:
+    """Version identity from a UXLC book's ``editionStmt/edition``."""
+
+    version: str | None = None
+    date: str | None = None
+    build: str | None = None
+    build_datetime: str | None = None
+
+
+@dataclass
 class WordStream:
     source: str
     generated_at: datetime
     words: list[Word]
+    uxlc_edition: UxlcEdition | None = None
 
 
 # --- Alignment record (output of align-folio) ---
@@ -159,6 +170,10 @@ class WordStreamProvenance:
     sha256: str
     words: int
     path: str
+    uxlc_version: str | None = None
+    uxlc_date: str | None = None
+    uxlc_build: str | None = None
+    uxlc_build_datetime: str | None = None
 
 
 @dataclass

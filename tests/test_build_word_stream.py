@@ -6,7 +6,12 @@ from pathlib import Path
 
 import pytest
 
-from leningrad_codex_tei.stages.word_stream import build_word_stream
+from leningrad_codex_tei.stages.word_stream import (
+    build_word_stream,
+    load_word_stream,
+    read_uxlc_edition,
+    save_word_stream,
+)
 
 
 def words_by_verse(ws) -> dict[tuple[int, int], list[tuple[int, str]]]:
@@ -73,3 +78,34 @@ def test_metadata_fields(uxlc_fixture_dir: Path) -> None:
 def test_empty_directory_yields_empty_stream(tmp_path: Path) -> None:
     ws = build_word_stream(tmp_path, book_order=["Genesis"])
     assert ws.words == []
+
+
+def test_uxlc_edition_parsed_from_editionStmt(uxlc_fixture_dir: Path) -> None:
+    ws = build_word_stream(uxlc_fixture_dir, book_order=["Genesis"])
+    assert ws.uxlc_edition is not None
+    assert ws.uxlc_edition.version == "UXLC 9.9-test"
+    assert ws.uxlc_edition.date == "1 Jan 2026"
+    assert ws.uxlc_edition.build == "0.1-test"
+    assert ws.uxlc_edition.build_datetime == "31 Dec 2025 12:00"
+
+
+def test_read_uxlc_edition_returns_none_without_metadata(tmp_path: Path) -> None:
+    assert read_uxlc_edition(tmp_path) is None
+    d = tmp_path / "uxlc"
+    d.mkdir()
+    (d / "Genesis.xml").write_text(
+        "<Tanach><teiHeader><fileDesc><editionStmt>"
+        "<edition>Bare edition, no version children</edition>"
+        "</editionStmt></fileDesc></teiHeader>"
+        "<tanach><book><c n='1'><v n='1'><w>x</w></v></c></book></tanach></Tanach>"
+    )
+    assert read_uxlc_edition(d) is None
+
+
+def test_word_stream_edition_roundtrips_through_json(
+    uxlc_fixture_dir: Path, tmp_path: Path
+) -> None:
+    ws = build_word_stream(uxlc_fixture_dir, book_order=["Genesis"])
+    dest = tmp_path / "word_stream.json"
+    save_word_stream(ws, dest)
+    assert load_word_stream(dest).uxlc_edition == ws.uxlc_edition

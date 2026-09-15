@@ -609,3 +609,45 @@ def test_blank_lines_preserved(seed_slice, word_stream, changes) -> None:
     idx = next(i for i, el in enumerate(kids) if etree.QName(el).localname == "lb" and el.get("n") == "2")
     assert etree.QName(kids[idx + 1]).localname == "lb"
     assert kids[idx + 1].get("n") == "3"
+
+
+def _source_uxlc_resp(root: etree._Element) -> str:
+    for stmt in root.findall(f".//{_q('titleStmt')}/{_q('respStmt')}"):
+        if _id(stmt) == "source-uxlc":
+            return "".join(stmt.find(_q("resp")).itertext())
+    raise AssertionError("source-uxlc respStmt missing")
+
+
+def test_source_uxlc_carries_edition_version(alignment, changes) -> None:
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="9.9.9",
+        uxlc_edition={
+            "version": "UXLC 2.5",
+            "date": "1 Apr 2026",
+            "build": "27.6",
+            "build_datetime": "31 Mar 2026 12:00",
+        },
+    )
+    resp_text = _source_uxlc_resp(etree.fromstring(xml.encode()))
+    assert "UXLC 2.5" in resp_text
+    assert "27.6" in resp_text
+    assert "1 Apr 2026" in resp_text
+
+
+def test_source_uxlc_omits_version_without_edition(alignment, changes) -> None:
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="9.9.9",
+    )
+    resp_text = _source_uxlc_resp(etree.fromstring(xml.encode()))
+    assert "version" not in resp_text
+    assert "Unicode/XML Leningrad Codex (UXLC)" in resp_text

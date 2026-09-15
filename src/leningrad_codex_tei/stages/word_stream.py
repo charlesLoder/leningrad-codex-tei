@@ -16,7 +16,7 @@ from pathlib import Path
 
 from lxml import etree
 
-from leningrad_codex_tei.schemas import Word, WordStream
+from leningrad_codex_tei.schemas import UxlcEdition, Word, WordStream
 
 CANONICAL_BOOK_ORDER = [
     "Genesis",
@@ -61,14 +61,52 @@ CANONICAL_BOOK_ORDER = [
 ]
 
 
+def _edition_from_root(root: etree._Element) -> UxlcEdition | None:
+    """Version identity from a UXLC ``editionStmt/edition``, or None when absent."""
+    for el in root.iter():
+        if _local_name(el) != "editionStmt":
+            continue
+        for child in el:
+            if _local_name(child) != "edition":
+                continue
+            fields: dict[str, str] = {}
+            for sub in child:
+                tag = _local_name(sub)
+                if tag == "buildDateTime":
+                    tag = "build_datetime"
+                if tag in ("version", "date", "build", "build_datetime"):
+                    text = (sub.text or "").strip()
+                    if text:
+                        fields[tag] = text
+            return UxlcEdition(**fields) if fields else None
+    return None
+
+
+def read_uxlc_edition(
+    uxlc_dir: Path, book_order: list[str] | None = None
+) -> UxlcEdition | None:
+    """Read the UXLC edition identity from the first available book XML."""
+    files = _ordered_book_files(uxlc_dir, book_order)
+    if not files:
+        return None
+    try:
+        root = etree.fromstring(files[0].read_bytes())
+    except (OSError, etree.LxmlError):
+        return None
+    return _edition_from_root(root)
+
+
 def build_word_stream(uxlc_dir: Path, book_order: list[str] | None = None) -> WordStream:
     """Parse every book XML in ``uxlc_dir`` into a global word stream."""
     files = _ordered_book_files(uxlc_dir, book_order)
 
     words: list[Word] = []
     atom = 0
+    edition: UxlcEdition | None = None
     for path in files:
         root = etree.fromstring(path.read_bytes())
+        if edition is None:
+            edition = _edition_from_root(root)
         book = path.stem
         for chapter_el in root.iter():
             if _local_name(chapter_el) != "c":
@@ -106,14 +144,20 @@ def build_word_stream(uxlc_dir: Path, book_order: list[str] | None = None) -> Wo
                         )
                     )
 
-    return WordStream(source=str(uxlc_dir), generated_at=datetime.now(timezone.utc), words=words)
+    return WordStream(
+        source=str(uxlc_dir),
+        generated_at=datetime.now(timezone.utc),
+        words=words,
+        uxlc_edition=edition,
+    )
 
 
 def dump_word_stream(stream: WordStream) -> dict:
-    """Contract JSON: source, generated_at iso, words (asdict each)."""
+    """Contract JSON: source, generated_at iso, uxlc_edition, words (asdict each)."""
     return {
         "source": stream.source,
         "generated_at": stream.generated_at.isoformat(),
+        "uxlc_edition": asdict(stream.uxlc_edition) if stream.uxlc_edition else None,
         "words": [asdict(w) for w in stream.words],
     }
 
@@ -125,10 +169,12 @@ def save_word_stream(stream: WordStream, path: Path) -> None:
 
 def load_word_stream(path: Path) -> WordStream:
     data = json.loads(path.read_text())
+    edition = data.get("uxlc_edition")
     return WordStream(
         source=data["source"],
         generated_at=datetime.fromisoformat(data["generated_at"]),
         words=[Word(**w) for w in data["words"]],
+        uxlc_edition=UxlcEdition(**edition) if edition else None,
     )
 
 

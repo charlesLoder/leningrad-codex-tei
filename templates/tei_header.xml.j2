@@ -7,7 +7,7 @@
           <name>leningrad-codex-tei</name>
         </respStmt>
         <respStmt xml:id="source-uxlc">
-          <resp>Base biblical text from the Unicode/XML Leningrad Codex (UXLC) <ptr target="https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html"/></resp>
+          <resp>Base biblical text from the Unicode/XML Leningrad Codex (UXLC){% if uxlc_edition and uxlc_edition.version %} (version {{ uxlc_edition.version }}{% if uxlc_edition.build %}, build {{ uxlc_edition.build }}{% endif %}{% if uxlc_edition.date %}, {{ uxlc_edition.date }}{% endif %}){% endif %} <ptr target="https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html"/></resp>
           <persName>Christopher V. Kimball</persName>
         </respStmt>
         <respStmt xml:id="source-seed">

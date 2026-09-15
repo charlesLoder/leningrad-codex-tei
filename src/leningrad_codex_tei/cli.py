@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from dataclasses import asdict
 from pathlib import Path
 
 import click
@@ -137,6 +138,7 @@ def build_word_stream(config: Config) -> None:
     stream = stream_stage.build_word_stream(config.paths.uxlc)
     stream_stage.save_word_stream(stream, config.paths.word_stream)
     sha = _file_sha(config.paths.word_stream)
+    edition = stream.uxlc_edition
     update_pipeline_provenance(
         config.paths.provenance,
         config.project_version,
@@ -145,6 +147,10 @@ def build_word_stream(config: Config) -> None:
             sha256=sha,
             words=len(stream.words),
             path=str(config.paths.word_stream),
+            uxlc_version=edition.version if edition else None,
+            uxlc_date=edition.date if edition else None,
+            uxlc_build=edition.build if edition else None,
+            uxlc_build_datetime=edition.build_datetime if edition else None,
         ),
     )
     click.echo(
@@ -532,6 +538,7 @@ def generate_tei(config: Config, folio: str | None) -> None:
         )
         repo = _repo_hash()
         generate_ts = trail.runs[-1].timestamp if trail.runs else None
+        edition = _stream.uxlc_edition
         xml = tei_stage.render_folio_tei(
             folio=page,
             verse_range=f"{sl.start_ref} – {sl.stop_ref}",
@@ -543,6 +550,7 @@ def generate_tei(config: Config, folio: str | None) -> None:
             repo_hash=repo,
             generated_when=generate_ts.isoformat() if generate_ts else None,
             source_image=tei_stage.source_image_from_audit(trail.runs),
+            uxlc_edition=asdict(edition) if edition else None,
         )
         dest = config.paths.output / f"{page}.xml"
         dest.parent.mkdir(parents=True, exist_ok=True)

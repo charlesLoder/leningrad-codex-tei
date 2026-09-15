@@ -185,6 +185,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert (tmp_path / "uxlc" / "Genesis.xml").exists()
     assert not list((tmp_path / "uxlc").glob("*.zip"))
     assert word_stream["words"][0]["atom"] == 1
+    assert word_stream["uxlc_edition"]["version"] == "UXLC 9.9-test"
 
     # audit trail: one run per per-folio stage, in pipeline order, status moved out of pending.
     # global corpus stages (vendor-seed, download-uxlc, build-word-stream, build-index)
@@ -212,6 +213,8 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert len(prov["uxlc"]["zip_sha256"]) == 64
     assert prov["uxlc"]["files"] == 1
     assert prov["word_stream"]["words"] == len(word_stream["words"])
+    assert prov["word_stream"]["uxlc_version"] == "UXLC 9.9-test"
+    assert prov["word_stream"]["uxlc_build"] == "0.1-test"
     assert len(prov["word_stream"]["sha256"]) == 64
     assert prov["index"]["path"].endswith("index.xml")
     assert prov["index"]["entries"] == 1
@@ -249,6 +252,12 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert surface.get("{http://www.w3.org/XML/1998/namespace}id") == "surf-001B"
     assert root.find(".//t:sourceDesc/t:msDesc", ns) is not None
     assert root.find(".//t:application", ns).get("version") == "0.1.0-dev"
+    source_uxlc = [
+        s
+        for s in root.findall(".//t:titleStmt/t:respStmt", ns)
+        if s.get("{http://www.w3.org/XML/1998/namespace}id") == "source-uxlc"
+    ][0]
+    assert "UXLC 9.9-test" in "".join(source_uxlc.itertext())
 
     # index over the single folio
     index_root = etree.fromstring((tmp_path / "out" / "index.xml").read_text().encode())

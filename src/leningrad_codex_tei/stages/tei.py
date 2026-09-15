@@ -107,6 +107,7 @@ def render_folio_tei(
     generated_when: str | None = None,
     source_image: dict | None = None,
     contributors: list[dict] | None = None,
+    uxlc_edition: dict | None = None,
 ) -> str:
     """Render a well-formed TEI document for one folio."""
     template = _env.get_template("tei_folio.xml.j2")
@@ -123,6 +124,7 @@ def render_folio_tei(
         generated_when=generated_when,
         source_image=source_image,
         contributors=contributors or [],
+        uxlc_edition=uxlc_edition,
     )
 
 
