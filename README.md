@@ -2,22 +2,21 @@
 
 The Leningrad Codex (LC) encoded as a TEI document.
 
-## Goals
+To get started with setting up the project locally, see the [Getting Started](#gettings-started) section.
 
-- **Accessibility** — Make the Leningrad Codex available online as an open, TEI-encoded document, permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
-- **Transparency** — Make transparent the process by which the document was generated, with special regard to how AI was utilized ([read more](#transparency)).
-- **Reproducibility** — Make the results of the process reproducible ([read more](#reproducibility)).
-- **Community** — Make this a community driven project ([read more](#community)).
+To learn more about this project and its goals, see the [About](#about) section.
 
-## Download
+## Gettings Started
 
-The full edition is generated into `edition/`.
+### Download
 
-For a ready-to-use bundle, every release ships a zip of the complete Codex:
+The entire document is availabe in the [/edition](./edition/) directory.
+
+Every release also ships a zip of the complete document:
 
 <https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip>
 
-## Installation
+### Installation
 
 Prerequisites:
 
@@ -50,7 +49,7 @@ The `leningrad` command-line tool becomes available via `uv run`:
 uv run leningrad --help
 ```
 
-## Configuration
+### Configuration
 
 All pipeline settings live in `config.yaml` at the project root.
 
@@ -67,7 +66,7 @@ Export your Gemini API key:
 export GEMINI_API_KEY=<API_KEY>
 ```
 
-## Pipeline
+### Pipeline
 
 Commands run in dependency order. Each one consumes the previous command's output:
 
@@ -85,7 +84,37 @@ uv run leningrad build-index          # compile index.xml
 
 Pass `--help` to any command to see more information.
 
-## Accessibility
+## About
+
+The [Leningrad Codex](https://en.wikipedia.org/wiki/Leningrad_Codex) is oldest, complete manuscript of the Hebrew Bible.
+Though many projects have sought to transcribe and encode the biblical text of the manuscript, few projects have encoded the layout.
+This projects emphasizes the codex not just as a text, but as an object.
+
+The text encoding initiative (TEI) provides the framework needed to encode the manuscript in a machine readable way using XML.
+Recent advances in artificial intelligence combined with existing open data, provide a way to do this work at scale,
+by utilizing multi-modal models to provide initial drafts of the columnar layout.
+
+### Open Data
+
+This project would not be capable without existing open data.
+
+The biblical text in the document was not transcribed directly from the images.
+The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christoper V. Kimball and accessible on the [tanach.us](https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html) site.
+For this reason, the text in the edition may differ from the images in the manuscript.
+That is an intentional choice.
+
+The text determined to be on each folio was derived from Ben Denckla's index of the [Leningrad Codex](https://github.com/bdenckla/MAM-basics).
+
+### Goals
+
+The goals of this project are as follows:
+
+- **Accessibility** — Make the Leningrad Codex available online as an open, TEI-encoded document, permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
+- **Transparency** — Make transparent the process by which the document was generated, with special regard to how AI was utilized ([read more](#transparency)).
+- **Reproducibility** — Make the results of the process reproducible ([read more](#reproducibility)).
+- **Community** — Make this a community driven project ([read more](#community)).
+
+### Accessibility
 
 The primary aim of this project is to make the Leningrad Codex encoded as an TEI document freely available.
 
@@ -101,7 +130,7 @@ Additional measures are taken to make this project accessible to scholars who ma
 
 The code for the viewer is stored in `/site`.
 
-## Transparency
+### Transparency
 
 Beyond making the document accessible, the project seeks to make the process of how the artifact was generated transparent.
 
@@ -111,7 +140,7 @@ This is accomplished through:
 - TEI headers
 - Making the pipeline and prompts used available
 
-### AI Usage
+#### AI Usage
 
 AI tools played an integral role in this project, being used for:
 
@@ -133,13 +162,13 @@ The project exclusively used Google's product offerings because the Gemini line 
 - Provide tools for code execution (see [Google's Agentic Vision](https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/))
 - Offer multiple inference options like batch or flex inference to save on costs
 
-## Reproducibility
+### Reproducibility
 
 This projects also aims to make this work reproducible by providing the pipeline used to generate the document, with the realization that AI outputs are not always reproducible.
 
 Future researchers can easily configure the pipeline to use different models, inference strategies, etc.
 
-## Community
+### Community
 
 This project is not affiliated with any institution or organization.
 It is inteded to be a community driven endeavor.
