@@ -18,7 +18,8 @@ def _contributors_and_date(root_element: etree._Element) -> tuple[list[dict], st
     """Human contributors plus the contributor date from a folio TEI header.
 
     Contributors are ``titleStmt/respStmt`` entries other than the pipeline
-    one; the date is the latest ``revisionDesc/change`` whose ``who``
+    one and the static source credits (``source-*``); the date is the latest
+    ``revisionDesc/change`` whose ``who``
     points at such a contributor, falling back to ``application/@when``.
     """
     contributors: list[dict] = []
@@ -27,6 +28,8 @@ def _contributors_and_date(root_element: etree._Element) -> tuple[list[dict], st
             continue
         xml_id = el.get(f"{{{XML_ID}}}id")
         if not xml_id or xml_id == "leningrad-codex-tei":
+            continue
+        if xml_id.startswith("source-"):
             continue
         pers = next((c for c in el.iter() if _local(c) == "persName"), None)
         if pers is None:

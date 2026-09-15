@@ -295,9 +295,11 @@ def test_pipeline_records_git_contributor(tmp_path: Path) -> None:
     stmts = root.findall(".//t:titleStmt/t:respStmt", ns)
     assert [s.get("{http://www.w3.org/XML/1998/namespace}id") for s in stmts] == [
         "leningrad-codex-tei",
+        "source-uxlc",
+        "source-seed",
         "contrib-test-scribe",
     ]
-    pers = stmts[1].find("t:persName", ns)
+    pers = stmts[3].find("t:persName", ns)
     assert pers.text == "Test Scribe"
     assert pers.get("ref") == "mailto:scribe@example.org"
 

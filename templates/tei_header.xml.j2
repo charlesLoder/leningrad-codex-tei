@@ -6,6 +6,14 @@
           <resp>created by</resp>
           <name>leningrad-codex-tei</name>
         </respStmt>
+        <respStmt xml:id="source-uxlc">
+          <resp>Base biblical text from the Unicode/XML Leningrad Codex (UXLC) <ptr target="https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html"/></resp>
+          <persName>Christopher V. Kimball</persName>
+        </respStmt>
+        <respStmt xml:id="source-seed">
+          <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
+          <persName>Ben Denckla</persName>
+        </respStmt>
         {% for c in contributors %}
         <respStmt xml:id="{{ c.xml_id }}">
           <resp>TEI encoding and alignment</resp>

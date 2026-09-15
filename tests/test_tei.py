@@ -131,8 +131,12 @@ def test_ids_are_folio_prefixed_and_unique(alignment, changes) -> None:
     ids = [_id(el) for el in root.iter() if _id(el) is not None]
     assert "leningrad-codex-tei" in ids
     assert "surf-001B" in ids
+    assert "source-uxlc" in ids
+    assert "source-seed" in ids
     body_ids = [
-        i for i in ids if i not in ("leningrad-codex-tei", "surf-001B")
+        i
+        for i in ids
+        if i not in ("leningrad-codex-tei", "surf-001B", "source-uxlc", "source-seed")
     ]
     assert body_ids
     assert all(i.startswith("f001B-") for i in body_ids)
@@ -556,8 +560,15 @@ def test_contributor_respStmt_and_change(alignment) -> None:
     )
     root = etree.fromstring(xml.encode())
     stmts = root.findall(f".//{_q('titleStmt')}/{_q('respStmt')}")
-    assert [_id(s) for s in stmts] == ["leningrad-codex-tei", "contrib-test-scribe"]
-    pers = stmts[1].find(_q("persName"))
+    assert [_id(s) for s in stmts] == [
+        "leningrad-codex-tei",
+        "source-uxlc",
+        "source-seed",
+        "contrib-test-scribe",
+    ]
+    assert stmts[1].find(_q("persName")).text == "Christopher V. Kimball"
+    assert stmts[2].find(_q("persName")).text == "Ben Denckla"
+    pers = stmts[3].find(_q("persName"))
     assert pers.text == "Test Scribe"
     assert pers.get("ref") == "mailto:scribe@example.org"
     changes = root.findall(f".//{_q('revisionDesc')}/{_q('change')}")
