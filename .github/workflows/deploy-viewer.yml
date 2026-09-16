@@ -9,11 +9,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      # Map the secret to a job-level env variable
+      NETLIFY_SITE_BUILD_HOOK: ${{ secrets.NETLIFY_SITE_BUILD_HOOK }}
     steps:
       - name: Deploy viewer to Netlify
-        # TODO: create a build hook (Site settings → Build & deploy → Build hooks)
-        if: ${{ secrets.NETLIFY_SITE_BUILD_HOOK != '' }}
-        # and store its URL in the NETLIFY_SITE_BUILD_HOOK repo secret.
+        if: env.NETLIFY_SITE_BUILD_HOOK != ''
         run: curl -sS -X POST "$NETLIFY_SITE_BUILD_HOOK"
-        env:
-          NETLIFY_SITE_BUILD_HOOK: ${{ secrets.NETLIFY_SITE_BUILD_HOOK }}
