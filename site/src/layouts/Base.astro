@@ -1,11 +1,13 @@
 ---
 import meta from '../data/meta.json';
+import { bibliographyEntry } from '../lib/citation';
 
 interface Props {
   title: string;
   description?: string;
 }
 const { title, description = 'The Leningrad Codex, folio by folio.' } = Astro.props;
+const biblio = bibliographyEntry(meta.version);
 ---
 <!doctype html>
 <html lang="en">
@@ -38,15 +40,36 @@ const { title, description = 'The Leningrad Codex, folio by folio.' } = Astro.pr
       <slot />
     </main>
     <footer class="site-footer">
-      <div class="wrap">
+      <div class="wrap footer-grid">
         <p>
           Learn more about this project on{" "}
           <a href="https://github.com/charlesLoder/leningrad-codex-tei">GitHub</a>
           {" "}or download the{" "}
           <a href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">whole edition (.zip)</a>.
         </p>
+        <section class="cite" aria-labelledby="cite-heading">
+          <h2 id="cite-heading">Cite this project</h2>
+          <p class="cite-style"><strong>Bibliography (SBL/Chicago):</strong> <span id="cite-biblio">{biblio}</span></p>
+          <p class="cite-actions">
+            <button class="btn" id="cite-copy" type="button">Copy citation</button>
+            <a class="btn" href="/citation.ris" download="leningrad-codex-tei.ris">Download RIS</a>
+          </p>
+        </section>
       </div>
     </footer>
+    <script>
+      const btn = document.querySelector('#cite-copy');
+      btn?.addEventListener('click', async () => {
+        const biblio = document.querySelector('#cite-biblio')?.textContent ?? '';
+        try {
+          await navigator.clipboard.writeText(biblio);
+          btn.textContent = 'Copied!';
+        } catch {
+          btn.textContent = 'Copy failed';
+        }
+        setTimeout(() => { btn.textContent = 'Copy citation'; }, 2000);
+      });
+    </script>
   </body>
 </html>
 
