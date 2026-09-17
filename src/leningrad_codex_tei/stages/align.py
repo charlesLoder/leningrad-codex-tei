@@ -607,6 +607,21 @@ def build_alignment_record(
     model_response: str | None = None,
 ) -> AlignmentRecord:
     by_pos = {p[0]: (p[1], p[2]) for p in placements}
+    expected = {w.atom for w in slice_words}
+    placed = set(by_pos)
+    missing = sorted(expected - placed)
+    extra = sorted(placed - expected)
+    if missing or extra:
+        summary = (
+            f"folio {sl.folio}: model placed {len(placed)} words "
+            f"but slice needs {len(expected)} (atoms {sl.atom_start}-{sl.atom_end})"
+        )
+        detail: list[str] = [summary]
+        if missing:
+            detail.append(f"missing {len(missing)} atoms starting at {missing[0]}")
+        if extra:
+            detail.append(f"extra {len(extra)} atoms starting at {extra[0]}")
+        raise ValueError("; ".join(detail))
     lines: dict[tuple[int, int], list[Word]] = {}
     for w in slice_words:
         lines.setdefault(by_pos[w.atom], []).append(w)

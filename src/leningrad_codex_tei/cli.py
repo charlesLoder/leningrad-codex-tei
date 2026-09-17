@@ -435,14 +435,19 @@ def download_batch(config: Config, batch: str | None) -> None:
     }
     done = 0
     failed = 0
+    failed_folios: list[str] = []
+    failures: dict[str, dict] = {}
+    succeeded: list[str] = []
     for ln in lines:
         obj = json.loads(ln)
         key = obj.get("key")
         if not key:
             continue
-        if "error" in obj and obj["error"]:
+        if obj.get("error"):
             click.echo(f"download-batch: {key} error {obj['error']}", err=True)
             failed += 1
+            failed_folios.append(key)
+            failures[key] = {"kind": "api_error", "error": obj["error"]}
             continue
         response_text = align_stage.text_from_batch_response(obj.get("response", {}))
         try:
@@ -458,7 +463,21 @@ def download_batch(config: Config, batch: str | None) -> None:
             )
         except Exception as exc:  # noqa: BLE001 - persist others, report this one
             failed += 1
-            click.echo(f"download-batch: {key} failed: {exc} (raw saved)", err=True)
+            failed_folios.append(key)
+            raw_path = config.paths.alignments / "raw" / f"{key}.xml"
+            conv_path = config.paths.alignments / "conversations" / f"{key}.json"
+            failures[key] = {
+                "kind": "materialize_error",
+                "type": type(exc).__name__,
+                "message": str(exc),
+                "raw": str(raw_path),
+                "conversation": str(conv_path),
+            }
+            click.echo(
+                f"download-batch: {key} failed: {type(exc).__name__}: {exc} "
+                f"(raw {raw_path}, conversation {conv_path})",
+                err=True,
+            )
             continue
         sl = slices[key]
         contributor = _current_contributor()
@@ -483,11 +502,31 @@ def download_batch(config: Config, batch: str | None) -> None:
             ),
         )
         done += 1
+        succeeded.append(key)
         click.echo(
             f"download-batch: {key} -> {config.paths.alignments / f'{key}.json'}"
         )
+    summary_path = job_dir / "materialize.json"
+    summary_path.write_text(
+        json.dumps(
+            {
+                "job_name": job_name,
+                "poll": str(poll_path),
+                "done": done,
+                "failed": failed,
+                "succeeded": succeeded,
+                "failed_folios": failed_folios,
+                "failures": failures,
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
     click.echo(
         f"download-batch: materialized {done}/{len(lines)} folios ({failed} failed)"
+        + (f": {', '.join(failed_folios)}" if failed_folios else "")
+        + f" (summary {summary_path})"
     )
 
 
