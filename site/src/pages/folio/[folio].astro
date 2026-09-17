@@ -20,9 +20,21 @@ const entry = folios.find((f) => f.folio === folio);
 const idx = folios.findIndex((f) => f.folio === folio);
 const prev = idx > 0 ? folios[idx - 1] : null;
 const next = idx >= 0 && idx < folios.length - 1 ? folios[idx + 1] : null;
+
+const folioTitle = `Folio ${folioSideLabel(folio ?? '')} · Leningrad Codex TEI`;
+const folioDescription = entry
+  ? `Folio ${folioSideLabel(folio ?? '')} of the Leningrad Codex (${abbreviateRange(entry.range)}), with transcription and facsimile image.`
+  : doc.title;
+const folioSchema = {
+  '@type': 'Manuscript',
+  name: folioTitle,
+  description: folioDescription,
+  inLanguage: ['en', 'he'],
+  isPartOf: { '@type': 'Collection', name: 'Leningrad Codex TEI' },
+};
 ---
 
-<Base title={`${folio} · Leningrad Codex Viewer`} description={doc.title}>
+<Base title={folioTitle} description={folioDescription} type="article" jsonLd={folioSchema}>
   <section class="folio-head">
     <h1>Folio {folioSideLabel(folio ?? '')}</h1>
     <p class="range">{entry ? abbreviateRange(entry.range) : doc.title}</p>
