@@ -8,6 +8,7 @@ placements into the alignment record consumed by the downstream stages.
 from __future__ import annotations
 
 import base64
+import difflib
 import hashlib
 import json
 import re
@@ -442,6 +443,73 @@ def _place_words(
     return placements
 
 
+def _flatten_raw_tokens(
+    raw_lines: list[tuple[int, int, list[str]]],
+) -> tuple[list[str], list[tuple[int, int]]]:
+    """Flatten model tokens with maqaf splits, keeping column/line per token."""
+    tokens: list[str] = []
+    locs: list[tuple[int, int]] = []
+    for col, line, toks in raw_lines:
+        for tok in toks:
+            for part in _split_maqaf(tok):
+                tokens.append(part)
+                locs.append((col, line))
+    return tokens, locs
+
+
+def _diagnose_text_gap(
+    slice_words: list, model_response: str | None
+) -> str | None:
+    """Locate the true text gap by comparing expected and model words.
+
+    Count-only placement always reports a shortfall as missing tail atoms,
+    so anchor on normalized text with difflib and report the first
+    divergence as ``atom {n} {text} missing`` with its reference and the
+    column/line where it diverges. Returns None when there is no response
+    to compare or no text gap to report.
+    """
+    if not model_response:
+        return None
+    try:
+        raw_lines = _extract_line_tokens(model_response)
+    except Exception:  # noqa: BLE001 - diagnosis is best-effort
+        return None
+    raw_tokens, raw_locs = _flatten_raw_tokens(raw_lines)
+    expected_norm = [_norm_word(w.text) for w in slice_words]
+    raw_norm = [_norm_word(t) for t in raw_tokens]
+    matcher = difflib.SequenceMatcher(a=expected_norm, b=raw_norm, autojunk=False)
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag == "equal":
+            continue
+        if tag in ("delete", "replace"):
+            missing = slice_words[i1:i2]
+            first = missing[0]
+            if j1 < len(raw_tokens):
+                col, line = raw_locs[j1]
+                loc = f"before {col}:{line} '{raw_tokens[j1]}'"
+            elif raw_tokens:
+                col, line = raw_locs[-1]
+                loc = f"after {col}:{line} '{raw_tokens[-1]}'"
+            else:
+                loc = "at end"
+            if len(missing) == 1:
+                return (
+                    f"atom {first.atom} {first.text} missing "
+                    f"({first.book} {first.chapter}:{first.verse} "
+                    f"word {first.word_index}) {loc}"
+                )
+            last = missing[-1]
+            return (
+                f"atoms {first.atom}-{last.atom} missing "
+                f"({len(missing)} words starting {first.text} "
+                f"{first.book} {first.chapter}:{first.verse}) {loc}"
+            )
+        if tag == "insert":
+            col, line = raw_locs[j1]
+            return f"extra '{raw_tokens[j1]}' at {col}:{line} not in slice"
+    return None
+
+
 def ai_snapshot(config: Config) -> dict:
     """Effective ai options, stored alongside results for auditability."""
     return {
@@ -719,6 +787,9 @@ def build_alignment_record(
             detail.append(f"missing {len(missing)} atoms starting at {missing[0]}")
         if extra:
             detail.append(f"extra {len(extra)} atoms starting at {extra[0]}")
+        hint = _diagnose_text_gap(slice_words, model_response)
+        if hint:
+            detail.append(hint)
         raise ValueError("; ".join(detail))
     lines: dict[tuple[int, int], list[Word]] = {}
     for w in slice_words:
