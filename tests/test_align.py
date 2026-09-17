@@ -286,6 +286,21 @@ def test_parse_epilog_attaches_standalone_paseq() -> None:
     assert _parse_epilog_xml(xml) == [(1, 1, 2), (1, 2, 2)]
 
 
+def test_parse_epilog_splits_maqaf_join_matching_expected() -> None:
+    xml = '<cb n="1" /><lb n="1" />a\u05beb c'
+    assert _parse_epilog_xml(xml, ["a\u05be", "b", "c"]) == [(1, 1, 3)]
+
+
+def test_parse_epilog_keeps_whole_when_token_matches_expected() -> None:
+    xml = '<cb n="1" /><lb n="1" />a\u05beb c'
+    assert _parse_epilog_xml(xml, ["ab", "c"]) == [(1, 1, 2)]
+
+
+def test_parse_epilog_merges_word_broken_across_lines() -> None:
+    xml = '<cb n="1" /><lb n="1" />x ab<lb n="2" />cd y'
+    assert _parse_epilog_xml(xml, ["x", "abcd", "y"]) == [(1, 1, 2), (1, 2, 1)]
+
+
 def test_parse_epilog_strips_code_fence_and_xml_declaration() -> None:
     xml = '<?xml version="1.0"?>\n```xml\n<cb n="1" />\n<lb n="1" />\na b\n```'
     assert _parse_epilog_xml(xml) == [(1, 1, 2)]

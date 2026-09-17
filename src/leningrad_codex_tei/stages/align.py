@@ -262,6 +262,7 @@ def _el_local(el: etree._Element) -> str:
 
 
 PASEQ = "\u05c0"
+MAQAF = "\u05be"
 
 
 def _is_marker_token(token: str) -> bool:
@@ -273,12 +274,31 @@ def _is_marker_token(token: str) -> bool:
     )
 
 
-def _parse_epilog_xml(raw_text: str) -> list[tuple[int, int, int]]:
-    """Parse the model's TEI XML into per-line word counts.
+def _split_maqaf(token: str) -> list[str]:
+    """Split a whitespace token on maqaf, keeping each maqaf with its word."""
+    parts: list[str] = []
+    current = ""
+    for ch in token:
+        current += ch
+        if ch == MAQAF:
+            parts.append(current)
+            current = ""
+    if current:
+        parts.append(current)
+    return parts
 
-    Returns a list of ``(column, line, word_count)`` in document order.
-    Milestones (chapter/verse/section) and echoed <TEXT> metadata (verse
-    numbers, chapter markers, pe/samekh) are ignored when counting words.
+
+def _norm_word(text: str) -> str:
+    """Consonantal skeleton of a word, ignoring points and maqaf."""
+    return re.sub(r"[\u0591-\u05c7]", "", text)
+
+
+def _extract_line_tokens(raw_text: str) -> list[tuple[int, int, list[str]]]:
+    """Split the model's TEI XML into raw word tokens per column and line.
+
+    Returns a list of ``(column, line, tokens)`` in document order.
+    Milestones and echoed metadata are ignored; standalone paseq attaches
+    to the preceding token without starting a new one.
     """
     text = raw_text.strip()
     text = re.sub(r"^<\?xml[^>]*\?>\s*", "", text)
@@ -290,7 +310,7 @@ def _parse_epilog_xml(raw_text: str) -> list[tuple[int, int, int]]:
     col: int | None = None
     line: int | None = None
     buf: list[str] = []
-    lines: list[tuple[int, int, int]] = []
+    lines: list[tuple[int, int, list[str]]] = []
 
     def add(segment: str | None) -> None:
         for token in (segment or "").split():
@@ -305,7 +325,7 @@ def _parse_epilog_xml(raw_text: str) -> list[tuple[int, int, int]]:
             return
         if col is None or line is None:
             raise ValueError("text found outside a column and line")
-        lines.append((col, line, len(buf)))
+        lines.append((col, line, list(buf)))
         buf.clear()
 
     for el in root.iter():
@@ -327,6 +347,82 @@ def _parse_epilog_xml(raw_text: str) -> list[tuple[int, int, int]]:
 
     if not lines:
         raise ValueError("no lines found in model response")
+    return lines
+
+
+def _count_matched_tokens(
+    raw_lines: list[tuple[int, int, list[str]]], expected: list[str]
+) -> list[tuple[int, int, int]]:
+    """Count words per line, matching transcription quirks to expected words.
+
+    A whitespace token split by maqaf counts once per matching expected
+    word; a token that matches one expected word whole counts once even
+    when it holds a maqaf; a word broken across a line break counts on its
+    starting line. Anything else keeps its maqaf-split count.
+    """
+    counts = [0] * len(raw_lines)
+    merged_first: set[int] = set()
+    pos = 0
+    for li, (_col, _line, toks) in enumerate(raw_lines):
+        for ti, tok in enumerate(toks):
+            if li in merged_first and ti == 0:
+                continue
+            parts = _split_maqaf(tok)
+            following = (
+                raw_lines[li + 1][2][0]
+                if ti == len(toks) - 1 and li + 1 < len(raw_lines)
+                else None
+            )
+            if (
+                len(parts) > 1
+                and pos + len(parts) <= len(expected)
+                and all(
+                    _norm_word(parts[k]) == _norm_word(expected[pos + k])
+                    for k in range(len(parts))
+                )
+            ):
+                counts[li] += len(parts)
+                pos += len(parts)
+            elif (
+                following is not None
+                and pos < len(expected)
+                and _norm_word(tok + following) == _norm_word(expected[pos])
+            ):
+                counts[li] += 1
+                merged_first.add(li + 1)
+                pos += 1
+            elif pos < len(expected) and _norm_word(tok) == _norm_word(
+                expected[pos]
+            ):
+                counts[li] += 1
+                pos += 1
+            else:
+                counts[li] += len(parts)
+                pos += len(parts)
+    return [
+        (col, line, counts[li]) for li, (col, line, _toks) in enumerate(raw_lines)
+    ]
+
+
+def _parse_epilog_xml(
+    raw_text: str, expected: list[str] | None = None
+) -> list[tuple[int, int, int]]:
+    """Parse the model's TEI XML into per-line word counts.
+
+    Returns a list of ``(column, line, word_count)`` in document order.
+    Milestones (chapter/verse/section) and echoed <TEXT> metadata (verse
+    numbers, chapter markers, pe/samekh) are ignored when counting words.
+    When ``expected`` (the slice's word texts in order) is given, maqaf
+    joins and line-break splits are matched against it before counting.
+    """
+    raw_lines = _extract_line_tokens(raw_text)
+    if expected is None:
+        lines = [
+            (col, line, sum(len(_split_maqaf(tok)) for tok in toks))
+            for col, line, toks in raw_lines
+        ]
+    else:
+        lines = _count_matched_tokens(raw_lines, expected)
     for col_no, line_no, count in lines:
         if count < 1:
             raise ValueError(f"empty line {col_no}:{line_no}")
@@ -571,7 +667,9 @@ def align_folio_ai(
                 )
             else:
                 text = result
-            line_counts = _parse_epilog_xml(text)
+            line_counts = _parse_epilog_xml(
+                text, [w.text for w in slice_words]
+            )
             placement = _place_words(line_counts, sl.atom_start)
             record = build_alignment_record(
                 sl, slice_words, placement, model_response=text
@@ -1024,7 +1122,7 @@ def materialize_batch_result(
     try:
         sl = slices[folio]
         slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
-        line_counts = _parse_epilog_xml(text)
+        line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
         placements = _place_words(line_counts, sl.atom_start)
         record = build_alignment_record(
             sl, slice_words, placements, model_response=text
