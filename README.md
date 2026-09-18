@@ -77,7 +77,7 @@ uv run leningrad download-images      # fetch folio images from the source
 uv run leningrad build-word-stream    # flatten the UXLC XML into a word stream
 uv run leningrad align-folio          # align the text to the page layout
 uv run leningrad download-batch       # poll and download a batch job's raw responses
-uv run leningrad materialize-batch    # parse downloaded raw responses (re-runnable after hand edits)
+uv run leningrad parse-raw           # parse downloaded raw responses (re-runnable after hand edits)
 uv run leningrad validate             # cross-check the alignment records
 uv run leningrad generate-tei         # emit per-folio TEI XML
 uv run leningrad build-index          # compile index.xml

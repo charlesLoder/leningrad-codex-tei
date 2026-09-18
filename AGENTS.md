@@ -40,10 +40,10 @@ The committed config maps these under `data/` (e.g. `{alignments}` is `data/alig
 - `{images}`: folio JPGs per `config.images.naming`, fetched from `config.images.base_url`; output of the `download-images` step.
 - `{word_stream}`: UXLC flattened into one word stream; input to alignment slices; output of the `build-word-stream` step.
 - `{alignments}`:
-    - `{alignments}/conversations/{folio}.json`: prompt + image + response
+    - `{alignments}/conversations/{folio}.json`: prompt + image + response (the exchange that produced the reply; written by `download-batch`, never rewritten by parsing)
     - `{alignments}/raw/{folio}.xml`: raw model reply
     - `{alignments}/{folio}.json`: parsed record (embeds source reply); the output used in the `generate-tei` step.
-    - `{alignments}/materialize.json` (parse summary).
+    - `{alignments}/parse-raw/{ts}.json`: parse summary for one `parse-raw` run (`{ts}` is the run timestamp; one file per run, never overwritten).
     - `{alignments}/batch/{ts}/`: one Batch API submission (`{ts}` is the submit timestamp); this is created when the `align-folio` step has `inference` set to `"batch"`
         - `submit.json`: manifest (job name, folios, per-folio prompts, model/settings); this is not sent to Batch API, but is a manifest in a format more easily ingested by humans (e.g. no base64 encoded data)
         - `upload.jsonl`: request lines sent to the Batch API
@@ -55,4 +55,4 @@ The committed config maps these under `data/` (e.g. `{alignments}` is `data/alig
 - `{output}`: generated per-folio TEI + `index.xml`; unlike the above, the contents of this path are intended to be committed.
 
 **Note**: the `download-batch` command fetches results and puts the responses into `{alignments}/raw/` + `{alignments}/conversations/` (+ `{audit}` runs) without parsing; 
-`materialize-batch` parses `raw/` into `{folio}.json` (re-runnable after hand edits).
+`parse-raw` parses `raw/` into `{folio}.json` (re-runnable after hand edits).

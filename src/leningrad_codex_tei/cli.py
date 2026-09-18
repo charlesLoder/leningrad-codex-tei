@@ -393,12 +393,20 @@ def align_folio(
 )
 @click.pass_obj
 def download_batch(config: Config, batch: str | None) -> None:
-    """Poll a batch job and materialize its results into alignments."""
+    """Poll a batch job and download its raw responses for later review.
+
+    This is the only place where the prompt actually sent (from the batch
+    record) and the reply actually received (from the result file) meet, so
+    it also writes the faithful per-folio conversation files. Parsing those
+    replies into alignments is left to parse-raw.
+    """
     batch_dir = config.paths.alignments / "batch"
     job_dir, record = align_stage.resolve_batch_job_dir(batch_dir, batch)
     if record is None:
         raise click.ClickException(f"no batch record found for {batch}")
     job_name = record["job_name"]
+    prompts: dict[str, str] = (record or {}).get("prompts", {})
+    stored_prompt_version = (record or {}).get("prompt_version")
 
     client = align_stage._model_client(config)
     job = client.batches.get(name=job_name)
@@ -419,68 +427,42 @@ def download_batch(config: Config, batch: str | None) -> None:
     )
     (job_dir / "result.jsonl").write_text(text, encoding="utf-8")
 
-    seed = json.loads(config.paths.seed.read_text())
-    stream = stream_stage.load_word_stream(config.paths.word_stream)
-    record_folios: list[str] = (record or {}).get("folios", [])
-    prompts: dict[str, str] = (record or {}).get("prompts", {})
-    stored_prompt_version = (record or {}).get("prompt_version")
     lines = [ln for ln in text.splitlines() if ln.strip()]
     if not lines:
         raise click.ClickException(f"batch result file {result_file} is empty")
-    if not record_folios:
-        record_folios = [json.loads(ln).get("key") for ln in lines]
-    slices = {
-        page: align_stage.compute_seed_slice(seed, page, stream)
-        for page in record_folios
-    }
-    done = 0
-    failed = 0
-    failed_folios: list[str] = []
-    failures: dict[str, dict] = {}
-    succeeded: list[str] = []
-    for ln in lines:
-        obj = json.loads(ln)
-        key = obj.get("key")
-        if not key:
-            continue
-        if obj.get("error"):
-            click.echo(f"download-batch: {key} error {obj['error']}", err=True)
-            failed += 1
-            failed_folios.append(key)
-            failures[key] = {"kind": "api_error", "error": obj["error"]}
-            continue
-        response_text = align_stage.text_from_batch_response(obj.get("response", {}))
-        try:
-            result = align_stage.materialize_batch_result(
-                key,
-                response_text,
-                slices,
-                stream,
-                config,
-                prompt=prompts.get(key),
-                job_name=job_name,
-                prompt_version=stored_prompt_version,
-            )
-        except Exception as exc:  # noqa: BLE001 - persist others, report this one
-            failed += 1
-            failed_folios.append(key)
-            raw_path = config.paths.alignments / "raw" / f"{key}.xml"
-            conv_path = config.paths.alignments / "conversations" / f"{key}.json"
-            failures[key] = {
-                "kind": "materialize_error",
-                "type": type(exc).__name__,
-                "message": str(exc),
-                "raw": str(raw_path),
-                "conversation": str(conv_path),
-            }
+    texts, errors = align_stage.split_batch_result_lines(lines)
+    saved: list[str] = []
+    contributor = _current_contributor()
+    for key, response_text in texts.items():
+        prompt = prompts.get(key)
+        if prompt is None:
+            errors[key] = {"kind": "missing_prompt", "raw_saved": True}
             click.echo(
-                f"download-batch: {key} failed: {type(exc).__name__}: {exc} "
-                f"(raw {raw_path}, conversation {conv_path})",
+                f"download-batch: {key} has no stored prompt in {job_dir}; "
+                f"raw saved without conversation",
                 err=True,
             )
-            continue
-        sl = slices[key]
-        contributor = _current_contributor()
+        raw_path = align_stage.save_raw_model_response(
+            config.paths.alignments, key, response_text
+        )
+        raw_sha = hashlib.sha256(response_text.encode("utf-8")).hexdigest()
+        if prompt is not None:
+            image_path = config.paths.images / config.images.naming.format(folio=key)
+            conversation = align_stage.build_conversation(
+                folio=key,
+                prompt=prompt,
+                image_uri=str(image_path),
+                model=config.ai.model,
+                prompt_version=stored_prompt_version or align_stage.PROMPT_VERSION,
+                inference=config.ai.inference,
+                response_text=response_text,
+                ai={**align_stage.ai_snapshot(config), "batch_job": job_name},
+            )
+            conv_path = align_stage.save_conversation(
+                conversation, config.paths.alignments, key
+            )
+        else:
+            conv_path = None
         append_run(
             config.paths.audit,
             key,
@@ -493,10 +475,158 @@ def download_batch(config: Config, batch: str | None) -> None:
                 contributor_name=(contributor or {}).get("name"),
                 contributor_email=(contributor or {}).get("email"),
                 result_summary={
+                    "batch_job": job_name,
+                    "raw": str(raw_path),
+                    "raw_sha256": raw_sha,
+                    "conversation": str(conv_path) if conv_path else None,
+                    "ai": align_stage.ai_snapshot(config),
+                },
+            ),
+        )
+        saved.append(key)
+        click.echo(f"download-batch: {key} raw -> {raw_path}")
+    for key, detail in errors.items():
+        if key not in texts:
+            click.echo(f"download-batch: {key} error {detail}", err=True)
+    summary_path = job_dir / "download.json"
+    summary_path.write_text(
+        json.dumps(
+            {
+                "job_name": job_name,
+                "poll": str(poll_path),
+                "saved": saved,
+                "failed": sorted(errors),
+                "failures": errors,
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    click.echo(
+        f"download-batch: saved {len(saved)}/{len(lines)} raw responses "
+        f"({len(errors)} failed)"
+        + (f": {', '.join(sorted(errors))}" if errors else "")
+        + f" (summary {summary_path})"
+    )
+    click.echo("download-batch: next run parse-raw to parse raw responses")
+
+
+@cli.command(name="parse-raw")
+@click.option(
+    "--folio",
+    "folio",
+    default=None,
+    help="Parse a single folio (e.g. 028A) from its raw response. Omit to parse everything in raw/.",
+)
+@click.pass_obj
+def parse_raw(config: Config, folio: str | None) -> None:
+    """Parse raw model responses into alignment records.
+
+    Reads ``alignments/raw/{folio}.xml`` (editable) so a hand-fixed model
+    reply can be re-parsed without re-downloading. Slices are recomputed
+    from the current seed file. With ``--folio`` only that folio is parsed;
+    otherwise every raw response is parsed. Conversations are owned by
+    ``download-batch`` and left alone here.
+    """
+    raw_dir = config.paths.alignments / "raw"
+    if folio is not None:
+        folios = [folio]
+    else:
+        folios = (
+            sorted(p.stem for p in raw_dir.glob("*.xml")) if raw_dir.exists() else []
+        )
+    if not folios:
+        if folio is not None:
+            raise click.ClickException(
+                f"no raw response for {folio!r} in {raw_dir} "
+                f"(run download-batch first)"
+            )
+        raise click.ClickException(f"no raw responses in {raw_dir}")
+
+    seed = json.loads(config.paths.seed.read_text())
+    stream = stream_stage.load_word_stream(config.paths.word_stream)
+    done = 0
+    failed = 0
+    failed_folios: list[str] = []
+    failures: dict[str, dict] = {}
+    succeeded: list[str] = []
+    for key in folios:
+        raw_path = raw_dir / f"{key}.xml"
+        conv_path = config.paths.alignments / "conversations" / f"{key}.json"
+        if not raw_path.exists():
+            failed += 1
+            failed_folios.append(key)
+            failures[key] = {"kind": "missing_raw", "raw": str(raw_path)}
+            click.echo(
+                f"parse-raw: {key} missing raw response {raw_path} "
+                f"(run download-batch first)",
+                err=True,
+            )
+            continue
+        try:
+            sl = align_stage.compute_seed_slice(seed, key, stream)
+        except Exception as exc:  # noqa: BLE001 - persist others, report this one
+            failed += 1
+            failed_folios.append(key)
+            failures[key] = {
+                "kind": "seed_error",
+                "type": type(exc).__name__,
+                "message": str(exc),
+                "raw": str(raw_path),
+            }
+            click.echo(
+                f"parse-raw: {key} failed: {type(exc).__name__}: {exc} "
+                f"(raw {raw_path})",
+                err=True,
+            )
+            continue
+        response_text = raw_path.read_text(encoding="utf-8")
+        raw_sha = hashlib.sha256(response_text.encode("utf-8")).hexdigest()
+        try:
+            result = align_stage.parse_raw_result(
+                key,
+                response_text,
+                {key: sl},
+                stream,
+                config,
+                write_conversation=False,
+            )
+        except Exception as exc:  # noqa: BLE001 - persist others, report this one
+            failed += 1
+            failed_folios.append(key)
+            failures[key] = {
+                "kind": "parse_error",
+                "type": type(exc).__name__,
+                "message": str(exc),
+                "raw": str(raw_path),
+                "raw_sha256": raw_sha,
+                "conversation": str(conv_path),
+            }
+            click.echo(
+                f"parse-raw: {key} failed: {type(exc).__name__}: {exc} "
+                f"(raw {raw_path}, conversation {conv_path})",
+                err=True,
+            )
+            continue
+        contributor = _current_contributor()
+        append_run(
+            config.paths.audit,
+            key,
+            PipelineRun(
+                stage=RunStage.PARSE_RAW,
+                model=config.ai.model,
+                temperature=config.ai.temperature,
+                prompt_version=align_stage.PROMPT_VERSION,
+                repo_hash=_repo_hash(),
+                contributor_name=(contributor or {}).get("name"),
+                contributor_email=(contributor or {}).get("email"),
+                result_summary={
                     "method": result.alignment_method.value,
                     "atoms": sl.atom_end - sl.atom_start + 1,
                     "range": f"{sl.start_ref} – {sl.stop_ref}",
-                    "batch_job": job_name,
+                    "raw": str(raw_path),
+                    "raw_sha256": raw_sha,
                     "ai": align_stage.ai_snapshot(config),
                 },
             ),
@@ -504,14 +634,16 @@ def download_batch(config: Config, batch: str | None) -> None:
         done += 1
         succeeded.append(key)
         click.echo(
-            f"download-batch: {key} -> {config.paths.alignments / f'{key}.json'}"
+            f"parse-raw: {key} -> {config.paths.alignments / f'{key}.json'}"
         )
-    summary_path = job_dir / "materialize.json"
+    summary_ts = align_stage.batch_timestamp()
+    summary_path = config.paths.alignments / "parse-raw" / f"{summary_ts}.json"
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
     summary_path.write_text(
         json.dumps(
             {
-                "job_name": job_name,
-                "poll": str(poll_path),
+                "timestamp": summary_ts,
+                "folios_attempted": folios,
                 "done": done,
                 "failed": failed,
                 "succeeded": succeeded,
@@ -524,7 +656,7 @@ def download_batch(config: Config, batch: str | None) -> None:
         encoding="utf-8",
     )
     click.echo(
-        f"download-batch: materialized {done}/{len(lines)} folios ({failed} failed)"
+        f"parse-raw: parsed {done}/{len(folios)} folios ({failed} failed)"
         + (f": {', '.join(failed_folios)}" if failed_folios else "")
         + f" (summary {summary_path})"
     )

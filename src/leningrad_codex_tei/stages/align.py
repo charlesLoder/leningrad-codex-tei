@@ -1178,7 +1178,7 @@ def save_raw_model_response(base_dir: Path, folio: str, text: str) -> Path:
     return dest
 
 
-def materialize_batch_result(
+def parse_raw_result(
     folio: str,
     text: str,
     slices: dict[str, SeedSlice],
@@ -1187,8 +1187,14 @@ def materialize_batch_result(
     prompt: str | None = None,
     job_name: str | None = None,
     prompt_version: str | None = None,
+    write_conversation: bool = True,
 ) -> AlignmentRecord:
-    """Parse one batch result into an alignment record + conversation file."""
+    """Parse one raw model response into an alignment record (+ conversation file).
+
+    When ``write_conversation`` is False the conversation file is left alone:
+    the caller (``download-batch``) owns the faithful exchange record and
+    materialization only produces the alignment.
+    """
     version = prompt_version or PROMPT_VERSION
     try:
         sl = slices[folio]
@@ -1204,40 +1210,42 @@ def materialize_batch_result(
             save_raw_model_response(config.paths.alignments, folio, text)
         except Exception:  # noqa: BLE001 - best-effort failure artifact
             pass
-        try:
-            sl_opt = slices.get(folio) if isinstance(slices, dict) else None
-            if sl_opt is not None:
-                image_path = config.paths.images / config.images.naming.format(
-                    folio=folio
-                )
-                conversation = build_conversation(
-                    folio=folio,
-                    prompt=prompt
-                    if prompt is not None
-                    else _build_prompt(sl_opt, word_stream),
-                    image_uri=str(image_path),
-                    model=config.ai.model,
-                    prompt_version=version,
-                    inference=config.ai.inference,
-                    response_text=text,
-                    ai={**ai_snapshot(config), "batch_job": job_name},
-                )
-                save_conversation(conversation, config.paths.alignments, folio)
-        except Exception:  # noqa: BLE001 - best-effort failure artifact
-            pass
+        if write_conversation:
+            try:
+                sl_opt = slices.get(folio) if isinstance(slices, dict) else None
+                if sl_opt is not None:
+                    image_path = config.paths.images / config.images.naming.format(
+                        folio=folio
+                    )
+                    conversation = build_conversation(
+                        folio=folio,
+                        prompt=prompt
+                        if prompt is not None
+                        else _build_prompt(sl_opt, word_stream),
+                        image_uri=str(image_path),
+                        model=config.ai.model,
+                        prompt_version=version,
+                        inference=config.ai.inference,
+                        response_text=text,
+                        ai={**ai_snapshot(config), "batch_job": job_name},
+                    )
+                    save_conversation(conversation, config.paths.alignments, folio)
+            except Exception:  # noqa: BLE001 - best-effort failure artifact
+                pass
         raise
-    image_path = config.paths.images / config.images.naming.format(folio=folio)
-    conversation = build_conversation(
-        folio=folio,
-        prompt=prompt if prompt is not None else _build_prompt(sl, word_stream),
-        image_uri=str(image_path),
-        model=config.ai.model,
-        prompt_version=version,
-        inference=config.ai.inference,
-        response_text=text,
-        ai={**ai_snapshot(config), "batch_job": job_name},
-    )
-    save_conversation(conversation, config.paths.alignments, folio)
+    if write_conversation:
+        image_path = config.paths.images / config.images.naming.format(folio=folio)
+        conversation = build_conversation(
+            folio=folio,
+            prompt=prompt if prompt is not None else _build_prompt(sl, word_stream),
+            image_uri=str(image_path),
+            model=config.ai.model,
+            prompt_version=version,
+            inference=config.ai.inference,
+            response_text=text,
+            ai={**ai_snapshot(config), "batch_job": job_name},
+        )
+        save_conversation(conversation, config.paths.alignments, folio)
     return record
 
 
@@ -1262,3 +1270,37 @@ def text_from_batch_response(response) -> str:
     if chunks:
         return "".join(chunks)
     return getattr(response, "text", "") or ""
+
+
+def split_batch_result_lines(
+    lines: list[str],
+) -> tuple[dict[str, str], dict[str, dict]]:
+    """Split raw batch result lines into per-folio texts and response errors.
+
+    Returns ``(texts, errors)``. ``texts`` maps folio key to model text.
+    ``errors`` maps folio key (or ``line:{n}`` for keyless lines) to an
+    error detail. Lines with an API-level ``error`` object or with no
+    extractable text land in ``errors`` so download-batch can report
+    response issues without parsing layout.
+    """
+    texts: dict[str, str] = {}
+    errors: dict[str, dict] = {}
+    for n, ln in enumerate(lines):
+        try:
+            obj = json.loads(ln)
+        except json.JSONDecodeError as exc:
+            errors[f"line:{n}"] = {"kind": "bad_line", "message": str(exc)}
+            continue
+        key = obj.get("key") if isinstance(obj, dict) else None
+        if not key:
+            errors[f"line:{n}"] = {"kind": "missing_key", "line": ln[:200]}
+            continue
+        if obj.get("error"):
+            errors[key] = {"kind": "api_error", "error": obj["error"]}
+            continue
+        text = text_from_batch_response(obj.get("response", {}))
+        if not text:
+            errors[key] = {"kind": "empty_response"}
+            continue
+        texts[key] = text
+    return texts, errors

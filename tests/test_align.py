@@ -34,7 +34,7 @@ from leningrad_codex_tei.stages.align import (
     folio_side_for,
     job_state_name,
     load_alignment,
-    materialize_batch_result,
+    parse_raw_result,
     resolve_batch_job_dir,
     save_alignment,
     save_conversation,
@@ -821,12 +821,12 @@ def test_write_poll_record_and_state(tmp_path) -> None:
     assert batch_result_file_name({"dest": {"file_name": "files/out"}}) == "files/out"
 
 
-def test_materialize_batch_result_saves_alignment(
+def test_parse_raw_result_saves_alignment(
     seed_slice, word_stream, config
 ) -> None:
     xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
     config.ai.inference = "batch"
-    rec = materialize_batch_result(
+    rec = parse_raw_result(
         "001B",
         xml,
         {"001B": seed_slice},
@@ -844,12 +844,12 @@ def test_materialize_batch_result_saves_alignment(
     assert conv["ai"]["batch_job"] == "batches/123"
 
 
-def test_materialize_batch_result_saves_raw_on_failure(
+def test_parse_raw_result_saves_raw_on_failure(
     seed_slice, word_stream, config
 ) -> None:
     config.ai.inference = "batch"
     with pytest.raises(ValueError):
-        materialize_batch_result(
+        parse_raw_result(
             "001B",
             "not xml at all",
             {"001B": seed_slice},
@@ -866,6 +866,42 @@ def test_materialize_batch_result_saves_raw_on_failure(
     )
     assert conv["response"] == "not xml at all"
     assert not (config.paths.alignments / "001B.json").exists()
+
+
+def test_parse_raw_result_skips_conversation_when_asked(
+    seed_slice, word_stream, config
+) -> None:
+    config.ai.inference = "batch"
+    xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+    rec = parse_raw_result(
+        "001B",
+        xml,
+        {"001B": seed_slice},
+        word_stream,
+        config,
+        prompt="map it",
+        job_name="batches/123",
+        write_conversation=False,
+    )
+    assert rec.folio == "001B"
+    assert (config.paths.alignments / "001B.json").exists()
+    assert not (config.paths.alignments / "conversations" / "001B.json").exists()
+
+    with pytest.raises(ValueError):
+        parse_raw_result(
+            "001B",
+            "not xml at all",
+            {"001B": seed_slice},
+            word_stream,
+            config,
+            prompt="map it",
+            job_name="batches/123",
+            write_conversation=False,
+        )
+    assert (
+        config.paths.alignments / "raw" / "001B.xml"
+    ).read_text() == "not xml at all"
+    assert not (config.paths.alignments / "conversations" / "001B.json").exists()
 
 
 def test_prompt_version_is_sha_of_prompt() -> None:
@@ -888,12 +924,12 @@ def test_ensure_align_prompt_clean_blocks_when_dirty(monkeypatch) -> None:
         align_mod.ensure_align_prompt_clean()
 
 
-def test_materialize_batch_result_uses_stored_prompt_version(
+def test_parse_raw_result_uses_stored_prompt_version(
     seed_slice, word_stream, config
 ) -> None:
     xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
     config.ai.inference = "batch"
-    rec = materialize_batch_result(
+    rec = parse_raw_result(
         "001B",
         xml,
         {"001B": seed_slice},
@@ -908,3 +944,210 @@ def test_materialize_batch_result_uses_stored_prompt_version(
         (config.paths.alignments / "conversations" / "001B.json").read_text()
     )
     assert conv["prompt_version"] == "stored-hash"
+
+
+def test_split_batch_result_lines() -> None:
+    from leningrad_codex_tei.stages.align import split_batch_result_lines
+
+    good = json.dumps(
+        {
+            "key": "001B",
+            "response": {
+                "candidates": [{"content": {"parts": [{"text": "<cb/>"}]}}]
+            },
+        }
+    )
+    lines = [
+        good,
+        json.dumps({"key": "002A", "error": {"message": "boom"}}),
+        json.dumps({"key": "003B", "response": {}}),
+        "not json",
+        json.dumps({"nokey": True}),
+    ]
+    texts, errors = split_batch_result_lines(lines)
+    assert texts == {"001B": "<cb/>"}
+    assert errors["002A"]["kind"] == "api_error"
+    assert errors["003B"]["kind"] == "empty_response"
+    assert errors["line:3"]["kind"] == "bad_line"
+    assert errors["line:4"]["kind"] == "missing_key"
+
+
+def _parse_raw_config(config, seed_fixture, word_stream):
+    """Write seed, word stream, and a config file for parse-raw tests."""
+    import yaml
+
+    from leningrad_codex_tei.stages import word_stream as stream_stage
+
+    config.paths.seed.parent.mkdir(parents=True, exist_ok=True)
+    config.paths.seed.write_text(json.dumps(seed_fixture))
+    stream_stage.save_word_stream(word_stream, config.paths.word_stream)
+    conf = config.paths.alignments.parent / "config.yaml"
+    conf.write_text(
+        yaml.safe_dump(
+            {
+                "project": {"name": "t", "version": "0.1.0-dev"},
+                "paths": {k: str(v) for k, v in config.paths.__dict__.items()},
+                "images": {"base_url": "https://example.invalid/", "naming": "F{folio}.jpg"},
+                "seed": {
+                    "upstream_url": "https://github.com/e/r",
+                    "commit": "c",
+                    "file": "f",
+                },
+                "uxlc": {"download_url": "https://example.invalid/z.zip"},
+                "ai": {"model": "test-model", "inference": "batch", "image_transport": "encode"},
+            }
+        )
+    )
+    return conf
+
+
+def test_parse_raw_parses_edited_raw(
+    seed_fixture, seed_slice, word_stream, config
+) -> None:
+    """parse-raw reads raw/{folio}.xml so hand edits apply.
+
+    Conversations belong to download-batch: a pre-existing conversation is
+    left untouched and the audit run pins the raw sha that was parsed.
+    """
+    import hashlib
+
+    from click.testing import CliRunner
+
+    from leningrad_codex_tei.cli import cli
+
+    conf = _parse_raw_config(config, seed_fixture, word_stream)
+    raw = config.paths.alignments / "raw" / "001B.xml"
+    raw.parent.mkdir(parents=True, exist_ok=True)
+    # hand-edited raw: valid layout reply written after a failed attempt
+    raw_text = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+    raw.write_text(raw_text)
+    conv_dir = config.paths.alignments / "conversations"
+    conv_dir.mkdir(parents=True, exist_ok=True)
+    (conv_dir / "001B.json").write_text(json.dumps({"marker": "download-wrote-me"}))
+
+    result = CliRunner().invoke(
+        cli, ["--config", str(conf), "parse-raw", "--folio", "001B"]
+    )
+    assert result.exit_code == 0, f"{result.output}\n{result.exception}"
+    assert (config.paths.alignments / "001B.json").exists()
+    assert json.loads((conv_dir / "001B.json").read_text()) == {
+        "marker": "download-wrote-me"
+    }
+    summaries = list((config.paths.alignments / "parse-raw").glob("*.json"))
+    assert len(summaries) == 1
+    summary = json.loads(summaries[0].read_text())
+    assert summary["succeeded"] == ["001B"]
+    assert summary["failures"] == {}
+    audit = json.loads((config.paths.audit / "001B.json").read_text())
+    run = [r for r in audit["runs"] if r["stage"] == "parse-raw"][-1]
+    assert run["result_summary"]["raw_sha256"] == hashlib.sha256(
+        raw_text.encode("utf-8")
+    ).hexdigest()
+
+
+def test_parse_raw_scans_raw_dir(
+    seed_fixture, seed_slice, word_stream, config
+) -> None:
+    """Without --folio, every raw response is parsed; failures don't stop others."""
+    from click.testing import CliRunner
+
+    from leningrad_codex_tei.cli import cli
+
+    conf = _parse_raw_config(config, seed_fixture, word_stream)
+    raw_dir = config.paths.alignments / "raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    (raw_dir / "001B.xml").write_text(
+        _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+    )
+    (raw_dir / "999B.xml").write_text("not xml at all")
+
+    result = CliRunner().invoke(cli, ["--config", str(conf), "parse-raw"])
+    assert result.exit_code == 0, f"{result.output}\n{result.exception}"
+    assert (config.paths.alignments / "001B.json").exists()
+    assert not (config.paths.alignments / "999B.json").exists()
+    summaries = list((config.paths.alignments / "parse-raw").glob("*.json"))
+    assert len(summaries) == 1
+    summary = json.loads(summaries[0].read_text())
+    assert summary["succeeded"] == ["001B"]
+    assert summary["failed_folios"] == ["999B"]
+
+
+def test_download_batch_writes_raw_conversation_and_audit(
+    seed_fixture, word_stream, config, monkeypatch
+) -> None:
+    """download-batch owns exchange records: raw + conversation from ground truth."""
+    import hashlib
+
+    from click.testing import CliRunner
+
+    import leningrad_codex_tei.stages.align as align_mod
+    from leningrad_codex_tei.cli import cli
+
+    conf = _parse_raw_config(config, seed_fixture, word_stream)
+    job_dir = config.paths.alignments / "batch" / "ts1"
+    job_dir.mkdir(parents=True)
+    (job_dir / "submit.json").write_text(
+        json.dumps(
+            {
+                "job_name": "batches/123",
+                "folios": ["001B"],
+                "prompts": {"001B": "the prompt actually sent"},
+                "prompt_version": "pv1",
+            }
+        )
+    )
+    result_lines = [
+        json.dumps(
+            {
+                "key": "001B",
+                "response": {
+                    "candidates": [{"content": {"parts": [{"text": "hello raw"}]}}]
+                },
+            }
+        ),
+        json.dumps({"key": "002A", "error": {"message": "boom"}}),
+    ]
+
+    class _FakeFiles:
+        def download(self, file):
+            assert file == "files/out"
+            return ("\n".join(result_lines)).encode("utf-8")
+
+    class _FakeBatches:
+        def get(self, name):
+            assert name == "batches/123"
+            return {
+                "name": "batches/123",
+                "state": "JOB_STATE_SUCCEEDED",
+                "dest": {"file_name": "files/out"},
+            }
+
+    class _FakeClient:
+        batches = _FakeBatches()
+        files = _FakeFiles()
+
+    monkeypatch.setattr(align_mod, "_model_client", lambda config: _FakeClient())
+
+    result = CliRunner().invoke(cli, ["--config", str(conf), "download-batch"])
+    assert result.exit_code == 0, f"{result.output}\n{result.exception}"
+
+    assert (config.paths.alignments / "raw" / "001B.xml").read_text() == "hello raw"
+    conv = json.loads(
+        (config.paths.alignments / "conversations" / "001B.json").read_text()
+    )
+    user_text = conv["messages"][0]["parts"][1]["text"]
+    assert user_text == "the prompt actually sent"
+    assert conv["response"] == "hello raw"
+    assert conv["prompt_version"] == "pv1"
+    assert conv["ai"]["batch_job"] == "batches/123"
+
+    summary = json.loads((job_dir / "download.json").read_text())
+    assert summary["saved"] == ["001B"]
+    assert summary["failed"] == ["002A"]
+
+    audit = json.loads((config.paths.audit / "001B.json").read_text())
+    run = [r for r in audit["runs"] if r["stage"] == "download-batch"][-1]
+    assert run["result_summary"]["batch_job"] == "batches/123"
+    assert run["result_summary"]["raw_sha256"] == hashlib.sha256(
+        b"hello raw"
+    ).hexdigest()

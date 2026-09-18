@@ -104,6 +104,7 @@ class RunStage(str, Enum):
     BUILD_WORD_STREAM = "build-word-stream"
     ALIGN_FOLIO = "align-folio"
     DOWNLOAD_BATCH = "download-batch"
+    PARSE_RAW = "parse-raw"
     VALIDATE = "validate"
     GENERATE_TEI = "generate-tei"
     BUILD_INDEX = "build-index"
