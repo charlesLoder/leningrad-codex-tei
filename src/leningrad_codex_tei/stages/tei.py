@@ -82,9 +82,15 @@ def _run_contributor(run: PipelineRun) -> dict | None:
 
 
 def contributors_from_audit(runs: list[PipelineRun]) -> list[dict]:
-    """Distinct human contributors across runs, first-seen order."""
+    """Distinct human contributors across runs, first-seen order.
+
+    Download-batch runs stay in the audit trail only and never surface
+    in the TEI.
+    """
     seen: dict[str, dict] = {}
     for run in runs:
+        if run.stage == RunStage.DOWNLOAD_BATCH:
+            continue
         contrib = _run_contributor(run)
         if contrib is None:
             continue
@@ -227,13 +233,32 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
 def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
     """Production events as revisionDesc changes, most recent first.
 
-    Alignment runs record the machine event; generate-tei runs with a
-    contributor record the human encoder. Downloads, checks, and other
-    mechanics stay in the audit trail.
+    Only the last align-folio run is emitted, since it represents the
+    data used; earlier alignments are superseded. Download-batch runs
+    record the machine fetch event and stay in the audit trail, never
+    in the TEI. Generate-tei runs with a contributor record the human
+    encoder, one entry per contributor (latest run wins), so re-running
+    generate-tei does not repeat the same "Encoded by" change.
+    Downloads, checks, and other mechanics stay in the audit
+    trail.
     """
+    last_align = max(
+        (i for i, run in enumerate(runs) if run.stage == RunStage.ALIGN_FOLIO),
+        default=None,
+    )
+    last_generate_by_who: dict[str, int] = {}
+    for i, run in enumerate(runs):
+        if run.stage != RunStage.GENERATE_TEI:
+            continue
+        contrib = _run_contributor(run)
+        if contrib is None:
+            continue
+        last_generate_by_who[contrib["xml_id"]] = i
     changes: list[dict] = []
-    for run in runs:
-        if run.stage in (RunStage.ALIGN_FOLIO, RunStage.DOWNLOAD_BATCH):
+    for i, run in enumerate(runs):
+        if run.stage == RunStage.ALIGN_FOLIO and i != last_align:
+            continue
+        if run.stage == RunStage.ALIGN_FOLIO:
             contrib = _run_contributor(run)
             changes.append(
                 {
@@ -247,6 +272,8 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
         elif run.stage == RunStage.GENERATE_TEI:
             contrib = _run_contributor(run)
             if contrib is None:
+                continue
+            if i != last_generate_by_who[contrib["xml_id"]]:
                 continue
             changes.append(
                 {

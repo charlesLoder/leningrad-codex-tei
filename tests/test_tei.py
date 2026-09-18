@@ -308,7 +308,7 @@ def test_changes_from_audit_keeps_only_align_folio() -> None:
     assert feats["prompt_version"] == "prose-v1"
 
 
-def test_changes_are_most_recent_first() -> None:
+def test_changes_keep_only_last_align_folio() -> None:
     runs = [
         PipelineRun(
             stage=RunStage.ALIGN_FOLIO,
@@ -324,7 +324,45 @@ def test_changes_are_most_recent_first() -> None:
     changes = changes_from_audit(runs)
     assert [c["when"] for c in changes] == [
         "2026-08-27T01:02:04",
-        "2026-08-27T01:02:03",
+    ]
+
+
+def test_changes_dedupe_repeat_generate_tei_by_same_contributor() -> None:
+    runs = [
+        PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Charles W. Loder",
+            timestamp=datetime(2026, 9, 18, 4, 26, 47),
+        ),
+        PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Charles W. Loder",
+            timestamp=datetime(2026, 9, 18, 4, 31, 38),
+        ),
+    ]
+    changes = changes_from_audit(runs)
+    assert len(changes) == 1
+    assert changes[0]["when"] == "2026-09-18T04:31:38"
+    assert changes[0]["text"] == "Encoded by Charles W. Loder."
+
+
+def test_changes_keep_distinct_generate_tei_contributors() -> None:
+    runs = [
+        PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Scribe One",
+            timestamp=datetime(2026, 9, 18, 4, 26, 47),
+        ),
+        PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Scribe Two",
+            timestamp=datetime(2026, 9, 18, 4, 31, 38),
+        ),
+    ]
+    changes = changes_from_audit(runs)
+    assert [c["when"] for c in changes] == [
+        "2026-09-18T04:31:38",
+        "2026-09-18T04:26:47",
     ]
 
 
