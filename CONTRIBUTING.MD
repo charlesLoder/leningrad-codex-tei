@@ -164,3 +164,5 @@ For version 1 of this project, AI should do the bulk of the work for alignment.
 ## Creating a Pull Request
 
 Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests).
+
+Agents can use the `folio-pr` skill in `.agents/skills`
