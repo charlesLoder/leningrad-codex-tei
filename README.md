@@ -1,16 +1,16 @@
 # Leningrad Codex TEI
 
-The Leningrad Codex (LC) encoded as a TEI document.
+The Leningrad Codex encoded as a TEI document.
 
-To get started with setting up the project locally, see the [Getting Started](#gettings-started) section.
+To get started with setting up the project locally, see the [Getting Started](#getting-started) section.
 
 To learn more about this project and its goals, see the [About](#about) section.
 
-## Gettings Started
+## Getting Started
 
 ### Download
 
-The entire document is availabe in the [/edition](./edition/) directory.
+The entire document is available in the [/edition](./edition/) directory.
 
 Every release also ships a zip of the complete document:
 
@@ -76,7 +76,8 @@ uv run leningrad download-uxlc        # fetch and extract the UXLC book XMLs
 uv run leningrad download-images      # fetch folio images from the source
 uv run leningrad build-word-stream    # flatten the UXLC XML into a word stream
 uv run leningrad align-folio          # align the text to the page layout
-uv run leningrad download-batch       # polls and download a batch job
+uv run leningrad download-batch       # poll and download a batch job's raw responses
+uv run leningrad materialize-batch    # parse downloaded raw responses (re-runnable after hand edits)
 uv run leningrad validate             # cross-check the alignment records
 uv run leningrad generate-tei         # emit per-folio TEI XML
 uv run leningrad build-index          # compile index.xml
@@ -88,18 +89,18 @@ Pass `--help` to any command to see more information.
 
 The [Leningrad Codex](https://en.wikipedia.org/wiki/Leningrad_Codex) is oldest, complete manuscript of the Hebrew Bible.
 Though many projects have sought to transcribe and encode the biblical text of the manuscript, few projects have encoded the layout.
-This projects emphasizes the codex not just as a text, but as an object.
+This project emphasizes the codex not just as a text, but as an object.
 
-The text encoding initiative (TEI) provides the framework needed to encode the manuscript in a machine readable way using XML.
+The Text Encoding Initiative (TEI) provides the framework needed to encode the manuscript in a machine readable way using XML.
 Recent advances in artificial intelligence combined with existing open data, provide a way to do this work at scale,
 by utilizing multi-modal models to provide initial drafts of the columnar layout.
 
 ### Open Data
 
-This project would not be capable without existing open data.
+This project would not have been possible without existing open data.
 
 The biblical text in the document was not transcribed directly from the images.
-The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christoper V. Kimball and accessible on the [tanach.us](https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html) site.
+The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christopher V. Kimball and accessible on the [tanach.us](https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html) site.
 For this reason, the text in the edition may differ from the images in the manuscript.
 That is an intentional choice.
 
@@ -121,7 +122,7 @@ The primary aim of this project is to make the Leningrad Codex encoded as an TEI
 This is accomplished through:
 
 - Permissive licensing (MIT)
-- Public hosting of the repository on Github
+- Public hosting of the repository on GitHub
 
 Additional measures are taken to make this project accessible to scholars who may not be familiar or comfortable with the above:
 
@@ -164,13 +165,13 @@ The project exclusively used Google's product offerings because the Gemini line 
 
 ### Reproducibility
 
-This projects also aims to make this work reproducible by providing the pipeline used to generate the document, with the realization that AI outputs are not always reproducible.
+This project also aims to make this work reproducible by providing the pipeline used to generate the document, with the realization that AI outputs are not always reproducible.
 
 Future researchers can easily configure the pipeline to use different models, inference strategies, etc.
 
 ### Community
 
 This project is not affiliated with any institution or organization.
-It is inteded to be a community driven endeavor.
+It is intended to be a community driven endeavor.
 
 See the [contributing guide](./CONTRIBUTING.MD) for more information.
