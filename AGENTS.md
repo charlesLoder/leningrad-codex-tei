@@ -26,20 +26,33 @@ Always respond to the user in plain language using ISO 24495-1:2023.
 - **Audit trail**: Per-folio record of which AI runs touched the folio: prompt version, model, inputs, results, check outcomes.
 - **Verified folio**: A folio whose automated cross-checks passed and whose informal human review is complete.
 - **Main biblical text**: The continuous scriptural text only; excludes marginalia (masora etc.) and Documentary Hypothesis tags.
-- **Batch job**: One Batch API submission. Lives in `{alignments}/batch/{ts}/`, where `{alignments}` is `config.paths.alignments` (`data/alignments` by default) and `{ts}` is the submit timestamp.
+- **Batch job**: One Batch API submission. Lives in `{alignments}/batch/{ts}/`, where `{alignments}` is `config.paths.alignments` and `{ts}` is the submit timestamp.
 
-## Batch job layout
+## Pipeline config paths
 
-Paths below are relative to `config.paths.alignments`. One directory per submission under `batch/{ts}/`:
+See `config.paths` in the active config (`config.yaml` by default, overridable via `--config`) for the actual location of these outputs on disk.
 
-- `submit.json`: Input manifest written at submit time. Job name, folio list, prompt per folio, model and settings.
-- `upload.jsonl`: Request lines sent to the Batch API.
-- `polls/{poll_ts}.json`: One status snapshot per `download-batch` poll. Never overwritten. Latest is the last file by name.
+Below, `{name}` means `config.paths.{name}`.
+The committed config maps these under `data/` (e.g. `{alignments}` is `data/alignments/`), except for `{output}`
 
-Per-folio results stay outside the job directory, shared with single runs:
+- `{seed}`: vendored seed mapping (verse→location + atom spans); output of the `vendor-seed` step.
+- `{uxlc}`: extracted UXLC book XMLs, including `.DH` variants; output of the `download-uxlc` step.
+- `{images}`: folio JPGs per `config.images.naming`, fetched from `config.images.base_url`; output of the `download-images` step.
+- `{word_stream}`: UXLC flattened into one word stream; input to alignment slices; output of the `build-word-stream` step.
+- `{alignments}`:
+    - `{alignments}/conversations/{folio}.json`: prompt + image + response
+    - `{alignments}/raw/{folio}.xml`: raw model reply
+    - `{alignments}/{folio}.json`: parsed record (embeds source reply); the output used in the `generate-tei` step.
+    - `{alignments}/materialize.json` (parse summary).
+    - `{alignments}/batch/{ts}/`: one Batch API submission (`{ts}` is the submit timestamp); this is created when the `align-folio` step has `inference` set to `"batch"`
+        - `submit.json`: manifest (job name, folios, per-folio prompts, model/settings); this is not sent to Batch API, but is a manifest in a format more easily ingested by humans (e.g. no base64 encoded data)
+        - `upload.jsonl`: request lines sent to the Batch API
+        - `polls/{poll_ts}.json`: append-only status snapshots; output of the `download-batch` step.
+        - `result.jsonl`: raw Batch API result lines; output of the `download-batch` step when job completes.
+        - `download.json`: per-folio download summary; output of the `download-batch` step when job completes.
+- `{audit}`: per-folio `{folio}.json` audit runs.
+- `{provenance}`: pins seed/UXLC/word-stream versions, hashes, and counts.
+- `{output}`: generated per-folio TEI + `index.xml`; unlike the above, the contents of this path are intended to be committed.
 
-- `{folio}.json`: Parsed alignment record.
-- `raw/{folio}.xml`: Raw model reply, saved even on parse failure.
-- `conversations/{folio}.json`: Prompt plus image plus response, saved even on parse failure.
-
-`download-batch` accepts a timestamp, job directory, `submit.json` path, or API job name. It appends a poll file, then materializes each folio, saving raw plus conversation on failure and continuing past failures.
+**Note**: the `download-batch` command fetches results and puts the responses into `{alignments}/raw/` + `{alignments}/conversations/` (+ `{audit}` runs) without parsing; 
+`materialize-batch` parses `raw/` into `{folio}.json` (re-runnable after hand edits).
