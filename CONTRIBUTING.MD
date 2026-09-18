@@ -64,10 +64,76 @@ If using batch inference, check the status of the batch job using:
 uv run leningrad download-batch
 ```
 
+Then parse the downloaded raw responses with:
+
+```bash
+uv run leningrad parse-raw
+```
+
+If a folio fails to parse, fix `data/alignments/raw/<FOLIO>.xml` by hand and re-run `parse-raw --folio <FOLIO>`.
+
 And then validate the output with:
 
 ```bash
 uv run leningrad validate
+```
+
+### Handling errors with inference output
+
+Errors can occur in multiple places. Here are some encountered scenarios and how to fix them.
+
+#### Model gave an incorrect output
+
+Models make mistakes.
+
+After a raw model response in stored, run the `parse-raw` command.
+If an error occurs, the command will tell you where (e.g. 3:1 is column 3, line 1).
+A common error is text from the the gutters being added.
+Open up `{config.paths.alignments}/raw/{folio}.xml` and make adjustments where needed.
+
+Rerun the `parse-raw` command to validate the fix.
+
+#### Incorrect upstream data
+
+The upstream data can be incorrect.
+
+For example, according to the seed file, the last word on 027B was incorrectly labeled as the first word of Genesis 44:23, and the first word on 027A wasincorrectly labeled as the second word of Genesis 44:23.
+
+In that instance, the seed file had to be modified
+
+```diff
+{
+    "page": "027B",
+    "startco": null,
+    "startli": null,
+    "stopco": null,
+    "stopli": null,
+    "bkid": "Genesis",
+    "startc": 43,
+    "startv": 32,
+    "startp": 14,
+    "stopc": 44,
+    "stopv": 23,
+-    "stopp": 1,
++    "stopp": 2,
+    "note": null
+},
+{
+    "page": "028A",
+    "startco": null,
+    "startli": null,
+    "stopco": null,
+    "stopli": null,
+    "bkid": "Genesis",
+    "startc": 44,
+    "startv": 23,
+-    "startp": 2,
++    "startp": 3,
+    "stopc": 45,
+    "stopv": 16,
+    "stopp": 13,
+    "note": null
+},
 ```
 
 ### Generating the TEI document
@@ -93,8 +159,7 @@ uv run leningrad build-index
 
 Ensure everything looks correct and commit.
 
-For version 1 of this project, all alignment of the folios should be done by AI.
-If you notice errors in the alignment, make a new issue or PR, and it can be corrected later.
+For version 1 of this project, AI should do the bulk of the work for alignment. 
 
 ## Creating a Pull Request
 
