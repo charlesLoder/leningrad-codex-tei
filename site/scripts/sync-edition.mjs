@@ -2,6 +2,7 @@ import { cpSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'nod
 import { execSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { XMLParser } from 'fast-xml-parser';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const siteRoot = join(here, '..');
@@ -21,12 +22,18 @@ for (const f of files) {
 cpSync(join(editionDir, 'index.xml'), join(publicDir, 'index.xml'));
 
 const indexXml = readFileSync(join(editionDir, 'index.xml'), 'utf8');
-const entries = [...indexXml.matchAll(/<entry\s+folio="([^"]+)"\s+href="([^"]+)">\s*<title>([^<]+)<\/title>/g)].map((m) => ({
-  folio: m[1],
-  href: m[2],
-  title: m[3],
-  range: m[3].replace(/^Leningrad Codex — \S+ \((.+)\)$/, '$1'),
-}));
+const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' });
+const parsed = parser.parse(indexXml);
+const rawEntries = parsed?.index?.entry ?? [];
+const entryList = Array.isArray(rawEntries) ? rawEntries : [rawEntries];
+const entries = entryList
+  .filter((e) => e?.folio && e?.href && e?.title)
+  .map((e) => ({
+    folio: String(e.folio),
+    href: String(e.href),
+    title: String(e.title),
+    range: String(e.title).replace(/^Leningrad Codex — \S+ \((.+)\)$/, '$1'),
+  }));
 
 const byFolio = new Map(entries.map((e) => [e.folio, e]));
 for (const f of files) {
