@@ -1,5 +1,4 @@
 import { cpSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { execSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { XMLParser } from 'fast-xml-parser';
@@ -46,11 +45,25 @@ const folios = [...byFolio.values()].sort((a, b) => a.folio.localeCompare(b.foli
 
 writeFileSync(dataFile, JSON.stringify(folios, null, 2) + '\n');
 
-let version = null;
-try {
-  version = execSync('git describe --tags --abbrev=0', { cwd: repoRoot, encoding: 'utf8' }).trim() || null;
-} catch {
-  version = null;
+function versionFromPyproject() {
+  const toml = readFileSync(join(repoRoot, 'pyproject.toml'), 'utf8');
+  const match = toml.match(/^version\s*=\s*"([^"]+)"/m);
+  if (!match) {
+    throw new Error('version not found in pyproject.toml ([project] version)');
+  }
+  return match[1].trim();
 }
+
+// Single source of truth: root pyproject.toml [project].version.
+// Git tags are not used here on purpose: Netlify build checkouts may be
+// shallow, pinned to a branch, or missing tags, which previously produced
+// stale versions (e.g. v0.1.0 during a v0.2.1 deploy).
+let bare = versionFromPyproject();
+bare = bare.replace(/^v/, '');
+if (!/^\d+\.\d+\.\d+/.test(bare)) {
+  console.error(`Invalid version "${bare}" (expected semver like 0.2.1 in pyproject.toml)`);
+  process.exit(1);
+}
+const version = `v${bare}`;
 writeFileSync(join(siteRoot, 'src', 'data', 'meta.json'), JSON.stringify({ version }, null, 2) + '\n');
-console.log(`Synced ${folios.length} folios to public/edition + src/data/folios.json${version ? ` (version ${version})` : ''}`);
+console.log(`Synced ${folios.length} folios to public/edition + src/data/folios.json (version ${version} from pyproject.toml)`);

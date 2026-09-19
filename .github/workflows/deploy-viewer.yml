@@ -13,6 +13,19 @@ jobs:
       # Map the secret to a job-level env variable
       NETLIFY_SITE_BUILD_HOOK: ${{ secrets.NETLIFY_SITE_BUILD_HOOK }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: Check git tag matches pyproject.toml version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          FILE_VERSION="$(grep -m1 '^version = ' pyproject.toml | sed -E 's/^version = "([^"]+)".*/\1/')"
+          EXPECTED="v${FILE_VERSION}"
+          if [ "${TAG}" != "${EXPECTED}" ]; then
+            echo "Tag ${TAG} does not match pyproject.toml version ${FILE_VERSION} (expected ${EXPECTED})"
+            exit 1
+          fi
       - name: Deploy viewer to Netlify
         if: env.NETLIFY_SITE_BUILD_HOOK != ''
         run: curl -sS -X POST "$NETLIFY_SITE_BUILD_HOOK"

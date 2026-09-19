@@ -13,6 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Check git tag matches pyproject.toml version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          FILE_VERSION="$(grep -m1 '^version = ' pyproject.toml | sed -E 's/^version = "([^"]+)".*/\1/')"
+          EXPECTED="v${FILE_VERSION}"
+          if [ "${TAG}" != "${EXPECTED}" ]; then
+            echo "Tag ${TAG} does not match pyproject.toml version ${FILE_VERSION} (expected ${EXPECTED})"
+            exit 1
+          fi
       - run: zip -r leningrad-codex.zip edition/
       - uses: softprops/action-gh-release@v3
         with:

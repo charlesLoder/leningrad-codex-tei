@@ -8,6 +8,13 @@ To learn about this project, view the @README.md at the root of this repo.
 
 Always respond to the user in plain language using ISO 24495-1:2023.
 
+## Versioning
+
+- Single source of truth: root `pyproject.toml` `[project].version` (bare semver, e.g. `0.2.1`). Bump with `uv version --bump minor|patch|major` or `uv version X.Y.Z`. Note `uv version` only edits the file; the owner commits it and creates the release tag by hand.
+- Git tags must equal `v<version>` (e.g. `v0.2.1`). The `deploy-viewer` and `release-bundle` workflows fail if the tag does not match the file.
+- `site/scripts/sync-edition.mjs` reads `pyproject.toml` and writes the `v`-prefixed version to `site/src/data/meta.json`. It never uses `git describe`, because Netlify build checkouts may be branch-pinned or missing tags.
+- `site/package.json` `version` is the private viewer app version and is unrelated to the edition version; do not bump it in lockstep.
+
 ## Glossary
 
 - **Folio side**: One physical page of the codex, identified as `Fxxx{A|B}` (A = recto, B = verso). The atom of the edition: one TEI document per folio side.
