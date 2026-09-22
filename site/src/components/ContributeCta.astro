@@ -1,0 +1,69 @@
+---
+interface Props {
+  published: number;
+  total?: number;
+  guideHref?: string;
+}
+
+const {
+  published,
+  total = 924,
+  guideHref = 'https://github.com/charlesLoder/leningrad-codex-tei/blob/main/CONTRIBUTING.MD',
+} = Astro.props;
+
+const shouldShow = published < total;
+const remaining = total - published;
+---
+
+{shouldShow && (
+  <section class="contribute-cta" aria-labelledby="contribute-cta-heading">
+    <p class="cta-eyebrow">Contributors needed</p>
+    <h2 id="contribute-cta-heading">
+      {published} of {total} folios completed
+    </h2>
+    <p>
+      This project depends on community involvement and is actively seeking contributors.
+    </p>
+    <p>
+      The greatest bottleneck is the cost of AI inference for aligning folios:
+      each folio side needs a funded run to map its columns and lines.
+      Contributors help by running inference for folios that are not yet complete —
+      {remaining} {remaining === 1 ? 'side remains' : 'sides remain'}.
+    </p>
+    <p class="cta-actions">
+      <a class="btn primary" href={guideHref}>Get involved</a>
+    </p>
+  </section>
+)}
+
+<style>
+  .contribute-cta {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 0.9rem;
+    padding: 1.25rem 1.4rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .contribute-cta .cta-eyebrow {
+    margin: 0 0 0.35rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .contribute-cta h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .contribute-cta p {
+    margin: 0.5rem 0;
+    color: var(--muted);
+  }
+
+  .contribute-cta .cta-actions {
+    margin-top: 0.9rem;
+  }
+</style>
