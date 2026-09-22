@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import ContributeCta from '../components/ContributeCta.astro';
 import folios from '../data/folios.json';
 import { abbreviateRange } from '../lib/tei';
 import { folioRangeKeys } from '../lib/verses';
@@ -15,18 +16,19 @@ const cards = folios.map((f) => {
 >
   <section class="hero">
     <h1>Leningrad Codex TEI</h1>
+    <ContributeCta published={cards.length} />
+  </section>
+
+  <div>
     <p>
-      Read the Leningrad Codex TEI online.
-    </p>
-    <p>
-      <a class="btn primary" href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">Download whole edition (.zip)</a>
+      Read the Leningrad Codex online.
     </p>
     <div class="controls">
       <input id="q" type="search" placeholder="Filter by folio or verse (e.g. 002A, Gen 3:15)…" autocomplete="off" />
     </div>
-    <p id="count" class="result-count" aria-live="polite"></p>
-  </section>
+  </div>
 
+  <p id="count" class="result-count" aria-live="polite"></p>
   <ol class="folio-grid" id="grid">
     {cards.map((f) => (
       <li data-search={`${f.folio} ${f.title} ${f.range}`.toLowerCase()} data-start={f.start ?? ''} data-end={f.end ?? ''}>
