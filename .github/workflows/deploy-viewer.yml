@@ -13,7 +13,7 @@ jobs:
       # Map the secret to a job-level env variable
       NETLIFY_SITE_BUILD_HOOK: ${{ secrets.NETLIFY_SITE_BUILD_HOOK }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.ref }}
       - name: Check git tag matches pyproject.toml version
