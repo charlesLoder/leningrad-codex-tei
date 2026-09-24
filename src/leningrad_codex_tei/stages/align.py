@@ -299,7 +299,9 @@ def _extract_line_tokens(raw_text: str) -> list[tuple[int, int, list[str]]]:
 
     Returns a list of ``(column, line, tokens)`` in document order.
     Milestones and echoed metadata are ignored; standalone paseq attaches
-    to the preceding token without starting a new one.
+    to the preceding token without starting a new one. Blank lines are
+    preserved with an empty token list so ``<lb n="1" /><lb n="2" />words``
+    yields both ``(col, 1, [])`` and ``(col, 2, [...])``.
     """
     text = raw_text.strip()
     text = re.sub(r"^<\?xml[^>]*\?>\s*", "", text)
@@ -322,10 +324,10 @@ def _extract_line_tokens(raw_text: str) -> list[tuple[int, int, list[str]]]:
                 buf.append(token)
 
     def flush() -> None:
-        if not buf:
-            return
         if col is None or line is None:
-            raise ValueError("text found outside a column and line")
+            if buf:
+                raise ValueError("text found outside a column and line")
+            return
         lines.append((col, line, list(buf)))
         buf.clear()
 
@@ -413,6 +415,7 @@ def _parse_epilog_xml(
     Returns a list of ``(column, line, word_count)`` in document order.
     Milestones (chapter/verse/section) and echoed <TEXT> metadata (verse
     numbers, chapter markers, pe/samekh) are ignored when counting words.
+    Blank lines yield a count of 0 and consume no atoms.
     When ``expected`` (the slice's word texts in order) is given, maqaf
     joins and line-break splits are matched against it before counting.
     """
@@ -424,9 +427,6 @@ def _parse_epilog_xml(
         ]
     else:
         lines = _count_matched_tokens(raw_lines, expected)
-    for col_no, line_no, count in lines:
-        if count < 1:
-            raise ValueError(f"empty line {col_no}:{line_no}")
     return lines
 
 

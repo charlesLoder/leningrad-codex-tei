@@ -219,11 +219,11 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
         col["lines"].sort(key=lambda e: e["line_number"])
         filled: list[dict] = []
         for entry in col["lines"]:
-            if filled and entry["line_number"] > filled[-1]["line_number"] + 1:
-                for missing in range(filled[-1]["line_number"] + 1, entry["line_number"]):
-                    filled.append(
-                        {"line_number": missing, "atoms": [], "tokens": []}
-                    )
+            first = filled[-1]["line_number"] + 1 if filled else 1
+            for missing in range(first, entry["line_number"]):
+                filled.append(
+                    {"line_number": missing, "atoms": [], "tokens": []}
+                )
             filled.append(entry)
         col["lines"] = filled
         result.append(col)
