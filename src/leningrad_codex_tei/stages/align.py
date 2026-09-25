@@ -371,10 +371,9 @@ def _count_matched_tokens(
             if li in merged_first and ti == 0:
                 continue
             parts = _split_maqaf(tok)
+            next_toks = raw_lines[li + 1][2] if li + 1 < len(raw_lines) else []
             following = (
-                raw_lines[li + 1][2][0]
-                if ti == len(toks) - 1 and li + 1 < len(raw_lines)
-                else None
+                next_toks[0] if ti == len(toks) - 1 and next_toks else None
             )
             if (
                 len(parts) > 1
