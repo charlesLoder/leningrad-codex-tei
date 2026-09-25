@@ -301,6 +301,38 @@ def test_parse_epilog_merges_word_broken_across_lines() -> None:
     assert _parse_epilog_xml(xml, ["x", "abcd", "y"]) == [(1, 1, 2), (1, 2, 1)]
 
 
+def test_parse_epilog_line_before_blank_line_does_not_crash() -> None:
+    # Regression for #515: the eager following-token lookup indexed [0]
+    # into the next line's tokens without checking for a blank line.
+    xml = '<cb n="1" /><lb n="1" />x y<lb n="2" /><lb n="3" />z'
+    assert _parse_epilog_xml(xml, ["x", "y", "z"]) == [
+        (1, 1, 2),
+        (1, 2, 0),
+        (1, 3, 1),
+    ]
+
+
+def test_parse_epilog_consecutive_and_trailing_blank_lines() -> None:
+    xml = '<cb n="1" /><lb n="1" />x<lb n="2" /><lb n="3" /><lb n="4" />y'
+    assert _parse_epilog_xml(xml, ["x", "y"]) == [
+        (1, 1, 1),
+        (1, 2, 0),
+        (1, 3, 0),
+        (1, 4, 1),
+    ]
+    trailing = '<cb n="1" /><lb n="1" />x y<lb n="2" />'
+    assert _parse_epilog_xml(trailing, ["x", "y"]) == [(1, 1, 2), (1, 2, 0)]
+
+
+def test_parse_epilog_does_not_merge_across_blank_line() -> None:
+    xml = '<cb n="1" /><lb n="1" />ab<lb n="2" /><lb n="3" />cd'
+    assert _parse_epilog_xml(xml, ["abcd", "e"]) == [
+        (1, 1, 1),
+        (1, 2, 0),
+        (1, 3, 1),
+    ]
+
+
 def test_parse_epilog_strips_code_fence_and_xml_declaration() -> None:
     xml = '<?xml version="1.0"?>\n```xml\n<cb n="1" />\n<lb n="1" />\na b\n```'
     assert _parse_epilog_xml(xml) == [(1, 1, 2)]
