@@ -215,7 +215,47 @@ def _apply_ai_overrides(
         )
 
 
-@cli.command()
+_AI_OVERRIDE_NAMES = frozenset(
+    {
+        "model",
+        "temperature",
+        "inference",
+        "max_retries",
+        "code_execution",
+        "base_delay",
+        "timeout_ms",
+        "fallback_to_standard",
+        "image_transport",
+        "thinking_level",
+    }
+)
+
+
+class _AlignFolioCommand(click.Command):
+    """Align-folio command with AI overrides grouped in help output."""
+
+    def format_options(
+        self, ctx: click.Context, formatter: click.formatting.HelpFormatter
+    ) -> None:
+        ai_opts: list = []
+        other_opts: list = []
+        for param in self.get_params(ctx):
+            record = param.get_help_record(ctx)
+            if record is None:
+                continue
+            if param.name in _AI_OVERRIDE_NAMES:
+                ai_opts.append(record)
+            else:
+                other_opts.append(record)
+        if other_opts:
+            with formatter.section("Options"):
+                formatter.write_dl(other_opts)
+        if ai_opts:
+            with formatter.section("AI config overrides"):
+                formatter.write_dl(ai_opts)
+
+
+@cli.command(cls=_AlignFolioCommand)
 @click.option(
     "--folio",
     default=None,
@@ -261,6 +301,18 @@ def _apply_ai_overrides(
     default=None,
     help="Override ai.thinking_level.",
 )
+@click.option(
+    "--dry-run",
+    is_flag=True,
+    default=False,
+    help="Show what would be aligned without calling the model or writing files.",
+)
+@click.option(
+    "--show-prompt",
+    is_flag=True,
+    default=False,
+    help="With --dry-run, also print the full model prompt per folio.",
+)
 @click.pass_obj
 def align_folio(
     config: Config,
@@ -277,6 +329,8 @@ def align_folio(
     fallback_to_standard: bool | None,
     image_transport: str | None,
     thinking_level: str | None,
+    dry_run: bool,
+    show_prompt: bool,
 ) -> None:
     """Align seed mapping to folios' layout via a vision model."""
     try:
@@ -317,6 +371,25 @@ def align_folio(
         if folio not in ordered:
             raise click.ClickException(f"unknown folio {folio!r}")
         folios = ordered[ordered.index(folio) : ordered.index(folio) + limit]
+    if show_prompt and not dry_run:
+        raise click.ClickException("--show-prompt requires --dry-run")
+    if dry_run:
+        slices = [align_stage.compute_seed_slice(seed, page, stream) for page in folios]
+        prompts = (
+            align_stage.build_batch_prompts(slices, stream) if show_prompt else {}
+        )
+        for sl in slices:
+            atoms = sl.atom_end - sl.atom_start + 1
+            click.echo(
+                f"align-folio (dry-run): {sl.folio} = {sl.start_ref} – {sl.stop_ref} "
+                f"({atoms} atoms, inference {config.ai.inference}, "
+                f"model {config.ai.model})"
+            )
+            if show_prompt:
+                click.echo(f"--- prompt {sl.folio} ---")
+                click.echo(prompts[sl.folio])
+                click.echo(f"--- end prompt {sl.folio} ---")
+        return
     contributor = _current_contributor()
     if config.ai.inference == "batch":
         slices = [align_stage.compute_seed_slice(seed, page, stream) for page in folios]
