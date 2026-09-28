@@ -45,8 +45,28 @@ def _file_sha(path: Path) -> str:
 
 
 def _seed_folios(config: Config) -> list[str]:
+    """Distinct folio sides in seed order (one entry per side).
+
+    The seed holds more than one record for some sides (e.g. 040A x2).
+    Records for one side merge into a single slice, so selection counts
+    distinct sides, not records. This sends one request per side.
+    """
     doc = json.loads(config.paths.seed.read_text())
-    return [rec["page"] for rec in doc["body"]]
+    seen: set[str] = set()
+    folios: list[str] = []
+    for rec in doc["body"]:
+        page = rec["page"]
+        if page not in seen:
+            seen.add(page)
+            folios.append(page)
+    return folios
+
+
+def _merged_record_count(sl) -> int:
+    recs = getattr(sl, "records", None)
+    if recs:
+        return len(recs)
+    return 1
 
 
 def _alignment_folios(config: Config) -> list[str]:
@@ -259,10 +279,13 @@ class _AlignFolioCommand(click.Command):
 @click.option(
     "--folio",
     default=None,
-    help="Start folio (e.g. 001B). Aligns --limit folios from here.",
+    help="Start folio (e.g. 001B). Aligns --limit distinct sides from here.",
 )
 @click.option(
-    "--limit", type=int, default=None, help="Folios to align from --folio. Default 1."
+    "--limit",
+    type=int,
+    default=None,
+    help="Distinct sides to align from --folio. Default 1.",
 )
 @click.option("--all", "all_", is_flag=True, help="Align all folios in seed order.")
 @click.option("--model", default=None, help="Override ai.model.")
@@ -393,6 +416,7 @@ def align_folio(
     contributor = _current_contributor()
     if config.ai.inference == "batch":
         slices = [align_stage.compute_seed_slice(seed, page, stream) for page in folios]
+        merged = {sl.folio: _merged_record_count(sl) for sl in slices}
         batch_record = align_stage.submit_batch(slices, stream, config)
         for page in folios:
             append_run(
@@ -408,6 +432,7 @@ def align_folio(
                     contributor_email=(contributor or {}).get("email"),
                     result_summary={
                         "batch_job": batch_record["job_name"],
+                        "records_merged": merged.get(page, 1),
                         "upload_path": batch_record["upload_path"],
                         "batch_record": str(
                             config.paths.alignments
@@ -443,6 +468,7 @@ def align_folio(
                 result_summary={
                     "method": record.alignment_method.value,
                     "atoms": sl.atom_end - sl.atom_start + 1,
+                    "records_merged": _merged_record_count(sl),
                     "range": f"{sl.start_ref} – {sl.stop_ref}",
                     "path": str(dest),
                     "conversation": str(
@@ -697,6 +723,7 @@ def parse_raw(config: Config, folio: str | None) -> None:
                 result_summary={
                     "method": result.alignment_method.value,
                     "atoms": sl.atom_end - sl.atom_start + 1,
+                    "records_merged": _merged_record_count(sl),
                     "range": f"{sl.start_ref} – {sl.stop_ref}",
                     "raw": str(raw_path),
                     "raw_sha256": raw_sha,

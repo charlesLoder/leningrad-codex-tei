@@ -168,6 +168,12 @@ class SeedSlice:
     record: dict
     atom_start: int
     atom_end: int
+    # All seed records merged into this slice (seed order). ``record`` stays
+    # the first one for backward compat with persisted AlignmentRecord.
+    # NOTE (#517): this is a min-max union. Sides whose records sit apart in
+    # the word stream (e.g. 409B, 421A, 432B) pull gap words into the prompt.
+    # Segment lists fix that later.
+    records: list[dict] | None = None
 
 
 def folio_side_for(folio: str) -> str:
@@ -180,12 +186,17 @@ def column_count_for(book: str) -> int:
     return 2 if book in POETRY_BOOKS else 3
 
 
-def _find_record(seed: dict, folio: str) -> dict:
+def _find_records(seed: dict, folio: str) -> list[dict]:
+    """All seed records for a folio side, in seed order."""
     body = seed.get("body", []) if isinstance(seed, dict) else []
-    for rec in body:
-        if rec.get("page") == folio:
-            return rec
-    raise ValueError(f"no seed record for folio {folio}")
+    recs = [rec for rec in body if rec.get("page") == folio]
+    if not recs:
+        raise ValueError(f"no seed record for folio {folio}")
+    return recs
+
+
+def _find_record(seed: dict, folio: str) -> dict:
+    return _find_records(seed, folio)[0]
 
 
 def _resolve(
@@ -204,33 +215,58 @@ def _resolve(
 
 
 def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedSlice:
-    """Translate a seed record into an inclusive global atom range."""
-    rec = _find_record(seed, folio)
-    book = rec.get("bkid")
-    if not book:
-        raise ValueError(f"seed record for {folio} has no bkid")
-    book_words = [w for w in word_stream.words if w.book == book]
+    """Translate seed records for a side into one merged atom range.
 
-    start = _resolve(
-        book_words, rec.get("startc"), rec.get("startv"), rec.get("startp"), stop=False
-    )
-    stop = _resolve(
-        book_words, rec.get("stopc"), rec.get("stopv"), rec.get("stopp"), stop=True
-    )
-    if stop.atom < start.atom:
-        raise ValueError(f"seed range for {folio} is inverted")
+    Sides with more than one record (e.g. 040A x2, 043A x3) merge to a
+    min-max union: earliest start atom to latest stop atom. Each record is
+    resolved in its own book so mixed-book sides still resolve; gap words
+    between records stay in the slice (see #517 for segment design).
+    """
+    recs = _find_records(seed, folio)
+
+    starts: list = []
+    stops: list = []
+    for rec in recs:
+        book = rec.get("bkid")
+        if not book:
+            raise ValueError(f"seed record for {folio} has no bkid")
+        book_words = [w for w in word_stream.words if w.book == book]
+
+        start = _resolve(
+            book_words,
+            rec.get("startc"),
+            rec.get("startv"),
+            rec.get("startp"),
+            stop=False,
+        )
+        stop = _resolve(
+            book_words,
+            rec.get("stopc"),
+            rec.get("stopv"),
+            rec.get("stopp"),
+            stop=True,
+        )
+        if stop.atom < start.atom:
+            raise ValueError(f"seed range for {folio} is inverted")
+        starts.append(start)
+        stops.append(stop)
+
+    start = min(starts, key=lambda w: w.atom)
+    stop = max(stops, key=lambda w: w.atom)
 
     def _ref(w) -> str:
         return f"{w.book} {w.chapter}:{w.verse}"
 
+    first = recs[0]
     return SeedSlice(
         folio=folio,
-        book=book,
+        book=first.get("bkid"),
         start_ref=_ref(start),
         stop_ref=_ref(stop),
-        record=rec,
+        record=first,
         atom_start=start.atom,
         atom_end=stop.atom,
+        records=recs,
     )
 
 
