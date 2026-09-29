@@ -6,7 +6,7 @@ To learn about this project, view the @README.md at the root of this repo.
 
 ## Responses
 
-Always respond to the user in plain language using ISO 24495-1:2023.
+Always respond to the user in plain language using asd-ste100 simplified technical english.
 
 ## Versioning
 
