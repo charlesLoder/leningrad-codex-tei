@@ -107,6 +107,8 @@ You do NOT need a high fidelity understanding of the text on the page since you 
 - It is possible that some words at the beginning or end of the text may not appear on the folio; that's ok
 - Do not output verse numbers, chapter markers or pe/samekh markers.
 - Do not consider the meaning of the text, just the visual placement of the words on the folio.
+- If a line's text is struck through, erased, or corrected by the scribe so that it does not match <TEXT>, treat it as a blank line: emit its milestone with no words.
+- Work efficiently: crop each column at most once and aim for at most 3 code-execution calls. Only do extra image work when the columns disagree on line counts or the text is hard to read.
 
 ## Important
 
