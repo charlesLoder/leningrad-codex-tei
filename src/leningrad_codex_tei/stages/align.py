@@ -83,7 +83,7 @@ This folio is {folio}, the {side} of the leaf, and contains {columns} column(s) 
 Hebrew is written right-to-left, so the rightmost column on the folio is the first column.
 
 The text contained on this folio is {range}.
-
+{notes_section}
 ## Example Output
 
 ```xml
@@ -168,6 +168,12 @@ class SeedSlice:
     record: dict
     atom_start: int
     atom_end: int
+    # All seed records merged into this slice (seed order). ``record`` stays
+    # the first one for backward compat with persisted AlignmentRecord.
+    # NOTE (#517): this is a min-max union. Sides whose records sit apart in
+    # the word stream (e.g. 409B, 421A, 432B) pull gap words into the prompt.
+    # Segment lists fix that later.
+    records: list[dict] | None = None
 
 
 def folio_side_for(folio: str) -> str:
@@ -180,12 +186,17 @@ def column_count_for(book: str) -> int:
     return 2 if book in POETRY_BOOKS else 3
 
 
-def _find_record(seed: dict, folio: str) -> dict:
+def _find_records(seed: dict, folio: str) -> list[dict]:
+    """All seed records for a folio side, in seed order."""
     body = seed.get("body", []) if isinstance(seed, dict) else []
-    for rec in body:
-        if rec.get("page") == folio:
-            return rec
-    raise ValueError(f"no seed record for folio {folio}")
+    recs = [rec for rec in body if rec.get("page") == folio]
+    if not recs:
+        raise ValueError(f"no seed record for folio {folio}")
+    return recs
+
+
+def _find_record(seed: dict, folio: str) -> dict:
+    return _find_records(seed, folio)[0]
 
 
 def _resolve(
@@ -204,33 +215,58 @@ def _resolve(
 
 
 def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedSlice:
-    """Translate a seed record into an inclusive global atom range."""
-    rec = _find_record(seed, folio)
-    book = rec.get("bkid")
-    if not book:
-        raise ValueError(f"seed record for {folio} has no bkid")
-    book_words = [w for w in word_stream.words if w.book == book]
+    """Translate seed records for a side into one merged atom range.
 
-    start = _resolve(
-        book_words, rec.get("startc"), rec.get("startv"), rec.get("startp"), stop=False
-    )
-    stop = _resolve(
-        book_words, rec.get("stopc"), rec.get("stopv"), rec.get("stopp"), stop=True
-    )
-    if stop.atom < start.atom:
-        raise ValueError(f"seed range for {folio} is inverted")
+    Sides with more than one record (e.g. 040A x2, 043A x3) merge to a
+    min-max union: earliest start atom to latest stop atom. Each record is
+    resolved in its own book so mixed-book sides still resolve; gap words
+    between records stay in the slice (see #517 for segment design).
+    """
+    recs = _find_records(seed, folio)
+
+    starts: list = []
+    stops: list = []
+    for rec in recs:
+        book = rec.get("bkid")
+        if not book:
+            raise ValueError(f"seed record for {folio} has no bkid")
+        book_words = [w for w in word_stream.words if w.book == book]
+
+        start = _resolve(
+            book_words,
+            rec.get("startc"),
+            rec.get("startv"),
+            rec.get("startp"),
+            stop=False,
+        )
+        stop = _resolve(
+            book_words,
+            rec.get("stopc"),
+            rec.get("stopv"),
+            rec.get("stopp"),
+            stop=True,
+        )
+        if stop.atom < start.atom:
+            raise ValueError(f"seed range for {folio} is inverted")
+        starts.append(start)
+        stops.append(stop)
+
+    start = min(starts, key=lambda w: w.atom)
+    stop = max(stops, key=lambda w: w.atom)
 
     def _ref(w) -> str:
         return f"{w.book} {w.chapter}:{w.verse}"
 
+    first = recs[0]
     return SeedSlice(
         folio=folio,
-        book=book,
+        book=first.get("bkid"),
         start_ref=_ref(start),
         stop_ref=_ref(stop),
-        record=rec,
+        record=first,
         atom_start=start.atom,
         atom_end=stop.atom,
+        records=recs,
     )
 
 
@@ -244,6 +280,30 @@ def _text_block(words: list[Word]) -> str:
     return " ".join(w.text for w in words)
 
 
+def _seed_notes(sl: SeedSlice) -> list[str]:
+    """Deduped seed notes for a folio side, in seed order."""
+    recs = sl.records if sl.records is not None else [sl.record]
+    notes: list[str] = []
+    for rec in recs:
+        note = rec.get("note") if isinstance(rec, dict) else None
+        if isinstance(note, str):
+            note = note.strip()
+            if note and note not in notes:
+                notes.append(note)
+    return notes
+
+
+def _notes_section(sl: SeedSlice) -> str:
+    """Prompt block for seed notes (empty when the seed has none)."""
+    notes = _seed_notes(sl)
+    if not notes:
+        return ""
+    if len(notes) == 1:
+        return f"\nNote on this folio: {notes[0]}\n"
+    items = "\n".join(f"- {note}" for note in notes)
+    return f"\nNotes on this folio:\n{items}\n"
+
+
 def _build_prompt(sl: SeedSlice, word_stream: WordStream) -> str:
     slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
     return ALIGN_PROMPT.format(
@@ -251,6 +311,7 @@ def _build_prompt(sl: SeedSlice, word_stream: WordStream) -> str:
         side=folio_side_for(sl.folio),
         columns=column_count_for(sl.book),
         range=f"{sl.start_ref} – {sl.stop_ref}",
+        notes_section=_notes_section(sl),
         text=_text_block(slice_words),
     )
 
