@@ -83,7 +83,7 @@ This folio is {folio}, the {side} of the leaf, and contains {columns} column(s) 
 Hebrew is written right-to-left, so the rightmost column on the folio is the first column.
 
 The text contained on this folio is {range}.
-
+{notes_section}
 ## Example Output
 
 ```xml
@@ -280,6 +280,30 @@ def _text_block(words: list[Word]) -> str:
     return " ".join(w.text for w in words)
 
 
+def _seed_notes(sl: SeedSlice) -> list[str]:
+    """Deduped seed notes for a folio side, in seed order."""
+    recs = sl.records if sl.records is not None else [sl.record]
+    notes: list[str] = []
+    for rec in recs:
+        note = rec.get("note") if isinstance(rec, dict) else None
+        if isinstance(note, str):
+            note = note.strip()
+            if note and note not in notes:
+                notes.append(note)
+    return notes
+
+
+def _notes_section(sl: SeedSlice) -> str:
+    """Prompt block for seed notes (empty when the seed has none)."""
+    notes = _seed_notes(sl)
+    if not notes:
+        return ""
+    if len(notes) == 1:
+        return f"\nNote on this folio: {notes[0]}\n"
+    items = "\n".join(f"- {note}" for note in notes)
+    return f"\nNotes on this folio:\n{items}\n"
+
+
 def _build_prompt(sl: SeedSlice, word_stream: WordStream) -> str:
     slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
     return ALIGN_PROMPT.format(
@@ -287,6 +311,7 @@ def _build_prompt(sl: SeedSlice, word_stream: WordStream) -> str:
         side=folio_side_for(sl.folio),
         columns=column_count_for(sl.book),
         range=f"{sl.start_ref} – {sl.stop_ref}",
+        notes_section=_notes_section(sl),
         text=_text_block(slice_words),
     )
 
