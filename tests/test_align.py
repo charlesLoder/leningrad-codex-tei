@@ -853,9 +853,7 @@ def test_write_poll_record_and_state(tmp_path) -> None:
     assert batch_result_file_name({"dest": {"file_name": "files/out"}}) == "files/out"
 
 
-def test_parse_raw_result_saves_alignment(
-    seed_slice, word_stream, config
-) -> None:
+def test_parse_raw_result_saves_alignment(seed_slice, word_stream, config) -> None:
     xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
     config.ai.inference = "batch"
     rec = parse_raw_result(
@@ -876,9 +874,7 @@ def test_parse_raw_result_saves_alignment(
     assert conv["ai"]["batch_job"] == "batches/123"
 
 
-def test_parse_raw_result_saves_raw_on_failure(
-    seed_slice, word_stream, config
-) -> None:
+def test_parse_raw_result_saves_raw_on_failure(seed_slice, word_stream, config) -> None:
     config.ai.inference = "batch"
     with pytest.raises(ValueError):
         parse_raw_result(
@@ -984,9 +980,7 @@ def test_split_batch_result_lines() -> None:
     good = json.dumps(
         {
             "key": "001B",
-            "response": {
-                "candidates": [{"content": {"parts": [{"text": "<cb/>"}]}}]
-            },
+            "response": {"candidates": [{"content": {"parts": [{"text": "<cb/>"}]}}]},
         }
     )
     lines = [
@@ -1019,14 +1013,21 @@ def _parse_raw_config(config, seed_fixture, word_stream):
             {
                 "project": {"name": "t", "version": "0.1.0-dev"},
                 "paths": {k: str(v) for k, v in config.paths.__dict__.items()},
-                "images": {"base_url": "https://example.invalid/", "naming": "F{folio}.jpg"},
+                "images": {
+                    "base_url": "https://example.invalid/",
+                    "naming": "F{folio}.jpg",
+                },
                 "seed": {
                     "upstream_url": "https://github.com/e/r",
                     "commit": "c",
                     "file": "f",
                 },
                 "uxlc": {"download_url": "https://example.invalid/z.zip"},
-                "ai": {"model": "test-model", "inference": "batch", "image_transport": "encode"},
+                "ai": {
+                    "model": "test-model",
+                    "inference": "batch",
+                    "image_transport": "encode",
+                },
             }
         )
     )
@@ -1072,14 +1073,13 @@ def test_parse_raw_parses_edited_raw(
     assert summary["failures"] == {}
     audit = json.loads((config.paths.audit / "001B.json").read_text())
     run = [r for r in audit["runs"] if r["stage"] == "parse-raw"][-1]
-    assert run["result_summary"]["raw_sha256"] == hashlib.sha256(
-        raw_text.encode("utf-8")
-    ).hexdigest()
+    assert (
+        run["result_summary"]["raw_sha256"]
+        == hashlib.sha256(raw_text.encode("utf-8")).hexdigest()
+    )
 
 
-def test_parse_raw_scans_raw_dir(
-    seed_fixture, seed_slice, word_stream, config
-) -> None:
+def test_parse_raw_scans_raw_dir(seed_fixture, seed_slice, word_stream, config) -> None:
     """Without --folio, every raw response is parsed; failures don't stop others."""
     from click.testing import CliRunner
 
@@ -1180,6 +1180,6 @@ def test_download_batch_writes_raw_conversation_and_audit(
     audit = json.loads((config.paths.audit / "001B.json").read_text())
     run = [r for r in audit["runs"] if r["stage"] == "download-batch"][-1]
     assert run["result_summary"]["batch_job"] == "batches/123"
-    assert run["result_summary"]["raw_sha256"] == hashlib.sha256(
-        b"hello raw"
-    ).hexdigest()
+    assert (
+        run["result_summary"]["raw_sha256"] == hashlib.sha256(b"hello raw").hexdigest()
+    )

@@ -66,7 +66,9 @@ def split_trailing_punct(text: str) -> tuple[str, list[tuple[str, str]]]:
 
 def contributor_xml_id(name: str | None, email: str | None) -> str:
     """Stable ``respStmt`` id for a human contributor (TEI ``who`` target)."""
-    base = re.sub(r"[^a-z0-9]+", "-", (name or email or "contributor").lower()).strip("-")
+    base = re.sub(r"[^a-z0-9]+", "-", (name or email or "contributor").lower()).strip(
+        "-"
+    )
     return f"contrib-{base}" if base else "contrib-unknown"
 
 
@@ -221,9 +223,7 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
         for entry in col["lines"]:
             first = filled[-1]["line_number"] + 1 if filled else 1
             for missing in range(first, entry["line_number"]):
-                filled.append(
-                    {"line_number": missing, "atoms": [], "tokens": []}
-                )
+                filled.append({"line_number": missing, "atoms": [], "tokens": []})
             filled.append(entry)
         col["lines"] = filled
         result.append(col)
@@ -263,7 +263,9 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
             changes.append(
                 {
                     "when": run.timestamp.isoformat() if run.timestamp else "",
-                    "who": f"#{contrib['xml_id']}" if contrib else "#leningrad-codex-tei",
+                    "who": f"#{contrib['xml_id']}"
+                    if contrib
+                    else "#leningrad-codex-tei",
                     "text": _change_text(run),
                     "features": _ai_features(run),
                     "prompt_url": prompt_snapshot_url(run.repo_hash),

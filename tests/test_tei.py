@@ -33,11 +33,16 @@ def _q(tag: str) -> str:
 # Stub layout for the 10-atom fixture: 3 words/line, wrap on verse boundary,
 # then the resulting lines are spread evenly across 3 columns.
 _TEI_PLACEMENTS = [
-    (1, 1, 1), (2, 1, 1), (3, 1, 1),
-    (4, 1, 2), (5, 1, 2),
+    (1, 1, 1),
+    (2, 1, 1),
+    (3, 1, 1),
+    (4, 1, 2),
+    (5, 1, 2),
     (6, 2, 1),
-    (7, 2, 2), (8, 2, 2),
-    (9, 3, 1), (10, 3, 1),
+    (7, 2, 2),
+    (8, 2, 2),
+    (9, 3, 1),
+    (10, 3, 1),
 ]
 
 
@@ -89,18 +94,21 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     # generate-tei emits SBL-sequenced Hebrew; only words whose marks
     # arrive out of order differ from the raw fixture text.
     # Trailing sof-pasuq / paseq live in pc, never inside w.
-    assert [w.text for w in words] == [
-        "בְּרֵאשִׁ֖ית",
-        "בָּרָ֣א",
-        "אֱלֹהִ֑ים",
-        "וְהָאָ֗רֶץ",
-        "בְּעֵ֖דֶן",
-        "\u05d0\u05bd\u05b9\u05d5\u05e8",  # sequenced: holam precedes vav; sof-pasuq split to pc
-        "אֶחָד",
-        "\u05d9\u0594\u05b9\u05d5\u05dd",  # sequenced: holam precedes vav
-        "כֶּתֶב",
-        "דָּבָר",
-    ]
+    assert (
+        [w.text for w in words]
+        == [
+            "בְּרֵאשִׁ֖ית",
+            "בָּרָ֣א",
+            "אֱלֹהִ֑ים",
+            "וְהָאָ֗רֶץ",
+            "בְּעֵ֖דֶן",
+            "\u05d0\u05bd\u05b9\u05d5\u05e8",  # sequenced: holam precedes vav; sof-pasuq split to pc
+            "אֶחָד",
+            "\u05d9\u0594\u05b9\u05d5\u05dd",  # sequenced: holam precedes vav
+            "כֶּתֶב",
+            "דָּבָר",
+        ]
+    )
 
     pcs = root.findall(f".//{_q('pc')}")
     assert [(p.get("type"), _id(p), p.text) for p in pcs] == [
@@ -466,9 +474,7 @@ def test_source_image_from_audit_prefers_latest() -> None:
     assert source_image_from_audit([]) is None
 
 
-def test_source_image_renders_graphic_in_facsimile(
-    alignment, changes
-) -> None:
+def test_source_image_renders_graphic_in_facsimile(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
         verse_range="Genesis 1:1 – 2:2",
@@ -490,9 +496,7 @@ def test_source_image_renders_graphic_in_facsimile(
     assert root.find(f".//{_q('sourceDesc')}/{_q('p')}") is None
 
 
-def test_facsimile_omits_graphic_without_image(
-    alignment, changes
-) -> None:
+def test_facsimile_omits_graphic_without_image(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
         verse_range="Genesis 1:1 – 2:2",
@@ -541,9 +545,7 @@ def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:
     assert tags.index(("pc", "f001B-pc-6")) == tags.index(("w", "f001B-w-6")) + 1
 
 
-def test_publication_stmt_has_mit_availability(
-    alignment, changes
-) -> None:
+def test_publication_stmt_has_mit_availability(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
         verse_range="Genesis 1:1 – 2:2",
@@ -644,7 +646,11 @@ def test_blank_lines_preserved(seed_slice, word_stream, changes) -> None:
     ab = root.find(f".//{_q('div')}[@type='edition']/{_q('ab')}")
     assert ab is not None
     kids = list(ab)
-    idx = next(i for i, el in enumerate(kids) if etree.QName(el).localname == "lb" and el.get("n") == "2")
+    idx = next(
+        i
+        for i, el in enumerate(kids)
+        if etree.QName(el).localname == "lb" and el.get("n") == "2"
+    )
     assert etree.QName(kids[idx + 1]).localname == "lb"
     assert kids[idx + 1].get("n") == "3"
 

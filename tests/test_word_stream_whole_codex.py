@@ -50,7 +50,12 @@ def test_every_word_carries_a_resolvable_reference() -> None:
     unresolved = [
         w
         for w in ws.words
-        if not (w.book in CANONICAL_BOOK_ORDER and w.chapter >= 1 and w.verse >= 1 and w.word_index >= 1)
+        if not (
+            w.book in CANONICAL_BOOK_ORDER
+            and w.chapter >= 1
+            and w.verse >= 1
+            and w.word_index >= 1
+        )
     ]
     assert unresolved == []
     # Genesis 1 opens the stream and its words are contiguous from atom 1

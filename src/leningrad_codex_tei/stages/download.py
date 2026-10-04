@@ -16,7 +16,9 @@ def image_url(config: Config, folio: str) -> str:
     return f"{config.images.base_url.rstrip('/')}/{file_name}"
 
 
-def download_image(config: Config, folio: str, fetcher=None, out_dir: Path | None = None) -> dict:
+def download_image(
+    config: Config, folio: str, fetcher=None, out_dir: Path | None = None
+) -> dict:
     """Fetch one folio image, write it to disk, and return hash metadata."""
     url = image_url(config, folio)
     data = (fetcher or net.fetch_url)(url)

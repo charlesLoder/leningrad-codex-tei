@@ -48,12 +48,14 @@ def test_download_uxlc_creates_dir(config: Config) -> None:
 
 
 def test_download_uxlc_skips_directories_and_non_xml(config: Config) -> None:
-    payload = _make_zip({
-        "Genesis.xml": b"<a/>",
-        "Exodus.xml": b"<b/>",
-        "dir/Joshua.xml": b"<c/>",
-        "README.txt": b"hi",
-    })
+    payload = _make_zip(
+        {
+            "Genesis.xml": b"<a/>",
+            "Exodus.xml": b"<b/>",
+            "dir/Joshua.xml": b"<c/>",
+            "README.txt": b"hi",
+        }
+    )
     info = download_uxlc(config, fetcher=lambda url: payload)
 
     assert (config.paths.uxlc / "Genesis.xml").read_bytes() == b"<a/>"
@@ -71,7 +73,9 @@ def test_download_uxlc_rejects_non_zip(config: Config) -> None:
     assert not list(config.paths.uxlc.iterdir())
 
 
-def test_download_uxlc_writes_to_explicit_out_dir(config: Config, tmp_path: Path) -> None:
+def test_download_uxlc_writes_to_explicit_out_dir(
+    config: Config, tmp_path: Path
+) -> None:
     out = tmp_path / "custom"
     download_uxlc(config, fetcher=lambda url: _make_zip(), out_dir=out)
     assert (out / "Genesis.xml").read_bytes() == b"<foo/>"

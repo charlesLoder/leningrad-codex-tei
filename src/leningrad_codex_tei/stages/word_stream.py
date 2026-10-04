@@ -96,7 +96,9 @@ def read_uxlc_edition(
     return _edition_from_root(root)
 
 
-def build_word_stream(uxlc_dir: Path, book_order: list[str] | None = None) -> WordStream:
+def build_word_stream(
+    uxlc_dir: Path, book_order: list[str] | None = None
+) -> WordStream:
     """Parse every book XML in ``uxlc_dir`` into a global word stream."""
     files = _ordered_book_files(uxlc_dir, book_order)
 
@@ -180,7 +182,11 @@ def load_word_stream(path: Path) -> WordStream:
 
 def _ordered_book_files(uxlc_dir: Path, book_order: list[str] | None) -> list[Path]:
     if book_order is not None:
-        return [uxlc_dir / f"{name}.xml" for name in book_order if (uxlc_dir / f"{name}.xml").exists()]
+        return [
+            uxlc_dir / f"{name}.xml"
+            for name in book_order
+            if (uxlc_dir / f"{name}.xml").exists()
+        ]
     rank = {name: i for i, name in enumerate(CANONICAL_BOOK_ORDER)}
     files = [p for p in uxlc_dir.glob("*.xml")]
     files.sort(key=lambda p: (rank.get(p.stem, len(rank)), p.name))

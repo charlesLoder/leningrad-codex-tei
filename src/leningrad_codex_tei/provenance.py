@@ -57,7 +57,9 @@ def _pipeline_run(data: dict) -> PipelineRun:
         input_image_sha256=data.get("input_image_sha256"),
         checks=data.get("checks"),
         result_summary=data.get("result_summary"),
-        timestamp=datetime.fromisoformat(data["timestamp"]) if data.get("timestamp") else None,
+        timestamp=datetime.fromisoformat(data["timestamp"])
+        if data.get("timestamp")
+        else None,
         contributor_name=data.get("contributor_name"),
         contributor_email=data.get("contributor_email"),
     )
@@ -96,7 +98,9 @@ def load_pipeline_provenance(path: Path) -> PipelineProvenance:
         project_version=data.get("project_version"),
         seed=SeedProvenance(**data["seed"]) if data.get("seed") else None,
         uxlc=UxlcProvenance(**data["uxlc"]) if data.get("uxlc") else None,
-        word_stream=WordStreamProvenance(**data["word_stream"]) if data.get("word_stream") else None,
+        word_stream=WordStreamProvenance(**data["word_stream"])
+        if data.get("word_stream")
+        else None,
         index=IndexProvenance(**data["index"]) if data.get("index") else None,
         updated_at=datetime.fromisoformat(data["updated_at"]),
     )
@@ -108,7 +112,9 @@ def save_pipeline_provenance(path: Path, prov: PipelineProvenance) -> None:
     path.write_text(json.dumps(asdict(prov), indent=2, default=_default))
 
 
-def update_pipeline_provenance(path: Path, project_version: str, **sections) -> PipelineProvenance:
+def update_pipeline_provenance(
+    path: Path, project_version: str, **sections
+) -> PipelineProvenance:
     """Set one or more sections of the pipeline ledger, creating it if needed."""
     prov = load_pipeline_provenance(path)
     prov.project_version = project_version

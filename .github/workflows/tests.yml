@@ -5,8 +5,30 @@ name: tests
     paths:
       - "src/**"
       - "tests/**"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/tests.yml"
 
 jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4
+
+      - name: Install Python dependencies
+        run: uv sync --locked --group dev
+
+      - name: Check formatting
+        run: uv run ruff format --check .
+
   tests:
     runs-on: ubuntu-latest
     steps:

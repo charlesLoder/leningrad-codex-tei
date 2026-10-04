@@ -14,7 +14,9 @@ def _local(el: etree._Element) -> str:
     return el.tag.rsplit("}", 1)[-1] if isinstance(el.tag, str) else ""
 
 
-def _contributors_and_date(root_element: etree._Element) -> tuple[list[dict], str | None]:
+def _contributors_and_date(
+    root_element: etree._Element,
+) -> tuple[list[dict], str | None]:
     """Human contributors plus the contributor date from a folio TEI header.
 
     Contributors are ``titleStmt/respStmt`` entries other than the pipeline
@@ -53,7 +55,9 @@ def _contributors_and_date(root_element: etree._Element) -> tuple[list[dict], st
         if when and (latest is None or when > latest):
             latest = when
     if latest is None:
-        app = next((el for el in root_element.iter() if _local(el) == "application"), None)
+        app = next(
+            (el for el in root_element.iter() if _local(el) == "application"), None
+        )
         if app is not None and app.get("when"):
             latest = app.get("when")
     return contributors, latest
@@ -73,7 +77,14 @@ def build_index(output_dir: Path) -> str:
             n = pb.get("n")
             if n:
                 folio = n
-        title = next((el.text or "" for el in root_element.iter() if _local(el) == "title" and el.text), "folio")
+        title = next(
+            (
+                el.text or ""
+                for el in root_element.iter()
+                if _local(el) == "title" and el.text
+            ),
+            "folio",
+        )
         contributors, when = _contributors_and_date(root_element)
         entry = etree.SubElement(root, "entry")
         entry.set("folio", folio)

@@ -398,9 +398,7 @@ def align_folio(
         raise click.ClickException("--show-prompt requires --dry-run")
     if dry_run:
         slices = [align_stage.compute_seed_slice(seed, page, stream) for page in folios]
-        prompts = (
-            align_stage.build_batch_prompts(slices, stream) if show_prompt else {}
-        )
+        prompts = align_stage.build_batch_prompts(slices, stream) if show_prompt else {}
         for sl in slices:
             atoms = sl.atom_end - sl.atom_start + 1
             click.echo(
@@ -638,8 +636,7 @@ def parse_raw(config: Config, folio: str | None) -> None:
     if not folios:
         if folio is not None:
             raise click.ClickException(
-                f"no raw response for {folio!r} in {raw_dir} "
-                f"(run download-batch first)"
+                f"no raw response for {folio!r} in {raw_dir} (run download-batch first)"
             )
         raise click.ClickException(f"no raw responses in {raw_dir}")
 
@@ -733,9 +730,7 @@ def parse_raw(config: Config, folio: str | None) -> None:
         )
         done += 1
         succeeded.append(key)
-        click.echo(
-            f"parse-raw: {key} -> {config.paths.alignments / f'{key}.json'}"
-        )
+        click.echo(f"parse-raw: {key} -> {config.paths.alignments / f'{key}.json'}")
     summary_ts = align_stage.batch_timestamp()
     summary_path = config.paths.alignments / "parse-raw" / f"{summary_ts}.json"
     summary_path.parent.mkdir(parents=True, exist_ok=True)

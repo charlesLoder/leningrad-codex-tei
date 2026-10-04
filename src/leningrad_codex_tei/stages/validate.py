@@ -16,14 +16,18 @@ class ValidationResult:
     status: str  # "aligned" | "failed"
 
 
-def validate_folio(sl: SeedSlice, alignment: AlignmentRecord, word_stream: WordStream) -> ValidationResult:
+def validate_folio(
+    sl: SeedSlice, alignment: AlignmentRecord, word_stream: WordStream
+) -> ValidationResult:
     """Cross-check the alignment against the seed slice. Pure; no side effects."""
     atoms = [a for col in alignment.columns for line in col.lines for a in line.atoms]
     span = sl.atom_end - sl.atom_start + 1
 
     checks = {
         "word_count": len(atoms) == span,
-        "atoms_sequential": all(a.atom == sl.atom_start + i for i, a in enumerate(atoms)),
+        "atoms_sequential": all(
+            a.atom == sl.atom_start + i for i, a in enumerate(atoms)
+        ),
     }
     passed = all(checks.values())
     return ValidationResult(

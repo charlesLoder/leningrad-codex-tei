@@ -241,9 +241,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert "Aligned Genesis 1:1" in (changes[0].text or "")
     resp = root.find(".//t:titleStmt/t:respStmt", ns)
     assert resp is not None
-    assert (
-        resp.get("{http://www.w3.org/XML/1998/namespace}id") == "leningrad-codex-tei"
-    )
+    assert resp.get("{http://www.w3.org/XML/1998/namespace}id") == "leningrad-codex-tei"
     graphic = root.find(".//t:facsimile/t:surface/t:graphic", ns)
     assert graphic is not None
     assert graphic.get("url").endswith("BIB_LENCDX_F001B.jpg")

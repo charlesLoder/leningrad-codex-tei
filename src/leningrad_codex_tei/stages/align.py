@@ -431,9 +431,7 @@ def _count_matched_tokens(
                 continue
             parts = _split_maqaf(tok)
             next_toks = raw_lines[li + 1][2] if li + 1 < len(raw_lines) else []
-            following = (
-                next_toks[0] if ti == len(toks) - 1 and next_toks else None
-            )
+            following = next_toks[0] if ti == len(toks) - 1 and next_toks else None
             if (
                 len(parts) > 1
                 and pos + len(parts) <= len(expected)
@@ -452,17 +450,13 @@ def _count_matched_tokens(
                 counts[li] += 1
                 merged_first.add(li + 1)
                 pos += 1
-            elif pos < len(expected) and _norm_word(tok) == _norm_word(
-                expected[pos]
-            ):
+            elif pos < len(expected) and _norm_word(tok) == _norm_word(expected[pos]):
                 counts[li] += 1
                 pos += 1
             else:
                 counts[li] += len(parts)
                 pos += len(parts)
-    return [
-        (col, line, counts[li]) for li, (col, line, _toks) in enumerate(raw_lines)
-    ]
+    return [(col, line, counts[li]) for li, (col, line, _toks) in enumerate(raw_lines)]
 
 
 def _parse_epilog_xml(
@@ -515,9 +509,7 @@ def _flatten_raw_tokens(
     return tokens, locs
 
 
-def _diagnose_text_gap(
-    slice_words: list, model_response: str | None
-) -> str | None:
+def _diagnose_text_gap(slice_words: list, model_response: str | None) -> str | None:
     """Locate the true text gap by comparing expected and model words.
 
     Count-only placement always reports a shortfall as missing tail atoms,
@@ -793,9 +785,7 @@ def align_folio_ai(
                 )
             else:
                 text = result
-            line_counts = _parse_epilog_xml(
-                text, [w.text for w in slice_words]
-            )
+            line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
             placement = _place_words(line_counts, sl.atom_start)
             record = build_alignment_record(
                 sl, slice_words, placement, model_response=text

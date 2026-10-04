@@ -48,7 +48,11 @@ def test_append_run_creates_trail(tmp_path) -> None:
 
 
 def test_append_run_accumulates_in_order(tmp_path) -> None:
-    for stage in (RunStage.DOWNLOAD_IMAGES, RunStage.ALIGN_FOLIO, RunStage.GENERATE_TEI):
+    for stage in (
+        RunStage.DOWNLOAD_IMAGES,
+        RunStage.ALIGN_FOLIO,
+        RunStage.GENERATE_TEI,
+    ):
         append_run(tmp_path, "001B", _run(stage))
 
     trail = load_audit(tmp_path, "001B")
@@ -154,7 +158,9 @@ def test_update_sets_one_section_and_keeps_others(tmp_path) -> None:
         path=str(tmp_path / "seed.json"),
     )
     update_pipeline_provenance(path, "0.1.0-dev", seed=seed)
-    update_pipeline_provenance(path, "0.1.0-dev", index=IndexProvenance(path="index.xml", entries=1))
+    update_pipeline_provenance(
+        path, "0.1.0-dev", index=IndexProvenance(path="index.xml", entries=1)
+    )
 
     loaded = load_pipeline_provenance(path)
     assert loaded.seed == seed

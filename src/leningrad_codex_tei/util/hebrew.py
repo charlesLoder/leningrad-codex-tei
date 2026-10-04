@@ -55,9 +55,13 @@ def sequence_texts(texts: list[str]) -> list[str]:
     try:
         out = json.loads(proc.stdout)
     except json.JSONDecodeError as exc:
-        raise HebrewSequencingError(f"Node sequencing returned invalid JSON: {exc}") from exc
+        raise HebrewSequencingError(
+            f"Node sequencing returned invalid JSON: {exc}"
+        ) from exc
     if not isinstance(out, list) or len(out) != len(texts):
-        raise HebrewSequencingError("Node sequencing returned an unexpected result shape.")
+        raise HebrewSequencingError(
+            "Node sequencing returned an unexpected result shape."
+        )
     return [str(t) for t in out]
 
 
