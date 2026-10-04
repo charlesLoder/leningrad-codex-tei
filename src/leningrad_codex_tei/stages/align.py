@@ -195,10 +195,6 @@ def _find_records(seed: dict, folio: str) -> list[dict]:
     return recs
 
 
-def _find_record(seed: dict, folio: str) -> dict:
-    return _find_records(seed, folio)[0]
-
-
 def _resolve(
     book_words: list, chapter: int | None, verse: int | None, part, stop: bool
 ):
