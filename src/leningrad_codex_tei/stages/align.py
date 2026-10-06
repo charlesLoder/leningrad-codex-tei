@@ -79,7 +79,7 @@ class ChatResult:
 
 ALIGN_PROMPT = """Map the <TEXT> onto the columns and lines of the image according to the TEI XML schema.
 
-This folio is {folio}, the {side} of the leaf, and contains {columns} column(s) of Hebrew text.
+This folio is {folio}, the {side} of the leaf, and contains column(s) of Hebrew text.
 Hebrew is written right-to-left, so the rightmost column on the folio is the first column.
 
 The text contained on this folio is {range}.
@@ -108,7 +108,13 @@ You do NOT need a high fidelity understanding of the text on the page since you 
 - Do not output verse numbers, chapter markers or pe/samekh markers.
 - Do not consider the meaning of the text, just the visual placement of the words on the folio.
 - If a line's text is struck through, erased, or corrected by the scribe so that it does not match <TEXT>, treat it as a blank line: emit its milestone with no words.
-- Work efficiently: crop each column at most once and aim for at most 3 code-execution calls. Only do extra image work when the columns disagree on line counts or the text is hard to read.
+- Work efficiently:
+    - Return the XML directly first.
+    - Do not make matplotlib grids, overlays, or debug plots.
+    - Do not save debug images.
+    - Use code execution only to check line counts and the last word per line.
+    - Crop each column at most once and use at most 3 code-execution calls in total.
+    - Use extra image work only when columns disagree on line counts or the text is hard to read.
 
 ## Important
 
@@ -154,8 +160,6 @@ def ensure_align_prompt_clean() -> None:
     require_file_clean(ALIGN_PROMPT_PATH)
 
 
-POETRY_BOOKS = {"Psalms", "Proverbs", "Job"}
-
 RETRYABLE_CODES = {408, 429, 500, 502, 503, 504}
 
 
@@ -179,11 +183,6 @@ class SeedSlice:
 def folio_side_for(folio: str) -> str:
     """Page side from the trailing letter of the folio id (A=recto, B=verso)."""
     return "verso" if folio.endswith("B") else "recto"
-
-
-def column_count_for(book: str) -> int:
-    """Best guess at the folio's column scheme for a book (a prompt hint only)."""
-    return 2 if book in POETRY_BOOKS else 3
 
 
 def _find_records(seed: dict, folio: str) -> list[dict]:
@@ -305,7 +304,6 @@ def _build_prompt(sl: SeedSlice, word_stream: WordStream) -> str:
     return ALIGN_PROMPT.format(
         folio=sl.folio,
         side=folio_side_for(sl.folio),
-        columns=column_count_for(sl.book),
         range=f"{sl.start_ref} – {sl.stop_ref}",
         notes_section=_notes_section(sl),
         text=_text_block(slice_words),

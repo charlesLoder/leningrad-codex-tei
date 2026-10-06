@@ -28,7 +28,6 @@ from leningrad_codex_tei.stages.align import (
     build_batch_request_line,
     build_conversation,
     check_image_transport,
-    column_count_for,
     compute_seed_slice,
     find_latest_batch_record,
     folio_side_for,
@@ -177,13 +176,6 @@ def test_build_groups_by_column_and_line(seed_slice, word_stream) -> None:
 def test_folio_side_derived_from_folio() -> None:
     assert folio_side_for("001B") == "verso"
     assert folio_side_for("001A") == "recto"
-
-
-def test_column_count_hint() -> None:
-    assert column_count_for("Genesis") == 3
-    assert column_count_for("Psalms") == 2
-    assert column_count_for("Proverbs") == 2
-    assert column_count_for("Job") == 2
 
 
 def _placements_to_xml(placements: list[tuple[int, int, int]]) -> str:
