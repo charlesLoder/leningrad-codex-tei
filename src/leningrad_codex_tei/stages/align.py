@@ -153,6 +153,26 @@ PROMPT_VERSION = hashlib.sha256(ALIGN_PROMPT.encode("utf-8")).hexdigest()
 
 ALIGN_PROMPT_PATH = Path(__file__).resolve()
 
+# Seed (lci_recs `bkid`) -> word stream (UXLC file stem) book names.
+# Most names match exactly; only the diverged names are listed here.
+SEED_TO_STREAM_BOOK = {
+    "Levit": "Leviticus",
+    "Deuter": "Deuteronomy",
+    "1Samuel": "Samuel_1",
+    "2Samuel": "Samuel_2",
+    "1Kings": "Kings_1",
+    "2Kings": "Kings_2",
+    "Tsefaniah": "Zephaniah",
+    "1Chronicles": "Chronicles_1",
+    "2Chronicles": "Chronicles_2",
+    "Song of Songs": "Song_of_Songs",
+}
+
+
+def stream_book_for(seed_book: str) -> str:
+    """Word stream book name for a seed `bkid` (identity when unmapped)."""
+    return SEED_TO_STREAM_BOOK.get(seed_book, seed_book)
+
 
 def ensure_align_prompt_clean() -> None:
     from leningrad_codex_tei.util.git import require_file_clean
@@ -195,17 +215,22 @@ def _find_records(seed: dict, folio: str) -> list[dict]:
 
 
 def _resolve(
-    book_words: list, chapter: int | None, verse: int | None, part, stop: bool
+    book: str,
+    book_words: list,
+    chapter: int | None,
+    verse: int | None,
+    part,
+    stop: bool,
 ):
     """Find the global atom for a (chapter, verse, part-of-verse) anchor."""
     cands = [w for w in book_words if w.chapter == chapter and w.verse == (verse or -1)]
     if not cands:
-        raise ValueError(f"no words for anchor Genesis-ish {chapter}:{verse}")
+        raise ValueError(f"no words for anchor {book} {chapter}:{verse}")
     if part is None:
         return cands[-1] if stop else cands[0]
     hit = next((w for w in cands if w.word_index == int(part)), None)
     if hit is None:
-        raise ValueError(f"no word at part {part} of {chapter}:{verse}")
+        raise ValueError(f"no word at part {part} of {book} {chapter}:{verse}")
     return hit
 
 
@@ -224,10 +249,20 @@ def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedS
     for rec in recs:
         book = rec.get("bkid")
         if not book:
-            raise ValueError(f"seed record for {folio} has no bkid")
-        book_words = [w for w in word_stream.words if w.book == book]
+            raise ValueError(
+                f"seed record for {folio} has no bkid "
+                "(non-biblical page, e.g. Masoretic list; cannot align)"
+            )
+        stream_book = stream_book_for(book)
+        book_words = [w for w in word_stream.words if w.book == stream_book]
+        if not book_words:
+            raise ValueError(
+                f"seed book {book!r} (stream {stream_book!r}) "
+                f"for {folio} has no words in the word stream"
+            )
 
         start = _resolve(
+            stream_book,
             book_words,
             rec.get("startc"),
             rec.get("startv"),
@@ -235,6 +270,7 @@ def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedS
             stop=False,
         )
         stop = _resolve(
+            stream_book,
             book_words,
             rec.get("stopc"),
             rec.get("stopv"),
@@ -255,7 +291,7 @@ def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedS
     first = recs[0]
     return SeedSlice(
         folio=folio,
-        book=first.get("bkid"),
+        book=stream_book_for(first.get("bkid")),
         start_ref=_ref(start),
         stop_ref=_ref(stop),
         record=first,
