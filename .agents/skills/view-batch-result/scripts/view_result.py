@@ -115,10 +115,14 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Write model images to DIR as <folio>-<n>.<ext>",
     )
     p.add_argument(
-        "--full-code", action="store_true", help="Show full code blocks, not first lines"
+        "--full-code",
+        action="store_true",
+        help="Show full code blocks, not first lines",
     )
     p.add_argument(
-        "--text-only", action="store_true", help="Show only the final text part per folio"
+        "--text-only",
+        action="store_true",
+        help="Show only the final text part per folio",
     )
     return p.parse_args(argv)
 
@@ -162,8 +166,14 @@ def render_final_text(text: str) -> list[str]:
     return out
 
 
-def show_part(part: dict, idx: int, args: argparse.Namespace, img_counter: list[int],
-              folio: str, saved: list[Path]) -> list[str]:
+def show_part(
+    part: dict,
+    idx: int,
+    args: argparse.Namespace,
+    img_counter: list[int],
+    folio: str,
+    saved: list[Path],
+) -> list[str]:
     out: list[str] = []
     if "text" in part:
         t = part["text"]
@@ -182,7 +192,9 @@ def show_part(part: dict, idx: int, args: argparse.Namespace, img_counter: list[
         show = lines if args.full_code else lines[:CODE_PREVIEW_LINES]
         out.extend(f"    {ln}" for ln in show)
         if not args.full_code and len(lines) > CODE_PREVIEW_LINES:
-            out.append(f"    ... ({len(lines) - CODE_PREVIEW_LINES} more, use --full-code)")
+            out.append(
+                f"    ... ({len(lines) - CODE_PREVIEW_LINES} more, use --full-code)"
+            )
         return out
     if "codeExecutionResult" in part:
         r = part["codeExecutionResult"]
@@ -237,9 +249,11 @@ def show_line(obj: dict, args: argparse.Namespace, saved: list[Path]) -> list[st
     n_text = sum(1 for p in parts if "text" in p)
     usage = resp.get("usageMetadata", {})
     model = resp.get("modelVersion", "?")
-    out.append(f"== {key}: finish={finish} steps={len(parts)} "
-               f"(code={n_code} tool={n_tool} img={n_img} text={n_text}) "
-               f"model={model} ==")
+    out.append(
+        f"== {key}: finish={finish} steps={len(parts)} "
+        f"(code={n_code} tool={n_tool} img={n_img} text={n_text}) "
+        f"model={model} =="
+    )
     out.extend(usage_lines(usage))
     if args.text_only:
         for i, p in enumerate(parts):
