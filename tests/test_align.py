@@ -102,6 +102,81 @@ def test_seed_slice_unresolvable_verse_raises(seed_fixture: dict, word_stream) -
         compute_seed_slice(bad, "001B", word_stream)
 
 
+def test_stream_book_for_maps_seed_names() -> None:
+    from leningrad_codex_tei.stages.align import SEED_TO_STREAM_BOOK, stream_book_for
+
+    assert SEED_TO_STREAM_BOOK == {
+        "Levit": "Leviticus",
+        "Deuter": "Deuteronomy",
+        "1Samuel": "Samuel_1",
+        "2Samuel": "Samuel_2",
+        "1Kings": "Kings_1",
+        "2Kings": "Kings_2",
+        "Tsefaniah": "Zephaniah",
+        "1Chronicles": "Chronicles_1",
+        "2Chronicles": "Chronicles_2",
+        "Song of Songs": "Song_of_Songs",
+    }
+    assert stream_book_for("Genesis") == "Genesis"
+    assert stream_book_for("Levit") == "Leviticus"
+    assert stream_book_for("Song of Songs") == "Song_of_Songs"
+
+
+def test_seed_slice_resolves_mapped_book_name() -> None:
+    from datetime import UTC, datetime
+
+    from leningrad_codex_tei.schemas import Word, WordStream
+    from leningrad_codex_tei.stages.align import stream_book_for
+
+    assert stream_book_for("Levit") == "Leviticus"
+    stream = WordStream(
+        source="test",
+        generated_at=datetime.now(UTC),
+        words=[
+            Word(atom=1, text="a", book="Leviticus", chapter=1, verse=1, word_index=1),
+            Word(atom=2, text="b", book="Leviticus", chapter=1, verse=2, word_index=1),
+        ],
+    )
+    seed = {
+        "header": {},
+        "body": [
+            {
+                "page": "056B",
+                "bkid": "Levit",
+                "startc": 1,
+                "startv": 1,
+                "startp": 1,
+                "stopc": 1,
+                "stopv": 2,
+                "stopp": 1,
+            }
+        ],
+    }
+    sl = compute_seed_slice(seed, "056B", stream)
+    assert sl.book == "Leviticus"
+    assert (sl.atom_start, sl.atom_end) == (1, 2)
+
+
+def test_seed_slice_missing_bkid_raises(word_stream) -> None:
+    seed = {
+        "header": {},
+        "body": [
+            {
+                "page": "120B",
+                "bkid": None,
+                "startc": None,
+                "startv": None,
+                "startp": None,
+                "stopc": None,
+                "stopv": None,
+                "stopp": None,
+            }
+        ],
+    }
+    with pytest.raises(ValueError, match="no bkid"):
+        compute_seed_slice(seed, "120B", word_stream)
+
+
 def test_build_preserves_atom_order_and_text(seed_slice, word_stream) -> None:
     rec = _alignment(seed_slice, word_stream)
     assert rec.folio == "001B"
