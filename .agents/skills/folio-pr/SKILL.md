@@ -22,8 +22,10 @@ Use the repo glossary in `AGENTS.md`: a **folio side** is `Fxxx{A|B}`, one TEI d
 2. **Resolve each side to its issue number.**
    For each side `$FOLIO` (e.g. `001B`), run:
    `gh issue list --search "$FOLIO in:title" --json number,title --limit 5`
-   Expect exactly one hit of the form `Folio XXXX: create TEI document`.
-   Completion: every side has exactly one `#N`; any `NOT FOUND` or duplicate is reported before continuing.
+   Keep only hits whose title starts with `Folio $FOLIO` (e.g. `Folio 001B: create TEI document`).
+   Discard any other title that merely mentions the side (e.g. `Damaged line in 072A`).
+   Expect exactly one kept hit of the form `Folio XXXX: create TEI document`.
+   Completion: every side has exactly one `#N` with a `Folio XXX[A|B]`-prefixed title; any `NOT FOUND` or duplicate is reported before continuing.
 
 3. **Push the branch.**
    `git push -u origin <branch>`
