@@ -1,3 +1,5 @@
+import { XMLParser } from 'fast-xml-parser';
+
 export interface FolioEntry {
   folio: string;
   href: string;
@@ -41,12 +43,100 @@ export interface FolioDoc {
   verses: string[];
 }
 
-function attrs(tag: string): Record<string, string> {
-  const out: Record<string, string> = {};
-  for (const m of tag.matchAll(/(\w[\w:.-]*)\s*=\s*"([^"]*)"/g)) {
-    out[m[1]] = m[2];
-  }
+type XmlAttrs = Record<string, string>;
+interface OrderedNode {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [tag: string]: any;
+  ':@'?: XmlAttrs;
+}
+
+const teiParser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: '',
+  removeNSPrefix: true,
+  trimValues: false,
+  preserveOrder: true,
+});
+
+function nodeAttrs(node: OrderedNode): XmlAttrs {
+  const raw = node[':@'] as XmlAttrs | undefined;
+  if (!raw) return {};
+  const out: XmlAttrs = {};
+  for (const [k, v] of Object.entries(raw)) out[k] = String(v);
   return out;
+}
+
+function innerText(children: unknown[]): string {
+  let s = '';
+  for (const child of children as OrderedNode[]) {
+    if (!child || typeof child !== 'object') continue;
+    if ('#text' in child && typeof (child as Record<string, unknown>)['#text'] === 'string') {
+      s += (child as Record<string, string>)['#text'];
+    } else {
+      for (const [key, value] of Object.entries(child)) {
+        if (key === ':@' || key === '#text') continue;
+        if (Array.isArray(value)) s += innerText(value as unknown[]);
+      }
+    }
+  }
+  return s;
+}
+
+function childrenOf(node: OrderedNode, tag: string): OrderedNode[] {
+  const v = node[tag];
+  return Array.isArray(v) ? (v as OrderedNode[]) : [];
+}
+
+function findFirst(nodes: OrderedNode[], tag: string): OrderedNode | null {
+  for (const node of nodes) {
+    for (const [key, value] of Object.entries(node)) {
+      if (key === ':@' || key === '#text') continue;
+      if (key === tag) return node;
+      if (Array.isArray(value)) {
+        const hit = findFirst(value as OrderedNode[], tag);
+        if (hit) return hit;
+      }
+    }
+  }
+  return null;
+}
+
+function findEditionDiv(nodes: OrderedNode[]): OrderedNode | null {
+  for (const node of nodes) {
+    for (const [key, value] of Object.entries(node)) {
+      if (key === ':@' || key === '#text') continue;
+      if (key === 'div' && nodeAttrs(node)['type'] === 'edition') return node;
+      if (Array.isArray(value)) {
+        const hit = findEditionDiv(value as OrderedNode[]);
+        if (hit) return hit;
+      }
+    }
+  }
+  return null;
+}
+
+interface EditionToken {
+  tag: string;
+  attrs: XmlAttrs;
+  children: OrderedNode[];
+}
+
+const TOKEN_TAGS = new Set(['cb', 'lb', 'milestone', 'w', 'pc']);
+
+function collectTokens(nodes: OrderedNode[], out: EditionToken[]): void {
+  for (const node of nodes) {
+    const attrs = nodeAttrs(node);
+    for (const [key, value] of Object.entries(node)) {
+      if (key === ':@' || key === '#text' || key === '?xml') continue;
+      if (!Array.isArray(value)) continue;
+      const kids = value as OrderedNode[];
+      if (TOKEN_TAGS.has(key)) {
+        out.push({ tag: key, attrs, children: kids });
+      } else {
+        collectTokens(kids, out);
+      }
+    }
+  }
 }
 
 const SBL_ABBREVIATIONS: Record<string, string> = {
@@ -99,9 +189,22 @@ function formatRef(n: string): string {
 }
 
 export function parseFolioXml(xml: string): FolioDoc {
-  const title = xml.match(/<title>([^<]+)<\/title>/)?.[1] ?? 'Folio';
-  const graphicUrl = xml.match(/<graphic[^>]*url="([^"]+)"/)?.[1] ?? null;
-  const body = xml.match(/<div type="edition">([\s\S]*?)<\/div>/)?.[1] ?? '';
+  let ordered: OrderedNode[];
+  try {
+    ordered = teiParser.parse(xml) as OrderedNode[];
+  } catch {
+    return { title: 'Folio', graphicUrl: null, columns: [], verses: [] };
+  }
+  if (!Array.isArray(ordered)) return { title: 'Folio', graphicUrl: null, columns: [], verses: [] };
+
+  const titleNode = findFirst(ordered, 'title');
+  const title = titleNode ? innerText(childrenOf(titleNode, 'title')).trim() || 'Folio' : 'Folio';
+  const graphicNode = findFirst(ordered, 'graphic');
+  const graphicUrl = graphicNode ? (nodeAttrs(graphicNode)['url'] ?? null) : null;
+
+  const editionDiv = findEditionDiv(ordered);
+  const tokens: EditionToken[] = [];
+  if (editionDiv) collectTokens(childrenOf(editionDiv, 'div'), tokens);
 
   const columns: TeiColumn[] = [];
   const verses: string[] = [];
@@ -116,23 +219,18 @@ export function parseFolioXml(xml: string): FolioDoc {
     currentLine = null;
   };
 
-  const tokenRe =
-    /<cb\b[^>]*>|<lb\b[^>]*>|<milestone\b[^>]*\/>|<(w|pc)\b[^>]*>([\s\S]*?)<\/\1>/g;
-
-  let m: RegExpExecArray | null;
-  while ((m = tokenRe.exec(body)) !== null) {
-    const tag = m[0];
-    if (tag.startsWith('<cb')) {
+  for (const tok of tokens) {
+    if (tok.tag === 'cb') {
       flushLine();
       if (started) columns.push(currentCol);
-      currentCol = { n: attrs(tag)['n'] ?? String(columns.length + 1), lines: [] };
+      currentCol = { n: tok.attrs['n'] ?? String(columns.length + 1), lines: [] };
       started = true;
-    } else if (tag.startsWith('<lb')) {
+    } else if (tok.tag === 'lb') {
       flushLine();
-      currentLine = { n: attrs(tag)['n'] ?? '', tokens: [] };
+      currentLine = { n: tok.attrs['n'] ?? '', tokens: [] };
       started = true;
-    } else if (tag.startsWith('<milestone')) {
-      const a = attrs(tag);
+    } else if (tok.tag === 'milestone') {
+      const a = tok.attrs;
       if (a['unit'] === 'verse' && a['n']) {
         const ref = formatRef(a['n']);
         if (!verses.includes(ref)) verses.push(ref);
@@ -148,8 +246,7 @@ export function parseFolioXml(xml: string): FolioDoc {
         else pending.push(mark);
       }
     } else {
-      const name = m[1];
-      const text = (m[2] ?? '').trim();
+      const text = innerText(tok.children).trim();
       if (!text) {
         pending = [];
         continue;
@@ -159,8 +256,8 @@ export function parseFolioXml(xml: string): FolioDoc {
         started = true;
       }
       let kind: Token['kind'] = 'w';
-      if (name === 'pc') {
-        const t = attrs(tag)['type'] ?? '';
+      if (tok.tag === 'pc') {
+        const t = tok.attrs['type'] ?? '';
         kind = t === 'paseq' ? 'paseq' : 'sof-pasuq';
       }
       currentLine.tokens.push({ text, kind, marks: pending, verse: currentVerse });
