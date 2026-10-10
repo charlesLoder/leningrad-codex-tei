@@ -1,0 +1,18 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'count' } = Astro.props;
+---
+
+<p id={id} class="result-count" aria-live="polite"><slot /></p>
+
+<style>
+  .result-count {
+    min-height: 1.5em;
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>

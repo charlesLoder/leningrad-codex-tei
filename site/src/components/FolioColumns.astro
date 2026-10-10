@@ -1,0 +1,35 @@
+---
+import ManuscriptColumn from './ManuscriptColumn.astro';
+import type { TeiColumn } from '../lib/tei';
+
+interface Props {
+  columns: TeiColumn[];
+}
+
+const { columns } = Astro.props;
+---
+
+<div class="columns" data-cols={String(columns.length)}>
+  {columns.map((col) => (
+    <ManuscriptColumn col={col} />
+  ))}
+</div>
+
+<style>
+  .columns {
+    display: grid;
+    gap: 1.2rem;
+    padding-bottom: 3rem;
+    direction: rtl;
+  }
+
+  @media (min-width: 60rem) {
+    .columns[data-cols='3'] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .columns[data-cols='2'] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

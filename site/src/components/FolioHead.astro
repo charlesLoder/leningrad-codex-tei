@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  range: string;
+}
+
+const { title, range } = Astro.props;
+---
+
+<section class="folio-head">
+  <h1>{title}</h1>
+  <p class="range">{range}</p>
+  <slot />
+</section>
+
+<style>
+  .folio-head {
+    padding: 2rem 0 0.5rem;
+  }
+
+  .folio-head h1 {
+    margin: 0;
+  }
+
+  .folio-head .range {
+    color: var(--muted);
+    margin: 0.3rem 0 1rem;
+  }
+</style>

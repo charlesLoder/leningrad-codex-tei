@@ -1,6 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
 import ContributeCta from '../components/ContributeCta.astro';
+import FolioCard from '../components/FolioCard.astro';
+import FolioGrid from '../components/FolioGrid.astro';
+import Hero from '../components/Hero.astro';
+import ResultCount from '../components/ResultCount.astro';
+import SearchField from '../components/SearchField.astro';
 import folios from '../data/folios.json';
 import { abbreviateRange } from '../lib/tei';
 import { folioRangeKeys } from '../lib/verses';
@@ -14,31 +19,30 @@ const cards = folios.map((f) => {
   title="Leningrad Codex TEI — the oldest complete Hebrew Bible, folio by folio"
   description="Read the Leningrad Codex online: an open, TEI-encoded edition of the oldest complete manuscript of the Hebrew Bible, browsable folio by folio with facsimile images."
 >
-  <section class="hero">
+  <Hero>
     <h1>Leningrad Codex TEI</h1>
     <ContributeCta published={cards.length} />
-  </section>
+  </Hero>
 
   <div>
     <p>
       Read the Leningrad Codex online.
     </p>
-    <div class="controls">
-      <input id="q" type="search" placeholder="Filter by folio or verse (e.g. 002A, Gen 3:15)…" autocomplete="off" />
-    </div>
+    <SearchField />
   </div>
 
-  <p id="count" class="result-count" aria-live="polite"></p>
-  <ol class="folio-grid" id="grid">
+  <ResultCount />
+  <FolioGrid>
     {cards.map((f) => (
-      <li data-search={`${f.folio} ${f.title} ${f.range}`.toLowerCase()} data-start={f.start ?? ''} data-end={f.end ?? ''}>
-        <a class="folio-card" href={`/folio/${f.folio}/`}>
-          <h2>{f.folio}</h2>
-          <p class="range">{abbreviateRange(f.range)}</p>
-        </a>
-      </li>
+      <FolioCard
+        folio={f.folio}
+        range={abbreviateRange(f.range)}
+        search={`${f.folio} ${f.title} ${f.range}`.toLowerCase()}
+        start={f.start}
+        end={f.end}
+      />
     ))}
-  </ol>
+  </FolioGrid>
 
   <script>
     import { parseVerseQuery } from '../lib/verses';

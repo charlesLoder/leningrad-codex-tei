@@ -1,0 +1,129 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  type?: 'button' | 'submit' | 'reset';
+  id?: string;
+  target?: string;
+  rel?: string;
+  disabled?: boolean;
+  download?: string | boolean;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  variant = 'secondary',
+  type = 'button',
+  id,
+  target,
+  rel,
+  disabled,
+  download,
+  ...rest
+} = Astro.props;
+
+const isLink = typeof href === 'string';
+---
+{isLink ? (
+  <a
+    class="button"
+    data-variant={variant}
+    href={href}
+    id={id}
+    target={target}
+    rel={rel}
+    download={download}
+    {...rest}
+  ><slot /></a>
+) : (
+  <button
+    class="button"
+    data-variant={variant}
+    type={type}
+    id={id}
+    disabled={disabled}
+    {...rest}
+  ><slot /></button>
+)}
+
+<style>
+  .button {
+    /* Configuration — per Piccalilli: variants only reset vars below */
+    --button-padding: 0.45rem 0.8rem;
+    --button-gap: 0.4rem;
+    --button-bg: var(--card);
+    --button-color: var(--ink);
+    --button-hover-bg: var(--card);
+    --button-hover-color: var(--accent);
+    --button-border-width: 1px;
+    --button-border-style: solid;
+    --button-border-color: var(--line);
+    --button-radius: 0.55rem;
+    --button-font-size: 0.92rem;
+    --button-font-weight: 400;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--button-gap);
+    padding: var(--button-padding);
+
+    background: var(--button-bg);
+    color: var(--button-color);
+
+    border-width: var(--button-border-width);
+    border-style: var(--button-border-style);
+    border-color: var(--button-border-color);
+    border-radius: var(--button-radius);
+
+    font: inherit;
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    line-height: 1.3;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button svg {
+    height: 1.2cap;
+    width: auto;
+    flex: none;
+  }
+
+  .button :global(.external-icon) {
+    vertical-align: -0.15em;
+    margin-inline-start: 0.25rem;
+  }
+
+  .button:hover {
+    background: var(--button-hover-bg);
+    color: var(--button-hover-color);
+    border-color: var(--accent);
+  }
+
+  .button:focus-visible {
+    outline-width: var(--button-outline-width, var(--button-border-width));
+    outline-style: var(--button-outline-style, solid);
+    outline-color: var(--button-outline-color, var(--accent));
+    outline-offset: var(--button-outline-offset, 0);
+    border-color: var(--accent);
+  }
+
+  .button:active {
+    transform: scale(99%);
+  }
+
+  .button[data-variant='primary'] {
+    --button-bg: var(--accent);
+    --button-color: #fff;
+    --button-border-color: var(--accent);
+    --button-hover-bg: #5e2315;
+    --button-hover-color: #fff;
+  }
+
+  .button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+import Button from './Button.astro';
+import { bibliographyEntry } from '../lib/citation';
+import meta from '../data/meta.json';
+
+const biblio = bibliographyEntry(meta.version);
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <p>
+      Learn more about this project on{" "}
+      <a href="https://github.com/charlesLoder/leningrad-codex-tei">GitHub</a>
+      {" "}or download the{" "}
+      <a href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">whole edition (.zip)</a>.
+    </p>
+    <section class="cite" aria-labelledby="cite-heading">
+      <h2 id="cite-heading">Cite this project</h2>
+      <p class="cite-style"><strong>Bibliography (SBL/Chicago):</strong> <span id="cite-biblio">{biblio}</span></p>
+      <p class="cite-actions">
+        <Button id="cite-copy" type="button">Copy citation</Button>
+        <Button href="/citation.ris" download="leningrad-codex-tei.ris">Download RIS</Button>
+      </p>
+    </section>
+  </div>
+</footer>
+
+<script>
+  const btn = document.querySelector('#cite-copy');
+  btn?.addEventListener('click', async () => {
+    const biblio = document.querySelector('#cite-biblio')?.textContent ?? '';
+    try {
+      await navigator.clipboard.writeText(biblio);
+      btn.textContent = 'Copied!';
+    } catch {
+      btn.textContent = 'Copy failed';
+    }
+    setTimeout(() => { btn.textContent = 'Copy citation'; }, 2000);
+  });
+</script>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 1rem 0 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .cite {
+    padding-top: 1rem;
+    max-width: 44rem;
+  }
+
+  .cite h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .cite-style {
+    margin: 0.3rem 0;
+  }
+
+  .cite-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0.6rem 0 0;
+  }
+</style>

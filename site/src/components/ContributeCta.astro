@@ -1,4 +1,6 @@
 ---
+import Button from './Button.astro';
+
 interface Props {
   published: number;
   total?: number;
@@ -31,7 +33,7 @@ const remaining = total - published;
       {remaining} {remaining === 1 ? 'side remains' : 'sides remain'}.
     </p>
     <p class="cta-actions">
-      <a class="btn primary" href={guideHref}>Get involved</a>
+      <Button variant="primary" href={guideHref}>Get involved</Button>
     </p>
   </section>
 )}

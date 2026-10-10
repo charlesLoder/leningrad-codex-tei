@@ -1,0 +1,36 @@
+---
+import TeiLine from './TeiLine.astro';
+import type { TeiColumn } from '../lib/tei';
+
+interface Props {
+  col: TeiColumn;
+}
+
+const { col } = Astro.props;
+---
+
+<section class="column">
+  <h2>Column {col.n}</h2>
+  {col.lines.map((line) => (
+    <TeiLine col={col.n} line={line} />
+  ))}
+</section>
+
+<style>
+  .column {
+    direction: rtl;
+    background: #f6efdb;
+    border: 1px solid #d8c9a8;
+    border-radius: 0.4rem;
+    box-shadow: inset 0 0 2.5rem rgba(122, 46, 29, 0.06);
+    padding: 1rem 1.1rem;
+  }
+
+  .column h2 {
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+</style>
