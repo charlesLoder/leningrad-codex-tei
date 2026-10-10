@@ -1,0 +1,24 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  prev?: { folio: string } | null;
+  next?: { folio: string } | null;
+}
+
+const { prev, next } = Astro.props;
+---
+
+<div class="pager">
+  <span>{next ? <Button data-direction="next" href={`/folio/${next.folio}/`}>← {next.folio}</Button> : <span />}</span>
+  <span>{prev ? <Button data-direction="prev" href={`/folio/${prev.folio}/`}>{prev.folio} →</Button> : <span />}</span>
+</div>
+
+<style>
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 1.5rem;
+  }
+</style>

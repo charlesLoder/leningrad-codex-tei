@@ -1,0 +1,44 @@
+---
+---
+<div class="prose">
+  <slot />
+</div>
+
+<style>
+  .prose {
+    margin: 0 auto;
+    max-width: 44rem;
+    padding-bottom: 3rem;
+  }
+
+  .prose :global(h2) {
+    margin: 1.8rem 0 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .prose :global(p),
+  .prose :global(li) {
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  .prose :global(p) {
+    margin: 0.6rem 0;
+  }
+
+  .prose :global(ul) {
+    padding-inline-start: 1.4rem;
+    margin: 0.6rem 0;
+  }
+
+  .prose :global(li) {
+    margin: 0.3rem 0;
+  }
+
+  .prose :global(code) {
+    font-size: 0.9em;
+    background: var(--accent-soft);
+    border-radius: 0.3rem;
+    padding: 0 0.35rem;
+  }
+</style>

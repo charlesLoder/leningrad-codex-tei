@@ -1,8 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import Hero from '../components/Hero.astro';
+import Prose from '../components/Prose.astro';
 ---
 <Base title="About · Leningrad Codex TEI" description="About the Leningrad Codex TEI project: goals, method, transparency, and reuse.">
-  <section class="hero prose">
+  <Hero>
     <h1>About</h1>
     <p>
       The <a href="https://en.wikipedia.org/wiki/Leningrad_Codex">Leningrad Codex</a> is the oldest
@@ -10,12 +13,12 @@ import Base from '../layouts/Base.astro';
       few have encoded its layout. This project treats the codex not just as a text, but as an object.
     </p>
     <div class="hero-buttons">
-      <a class="btn primary" href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">Download whole edition (.zip)</a>
-      <a class="btn" href="https://github.com/charlesLoder/leningrad-codex-tei">GitHub repository</a>
+      <Button variant="primary" href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">Download whole edition (.zip)</Button>
+      <Button href="https://github.com/charlesLoder/leningrad-codex-tei">GitHub repository</Button>
     </div>
-  </section>
+  </Hero>
 
-  <div class="prose">
+  <Prose>
     <h2>Goals</h2>
     <ul class="goals">
       <li><strong>Accessibility</strong> — the codex as an open, TEI-encoded document under a permissive MIT license, with a quick download link and this online viewer.</li>
@@ -93,34 +96,11 @@ import Base from '../layouts/Base.astro';
         <li><a href="https://bsky.app/profile/charlesloder.bsky.social" target="_blank">Bluesky</a></li>
       </ul>
     </p>
-  </div>
+  </Prose>
 </Base>
 
 <style>
-  .prose {
-    margin: 0 auto;
-    max-width: 44rem;
-    padding-bottom: 3rem;
-  }
-  .prose h2 {
-    margin: 1.8rem 0 0.5rem;
-    font-size: 1.3rem;
-  }
-  .prose p, .prose li {
-    color: var(--ink);
-    line-height: 1.65;
-  }
-  .prose p { margin: 0.6rem 0; }
-  .prose ul { padding-inline-start: 1.4rem; margin: 0.6rem 0; }
-  .prose li { margin: 0.3rem 0; }
-  .prose code {
-    font-size: 0.9em;
-    background: var(--accent-soft);
-    border-radius: 0.3rem;
-    padding: 0 0.35rem;
-  }
-
-  .hero .hero-buttons {
+  .hero-buttons {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

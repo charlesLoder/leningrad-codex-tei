@@ -1,0 +1,31 @@
+---
+interface Props {
+  id?: string;
+  label?: string;
+  checked?: boolean;
+}
+
+const { id = 'toggle-verses', label = 'Verse markers', checked = false } = Astro.props;
+---
+
+<label class="toggle" for={id}>
+  <input type="checkbox" id={id} checked={checked} />
+  {label}
+</label>
+
+<style>
+  .toggle {
+    --button-bg: var(--card);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--line);
+    background: var(--button-bg);
+    border-radius: 0.55rem;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+    cursor: pointer;
+  }
+</style>

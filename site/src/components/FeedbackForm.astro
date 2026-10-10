@@ -1,4 +1,6 @@
 ---
+import Button from './Button.astro';
+
 interface Props {
   folio: string;
   version: string;
@@ -7,7 +9,7 @@ interface Props {
 const { folio, version } = Astro.props;
 ---
 
-<button class="btn" id="feedback-open" type="button">Report issue</button>
+<Button id="feedback-open" type="button">Report issue</Button>
 
 <dialog id="feedback-dialog" aria-labelledby="feedback-title">
   <form
@@ -47,8 +49,8 @@ const { folio, version } = Astro.props;
         <p class="feedback-none" id="feedback-none">No lines picked.</p>
       </div>
       <div class="feedback-pick-actions">
-        <button class="btn" id="feedback-pick" type="button">Pick lines from page</button>
-        <button class="btn" id="feedback-clear" type="button">Clear</button>
+        <Button id="feedback-pick" type="button">Pick lines from page</Button>
+        <Button id="feedback-clear" type="button">Clear</Button>
       </div>
     </div>
 
@@ -70,8 +72,8 @@ const { folio, version } = Astro.props;
     <p class="feedback-status" id="feedback-status" aria-live="polite"></p>
 
     <div class="feedback-actions">
-      <button class="btn primary" id="feedback-send" type="submit">Send report</button>
-      <button class="btn" id="feedback-cancel" type="button">Cancel</button>
+      <Button variant="primary" id="feedback-send" type="submit">Send report</Button>
+      <Button id="feedback-cancel" type="button">Cancel</Button>
     </div>
   </form>
 </dialog>
@@ -79,8 +81,8 @@ const { folio, version } = Astro.props;
 <div id="feedback-pickbar" hidden>
   <p><strong id="feedback-count">0 lines picked.</strong> Click lines on the page to attach them.</p>
   <div>
-    <button class="btn primary" id="feedback-done" type="button">Done</button>
-    <button class="btn" id="feedback-pick-cancel" type="button">Cancel</button>
+    <Button variant="primary" id="feedback-done" type="button">Done</Button>
+    <Button id="feedback-pick-cancel" type="button">Cancel</Button>
   </div>
 </div>
 
@@ -119,7 +121,7 @@ const { folio, version } = Astro.props;
     if (contextInput) contextInput.value = lines.map(lineLabel).join('; ');
     if (count) count.textContent = `${lines.length} ${lines.length === 1 ? 'line' : 'lines'} picked.`;
     picksBox?.querySelectorAll('.chip').forEach((c) => c.remove());
-    if (noneNote) noneNote.style.display = lines.length ? 'none' : '';
+    if (noneNote) (noneNote as HTMLElement).style.display = lines.length ? 'none' : '';
     lines.forEach((el) => {
       const chip = document.createElement('span');
       chip.className = 'chip';
@@ -218,3 +220,158 @@ const { folio, version } = Astro.props;
 
   refresh();
 </script>
+
+<style>
+  .hp {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  #feedback-dialog {
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    background: var(--card);
+    color: var(--ink);
+    padding: 1.4rem;
+    max-width: 30rem;
+    width: calc(100vw - 2rem);
+  }
+
+  #feedback-dialog::backdrop {
+    background: rgba(35, 32, 26, 0.45);
+  }
+
+  #feedback-dialog h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .feedback-sub {
+    margin: 0.25rem 0 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .feedback-row {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0 0 0.9rem;
+    font-size: 0.92rem;
+  }
+
+  .feedback-row > span {
+    color: var(--muted);
+  }
+
+  .feedback-row select,
+  .feedback-row textarea,
+  .feedback-row input[type='email'] {
+    font: inherit;
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 0.55rem;
+    padding: 0.5rem 0.7rem;
+    width: 100%;
+  }
+
+  .feedback-row textarea {
+    resize: vertical;
+  }
+
+  .feedback-row select:focus-visible,
+  .feedback-row textarea:focus-visible,
+  .feedback-row input[type='email']:focus-visible,
+  .feedback-picks .chip button:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 0;
+    border-color: var(--accent);
+  }
+
+  .feedback-picks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .feedback-none {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .feedback-picks .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid var(--line);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 0.15rem 0.35rem 0.15rem 0.7rem;
+    font-size: 0.82rem;
+  }
+
+  .feedback-picks .chip button {
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 999px;
+    width: 1.4rem;
+    height: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .feedback-pick-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .feedback-status {
+    min-height: 1.5em;
+    margin: 0 0 0.6rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .feedback-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  #feedback-pickbar {
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 0.9rem;
+    padding: 0.7rem 1rem;
+    box-shadow: 0 0.5rem 2rem rgba(35, 32, 26, 0.2);
+    max-width: calc(100vw - 2rem);
+  }
+
+  #feedback-pickbar[hidden] {
+    display: none;
+  }
+
+  #feedback-pickbar p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  #feedback-pickbar div {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>

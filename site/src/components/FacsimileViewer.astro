@@ -1,0 +1,137 @@
+---
+interface Props {
+  url: string;
+  folio: string;
+}
+
+const { url, folio } = Astro.props;
+---
+
+<figure class="facsimile">
+  <div id="facsimile-viewer" class="osd-viewer" data-url={url} aria-label={`Zoomable facsimile of folio ${folio}`}>
+    <div class="osd-toolbar" role="toolbar" aria-label="Facsimile image controls">
+      <button type="button" data-osd="zoom-in" title="Zoom in" aria-label="Zoom in"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg></button>
+      <button type="button" data-osd="zoom-out" title="Zoom out" aria-label="Zoom out"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /></svg></button>
+      <button type="button" data-osd="home" title="Reset view" aria-label="Reset view"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-9 9 9" /><path d="M9 21V12h6v9" /></svg></button>
+      <button type="button" data-osd="fullpage" title="Toggle fullscreen" aria-label="Toggle fullscreen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6" /><path d="M9 21H3v-6" /><line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" /></svg></button>
+    </div>
+  </div>
+  <figcaption>Facsimile via Sefaria — drag to pan, scroll to zoom.</figcaption>
+  <noscript>
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      <img src={url} alt={`Facsimile of folio ${folio}`} loading="lazy" />
+    </a>
+  </noscript>
+</figure>
+
+<script>
+  import OpenSeadragon from 'openseadragon';
+
+  const viewerEl = document.querySelector('#facsimile-viewer') as HTMLElement | null;
+  const facsimileUrl = viewerEl?.dataset.url;
+  if (viewerEl && facsimileUrl) {
+    const viewer = OpenSeadragon({
+      element: viewerEl,
+      tileSources: { type: 'image', url: facsimileUrl },
+      crossOriginPolicy: false,
+      drawer: 'canvas',
+      navigatorDrawer: 'canvas',
+      showNavigationControl: false,
+      showNavigator: true,
+      navigatorPosition: 'BOTTOM_RIGHT',
+      maxZoomPixelRatio: 2,
+      visibilityRatio: 0.8,
+    });
+    viewerEl.querySelectorAll('[data-osd]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const action = (btn as HTMLElement).dataset.osd;
+        if (action === 'zoom-in') {
+          viewer.viewport.zoomBy(1.4);
+          viewer.viewport.applyConstraints();
+        } else if (action === 'zoom-out') {
+          viewer.viewport.zoomBy(1 / 1.4);
+          viewer.viewport.applyConstraints();
+        } else if (action === 'home') {
+          viewer.viewport.goHome();
+        } else if (action === 'fullpage') {
+          viewer.setFullPage(!viewer.isFullPage());
+        }
+      });
+    });
+    viewer.addHandler('open-failed', () => {
+      viewerEl.querySelector('.osd-toolbar')?.remove();
+      viewerEl.innerHTML = '';
+      const link = document.createElement('a');
+      link.href = facsimileUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      const img = document.createElement('img');
+      img.src = facsimileUrl;
+      img.alt = 'Facsimile folio image';
+      img.loading = 'lazy';
+      link.appendChild(img);
+      viewerEl.appendChild(link);
+    });
+  }
+</script>
+
+<style>
+  .facsimile {
+    margin: 0 0 1.5rem;
+  }
+
+  .facsimile :global(img) {
+    display: block;
+    width: 100%;
+    border: 1px solid #d8c9a8;
+    border-radius: 0.4rem;
+  }
+
+  .osd-viewer {
+    position: relative;
+    height: clamp(20rem, 62vh, 40rem);
+    background: #14110d;
+    border: 1px solid #d8c9a8;
+    border-radius: 0.4rem;
+    overflow: hidden;
+  }
+
+  .osd-toolbar {
+    position: absolute;
+    left: 0.6rem;
+    bottom: 0.6rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .osd-toolbar button {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0.5rem;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.94;
+  }
+
+  .osd-toolbar button:hover {
+    background: #5e2315;
+    border-color: #5e2315;
+  }
+
+  .osd-toolbar button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .facsimile figcaption {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-top: 0.4rem;
+  }
+</style>

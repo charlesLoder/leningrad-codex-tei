@@ -1,0 +1,52 @@
+---
+interface Props {
+  folio: string;
+  range: string;
+  search?: string;
+  start?: number | string | null;
+  end?: number | string | null;
+}
+
+const { folio, range, search, start, end } = Astro.props;
+---
+
+<li
+  data-search={search}
+  data-start={start ?? ''}
+  data-end={end ?? ''}
+>
+  <a class="folio-card" href={`/folio/${folio}/`}>
+    <h2>{folio}</h2>
+    <p class="range">{range}</p>
+  </a>
+</li>
+
+<style>
+  li {
+    display: contents;
+  }
+
+  .folio-card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    padding: 1rem 1.1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .folio-card:hover {
+    border-color: var(--accent);
+  }
+
+  .folio-card h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .folio-card .range {
+    color: var(--muted);
+    margin: 0.25rem 0 0;
+  }
+</style>

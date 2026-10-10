@@ -1,0 +1,16 @@
+---
+---
+<ol class="folio-grid" id="grid">
+  <slot />
+</ol>
+
+<style>
+  .folio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1rem;
+    padding: 0 0 3rem;
+    margin: 0;
+    list-style: none;
+  }
+</style>
