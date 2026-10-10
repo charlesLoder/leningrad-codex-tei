@@ -1,0 +1,220 @@
+---
+interface Props {
+  folio: string;
+  version: string;
+}
+
+const { folio, version } = Astro.props;
+---
+
+<button class="btn" id="feedback-open" type="button">Report issue</button>
+
+<dialog id="feedback-dialog" aria-labelledby="feedback-title">
+  <form
+    id="feedback-form"
+    name="folio-feedback"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="folio-feedback" />
+    <p class="hp">
+      <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+    </p>
+    <input type="hidden" name="folio" value={folio} />
+    <input type="hidden" name="edition-version" value={version} />
+    <input type="hidden" name="page-url" id="feedback-url" value="" />
+    <input type="hidden" name="context" id="feedback-context" value="" />
+
+    <h2 id="feedback-title">Report an issue</h2>
+    <p class="feedback-sub">Folio {folio} · edition {version}</p>
+
+    <label class="feedback-row">
+      <span>What is wrong?</span>
+      <select name="category">
+        <option value="line-break">Line break</option>
+        <option value="word-break">Word break</option>
+        <option value="verse-marker">Verse marker</option>
+        <option value="section-marker">Samekh / pe marker</option>
+        <option value="image-mismatch">Image vs text mismatch</option>
+        <option value="other">Other</option>
+      </select>
+    </label>
+
+    <div class="feedback-row">
+      <span>Lines (optional)</span>
+      <div class="feedback-picks" id="feedback-picks">
+        <p class="feedback-none" id="feedback-none">No lines picked.</p>
+      </div>
+      <div class="feedback-pick-actions">
+        <button class="btn" id="feedback-pick" type="button">Pick lines from page</button>
+        <button class="btn" id="feedback-clear" type="button">Clear</button>
+      </div>
+    </div>
+
+    <label class="feedback-row">
+      <span>Details</span>
+      <textarea
+        name="message"
+        rows="4"
+        required
+        placeholder="e.g. Column 2 line 5 should break after the second word…"
+      ></textarea>
+    </label>
+
+    <label class="feedback-row">
+      <span>Email (optional, only if you want a reply)</span>
+      <input type="email" name="email" autocomplete="email" placeholder="you@example.org" />
+    </label>
+
+    <p class="feedback-status" id="feedback-status" aria-live="polite"></p>
+
+    <div class="feedback-actions">
+      <button class="btn primary" id="feedback-send" type="submit">Send report</button>
+      <button class="btn" id="feedback-cancel" type="button">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="feedback-pickbar" hidden>
+  <p><strong id="feedback-count">0 lines picked.</strong> Click lines on the page to attach them.</p>
+  <div>
+    <button class="btn primary" id="feedback-done" type="button">Done</button>
+    <button class="btn" id="feedback-pick-cancel" type="button">Cancel</button>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.querySelector('#feedback-open');
+  const dialog = document.querySelector('#feedback-dialog') as HTMLDialogElement | null;
+  const form = document.querySelector('#feedback-form') as HTMLFormElement | null;
+  const urlInput = document.querySelector('#feedback-url') as HTMLInputElement | null;
+  const contextInput = document.querySelector('#feedback-context') as HTMLInputElement | null;
+  const status = document.querySelector('#feedback-status');
+  const sendBtn = document.querySelector('#feedback-send') as HTMLButtonElement | null;
+  const pickbar = document.querySelector('#feedback-pickbar');
+  const count = document.querySelector('#feedback-count');
+  const picksBox = document.querySelector('#feedback-picks');
+  const noneNote = document.querySelector('#feedback-none');
+  const columns = document.querySelector('.columns');
+
+  if (urlInput) urlInput.value = window.location.href;
+
+  const pickedLines = (): HTMLElement[] => [
+    ...(columns?.querySelectorAll('.tei-line.picked') ?? []),
+  ] as HTMLElement[];
+
+  const lineLabel = (el: HTMLElement): string => {
+    const col = el.dataset.col ?? '?';
+    const line = el.dataset.line ?? '?';
+    const verses = [...el.querySelectorAll('.verse-tag')]
+      .map((v) => (v as HTMLElement).dataset.verse ?? v.textContent ?? '')
+      .filter(Boolean);
+    const seen = [...new Set(verses)];
+    return `Col ${col} L${line}${seen.length ? ` (${seen.join(', ')})` : ''}`;
+  };
+
+  const refresh = () => {
+    const lines = pickedLines();
+    if (contextInput) contextInput.value = lines.map(lineLabel).join('; ');
+    if (count) count.textContent = `${lines.length} ${lines.length === 1 ? 'line' : 'lines'} picked.`;
+    picksBox?.querySelectorAll('.chip').forEach((c) => c.remove());
+    if (noneNote) noneNote.style.display = lines.length ? 'none' : '';
+    lines.forEach((el) => {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.textContent = lineLabel(el) + ' ';
+      const drop = document.createElement('button');
+      drop.type = 'button';
+      drop.textContent = '×';
+      drop.setAttribute('aria-label', `Remove ${lineLabel(el)}`);
+      drop.addEventListener('click', () => {
+        el.classList.remove('picked');
+        refresh();
+      });
+      chip.appendChild(drop);
+      picksBox?.appendChild(chip);
+    });
+  };
+
+  const setPicking = (on: boolean) => {
+    document.body.classList.toggle('picking', on);
+    if (pickbar) (pickbar as HTMLElement).hidden = !on;
+    columns?.querySelectorAll('.tei-line').forEach((el) => {
+      if (on) (el as HTMLElement).setAttribute('tabindex', '0');
+      else (el as HTMLElement).removeAttribute('tabindex');
+    });
+  };
+
+  openBtn?.addEventListener('click', () => {
+    if (status) status.textContent = '';
+    dialog?.showModal();
+  });
+
+  document.querySelector('#feedback-cancel')?.addEventListener('click', () => dialog?.close());
+  document.querySelector('#feedback-pick')?.addEventListener('click', () => {
+    dialog?.close();
+    setPicking(true);
+  });
+  document.querySelector('#feedback-clear')?.addEventListener('click', () => {
+    pickedLines().forEach((el) => el.classList.remove('picked'));
+    refresh();
+  });
+  document.querySelector('#feedback-done')?.addEventListener('click', () => {
+    setPicking(false);
+    dialog?.showModal();
+  });
+  document.querySelector('#feedback-pick-cancel')?.addEventListener('click', () => {
+    pickedLines().forEach((el) => el.classList.remove('picked'));
+    refresh();
+    setPicking(false);
+    dialog?.showModal();
+  });
+
+  const toggle = (el: HTMLElement) => {
+    el.classList.toggle('picked');
+    refresh();
+  };
+
+  columns?.addEventListener('click', (e) => {
+    if (!document.body.classList.contains('picking')) return;
+    const line = (e.target as HTMLElement).closest('.tei-line') as HTMLElement | null;
+    if (line) toggle(line);
+  });
+  columns?.addEventListener('keydown', (e) => {
+    if (!document.body.classList.contains('picking')) return;
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const line = (e.target as HTMLElement).closest('.tei-line') as HTMLElement | null;
+    if (line && (e.target as HTMLElement).classList.contains('tei-line')) {
+      e.preventDefault();
+      toggle(line);
+    }
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !status) return;
+    if (sendBtn) sendBtn.disabled = true;
+    status.textContent = 'Sending…';
+    try {
+      const data = new FormData(form);
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+      });
+      status.textContent = 'Thanks. Your report was sent.';
+      (form.querySelector('textarea[name="message"]') as HTMLTextAreaElement | null)?.form?.reset();
+      pickedLines().forEach((el) => el.classList.remove('picked'));
+      refresh();
+      if (urlInput) urlInput.value = window.location.href;
+      setTimeout(() => dialog?.close(), 1600);
+    } catch {
+      status.textContent = 'Send failed. Check your link and try again.';
+    } finally {
+      if (sendBtn) sendBtn.disabled = false;
+    }
+  });
+
+  refresh();
+</script>

@@ -3,8 +3,10 @@ import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Base from '../../layouts/Base.astro';
+import FeedbackForm from '../../components/FeedbackForm.astro';
 import { parseFolioXml, folioSideLabel, abbreviateRange } from '../../lib/tei';
 import folios from '../../data/folios.json';
+import meta from '../../data/meta.json';
 
 export function getStaticPaths() {
   return folios.map((f) => ({ params: { folio: f.folio } }));
@@ -46,6 +48,7 @@ const folioSchema = {
       {doc.graphicUrl && <a class="btn primary" target="_blank" rel="noopener noreferrer" href={doc.graphicUrl}>Facsimile image <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg></a>}
       <a class="btn" href={`/edition/${folio}.xml`} target="_blank">Raw TEI XML</a>
       <label class="toggle"><input type="checkbox" id="toggle-verses" /> Verse markers</label>
+      <FeedbackForm folio={folio ?? ''} version={meta.version} />
     </div>
   </section>
 
@@ -54,7 +57,7 @@ const folioSchema = {
       <section class="column">
         <h2>Column {col.n}</h2>
         {col.lines.map((line) => (
-          <div class="tei-line">
+          <div class="tei-line" data-col={col.n} data-line={line.n}>
             <div class="gutter">
               <span class="ln">{line.n}</span>
               {[...new Map(line.tokens.flatMap((t) => t.marks).filter((mk) => mk.kind === 'verse').map((mk) => [mk.ref, mk])).values()].map((mk) => (
