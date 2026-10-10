@@ -158,6 +158,7 @@ body {
 }
 
 .btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:focus-visible { outline: 1px solid var(--accent); border-color: var(--accent); outline-offset: 0;}
 .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 
 .toggle {
@@ -419,12 +420,9 @@ body {
 .feedback-row select:focus-visible,
 .feedback-row textarea:focus-visible,
 .feedback-row input[type='email']:focus-visible,
-.feedback-picks .chip button:focus-visible,
-.feedback-pick-actions .btn:focus-visible,
-.feedback-actions .btn:focus-visible,
-#feedback-pickbar .btn:focus-visible {
+.feedback-picks .chip button:focus-visible {
   outline: 1px solid var(--accent);
-  /* outline-offset: 1px; */
+  outline-offset: 0;
   border-color: var(--accent);
 }
 
