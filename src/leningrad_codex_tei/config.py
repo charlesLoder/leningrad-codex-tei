@@ -2,10 +2,26 @@
 
 from __future__ import annotations
 
+import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
 import yaml
+
+
+def edition_version(fallback: str) -> str:
+    """Edition version from ``pyproject.toml`` (single source of truth).
+
+    Falls back to ``fallback`` (the config value) when pyproject
+    cannot be read, e.g. in hermetic test setups.
+    """
+    pyproject = Path(__file__).resolve().parents[2] / "pyproject.toml"
+    try:
+        with pyproject.open("rb") as fh:
+            version = tomllib.load(fh).get("project", {}).get("version")
+    except (OSError, tomllib.TOMLDecodeError):
+        return fallback
+    return version or fallback
 
 
 @dataclass
@@ -99,7 +115,7 @@ def load_config(config_path: Path = Path("config.yaml")) -> Config:
         ai_raw.pop("service_tier", None)
     return Config(
         project_name=raw["project"]["name"],
-        project_version=raw["project"]["version"],
+        project_version=edition_version(raw["project"]["version"]),
         paths=PathsConfig(
             uxlc=Path(p["uxlc"]),
             seed=Path(p["seed"]),
