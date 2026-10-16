@@ -325,9 +325,7 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
         changes.append(
             {
                 "when": run.timestamp.isoformat() if run.timestamp else "",
-                "who": f"#{contrib['xml_id']}"
-                if contrib
-                else "#leningrad-codex-tei",
+                "who": f"#{contrib['xml_id']}" if contrib else "#leningrad-codex-tei",
                 "text": "Regenerated TEI with updated pipeline code.",
                 "features": [],
                 "prompt_url": repo_snapshot_url(run.repo_hash or ""),

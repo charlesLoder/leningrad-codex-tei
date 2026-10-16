@@ -66,7 +66,9 @@ def changes() -> list[dict]:
     ]
 
 
-def test_rendered_xml_is_well_formed_and_structured(alignment, changes, word_stream) -> None:
+def test_rendered_xml_is_well_formed_and_structured(
+    alignment, changes, word_stream
+) -> None:
     xml = render_folio_tei(
         folio="001B",
         verse_range="Genesis 1:1 – 2:2",
@@ -537,9 +539,7 @@ def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:
     assert tags.index(("pc", "f001B-pc-6")) == tags.index(("w", "f001B-w-6")) + 1
 
 
-def test_two_section_marks_on_one_atom_get_unique_ids(
-    alignment, changes
-) -> None:
+def test_two_section_marks_on_one_atom_get_unique_ids(alignment, changes) -> None:
     from leningrad_codex_tei.schemas import SectionMilestone
 
     alignment.section_milestones.append(
@@ -559,8 +559,7 @@ def test_two_section_marks_on_one_atom_get_unique_ids(
     ids = [_id(el) for el in root.iter() if _id(el) is not None]
     assert len(set(ids)) == len(ids)
     section_ids = [
-        _id(m)
-        for m in root.findall(f".//{_q('milestone')}[@unit='section']")
+        _id(m) for m in root.findall(f".//{_q('milestone')}[@unit='section']")
     ]
     assert section_ids == [
         "f001B-s-Genesis-1-3",
@@ -583,14 +582,18 @@ def test_regen_entry_added_only_with_new_pipeline_code() -> None:
         )
 
     single = changes_from_audit(
-        [_gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
-         _gen_run(datetime(2026, 9, 19, 4, 26, 47), "aaa")]
+        [
+            _gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
+            _gen_run(datetime(2026, 9, 19, 4, 26, 47), "aaa"),
+        ]
     )
     assert [c["text"] for c in single] == ["Encoded by Test Scribe."]
 
     multi = changes_from_audit(
-        [_gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
-         _gen_run(datetime(2026, 10, 16, 12, 0, 0), "bbb")]
+        [
+            _gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
+            _gen_run(datetime(2026, 10, 16, 12, 0, 0), "bbb"),
+        ]
     )
     assert [c["text"] for c in multi] == [
         "Regenerated TEI with updated pipeline code.",
