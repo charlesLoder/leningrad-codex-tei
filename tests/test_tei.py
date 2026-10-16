@@ -66,7 +66,9 @@ def changes() -> list[dict]:
     ]
 
 
-def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
+def test_rendered_xml_is_well_formed_and_structured(
+    alignment, changes, word_stream
+) -> None:
     xml = render_folio_tei(
         folio="001B",
         verse_range="Genesis 1:1 – 2:2",
@@ -91,24 +93,14 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     words = root.findall(f".//{_q('w')}")
     assert [_id(w) for w in words] == [f"f001B-w-{i}" for i in range(1, 11)]
     assert {etree.QName(w.getparent()).localname for w in words} == {"ab"}
-    # generate-tei emits SBL-sequenced Hebrew; only words whose marks
-    # arrive out of order differ from the raw fixture text.
+    # generate-tei keeps UXLC code points. No reorder.
     # Trailing sof-pasuq / paseq live in pc, never inside w.
-    assert (
-        [w.text for w in words]
-        == [
-            "בְּרֵאשִׁ֖ית",
-            "בָּרָ֣א",
-            "אֱלֹהִ֑ים",
-            "וְהָאָ֗רֶץ",
-            "בְּעֵ֖דֶן",
-            "\u05d0\u05bd\u05b9\u05d5\u05e8",  # sequenced: holam precedes vav; sof-pasuq split to pc
-            "אֶחָד",
-            "\u05d9\u0594\u05b9\u05d5\u05dd",  # sequenced: holam precedes vav
-            "כֶּתֶב",
-            "דָּבָר",
-        ]
-    )
+    # The paseq space is also stripped from w.
+    expected = [split_trailing_punct(w.text)[0] for w in word_stream.words[:10]]
+    assert [w.text for w in words] == expected
+    # UXLC order is vav then holam, not holam then vav.
+    assert expected[5] == "\u05d0\u05bd\u05d5\u05b9\u05e8"
+    assert expected[7] == "\u05d9\u0594\u05d5\u05b9\u05dd"
 
     pcs = root.findall(f".//{_q('pc')}")
     assert [(p.get("type"), _id(p), p.text) for p in pcs] == [
@@ -199,8 +191,8 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
         "section:pe",
         "verse:Genesis-2-1",
         "f001B-w-7",
-        "f001B-w-8",
         "section:samekh",
+        "f001B-w-8",
         "verse:Genesis-2-2",
         "f001B-w-9",
         "f001B-w-10",
@@ -517,6 +509,8 @@ def test_facsimile_omits_graphic_without_image(alignment, changes) -> None:
 def test_split_trailing_punct() -> None:
     assert split_trailing_punct("הָאָרֶץ׃") == ("הָאָרֶץ", [("׃", "sof-pasuq")])
     assert split_trailing_punct("אֱלֹהִים׀") == ("אֱלֹהִים", [("׀", "paseq")])
+    # UXLC keeps a space before paseq inside the word; TEI strips it.
+    assert split_trailing_punct("אֱלֹהִים ׀") == ("אֱלֹהִים", [("׀", "paseq")])
     assert split_trailing_punct("בְּרֵאשִׁית") == ("בְּרֵאשִׁית", [])
     assert split_trailing_punct("מִלָּה׀׃") == (
         "מִלָּה",
@@ -543,6 +537,69 @@ def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:
     assert words == [f"f001B-w-{i}" for i in range(1, 11)]
     assert pcs == ["f001B-pc-6"]
     assert tags.index(("pc", "f001B-pc-6")) == tags.index(("w", "f001B-w-6")) + 1
+
+
+def test_two_section_marks_on_one_atom_get_unique_ids(alignment, changes) -> None:
+    from leningrad_codex_tei.schemas import SectionMilestone
+
+    alignment.section_milestones.append(
+        SectionMilestone(
+            subtype="inverted-nun", column=2, line=2, atom=6, verse="Genesis 1:3"
+        )
+    )
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="9.9.9",
+    )
+    root = etree.fromstring(xml.encode())
+    ids = [_id(el) for el in root.iter() if _id(el) is not None]
+    assert len(set(ids)) == len(ids)
+    section_ids = [
+        _id(m) for m in root.findall(f".//{_q('milestone')}[@unit='section']")
+    ]
+    assert section_ids == [
+        "f001B-s-Genesis-1-3",
+        "f001B-s-Genesis-1-3-inverted-nun",
+        "f001B-s-Genesis-2-1",
+    ]
+    nun_pcs = root.findall(f".//{_q('pc')}[@type='inverted-nun']")
+    assert [(p.text, _id(p)) for p in nun_pcs] == [("׆", "f001B-pc-6-nun")]
+
+
+def test_regen_entry_added_only_with_new_pipeline_code() -> None:
+    from leningrad_codex_tei.stages.tei import changes_from_audit
+
+    def _gen_run(when: datetime, repo_hash: str) -> PipelineRun:
+        return PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Test Scribe",
+            repo_hash=repo_hash,
+            timestamp=when,
+        )
+
+    single = changes_from_audit(
+        [
+            _gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
+            _gen_run(datetime(2026, 9, 19, 4, 26, 47), "aaa"),
+        ]
+    )
+    assert [c["text"] for c in single] == ["Encoded by Test Scribe."]
+
+    multi = changes_from_audit(
+        [
+            _gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
+            _gen_run(datetime(2026, 10, 16, 12, 0, 0), "bbb"),
+        ]
+    )
+    assert [c["text"] for c in multi] == [
+        "Regenerated TEI with updated pipeline code.",
+        "Encoded by Test Scribe.",
+    ]
+    assert multi[0]["prompt_url"] is not None and "bbb" in multi[0]["prompt_url"]
 
 
 def test_publication_stmt_has_mit_availability(alignment, changes) -> None:

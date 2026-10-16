@@ -231,7 +231,7 @@ def test_build_section_milestones(seed_slice, word_stream) -> None:
     sections = [(m.subtype, m.atom, m.verse) for m in rec.section_milestones]
     assert sections == [
         ("pe", 6, "Genesis 1:3"),
-        ("samekh", 8, "Genesis 2:1"),
+        ("samekh", 7, "Genesis 2:1"),
     ]
     for m in rec.section_milestones:
         assert 1 <= m.column <= 3

@@ -906,9 +906,7 @@ def build_alignment_record(
     verse_milestones: list[VerseMilestone] = []
     section_milestones: list[SectionMilestone] = []
     prev_vkey: tuple[int, int] | None = None
-    verse_atoms: dict[tuple[int, int], list[Word]] = {}
     for w in slice_words:
-        verse_atoms.setdefault((w.chapter, w.verse), []).append(w)
         vkey = (w.chapter, w.verse)
         if vkey != prev_vkey:
             col_no, line_no = location[w.atom]
@@ -922,21 +920,25 @@ def build_alignment_record(
             )
             prev_vkey = vkey
 
-    for vkey, vwords in verse_atoms.items():
-        last = vwords[-1]
-        if not (last.has_pe or last.has_samekh):
-            continue
-        section = "pe" if last.has_pe else "samekh"
-        col_no, line_no = location[last.atom]
-        section_milestones.append(
-            SectionMilestone(
-                subtype=section,
-                column=col_no,
-                line=line_no,
-                atom=last.atom,
-                verse=f"{last.book} {vkey[0]}:{vkey[1]}",
+    for w in slice_words:
+        markers: list[str] = []
+        if w.has_pe:
+            markers.append("pe")
+        if w.has_samekh:
+            markers.append("samekh")
+        if w.has_inverted_nun:
+            markers.append("inverted-nun")
+        for subtype in markers:
+            col_no, line_no = location[w.atom]
+            section_milestones.append(
+                SectionMilestone(
+                    subtype=subtype,
+                    column=col_no,
+                    line=line_no,
+                    atom=w.atom,
+                    verse=f"{w.book} {w.chapter}:{w.verse}",
+                )
             )
-        )
 
     return AlignmentRecord(
         folio=sl.folio,

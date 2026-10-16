@@ -20,6 +20,7 @@ class Word:
     word_index: int
     has_pe: bool = False
     has_samekh: bool = False
+    has_inverted_nun: bool = False
 
 
 @dataclass
@@ -68,7 +69,7 @@ class VerseMilestone:
 
 @dataclass
 class SectionMilestone:
-    subtype: str  # "pe" | "samekh"
+    subtype: str  # "pe" | "samekh" | "inverted-nun"
     column: int
     line: int
     atom: int

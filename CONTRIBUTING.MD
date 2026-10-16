@@ -141,6 +141,9 @@ In that instance, the seed file had to be modified
 The next step is to generate the TEI documents in `/edition`.
 
 > [!NOTE]
+> `generate-tei` runs validation first and writes no file for a folio that fails. If it refuses a folio, fix the issue, re-run `validate` until it passes, then re-run `generate-tei`.
+
+> [!NOTE]
 > Contributor information at this step is derived from git's `user.name` and `user.email`. Update according to your preferences
 
 Run the following to generate the XML files:
