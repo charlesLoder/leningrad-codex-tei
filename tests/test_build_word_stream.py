@@ -58,10 +58,13 @@ def test_pe_and_samekh_flags(uxlc_fixture_dir: Path) -> None:
     for w in ws.words:
         by_verse.setdefault((w.chapter, w.verse), []).append(w)
 
-    assert all(w.has_pe for w in by_verse[(1, 3)])
+    # Flags sit on the atom the marker follows, not on the whole verse.
+    # Gen 1:3 pe follows its only word; Gen 2:1 samekh follows אחד (atom 7),
+    # which stands before יום in the UXLC.
+    assert [w.has_pe for w in by_verse[(1, 3)]] == [True]
     assert not any(w.has_pe for w in by_verse[(1, 1)])
     assert not any(w.has_pe for w in by_verse[(2, 2)])
-    assert all(w.has_samekh for w in by_verse[(2, 1)])
+    assert [w.has_samekh for w in by_verse[(2, 1)]] == [True, False]
     assert not any(w.has_samekh for w in by_verse[(1, 3)])
 
 

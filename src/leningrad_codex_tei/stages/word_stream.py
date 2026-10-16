@@ -124,27 +124,33 @@ def build_word_stream(
                 if verse_str is None:
                     continue
                 verse = int(verse_str)
-                has_pe = any(_local_name(c) == "pe" for c in verse_el)
-                has_samekh = any(_local_name(c) == "samekh" for c in verse_el)
                 in_verse = 0
+                verse_words: list[Word] = []
                 for child in verse_el:
                     tag = _local_name(child)
-                    if tag not in ("w", "k"):
-                        continue
-                    in_verse += 1
-                    atom += 1
-                    words.append(
-                        Word(
-                            atom=atom,
-                            text=_element_text(child),
-                            book=book,
-                            chapter=chapter,
-                            verse=verse,
-                            word_index=in_verse,
-                            has_pe=has_pe,
-                            has_samekh=has_samekh,
+                    if tag in ("w", "k"):
+                        in_verse += 1
+                        atom += 1
+                        verse_words.append(
+                            Word(
+                                atom=atom,
+                                text=_element_text(child),
+                                book=book,
+                                chapter=chapter,
+                                verse=verse,
+                                word_index=in_verse,
+                            )
                         )
-                    )
+                    elif tag == "pe":
+                        if verse_words:
+                            verse_words[-1].has_pe = True
+                    elif tag == "samekh":
+                        if verse_words:
+                            verse_words[-1].has_samekh = True
+                    elif tag == "reversednun":
+                        if verse_words:
+                            verse_words[-1].has_inverted_nun = True
+                words.extend(verse_words)
 
     return WordStream(
         source=str(uxlc_dir),

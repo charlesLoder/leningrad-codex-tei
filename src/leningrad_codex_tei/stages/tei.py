@@ -2,14 +2,12 @@
 
 from __future__ import annotations
 
-from dataclasses import replace
 from pathlib import Path
 import re
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from leningrad_codex_tei.schemas import AlignmentRecord, PipelineRun, RunStage
-from leningrad_codex_tei.util.hebrew import sequence_texts
 
 TEMPLATE_DIR = Path(__file__).resolve().parents[3] / "templates"
 
@@ -50,7 +48,12 @@ _PUNCT_TYPES = {
 
 
 def split_trailing_punct(text: str) -> tuple[str, list[tuple[str, str]]]:
-    """Split trailing sof-pasuq / paseq off a sequenced atom string.
+    """Split trailing sof-pasuq / paseq off a UXLC atom string.
+
+    The UXLC keeps one space before paseq inside the word
+    (e.g. Genesis 1:5 atom 2 ends with U+0020 + U+05C0).
+    The TEI keeps no trailing space in <w>.
+    The paseq goes to <pc>.
 
     Returns (word_text, [(punct_char, punct_type), ...]) in document order.
     """
@@ -61,7 +64,10 @@ def split_trailing_punct(text: str) -> tuple[str, list[tuple[str, str]]]:
         marks.append((char, _PUNCT_TYPES[char]))
         cut -= 1
     marks.reverse()
-    return text[:cut], marks
+    base = text[:cut]
+    if marks and base.endswith(" "):
+        base = base[:-1]
+    return base, marks
 
 
 def contributor_xml_id(name: str | None, email: str | None) -> str:
@@ -141,6 +147,11 @@ def _milestone_id(verse: str) -> str:
     return verse.replace(" ", "-").replace(":", "-")
 
 
+INVERTED_NUN_CHAR = "\u05c6"
+
+_PC_ID_FOR_INVERTED_NUN = "pc-{atom}-nun"
+
+
 def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     """Flatten columns into line entries carrying ADR 0002 milestone info.
 
@@ -149,10 +160,10 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     word boundaries so a verse starting or ending mid-line is emitted
     between its words rather than at the line edge.
 
-    Word text is sequenced here, after validate, so alignment checks run on
-    the raw atom stream while emitted TEI carries SBL-ordered Hebrew.
+    Word text stays as in the UXLC. No reorder. Up to v1 the TEI
+    must match UXLC code points.
 
-    Trailing sof-pasuq / paseq are split off each sequenced atom into
+    Trailing sof-pasuq / paseq are split off each atom into
     ``pc`` tokens. The ``w`` keeps the UXLC atom number; each ``pc`` takes
     a derived ``pc-{atom}`` id (``pc-{atom}-{n}`` when one atom yields
     several marks) so validation stays atom-faithful.
@@ -164,16 +175,16 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             "n": ref,
             "id": ref,
         }
-    section_by_atom: dict[int, tuple[str, str]] = {}
+    section_by_atom: dict[int, list[tuple[str, str]]] = {}
     for sm in record.section_milestones:
-        section_by_atom[sm.atom] = (sm.subtype, _milestone_id(sm.verse))
+        section_by_atom.setdefault(sm.atom, []).append(
+            (sm.subtype, _milestone_id(sm.verse))
+        )
 
     flat = [(cix, line) for cix, col in enumerate(record.columns) for line in col.lines]
-    sequenced = sequence_texts([w.text for _, line in flat for w in line.atoms])
-    it = iter(sequenced)
     annotated: list[tuple[int, dict]] = []
     for cix, line in flat:
-        atoms = [replace(w, text=next(it)) for w in line.atoms]
+        atoms = list(line.atoms)
         tokens: list[dict] = []
         for w in atoms:
             verse = verse_by_atom.get(w.atom)
@@ -198,11 +209,20 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
                 )
             if not base and not marks:
                 tokens.append({"kind": "w", "atom": w.atom, "text": w.text})
-            section = section_by_atom.get(w.atom)
-            if section is not None:
+            for section_subtype, section_id in section_by_atom.get(w.atom, []):
                 tokens.append(
-                    {"kind": "section", "subtype": section[0], "id": section[1]}
+                    {"kind": "section", "subtype": section_subtype, "id": section_id}
                 )
+                if section_subtype == "inverted-nun":
+                    tokens.append(
+                        {
+                            "kind": "pc",
+                            "atom": w.atom,
+                            "text": INVERTED_NUN_CHAR,
+                            "pc_type": "inverted-nun",
+                            "pc_id": _PC_ID_FOR_INVERTED_NUN.format(atom=w.atom),
+                        }
+                    )
         entry = {
             "line_number": line.line_number,
             "atoms": atoms,
