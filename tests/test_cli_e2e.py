@@ -207,7 +207,10 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
 
     # pipeline provenance: each corpus-level input recorded exactly once
     prov = json.loads((tmp_path / "provenance.json").read_text())
-    assert prov["project_version"] == "0.1.0-dev"
+    # project_version comes from pyproject.toml, not the temp config file
+    from leningrad_codex_tei.config import edition_version
+
+    assert prov["project_version"] == edition_version("0.1.0-dev")
     assert prov["seed"]["records"] == 1
     assert len(prov["seed"]["sha256"]) == 64
     assert len(prov["uxlc"]["zip_sha256"]) == 64
@@ -249,7 +252,9 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert surface is not None
     assert surface.get("{http://www.w3.org/XML/1998/namespace}id") == "surf-001B"
     assert root.find(".//t:sourceDesc/t:msDesc", ns) is not None
-    assert root.find(".//t:application", ns).get("version") == "0.1.0-dev"
+    assert root.find(".//t:application", ns).get("version") == edition_version(
+        "0.1.0-dev"
+    )
     source_uxlc = [
         s
         for s in root.findall(".//t:titleStmt/t:respStmt", ns)
