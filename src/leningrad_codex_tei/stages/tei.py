@@ -264,7 +264,10 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
     encoder, one entry per contributor (latest run wins), so re-running
     generate-tei does not repeat the same "Encoded by" change.
     Downloads, checks, and other mechanics stay in the audit
-    trail.
+    trail. When the TEI was generated more than once with different
+    pipeline code (distinct repo hashes across generate-tei runs),
+    one extra entry names the regen, so a bulk fix does not
+    silently replace the earlier "Encoded by" change.
     """
     last_align = max(
         (i for i, run in enumerate(runs) if run.stage == RunStage.ALIGN_FOLIO),
@@ -310,6 +313,26 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
                     "prompt_url": None,
                 }
             )
+    generate_hashes = {
+        run.repo_hash for run in runs if run.stage == RunStage.GENERATE_TEI
+    } - {None}
+    if len(generate_hashes) > 1:
+        latest = max(
+            i for i, run in enumerate(runs) if run.stage == RunStage.GENERATE_TEI
+        )
+        run = runs[latest]
+        contrib = _run_contributor(run)
+        changes.append(
+            {
+                "when": run.timestamp.isoformat() if run.timestamp else "",
+                "who": f"#{contrib['xml_id']}"
+                if contrib
+                else "#leningrad-codex-tei",
+                "text": "Regenerated TEI with updated pipeline code.",
+                "features": [],
+                "prompt_url": repo_snapshot_url(run.repo_hash or ""),
+            }
+        )
     changes.reverse()
     return changes
 

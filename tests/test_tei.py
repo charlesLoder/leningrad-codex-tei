@@ -571,6 +571,34 @@ def test_two_section_marks_on_one_atom_get_unique_ids(
     assert [(p.text, _id(p)) for p in nun_pcs] == [("׆", "f001B-pc-6-nun")]
 
 
+def test_regen_entry_added_only_with_new_pipeline_code() -> None:
+    from leningrad_codex_tei.stages.tei import changes_from_audit
+
+    def _gen_run(when: datetime, repo_hash: str) -> PipelineRun:
+        return PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Test Scribe",
+            repo_hash=repo_hash,
+            timestamp=when,
+        )
+
+    single = changes_from_audit(
+        [_gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
+         _gen_run(datetime(2026, 9, 19, 4, 26, 47), "aaa")]
+    )
+    assert [c["text"] for c in single] == ["Encoded by Test Scribe."]
+
+    multi = changes_from_audit(
+        [_gen_run(datetime(2026, 9, 18, 4, 26, 47), "aaa"),
+         _gen_run(datetime(2026, 10, 16, 12, 0, 0), "bbb")]
+    )
+    assert [c["text"] for c in multi] == [
+        "Regenerated TEI with updated pipeline code.",
+        "Encoded by Test Scribe.",
+    ]
+    assert multi[0]["prompt_url"] is not None and "bbb" in multi[0]["prompt_url"]
+
+
 def test_publication_stmt_has_mit_availability(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
