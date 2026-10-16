@@ -176,10 +176,14 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             "id": ref,
         }
     section_by_atom: dict[int, list[tuple[str, str]]] = {}
+    used_section_ids: set[str] = set()
     for sm in record.section_milestones:
-        section_by_atom.setdefault(sm.atom, []).append(
-            (sm.subtype, _milestone_id(sm.verse))
-        )
+        base = _milestone_id(sm.verse)
+        sid = base
+        if sid in used_section_ids:
+            sid = f"{base}-{sm.subtype}"
+        used_section_ids.add(sid)
+        section_by_atom.setdefault(sm.atom, []).append((sm.subtype, sid))
 
     flat = [(cix, line) for cix, col in enumerate(record.columns) for line in col.lines]
     annotated: list[tuple[int, dict]] = []

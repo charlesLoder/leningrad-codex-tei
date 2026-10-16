@@ -537,6 +537,40 @@ def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:
     assert tags.index(("pc", "f001B-pc-6")) == tags.index(("w", "f001B-w-6")) + 1
 
 
+def test_two_section_marks_on_one_atom_get_unique_ids(
+    alignment, changes
+) -> None:
+    from leningrad_codex_tei.schemas import SectionMilestone
+
+    alignment.section_milestones.append(
+        SectionMilestone(
+            subtype="inverted-nun", column=2, line=2, atom=6, verse="Genesis 1:3"
+        )
+    )
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="9.9.9",
+    )
+    root = etree.fromstring(xml.encode())
+    ids = [_id(el) for el in root.iter() if _id(el) is not None]
+    assert len(set(ids)) == len(ids)
+    section_ids = [
+        _id(m)
+        for m in root.findall(f".//{_q('milestone')}[@unit='section']")
+    ]
+    assert section_ids == [
+        "f001B-s-Genesis-1-3",
+        "f001B-s-Genesis-1-3-inverted-nun",
+        "f001B-s-Genesis-2-1",
+    ]
+    nun_pcs = root.findall(f".//{_q('pc')}[@type='inverted-nun']")
+    assert [(p.text, _id(p)) for p in nun_pcs] == [("׆", "f001B-pc-6-nun")]
+
+
 def test_publication_stmt_has_mit_availability(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
