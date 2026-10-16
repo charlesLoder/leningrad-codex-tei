@@ -22,8 +22,6 @@ Prerequisites:
 
 - Python 3.11 or later
 - [uv](https://docs.astral.sh/uv/)
-- Node.js 18 or later (required for Hebrew text sequencing in `generate-tei`)
-- [npm](https://docs.npmjs.com/) (ships with Node.js)
 
 Clone the project:
 
@@ -36,12 +34,11 @@ From the project root:
 
 ```bash
 uv sync
-npm install
 ```
 
 This will:
 - create the virtual environment in `.venv/`
-- install all dependencies (Python via `uv`, Node via `npm`)
+- install all dependencies (Python via `uv`)
 
 The `leningrad` command-line tool becomes available via `uv run`:
 
