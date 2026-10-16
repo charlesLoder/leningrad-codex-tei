@@ -844,6 +844,11 @@ def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> 
     contributor = _current_contributor()
     for page in folios:
         _seed, _stream, sl, record = _load_pipeline(config, page)
+        check = validate_stage.validate_folio(sl, record, _stream)
+        if not check.passed:
+            raise click.ClickException(
+                f"generate-tei refused for {page}: validate failed {check.checks}"
+            )
         trail = append_run(
             config.paths.audit,
             page,
