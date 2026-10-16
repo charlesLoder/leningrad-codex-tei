@@ -56,11 +56,22 @@ def validate_folio(
             verses_start = False
             break
         src = by_atom.get(vm.atom)
-        if src is None or src.word_index != 1:
-            # verse milestone must sit on first atom of its verse
-            # word_index 1 marks verse start in the UXLC stream
+        if src is None:
             verses_start = False
             break
+        if src.word_index != 1:
+            # A verse that starts on an earlier page still gets a
+            # milestone where it enters this page. The milestone is
+            # valid when the verse continues from the prior atom.
+            prev = by_atom.get(vm.atom - 1)
+            if (
+                prev is None
+                or prev.book != src.book
+                or prev.chapter != src.chapter
+                or prev.verse != src.verse
+            ):
+                verses_start = False
+                break
 
     checks = {
         "word_count": len(atoms) == span,
