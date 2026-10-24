@@ -111,3 +111,34 @@ def test_word_stream_edition_roundtrips_through_json(
     dest = tmp_path / "word_stream.json"
     save_word_stream(ws, dest)
     assert load_word_stream(dest).uxlc_edition == ws.uxlc_edition
+
+
+def test_note_x_verse_is_flagged_not_in_codex(tmp_path: Path) -> None:
+    # Josh 21:36-37 carry UXLC note X: in the stream for numbering, not on the page
+    d = tmp_path / "uxlc"
+    d.mkdir()
+    (d / "Joshua.xml").write_text(
+        "<Tanach><tanach><book><c n='21'>"
+        "<v n='35'><w>a</w><w>b</w></v>"
+        "<v n='36'><x>X</x><w>c</w><w>d</w></v>"
+        "<v n='37'><x>X</x><w>e</w><samekh/></v>"
+        "<v n='38'><w>f<x>4</x></w></v>"
+        "</c></book></tanach></Tanach>",
+        encoding="utf-8",
+    )
+    ws = build_word_stream(d, book_order=["Joshua"])
+    assert [w.atom for w in ws.words] == [1, 2, 3, 4, 5, 6]
+    assert [w.not_in_codex for w in ws.words] == [
+        False,
+        False,
+        True,
+        True,
+        True,
+        False,
+    ]
+
+    dest = tmp_path / "word_stream.json"
+    save_word_stream(ws, dest)
+    assert [w.not_in_codex for w in load_word_stream(dest).words] == [
+        w.not_in_codex for w in ws.words
+    ]

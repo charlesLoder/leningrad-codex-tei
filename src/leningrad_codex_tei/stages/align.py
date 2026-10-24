@@ -327,9 +327,32 @@ def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedS
         folio=folio,
         book=stream_book_for(first.get("bkid")),
         record=first,
-        segments=segments,
+        segments=_without_absent_words(segments, word_stream, _ref),
         records=recs,
     )
+
+
+def _without_absent_words(
+    segments: list[Segment], word_stream: WordStream, ref
+) -> list[Segment]:
+    """Split segments around words the UXLC marks as not in the codex.
+
+    Those verses (Josh 21:36-37) keep their atoms for numbering but are not
+    on the page, so the slice skips them like a gap between segments.
+    """
+    out: list[Segment] = []
+    for s in segments:
+        run: Segment | None = None
+        for w in word_stream.words[s.atom_start - 1 : s.atom_end]:
+            if w.not_in_codex:
+                run = None
+            elif run is None:
+                run = Segment(w.atom, w.atom, ref(w), ref(w))
+                out.append(run)
+            else:
+                run.atom_end = w.atom
+                run.stop_ref = ref(w)
+    return out
 
 
 def _text_block(words: list[Word]) -> str:

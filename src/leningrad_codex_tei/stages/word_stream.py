@@ -18,6 +18,10 @@ from lxml import etree
 
 from leningrad_codex_tei.schemas import UxlcEdition, Word, WordStream
 
+# UXLC note X: "This verse does NOT occur in the Leningrad Codex. Included for
+# continuity of verse numbering." A verse-level <x>X</x> carries it.
+NOT_IN_CODEX = "X"
+
 CANONICAL_BOOK_ORDER = [
     "Genesis",
     "Exodus",
@@ -132,6 +136,10 @@ def build_word_stream(
                 if verse_str is None:
                     continue
                 verse = int(verse_str)
+                not_in_codex = any(
+                    _local_name(c) == "x" and (c.text or "").strip() == NOT_IN_CODEX
+                    for c in verse_el
+                )
                 in_verse = 0
                 for child in verse_el:
                     tag = _local_name(child)
@@ -157,6 +165,7 @@ def build_word_stream(
                             chapter=chapter,
                             verse=verse,
                             word_index=in_verse,
+                            not_in_codex=not_in_codex,
                         )
                     )
 

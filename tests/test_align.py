@@ -1416,3 +1416,49 @@ def test_download_batch_records_submitted_settings(
     assert run["model"] == "submitted-model"
     assert run["temperature"] == 0.4
     assert run["result_summary"]["ai"] == submitted_ai
+
+
+def test_seed_slice_skips_words_not_in_codex() -> None:
+    # Josh 21:36-37 are not in the codex: the page runs 21:35 then 21:38
+    from datetime import UTC, datetime
+
+    from leningrad_codex_tei.schemas import Word, WordStream
+
+    words = [
+        Word(atom=n, text=f"w{n}", book="Joshua", chapter=21, verse=v, word_index=i)
+        for n, (v, i) in enumerate(
+            [(35, 1), (35, 2), (36, 1), (36, 2), (37, 1), (38, 1), (38, 2)], start=1
+        )
+    ]
+    for w in words:
+        w.not_in_codex = w.verse in (36, 37)
+    stream = WordStream(source="test", generated_at=datetime.now(UTC), words=words)
+    seed = {
+        "body": [
+            {
+                "page": "133B",
+                "bkid": "Joshua",
+                "startc": 21,
+                "startv": 35,
+                "startp": 1,
+                "stopc": 21,
+                "stopv": 38,
+                "stopp": 2,
+            }
+        ]
+    }
+    sl = compute_seed_slice(seed, "133B", stream)
+    assert sl.atoms == [1, 2, 6, 7]
+    assert sl.range == "Joshua 21:35 – Joshua 21:35; Joshua 21:38 – Joshua 21:38"
+    assert [w.text for w in sl.words(stream)] == ["w1", "w2", "w6", "w7"]
+
+    record = build_alignment_record(
+        sl,
+        sl.words(stream),
+        [(1, 1, 1), (2, 1, 1), (6, 1, 2), (7, 1, 2)],
+        line_counts=[(1, 1, 2), (1, 2, 2)],
+    )
+    from leningrad_codex_tei.stages.validate import validate_folio
+
+    result = validate_folio(sl, record, stream)
+    assert result.checks == {"word_count": True, "atoms_sequential": True}

@@ -22,6 +22,9 @@ class Word:
     section: str | None = None
     # True when the UXLC puts <reversednun/> right after this atom
     inverted_nun: bool = False
+    # True when the UXLC marks this word's verse with note X: the verse is not
+    # in the codex and is kept only for verse numbering (Josh 21:36-37)
+    not_in_codex: bool = False
 
 
 @dataclass
