@@ -11,6 +11,11 @@
 # Set WAIT=<seconds> to change how long to wait for the workflow (default 120).
 set -euo pipefail
 
+# Git Bash (MSYS) on Windows rewrites arguments that look like Unix paths
+# before it runs a native program, so `--body "/claim"` would reach gh as
+# "C:/Program Files/Git/claim". Turn that off; elsewhere it does nothing.
+export MSYS_NO_PATHCONV=1
+
 REPO="${REPO:-charlesLoder/leningrad-codex-tei}"
 WAIT="${WAIT:-120}"
 
