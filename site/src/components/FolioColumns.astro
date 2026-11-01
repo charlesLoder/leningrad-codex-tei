@@ -9,13 +9,36 @@ interface Props {
 const { columns } = Astro.props;
 ---
 
-<div class="columns" data-cols={String(columns.length)}>
-  {columns.map((col, i) => (
-    <ManuscriptColumn col={col} showLineNumbers={i === 0} />
-  ))}
+<p class="small-screen-note">Best viewed on larger screens</p>
+
+<!-- The frame is the size container that the Hebrew text scales against. -->
+<div class="columns-frame">
+  <div class="columns" data-cols={String(columns.length)}>
+    {columns.map((col, i) => (
+      <ManuscriptColumn col={col} showLineNumbers={i === 0} />
+    ))}
+  </div>
 </div>
 
 <style>
+  .small-screen-note {
+    display: none;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  @media screen and (max-width: 1099px) {
+    .small-screen-note {
+      display: block;
+    }
+  }
+
+  .columns-frame {
+    container-type: inline-size;
+  }
+
   /* One parchment leaf holding all columns, like the codex page. */
   .columns {
     display: grid;
@@ -30,13 +53,19 @@ const { columns } = Astro.props;
     box-shadow: 0 0.6rem 1.6rem var(--parchment-shadow);
   }
 
-  @media (min-width: 60rem) {
+  @container (min-width: 60rem) {
     .columns[data-cols='3'] {
       grid-template-columns: repeat(3, auto);
     }
 
     .columns[data-cols='2'] {
       grid-template-columns: repeat(2, auto);
+    }
+  }
+
+  @container (max-width: 40rem) {
+    .columns {
+      padding: 1rem;
     }
   }
 

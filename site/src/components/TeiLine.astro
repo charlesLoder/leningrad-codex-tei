@@ -78,7 +78,8 @@ const verseMarks = [
 
   .he {
     direction: rtl;
-    font-size: 1.4rem;
+    /* Fluid with the container (.columns-frame); never below 1rem. */
+    font-size: clamp(1rem, 5cqi, 1.4rem);
     line-height: 1.7;
     margin: 0;
     font-family: 'SBL Hebrew', 'Noto Serif Hebrew', 'Ezra SIL', 'Cardo', 'Times New Roman', serif;
@@ -88,6 +89,13 @@ const verseMarks = [
        need a named ayin variant in the font; these fonts expose
        the voweled ayin only as a contextual alternate. */
     font-variant-ligatures: contextual;
+  }
+
+  /* Wide enough for several columns side by side. */
+  @container (min-width: 60rem) {
+    .he {
+      font-size: clamp(1rem, 2.1cqi, 1.4rem);
+    }
   }
 
   /* Blank manuscript lines (e.g. open petucha lines) carry no words.
