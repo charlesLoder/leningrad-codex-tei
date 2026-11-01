@@ -55,7 +55,8 @@ const verseMarks = [
     grid-template-columns: 1.6rem 3.4rem 1fr;
     gap: 0.6rem;
     padding: 0;
-    border-bottom: 1px solid var(--parchment-rule);
+    /* Hebrew hangs from the line, so the rule sits above each row. */
+    border-top: 1px solid var(--parchment-rule);
   }
 
   /* Wide screens: only the first column keeps its line numbers. */
@@ -199,7 +200,7 @@ const verseMarks = [
     .tei-line,
     .tei-line.numbered {
       break-inside: avoid;
-      border-bottom: 0;
+      border-top: 0;
       padding: 0.12rem 0;
       grid-template-columns: 1fr;
     }
