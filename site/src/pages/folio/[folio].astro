@@ -67,6 +67,8 @@ const folioSchema = {
   <script>
     const toggle = document.querySelector('#toggle-verses') as HTMLInputElement | null;
     const apply = (on: boolean) => {
+      // Print styles key off this class so print follows the toggle.
+      document.querySelector('.columns')?.classList.toggle('show-verses', on);
       document.querySelectorAll('.verse-tag').forEach((el) => {
         (el as HTMLElement).style.display = on ? '' : 'none';
       });

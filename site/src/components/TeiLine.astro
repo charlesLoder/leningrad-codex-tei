@@ -186,8 +186,19 @@ const verseMarks = [
       display: none;
     }
 
+    /* Verse markers print only when the toggle is on. */
+    :global(.columns.show-verses) .tei-line {
+      grid-template-columns: 2.4rem 1fr;
+      gap: 0.3rem;
+    }
+
+    :global(.columns.show-verses) .gutter {
+      display: flex;
+    }
+
     .verse-tag {
-      display: none;
+      font-size: 0.55rem;
+      color: #000;
     }
 
     .he {
