@@ -22,6 +22,8 @@ const { col, showLineNumbers = false } = Astro.props;
   .column {
     direction: rtl;
     min-width: 0;
+    max-width: 500px;
+    justify-self: center;
     background: var(--parchment);
     border: 1px solid var(--parchment-edge);
     border-radius: 0.4rem;
@@ -40,6 +42,8 @@ const { col, showLineNumbers = false } = Astro.props;
      heading for screen readers. */
   @container (min-width: 60rem) {
     .column {
+      max-width: none;
+      justify-self: stretch;
       background: none;
       border: none;
       border-radius: 0;
@@ -59,6 +63,8 @@ const { col, showLineNumbers = false } = Astro.props;
 
   @media print {
     .column {
+      max-width: none;
+      justify-self: stretch;
       background: none;
       border: none;
       border-radius: 0;
