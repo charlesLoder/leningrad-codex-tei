@@ -29,6 +29,8 @@ export interface Token {
 export interface TeiLine {
   n: string;
   tokens: Token[];
+  /** Section marks on a line with no words (e.g. a lone pe line). */
+  marks: SectionMark[];
 }
 
 export interface TeiColumn {
@@ -227,7 +229,7 @@ export function parseFolioXml(xml: string): FolioDoc {
       started = true;
     } else if (tok.tag === 'lb') {
       flushLine();
-      currentLine = { n: tok.attrs['n'] ?? '', tokens: [] };
+      currentLine = { n: tok.attrs['n'] ?? '', tokens: [], marks: [] };
       started = true;
     } else if (tok.tag === 'milestone') {
       const a = tok.attrs;
@@ -240,9 +242,10 @@ export function parseFolioXml(xml: string): FolioDoc {
         // Paragraph divisions (samekh/pe) close the preceding text,
         // so they belong at the end of the current line — not pending
         // for the next token.
-        const mark: InlineMark = { kind: 'section', subtype: a['subtype'] ?? 'section' };
+        const mark: SectionMark = { kind: 'section', subtype: a['subtype'] ?? 'section' };
         const last = currentLine?.tokens[currentLine.tokens.length - 1];
         if (last) last.marks.push(mark);
+        else if (currentLine) currentLine.marks.push(mark);
         else pending.push(mark);
       }
     } else {
@@ -252,7 +255,7 @@ export function parseFolioXml(xml: string): FolioDoc {
         continue;
       }
       if (!currentLine) {
-        currentLine = { n: '', tokens: [] };
+        currentLine = { n: '', tokens: [], marks: [] };
         started = true;
       }
       let kind: Token['kind'] = 'w';

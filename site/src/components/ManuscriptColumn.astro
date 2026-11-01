@@ -1,28 +1,32 @@
 ---
-import TeiLine from './TeiLine.astro';
 import type { TeiColumn } from '../lib/tei';
+import TeiLine from './TeiLine.astro';
 
 interface Props {
   col: TeiColumn;
+  showLineNumbers?: boolean;
 }
 
-const { col } = Astro.props;
+const { col, showLineNumbers = false } = Astro.props;
 ---
 
 <section class="column">
   <h2>Column {col.n}</h2>
   {col.lines.map((line) => (
-    <TeiLine col={col.n} line={line} />
+    <TeiLine col={col.n} line={line} showLineNumber={showLineNumbers} />
   ))}
 </section>
 
 <style>
+  /* Narrow screens: each column is its own card, with a visible title. */
   .column {
     direction: rtl;
-    background: #f6efdb;
-    border: 1px solid #d8c9a8;
+    min-width: 0;
+    max-width: 500px;
+    justify-self: center;
+    background: var(--parchment);
+    border: 1px solid var(--parchment-edge);
     border-radius: 0.4rem;
-    box-shadow: inset 0 0 2.5rem rgba(122, 46, 29, 0.06);
     padding: 1rem 1.1rem;
   }
 
@@ -34,8 +38,33 @@ const { col } = Astro.props;
     color: var(--muted);
   }
 
+  /* Wide screens: columns share one page, with no titles; keep the
+     heading for screen readers. */
+  @container (min-width: 60rem) {
+    .column {
+      max-width: none;
+      justify-self: stretch;
+      background: none;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    .column h2 {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+
   @media print {
     .column {
+      max-width: none;
+      justify-self: stretch;
       background: none;
       border: none;
       border-radius: 0;

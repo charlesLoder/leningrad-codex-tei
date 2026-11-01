@@ -4,9 +4,10 @@ import type { TeiLine as TeiLineType } from '../lib/tei';
 interface Props {
   col: string | number;
   line: TeiLineType;
+  showLineNumber?: boolean;
 }
 
-const { col, line } = Astro.props;
+const { col, line, showLineNumber = false } = Astro.props;
 
 const verseMarks = [
   ...new Map(
@@ -18,9 +19,9 @@ const verseMarks = [
 ];
 ---
 
-<div class="tei-line" data-col={col} data-line={line.n}>
+<div class:list={['tei-line', { numbered: showLineNumber }]} data-col={col} data-line={line.n}>
+  <span class="ln">{line.n}</span>
   <div class="gutter">
-    <span class="ln">{line.n}</span>
     {verseMarks.map((mk) => (
       <span class="verse-tag" data-verse={mk.ref} title="Highlight verse">{mk.ref}</span>
     ))}
@@ -39,20 +40,49 @@ const verseMarks = [
         ))}{line.tokens[i + 1]?.kind === "sof-pasuq" ? "" : ' '}
       </>
     ))}
+    {line.marks.map((mk) => (
+      <span class="section-tag" title="Paragraph division">
+        {mk.subtype === 'samekh' ? 'ס' : mk.subtype === 'pe' ? 'פ' : mk.subtype}
+      </span>
+    ))}
   </p>
 </div>
 
 <style>
+  /* Narrow screens: every column shows line numbers in their own track. */
   .tei-line {
     display: grid;
-    grid-template-columns: 3.4rem 1fr;
+    grid-template-columns: 1.6rem 3.4rem 1fr;
     gap: 0.6rem;
-    padding: 0.3rem 0;
-    border-top: 1px dotted var(--line);
+    padding: 0;
+    /* Hebrew hangs from the line, so the rule sits above each row. */
+    border-top: 1px solid var(--parchment-rule);
   }
 
-  .tei-line:first-of-type {
-    border-top: 0;
+  /* Wide screens: only the first column keeps its line numbers. */
+  @container (min-width: 60rem) {
+    .tei-line {
+      grid-template-columns: 3.4rem 1fr;
+    }
+
+    .tei-line.numbered {
+      grid-template-columns: 1.6rem 3.4rem 1fr;
+    }
+
+    .ln {
+      display: none;
+    }
+
+    .numbered .ln {
+      display: block;
+    }
+  }
+
+  .ln {
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 2.4;
+    text-align: center;
   }
 
   .gutter {
@@ -62,15 +92,11 @@ const verseMarks = [
     gap: 0.15rem;
   }
 
-  .ln {
-    color: var(--muted);
-    font-size: 0.82rem;
-  }
-
   .he {
     direction: rtl;
-    font-size: 1.3rem;
-    line-height: 1.9;
+    /* Fluid with the container (.columns-frame); never below 1rem. */
+    font-size: clamp(1rem, 5cqi, 1.4rem);
+    line-height: 1.7;
     margin: 0;
     font-family: 'SBL Hebrew', 'Noto Serif Hebrew', 'Ezra SIL', 'Cardo', 'Times New Roman', serif;
     /* Alternate glyphs: keep contextual alternates on so the font
@@ -79,6 +105,13 @@ const verseMarks = [
        need a named ayin variant in the font; these fonts expose
        the voweled ayin only as a contextual alternate. */
     font-variant-ligatures: contextual;
+  }
+
+  /* Wide enough for several columns side by side. */
+  @container (min-width: 60rem) {
+    .he {
+      font-size: clamp(1rem, 2.1cqi, 1.4rem);
+    }
   }
 
   /* Blank manuscript lines (e.g. open petucha lines) carry no words.
@@ -164,19 +197,33 @@ const verseMarks = [
   }
 
   @media print {
-    .tei-line {
+    .tei-line,
+    .tei-line.numbered {
       break-inside: avoid;
       border-top: 0;
       padding: 0.12rem 0;
       grid-template-columns: 1fr;
     }
 
-    .gutter {
+    .gutter,
+    .tei-line .ln {
       display: none;
     }
 
+    /* Verse markers print only when the toggle is on. */
+    :global(.columns.show-verses) .tei-line {
+      grid-template-columns: 1.9rem 1fr;
+      gap: 0.25rem;
+    }
+
+    :global(.columns.show-verses) .gutter {
+      display: flex;
+    }
+
     .verse-tag {
-      display: none;
+      font-size: 0.42rem;
+      line-height: 1.2;
+      color: #000;
     }
 
     .he {
