@@ -39,33 +39,32 @@ const { columns } = Astro.props;
     container-type: inline-size;
   }
 
-  /* One parchment leaf holding all columns, like the codex page. */
+  /* Narrow screens: columns stack as separate cards. */
   .columns {
     display: grid;
-    gap: 0;
+    gap: 1.2rem;
     margin-bottom: 3rem;
-    padding: 2.2rem 2rem 2.6rem;
     direction: rtl;
     color: var(--ink);
-    background: var(--parchment);
-    border: 1px solid var(--parchment-edge);
-    border-radius: 0.4rem;
-    box-shadow: 0 0.6rem 1.6rem var(--parchment-shadow);
   }
 
+  /* Wide screens: one parchment leaf holding all columns, like the codex page. */
   @container (min-width: 60rem) {
+    .columns {
+      gap: 0;
+      padding: 2.2rem 2rem 2.6rem;
+      background: var(--parchment);
+      border: 1px solid var(--parchment-edge);
+      border-radius: 0.4rem;
+      box-shadow: 0 0.6rem 1.6rem var(--parchment-shadow);
+    }
+
     .columns[data-cols='3'] {
       grid-template-columns: repeat(3, auto);
     }
 
     .columns[data-cols='2'] {
       grid-template-columns: repeat(2, auto);
-    }
-  }
-
-  @container (max-width: 40rem) {
-    .columns {
-      padding: 1rem;
     }
   }
 

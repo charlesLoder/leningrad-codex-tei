@@ -20,7 +20,7 @@ const verseMarks = [
 ---
 
 <div class:list={['tei-line', { numbered: showLineNumber }]} data-col={col} data-line={line.n}>
-  {showLineNumber && <span class="ln">{line.n}</span>}
+  <span class="ln">{line.n}</span>
   <div class="gutter">
     {verseMarks.map((mk) => (
       <span class="verse-tag" data-verse={mk.ref} title="Highlight verse">{mk.ref}</span>
@@ -49,17 +49,32 @@ const verseMarks = [
 </div>
 
 <style>
+  /* Narrow screens: every column shows line numbers in their own track. */
   .tei-line {
     display: grid;
-    grid-template-columns: 3.4rem 1fr;
+    grid-template-columns: 1.6rem 3.4rem 1fr;
     gap: 0.6rem;
     padding: 0;
     border-bottom: 1px solid var(--parchment-rule);
   }
 
-  /* First column only: line numbers get their own narrow track. */
-  .tei-line.numbered {
-    grid-template-columns: 1.6rem 3.4rem 1fr;
+  /* Wide screens: only the first column keeps its line numbers. */
+  @container (min-width: 60rem) {
+    .tei-line {
+      grid-template-columns: 3.4rem 1fr;
+    }
+
+    .tei-line.numbered {
+      grid-template-columns: 1.6rem 3.4rem 1fr;
+    }
+
+    .ln {
+      display: none;
+    }
+
+    .numbered .ln {
+      display: block;
+    }
   }
 
   .ln {
@@ -190,7 +205,7 @@ const verseMarks = [
     }
 
     .gutter,
-    .ln {
+    .tei-line .ln {
       display: none;
     }
 

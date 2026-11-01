@@ -1,6 +1,6 @@
 ---
-import TeiLine from './TeiLine.astro';
 import type { TeiColumn } from '../lib/tei';
+import TeiLine from './TeiLine.astro';
 
 interface Props {
   col: TeiColumn;
@@ -18,20 +18,43 @@ const { col, showLineNumbers = false } = Astro.props;
 </section>
 
 <style>
+  /* Narrow screens: each column is its own card, with a visible title. */
   .column {
     direction: rtl;
     min-width: 0;
+    background: var(--parchment);
+    border: 1px solid var(--parchment-edge);
+    border-radius: 0.4rem;
+    padding: 1rem 1.1rem;
   }
 
-  /* The page has no column titles; keep the heading for screen readers. */
   .column h2 {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Wide screens: columns share one page, with no titles; keep the
+     heading for screen readers. */
+  @container (min-width: 60rem) {
+    .column {
+      background: none;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    .column h2 {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
   }
 
   @media print {
