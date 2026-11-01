@@ -10,33 +10,46 @@ const { columns } = Astro.props;
 ---
 
 <div class="columns" data-cols={String(columns.length)}>
-  {columns.map((col) => (
-    <ManuscriptColumn col={col} />
+  {columns.map((col, i) => (
+    <ManuscriptColumn col={col} showLineNumbers={i === 0} />
   ))}
 </div>
 
 <style>
+  /* One parchment leaf holding all columns, like the codex page. */
   .columns {
     display: grid;
-    gap: 1.2rem;
-    padding-bottom: 3rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2.2rem 2rem 2.6rem;
     direction: rtl;
+    color: var(--ink);
+    background: var(--parchment);
+    border: 1px solid var(--parchment-edge);
+    border-radius: 0.4rem;
+    box-shadow: 0 0.6rem 1.6rem var(--parchment-shadow);
   }
 
   @media (min-width: 60rem) {
     .columns[data-cols='3'] {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, auto);
     }
 
     .columns[data-cols='2'] {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, auto);
     }
   }
 
   @media print {
     .columns {
       gap: 0.9rem;
-      padding-bottom: 0;
+      margin-bottom: 0;
+      padding: 0;
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      color: inherit;
     }
 
     .columns[data-cols='3'] {
