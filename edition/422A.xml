@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 22 verse zones (91 line segments) from Masoretica HTR page n842.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n842.json"/>
+      </change>
       <change when="2026-11-01T21:48:17.772655+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-11-01T11:51:22.207155+00:00" who="#contrib-charles-w-loder">Aligned Ruth 2:15 – Ruth 3:13 (315 atoms).
@@ -58,10 +65,146 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-422A">
+    <surface xml:id="surf-422A" ulx="0" uly="0" lrx="4799" lry="5499">
       <graphic xml:id="f422A-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F422A.jpg">
         <desc type="sha256">6a05ea9171648a07361d6621ca0ed8dfed5340cbe9aef180f61c50d2ec97e601</desc>
       </graphic>
+      <graphic xml:id="f422A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0842.jp2/full/max/0/default.jpg" width="4799px" height="5499px"/>
+      <zone xml:id="f422A-zone-Ruth-2-15" type="verse" cert="0.995" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-15-s1" ulx="3591" uly="1248" lrx="4331" lry="1412"/>
+        <zone xml:id="f422A-zone-Ruth-2-15-s2" ulx="3535" uly="1360" lrx="4307" lry="1524"/>
+        <zone xml:id="f422A-zone-Ruth-2-15-s3" ulx="3555" uly="1464" lrx="4299" lry="1628"/>
+        <zone xml:id="f422A-zone-Ruth-2-15-s4" ulx="3995" uly="1552" lrx="4299" lry="1728"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-16" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-16-s1" ulx="3539" uly="1552" lrx="3975" lry="1728"/>
+        <zone xml:id="f422A-zone-Ruth-2-16-s2" ulx="3547" uly="1688" lrx="4311" lry="1824"/>
+        <zone xml:id="f422A-zone-Ruth-2-16-s3" ulx="3555" uly="1768" lrx="4335" lry="1928"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-17" type="verse" cert="0.934" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-17-s1" ulx="3527" uly="1892" lrx="4343" lry="2028"/>
+        <zone xml:id="f422A-zone-Ruth-2-17-s2" ulx="3539" uly="1980" lrx="4335" lry="2144"/>
+        <zone xml:id="f422A-zone-Ruth-2-17-s3" ulx="3655" uly="2108" lrx="4331" lry="2232"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-18" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-18-s1" ulx="3523" uly="2180" lrx="4323" lry="2336"/>
+        <zone xml:id="f422A-zone-Ruth-2-18-s2" ulx="3543" uly="2280" lrx="4327" lry="2444"/>
+        <zone xml:id="f422A-zone-Ruth-2-18-s3" ulx="3515" uly="2408" lrx="4335" lry="2544"/>
+        <zone xml:id="f422A-zone-Ruth-2-18-s4" ulx="3799" uly="2488" lrx="4319" lry="2652"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-19" type="verse" cert="0.955" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-19-s1" ulx="3543" uly="2488" lrx="3783" lry="2652"/>
+        <zone xml:id="f422A-zone-Ruth-2-19-s2" ulx="3551" uly="2608" lrx="4327" lry="2739"/>
+        <zone xml:id="f422A-zone-Ruth-2-19-s3" ulx="3615" uly="2691" lrx="4323" lry="2855"/>
+        <zone xml:id="f422A-zone-Ruth-2-19-s4" ulx="3511" uly="2795" lrx="4327" lry="2955"/>
+        <zone xml:id="f422A-zone-Ruth-2-19-s5" ulx="3587" uly="2891" lrx="4323" lry="3043"/>
+        <zone xml:id="f422A-zone-Ruth-2-19-s6" ulx="3527" uly="2987" lrx="4335" lry="3155"/>
+        <zone xml:id="f422A-zone-Ruth-2-19-s7" ulx="3599" uly="3119" lrx="4327" lry="3243"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-20" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-20-s1" ulx="3647" uly="3191" lrx="4347" lry="3343"/>
+        <zone xml:id="f422A-zone-Ruth-2-20-s2" ulx="3579" uly="3291" lrx="4327" lry="3431"/>
+        <zone xml:id="f422A-zone-Ruth-2-20-s3" ulx="3559" uly="3403" lrx="4339" lry="3527"/>
+        <zone xml:id="f422A-zone-Ruth-2-20-s4" ulx="3571" uly="3475" lrx="4359" lry="3647"/>
+        <zone xml:id="f422A-zone-Ruth-2-20-s5" ulx="3707" uly="3595" lrx="4347" lry="3755"/>
+        <zone xml:id="f422A-zone-Ruth-2-20-s6" ulx="3935" uly="3711" lrx="4335" lry="3863"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-21" type="verse" cert="0.988" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-21-s1" ulx="3551" uly="3711" lrx="3895" lry="3863"/>
+        <zone xml:id="f422A-zone-Ruth-2-21-s2" ulx="3539" uly="3803" lrx="4331" lry="3975"/>
+        <zone xml:id="f422A-zone-Ruth-2-21-s3" ulx="2559" uly="1252" lrx="3255" lry="1412"/>
+        <zone xml:id="f422A-zone-Ruth-2-21-s4" ulx="2468" uly="1360" lrx="3251" lry="1524"/>
+        <zone xml:id="f422A-zone-Ruth-2-21-s5" ulx="2627" uly="1468" lrx="3259" lry="1628"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-22" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-22-s1" ulx="2503" uly="1572" lrx="3267" lry="1732"/>
+        <zone xml:id="f422A-zone-Ruth-2-22-s2" ulx="2479" uly="1676" lrx="3247" lry="1832"/>
+        <zone xml:id="f422A-zone-Ruth-2-22-s3" ulx="2503" uly="1788" lrx="3263" lry="1928"/>
+        <zone xml:id="f422A-zone-Ruth-2-22-s4" ulx="2739" uly="1892" lrx="3255" lry="2032"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-2-23" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-2-23-s1" ulx="2468" uly="1892" lrx="2715" lry="2032"/>
+        <zone xml:id="f422A-zone-Ruth-2-23-s2" ulx="2463" uly="1980" lrx="3247" lry="2140"/>
+        <zone xml:id="f422A-zone-Ruth-2-23-s3" ulx="2551" uly="2096" lrx="3251" lry="2232"/>
+        <zone xml:id="f422A-zone-Ruth-2-23-s4" ulx="2471" uly="2172" lrx="3271" lry="2340"/>
+        <zone xml:id="f422A-zone-Ruth-2-23-s5" ulx="3007" uly="2280" lrx="3251" lry="2444"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-1" type="verse" cert="0.981" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-1-s1" ulx="2456" uly="2280" lrx="2991" lry="2444"/>
+        <zone xml:id="f422A-zone-Ruth-3-1-s2" ulx="2463" uly="2384" lrx="3255" lry="2548"/>
+        <zone xml:id="f422A-zone-Ruth-3-1-s3" ulx="2535" uly="2512" lrx="3259" lry="2644"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-2" type="verse" cert="0.932" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-2-s1" ulx="2463" uly="2588" lrx="3283" lry="2744"/>
+        <zone xml:id="f422A-zone-Ruth-3-2-s2" ulx="2495" uly="2707" lrx="3259" lry="2847"/>
+        <zone xml:id="f422A-zone-Ruth-3-2-s3" ulx="2567" uly="2811" lrx="3259" lry="2943"/>
+        <zone xml:id="f422A-zone-Ruth-3-2-s4" ulx="2703" uly="2887" lrx="3255" lry="3043"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-3" type="verse" cert="0.947" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-3-s1" ulx="2459" uly="2887" lrx="2679" lry="3043"/>
+        <zone xml:id="f422A-zone-Ruth-3-3-s2" ulx="2444" uly="2975" lrx="3283" lry="3155"/>
+        <zone xml:id="f422A-zone-Ruth-3-3-s3" ulx="2495" uly="3091" lrx="3291" lry="3251"/>
+        <zone xml:id="f422A-zone-Ruth-3-3-s4" ulx="2531" uly="3175" lrx="3259" lry="3351"/>
+        <zone xml:id="f422A-zone-Ruth-3-3-s5" ulx="2983" uly="3283" lrx="3279" lry="3439"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-4" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-4-s1" ulx="2567" uly="3283" lrx="2963" lry="3439"/>
+        <zone xml:id="f422A-zone-Ruth-3-4-s2" ulx="2468" uly="3375" lrx="3271" lry="3551"/>
+        <zone xml:id="f422A-zone-Ruth-3-4-s3" ulx="2511" uly="3511" lrx="3275" lry="3651"/>
+        <zone xml:id="f422A-zone-Ruth-3-4-s4" ulx="2507" uly="3615" lrx="3263" lry="3755"/>
+        <zone xml:id="f422A-zone-Ruth-3-4-s5" ulx="2511" uly="3699" lrx="3275" lry="3859"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-5" type="verse" cert="0.927" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-5-s1" ulx="2503" uly="3819" lrx="3279" lry="3975"/>
+        <zone xml:id="f422A-zone-Ruth-3-5-s2" ulx="1644" uly="1252" lrx="2176" lry="1420"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-6" type="verse" cert="0.88" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-6-s1" ulx="1404" uly="1252" lrx="1620" lry="1420"/>
+        <zone xml:id="f422A-zone-Ruth-3-6-s2" ulx="1416" uly="1360" lrx="2184" lry="1524"/>
+        <zone xml:id="f422A-zone-Ruth-3-6-s3" ulx="1724" uly="1492" lrx="2184" lry="1624"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-7" type="verse" cert="0.983" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-7-s1" ulx="1436" uly="1492" lrx="1692" lry="1624"/>
+        <zone xml:id="f422A-zone-Ruth-3-7-s2" ulx="1500" uly="1576" lrx="2184" lry="1728"/>
+        <zone xml:id="f422A-zone-Ruth-3-7-s3" ulx="1452" uly="1668" lrx="2200" lry="1836"/>
+        <zone xml:id="f422A-zone-Ruth-3-7-s4" ulx="1544" uly="1796" lrx="2176" lry="1932"/>
+        <zone xml:id="f422A-zone-Ruth-3-7-s5" ulx="1436" uly="1876" lrx="2208" lry="2040"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-8" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-8-s1" ulx="1404" uly="1984" lrx="2204" lry="2136"/>
+        <zone xml:id="f422A-zone-Ruth-3-8-s2" ulx="1424" uly="2100" lrx="2180" lry="2236"/>
+        <zone xml:id="f422A-zone-Ruth-3-8-s3" ulx="1672" uly="2184" lrx="2192" lry="2348"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-9" type="verse" cert="0.981" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-9-s1" ulx="1440" uly="2184" lrx="1664" lry="2348"/>
+        <zone xml:id="f422A-zone-Ruth-3-9-s2" ulx="1400" uly="2312" lrx="2200" lry="2444"/>
+        <zone xml:id="f422A-zone-Ruth-3-9-s3" ulx="1444" uly="2392" lrx="2184" lry="2560"/>
+        <zone xml:id="f422A-zone-Ruth-3-9-s4" ulx="1448" uly="2520" lrx="2192" lry="2659"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-10" type="verse" cert="0.945" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-10-s1" ulx="1408" uly="2600" lrx="2208" lry="2752"/>
+        <zone xml:id="f422A-zone-Ruth-3-10-s2" ulx="1404" uly="2720" lrx="2200" lry="2859"/>
+        <zone xml:id="f422A-zone-Ruth-3-10-s3" ulx="1440" uly="2820" lrx="2208" lry="2947"/>
+        <zone xml:id="f422A-zone-Ruth-3-10-s4" ulx="1456" uly="2891" lrx="2200" lry="3055"/>
+        <zone xml:id="f422A-zone-Ruth-3-10-s5" ulx="1840" uly="3019" lrx="2224" lry="3159"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-11" type="verse" cert="0.943" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-11-s1" ulx="1472" uly="3019" lrx="1832" lry="3159"/>
+        <zone xml:id="f422A-zone-Ruth-3-11-s2" ulx="1412" uly="3115" lrx="2212" lry="3255"/>
+        <zone xml:id="f422A-zone-Ruth-3-11-s3" ulx="1440" uly="3203" lrx="2196" lry="3359"/>
+        <zone xml:id="f422A-zone-Ruth-3-11-s4" ulx="1460" uly="3315" lrx="2204" lry="3447"/>
+        <zone xml:id="f422A-zone-Ruth-3-11-s5" ulx="2092" uly="3419" lrx="2204" lry="3551"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-12" type="verse" cert="0.909" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-12-s1" ulx="1392" uly="3419" lrx="2068" lry="3551"/>
+        <zone xml:id="f422A-zone-Ruth-3-12-s2" ulx="1424" uly="3499" lrx="2204" lry="3663"/>
+        <zone xml:id="f422A-zone-Ruth-3-12-s3" ulx="1844" uly="3623" lrx="2196" lry="3759"/>
+      </zone>
+      <zone xml:id="f422A-zone-Ruth-3-13" type="verse" cert="0.654" resp="#source-masoretica">
+        <zone xml:id="f422A-zone-Ruth-3-13-s1" ulx="1464" uly="3623" lrx="1804" lry="3759"/>
+        <zone xml:id="f422A-zone-Ruth-3-13-s2" ulx="1476" uly="3699" lrx="2232" lry="3871"/>
+        <zone xml:id="f422A-zone-Ruth-3-13-s3" ulx="1444" uly="3815" lrx="2216" lry="3983"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +215,7 @@
         <ab>
         <cb xml:id="f422A-cb-1" n="1"/>
           <lb xml:id="f422A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Ruth-2-15" xml:id="f422A-v-Ruth-2-15"/>
+            <milestone unit="verse" n="Ruth-2-15" xml:id="f422A-v-Ruth-2-15" facs="#f422A-zone-Ruth-2-15"/>
             <w xml:id="f422A-w-258141">וַתָּ֖קָם</w>
             <w xml:id="f422A-w-258142">לְלַקֵּ֑ט</w>
             <w xml:id="f422A-w-258143">וַיְצַו֩</w>
@@ -90,7 +233,7 @@
           <lb xml:id="f422A-lb-1-4" n="4"/>
             <w xml:id="f422A-w-258153">תַכְלִימֽוּהָ</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258153">׃</pc>
-            <milestone unit="verse" n="Ruth-2-16" xml:id="f422A-v-Ruth-2-16"/>
+            <milestone unit="verse" n="Ruth-2-16" xml:id="f422A-v-Ruth-2-16" facs="#f422A-zone-Ruth-2-16"/>
             <w xml:id="f422A-w-258154">וְגַ֛ם</w>
             <w xml:id="f422A-w-258155">שֹׁל־</w>
             <w xml:id="f422A-w-258156">תָּשֹׁ֥לּוּ</w>
@@ -106,7 +249,7 @@
             <w xml:id="f422A-w-258164">בָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258164">׃</pc>
           <lb xml:id="f422A-lb-1-7" n="7"/>
-            <milestone unit="verse" n="Ruth-2-17" xml:id="f422A-v-Ruth-2-17"/>
+            <milestone unit="verse" n="Ruth-2-17" xml:id="f422A-v-Ruth-2-17" facs="#f422A-zone-Ruth-2-17"/>
             <w xml:id="f422A-w-258165">וַתְּלַקֵּ֥ט</w>
             <w xml:id="f422A-w-258166">בַּשָּׂדֶ֖ה</w>
             <w xml:id="f422A-w-258167">עַד־</w>
@@ -122,7 +265,7 @@
             <w xml:id="f422A-w-258175">שְׂעֹרִֽים</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258175">׃</pc>
           <lb xml:id="f422A-lb-1-10" n="10"/>
-            <milestone unit="verse" n="Ruth-2-18" xml:id="f422A-v-Ruth-2-18"/>
+            <milestone unit="verse" n="Ruth-2-18" xml:id="f422A-v-Ruth-2-18" facs="#f422A-zone-Ruth-2-18"/>
             <w xml:id="f422A-w-258176">וַתִּשָּׂא֙</w>
             <w xml:id="f422A-w-258177">וַתָּב֣וֹא</w>
             <w xml:id="f422A-w-258178">הָעִ֔יר</w>
@@ -142,7 +285,7 @@
             <w xml:id="f422A-w-258189">הוֹתִ֖רָה</w>
             <w xml:id="f422A-w-258190">מִשָּׂבְעָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258190">׃</pc>
-            <milestone unit="verse" n="Ruth-2-19" xml:id="f422A-v-Ruth-2-19"/>
+            <milestone unit="verse" n="Ruth-2-19" xml:id="f422A-v-Ruth-2-19" facs="#f422A-zone-Ruth-2-19"/>
             <w xml:id="f422A-w-258191">וַתֹּאמֶר֩</w>
           <lb xml:id="f422A-lb-1-14" n="14"/>
             <w xml:id="f422A-w-258192">לָ֨הּ</w>
@@ -176,7 +319,7 @@
             <w xml:id="f422A-w-258215">בֹּֽעַז</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258215">׃</pc>
           <lb xml:id="f422A-lb-1-20" n="20"/>
-            <milestone unit="verse" n="Ruth-2-20" xml:id="f422A-v-Ruth-2-20"/>
+            <milestone unit="verse" n="Ruth-2-20" xml:id="f422A-v-Ruth-2-20" facs="#f422A-zone-Ruth-2-20"/>
             <w xml:id="f422A-w-258216">וַתֹּ֨אמֶר</w>
             <w xml:id="f422A-w-258217">נָעֳמִ֜י</w>
             <w xml:id="f422A-w-258218">לְכַלָּתָ֗הּ</w>
@@ -205,7 +348,7 @@
             <w xml:id="f422A-w-258236">מִֽגֹּאֲלֵ֖נוּ</w>
             <w xml:id="f422A-w-258237">הֽוּא</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258237">׃</pc>
-            <milestone unit="verse" n="Ruth-2-21" xml:id="f422A-v-Ruth-2-21"/>
+            <milestone unit="verse" n="Ruth-2-21" xml:id="f422A-v-Ruth-2-21" facs="#f422A-zone-Ruth-2-21"/>
             <w xml:id="f422A-w-258238">וַתֹּ֖אמֶר</w>
             <w xml:id="f422A-w-258239">ר֣וּת</w>
           <lb xml:id="f422A-lb-1-26" n="26"/>
@@ -234,7 +377,7 @@
             <w xml:id="f422A-w-258257">לִֽי</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258257">׃</pc>
           <lb xml:id="f422A-lb-2-4" n="4"/>
-            <milestone unit="verse" n="Ruth-2-22" xml:id="f422A-v-Ruth-2-22"/>
+            <milestone unit="verse" n="Ruth-2-22" xml:id="f422A-v-Ruth-2-22" facs="#f422A-zone-Ruth-2-22"/>
             <w xml:id="f422A-w-258258">וַתֹּ֥אמֶר</w>
             <w xml:id="f422A-w-258259">נָעֳמִ֖י</w>
             <w xml:id="f422A-w-258260">אֶל־</w>
@@ -255,7 +398,7 @@
             <w xml:id="f422A-w-258272">בְּשָׂדֶ֥ה</w>
             <w xml:id="f422A-w-258273">אַחֵֽר</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258273">׃</pc>
-            <milestone unit="verse" n="Ruth-2-23" xml:id="f422A-v-Ruth-2-23"/>
+            <milestone unit="verse" n="Ruth-2-23" xml:id="f422A-v-Ruth-2-23" facs="#f422A-zone-Ruth-2-23"/>
             <w xml:id="f422A-w-258274">וַתִּדְבַּ֞ק</w>
           <lb xml:id="f422A-lb-2-8" n="8"/>
             <w xml:id="f422A-w-258275">בְּנַעֲר֥וֹת</w>
@@ -274,7 +417,7 @@
           <lb xml:id="f422A-lb-2-11" n="11"/>
             <w xml:id="f422A-w-258286">חֲמוֹתָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258286">׃</pc>
-            <milestone unit="verse" n="Ruth-3-1" xml:id="f422A-v-Ruth-3-1"/>
+            <milestone unit="verse" n="Ruth-3-1" xml:id="f422A-v-Ruth-3-1" facs="#f422A-zone-Ruth-3-1"/>
             <w xml:id="f422A-w-258287">וַתֹּ֥אמֶר</w>
             <w xml:id="f422A-w-258288">לָ֖הּ</w>
             <w xml:id="f422A-w-258289">נָעֳמִ֣י</w>
@@ -291,7 +434,7 @@
             <w xml:id="f422A-w-258298">לָֽךְ</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258298">׃</pc>
           <lb xml:id="f422A-lb-2-14" n="14"/>
-            <milestone unit="verse" n="Ruth-3-2" xml:id="f422A-v-Ruth-3-2"/>
+            <milestone unit="verse" n="Ruth-3-2" xml:id="f422A-v-Ruth-3-2" facs="#f422A-zone-Ruth-3-2"/>
             <w xml:id="f422A-w-258299">וְעַתָּ֗ה</w>
             <w xml:id="f422A-w-258300">הֲלֹ֥א</w>
             <w xml:id="f422A-w-258301">בֹ֙עַז֙</w>
@@ -311,7 +454,7 @@
             <w xml:id="f422A-w-258312">הַשְּׂעֹרִ֖ים</w>
             <w xml:id="f422A-w-258313">הַלָּֽיְלָה</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258313">׃</pc>
-            <milestone unit="verse" n="Ruth-3-3" xml:id="f422A-v-Ruth-3-3"/>
+            <milestone unit="verse" n="Ruth-3-3" xml:id="f422A-v-Ruth-3-3" facs="#f422A-zone-Ruth-3-3"/>
             <w xml:id="f422A-w-258314">וְרָחַ֣צְתְּ</w>
             <pc type="paseq" xml:id="f422A-pc-258314">׀</pc>
           <lb xml:id="f422A-lb-2-18" n="18"/>
@@ -332,7 +475,7 @@
           <lb xml:id="f422A-lb-2-21" n="21"/>
             <w xml:id="f422A-w-258327">וְלִשְׁתּֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258327">׃</pc>
-            <milestone unit="verse" n="Ruth-3-4" xml:id="f422A-v-Ruth-3-4"/>
+            <milestone unit="verse" n="Ruth-3-4" xml:id="f422A-v-Ruth-3-4" facs="#f422A-zone-Ruth-3-4"/>
             <w xml:id="f422A-w-258328">וִיהִ֣י</w>
             <w xml:id="f422A-w-258329">בְשָׁכְב֗וֹ</w>
           <lb xml:id="f422A-lb-2-22" n="22"/>
@@ -357,7 +500,7 @@
             <w xml:id="f422A-w-258345">תַּעַשִֽׂין</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258345">׃</pc>
           <lb xml:id="f422A-lb-2-26" n="26"/>
-            <milestone unit="verse" n="Ruth-3-5" xml:id="f422A-v-Ruth-3-5"/>
+            <milestone unit="verse" n="Ruth-3-5" xml:id="f422A-v-Ruth-3-5" facs="#f422A-zone-Ruth-3-5"/>
             <w xml:id="f422A-w-258346">וַתֹּ֖אמֶר</w>
             <w xml:id="f422A-w-258347">אֵלֶ֑יהָ</w>
             <w xml:id="f422A-w-258348">כֹּ֛ל</w>
@@ -367,7 +510,7 @@
             <w xml:id="f422A-w-258350">תֹּאמְרִ֥י</w>
             <w xml:id="f422A-w-258351">אֶֽעֱשֶֽׂה</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258351">׃</pc>
-            <milestone unit="verse" n="Ruth-3-6" xml:id="f422A-v-Ruth-3-6"/>
+            <milestone unit="verse" n="Ruth-3-6" xml:id="f422A-v-Ruth-3-6" facs="#f422A-zone-Ruth-3-6"/>
             <w xml:id="f422A-w-258352">וַתֵּ֖רֶד</w>
           <lb xml:id="f422A-lb-3-2" n="2"/>
             <w xml:id="f422A-w-258353">הַגֹּ֑רֶן</w>
@@ -378,7 +521,7 @@
             <w xml:id="f422A-w-258357">צִוַּ֖תָּה</w>
             <w xml:id="f422A-w-258358">חֲמוֹתָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258358">׃</pc>
-            <milestone unit="verse" n="Ruth-3-7" xml:id="f422A-v-Ruth-3-7"/>
+            <milestone unit="verse" n="Ruth-3-7" xml:id="f422A-v-Ruth-3-7" facs="#f422A-zone-Ruth-3-7"/>
             <w xml:id="f422A-w-258359">וַיֹּ֨אכַל</w>
           <lb xml:id="f422A-lb-3-4" n="4"/>
             <w xml:id="f422A-w-258360">בֹּ֤עַז</w>
@@ -399,7 +542,7 @@
             <w xml:id="f422A-w-258372">וַתִּשְׁכָּֽב</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258372">׃</pc>
           <lb xml:id="f422A-lb-3-8" n="8"/>
-            <milestone unit="verse" n="Ruth-3-8" xml:id="f422A-v-Ruth-3-8"/>
+            <milestone unit="verse" n="Ruth-3-8" xml:id="f422A-v-Ruth-3-8" facs="#f422A-zone-Ruth-3-8"/>
             <w xml:id="f422A-w-258373">וַיְהִי֙</w>
             <w xml:id="f422A-w-258374">בַּחֲצִ֣י</w>
             <w xml:id="f422A-w-258375">הַלַּ֔יְלָה</w>
@@ -413,7 +556,7 @@
             <w xml:id="f422A-w-258381">שֹׁכֶ֖בֶת</w>
             <w xml:id="f422A-w-258382">מַרְגְּלֹתָֽיו</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258382">׃</pc>
-            <milestone unit="verse" n="Ruth-3-9" xml:id="f422A-v-Ruth-3-9"/>
+            <milestone unit="verse" n="Ruth-3-9" xml:id="f422A-v-Ruth-3-9" facs="#f422A-zone-Ruth-3-9"/>
             <w xml:id="f422A-w-258383">וַיֹּ֖אמֶר</w>
           <lb xml:id="f422A-lb-3-11" n="11"/>
             <w xml:id="f422A-w-258384">מִי־</w>
@@ -433,7 +576,7 @@
             <w xml:id="f422A-w-258396">אָֽתָּה</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258396">׃</pc>
           <lb xml:id="f422A-lb-3-14" n="14"/>
-            <milestone unit="verse" n="Ruth-3-10" xml:id="f422A-v-Ruth-3-10"/>
+            <milestone unit="verse" n="Ruth-3-10" xml:id="f422A-v-Ruth-3-10" facs="#f422A-zone-Ruth-3-10"/>
             <w xml:id="f422A-w-258397">וַיֹּ֗אמֶר</w>
             <w xml:id="f422A-w-258398">בְּרוּכָ֨ה</w>
             <w xml:id="f422A-w-258399">אַ֤תְּ</w>
@@ -457,7 +600,7 @@
             <w xml:id="f422A-w-258413">וְאִם־</w>
             <w xml:id="f422A-w-258414">עָשִֽׁיר</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258414">׃</pc>
-            <milestone unit="verse" n="Ruth-3-11" xml:id="f422A-v-Ruth-3-11"/>
+            <milestone unit="verse" n="Ruth-3-11" xml:id="f422A-v-Ruth-3-11" facs="#f422A-zone-Ruth-3-11"/>
             <w xml:id="f422A-w-258415">וְעַתָּ֗ה</w>
             <w xml:id="f422A-w-258416">בִּתִּי֙</w>
           <lb xml:id="f422A-lb-3-19" n="19"/>
@@ -481,7 +624,7 @@
           <lb xml:id="f422A-lb-3-22" n="22"/>
             <w xml:id="f422A-w-258432">אָֽתְּ</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258432">׃</pc>
-            <milestone unit="verse" n="Ruth-3-12" xml:id="f422A-v-Ruth-3-12"/>
+            <milestone unit="verse" n="Ruth-3-12" xml:id="f422A-v-Ruth-3-12" facs="#f422A-zone-Ruth-3-12"/>
             <w xml:id="f422A-w-258433">וְעַתָּה֙</w>
             <w xml:id="f422A-w-258434">כִּ֣י</w>
             <w xml:id="f422A-w-258435">אָמְנָ֔ם</w>
@@ -497,7 +640,7 @@
             <w xml:id="f422A-w-258443">קָר֥וֹב</w>
             <w xml:id="f422A-w-258444">מִמֶּֽנִּי</w>
             <pc type="sof-pasuq" xml:id="f422A-pc-258444">׃</pc>
-            <milestone unit="verse" n="Ruth-3-13" xml:id="f422A-v-Ruth-3-13"/>
+            <milestone unit="verse" n="Ruth-3-13" xml:id="f422A-v-Ruth-3-13" facs="#f422A-zone-Ruth-3-13"/>
             <w xml:id="f422A-w-258445">לִ֣ינִי</w>
             <pc type="paseq" xml:id="f422A-pc-258445">׀</pc>
             <w xml:id="f422A-w-258446">הַלַּ֗יְלָה</w>

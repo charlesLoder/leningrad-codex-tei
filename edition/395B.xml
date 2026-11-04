@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 29 verse zones (65 line segments) from Masoretica HTR page n789. Left out 4 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n789.json"/>
+      </change>
       <change when="2026-11-01T02:25:55.968963+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-11-01T02:11:57.103342+00:00" who="#contrib-charles-w-loder">Aligned Psalms 141:6 – Psalms 144:11 (321 atoms).
@@ -58,10 +65,134 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-395B">
+    <surface xml:id="surf-395B" ulx="0" uly="0" lrx="4319" lry="5499">
       <graphic xml:id="f395B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F395B.jpg">
         <desc type="sha256">1faaa945539661d4d838841c7e8ced07cb08befa8f9cf4c40c6ae9d554dc12b3</desc>
       </graphic>
+      <graphic xml:id="f395B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0789.jp2/full/max/0/default.jpg" width="4319px" height="5499px"/>
+      <zone xml:id="f395B-zone-Psalms-141-6" type="verse" cert="0.741" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-141-6-s1" ulx="2509" uly="1310" lrx="3444" lry="1458"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-141-8" type="verse" cert="0.927" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-141-8-s1" ulx="2221" uly="1497" lrx="3192" lry="1655"/>
+        <zone xml:id="f395B-zone-Psalms-141-8-s2" ulx="2804" uly="1598" lrx="3448" lry="1753"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-141-9" type="verse" cert="0.922" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-141-9-s1" ulx="2213" uly="1598" lrx="2599" lry="1753"/>
+        <zone xml:id="f395B-zone-Psalms-141-9-s2" ulx="2491" uly="1702" lrx="3448" lry="1857"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-141-10" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-141-10-s1" ulx="2206" uly="1702" lrx="2350" lry="1857"/>
+        <zone xml:id="f395B-zone-Psalms-141-10-s2" ulx="2206" uly="1803" lrx="3441" lry="1969"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-142-2" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-142-2-s1" ulx="2217" uly="2116" lrx="3423" lry="2274"/>
+        <zone xml:id="f395B-zone-Psalms-142-2-s2" ulx="3214" uly="2224" lrx="3434" lry="2390"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-142-3" type="verse" cert="1" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-142-3-s1" ulx="2253" uly="2224" lrx="3164" lry="2390"/>
+        <zone xml:id="f395B-zone-Psalms-142-3-s2" ulx="3257" uly="2328" lrx="3426" lry="2480"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-142-4" type="verse" cert="0.965" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-142-4-s1" ulx="2213" uly="2328" lrx="3005" lry="2480"/>
+        <zone xml:id="f395B-zone-Psalms-142-4-s2" ulx="2188" uly="2415" lrx="3437" lry="2580"/>
+        <zone xml:id="f395B-zone-Psalms-142-4-s3" ulx="3246" uly="2537" lrx="3434" lry="2681"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-142-5" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-142-5-s1" ulx="2188" uly="2537" lrx="3207" lry="2681"/>
+        <zone xml:id="f395B-zone-Psalms-142-5-s2" ulx="2368" uly="2624" lrx="3441" lry="2782"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-142-6" type="verse" cert="0.937" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-142-6-s1" ulx="2152" uly="2624" lrx="2347" lry="2782"/>
+        <zone xml:id="f395B-zone-Psalms-142-6-s2" ulx="2141" uly="2742" lrx="3434" lry="2883"/>
+        <zone xml:id="f395B-zone-Psalms-142-6-s3" ulx="3031" uly="2839" lrx="3423" lry="2983"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-142-7" type="verse" cert="0.93" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-142-7-s1" ulx="2185" uly="2839" lrx="2991" lry="2983"/>
+        <zone xml:id="f395B-zone-Psalms-142-7-s2" ulx="2275" uly="2955" lrx="3437" lry="3077"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-142-8" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-142-8-s1" ulx="2160" uly="3012" lrx="3434" lry="3181"/>
+        <zone xml:id="f395B-zone-Psalms-142-8-s2" ulx="2217" uly="3127" lrx="3426" lry="3293"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-1" type="verse" cert="0.998" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-1-s1" ulx="2897" uly="3221" lrx="3437" lry="3365"/>
+        <zone xml:id="f395B-zone-Psalms-143-1-s2" ulx="2185" uly="3307" lrx="3455" lry="3484"/>
+        <zone xml:id="f395B-zone-Psalms-143-1-s3" ulx="2512" uly="3430" lrx="3434" lry="3581"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-2" type="verse" cert="0.995" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-2-s1" ulx="2210" uly="3430" lrx="2505" lry="3581"/>
+        <zone xml:id="f395B-zone-Psalms-143-2-s2" ulx="2174" uly="3527" lrx="3430" lry="3678"/>
+        <zone xml:id="f395B-zone-Psalms-143-2-s3" ulx="3372" uly="3628" lrx="3484" lry="3786"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-3" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-3-s1" ulx="2160" uly="3628" lrx="3322" lry="3786"/>
+        <zone xml:id="f395B-zone-Psalms-143-3-s2" ulx="2332" uly="3728" lrx="3434" lry="3894"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-4" type="verse" cert="0.968" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-4-s1" ulx="2188" uly="3836" lrx="3448" lry="3984"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-5" type="verse" cert="0.996" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-5-s1" ulx="2239" uly="3926" lrx="3448" lry="4092"/>
+        <zone xml:id="f395B-zone-Psalms-143-5-s2" ulx="1202" uly="1270" lrx="1890" lry="1468"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-6" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-6-s1" ulx="648" uly="1270" lrx="1166" lry="1468"/>
+        <zone xml:id="f395B-zone-Psalms-143-6-s2" ulx="1080" uly="1404" lrx="1908" lry="1573"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-7" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-7-s1" ulx="644" uly="1404" lrx="932" lry="1573"/>
+        <zone xml:id="f395B-zone-Psalms-143-7-s2" ulx="745" uly="1508" lrx="1893" lry="1663"/>
+        <zone xml:id="f395B-zone-Psalms-143-7-s3" ulx="864" uly="1605" lrx="1890" lry="1767"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-8" type="verse" cert="0.984" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-8-s1" ulx="594" uly="1605" lrx="842" lry="1767"/>
+        <zone xml:id="f395B-zone-Psalms-143-8-s2" ulx="662" uly="1702" lrx="1893" lry="1868"/>
+        <zone xml:id="f395B-zone-Psalms-143-8-s3" ulx="939" uly="1817" lrx="1900" lry="1972"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-9" type="verse" cert="0.877" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-9-s1" ulx="709" uly="1817" lrx="911" lry="1972"/>
+        <zone xml:id="f395B-zone-Psalms-143-9-s2" ulx="975" uly="1922" lrx="1897" lry="2077"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-10" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-10-s1" ulx="741" uly="1922" lrx="925" lry="2077"/>
+        <zone xml:id="f395B-zone-Psalms-143-10-s2" ulx="662" uly="2012" lrx="1886" lry="2177"/>
+        <zone xml:id="f395B-zone-Psalms-143-10-s3" ulx="1288" uly="2134" lrx="1890" lry="2274"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-11" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-11-s1" ulx="626" uly="2134" lrx="1112" lry="2274"/>
+        <zone xml:id="f395B-zone-Psalms-143-11-s2" ulx="662" uly="2220" lrx="1879" lry="2386"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-143-12" type="verse" cert="0.903" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-143-12-s1" ulx="691" uly="2350" lrx="1897" lry="2494"/>
+        <zone xml:id="f395B-zone-Psalms-143-12-s2" ulx="1321" uly="2440" lrx="1890" lry="2580"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-144-1" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-144-1-s1" ulx="1728" uly="2537" lrx="1879" lry="2660"/>
+        <zone xml:id="f395B-zone-Psalms-144-1-s2" ulx="587" uly="2606" lrx="1886" lry="2782"/>
+        <zone xml:id="f395B-zone-Psalms-144-1-s3" ulx="1598" uly="2746" lrx="1872" lry="2868"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-144-2" type="verse" cert="0.983" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-144-2-s1" ulx="644" uly="2746" lrx="1411" lry="2868"/>
+        <zone xml:id="f395B-zone-Psalms-144-2-s2" ulx="597" uly="2818" lrx="1879" lry="2980"/>
+        <zone xml:id="f395B-zone-Psalms-144-2-s3" ulx="1699" uly="2947" lrx="1868" lry="3070"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-144-3" type="verse" cert="0.973" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-144-3-s1" ulx="777" uly="2947" lrx="1684" lry="3070"/>
+        <zone xml:id="f395B-zone-Psalms-144-3-s2" ulx="1566" uly="3012" lrx="1893" lry="3178"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-144-4" type="verse" cert="0.961" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-144-4-s1" ulx="630" uly="3012" lrx="1360" lry="3178"/>
+        <zone xml:id="f395B-zone-Psalms-144-4-s2" ulx="1699" uly="3124" lrx="1868" lry="3282"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-144-5" type="verse" cert="0.939" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-144-5-s1" ulx="615" uly="3124" lrx="1494" lry="3282"/>
+        <zone xml:id="f395B-zone-Psalms-144-5-s2" ulx="1648" uly="3243" lrx="1882" lry="3379"/>
+      </zone>
+      <zone xml:id="f395B-zone-Psalms-144-6" type="verse" cert="0.899" resp="#source-masoretica">
+        <zone xml:id="f395B-zone-Psalms-144-6-s1" ulx="594" uly="3243" lrx="1612" lry="3379"/>
+        <zone xml:id="f395B-zone-Psalms-144-6-s2" ulx="1659" uly="3329" lrx="1882" lry="3484"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +203,7 @@
         <ab>
         <cb xml:id="f395B-cb-1" n="1"/>
           <lb xml:id="f395B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Psalms-141-6" xml:id="f395B-v-Psalms-141-6"/>
+            <milestone unit="verse" n="Psalms-141-6" xml:id="f395B-v-Psalms-141-6" facs="#f395B-zone-Psalms-141-6"/>
             <w xml:id="f395B-w-240128">שֹׁפְטֵיהֶ֑ם</w>
             <w xml:id="f395B-w-240129">וְשָׁמְע֥וּ</w>
             <w xml:id="f395B-w-240130">אֲ֝מָרַ֗י</w>
@@ -91,7 +222,7 @@
             <w xml:id="f395B-w-240140">שְׁאֽוֹל</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240140">׃</pc>
           <lb xml:id="f395B-lb-1-3" n="3"/>
-            <milestone unit="verse" n="Psalms-141-8" xml:id="f395B-v-Psalms-141-8"/>
+            <milestone unit="verse" n="Psalms-141-8" xml:id="f395B-v-Psalms-141-8" facs="#f395B-zone-Psalms-141-8"/>
             <w xml:id="f395B-w-240141">כִּ֤י</w>
             <w xml:id="f395B-w-240142">אֵלֶ֨יךָ</w>
             <pc type="paseq" xml:id="f395B-pc-240142">׀</pc>
@@ -105,7 +236,7 @@
             <w xml:id="f395B-w-240149">תְּעַ֥ר</w>
             <w xml:id="f395B-w-240150">נַפְשִֽׁי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240150">׃</pc>
-            <milestone unit="verse" n="Psalms-141-9" xml:id="f395B-v-Psalms-141-9"/>
+            <milestone unit="verse" n="Psalms-141-9" xml:id="f395B-v-Psalms-141-9" facs="#f395B-zone-Psalms-141-9"/>
             <w xml:id="f395B-w-240151">שָׁמְרֵ֗נִי</w>
             <w xml:id="f395B-w-240152">מִ֣ידֵי</w>
           <lb xml:id="f395B-lb-1-5" n="5"/>
@@ -116,7 +247,7 @@
             <w xml:id="f395B-w-240157">פֹּ֣עֲלֵי</w>
             <w xml:id="f395B-w-240158">אָֽוֶן</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240158">׃</pc>
-            <milestone unit="verse" n="Psalms-141-10" xml:id="f395B-v-Psalms-141-10"/>
+            <milestone unit="verse" n="Psalms-141-10" xml:id="f395B-v-Psalms-141-10" facs="#f395B-zone-Psalms-141-10"/>
             <w xml:id="f395B-w-240159">יִפְּל֣וּ</w>
           <lb xml:id="f395B-lb-1-6" n="6"/>
             <w xml:id="f395B-w-240160">בְמַכְמֹרָ֣יו</w>
@@ -136,7 +267,7 @@
             <w xml:id="f395B-w-240170">תְפִלָּֽה</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240170">׃</pc>
           <lb xml:id="f395B-lb-1-9" n="9"/>
-            <milestone unit="verse" n="Psalms-142-2" xml:id="f395B-v-Psalms-142-2"/>
+            <milestone unit="verse" n="Psalms-142-2" xml:id="f395B-v-Psalms-142-2" facs="#f395B-zone-Psalms-142-2"/>
             <w xml:id="f395B-w-240171">ק֭וֹלִי</w>
             <w xml:id="f395B-w-240172">אֶל־</w>
             <w xml:id="f395B-w-240173">יְהוָ֣ה</w>
@@ -147,7 +278,7 @@
           <lb xml:id="f395B-lb-1-10" n="10"/>
             <w xml:id="f395B-w-240178">אֶתְחַנָּֽן</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240178">׃</pc>
-            <milestone unit="verse" n="Psalms-142-3" xml:id="f395B-v-Psalms-142-3"/>
+            <milestone unit="verse" n="Psalms-142-3" xml:id="f395B-v-Psalms-142-3" facs="#f395B-zone-Psalms-142-3"/>
             <w xml:id="f395B-w-240179">אֶשְׁפֹּ֣ךְ</w>
             <w xml:id="f395B-w-240180">לְפָנָ֣יו</w>
             <w xml:id="f395B-w-240181">שִׂיחִ֑י</w>
@@ -156,7 +287,7 @@
           <lb xml:id="f395B-lb-1-11" n="11"/>
             <w xml:id="f395B-w-240184">אַגִּֽיד</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240184">׃</pc>
-            <milestone unit="verse" n="Psalms-142-4" xml:id="f395B-v-Psalms-142-4"/>
+            <milestone unit="verse" n="Psalms-142-4" xml:id="f395B-v-Psalms-142-4" facs="#f395B-zone-Psalms-142-4"/>
             <w xml:id="f395B-w-240185">בְּהִתְעַטֵּ֬ף</w>
             <w xml:id="f395B-w-240186">עָלַ֨י</w>
             <pc type="paseq" xml:id="f395B-pc-240186">׀</pc>
@@ -173,7 +304,7 @@
             <w xml:id="f395B-w-240195">פַ֣ח</w>
             <w xml:id="f395B-w-240196">לִֽי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240196">׃</pc>
-            <milestone unit="verse" n="Psalms-142-5" xml:id="f395B-v-Psalms-142-5"/>
+            <milestone unit="verse" n="Psalms-142-5" xml:id="f395B-v-Psalms-142-5" facs="#f395B-zone-Psalms-142-5"/>
             <w xml:id="f395B-w-240197">הַבֵּ֤יט</w>
             <w xml:id="f395B-w-240198">יָמִ֨ין</w>
             <pc type="paseq" xml:id="f395B-pc-240198">׀</pc>
@@ -189,7 +320,7 @@
             <w xml:id="f395B-w-240207">דּוֹרֵ֣שׁ</w>
             <w xml:id="f395B-w-240208">לְנַפְשִֽׁי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240208">׃</pc>
-            <milestone unit="verse" n="Psalms-142-6" xml:id="f395B-v-Psalms-142-6"/>
+            <milestone unit="verse" n="Psalms-142-6" xml:id="f395B-v-Psalms-142-6" facs="#f395B-zone-Psalms-142-6"/>
             <w xml:id="f395B-w-240209">זָעַ֥קְתִּי</w>
           <lb xml:id="f395B-lb-1-15" n="15"/>
             <w xml:id="f395B-w-240210">אֵלֶ֗יךָ</w>
@@ -202,7 +333,7 @@
             <w xml:id="f395B-w-240216">בְּאֶ֣רֶץ</w>
             <w xml:id="f395B-w-240217">הַֽחַיִּים</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240217">׃</pc>
-            <milestone unit="verse" n="Psalms-142-7" xml:id="f395B-v-Psalms-142-7"/>
+            <milestone unit="verse" n="Psalms-142-7" xml:id="f395B-v-Psalms-142-7" facs="#f395B-zone-Psalms-142-7"/>
             <w xml:id="f395B-w-240218">הַקְשִׁ֤יבָה</w>
             <pc type="paseq" xml:id="f395B-pc-240218">׀</pc>
             <w xml:id="f395B-w-240219">אֶֽל־</w>
@@ -218,7 +349,7 @@
             <w xml:id="f395B-w-240228">מִמֶּֽנִּי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240228">׃</pc>
           <lb xml:id="f395B-lb-1-18" n="18"/>
-            <milestone unit="verse" n="Psalms-142-8" xml:id="f395B-v-Psalms-142-8"/>
+            <milestone unit="verse" n="Psalms-142-8" xml:id="f395B-v-Psalms-142-8" facs="#f395B-zone-Psalms-142-8"/>
             <w xml:id="f395B-w-240229">ה֘וֹצִ֤יאָה</w>
             <w xml:id="f395B-w-240230">מִמַּסְגֵּ֨ר</w>
             <pc type="paseq" xml:id="f395B-pc-240230">׀</pc>
@@ -235,7 +366,7 @@
             <w xml:id="f395B-w-240240">עָלֽ͏ָי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240240">׃</pc>
           <lb xml:id="f395B-lb-1-20" n="20"/>
-            <milestone unit="verse" n="Psalms-143-1" xml:id="f395B-v-Psalms-143-1"/>
+            <milestone unit="verse" n="Psalms-143-1" xml:id="f395B-v-Psalms-143-1" facs="#f395B-zone-Psalms-143-1"/>
             <w xml:id="f395B-w-240241">מִזְמ֗וֹר</w>
             <w xml:id="f395B-w-240242">לְדָ֫וִ֥ד</w>
           <lb xml:id="f395B-lb-1-21" n="21"/>
@@ -251,7 +382,7 @@
             <w xml:id="f395B-w-240250">עֲ֝נֵ֗נִי</w>
             <w xml:id="f395B-w-240251">בְּצִדְקָתֶֽךָ</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240251">׃</pc>
-            <milestone unit="verse" n="Psalms-143-2" xml:id="f395B-v-Psalms-143-2"/>
+            <milestone unit="verse" n="Psalms-143-2" xml:id="f395B-v-Psalms-143-2" facs="#f395B-zone-Psalms-143-2"/>
             <w xml:id="f395B-w-240252">וְאַל־</w>
             <w xml:id="f395B-w-240253">תָּב֣וֹא</w>
           <lb xml:id="f395B-lb-1-23" n="23"/>
@@ -266,7 +397,7 @@
           <lb xml:id="f395B-lb-1-24" n="24"/>
             <w xml:id="f395B-w-240262">חָֽי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240262">׃</pc>
-            <milestone unit="verse" n="Psalms-143-3" xml:id="f395B-v-Psalms-143-3"/>
+            <milestone unit="verse" n="Psalms-143-3" xml:id="f395B-v-Psalms-143-3" facs="#f395B-zone-Psalms-143-3"/>
             <w xml:id="f395B-w-240263">כִּ֥י</w>
             <w xml:id="f395B-w-240264">רָ֘דַ֤ף</w>
             <w xml:id="f395B-w-240265">אוֹיֵ֨ב</w>
@@ -282,7 +413,7 @@
             <w xml:id="f395B-w-240273">עוֹלָֽם</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240273">׃</pc>
           <lb xml:id="f395B-lb-1-26" n="26"/>
-            <milestone unit="verse" n="Psalms-143-4" xml:id="f395B-v-Psalms-143-4"/>
+            <milestone unit="verse" n="Psalms-143-4" xml:id="f395B-v-Psalms-143-4" facs="#f395B-zone-Psalms-143-4"/>
             <w xml:id="f395B-w-240274">וַתִּתְעַטֵּ֣ף</w>
             <w xml:id="f395B-w-240275">עָלַ֣י</w>
             <w xml:id="f395B-w-240276">רוּחִ֑י</w>
@@ -291,7 +422,7 @@
             <w xml:id="f395B-w-240279">לִבִּֽי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240279">׃</pc>
           <lb xml:id="f395B-lb-1-27" n="27"/>
-            <milestone unit="verse" n="Psalms-143-5" xml:id="f395B-v-Psalms-143-5"/>
+            <milestone unit="verse" n="Psalms-143-5" xml:id="f395B-v-Psalms-143-5" facs="#f395B-zone-Psalms-143-5"/>
             <w xml:id="f395B-w-240280">זָ֘כַ֤רְתִּי</w>
             <w xml:id="f395B-w-240281">יָמִ֨ים</w>
             <pc type="paseq" xml:id="f395B-pc-240281">׀</pc>
@@ -305,7 +436,7 @@
             <w xml:id="f395B-w-240287">יָדֶ֣יךָ</w>
             <w xml:id="f395B-w-240288">אֲשׂוֹחֵֽחַ</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240288">׃</pc>
-            <milestone unit="verse" n="Psalms-143-6" xml:id="f395B-v-Psalms-143-6"/>
+            <milestone unit="verse" n="Psalms-143-6" xml:id="f395B-v-Psalms-143-6" facs="#f395B-zone-Psalms-143-6"/>
             <w xml:id="f395B-w-240289">פֵּרַ֣שְׂתִּי</w>
             <w xml:id="f395B-w-240290">יָדַ֣י</w>
             <w xml:id="f395B-w-240291">אֵלֶ֑יךָ</w>
@@ -317,7 +448,7 @@
             <w xml:id="f395B-w-240295">לְךָ֣</w>
             <w xml:id="f395B-w-240296">סֶֽלָה</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240296">׃</pc>
-            <milestone unit="verse" n="Psalms-143-7" xml:id="f395B-v-Psalms-143-7"/>
+            <milestone unit="verse" n="Psalms-143-7" xml:id="f395B-v-Psalms-143-7" facs="#f395B-zone-Psalms-143-7"/>
             <w xml:id="f395B-w-240297">מַ֘הֵ֤ר</w>
             <w xml:id="f395B-w-240298">עֲנֵ֨נִי</w>
             <pc type="paseq" xml:id="f395B-pc-240298">׀</pc>
@@ -335,7 +466,7 @@
             <w xml:id="f395B-w-240308">יֹ֥רְדֵי</w>
             <w xml:id="f395B-w-240309">בֽוֹר</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240309">׃</pc>
-            <milestone unit="verse" n="Psalms-143-8" xml:id="f395B-v-Psalms-143-8"/>
+            <milestone unit="verse" n="Psalms-143-8" xml:id="f395B-v-Psalms-143-8" facs="#f395B-zone-Psalms-143-8"/>
             <w xml:id="f395B-w-240310">הַשְׁמִ֘יעֵ֤נִי</w>
           <lb xml:id="f395B-lb-2-5" n="5"/>
             <w xml:id="f395B-w-240311">בַבֹּ֨קֶר</w>
@@ -354,7 +485,7 @@
             <w xml:id="f395B-w-240322">נָשָׂ֥אתִי</w>
             <w xml:id="f395B-w-240323">נַפְשִֽׁי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240323">׃</pc>
-            <milestone unit="verse" n="Psalms-143-9" xml:id="f395B-v-Psalms-143-9"/>
+            <milestone unit="verse" n="Psalms-143-9" xml:id="f395B-v-Psalms-143-9" facs="#f395B-zone-Psalms-143-9"/>
             <w xml:id="f395B-w-240324">הַצִּילֵ֖נִי</w>
           <lb xml:id="f395B-lb-2-7" n="7"/>
             <w xml:id="f395B-w-240325">מֵאֹיְבַ֥י</w>
@@ -363,7 +494,7 @@
             <w xml:id="f395B-w-240327">אֵלֶ֥יךָ</w>
             <w xml:id="f395B-w-240328">כִסִּֽתִי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240328">׃</pc>
-            <milestone unit="verse" n="Psalms-143-10" xml:id="f395B-v-Psalms-143-10"/>
+            <milestone unit="verse" n="Psalms-143-10" xml:id="f395B-v-Psalms-143-10" facs="#f395B-zone-Psalms-143-10"/>
             <w xml:id="f395B-w-240329">לַמְּדֵ֤נִי</w>
             <pc type="paseq" xml:id="f395B-pc-240329">׀</pc>
           <lb xml:id="f395B-lb-2-8" n="8"/>
@@ -379,7 +510,7 @@
             <w xml:id="f395B-w-240338">בְּאֶ֣רֶץ</w>
             <w xml:id="f395B-w-240339">מִישֽׁוֹר</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240339">׃</pc>
-            <milestone unit="verse" n="Psalms-143-11" xml:id="f395B-v-Psalms-143-11"/>
+            <milestone unit="verse" n="Psalms-143-11" xml:id="f395B-v-Psalms-143-11" facs="#f395B-zone-Psalms-143-11"/>
             <w xml:id="f395B-w-240340">לְמַֽעַן־</w>
             <w xml:id="f395B-w-240341">שִׁמְךָ֣</w>
             <w xml:id="f395B-w-240342">יְהוָ֣ה</w>
@@ -392,7 +523,7 @@
             <w xml:id="f395B-w-240347">נַפְשִֽׁי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240347">׃</pc>
           <lb xml:id="f395B-lb-2-11" n="11"/>
-            <milestone unit="verse" n="Psalms-143-12" xml:id="f395B-v-Psalms-143-12"/>
+            <milestone unit="verse" n="Psalms-143-12" xml:id="f395B-v-Psalms-143-12" facs="#f395B-zone-Psalms-143-12"/>
             <w xml:id="f395B-w-240348">וּֽבְחַסְדְּךָ֮</w>
             <w xml:id="f395B-w-240349">תַּצְמִ֢ית</w>
             <w xml:id="f395B-w-240350">אֹ֫יְבָ֥י</w>
@@ -406,7 +537,7 @@
             <w xml:id="f395B-w-240357">עַבְדֶּֽךָ</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240357">׃</pc>
           <lb xml:id="f395B-lb-2-13" n="13"/>
-            <milestone unit="verse" n="Psalms-144-1" xml:id="f395B-v-Psalms-144-1"/>
+            <milestone unit="verse" n="Psalms-144-1" xml:id="f395B-v-Psalms-144-1" facs="#f395B-zone-Psalms-144-1"/>
             <w xml:id="f395B-w-240358">לְדָוִ֨ד</w>
             <pc type="paseq" xml:id="f395B-pc-240358">׀</pc>
           <lb xml:id="f395B-lb-2-14" n="14"/>
@@ -421,7 +552,7 @@
           <lb xml:id="f395B-lb-2-15" n="15"/>
             <w xml:id="f395B-w-240366">לַמִּלְחָמָֽה</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240366">׃</pc>
-            <milestone unit="verse" n="Psalms-144-2" xml:id="f395B-v-Psalms-144-2"/>
+            <milestone unit="verse" n="Psalms-144-2" xml:id="f395B-v-Psalms-144-2" facs="#f395B-zone-Psalms-144-2"/>
             <w xml:id="f395B-w-240367">חַסְדִּ֥י</w>
             <w xml:id="f395B-w-240368">וּמְצוּדָתִי֮</w>
             <w xml:id="f395B-w-240369">מִשְׂגַּבִּ֢י</w>
@@ -436,7 +567,7 @@
           <lb xml:id="f395B-lb-2-17" n="17"/>
             <w xml:id="f395B-w-240377">תַחְתָּֽי</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240377">׃</pc>
-            <milestone unit="verse" n="Psalms-144-3" xml:id="f395B-v-Psalms-144-3"/>
+            <milestone unit="verse" n="Psalms-144-3" xml:id="f395B-v-Psalms-144-3" facs="#f395B-zone-Psalms-144-3"/>
             <w xml:id="f395B-w-240378">יְֽהוָ֗ה</w>
             <w xml:id="f395B-w-240379">מָה־</w>
             <w xml:id="f395B-w-240380">אָ֭דָם</w>
@@ -446,7 +577,7 @@
           <lb xml:id="f395B-lb-2-18" n="18"/>
             <w xml:id="f395B-w-240384">וַֽתְּחַשְּׁבֵֽהוּ</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240384">׃</pc>
-            <milestone unit="verse" n="Psalms-144-4" xml:id="f395B-v-Psalms-144-4"/>
+            <milestone unit="verse" n="Psalms-144-4" xml:id="f395B-v-Psalms-144-4" facs="#f395B-zone-Psalms-144-4"/>
             <w xml:id="f395B-w-240385">אָ֭דָם</w>
             <w xml:id="f395B-w-240386">לַהֶ֣בֶל</w>
             <w xml:id="f395B-w-240387">דָּמָ֑ה</w>
@@ -455,7 +586,7 @@
           <lb xml:id="f395B-lb-2-19" n="19"/>
             <w xml:id="f395B-w-240390">עוֹבֵֽר</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240390">׃</pc>
-            <milestone unit="verse" n="Psalms-144-5" xml:id="f395B-v-Psalms-144-5"/>
+            <milestone unit="verse" n="Psalms-144-5" xml:id="f395B-v-Psalms-144-5" facs="#f395B-zone-Psalms-144-5"/>
             <w xml:id="f395B-w-240391">יְ֭הוָה</w>
             <w xml:id="f395B-w-240392">הַט־</w>
             <w xml:id="f395B-w-240393">שָׁמֶ֣יךָ</w>
@@ -465,7 +596,7 @@
           <lb xml:id="f395B-lb-2-20" n="20"/>
             <w xml:id="f395B-w-240397">וְֽיֶעֱשָֽׁנוּ</w>
             <pc type="sof-pasuq" xml:id="f395B-pc-240397">׃</pc>
-            <milestone unit="verse" n="Psalms-144-6" xml:id="f395B-v-Psalms-144-6"/>
+            <milestone unit="verse" n="Psalms-144-6" xml:id="f395B-v-Psalms-144-6" facs="#f395B-zone-Psalms-144-6"/>
             <w xml:id="f395B-w-240398">בְּר֣וֹק</w>
             <w xml:id="f395B-w-240399">בָּ֭רָק</w>
             <w xml:id="f395B-w-240400">וּתְפִיצֵ֑ם</w>

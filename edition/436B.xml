@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 14 verse zones (89 line segments) from Masoretica HTR page n871.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n871.json"/>
+      </change>
       <change when="2026-11-01T21:48:47.700260+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-11-01T12:00:23.691024+00:00" who="#contrib-charles-w-loder">Aligned Esther 8:8 – Esther 9:5 (277 atoms).
@@ -58,10 +65,128 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-436B">
+    <surface xml:id="surf-436B" ulx="0" uly="0" lrx="4639" lry="5499">
       <graphic xml:id="f436B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F436B.jpg">
         <desc type="sha256">3ac63ac8a140d1b91c5e1057c512257aafad843ec7c93954b282da3fe484406a</desc>
       </graphic>
+      <graphic xml:id="f436B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0871.jp2/full/max/0/default.jpg" width="4639px" height="5499px"/>
+      <zone xml:id="f436B-zone-Esther-8-9" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-9-s1" ulx="2551" uly="1241" lrx="2772" lry="1408"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s2" ulx="2664" uly="1350" lrx="3383" lry="1512"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s3" ulx="2590" uly="1454" lrx="3379" lry="1601"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s4" ulx="2644" uly="1558" lrx="3363" lry="1709"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s5" ulx="2621" uly="1647" lrx="3363" lry="1810"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s6" ulx="2617" uly="1760" lrx="3379" lry="1906"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s7" ulx="2625" uly="1845" lrx="3363" lry="2019"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s8" ulx="2729" uly="1964" lrx="3383" lry="2115"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s9" ulx="2660" uly="2057" lrx="3379" lry="2212"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s10" ulx="2621" uly="2169" lrx="3367" lry="2305"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s11" ulx="2640" uly="2247" lrx="3367" lry="2421"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s12" ulx="2644" uly="2359" lrx="3379" lry="2525"/>
+        <zone xml:id="f436B-zone-Esther-8-9-s13" ulx="2582" uly="2479" lrx="3348" lry="2630"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-10" type="verse" cert="0.976" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-10-s1" ulx="2768" uly="2572" lrx="3383" lry="2730"/>
+        <zone xml:id="f436B-zone-Esther-8-10-s2" ulx="2598" uly="2680" lrx="3367" lry="2827"/>
+        <zone xml:id="f436B-zone-Esther-8-10-s3" ulx="2598" uly="2765" lrx="3359" lry="2923"/>
+        <zone xml:id="f436B-zone-Esther-8-10-s4" ulx="2625" uly="2862" lrx="3352" lry="3028"/>
+        <zone xml:id="f436B-zone-Esther-8-10-s5" ulx="2594" uly="2958" lrx="3363" lry="3132"/>
+        <zone xml:id="f436B-zone-Esther-8-10-s6" ulx="3100" uly="3067" lrx="3363" lry="3225"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-11" type="verse" cert="0.953" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-11-s1" ulx="2745" uly="3067" lrx="3054" lry="3225"/>
+        <zone xml:id="f436B-zone-Esther-8-11-s2" ulx="2656" uly="3159" lrx="3356" lry="3326"/>
+        <zone xml:id="f436B-zone-Esther-8-11-s3" ulx="2640" uly="3264" lrx="3367" lry="3415"/>
+        <zone xml:id="f436B-zone-Esther-8-11-s4" ulx="2772" uly="3353" lrx="3379" lry="3515"/>
+        <zone xml:id="f436B-zone-Esther-8-11-s5" ulx="2594" uly="3461" lrx="3363" lry="3620"/>
+        <zone xml:id="f436B-zone-Esther-8-11-s6" ulx="2629" uly="3573" lrx="3363" lry="3720"/>
+        <zone xml:id="f436B-zone-Esther-8-11-s7" ulx="2617" uly="3670" lrx="3359" lry="3821"/>
+        <zone xml:id="f436B-zone-Esther-8-11-s8" ulx="2934" uly="3763" lrx="3379" lry="3921"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-12" type="verse" cert="0.945" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-12-s1" ulx="2606" uly="3763" lrx="2899" lry="3921"/>
+        <zone xml:id="f436B-zone-Esther-8-12-s2" ulx="2737" uly="3863" lrx="3359" lry="4041"/>
+        <zone xml:id="f436B-zone-Esther-8-12-s3" ulx="1585" uly="1245" lrx="2292" lry="1408"/>
+        <zone xml:id="f436B-zone-Esther-8-12-s4" ulx="1539" uly="1361" lrx="2308" lry="1508"/>
+        <zone xml:id="f436B-zone-Esther-8-12-s5" ulx="1794" uly="1473" lrx="2296" lry="1605"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-13" type="verse" cert="0.952" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-13-s1" ulx="1550" uly="1473" lrx="1767" lry="1605"/>
+        <zone xml:id="f436B-zone-Esther-8-13-s2" ulx="1631" uly="1547" lrx="2304" lry="1705"/>
+        <zone xml:id="f436B-zone-Esther-8-13-s3" ulx="1577" uly="1651" lrx="2308" lry="1810"/>
+        <zone xml:id="f436B-zone-Esther-8-13-s4" ulx="1523" uly="1744" lrx="2296" lry="1903"/>
+        <zone xml:id="f436B-zone-Esther-8-13-s5" ulx="1527" uly="1833" lrx="2300" lry="2011"/>
+        <zone xml:id="f436B-zone-Esther-8-13-s6" ulx="1995" uly="1961" lrx="2312" lry="2119"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-14" type="verse" cert="0.939" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-14-s1" ulx="1577" uly="1961" lrx="1948" lry="2119"/>
+        <zone xml:id="f436B-zone-Esther-8-14-s2" ulx="1647" uly="2053" lrx="2304" lry="2208"/>
+        <zone xml:id="f436B-zone-Esther-8-14-s3" ulx="1585" uly="2166" lrx="2312" lry="2301"/>
+        <zone xml:id="f436B-zone-Esther-8-14-s4" ulx="1570" uly="2247" lrx="2312" lry="2413"/>
+        <zone xml:id="f436B-zone-Esther-8-14-s5" ulx="1840" uly="2363" lrx="2312" lry="2510"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-15" type="verse" cert="0.985" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-15-s1" ulx="1566" uly="2429" lrx="2339" lry="2630"/>
+        <zone xml:id="f436B-zone-Esther-8-15-s2" ulx="1600" uly="2583" lrx="2312" lry="2711"/>
+        <zone xml:id="f436B-zone-Esther-8-15-s3" ulx="1570" uly="2661" lrx="2343" lry="2815"/>
+        <zone xml:id="f436B-zone-Esther-8-15-s4" ulx="1658" uly="2773" lrx="2335" lry="2920"/>
+        <zone xml:id="f436B-zone-Esther-8-15-s5" ulx="1678" uly="2858" lrx="2331" lry="3016"/>
+        <zone xml:id="f436B-zone-Esther-8-15-s6" ulx="2061" uly="2958" lrx="2335" lry="3121"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-16" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-16-s1" ulx="1585" uly="2958" lrx="2014" lry="3121"/>
+        <zone xml:id="f436B-zone-Esther-8-16-s2" ulx="1651" uly="3059" lrx="2316" lry="3217"/>
+        <zone xml:id="f436B-zone-Esther-8-16-s3" ulx="2146" uly="3159" lrx="2339" lry="3318"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-8-17" type="verse" cert="0.926" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-8-17-s1" ulx="1577" uly="3159" lrx="2142" lry="3318"/>
+        <zone xml:id="f436B-zone-Esther-8-17-s2" ulx="1628" uly="3287" lrx="2331" lry="3411"/>
+        <zone xml:id="f436B-zone-Esther-8-17-s3" ulx="1651" uly="3380" lrx="2320" lry="3511"/>
+        <zone xml:id="f436B-zone-Esther-8-17-s4" ulx="1689" uly="3457" lrx="2327" lry="3612"/>
+        <zone xml:id="f436B-zone-Esther-8-17-s5" ulx="1589" uly="3550" lrx="2320" lry="3705"/>
+        <zone xml:id="f436B-zone-Esther-8-17-s6" ulx="1682" uly="3662" lrx="2347" lry="3813"/>
+        <zone xml:id="f436B-zone-Esther-8-17-s7" ulx="1616" uly="3747" lrx="2374" lry="3910"/>
+        <zone xml:id="f436B-zone-Esther-8-17-s8" ulx="1836" uly="3867" lrx="2320" lry="4018"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-9-1" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-9-1-s1" ulx="1581" uly="3867" lrx="1817" lry="4018"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s2" ulx="611" uly="1253" lrx="1276" lry="1408"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s3" ulx="533" uly="1353" lrx="1283" lry="1512"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s4" ulx="537" uly="1473" lrx="1276" lry="1609"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s5" ulx="537" uly="1551" lrx="1303" lry="1709"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s6" ulx="545" uly="1663" lrx="1303" lry="1794"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s7" ulx="634" uly="1740" lrx="1276" lry="1914"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s8" ulx="696" uly="1868" lrx="1272" lry="1999"/>
+        <zone xml:id="f436B-zone-Esther-9-1-s9" ulx="526" uly="1949" lrx="1268" lry="2108"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-9-2" type="verse" cert="0.959" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-9-2-s1" ulx="518" uly="2077" lrx="1283" lry="2204"/>
+        <zone xml:id="f436B-zone-Esther-9-2-s2" ulx="518" uly="2173" lrx="1268" lry="2301"/>
+        <zone xml:id="f436B-zone-Esther-9-2-s3" ulx="564" uly="2243" lrx="1268" lry="2394"/>
+        <zone xml:id="f436B-zone-Esther-9-2-s4" ulx="576" uly="2359" lrx="1272" lry="2514"/>
+        <zone xml:id="f436B-zone-Esther-9-2-s5" ulx="557" uly="2459" lrx="1276" lry="2618"/>
+        <zone xml:id="f436B-zone-Esther-9-2-s6" ulx="638" uly="2579" lrx="1280" lry="2707"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-9-3" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-9-3-s1" ulx="731" uly="2676" lrx="1295" lry="2808"/>
+        <zone xml:id="f436B-zone-Esther-9-3-s2" ulx="530" uly="2750" lrx="1299" lry="2916"/>
+        <zone xml:id="f436B-zone-Esther-9-3-s3" ulx="553" uly="2862" lrx="1291" lry="3020"/>
+        <zone xml:id="f436B-zone-Esther-9-3-s4" ulx="661" uly="2958" lrx="1280" lry="3121"/>
+        <zone xml:id="f436B-zone-Esther-9-3-s5" ulx="653" uly="3063" lrx="1272" lry="3214"/>
+        <zone xml:id="f436B-zone-Esther-9-3-s6" ulx="796" uly="3132" lrx="1283" lry="3306"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-9-4" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-9-4-s1" ulx="557" uly="3132" lrx="765" lry="3306"/>
+        <zone xml:id="f436B-zone-Esther-9-4-s2" ulx="700" uly="3248" lrx="1299" lry="3407"/>
+        <zone xml:id="f436B-zone-Esther-9-4-s3" ulx="506" uly="3345" lrx="1307" lry="3504"/>
+        <zone xml:id="f436B-zone-Esther-9-4-s4" ulx="595" uly="3449" lrx="1287" lry="3604"/>
+        <zone xml:id="f436B-zone-Esther-9-4-s5" ulx="1094" uly="3565" lrx="1303" lry="3693"/>
+      </zone>
+      <zone xml:id="f436B-zone-Esther-9-5" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f436B-zone-Esther-9-5-s1" ulx="526" uly="3589" lrx="1303" lry="3801"/>
+        <zone xml:id="f436B-zone-Esther-9-5-s2" ulx="588" uly="3755" lrx="1299" lry="3906"/>
+        <zone xml:id="f436B-zone-Esther-9-5-s3" ulx="553" uly="3852" lrx="1299" lry="4018"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -77,7 +202,7 @@
             <w xml:id="f436B-w-265679">אֵ֥ין</w>
             <w xml:id="f436B-w-265680">לְהָשִֽׁיב</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265680">׃</pc>
-            <milestone unit="verse" n="Esther-8-9" xml:id="f436B-v-Esther-8-9"/>
+            <milestone unit="verse" n="Esther-8-9" xml:id="f436B-v-Esther-8-9" facs="#f436B-zone-Esther-8-9"/>
             <w xml:id="f436B-w-265681">וַיִקָּרְא֣וּ</w>
           <lb xml:id="f436B-lb-1-2" n="2"/>
             <w xml:id="f436B-w-265682">סֹפְרֵֽי־</w>
@@ -136,7 +261,7 @@
             <w xml:id="f436B-w-265723">וְכִלְשׁוֹנָֽם</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265723">׃</pc>
           <lb xml:id="f436B-lb-1-14" n="14"/>
-            <milestone unit="verse" n="Esther-8-10" xml:id="f436B-v-Esther-8-10"/>
+            <milestone unit="verse" n="Esther-8-10" xml:id="f436B-v-Esther-8-10" facs="#f436B-zone-Esther-8-10"/>
             <w xml:id="f436B-w-265724">וַיִּכְתֹּ֗ב</w>
             <w xml:id="f436B-w-265725">בְּשֵׁם֙</w>
             <w xml:id="f436B-w-265726">הַמֶּ֣לֶךְ</w>
@@ -160,7 +285,7 @@
           <lb xml:id="f436B-lb-1-19" n="19"/>
             <w xml:id="f436B-w-265740">הָֽרַמָּכִֽים</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265740">׃</pc>
-            <milestone unit="verse" n="Esther-8-11" xml:id="f436B-v-Esther-8-11"/>
+            <milestone unit="verse" n="Esther-8-11" xml:id="f436B-v-Esther-8-11" facs="#f436B-zone-Esther-8-11"/>
             <w xml:id="f436B-w-265741">אֲשֶׁר֩</w>
             <w xml:id="f436B-w-265742">נָתַ֨ן</w>
           <lb xml:id="f436B-lb-1-20" n="20"/>
@@ -196,7 +321,7 @@
             <w xml:id="f436B-w-265765">וּשְׁלָלָ֖ם</w>
             <w xml:id="f436B-w-265766">לָבֽוֹז</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265766">׃</pc>
-            <milestone unit="verse" n="Esther-8-12" xml:id="f436B-v-Esther-8-12"/>
+            <milestone unit="verse" n="Esther-8-12" xml:id="f436B-v-Esther-8-12" facs="#f436B-zone-Esther-8-12"/>
             <w xml:id="f436B-w-265767">בְּי֣וֹם</w>
             <w xml:id="f436B-w-265768">אֶחָ֔ד</w>
           <lb xml:id="f436B-lb-1-27" n="27"/>
@@ -217,7 +342,7 @@
             <w xml:id="f436B-w-265779">חֹ֥דֶשׁ</w>
             <w xml:id="f436B-w-265780">אֲדָֽר</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265780">׃</pc>
-            <milestone unit="verse" n="Esther-8-13" xml:id="f436B-v-Esther-8-13"/>
+            <milestone unit="verse" n="Esther-8-13" xml:id="f436B-v-Esther-8-13" facs="#f436B-zone-Esther-8-13"/>
             <w xml:id="f436B-w-265781">פַּתְשֶׁ֣גֶן</w>
           <lb xml:id="f436B-lb-2-4" n="4"/>
             <w xml:id="f436B-w-265782">הַכְּתָ֗ב</w>
@@ -241,7 +366,7 @@
           <lb xml:id="f436B-lb-2-8" n="8"/>
             <w xml:id="f436B-w-265797">מֵאֹיְבֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265797">׃</pc>
-            <milestone unit="verse" n="Esther-8-14" xml:id="f436B-v-Esther-8-14"/>
+            <milestone unit="verse" n="Esther-8-14" xml:id="f436B-v-Esther-8-14" facs="#f436B-zone-Esther-8-14"/>
             <w xml:id="f436B-w-265798">הָרָצִ֞ים</w>
             <w xml:id="f436B-w-265799">רֹכְבֵ֤י</w>
           <lb xml:id="f436B-lb-2-9" n="9"/>
@@ -262,7 +387,7 @@
             <pc type="sof-pasuq" xml:id="f436B-pc-265810">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f436B-s-Esther-8-14"/>
           <lb xml:id="f436B-lb-2-13" n="13"/>
-            <milestone unit="verse" n="Esther-8-15" xml:id="f436B-v-Esther-8-15"/>
+            <milestone unit="verse" n="Esther-8-15" xml:id="f436B-v-Esther-8-15" facs="#f436B-zone-Esther-8-15"/>
             <w xml:id="f436B-w-265811">וּמָרְדֳּכַ֞י</w>
             <w xml:id="f436B-w-265812">יָצָ֣א</w>
             <pc type="paseq" xml:id="f436B-pc-265812">׀</pc>
@@ -288,7 +413,7 @@
           <lb xml:id="f436B-lb-2-18" n="18"/>
             <w xml:id="f436B-w-265828">וְשָׂמֵֽחָה</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265828">׃</pc>
-            <milestone unit="verse" n="Esther-8-16" xml:id="f436B-v-Esther-8-16"/>
+            <milestone unit="verse" n="Esther-8-16" xml:id="f436B-v-Esther-8-16" facs="#f436B-zone-Esther-8-16"/>
             <w xml:id="f436B-w-265829">לַיְּהוּדִ֕ים</w>
             <w xml:id="f436B-w-265830">הָֽיְתָ֥ה</w>
           <lb xml:id="f436B-lb-2-19" n="19"/>
@@ -298,7 +423,7 @@
           <lb xml:id="f436B-lb-2-20" n="20"/>
             <w xml:id="f436B-w-265834">וִיקָֽר</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265834">׃</pc>
-            <milestone unit="verse" n="Esther-8-17" xml:id="f436B-v-Esther-8-17"/>
+            <milestone unit="verse" n="Esther-8-17" xml:id="f436B-v-Esther-8-17" facs="#f436B-zone-Esther-8-17"/>
             <w xml:id="f436B-w-265835">וּבְכָל־</w>
             <w xml:id="f436B-w-265836">מְדִינָ֨ה</w>
             <w xml:id="f436B-w-265837">וּמְדִינָ֜ה</w>
@@ -334,7 +459,7 @@
             <w xml:id="f436B-w-265860">הַיְּהוּדִ֖ים</w>
             <w xml:id="f436B-w-265861">עֲלֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265861">׃</pc>
-            <milestone unit="verse" n="Esther-9-1" xml:id="f436B-v-Esther-9-1"/>
+            <milestone unit="verse" n="Esther-9-1" xml:id="f436B-v-Esther-9-1" facs="#f436B-zone-Esther-9-1"/>
             <w xml:id="f436B-w-265862">וּבִשְׁנֵים֩</w>
         <cb xml:id="f436B-cb-3" n="3"/>
           <lb xml:id="f436B-lb-3-1" n="1"/>
@@ -376,7 +501,7 @@
             <w xml:id="f436B-w-265891">בְּשֹׂנְאֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265891">׃</pc>
           <lb xml:id="f436B-lb-3-9" n="9"/>
-            <milestone unit="verse" n="Esther-9-2" xml:id="f436B-v-Esther-9-2"/>
+            <milestone unit="verse" n="Esther-9-2" xml:id="f436B-v-Esther-9-2" facs="#f436B-zone-Esther-9-2"/>
             <w xml:id="f436B-w-265892">נִקְהֲל֨וּ</w>
             <w xml:id="f436B-w-265893">הַיְּהוּדִ֜ים</w>
             <w xml:id="f436B-w-265894">בְּעָרֵיהֶ֗ם</w>
@@ -405,7 +530,7 @@
             <w xml:id="f436B-w-265912">הָעַמִּֽים</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265912">׃</pc>
           <lb xml:id="f436B-lb-3-15" n="15"/>
-            <milestone unit="verse" n="Esther-9-3" xml:id="f436B-v-Esther-9-3"/>
+            <milestone unit="verse" n="Esther-9-3" xml:id="f436B-v-Esther-9-3" facs="#f436B-zone-Esther-9-3"/>
             <w xml:id="f436B-w-265913">וְכָל־</w>
             <w xml:id="f436B-w-265914">שָׂרֵ֨י</w>
             <w xml:id="f436B-w-265915">הַמְּדִינ֜וֹת</w>
@@ -429,7 +554,7 @@
             <w xml:id="f436B-w-265928">מָרְדֳּכַ֖י</w>
             <w xml:id="f436B-w-265929">עֲלֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f436B-pc-265929">׃</pc>
-            <milestone unit="verse" n="Esther-9-4" xml:id="f436B-v-Esther-9-4"/>
+            <milestone unit="verse" n="Esther-9-4" xml:id="f436B-v-Esther-9-4" facs="#f436B-zone-Esther-9-4"/>
             <w xml:id="f436B-w-265930">כִּֽי־</w>
             <w xml:id="f436B-w-265931">גָד֤וֹל</w>
           <lb xml:id="f436B-lb-3-21" n="21"/>
@@ -451,7 +576,7 @@
             <pc type="sof-pasuq" xml:id="f436B-pc-265943">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f436B-s-Esther-9-4"/>
           <lb xml:id="f436B-lb-3-25" n="25"/>
-            <milestone unit="verse" n="Esther-9-5" xml:id="f436B-v-Esther-9-5"/>
+            <milestone unit="verse" n="Esther-9-5" xml:id="f436B-v-Esther-9-5" facs="#f436B-zone-Esther-9-5"/>
             <w xml:id="f436B-w-265944">וַיַּכּ֤וּ</w>
             <w xml:id="f436B-w-265945">הַיְּהוּדִים֙</w>
             <w xml:id="f436B-w-265946">בְּכָל־</w>

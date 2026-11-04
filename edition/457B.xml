@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 29 verse zones (96 line segments) from Masoretica HTR page n913.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n913.json"/>
+      </change>
       <change when="2026-11-02T14:55:14.377086+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-11-02T02:05:30.909271+00:00" who="#contrib-charles-w-loder">Aligned Nehemiah 6:16 – Nehemiah 7:25 (283 atoms).
@@ -58,10 +65,165 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-457B">
+    <surface xml:id="surf-457B" ulx="0" uly="0" lrx="4703" lry="5499">
       <graphic xml:id="f457B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F457B.jpg">
         <desc type="sha256">6aeed9da7d56b64dc336f7b44e8f14d5345b2e4787a2bac766080836ef448855</desc>
       </graphic>
+      <graphic xml:id="f457B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0913.jp2/full/max/0/default.jpg" width="4703px" height="5499px"/>
+      <zone xml:id="f457B-zone-Nehemiah-6-16" type="verse" cert="0.716" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-6-16-s1" ulx="2587" uly="1121" lrx="3382" lry="1286"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-16-s2" ulx="2618" uly="1246" lrx="3390" lry="1384"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-16-s3" ulx="2622" uly="1325" lrx="3378" lry="1493"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-16-s4" ulx="3182" uly="1450" lrx="3382" lry="1587"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-6-17" type="verse" cert="0.921" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-6-17-s1" ulx="2724" uly="1450" lrx="3171" lry="1587"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-17-s2" ulx="2602" uly="1533" lrx="3398" lry="1693"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-17-s3" ulx="2634" uly="1662" lrx="3386" lry="1815"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-17-s4" ulx="2732" uly="1772" lrx="3394" lry="1921"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-6-18" type="verse" cert="0.961" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-6-18-s1" ulx="2504" uly="1772" lrx="2689" lry="1921"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-18-s2" ulx="2630" uly="1862" lrx="3394" lry="2019"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-18-s3" ulx="2677" uly="1956" lrx="3382" lry="2124"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-18-s4" ulx="2692" uly="2073" lrx="3386" lry="2226"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-18-s5" ulx="2614" uly="2171" lrx="3386" lry="2336"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-6-19" type="verse" cert="0.883" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-6-19-s1" ulx="2595" uly="2277" lrx="3402" lry="2438"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-19-s2" ulx="2704" uly="2379" lrx="3406" lry="2536"/>
+        <zone xml:id="f457B-zone-Nehemiah-6-19-s3" ulx="2606" uly="2477" lrx="3390" lry="2638"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-1" type="verse" cert="0.824" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-1-s1" ulx="2634" uly="2603" lrx="3414" lry="2736"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-1-s2" ulx="2618" uly="2681" lrx="3410" lry="2838"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-1-s3" ulx="2649" uly="2783" lrx="3394" lry="2940"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-1-s4" ulx="3186" uly="2877" lrx="3425" lry="3038"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-2" type="verse" cert="0.958" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-2-s1" ulx="2642" uly="2877" lrx="3139" lry="3038"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-2-s2" ulx="2598" uly="3002" lrx="3406" lry="3136"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-2-s3" ulx="2645" uly="3092" lrx="3414" lry="3218"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-2-s4" ulx="2653" uly="3183" lrx="3418" lry="3335"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-2-s5" ulx="3206" uly="3269" lrx="3437" lry="3445"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-3" type="verse" cert="0.979" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-3-s1" ulx="2661" uly="3269" lrx="3206" lry="3445"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-3-s2" ulx="2685" uly="3386" lrx="3429" lry="3535"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-3-s3" ulx="2665" uly="3508" lrx="3425" lry="3641"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-3-s4" ulx="2763" uly="3582" lrx="3429" lry="3751"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-3-s5" ulx="2645" uly="3688" lrx="3441" lry="3853"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-3-s6" ulx="2830" uly="3790" lrx="3437" lry="3959"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-3-s7" ulx="1536" uly="1105" lrx="2324" lry="1270"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-4" type="verse" cert="0.877" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-4-s1" ulx="1564" uly="1219" lrx="2344" lry="1380"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-4-s2" ulx="1560" uly="1344" lrx="2328" lry="1493"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-4-s3" ulx="1975" uly="1442" lrx="2344" lry="1591"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-5" type="verse" cert="0.91" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-5-s1" ulx="1532" uly="1442" lrx="1944" lry="1591"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-5-s2" ulx="1548" uly="1529" lrx="2324" lry="1701"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-5-s3" ulx="1564" uly="1654" lrx="2352" lry="1811"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-5-s4" ulx="1576" uly="1752" lrx="2344" lry="1921"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-5-s5" ulx="1572" uly="1854" lrx="2340" lry="2015"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-5-s6" ulx="1795" uly="1964" lrx="2355" lry="2128"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-6" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-6-s1" ulx="1572" uly="2038" lrx="2332" lry="2230"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-6-s2" ulx="1579" uly="2187" lrx="2344" lry="2324"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-6-s3" ulx="1536" uly="2277" lrx="2359" lry="2430"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-6-s4" ulx="1646" uly="2360" lrx="2344" lry="2516"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-6-s5" ulx="2140" uly="2458" lrx="2340" lry="2614"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-7" type="verse" cert="0.841" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-7-s1" ulx="1560" uly="2458" lrx="2109" lry="2614"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-7-s2" ulx="1713" uly="2552" lrx="2359" lry="2708"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-7-s3" ulx="1658" uly="2669" lrx="2355" lry="2822"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-7-s4" ulx="1611" uly="2771" lrx="2348" lry="2924"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-7-s5" ulx="1599" uly="2877" lrx="2348" lry="3026"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-7-s6" ulx="2085" uly="2979" lrx="2355" lry="3132"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-8" type="verse" cert="0.908" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-8-s1" ulx="1642" uly="2979" lrx="1932" lry="3132"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-8-s2" ulx="1693" uly="3069" lrx="2355" lry="3226"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-8-s3" ulx="2167" uly="3171" lrx="2375" lry="3328"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-9" type="verse" cert="0.964" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-9-s1" ulx="1623" uly="3171" lrx="1991" lry="3328"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-9-s2" ulx="1662" uly="3292" lrx="2363" lry="3426"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-9-s3" ulx="2152" uly="3382" lrx="2371" lry="3543"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-10" type="verse" cert="0.994" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-10-s1" ulx="1611" uly="3382" lrx="1999" lry="3543"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-10-s2" ulx="1654" uly="3484" lrx="2359" lry="3641"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-11" type="verse" cert="0.978" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-11-s1" ulx="1650" uly="3590" lrx="2148" lry="3739"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-11-s2" ulx="1583" uly="3680" lrx="2363" lry="3853"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-11-s3" ulx="1685" uly="3798" lrx="2375" lry="3959"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-11-s4" ulx="1086" uly="1105" lrx="1285" lry="1278"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-12" type="verse" cert="0.998" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-12-s1" ulx="560" uly="1105" lrx="866" lry="1278"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-12-s2" ulx="557" uly="1223" lrx="1289" lry="1395"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-12-s3" ulx="964" uly="1344" lrx="1297" lry="1493"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-13" type="verse" cert="0.994" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-13-s1" ulx="580" uly="1344" lrx="854" lry="1493"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-13-s2" ulx="533" uly="1458" lrx="1289" lry="1591"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-13-s3" ulx="1015" uly="1540" lrx="1301" lry="1713"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-14" type="verse" cert="1" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-14-s1" ulx="564" uly="1540" lrx="796" lry="1713"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-14-s2" ulx="607" uly="1654" lrx="1289" lry="1819"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-15" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-15-s1" ulx="533" uly="1764" lrx="1113" lry="1924"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-15-s2" ulx="745" uly="1893" lrx="1293" lry="2026"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-16" type="verse" cert="0.999" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-16-s1" ulx="541" uly="1972" lrx="1140" lry="2128"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-16-s2" ulx="803" uly="2089" lrx="1301" lry="2222"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-17" type="verse" cert="0.876" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-17-s1" ulx="584" uly="2140" lrx="1109" lry="2324"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-17-s2" ulx="619" uly="2273" lrx="1305" lry="2434"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-17-s3" ulx="1113" uly="2371" lrx="1325" lry="2532"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-18" type="verse" cert="0.934" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-18-s1" ulx="557" uly="2371" lrx="945" lry="2532"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-18-s2" ulx="729" uly="2493" lrx="1305" lry="2622"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-18-s3" ulx="1039" uly="2587" lrx="1321" lry="2740"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-19" type="verse" cert="0.926" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-19-s1" ulx="584" uly="2587" lrx="854" lry="2740"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-19-s2" ulx="564" uly="2701" lrx="1297" lry="2838"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-20" type="verse" cert="0.984" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-20-s1" ulx="533" uly="2798" lrx="1121" lry="2936"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-20-s2" ulx="768" uly="2900" lrx="1301" lry="3034"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-21" type="verse" cert="0.898" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-21-s1" ulx="564" uly="3010" lrx="1109" lry="3143"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-21-s2" ulx="768" uly="3096" lrx="1289" lry="3226"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-22" type="verse" cert="0.959" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-22-s1" ulx="560" uly="3163" lrx="1156" lry="3335"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-22-s2" ulx="588" uly="3288" lrx="1305" lry="3445"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-23" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-23-s1" ulx="564" uly="3382" lrx="1156" lry="3555"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-23-s2" ulx="756" uly="3500" lrx="1305" lry="3653"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-24" type="verse" cert="1" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-24-s1" ulx="572" uly="3598" lrx="1164" lry="3759"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-24-s2" ulx="1117" uly="3700" lrx="1305" lry="3861"/>
+      </zone>
+      <zone xml:id="f457B-zone-Nehemiah-7-25" type="verse" cert="0.958" resp="#source-masoretica">
+        <zone xml:id="f457B-zone-Nehemiah-7-25-s1" ulx="623" uly="3700" lrx="941" lry="3861"/>
+        <zone xml:id="f457B-zone-Nehemiah-7-25-s2" ulx="776" uly="3798" lrx="1297" lry="3963"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +234,7 @@
         <ab>
         <cb xml:id="f457B-cb-1" n="1"/>
           <lb xml:id="f457B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Nehemiah-6-16" xml:id="f457B-v-Nehemiah-6-16"/>
+            <milestone unit="verse" n="Nehemiah-6-16" xml:id="f457B-v-Nehemiah-6-16" facs="#f457B-zone-Nehemiah-6-16"/>
             <w xml:id="f457B-w-278075">אֲשֶׁ֣ר</w>
             <w xml:id="f457B-w-278076">סְבִֽיבֹתֵ֔ינוּ</w>
             <w xml:id="f457B-w-278077">וַיִּפְּל֥וּ</w>
@@ -89,7 +251,7 @@
           <lb xml:id="f457B-lb-1-4" n="4"/>
             <w xml:id="f457B-w-278086">הַזֹּֽאת</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278086">׃</pc>
-            <milestone unit="verse" n="Nehemiah-6-17" xml:id="f457B-v-Nehemiah-6-17"/>
+            <milestone unit="verse" n="Nehemiah-6-17" xml:id="f457B-v-Nehemiah-6-17" facs="#f457B-zone-Nehemiah-6-17"/>
             <w xml:id="f457B-w-278087">גַּ֣ם</w>
             <pc type="paseq" xml:id="f457B-pc-278087">׀</pc>
             <w xml:id="f457B-w-278088">בַּיָּמִ֣ים</w>
@@ -109,7 +271,7 @@
             <w xml:id="f457B-w-278099">בָּא֥וֹת</w>
             <w xml:id="f457B-w-278100">אֲלֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278100">׃</pc>
-            <milestone unit="verse" n="Nehemiah-6-18" xml:id="f457B-v-Nehemiah-6-18"/>
+            <milestone unit="verse" n="Nehemiah-6-18" xml:id="f457B-v-Nehemiah-6-18" facs="#f457B-zone-Nehemiah-6-18"/>
             <w xml:id="f457B-w-278101">כִּי־</w>
             <w xml:id="f457B-w-278102">רַבִּ֣ים</w>
           <lb xml:id="f457B-lb-1-8" n="8"/>
@@ -136,7 +298,7 @@
             <w xml:id="f457B-w-278120">בֶּֽרֶכְיָֽה</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278120">׃</pc>
           <lb xml:id="f457B-lb-1-12" n="12"/>
-            <milestone unit="verse" n="Nehemiah-6-19" xml:id="f457B-v-Nehemiah-6-19"/>
+            <milestone unit="verse" n="Nehemiah-6-19" xml:id="f457B-v-Nehemiah-6-19" facs="#f457B-zone-Nehemiah-6-19"/>
             <w xml:id="f457B-w-278121">גַּ֣ם</w>
             <w xml:id="f457B-w-278122">טוֹבֹתָ֗יו</w>
             <w xml:id="f457B-w-278123">הָי֤וּ</w>
@@ -154,7 +316,7 @@
             <w xml:id="f457B-w-278133">לְיָֽרְאֵֽנִי</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278133">׃</pc>
           <lb xml:id="f457B-lb-1-15" n="15"/>
-            <milestone unit="verse" n="Nehemiah-7-1" xml:id="f457B-v-Nehemiah-7-1"/>
+            <milestone unit="verse" n="Nehemiah-7-1" xml:id="f457B-v-Nehemiah-7-1" facs="#f457B-zone-Nehemiah-7-1"/>
             <w xml:id="f457B-w-278134">וַיְהִ֗י</w>
             <w xml:id="f457B-w-278135">כַּאֲשֶׁ֤ר</w>
             <w xml:id="f457B-w-278136">נִבְנְתָה֙</w>
@@ -169,7 +331,7 @@
           <lb xml:id="f457B-lb-1-18" n="18"/>
             <w xml:id="f457B-w-278143">וְהַלְוִיִּֽם</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278143">׃</pc>
-            <milestone unit="verse" n="Nehemiah-7-2" xml:id="f457B-v-Nehemiah-7-2"/>
+            <milestone unit="verse" n="Nehemiah-7-2" xml:id="f457B-v-Nehemiah-7-2" facs="#f457B-zone-Nehemiah-7-2"/>
             <w xml:id="f457B-w-278144">וָאֲצַוֶּ֞ה</w>
             <w xml:id="f457B-w-278145">אֶת־</w>
             <w xml:id="f457B-w-278146">חֲנָ֣נִי</w>
@@ -193,7 +355,7 @@
           <lb xml:id="f457B-lb-1-22" n="22"/>
             <w xml:id="f457B-w-278161">מֵרַבִּֽים</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278161">׃</pc>
-            <milestone unit="verse" n="Nehemiah-7-3" xml:id="f457B-v-Nehemiah-7-3"/>
+            <milestone unit="verse" n="Nehemiah-7-3" xml:id="f457B-v-Nehemiah-7-3" facs="#f457B-zone-Nehemiah-7-3"/>
             <w xml:id="f457B-w-278162">ויאמר</w>
             <w xml:id="f457B-w-278163">לָהֶ֗ם</w>
             <w xml:id="f457B-w-278164">לֹ֣א</w>
@@ -227,7 +389,7 @@
             <w xml:id="f457B-w-278185">בֵּיתֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278185">׃</pc>
           <lb xml:id="f457B-lb-2-2" n="2"/>
-            <milestone unit="verse" n="Nehemiah-7-4" xml:id="f457B-v-Nehemiah-7-4"/>
+            <milestone unit="verse" n="Nehemiah-7-4" xml:id="f457B-v-Nehemiah-7-4" facs="#f457B-zone-Nehemiah-7-4"/>
             <w xml:id="f457B-w-278186">וְהָעִ֞יר</w>
             <w xml:id="f457B-w-278187">רַחֲבַ֤ת</w>
             <w xml:id="f457B-w-278188">יָדַ֙יִם֙</w>
@@ -241,7 +403,7 @@
             <w xml:id="f457B-w-278194">בָּתִּ֖ים</w>
             <w xml:id="f457B-w-278195">בְּנוּיִֽם</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278195">׃</pc>
-            <milestone unit="verse" n="Nehemiah-7-5" xml:id="f457B-v-Nehemiah-7-5"/>
+            <milestone unit="verse" n="Nehemiah-7-5" xml:id="f457B-v-Nehemiah-7-5" facs="#f457B-zone-Nehemiah-7-5"/>
             <w xml:id="f457B-w-278196">וַיִּתֵּ֤ן</w>
             <w xml:id="f457B-w-278197">אֱלֹהַי֙</w>
             <w xml:id="f457B-w-278198">אֶל־</w>
@@ -270,7 +432,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278215">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f457B-s-Nehemiah-7-5"/>
           <lb xml:id="f457B-lb-2-10" n="10"/>
-            <milestone unit="verse" n="Nehemiah-7-6" xml:id="f457B-v-Nehemiah-7-6"/>
+            <milestone unit="verse" n="Nehemiah-7-6" xml:id="f457B-v-Nehemiah-7-6" facs="#f457B-zone-Nehemiah-7-6"/>
             <w xml:id="f457B-w-278216">אֵ֣לֶּה</w>
             <pc type="paseq" xml:id="f457B-pc-278216">׀</pc>
             <w xml:id="f457B-w-278217">בְּנֵ֣י</w>
@@ -293,7 +455,7 @@
           <lb xml:id="f457B-lb-2-14" n="14"/>
             <w xml:id="f457B-w-278231">לְעִירֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278231">׃</pc>
-            <milestone unit="verse" n="Nehemiah-7-7" xml:id="f457B-v-Nehemiah-7-7"/>
+            <milestone unit="verse" n="Nehemiah-7-7" xml:id="f457B-v-Nehemiah-7-7" facs="#f457B-zone-Nehemiah-7-7"/>
             <w xml:id="f457B-w-278232">הַבָּאִ֣ים</w>
             <w xml:id="f457B-w-278233">עִם־</w>
             <w xml:id="f457B-w-278234">זְרֻבָּבֶ֗ל</w>
@@ -319,7 +481,7 @@
             <w xml:id="f457B-w-278249">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278249">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-7"/>
-            <milestone unit="verse" n="Nehemiah-7-8" xml:id="f457B-v-Nehemiah-7-8"/>
+            <milestone unit="verse" n="Nehemiah-7-8" xml:id="f457B-v-Nehemiah-7-8" facs="#f457B-zone-Nehemiah-7-8"/>
             <w xml:id="f457B-w-278250">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278251">פַרְעֹ֔שׁ</w>
           <lb xml:id="f457B-lb-2-20" n="20"/>
@@ -330,7 +492,7 @@
             <w xml:id="f457B-w-278255">וּשְׁנָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278255">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-8"/>
-            <milestone unit="verse" n="Nehemiah-7-9" xml:id="f457B-v-Nehemiah-7-9"/>
+            <milestone unit="verse" n="Nehemiah-7-9" xml:id="f457B-v-Nehemiah-7-9" facs="#f457B-zone-Nehemiah-7-9"/>
             <w xml:id="f457B-w-278256">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278257">שְׁפַטְיָ֔ה</w>
           <lb xml:id="f457B-lb-2-22" n="22"/>
@@ -341,7 +503,7 @@
             <w xml:id="f457B-w-278261">וּשְׁנָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278261">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-9"/>
-            <milestone unit="verse" n="Nehemiah-7-10" xml:id="f457B-v-Nehemiah-7-10"/>
+            <milestone unit="verse" n="Nehemiah-7-10" xml:id="f457B-v-Nehemiah-7-10" facs="#f457B-zone-Nehemiah-7-10"/>
             <w xml:id="f457B-w-278262">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278263">אָרַ֔ח</w>
             <w xml:id="f457B-w-278264">שֵׁ֥שׁ</w>
@@ -352,7 +514,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278267">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-10"/>
           <lb xml:id="f457B-lb-2-25" n="25"/>
-            <milestone unit="verse" n="Nehemiah-7-11" xml:id="f457B-v-Nehemiah-7-11"/>
+            <milestone unit="verse" n="Nehemiah-7-11" xml:id="f457B-v-Nehemiah-7-11" facs="#f457B-zone-Nehemiah-7-11"/>
             <w xml:id="f457B-w-278268">בְּנֵֽי־</w>
             <w xml:id="f457B-w-278269">פַחַ֥ת</w>
             <w xml:id="f457B-w-278270">מוֹאָ֛ב</w>
@@ -370,7 +532,7 @@
             <w xml:id="f457B-w-278278">עָשָֽׂר</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278278">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-11"/>
-            <milestone unit="verse" n="Nehemiah-7-12" xml:id="f457B-v-Nehemiah-7-12"/>
+            <milestone unit="verse" n="Nehemiah-7-12" xml:id="f457B-v-Nehemiah-7-12" facs="#f457B-zone-Nehemiah-7-12"/>
             <w xml:id="f457B-w-278279">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278280">עֵילָ֔ם</w>
           <lb xml:id="f457B-lb-3-2" n="2"/>
@@ -381,7 +543,7 @@
             <w xml:id="f457B-w-278284">וְאַרְבָּעָֽה</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278284">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-12"/>
-            <milestone unit="verse" n="Nehemiah-7-13" xml:id="f457B-v-Nehemiah-7-13"/>
+            <milestone unit="verse" n="Nehemiah-7-13" xml:id="f457B-v-Nehemiah-7-13" facs="#f457B-zone-Nehemiah-7-13"/>
             <w xml:id="f457B-w-278285">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278286">זַתּ֔וּא</w>
           <lb xml:id="f457B-lb-3-4" n="4"/>
@@ -392,7 +554,7 @@
             <w xml:id="f457B-w-278290">וַחֲמִשָּֽׁה</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278290">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-13"/>
-            <milestone unit="verse" n="Nehemiah-7-14" xml:id="f457B-v-Nehemiah-7-14"/>
+            <milestone unit="verse" n="Nehemiah-7-14" xml:id="f457B-v-Nehemiah-7-14" facs="#f457B-zone-Nehemiah-7-14"/>
             <w xml:id="f457B-w-278291">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278292">זַכָּ֔י</w>
           <lb xml:id="f457B-lb-3-6" n="6"/>
@@ -402,7 +564,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278295">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-14"/>
           <lb xml:id="f457B-lb-3-7" n="7"/>
-            <milestone unit="verse" n="Nehemiah-7-15" xml:id="f457B-v-Nehemiah-7-15"/>
+            <milestone unit="verse" n="Nehemiah-7-15" xml:id="f457B-v-Nehemiah-7-15" facs="#f457B-zone-Nehemiah-7-15"/>
             <w xml:id="f457B-w-278296">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278297">בִנּ֔וּי</w>
             <w xml:id="f457B-w-278298">שֵׁ֥שׁ</w>
@@ -413,7 +575,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278301">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-15"/>
           <lb xml:id="f457B-lb-3-9" n="9"/>
-            <milestone unit="verse" n="Nehemiah-7-16" xml:id="f457B-v-Nehemiah-7-16"/>
+            <milestone unit="verse" n="Nehemiah-7-16" xml:id="f457B-v-Nehemiah-7-16" facs="#f457B-zone-Nehemiah-7-16"/>
             <w xml:id="f457B-w-278302">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278303">בֵבָ֔י</w>
             <w xml:id="f457B-w-278304">שֵׁ֥שׁ</w>
@@ -424,7 +586,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278307">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-16"/>
           <lb xml:id="f457B-lb-3-11" n="11"/>
-            <milestone unit="verse" n="Nehemiah-7-17" xml:id="f457B-v-Nehemiah-7-17"/>
+            <milestone unit="verse" n="Nehemiah-7-17" xml:id="f457B-v-Nehemiah-7-17" facs="#f457B-zone-Nehemiah-7-17"/>
             <w xml:id="f457B-w-278308">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278309">עַזְגָּ֔ד</w>
             <w xml:id="f457B-w-278310">אַלְפַּ֕יִם</w>
@@ -436,7 +598,7 @@
             <w xml:id="f457B-w-278314">וּשְׁנָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278314">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-17"/>
-            <milestone unit="verse" n="Nehemiah-7-18" xml:id="f457B-v-Nehemiah-7-18"/>
+            <milestone unit="verse" n="Nehemiah-7-18" xml:id="f457B-v-Nehemiah-7-18" facs="#f457B-zone-Nehemiah-7-18"/>
             <w xml:id="f457B-w-278315">בְּנֵי֙</w>
             <w xml:id="f457B-w-278316">אֲדֹ֣נִיקָ֔ם</w>
           <lb xml:id="f457B-lb-3-14" n="14"/>
@@ -447,7 +609,7 @@
             <w xml:id="f457B-w-278320">וְשִׁבְעָֽה</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278320">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-18"/>
-            <milestone unit="verse" n="Nehemiah-7-19" xml:id="f457B-v-Nehemiah-7-19"/>
+            <milestone unit="verse" n="Nehemiah-7-19" xml:id="f457B-v-Nehemiah-7-19" facs="#f457B-zone-Nehemiah-7-19"/>
             <w xml:id="f457B-w-278321">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278322">בִגְוָ֔י</w>
           <lb xml:id="f457B-lb-3-16" n="16"/>
@@ -457,7 +619,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278325">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-19"/>
           <lb xml:id="f457B-lb-3-17" n="17"/>
-            <milestone unit="verse" n="Nehemiah-7-20" xml:id="f457B-v-Nehemiah-7-20"/>
+            <milestone unit="verse" n="Nehemiah-7-20" xml:id="f457B-v-Nehemiah-7-20" facs="#f457B-zone-Nehemiah-7-20"/>
             <w xml:id="f457B-w-278326">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278327">עָדִ֔ין</w>
             <w xml:id="f457B-w-278328">שֵׁ֥שׁ</w>
@@ -468,7 +630,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278331">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-20"/>
           <lb xml:id="f457B-lb-3-19" n="19"/>
-            <milestone unit="verse" n="Nehemiah-7-21" xml:id="f457B-v-Nehemiah-7-21"/>
+            <milestone unit="verse" n="Nehemiah-7-21" xml:id="f457B-v-Nehemiah-7-21" facs="#f457B-zone-Nehemiah-7-21"/>
             <w xml:id="f457B-w-278332">בְּנֵֽי־</w>
             <w xml:id="f457B-w-278333">אָטֵ֥ר</w>
             <w xml:id="f457B-w-278334">לְחִזְקִיָּ֖ה</w>
@@ -478,7 +640,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278336">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-21"/>
           <lb xml:id="f457B-lb-3-21" n="21"/>
-            <milestone unit="verse" n="Nehemiah-7-22" xml:id="f457B-v-Nehemiah-7-22"/>
+            <milestone unit="verse" n="Nehemiah-7-22" xml:id="f457B-v-Nehemiah-7-22" facs="#f457B-zone-Nehemiah-7-22"/>
             <w xml:id="f457B-w-278337">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278338">חָשֻׁ֔ם</w>
             <w xml:id="f457B-w-278339">שְׁלֹ֥שׁ</w>
@@ -489,7 +651,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278342">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-22"/>
           <lb xml:id="f457B-lb-3-23" n="23"/>
-            <milestone unit="verse" n="Nehemiah-7-23" xml:id="f457B-v-Nehemiah-7-23"/>
+            <milestone unit="verse" n="Nehemiah-7-23" xml:id="f457B-v-Nehemiah-7-23" facs="#f457B-zone-Nehemiah-7-23"/>
             <w xml:id="f457B-w-278343">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278344">בֵצָ֔י</w>
             <w xml:id="f457B-w-278345">שְׁלֹ֥שׁ</w>
@@ -500,7 +662,7 @@
             <pc type="sof-pasuq" xml:id="f457B-pc-278348">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-23"/>
           <lb xml:id="f457B-lb-3-25" n="25"/>
-            <milestone unit="verse" n="Nehemiah-7-24" xml:id="f457B-v-Nehemiah-7-24"/>
+            <milestone unit="verse" n="Nehemiah-7-24" xml:id="f457B-v-Nehemiah-7-24" facs="#f457B-zone-Nehemiah-7-24"/>
             <w xml:id="f457B-w-278349">בְּנֵ֣י</w>
             <w xml:id="f457B-w-278350">חָרִ֔יף</w>
             <w xml:id="f457B-w-278351">מֵאָ֖ה</w>
@@ -509,7 +671,7 @@
             <w xml:id="f457B-w-278353">עָשָֽׂר</w>
             <pc type="sof-pasuq" xml:id="f457B-pc-278353">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f457B-s-Nehemiah-7-24"/>
-            <milestone unit="verse" n="Nehemiah-7-25" xml:id="f457B-v-Nehemiah-7-25"/>
+            <milestone unit="verse" n="Nehemiah-7-25" xml:id="f457B-v-Nehemiah-7-25" facs="#f457B-zone-Nehemiah-7-25"/>
             <w xml:id="f457B-w-278354">בְּנֵ֥י</w>
             <w xml:id="f457B-w-278355">גִבְע֖וֹן</w>
           <lb xml:id="f457B-lb-3-27" n="27"/>

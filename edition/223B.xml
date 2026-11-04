@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 24 verse zones (89 line segments) from Masoretica HTR page n445. Left out 3 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n445.json"/>
+      </change>
       <change when="2026-10-25T18:01:54.382214+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-25T11:34:57.435235+00:00" who="#contrib-charles-w-loder">Aligned Isaiah 8:7 – Isaiah 9:11 (341 atoms).
@@ -58,10 +65,148 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-223B">
+    <surface xml:id="surf-223B" ulx="0" uly="0" lrx="4415" lry="5247">
       <graphic xml:id="f223B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F223B.jpg">
         <desc type="sha256">f495e72fa2ad8772b35193dfa0af8443940de22c0a5a81274d0600010fef5ecd</desc>
       </graphic>
+      <graphic xml:id="f223B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0445.jp2/full/max/0/default.jpg" width="4415px" height="5247px"/>
+      <zone xml:id="f223B-zone-Isaiah-8-8" type="verse" cert="0.945" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-8-s1" ulx="2491" uly="1277" lrx="2844" lry="1450"/>
+        <zone xml:id="f223B-zone-Isaiah-8-8-s2" ulx="2542" uly="1409" lrx="3216" lry="1531"/>
+        <zone xml:id="f223B-zone-Isaiah-8-8-s3" ulx="2494" uly="1501" lrx="3230" lry="1626"/>
+        <zone xml:id="f223B-zone-Isaiah-8-8-s4" ulx="2767" uly="1582" lrx="3212" lry="1726"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-9" type="verse" cert="0.945" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-9-s1" ulx="2513" uly="1670" lrx="2943" lry="1818"/>
+        <zone xml:id="f223B-zone-Isaiah-8-9-s2" ulx="2568" uly="1762" lrx="3230" lry="1913"/>
+        <zone xml:id="f223B-zone-Isaiah-8-9-s3" ulx="2491" uly="1866" lrx="3216" lry="2005"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-10" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-10-s1" ulx="2509" uly="1954" lrx="3223" lry="2112"/>
+        <zone xml:id="f223B-zone-Isaiah-8-10-s2" ulx="2627" uly="2068" lrx="3238" lry="2193"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-12" type="verse" cert="0.825" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-12-s1" ulx="2498" uly="2417" lrx="3013" lry="2565"/>
+        <zone xml:id="f223B-zone-Isaiah-8-12-s2" ulx="2509" uly="2513" lrx="3234" lry="2657"/>
+        <zone xml:id="f223B-zone-Isaiah-8-12-s3" ulx="2513" uly="2627" lrx="3223" lry="2756"/>
+        <zone xml:id="f223B-zone-Isaiah-8-12-s4" ulx="2859" uly="2723" lrx="3238" lry="2844"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-14" type="verse" cert="0.765" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-14-s1" ulx="2528" uly="2988" lrx="3249" lry="3128"/>
+        <zone xml:id="f223B-zone-Isaiah-8-14-s2" ulx="2509" uly="3072" lrx="3252" lry="3223"/>
+        <zone xml:id="f223B-zone-Isaiah-8-14-s3" ulx="2557" uly="3168" lrx="3260" lry="3319"/>
+        <zone xml:id="f223B-zone-Isaiah-8-14-s4" ulx="2550" uly="3282" lrx="2995" lry="3407"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-15" type="verse" cert="0.661" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-15-s1" ulx="2550" uly="3282" lrx="2781" lry="3407"/>
+        <zone xml:id="f223B-zone-Isaiah-8-15-s2" ulx="2620" uly="3356" lrx="3249" lry="3510"/>
+        <zone xml:id="f223B-zone-Isaiah-8-15-s3" ulx="3054" uly="3451" lrx="3249" lry="3602"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-16" type="verse" cert="0.786" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-16-s1" ulx="2509" uly="3451" lrx="2833" lry="3602"/>
+        <zone xml:id="f223B-zone-Isaiah-8-16-s2" ulx="2726" uly="3554" lrx="3230" lry="3702"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-17" type="verse" cert="0.808" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-17-s1" ulx="2494" uly="3554" lrx="2704" lry="3702"/>
+        <zone xml:id="f223B-zone-Isaiah-8-17-s2" ulx="2550" uly="3668" lrx="3227" lry="3797"/>
+        <zone xml:id="f223B-zone-Isaiah-8-17-s3" ulx="2789" uly="3757" lrx="3260" lry="3908"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-18" type="verse" cert="0.906" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-18-s1" ulx="2513" uly="3757" lrx="2792" lry="3908"/>
+        <zone xml:id="f223B-zone-Isaiah-8-18-s2" ulx="1501" uly="1291" lrx="2233" lry="1457"/>
+        <zone xml:id="f223B-zone-Isaiah-8-18-s3" ulx="1464" uly="1398" lrx="2211" lry="1545"/>
+        <zone xml:id="f223B-zone-Isaiah-8-18-s4" ulx="1508" uly="1487" lrx="2226" lry="1637"/>
+        <zone xml:id="f223B-zone-Isaiah-8-18-s5" ulx="1976" uly="1590" lrx="2230" lry="1740"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-19" type="verse" cert="0.923" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-19-s1" ulx="1497" uly="1590" lrx="1777" lry="1740"/>
+        <zone xml:id="f223B-zone-Isaiah-8-19-s2" ulx="1542" uly="1693" lrx="2230" lry="1821"/>
+        <zone xml:id="f223B-zone-Isaiah-8-19-s3" ulx="1508" uly="1792" lrx="2241" lry="1921"/>
+        <zone xml:id="f223B-zone-Isaiah-8-19-s4" ulx="1497" uly="1869" lrx="2244" lry="2016"/>
+        <zone xml:id="f223B-zone-Isaiah-8-19-s5" ulx="1527" uly="1991" lrx="2226" lry="2112"/>
+        <zone xml:id="f223B-zone-Isaiah-8-19-s6" ulx="1935" uly="2053" lrx="2230" lry="2200"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-20" type="verse" cert="0.961" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-20-s1" ulx="1475" uly="2053" lrx="1898" lry="2200"/>
+        <zone xml:id="f223B-zone-Isaiah-8-20-s2" ulx="1523" uly="2149" lrx="2230" lry="2289"/>
+        <zone xml:id="f223B-zone-Isaiah-8-20-s3" ulx="1748" uly="2233" lrx="2230" lry="2388"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-21" type="verse" cert="0.889" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-21-s1" ulx="1494" uly="2233" lrx="1729" lry="2388"/>
+        <zone xml:id="f223B-zone-Isaiah-8-21-s2" ulx="1531" uly="2348" lrx="2255" lry="2487"/>
+        <zone xml:id="f223B-zone-Isaiah-8-21-s3" ulx="1611" uly="2447" lrx="2259" lry="2576"/>
+        <zone xml:id="f223B-zone-Isaiah-8-21-s4" ulx="1615" uly="2520" lrx="2248" lry="2671"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-22" type="verse" cert="0.916" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-22-s1" ulx="1501" uly="2520" lrx="1608" lry="2671"/>
+        <zone xml:id="f223B-zone-Isaiah-8-22-s2" ulx="1494" uly="2620" lrx="2237" lry="2763"/>
+        <zone xml:id="f223B-zone-Isaiah-8-22-s3" ulx="1512" uly="2708" lrx="2244" lry="2870"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-23" type="verse" cert="0.832" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-23-s1" ulx="1508" uly="2804" lrx="2233" lry="2958"/>
+        <zone xml:id="f223B-zone-Isaiah-8-23-s2" ulx="1494" uly="2892" lrx="2255" lry="3047"/>
+        <zone xml:id="f223B-zone-Isaiah-8-23-s3" ulx="1501" uly="2984" lrx="2049" lry="3139"/>
+        <zone xml:id="f223B-zone-Isaiah-8-23-s4" ulx="1545" uly="3102" lrx="2219" lry="3231"/>
+        <zone xml:id="f223B-zone-Isaiah-8-23-s5" ulx="1637" uly="3198" lrx="2248" lry="3326"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-2" type="verse" cert="0.875" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-2-s1" ulx="1501" uly="3485" lrx="1895" lry="3602"/>
+        <zone xml:id="f223B-zone-Isaiah-9-2-s2" ulx="1527" uly="3565" lrx="2255" lry="3709"/>
+        <zone xml:id="f223B-zone-Isaiah-9-2-s3" ulx="1630" uly="3646" lrx="2255" lry="3797"/>
+        <zone xml:id="f223B-zone-Isaiah-9-2-s4" ulx="1542" uly="3738" lrx="2244" lry="3908"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-3" type="verse" cert="0.908" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-3-s1" ulx="511" uly="1306" lrx="1225" lry="1464"/>
+        <zone xml:id="f223B-zone-Isaiah-9-3-s2" ulx="504" uly="1417" lrx="1233" lry="1556"/>
+        <zone xml:id="f223B-zone-Isaiah-9-3-s3" ulx="960" uly="1498" lrx="1236" lry="1652"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-4" type="verse" cert="0.872" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-4-s1" ulx="489" uly="1498" lrx="927" lry="1652"/>
+        <zone xml:id="f223B-zone-Isaiah-9-4-s2" ulx="563" uly="1601" lrx="1240" lry="1748"/>
+        <zone xml:id="f223B-zone-Isaiah-9-4-s3" ulx="622" uly="1711" lrx="1236" lry="1840"/>
+        <zone xml:id="f223B-zone-Isaiah-9-4-s4" ulx="901" uly="1785" lrx="1240" lry="1932"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-5" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-5-s1" ulx="482" uly="1785" lrx="843" lry="1932"/>
+        <zone xml:id="f223B-zone-Isaiah-9-5-s2" ulx="489" uly="1880" lrx="1232" lry="2024"/>
+        <zone xml:id="f223B-zone-Isaiah-9-5-s3" ulx="574" uly="1969" lrx="1247" lry="2119"/>
+        <zone xml:id="f223B-zone-Isaiah-9-5-s4" ulx="504" uly="2079" lrx="1247" lry="2200"/>
+        <zone xml:id="f223B-zone-Isaiah-9-5-s5" ulx="1067" uly="2149" lrx="1240" lry="2296"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-6" type="verse" cert="0.919" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-6-s1" ulx="596" uly="2149" lrx="1026" lry="2296"/>
+        <zone xml:id="f223B-zone-Isaiah-9-6-s2" ulx="537" uly="2256" lrx="1244" lry="2377"/>
+        <zone xml:id="f223B-zone-Isaiah-9-6-s3" ulx="556" uly="2329" lrx="1236" lry="2491"/>
+        <zone xml:id="f223B-zone-Isaiah-9-6-s4" ulx="618" uly="2454" lrx="1251" lry="2583"/>
+        <zone xml:id="f223B-zone-Isaiah-9-6-s5" ulx="515" uly="2528" lrx="1258" lry="2675"/>
+        <zone xml:id="f223B-zone-Isaiah-9-6-s6" ulx="508" uly="2635" lrx="1251" lry="2774"/>
+        <zone xml:id="f223B-zone-Isaiah-9-6-s7" ulx="1129" uly="2727" lrx="1273" lry="2855"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-7" type="verse" cert="0.931" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-7-s1" ulx="548" uly="2727" lrx="828" lry="2855"/>
+        <zone xml:id="f223B-zone-Isaiah-9-7-s2" ulx="504" uly="2833" lrx="1255" lry="2962"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-8" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-8-s1" ulx="622" uly="2922" lrx="1273" lry="3050"/>
+        <zone xml:id="f223B-zone-Isaiah-9-8-s2" ulx="508" uly="3002" lrx="1266" lry="3146"/>
+        <zone xml:id="f223B-zone-Isaiah-9-8-s3" ulx="931" uly="3083" lrx="1251" lry="3238"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-9" type="verse" cert="0.855" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-9-s1" ulx="589" uly="3083" lrx="890" lry="3238"/>
+        <zone xml:id="f223B-zone-Isaiah-9-9-s2" ulx="581" uly="3201" lrx="1273" lry="3348"/>
+        <zone xml:id="f223B-zone-Isaiah-9-9-s3" ulx="868" uly="3308" lrx="1262" lry="3429"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-10" type="verse" cert="0.758" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-10-s1" ulx="522" uly="3308" lrx="854" lry="3429"/>
+        <zone xml:id="f223B-zone-Isaiah-9-10-s2" ulx="684" uly="3385" lrx="1255" lry="3525"/>
+        <zone xml:id="f223B-zone-Isaiah-9-10-s3" ulx="887" uly="3481" lrx="1295" lry="3621"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-11" type="verse" cert="0.837" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-11-s1" ulx="537" uly="3481" lrx="857" lry="3621"/>
+        <zone xml:id="f223B-zone-Isaiah-9-11-s2" ulx="559" uly="3580" lrx="1262" lry="3698"/>
+        <zone xml:id="f223B-zone-Isaiah-9-11-s3" ulx="578" uly="3654" lrx="1244" lry="3808"/>
+        <zone xml:id="f223B-zone-Isaiah-9-11-s4" ulx="530" uly="3749" lrx="1258" lry="3908"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -77,7 +222,7 @@
             <w xml:id="f223B-w-151610">כָּל־</w>
             <w xml:id="f223B-w-151611">גְּדוֹתָֽיו</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151611">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-8" xml:id="f223B-v-Isaiah-8-8"/>
+            <milestone unit="verse" n="Isaiah-8-8" xml:id="f223B-v-Isaiah-8-8" facs="#f223B-zone-Isaiah-8-8"/>
             <w xml:id="f223B-w-151612">וְחָלַ֤ף</w>
             <w xml:id="f223B-w-151613">בִּֽיהוּדָה֙</w>
           <lb xml:id="f223B-lb-1-2" n="2"/>
@@ -99,7 +244,7 @@
             <pc type="sof-pasuq" xml:id="f223B-pc-151626">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f223B-s-Isaiah-8-8"/>
           <lb xml:id="f223B-lb-1-5" n="5"/>
-            <milestone unit="verse" n="Isaiah-8-9" xml:id="f223B-v-Isaiah-8-9"/>
+            <milestone unit="verse" n="Isaiah-8-9" xml:id="f223B-v-Isaiah-8-9" facs="#f223B-zone-Isaiah-8-9"/>
             <w xml:id="f223B-w-151627">רֹ֤עוּ</w>
             <w xml:id="f223B-w-151628">עַמִּים֙</w>
             <w xml:id="f223B-w-151629">וָחֹ֔תּוּ</w>
@@ -115,7 +260,7 @@
             <w xml:id="f223B-w-151637">וָחֹֽתּוּ</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151637">׃</pc>
           <lb xml:id="f223B-lb-1-8" n="8"/>
-            <milestone unit="verse" n="Isaiah-8-10" xml:id="f223B-v-Isaiah-8-10"/>
+            <milestone unit="verse" n="Isaiah-8-10" xml:id="f223B-v-Isaiah-8-10" facs="#f223B-zone-Isaiah-8-10"/>
             <w xml:id="f223B-w-151638">עֻ֥צוּ</w>
             <w xml:id="f223B-w-151639">עֵצָ֖ה</w>
             <w xml:id="f223B-w-151640">וְתֻפָ֑ר</w>
@@ -148,7 +293,7 @@
             <w xml:id="f223B-w-151660">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151660">׃</pc>
           <lb xml:id="f223B-lb-1-13" n="13"/>
-            <milestone unit="verse" n="Isaiah-8-12" xml:id="f223B-v-Isaiah-8-12"/>
+            <milestone unit="verse" n="Isaiah-8-12" xml:id="f223B-v-Isaiah-8-12" facs="#f223B-zone-Isaiah-8-12"/>
             <w xml:id="f223B-w-151661">לֹא־</w>
             <w xml:id="f223B-w-151662">תֹאמְר֣וּן</w>
             <w xml:id="f223B-w-151663">קֶ֔שֶׁר</w>
@@ -182,7 +327,7 @@
             <w xml:id="f223B-w-151684">מֽ͏ַעֲרִֽצְכֶֽם</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151684">׃</pc>
           <lb xml:id="f223B-lb-1-19" n="19"/>
-            <milestone unit="verse" n="Isaiah-8-14" xml:id="f223B-v-Isaiah-8-14"/>
+            <milestone unit="verse" n="Isaiah-8-14" xml:id="f223B-v-Isaiah-8-14" facs="#f223B-zone-Isaiah-8-14"/>
             <w xml:id="f223B-w-151685">וְהָיָ֖ה</w>
             <w xml:id="f223B-w-151686">לְמִקְדָּ֑שׁ</w>
             <w xml:id="f223B-w-151687">וּלְאֶ֣בֶן</w>
@@ -200,7 +345,7 @@
           <lb xml:id="f223B-lb-1-22" n="22"/>
             <w xml:id="f223B-w-151697">יְרוּשָׁלָֽ͏ִם</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151697">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-15" xml:id="f223B-v-Isaiah-8-15"/>
+            <milestone unit="verse" n="Isaiah-8-15" xml:id="f223B-v-Isaiah-8-15" facs="#f223B-zone-Isaiah-8-15"/>
             <w xml:id="f223B-w-151698">וְכָ֥שְׁלוּ</w>
             <w xml:id="f223B-w-151699">בָ֖ם</w>
             <w xml:id="f223B-w-151700">רַבִּ֑ים</w>
@@ -212,7 +357,7 @@
             <w xml:id="f223B-w-151704">וְנִלְכָּֽדוּ</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151704">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f223B-s-Isaiah-8-15"/>
-            <milestone unit="verse" n="Isaiah-8-16" xml:id="f223B-v-Isaiah-8-16"/>
+            <milestone unit="verse" n="Isaiah-8-16" xml:id="f223B-v-Isaiah-8-16" facs="#f223B-zone-Isaiah-8-16"/>
             <w xml:id="f223B-w-151705">צ֖וֹר</w>
             <w xml:id="f223B-w-151706">תְּעוּדָ֑ה</w>
           <lb xml:id="f223B-lb-1-25" n="25"/>
@@ -220,7 +365,7 @@
             <w xml:id="f223B-w-151708">תּוֹרָ֖ה</w>
             <w xml:id="f223B-w-151709">בְּלִמֻּדָֽי</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151709">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-17" xml:id="f223B-v-Isaiah-8-17"/>
+            <milestone unit="verse" n="Isaiah-8-17" xml:id="f223B-v-Isaiah-8-17" facs="#f223B-zone-Isaiah-8-17"/>
             <w xml:id="f223B-w-151710">וְחִכִּ֙יתִי֙</w>
           <lb xml:id="f223B-lb-1-26" n="26"/>
             <w xml:id="f223B-w-151711">לַיהוָ֔ה</w>
@@ -232,7 +377,7 @@
             <w xml:id="f223B-w-151716">וְקִוֵּ֖יתִֽי־</w>
             <w xml:id="f223B-w-151717">לֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151717">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-18" xml:id="f223B-v-Isaiah-8-18"/>
+            <milestone unit="verse" n="Isaiah-8-18" xml:id="f223B-v-Isaiah-8-18" facs="#f223B-zone-Isaiah-8-18"/>
             <w xml:id="f223B-w-151718">הִנֵּ֣ה</w>
             <w xml:id="f223B-w-151719">אָנֹכִ֗י</w>
         <cb xml:id="f223B-cb-2" n="2"/>
@@ -256,7 +401,7 @@
             <w xml:id="f223B-w-151733">צִיּֽוֹן</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151733">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f223B-s-Isaiah-8-18"/>
-            <milestone unit="verse" n="Isaiah-8-19" xml:id="f223B-v-Isaiah-8-19"/>
+            <milestone unit="verse" n="Isaiah-8-19" xml:id="f223B-v-Isaiah-8-19" facs="#f223B-zone-Isaiah-8-19"/>
             <w xml:id="f223B-w-151734">וְכִֽי־</w>
             <w xml:id="f223B-w-151735">יֹאמְר֣וּ</w>
           <lb xml:id="f223B-lb-2-5" n="5"/>
@@ -282,7 +427,7 @@
             <w xml:id="f223B-w-151751">אֶל־</w>
             <w xml:id="f223B-w-151752">הַמֵּתִֽים</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151752">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-20" xml:id="f223B-v-Isaiah-8-20"/>
+            <milestone unit="verse" n="Isaiah-8-20" xml:id="f223B-v-Isaiah-8-20" facs="#f223B-zone-Isaiah-8-20"/>
             <w xml:id="f223B-w-151753">לְתוֹרָ֖ה</w>
             <w xml:id="f223B-w-151754">וְלִתְעוּדָ֑ה</w>
           <lb xml:id="f223B-lb-2-10" n="10"/>
@@ -297,7 +442,7 @@
             <w xml:id="f223B-w-151762">ל֖וֹ</w>
             <w xml:id="f223B-w-151763">שָֽׁחַר</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151763">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-21" xml:id="f223B-v-Isaiah-8-21"/>
+            <milestone unit="verse" n="Isaiah-8-21" xml:id="f223B-v-Isaiah-8-21" facs="#f223B-zone-Isaiah-8-21"/>
             <w xml:id="f223B-w-151764">וְעָ֥בַר</w>
             <w xml:id="f223B-w-151765">בָּ֖הּ</w>
           <lb xml:id="f223B-lb-2-12" n="12"/>
@@ -315,7 +460,7 @@
             <w xml:id="f223B-w-151775">וּפָנָ֥ה</w>
             <w xml:id="f223B-w-151776">לְמָֽעְלָה</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151776">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-22" xml:id="f223B-v-Isaiah-8-22"/>
+            <milestone unit="verse" n="Isaiah-8-22" xml:id="f223B-v-Isaiah-8-22" facs="#f223B-zone-Isaiah-8-22"/>
             <w xml:id="f223B-w-151777">וְאֶל־</w>
           <lb xml:id="f223B-lb-2-15" n="15"/>
             <w xml:id="f223B-w-151778">אֶ֖רֶץ</w>
@@ -330,7 +475,7 @@
             <w xml:id="f223B-w-151786">מְנֻדָּֽח</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151786">׃</pc>
           <lb xml:id="f223B-lb-2-17" n="17"/>
-            <milestone unit="verse" n="Isaiah-8-23" xml:id="f223B-v-Isaiah-8-23"/>
+            <milestone unit="verse" n="Isaiah-8-23" xml:id="f223B-v-Isaiah-8-23" facs="#f223B-zone-Isaiah-8-23"/>
             <w xml:id="f223B-w-151787">כִּ֣י</w>
             <w xml:id="f223B-w-151788">לֹ֣א</w>
             <w xml:id="f223B-w-151789">מוּעָף֮</w>
@@ -374,7 +519,7 @@
             <w xml:id="f223B-w-151818">נָגַ֥הּ</w>
             <w xml:id="f223B-w-151819">עֲלֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151819">׃</pc>
-            <milestone unit="verse" n="Isaiah-9-2" xml:id="f223B-v-Isaiah-9-2"/>
+            <milestone unit="verse" n="Isaiah-9-2" xml:id="f223B-v-Isaiah-9-2" facs="#f223B-zone-Isaiah-9-2"/>
             <w xml:id="f223B-w-151820">הִרְבִּ֣יתָ</w>
             <w xml:id="f223B-w-151821">הַגּ֔וֹי</w>
           <lb xml:id="f223B-lb-2-25" n="25"/>
@@ -394,7 +539,7 @@
             <pc type="sof-pasuq" xml:id="f223B-pc-151832">׃</pc>
         <cb xml:id="f223B-cb-3" n="3"/>
           <lb xml:id="f223B-lb-3-1" n="1"/>
-            <milestone unit="verse" n="Isaiah-9-3" xml:id="f223B-v-Isaiah-9-3"/>
+            <milestone unit="verse" n="Isaiah-9-3" xml:id="f223B-v-Isaiah-9-3" facs="#f223B-zone-Isaiah-9-3"/>
             <w xml:id="f223B-w-151833">כִּ֣י</w>
             <pc type="paseq" xml:id="f223B-pc-151833">׀</pc>
             <w xml:id="f223B-w-151834">אֶת־</w>
@@ -412,7 +557,7 @@
             <w xml:id="f223B-w-151844">כְּי֥וֹם</w>
             <w xml:id="f223B-w-151845">מִדְיָֽן</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151845">׃</pc>
-            <milestone unit="verse" n="Isaiah-9-4" xml:id="f223B-v-Isaiah-9-4"/>
+            <milestone unit="verse" n="Isaiah-9-4" xml:id="f223B-v-Isaiah-9-4" facs="#f223B-zone-Isaiah-9-4"/>
             <w xml:id="f223B-w-151846">כִּ֤י</w>
             <w xml:id="f223B-w-151847">כָל־</w>
             <w xml:id="f223B-w-151848">סְאוֹן֙</w>
@@ -429,7 +574,7 @@
             <w xml:id="f223B-w-151856">מַאֲכֹ֥לֶת</w>
             <w xml:id="f223B-w-151857">אֵֽשׁ</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151857">׃</pc>
-            <milestone unit="verse" n="Isaiah-9-5" xml:id="f223B-v-Isaiah-9-5"/>
+            <milestone unit="verse" n="Isaiah-9-5" xml:id="f223B-v-Isaiah-9-5" facs="#f223B-zone-Isaiah-9-5"/>
             <w xml:id="f223B-w-151858">כִּי־</w>
             <w xml:id="f223B-w-151859">יֶ֣לֶד</w>
             <w xml:id="f223B-w-151860">יֻלַּד־</w>
@@ -455,7 +600,7 @@
           <lb xml:id="f223B-lb-3-10" n="10"/>
             <w xml:id="f223B-w-151877">שָׁלֽוֹם</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151877">׃</pc>
-            <milestone unit="verse" n="Isaiah-9-6" xml:id="f223B-v-Isaiah-9-6"/>
+            <milestone unit="verse" n="Isaiah-9-6" xml:id="f223B-v-Isaiah-9-6" facs="#f223B-zone-Isaiah-9-6"/>
             <w xml:id="f223B-w-151878">לםרבה</w>
             <w xml:id="f223B-w-151879">הַמִּשְׂרָ֜ה</w>
           <lb xml:id="f223B-lb-3-11" n="11"/>
@@ -487,7 +632,7 @@
             <w xml:id="f223B-w-151900">זֹּֽאת</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151900">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f223B-s-Isaiah-9-6"/>
-            <milestone unit="verse" n="Isaiah-9-7" xml:id="f223B-v-Isaiah-9-7"/>
+            <milestone unit="verse" n="Isaiah-9-7" xml:id="f223B-v-Isaiah-9-7" facs="#f223B-zone-Isaiah-9-7"/>
             <w xml:id="f223B-w-151901">דָּבָ֛ר</w>
             <w xml:id="f223B-w-151902">שָׁלַ֥ח</w>
           <lb xml:id="f223B-lb-3-17" n="17"/>
@@ -497,7 +642,7 @@
             <w xml:id="f223B-w-151906">בְּיִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151906">׃</pc>
           <lb xml:id="f223B-lb-3-18" n="18"/>
-            <milestone unit="verse" n="Isaiah-9-8" xml:id="f223B-v-Isaiah-9-8"/>
+            <milestone unit="verse" n="Isaiah-9-8" xml:id="f223B-v-Isaiah-9-8" facs="#f223B-zone-Isaiah-9-8"/>
             <w xml:id="f223B-w-151907">וְיָדְעוּ֙</w>
             <w xml:id="f223B-w-151908">הָעָ֣ם</w>
             <w xml:id="f223B-w-151909">כֻּלּ֔וֹ</w>
@@ -511,7 +656,7 @@
             <w xml:id="f223B-w-151915">לֵבָ֖ב</w>
             <w xml:id="f223B-w-151916">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151916">׃</pc>
-            <milestone unit="verse" n="Isaiah-9-9" xml:id="f223B-v-Isaiah-9-9"/>
+            <milestone unit="verse" n="Isaiah-9-9" xml:id="f223B-v-Isaiah-9-9" facs="#f223B-zone-Isaiah-9-9"/>
             <w xml:id="f223B-w-151917">לְבֵנִ֥ים</w>
             <w xml:id="f223B-w-151918">נָפָ֖לוּ</w>
           <lb xml:id="f223B-lb-3-21" n="21"/>
@@ -523,7 +668,7 @@
             <w xml:id="f223B-w-151923">וַאֲרָזִ֖ים</w>
             <w xml:id="f223B-w-151924">נַחֲלִֽיף</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151924">׃</pc>
-            <milestone unit="verse" n="Isaiah-9-10" xml:id="f223B-v-Isaiah-9-10"/>
+            <milestone unit="verse" n="Isaiah-9-10" xml:id="f223B-v-Isaiah-9-10" facs="#f223B-zone-Isaiah-9-10"/>
             <w xml:id="f223B-w-151925">וַיְשַׂגֵּ֧ב</w>
             <w xml:id="f223B-w-151926">יְהוָ֛ה</w>
           <lb xml:id="f223B-lb-3-23" n="23"/>
@@ -536,7 +681,7 @@
             <w xml:id="f223B-w-151932">אֹיְבָ֖יו</w>
             <w xml:id="f223B-w-151933">יְסַכְסֵֽךְ</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151933">׃</pc>
-            <milestone unit="verse" n="Isaiah-9-11" xml:id="f223B-v-Isaiah-9-11"/>
+            <milestone unit="verse" n="Isaiah-9-11" xml:id="f223B-v-Isaiah-9-11" facs="#f223B-zone-Isaiah-9-11"/>
             <w xml:id="f223B-w-151934">אֲרָ֣ם</w>
             <w xml:id="f223B-w-151935">מִקֶּ֗דֶם</w>
           <lb xml:id="f223B-lb-3-25" n="25"/>

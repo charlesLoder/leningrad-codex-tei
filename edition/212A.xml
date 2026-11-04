@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 22 verse zones (92 line segments) from Masoretica HTR page n422. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n422.json"/>
+      </change>
       <change when="2026-11-03" who="#contrib-charles-w-loder">
       Move the pe milestone that ends a line onto the blank line that follows it (#1111).
       </change>
@@ -61,10 +68,147 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-212A">
+    <surface xml:id="surf-212A" ulx="0" uly="0" lrx="4415" lry="5439">
       <graphic xml:id="f212A-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F212A.jpg">
         <desc type="sha256">4a29c9bd01bd5f09915d0a5ce7e6500dd0de3c6149b03e886c6801337f3d05bc</desc>
       </graphic>
+      <graphic xml:id="f212A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0422.jp2/full/max/0/default.jpg" width="4415px" height="5439px"/>
+      <zone xml:id="f212A-zone-Kings_2-14-15" type="verse" cert="0.651" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-15-s1" ulx="3230" uly="1373" lrx="3988" lry="1516"/>
+        <zone xml:id="f212A-zone-Kings_2-14-15-s2" ulx="3289" uly="1468" lrx="3970" lry="1615"/>
+        <zone xml:id="f212A-zone-Kings_2-14-15-s3" ulx="3731" uly="1557" lrx="3985" lry="1708"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-16" type="verse" cert="0.945" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-16-s1" ulx="3319" uly="1557" lrx="3716" lry="1708"/>
+        <zone xml:id="f212A-zone-Kings_2-14-16-s2" ulx="3205" uly="1649" lrx="3966" lry="1799"/>
+        <zone xml:id="f212A-zone-Kings_2-14-16-s3" ulx="3274" uly="1744" lrx="3966" lry="1903"/>
+        <zone xml:id="f212A-zone-Kings_2-14-16-s4" ulx="3436" uly="1844" lrx="3974" lry="1998"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-17" type="verse" cert="0.933" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-17-s1" ulx="3205" uly="1991" lrx="3985" lry="2182"/>
+        <zone xml:id="f212A-zone-Kings_2-14-17-s2" ulx="3308" uly="2138" lrx="3988" lry="2267"/>
+        <zone xml:id="f212A-zone-Kings_2-14-17-s3" ulx="3267" uly="2223" lrx="3970" lry="2374"/>
+        <zone xml:id="f212A-zone-Kings_2-14-17-s4" ulx="3422" uly="2318" lrx="3951" lry="2466"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-18" type="verse" cert="0.789" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-18-s1" ulx="3230" uly="2318" lrx="3407" lry="2466"/>
+        <zone xml:id="f212A-zone-Kings_2-14-18-s2" ulx="3271" uly="2421" lrx="3951" lry="2547"/>
+        <zone xml:id="f212A-zone-Kings_2-14-18-s3" ulx="3205" uly="2521" lrx="3955" lry="2642"/>
+        <zone xml:id="f212A-zone-Kings_2-14-18-s4" ulx="3554" uly="2613" lrx="3940" lry="2727"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-19" type="verse" cert="0.804" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-19-s1" ulx="3252" uly="2613" lrx="3514" lry="2727"/>
+        <zone xml:id="f212A-zone-Kings_2-14-19-s2" ulx="3219" uly="2690" lrx="3955" lry="2830"/>
+        <zone xml:id="f212A-zone-Kings_2-14-19-s3" ulx="3171" uly="2808" lrx="3948" lry="2915"/>
+        <zone xml:id="f212A-zone-Kings_2-14-19-s4" ulx="3381" uly="2885" lrx="3951" lry="3036"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-20" type="verse" cert="0.851" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-20-s1" ulx="3186" uly="2885" lrx="3374" lry="3036"/>
+        <zone xml:id="f212A-zone-Kings_2-14-20-s2" ulx="3216" uly="2999" lrx="3948" lry="3117"/>
+        <zone xml:id="f212A-zone-Kings_2-14-20-s3" ulx="3201" uly="3076" lrx="3848" lry="3220"/>
+        <zone xml:id="f212A-zone-Kings_2-14-20-s4" ulx="3826" uly="3168" lrx="3904" lry="3308"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-21" type="verse" cert="0.827" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-21-s1" ulx="3149" uly="3168" lrx="3815" lry="3308"/>
+        <zone xml:id="f212A-zone-Kings_2-14-21-s2" ulx="3219" uly="3264" lrx="3940" lry="3408"/>
+        <zone xml:id="f212A-zone-Kings_2-14-21-s3" ulx="3182" uly="3378" lrx="3951" lry="3496"/>
+        <zone xml:id="f212A-zone-Kings_2-14-21-s4" ulx="3554" uly="3470" lrx="3940" lry="3595"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-22" type="verse" cert="0.805" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-22-s1" ulx="3179" uly="3470" lrx="3727" lry="3595"/>
+        <zone xml:id="f212A-zone-Kings_2-14-22-s2" ulx="3194" uly="3562" lrx="3955" lry="3684"/>
+        <zone xml:id="f212A-zone-Kings_2-14-22-s3" ulx="3477" uly="3643" lrx="3948" lry="3783"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-23" type="verse" cert="0.936" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-23-s1" ulx="3241" uly="3761" lrx="3940" lry="3882"/>
+        <zone xml:id="f212A-zone-Kings_2-14-23-s2" ulx="3216" uly="3835" lrx="3889" lry="3989"/>
+        <zone xml:id="f212A-zone-Kings_2-14-23-s3" ulx="2248" uly="1373" lrx="2987" lry="1520"/>
+        <zone xml:id="f212A-zone-Kings_2-14-23-s4" ulx="2355" uly="1483" lrx="2980" lry="1612"/>
+        <zone xml:id="f212A-zone-Kings_2-14-23-s5" ulx="2369" uly="1582" lrx="2965" lry="1696"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-24" type="verse" cert="0.941" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-24-s1" ulx="2226" uly="1582" lrx="2358" lry="1696"/>
+        <zone xml:id="f212A-zone-Kings_2-14-24-s2" ulx="2318" uly="1678" lrx="2962" lry="1800"/>
+        <zone xml:id="f212A-zone-Kings_2-14-24-s3" ulx="2226" uly="1744" lrx="2973" lry="1899"/>
+        <zone xml:id="f212A-zone-Kings_2-14-24-s4" ulx="2244" uly="1858" lrx="2969" lry="1998"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-25" type="verse" cert="0.923" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-25-s1" ulx="2226" uly="1925" lrx="2958" lry="2087"/>
+        <zone xml:id="f212A-zone-Kings_2-14-25-s2" ulx="2241" uly="2050" lrx="2976" lry="2179"/>
+        <zone xml:id="f212A-zone-Kings_2-14-25-s3" ulx="2263" uly="2134" lrx="2958" lry="2274"/>
+        <zone xml:id="f212A-zone-Kings_2-14-25-s4" ulx="2233" uly="2226" lrx="2969" lry="2374"/>
+        <zone xml:id="f212A-zone-Kings_2-14-25-s5" ulx="2299" uly="2329" lrx="2965" lry="2469"/>
+        <zone xml:id="f212A-zone-Kings_2-14-25-s6" ulx="2800" uly="2429" lrx="2962" lry="2558"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-26" type="verse" cert="0.927" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-26-s1" ulx="2233" uly="2429" lrx="2774" lry="2558"/>
+        <zone xml:id="f212A-zone-Kings_2-14-26-s2" ulx="2288" uly="2521" lrx="2976" lry="2650"/>
+        <zone xml:id="f212A-zone-Kings_2-14-26-s3" ulx="2222" uly="2605" lrx="2976" lry="2749"/>
+        <zone xml:id="f212A-zone-Kings_2-14-26-s4" ulx="2704" uly="2712" lrx="2962" lry="2841"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-27" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-27-s1" ulx="2288" uly="2712" lrx="2686" lry="2841"/>
+        <zone xml:id="f212A-zone-Kings_2-14-27-s2" ulx="2292" uly="2782" lrx="2962" lry="2940"/>
+        <zone xml:id="f212A-zone-Kings_2-14-27-s3" ulx="2274" uly="2907" lrx="2965" lry="3032"/>
+        <zone xml:id="f212A-zone-Kings_2-14-27-s4" ulx="2432" uly="2999" lrx="2954" lry="3143"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-14-28" type="verse" cert="0.937" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-14-28-s1" ulx="2255" uly="2999" lrx="2402" lry="3143"/>
+        <zone xml:id="f212A-zone-Kings_2-14-28-s2" ulx="2208" uly="3076" lrx="2947" lry="3235"/>
+        <zone xml:id="f212A-zone-Kings_2-14-28-s3" ulx="2241" uly="3179" lrx="2969" lry="3327"/>
+        <zone xml:id="f212A-zone-Kings_2-14-28-s4" ulx="2230" uly="3279" lrx="2962" lry="3422"/>
+        <zone xml:id="f212A-zone-Kings_2-14-28-s5" ulx="2241" uly="3360" lrx="2954" lry="3514"/>
+        <zone xml:id="f212A-zone-Kings_2-14-28-s6" ulx="2211" uly="3459" lrx="2958" lry="3606"/>
+        <zone xml:id="f212A-zone-Kings_2-14-28-s7" ulx="2531" uly="3533" lrx="2954" lry="3702"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-1" type="verse" cert="0.983" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-1-s1" ulx="1347" uly="1373" lrx="1968" lry="1516"/>
+        <zone xml:id="f212A-zone-Kings_2-15-1-s2" ulx="1236" uly="1476" lrx="1972" lry="1623"/>
+        <zone xml:id="f212A-zone-Kings_2-15-1-s3" ulx="1332" uly="1564" lrx="1972" lry="1715"/>
+        <zone xml:id="f212A-zone-Kings_2-15-1-s4" ulx="1648" uly="1678" lrx="1968" lry="1796"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-2" type="verse" cert="0.958" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-2-s1" ulx="1236" uly="1678" lrx="1615" lry="1796"/>
+        <zone xml:id="f212A-zone-Kings_2-15-2-s2" ulx="1269" uly="1744" lrx="1972" lry="1903"/>
+        <zone xml:id="f212A-zone-Kings_2-15-2-s3" ulx="1247" uly="1873" lrx="1976" lry="1998"/>
+        <zone xml:id="f212A-zone-Kings_2-15-2-s4" ulx="1236" uly="1969" lrx="1957" lry="2094"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-3" type="verse" cert="0.934" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-3-s1" ulx="1218" uly="2061" lrx="1979" lry="2190"/>
+        <zone xml:id="f212A-zone-Kings_2-15-3-s2" ulx="1258" uly="2149" lrx="1961" lry="2278"/>
+        <zone xml:id="f212A-zone-Kings_2-15-3-s3" ulx="1814" uly="2252" lrx="1954" lry="2381"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-4" type="verse" cert="0.871" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-4-s1" ulx="1273" uly="2252" lrx="1788" lry="2381"/>
+        <zone xml:id="f212A-zone-Kings_2-15-4-s2" ulx="1225" uly="2348" lrx="1965" lry="2473"/>
+        <zone xml:id="f212A-zone-Kings_2-15-4-s3" ulx="1770" uly="2414" lrx="1965" lry="2561"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-5" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-5-s1" ulx="1288" uly="2414" lrx="1766" lry="2561"/>
+        <zone xml:id="f212A-zone-Kings_2-15-5-s2" ulx="1262" uly="2532" lrx="1954" lry="2653"/>
+        <zone xml:id="f212A-zone-Kings_2-15-5-s3" ulx="1225" uly="2624" lrx="1965" lry="2749"/>
+        <zone xml:id="f212A-zone-Kings_2-15-5-s4" ulx="1295" uly="2701" lrx="1976" lry="2856"/>
+        <zone xml:id="f212A-zone-Kings_2-15-5-s5" ulx="1391" uly="2823" lrx="1957" lry="2944"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-6" type="verse" cert="0.844" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-6-s1" ulx="1236" uly="2823" lrx="1361" lry="2944"/>
+        <zone xml:id="f212A-zone-Kings_2-15-6-s2" ulx="1313" uly="2892" lrx="1961" lry="3054"/>
+        <zone xml:id="f212A-zone-Kings_2-15-6-s3" ulx="1273" uly="3021" lrx="1957" lry="3146"/>
+        <zone xml:id="f212A-zone-Kings_2-15-6-s4" ulx="1266" uly="3117" lrx="1950" lry="3235"/>
+        <zone xml:id="f212A-zone-Kings_2-15-6-s5" ulx="1773" uly="3205" lrx="1965" lry="3327"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-7" type="verse" cert="0.768" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-7-s1" ulx="1369" uly="3205" lrx="1744" lry="3327"/>
+        <zone xml:id="f212A-zone-Kings_2-15-7-s2" ulx="1299" uly="3297" lrx="1946" lry="3422"/>
+        <zone xml:id="f212A-zone-Kings_2-15-7-s3" ulx="1295" uly="3389" lrx="1950" lry="3529"/>
+        <zone xml:id="f212A-zone-Kings_2-15-7-s4" ulx="1516" uly="3481" lrx="1965" lry="3621"/>
+      </zone>
+      <zone xml:id="f212A-zone-Kings_2-15-8" type="verse" cert="0.819" resp="#source-masoretica">
+        <zone xml:id="f212A-zone-Kings_2-15-8-s1" ulx="1218" uly="3562" lrx="1954" lry="3709"/>
+        <zone xml:id="f212A-zone-Kings_2-15-8-s2" ulx="1262" uly="3665" lrx="1957" lry="3805"/>
+        <zone xml:id="f212A-zone-Kings_2-15-8-s3" ulx="1218" uly="3743" lrx="1954" lry="3897"/>
+        <zone xml:id="f212A-zone-Kings_2-15-8-s4" ulx="1310" uly="3860" lrx="1935" lry="4000"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -75,7 +219,7 @@
         <ab>
         <cb xml:id="f212A-cb-1" n="1"/>
           <lb xml:id="f212A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Kings_2-14-15" xml:id="f212A-v-Kings_2-14-15"/>
+            <milestone unit="verse" n="Kings_2-14-15" xml:id="f212A-v-Kings_2-14-15" facs="#f212A-zone-Kings_2-14-15"/>
             <w xml:id="f212A-w-143817">יְהוּדָ֑ה</w>
             <w xml:id="f212A-w-143818">הֲלֹא־</w>
             <w xml:id="f212A-w-143819">הֵ֣ם</w>
@@ -89,7 +233,7 @@
           <lb xml:id="f212A-lb-1-3" n="3"/>
             <w xml:id="f212A-w-143826">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143826">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-16" xml:id="f212A-v-Kings_2-14-16"/>
+            <milestone unit="verse" n="Kings_2-14-16" xml:id="f212A-v-Kings_2-14-16" facs="#f212A-zone-Kings_2-14-16"/>
             <w xml:id="f212A-w-143827">וַיִּשְׁכַּ֤ב</w>
             <w xml:id="f212A-w-143828">יְהוֹאָשׁ֙</w>
           <lb xml:id="f212A-lb-1-4" n="4"/>
@@ -110,7 +254,7 @@
           <lb xml:id="f212A-lb-1-7" n="7"/>
             <milestone unit="section" subtype="pe" xml:id="f212A-s-Kings_2-14-16"/>
           <lb xml:id="f212A-lb-1-8" n="8"/>
-            <milestone unit="verse" n="Kings_2-14-17" xml:id="f212A-v-Kings_2-14-17"/>
+            <milestone unit="verse" n="Kings_2-14-17" xml:id="f212A-v-Kings_2-14-17" facs="#f212A-zone-Kings_2-14-17"/>
             <w xml:id="f212A-w-143840">וַיְחִ֨י</w>
             <w xml:id="f212A-w-143841">אֲמַצְיָ֤הוּ</w>
             <w xml:id="f212A-w-143842">בֶן־</w>
@@ -131,7 +275,7 @@
             <w xml:id="f212A-w-143854">עֶשְׂרֵ֖ה</w>
             <w xml:id="f212A-w-143855">שָׁנָֽה</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143855">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-18" xml:id="f212A-v-Kings_2-14-18"/>
+            <milestone unit="verse" n="Kings_2-14-18" xml:id="f212A-v-Kings_2-14-18" facs="#f212A-zone-Kings_2-14-18"/>
             <w xml:id="f212A-w-143856">וְיֶ֖תֶר</w>
           <lb xml:id="f212A-lb-1-12" n="12"/>
             <w xml:id="f212A-w-143857">דִּבְרֵ֣י</w>
@@ -148,7 +292,7 @@
             <w xml:id="f212A-w-143866">לְמַלְכֵ֥י</w>
             <w xml:id="f212A-w-143867">יְהוּדָֽה</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143867">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-19" xml:id="f212A-v-Kings_2-14-19"/>
+            <milestone unit="verse" n="Kings_2-14-19" xml:id="f212A-v-Kings_2-14-19" facs="#f212A-zone-Kings_2-14-19"/>
             <w xml:id="f212A-w-143868">וַיִּקְשְׁר֨וּ</w>
           <lb xml:id="f212A-lb-1-15" n="15"/>
             <w xml:id="f212A-w-143869">עָלָ֥יו</w>
@@ -164,7 +308,7 @@
             <w xml:id="f212A-w-143877">וַיְמִתֻ֖הוּ</w>
             <w xml:id="f212A-w-143878">שָֽׁם</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143878">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-20" xml:id="f212A-v-Kings_2-14-20"/>
+            <milestone unit="verse" n="Kings_2-14-20" xml:id="f212A-v-Kings_2-14-20" facs="#f212A-zone-Kings_2-14-20"/>
             <w xml:id="f212A-w-143879">וַיִּשְׂא֥וּ</w>
           <lb xml:id="f212A-lb-1-18" n="18"/>
             <w xml:id="f212A-w-143880">אֹת֖וֹ</w>
@@ -179,7 +323,7 @@
           <lb xml:id="f212A-lb-1-20" n="20"/>
             <w xml:id="f212A-w-143888">דָּוִֽד</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143888">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-21" xml:id="f212A-v-Kings_2-14-21"/>
+            <milestone unit="verse" n="Kings_2-14-21" xml:id="f212A-v-Kings_2-14-21" facs="#f212A-zone-Kings_2-14-21"/>
             <w xml:id="f212A-w-143889">וַיִּקְח֞וּ</w>
             <w xml:id="f212A-w-143890">כָּל־</w>
             <w xml:id="f212A-w-143891">עַ֤ם</w>
@@ -200,7 +344,7 @@
           <lb xml:id="f212A-lb-1-23" n="23"/>
             <w xml:id="f212A-w-143904">אֲמַצְיָֽהוּ</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143904">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-22" xml:id="f212A-v-Kings_2-14-22"/>
+            <milestone unit="verse" n="Kings_2-14-22" xml:id="f212A-v-Kings_2-14-22" facs="#f212A-zone-Kings_2-14-22"/>
             <w xml:id="f212A-w-143905">ה֚וּא</w>
             <w xml:id="f212A-w-143906">בָּנָ֣ה</w>
             <w xml:id="f212A-w-143907">אֶת־</w>
@@ -217,7 +361,7 @@
             <pc type="sof-pasuq" xml:id="f212A-pc-143915">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f212A-s-Kings_2-14-22"/>
           <lb xml:id="f212A-lb-1-26" n="26"/>
-            <milestone unit="verse" n="Kings_2-14-23" xml:id="f212A-v-Kings_2-14-23"/>
+            <milestone unit="verse" n="Kings_2-14-23" xml:id="f212A-v-Kings_2-14-23" facs="#f212A-zone-Kings_2-14-23"/>
             <w xml:id="f212A-w-143916">בִּשְׁנַת֙</w>
             <w xml:id="f212A-w-143917">חֲמֵשׁ־</w>
             <w xml:id="f212A-w-143918">עֶשְׂרֵ֣ה</w>
@@ -243,7 +387,7 @@
             <w xml:id="f212A-w-143933">וְאַחַ֖ת</w>
             <w xml:id="f212A-w-143934">שָׁנָֽה</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143934">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-24" xml:id="f212A-v-Kings_2-14-24"/>
+            <milestone unit="verse" n="Kings_2-14-24" xml:id="f212A-v-Kings_2-14-24" facs="#f212A-zone-Kings_2-14-24"/>
             <w xml:id="f212A-w-143935">וַיַּ֥עַשׂ</w>
           <lb xml:id="f212A-lb-2-4" n="4"/>
             <w xml:id="f212A-w-143936">הָרַ֖ע</w>
@@ -264,7 +408,7 @@
             <w xml:id="f212A-w-143949">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143949">׃</pc>
           <lb xml:id="f212A-lb-2-7" n="7"/>
-            <milestone unit="verse" n="Kings_2-14-25" xml:id="f212A-v-Kings_2-14-25"/>
+            <milestone unit="verse" n="Kings_2-14-25" xml:id="f212A-v-Kings_2-14-25" facs="#f212A-zone-Kings_2-14-25"/>
             <w xml:id="f212A-w-143950">ה֗וּא</w>
             <w xml:id="f212A-w-143951">הֵשִׁיב֙</w>
             <w xml:id="f212A-w-143952">אֶת־</w>
@@ -296,7 +440,7 @@
           <lb xml:id="f212A-lb-2-12" n="12"/>
             <w xml:id="f212A-w-143974">הַחֵֽפֶר</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143974">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-26" xml:id="f212A-v-Kings_2-14-26"/>
+            <milestone unit="verse" n="Kings_2-14-26" xml:id="f212A-v-Kings_2-14-26" facs="#f212A-zone-Kings_2-14-26"/>
             <w xml:id="f212A-w-143975">כִּי־</w>
             <w xml:id="f212A-w-143976">רָאָ֧ה</w>
             <w xml:id="f212A-w-143977">יְהוָ֛ה</w>
@@ -316,7 +460,7 @@
           <lb xml:id="f212A-lb-2-15" n="15"/>
             <w xml:id="f212A-w-143989">לְיִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-143989">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-27" xml:id="f212A-v-Kings_2-14-27"/>
+            <milestone unit="verse" n="Kings_2-14-27" xml:id="f212A-v-Kings_2-14-27" facs="#f212A-zone-Kings_2-14-27"/>
             <w xml:id="f212A-w-143990">וְלֹא־</w>
             <w xml:id="f212A-w-143991">דִבֶּ֣ר</w>
             <w xml:id="f212A-w-143992">יְהוָ֔ה</w>
@@ -335,7 +479,7 @@
             <w xml:id="f212A-w-144002">בֶּן־</w>
             <w xml:id="f212A-w-144003">יוֹאָֽשׁ</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-144003">׃</pc>
-            <milestone unit="verse" n="Kings_2-14-28" xml:id="f212A-v-Kings_2-14-28"/>
+            <milestone unit="verse" n="Kings_2-14-28" xml:id="f212A-v-Kings_2-14-28" facs="#f212A-zone-Kings_2-14-28"/>
             <w xml:id="f212A-w-144004">וְיֶתֶר֩</w>
           <lb xml:id="f212A-lb-2-19" n="19"/>
             <w xml:id="f212A-w-144005">דִּבְרֵ֨י</w>
@@ -388,7 +532,7 @@
             <milestone unit="section" subtype="pe" xml:id="f212A-s-Kings_2-14-29"/>
         <cb xml:id="f212A-cb-3" n="3"/>
           <lb xml:id="f212A-lb-3-1" n="1"/>
-            <milestone unit="verse" n="Kings_2-15-1" xml:id="f212A-v-Kings_2-15-1"/>
+            <milestone unit="verse" n="Kings_2-15-1" xml:id="f212A-v-Kings_2-15-1" facs="#f212A-zone-Kings_2-15-1"/>
             <w xml:id="f212A-w-144041">בִּשְׁנַ֨ת</w>
             <w xml:id="f212A-w-144042">עֶשְׂרִ֤ים</w>
             <w xml:id="f212A-w-144043">וָשֶׁ֙בַע֙</w>
@@ -406,7 +550,7 @@
             <w xml:id="f212A-w-144052">מֶ֥לֶךְ</w>
             <w xml:id="f212A-w-144053">יְהוּדָֽה</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-144053">׃</pc>
-            <milestone unit="verse" n="Kings_2-15-2" xml:id="f212A-v-Kings_2-15-2"/>
+            <milestone unit="verse" n="Kings_2-15-2" xml:id="f212A-v-Kings_2-15-2" facs="#f212A-zone-Kings_2-15-2"/>
             <w xml:id="f212A-w-144054">בֶּן־</w>
             <w xml:id="f212A-w-144055">שֵׁ֨שׁ</w>
             <w xml:id="f212A-w-144056">עֶשְׂרֵ֤ה</w>
@@ -427,7 +571,7 @@
             <w xml:id="f212A-w-144068">מִירוּשָׁלָֽ͏ִם</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-144068">׃</pc>
           <lb xml:id="f212A-lb-3-8" n="8"/>
-            <milestone unit="verse" n="Kings_2-15-3" xml:id="f212A-v-Kings_2-15-3"/>
+            <milestone unit="verse" n="Kings_2-15-3" xml:id="f212A-v-Kings_2-15-3" facs="#f212A-zone-Kings_2-15-3"/>
             <w xml:id="f212A-w-144069">וַיַּ֥עַשׂ</w>
             <w xml:id="f212A-w-144070">הַיָּשָׁ֖ר</w>
             <w xml:id="f212A-w-144071">בְּעֵינֵ֣י</w>
@@ -440,7 +584,7 @@
           <lb xml:id="f212A-lb-3-10" n="10"/>
             <w xml:id="f212A-w-144077">אָבִֽיו</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-144077">׃</pc>
-            <milestone unit="verse" n="Kings_2-15-4" xml:id="f212A-v-Kings_2-15-4"/>
+            <milestone unit="verse" n="Kings_2-15-4" xml:id="f212A-v-Kings_2-15-4" facs="#f212A-zone-Kings_2-15-4"/>
             <w xml:id="f212A-w-144078">רַ֥ק</w>
             <w xml:id="f212A-w-144079">הַבָּמ֖וֹת</w>
             <w xml:id="f212A-w-144080">לֹא־</w>
@@ -453,7 +597,7 @@
           <lb xml:id="f212A-lb-3-12" n="12"/>
             <w xml:id="f212A-w-144086">בַּבָּמֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-144086">׃</pc>
-            <milestone unit="verse" n="Kings_2-15-5" xml:id="f212A-v-Kings_2-15-5"/>
+            <milestone unit="verse" n="Kings_2-15-5" xml:id="f212A-v-Kings_2-15-5" facs="#f212A-zone-Kings_2-15-5"/>
             <w xml:id="f212A-w-144087">וַיְנַגַּ֨ע</w>
             <w xml:id="f212A-w-144088">יְהוָ֜ה</w>
             <w xml:id="f212A-w-144089">אֶת־</w>
@@ -480,7 +624,7 @@
             <w xml:id="f212A-w-144106">עַ֥ם</w>
             <w xml:id="f212A-w-144107">הָאָֽרֶץ</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-144107">׃</pc>
-            <milestone unit="verse" n="Kings_2-15-6" xml:id="f212A-v-Kings_2-15-6"/>
+            <milestone unit="verse" n="Kings_2-15-6" xml:id="f212A-v-Kings_2-15-6" facs="#f212A-zone-Kings_2-15-6"/>
             <w xml:id="f212A-w-144108">וְיֶ֛תֶר</w>
           <lb xml:id="f212A-lb-3-17" n="17"/>
             <w xml:id="f212A-w-144109">דִּבְרֵ֥י</w>
@@ -501,7 +645,7 @@
           <lb xml:id="f212A-lb-3-20" n="20"/>
             <w xml:id="f212A-w-144122">יְהוּדָֽה</w>
             <pc type="sof-pasuq" xml:id="f212A-pc-144122">׃</pc>
-            <milestone unit="verse" n="Kings_2-15-7" xml:id="f212A-v-Kings_2-15-7"/>
+            <milestone unit="verse" n="Kings_2-15-7" xml:id="f212A-v-Kings_2-15-7" facs="#f212A-zone-Kings_2-15-7"/>
             <w xml:id="f212A-w-144123">וַיִּשְׁכַּ֤ב</w>
             <w xml:id="f212A-w-144124">עֲזַרְיָה֙</w>
             <w xml:id="f212A-w-144125">עִם־</w>
@@ -522,7 +666,7 @@
             <pc type="sof-pasuq" xml:id="f212A-pc-144136">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f212A-s-Kings_2-15-7"/>
           <lb xml:id="f212A-lb-3-24" n="24"/>
-            <milestone unit="verse" n="Kings_2-15-8" xml:id="f212A-v-Kings_2-15-8"/>
+            <milestone unit="verse" n="Kings_2-15-8" xml:id="f212A-v-Kings_2-15-8" facs="#f212A-zone-Kings_2-15-8"/>
             <w xml:id="f212A-w-144137">בִּשְׁנַ֨ת</w>
             <w xml:id="f212A-w-144138">שְׁלֹשִׁ֤ים</w>
             <w xml:id="f212A-w-144139">וּשְׁמֹנֶה֙</w>

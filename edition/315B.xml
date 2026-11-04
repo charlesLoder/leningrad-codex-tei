@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
@@ -43,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 26 verse zones (92 line segments) from Masoretica HTR page n629. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n629.json"/>
+      </change>
       <change when="2026-11-03" who="#contrib-charles-w-loder">
       Move the pe milestone that ends a line onto the blank line that follows it (#1111).
       </change>
@@ -65,10 +72,155 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-315B">
+    <surface xml:id="surf-315B" ulx="0" uly="0" lrx="4239" lry="5215">
       <graphic xml:id="f315B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F315B.jpg">
         <desc type="sha256">1c9232324bd0163969b6ab1180b0703b7b17592c607c99c0e70e077b195df9c6</desc>
       </graphic>
+      <graphic xml:id="f315B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0629.jp2/full/max/0/default.jpg" width="4239px" height="5215px"/>
+      <zone xml:id="f315B-zone-Micah-7-10" type="verse" cert="0.706" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-10-s1" ulx="2621" uly="1230" lrx="3218" lry="1392"/>
+        <zone xml:id="f315B-zone-Micah-7-10-s2" ulx="2558" uly="1346" lrx="3222" lry="1487"/>
+        <zone xml:id="f315B-zone-Micah-7-10-s3" ulx="2639" uly="1434" lrx="3222" lry="1579"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-11" type="verse" cert="0.889" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-11-s1" ulx="2515" uly="1434" lrx="2618" lry="1579"/>
+        <zone xml:id="f315B-zone-Micah-7-11-s2" ulx="2589" uly="1540" lrx="3211" lry="1664"/>
+        <zone xml:id="f315B-zone-Micah-7-11-s3" ulx="2950" uly="1615" lrx="3229" lry="1763"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-12" type="verse" cert="0.907" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-12-s1" ulx="2487" uly="1615" lrx="2925" lry="1763"/>
+        <zone xml:id="f315B-zone-Micah-7-12-s2" ulx="2473" uly="1714" lrx="3229" lry="1858"/>
+        <zone xml:id="f315B-zone-Micah-7-12-s3" ulx="2533" uly="1809" lrx="3229" lry="1964"/>
+        <zone xml:id="f315B-zone-Micah-7-12-s4" ulx="2840" uly="1915" lrx="3236" lry="2067"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-13" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-13-s1" ulx="2462" uly="1915" lrx="2815" lry="2067"/>
+        <zone xml:id="f315B-zone-Micah-7-13-s2" ulx="2480" uly="2032" lrx="3222" lry="2166"/>
+        <zone xml:id="f315B-zone-Micah-7-13-s3" ulx="2928" uly="2120" lrx="3229" lry="2261"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-14" type="verse" cert="0.87" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-14-s1" ulx="2497" uly="2198" lrx="3003" lry="2346"/>
+        <zone xml:id="f315B-zone-Micah-7-14-s2" ulx="2519" uly="2289" lrx="3215" lry="2452"/>
+        <zone xml:id="f315B-zone-Micah-7-14-s3" ulx="2476" uly="2410" lrx="3222" lry="2547"/>
+        <zone xml:id="f315B-zone-Micah-7-14-s4" ulx="2713" uly="2487" lrx="3225" lry="2643"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-15" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-15-s1" ulx="2543" uly="2487" lrx="2678" lry="2643"/>
+        <zone xml:id="f315B-zone-Micah-7-15-s2" ulx="2579" uly="2608" lrx="3211" lry="2742"/>
+        <zone xml:id="f315B-zone-Micah-7-15-s3" ulx="2745" uly="2678" lrx="3208" lry="2827"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-16" type="verse" cert="0.965" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-16-s1" ulx="2483" uly="2678" lrx="2724" lry="2827"/>
+        <zone xml:id="f315B-zone-Micah-7-16-s2" ulx="2473" uly="2788" lrx="3229" lry="2922"/>
+        <zone xml:id="f315B-zone-Micah-7-16-s3" ulx="2480" uly="2869" lrx="3236" lry="3014"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-17" type="verse" cert="0.932" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-17-s1" ulx="2512" uly="2978" lrx="3232" lry="3116"/>
+        <zone xml:id="f315B-zone-Micah-7-17-s2" ulx="2508" uly="3070" lrx="3211" lry="3215"/>
+        <zone xml:id="f315B-zone-Micah-7-17-s3" ulx="2575" uly="3162" lrx="3215" lry="3307"/>
+        <zone xml:id="f315B-zone-Micah-7-17-s4" ulx="2907" uly="3272" lrx="3236" lry="3406"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-18" type="verse" cert="0.955" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-18-s1" ulx="2522" uly="3272" lrx="2875" lry="3406"/>
+        <zone xml:id="f315B-zone-Micah-7-18-s2" ulx="2512" uly="3378" lrx="3222" lry="3491"/>
+        <zone xml:id="f315B-zone-Micah-7-18-s3" ulx="2614" uly="3466" lrx="3211" lry="3583"/>
+        <zone xml:id="f315B-zone-Micah-7-18-s4" ulx="2487" uly="3533" lrx="3211" lry="3689"/>
+        <zone xml:id="f315B-zone-Micah-7-18-s5" ulx="2953" uly="3657" lrx="3211" lry="3795"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-19" type="verse" cert="0.927" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-19-s1" ulx="2547" uly="3657" lrx="2914" lry="3795"/>
+        <zone xml:id="f315B-zone-Micah-7-19-s2" ulx="2540" uly="3756" lrx="3222" lry="3908"/>
+        <zone xml:id="f315B-zone-Micah-7-19-s3" ulx="1484" uly="1226" lrx="2201" lry="1378"/>
+      </zone>
+      <zone xml:id="f315B-zone-Micah-7-20" type="verse" cert="0.98" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Micah-7-20-s1" ulx="1508" uly="1332" lrx="2204" lry="1484"/>
+        <zone xml:id="f315B-zone-Micah-7-20-s2" ulx="1487" uly="1438" lrx="2194" lry="1579"/>
+        <zone xml:id="f315B-zone-Micah-7-20-s3" ulx="1604" uly="1516" lrx="2194" lry="1678"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-2" type="verse" cert="0.998" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-2-s1" ulx="1480" uly="2003" lrx="1886" lry="2159"/>
+        <zone xml:id="f315B-zone-Nahum-1-2-s2" ulx="1470" uly="2106" lrx="2215" lry="2254"/>
+        <zone xml:id="f315B-zone-Nahum-1-2-s3" ulx="1505" uly="2194" lrx="2211" lry="2343"/>
+        <zone xml:id="f315B-zone-Nahum-1-2-s4" ulx="1851" uly="2289" lrx="2211" lry="2438"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-3" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-3-s1" ulx="1526" uly="2289" lrx="1833" lry="2438"/>
+        <zone xml:id="f315B-zone-Nahum-1-3-s2" ulx="1494" uly="2385" lrx="2208" lry="2537"/>
+        <zone xml:id="f315B-zone-Nahum-1-3-s3" ulx="1448" uly="2484" lrx="2222" lry="2636"/>
+        <zone xml:id="f315B-zone-Nahum-1-3-s4" ulx="1547" uly="2593" lrx="2204" lry="2728"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-4" type="verse" cert="0.952" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-4-s1" ulx="1498" uly="2664" lrx="2218" lry="2823"/>
+        <zone xml:id="f315B-zone-Nahum-1-4-s2" ulx="1526" uly="2774" lrx="2201" lry="2922"/>
+        <zone xml:id="f315B-zone-Nahum-1-4-s3" ulx="1508" uly="2862" lrx="2204" lry="3010"/>
+        <zone xml:id="f315B-zone-Nahum-1-4-s4" ulx="2017" uly="2978" lrx="2211" lry="3102"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-5" type="verse" cert="0.933" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-5-s1" ulx="1473" uly="2978" lrx="1978" lry="3102"/>
+        <zone xml:id="f315B-zone-Nahum-1-5-s2" ulx="1498" uly="3056" lrx="2225" lry="3198"/>
+        <zone xml:id="f315B-zone-Nahum-1-5-s3" ulx="1547" uly="3145" lrx="2204" lry="3304"/>
+        <zone xml:id="f315B-zone-Nahum-1-5-s4" ulx="1964" uly="3254" lrx="2218" lry="3402"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-6" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-6-s1" ulx="1540" uly="3254" lrx="1929" lry="3402"/>
+        <zone xml:id="f315B-zone-Nahum-1-6-s2" ulx="1540" uly="3342" lrx="2218" lry="3494"/>
+        <zone xml:id="f315B-zone-Nahum-1-6-s3" ulx="1593" uly="3448" lrx="2208" lry="3590"/>
+        <zone xml:id="f315B-zone-Nahum-1-6-s4" ulx="1650" uly="3558" lrx="2211" lry="3682"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-7" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-7-s1" ulx="1484" uly="3558" lrx="1593" lry="3682"/>
+        <zone xml:id="f315B-zone-Nahum-1-7-s2" ulx="1568" uly="3632" lrx="2218" lry="3784"/>
+        <zone xml:id="f315B-zone-Nahum-1-7-s3" ulx="1851" uly="3735" lrx="2222" lry="3897"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-8" type="verse" cert="0.947" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-8-s1" ulx="1473" uly="3735" lrx="1840" lry="3897"/>
+        <zone xml:id="f315B-zone-Nahum-1-8-s2" ulx="629" uly="1244" lrx="1215" lry="1396"/>
+        <zone xml:id="f315B-zone-Nahum-1-8-s3" ulx="671" uly="1360" lrx="1236" lry="1484"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-9" type="verse" cert="0.977" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-9-s1" ulx="526" uly="1360" lrx="622" lry="1484"/>
+        <zone xml:id="f315B-zone-Nahum-1-9-s2" ulx="558" uly="1438" lrx="1215" lry="1583"/>
+        <zone xml:id="f315B-zone-Nahum-1-9-s3" ulx="601" uly="1555" lrx="1215" lry="1678"/>
+        <zone xml:id="f315B-zone-Nahum-1-9-s4" ulx="855" uly="1650" lrx="1222" lry="1774"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-10" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-10-s1" ulx="477" uly="1650" lrx="820" lry="1774"/>
+        <zone xml:id="f315B-zone-Nahum-1-10-s2" ulx="498" uly="1717" lrx="1215" lry="1869"/>
+        <zone xml:id="f315B-zone-Nahum-1-10-s3" ulx="558" uly="1837" lrx="1215" lry="1961"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-11" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-11-s1" ulx="505" uly="1940" lrx="1219" lry="2063"/>
+        <zone xml:id="f315B-zone-Nahum-1-11-s2" ulx="678" uly="2007" lrx="1212" lry="2166"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-12" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-12-s1" ulx="495" uly="2120" lrx="961" lry="2244"/>
+        <zone xml:id="f315B-zone-Nahum-1-12-s2" ulx="502" uly="2176" lrx="1219" lry="2346"/>
+        <zone xml:id="f315B-zone-Nahum-1-12-s3" ulx="466" uly="2293" lrx="1226" lry="2441"/>
+        <zone xml:id="f315B-zone-Nahum-1-12-s4" ulx="1092" uly="2413" lrx="1215" lry="2533"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-13" type="verse" cert="0.973" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-13-s1" ulx="480" uly="2413" lrx="1070" lry="2533"/>
+        <zone xml:id="f315B-zone-Nahum-1-13-s2" ulx="480" uly="2480" lrx="1226" lry="2639"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-1-14" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-1-14-s1" ulx="502" uly="2579" lrx="1226" lry="2728"/>
+        <zone xml:id="f315B-zone-Nahum-1-14-s2" ulx="487" uly="2678" lrx="1222" lry="2827"/>
+        <zone xml:id="f315B-zone-Nahum-1-14-s3" ulx="625" uly="2784" lrx="1215" lry="2922"/>
+        <zone xml:id="f315B-zone-Nahum-1-14-s4" ulx="576" uly="2869" lrx="1205" lry="3017"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-2-1" type="verse" cert="0.951" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-2-1-s1" ulx="459" uly="3010" lrx="1205" lry="3212"/>
+        <zone xml:id="f315B-zone-Nahum-2-1-s2" ulx="487" uly="3155" lrx="1215" lry="3304"/>
+        <zone xml:id="f315B-zone-Nahum-2-1-s3" ulx="477" uly="3254" lrx="1194" lry="3410"/>
+        <zone xml:id="f315B-zone-Nahum-2-1-s4" ulx="558" uly="3367" lrx="1212" lry="3501"/>
+        <zone xml:id="f315B-zone-Nahum-2-1-s5" ulx="668" uly="3434" lrx="1198" lry="3590"/>
+      </zone>
+      <zone xml:id="f315B-zone-Nahum-2-2" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f315B-zone-Nahum-2-2-s1" ulx="498" uly="3434" lrx="622" lry="3590"/>
+        <zone xml:id="f315B-zone-Nahum-2-2-s2" ulx="470" uly="3533" lrx="1205" lry="3692"/>
+        <zone xml:id="f315B-zone-Nahum-2-2-s3" ulx="590" uly="3632" lrx="1190" lry="3791"/>
+        <zone xml:id="f315B-zone-Nahum-2-2-s4" ulx="777" uly="3752" lrx="1190" lry="3897"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -79,7 +231,7 @@
         <ab>
         <cb xml:id="f315B-cb-1" n="1"/>
           <lb xml:id="f315B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Micah-7-10" xml:id="f315B-v-Micah-7-10"/>
+            <milestone unit="verse" n="Micah-7-10" xml:id="f315B-v-Micah-7-10" facs="#f315B-zone-Micah-7-10"/>
             <w xml:id="f315B-w-214769">אַיּ֖וֹ</w>
             <w xml:id="f315B-w-214770">יְהוָ֣ה</w>
             <w xml:id="f315B-w-214771">אֱלֹהָ֑יִךְ</w>
@@ -94,7 +246,7 @@
             <w xml:id="f315B-w-214778">כְּטִ֥יט</w>
             <w xml:id="f315B-w-214779">חוּצֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214779">׃</pc>
-            <milestone unit="verse" n="Micah-7-11" xml:id="f315B-v-Micah-7-11"/>
+            <milestone unit="verse" n="Micah-7-11" xml:id="f315B-v-Micah-7-11" facs="#f315B-zone-Micah-7-11"/>
             <w xml:id="f315B-w-214780">י֖וֹם</w>
           <lb xml:id="f315B-lb-1-4" n="4"/>
             <w xml:id="f315B-w-214781">לִבְנ֣וֹת</w>
@@ -105,7 +257,7 @@
             <w xml:id="f315B-w-214785">יִרְחַק־</w>
             <w xml:id="f315B-w-214786">חֹֽק</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214786">׃</pc>
-            <milestone unit="verse" n="Micah-7-12" xml:id="f315B-v-Micah-7-12"/>
+            <milestone unit="verse" n="Micah-7-12" xml:id="f315B-v-Micah-7-12" facs="#f315B-zone-Micah-7-12"/>
             <w xml:id="f315B-w-214787">י֥וֹם</w>
             <w xml:id="f315B-w-214788">הוּא֙</w>
             <w xml:id="f315B-w-214789">וְעָדֶ֣יךָ</w>
@@ -126,7 +278,7 @@
             <w xml:id="f315B-w-214801">וְהַ֥ר</w>
             <w xml:id="f315B-w-214802">הָהָֽר</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214802">׃</pc>
-            <milestone unit="verse" n="Micah-7-13" xml:id="f315B-v-Micah-7-13"/>
+            <milestone unit="verse" n="Micah-7-13" xml:id="f315B-v-Micah-7-13" facs="#f315B-zone-Micah-7-13"/>
             <w xml:id="f315B-w-214803">וְהָיְתָ֥ה</w>
             <w xml:id="f315B-w-214804">הָאָ֛רֶץ</w>
           <lb xml:id="f315B-lb-1-9" n="9"/>
@@ -139,7 +291,7 @@
             <pc type="sof-pasuq" xml:id="f315B-pc-214809">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f315B-s-Micah-7-13"/>
           <lb xml:id="f315B-lb-1-11" n="11"/>
-            <milestone unit="verse" n="Micah-7-14" xml:id="f315B-v-Micah-7-14"/>
+            <milestone unit="verse" n="Micah-7-14" xml:id="f315B-v-Micah-7-14" facs="#f315B-zone-Micah-7-14"/>
             <w xml:id="f315B-w-214810">רְעֵ֧ה</w>
             <w xml:id="f315B-w-214811">עַמְּךָ֣</w>
             <w xml:id="f315B-w-214812">בְשִׁבְטֶ֗ךָ</w>
@@ -159,7 +311,7 @@
             <w xml:id="f315B-w-214823">כִּימֵ֥י</w>
             <w xml:id="f315B-w-214824">עוֹלָֽם</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214824">׃</pc>
-            <milestone unit="verse" n="Micah-7-15" xml:id="f315B-v-Micah-7-15"/>
+            <milestone unit="verse" n="Micah-7-15" xml:id="f315B-v-Micah-7-15" facs="#f315B-zone-Micah-7-15"/>
             <w xml:id="f315B-w-214825">כִּימֵ֥י</w>
           <lb xml:id="f315B-lb-1-15" n="15"/>
             <w xml:id="f315B-w-214826">צֵאתְךָ֖</w>
@@ -169,7 +321,7 @@
             <w xml:id="f315B-w-214829">אַרְאֶ֖נּוּ</w>
             <w xml:id="f315B-w-214830">נִפְלָאֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214830">׃</pc>
-            <milestone unit="verse" n="Micah-7-16" xml:id="f315B-v-Micah-7-16"/>
+            <milestone unit="verse" n="Micah-7-16" xml:id="f315B-v-Micah-7-16" facs="#f315B-zone-Micah-7-16"/>
             <w xml:id="f315B-w-214831">יִרְא֤וּ</w>
             <w xml:id="f315B-w-214832">גוֹיִם֙</w>
           <lb xml:id="f315B-lb-1-17" n="17"/>
@@ -185,7 +337,7 @@
             <w xml:id="f315B-w-214841">תֶּחֱרַֽשְׁנָה</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214841">׃</pc>
           <lb xml:id="f315B-lb-1-19" n="19"/>
-            <milestone unit="verse" n="Micah-7-17" xml:id="f315B-v-Micah-7-17"/>
+            <milestone unit="verse" n="Micah-7-17" xml:id="f315B-v-Micah-7-17" facs="#f315B-zone-Micah-7-17"/>
             <w xml:id="f315B-w-214842">יְלַחֲכ֤וּ</w>
             <w xml:id="f315B-w-214843">עָפָר֙</w>
             <w xml:id="f315B-w-214844">כַּנָּחָ֔שׁ</w>
@@ -203,7 +355,7 @@
             <w xml:id="f315B-w-214853">וְיִֽרְא֖וּ</w>
             <w xml:id="f315B-w-214854">מִמֶּֽךָּ</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214854">׃</pc>
-            <milestone unit="verse" n="Micah-7-18" xml:id="f315B-v-Micah-7-18"/>
+            <milestone unit="verse" n="Micah-7-18" xml:id="f315B-v-Micah-7-18" facs="#f315B-zone-Micah-7-18"/>
             <w xml:id="f315B-w-214855">מִי־</w>
             <w xml:id="f315B-w-214856">אֵ֣ל</w>
             <w xml:id="f315B-w-214857">כָּמ֗וֹךָ</w>
@@ -227,7 +379,7 @@
             <w xml:id="f315B-w-214871">חֶ֖סֶד</w>
             <w xml:id="f315B-w-214872">הֽוּא</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214872">׃</pc>
-            <milestone unit="verse" n="Micah-7-19" xml:id="f315B-v-Micah-7-19"/>
+            <milestone unit="verse" n="Micah-7-19" xml:id="f315B-v-Micah-7-19" facs="#f315B-zone-Micah-7-19"/>
             <w xml:id="f315B-w-214873">יָשׁ֣וּב</w>
             <w xml:id="f315B-w-214874">יְרַֽחֲמֵ֔נוּ</w>
           <lb xml:id="f315B-lb-1-27" n="27"/>
@@ -242,7 +394,7 @@
             <w xml:id="f315B-w-214881">חַטֹּאותָֽם</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214881">׃</pc>
           <lb xml:id="f315B-lb-2-2" n="2"/>
-            <milestone unit="verse" n="Micah-7-20" xml:id="f315B-v-Micah-7-20"/>
+            <milestone unit="verse" n="Micah-7-20" xml:id="f315B-v-Micah-7-20" facs="#f315B-zone-Micah-7-20"/>
             <w xml:id="f315B-w-214882">תִּתֵּ֤ן</w>
             <w xml:id="f315B-w-214883">אֱמֶת֙</w>
             <w xml:id="f315B-w-214884">לְיַֽעֲקֹ֔ב</w>
@@ -269,7 +421,7 @@
           <lb xml:id="f315B-lb-2-9" n="9"/>
             <w xml:id="f315B-w-214897">הָאֶלְקֹשִֽׁי</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214897">׃</pc>
-            <milestone unit="verse" n="Nahum-1-2" xml:id="f315B-v-Nahum-1-2"/>
+            <milestone unit="verse" n="Nahum-1-2" xml:id="f315B-v-Nahum-1-2" facs="#f315B-zone-Nahum-1-2"/>
             <w xml:id="f315B-w-214898">אֵ֣ל</w>
             <w xml:id="f315B-w-214899">קַנּ֤וֹא</w>
             <w xml:id="f315B-w-214900">וְנֹקֵם֙</w>
@@ -288,7 +440,7 @@
             <w xml:id="f315B-w-214910">ה֖וּא</w>
             <w xml:id="f315B-w-214911">לְאֹיְבָֽיו</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214911">׃</pc>
-            <milestone unit="verse" n="Nahum-1-3" xml:id="f315B-v-Nahum-1-3"/>
+            <milestone unit="verse" n="Nahum-1-3" xml:id="f315B-v-Nahum-1-3" facs="#f315B-zone-Nahum-1-3"/>
             <w xml:id="f315B-w-214912">יְהֹוָ֗ה</w>
             <w xml:id="f315B-w-214913">אֶ֤רֶךְ</w>
           <lb xml:id="f315B-lb-2-13" n="13"/>
@@ -309,7 +461,7 @@
             <w xml:id="f315B-w-214926">רַגְלָֽיו</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214926">׃</pc>
           <lb xml:id="f315B-lb-2-16" n="16"/>
-            <milestone unit="verse" n="Nahum-1-4" xml:id="f315B-v-Nahum-1-4"/>
+            <milestone unit="verse" n="Nahum-1-4" xml:id="f315B-v-Nahum-1-4" facs="#f315B-zone-Nahum-1-4"/>
             <w xml:id="f315B-w-214927">גּוֹעֵ֤ר</w>
             <w xml:id="f315B-w-214928">בַּיָּם֙</w>
             <w xml:id="f315B-w-214929">וַֽיַּבְּשֵׁ֔הוּ</w>
@@ -326,7 +478,7 @@
           <lb xml:id="f315B-lb-2-19" n="19"/>
             <w xml:id="f315B-w-214938">אֻמְלָֽל</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214938">׃</pc>
-            <milestone unit="verse" n="Nahum-1-5" xml:id="f315B-v-Nahum-1-5"/>
+            <milestone unit="verse" n="Nahum-1-5" xml:id="f315B-v-Nahum-1-5" facs="#f315B-zone-Nahum-1-5"/>
             <w xml:id="f315B-w-214939">הָרִים֙</w>
             <w xml:id="f315B-w-214940">רָעֲשׁ֣וּ</w>
             <w xml:id="f315B-w-214941">מִמֶּ֔נּוּ</w>
@@ -343,7 +495,7 @@
             <w xml:id="f315B-w-214949">יֹ֥שְׁבֵי</w>
             <w xml:id="f315B-w-214950">בָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214950">׃</pc>
-            <milestone unit="verse" n="Nahum-1-6" xml:id="f315B-v-Nahum-1-6"/>
+            <milestone unit="verse" n="Nahum-1-6" xml:id="f315B-v-Nahum-1-6" facs="#f315B-zone-Nahum-1-6"/>
             <w xml:id="f315B-w-214951">לִפְנֵ֤י</w>
             <w xml:id="f315B-w-214952">זַעְמוֹ֙</w>
             <w xml:id="f315B-w-214953">מִ֣י</w>
@@ -362,7 +514,7 @@
             <w xml:id="f315B-w-214963">נִתְּצ֥וּ</w>
             <w xml:id="f315B-w-214964">מִמֶּֽנּוּ</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214964">׃</pc>
-            <milestone unit="verse" n="Nahum-1-7" xml:id="f315B-v-Nahum-1-7"/>
+            <milestone unit="verse" n="Nahum-1-7" xml:id="f315B-v-Nahum-1-7" facs="#f315B-zone-Nahum-1-7"/>
             <w xml:id="f315B-w-214965">ט֣וֹב</w>
           <lb xml:id="f315B-lb-2-26" n="26"/>
             <w xml:id="f315B-w-214966">יְהוָ֔ה</w>
@@ -374,7 +526,7 @@
             <w xml:id="f315B-w-214971">חֹ֥סֵי</w>
             <w xml:id="f315B-w-214972">בֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214972">׃</pc>
-            <milestone unit="verse" n="Nahum-1-8" xml:id="f315B-v-Nahum-1-8"/>
+            <milestone unit="verse" n="Nahum-1-8" xml:id="f315B-v-Nahum-1-8" facs="#f315B-zone-Nahum-1-8"/>
             <w xml:id="f315B-w-214973">וּבְשֶׁ֣טֶף</w>
             <w xml:id="f315B-w-214974">עֹבֵ֔ר</w>
         <cb xml:id="f315B-cb-3" n="3"/>
@@ -387,7 +539,7 @@
             <w xml:id="f315B-w-214979">יְרַדֶּף־</w>
             <w xml:id="f315B-w-214980">חֹֽשֶׁךְ</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214980">׃</pc>
-            <milestone unit="verse" n="Nahum-1-9" xml:id="f315B-v-Nahum-1-9"/>
+            <milestone unit="verse" n="Nahum-1-9" xml:id="f315B-v-Nahum-1-9" facs="#f315B-zone-Nahum-1-9"/>
             <w xml:id="f315B-w-214981">מַה־</w>
           <lb xml:id="f315B-lb-3-3" n="3"/>
             <w xml:id="f315B-w-214982">תְּחַשְּׁבוּן֙</w>
@@ -403,7 +555,7 @@
             <w xml:id="f315B-w-214990">פַּעֲמַ֖יִם</w>
             <w xml:id="f315B-w-214991">צָרָֽה</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-214991">׃</pc>
-            <milestone unit="verse" n="Nahum-1-10" xml:id="f315B-v-Nahum-1-10"/>
+            <milestone unit="verse" n="Nahum-1-10" xml:id="f315B-v-Nahum-1-10" facs="#f315B-zone-Nahum-1-10"/>
             <w xml:id="f315B-w-214992">כִּ֚י</w>
             <w xml:id="f315B-w-214993">עַד־</w>
             <w xml:id="f315B-w-214994">סִירִ֣ים</w>
@@ -418,7 +570,7 @@
             <w xml:id="f315B-w-215001">מָלֵֽא</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-215001">׃</pc>
           <lb xml:id="f315B-lb-3-8" n="8"/>
-            <milestone unit="verse" n="Nahum-1-11" xml:id="f315B-v-Nahum-1-11"/>
+            <milestone unit="verse" n="Nahum-1-11" xml:id="f315B-v-Nahum-1-11" facs="#f315B-zone-Nahum-1-11"/>
             <w xml:id="f315B-w-215002">מִמֵּ֣ךְ</w>
             <w xml:id="f315B-w-215003">יָצָ֔א</w>
             <w xml:id="f315B-w-215004">חֹשֵׁ֥ב</w>
@@ -431,7 +583,7 @@
             <pc type="sof-pasuq" xml:id="f315B-pc-215009">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f315B-s-Nahum-1-11"/>
           <lb xml:id="f315B-lb-3-10" n="10"/>
-            <milestone unit="verse" n="Nahum-1-12" xml:id="f315B-v-Nahum-1-12"/>
+            <milestone unit="verse" n="Nahum-1-12" xml:id="f315B-v-Nahum-1-12" facs="#f315B-zone-Nahum-1-12"/>
             <w xml:id="f315B-w-215010">כֹּ֣ה</w>
             <pc type="paseq" xml:id="f315B-pc-215010">׀</pc>
             <w xml:id="f315B-w-215011">אָמַ֣ר</w>
@@ -451,7 +603,7 @@
           <lb xml:id="f315B-lb-3-13" n="13"/>
             <w xml:id="f315B-w-215023">עֽוֹד</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-215023">׃</pc>
-            <milestone unit="verse" n="Nahum-1-13" xml:id="f315B-v-Nahum-1-13"/>
+            <milestone unit="verse" n="Nahum-1-13" xml:id="f315B-v-Nahum-1-13" facs="#f315B-zone-Nahum-1-13"/>
             <w xml:id="f315B-w-215024">וְעַתָּ֕ה</w>
             <w xml:id="f315B-w-215025">אֶשְׁבֹּ֥ר</w>
             <w xml:id="f315B-w-215026">מֹטֵ֖הוּ</w>
@@ -461,7 +613,7 @@
             <w xml:id="f315B-w-215029">אֲנַתֵּֽק</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-215029">׃</pc>
           <lb xml:id="f315B-lb-3-15" n="15"/>
-            <milestone unit="verse" n="Nahum-1-14" xml:id="f315B-v-Nahum-1-14"/>
+            <milestone unit="verse" n="Nahum-1-14" xml:id="f315B-v-Nahum-1-14" facs="#f315B-zone-Nahum-1-14"/>
             <w xml:id="f315B-w-215030">וְצִוָּ֤ה</w>
             <w xml:id="f315B-w-215031">עָלֶ֙יךָ֙</w>
             <w xml:id="f315B-w-215032">יְהוָ֔ה</w>
@@ -485,7 +637,7 @@
           <lb xml:id="f315B-lb-3-19" n="19"/>
             <milestone unit="section" subtype="pe" xml:id="f315B-s-Nahum-1-14"/>
           <lb xml:id="f315B-lb-3-20" n="20"/>
-            <milestone unit="verse" n="Nahum-2-1" xml:id="f315B-v-Nahum-2-1"/>
+            <milestone unit="verse" n="Nahum-2-1" xml:id="f315B-v-Nahum-2-1" facs="#f315B-zone-Nahum-2-1"/>
             <w xml:id="f315B-w-215046">הִנֵּ֨ה</w>
             <w xml:id="f315B-w-215047">עַל־</w>
             <w xml:id="f315B-w-215048">הֶהָרִ֜ים</w>
@@ -512,7 +664,7 @@
             <w xml:id="f315B-w-215065">כֻּלֹּ֥ה</w>
             <w xml:id="f315B-w-215066">נִכְרָֽת</w>
             <pc type="sof-pasuq" xml:id="f315B-pc-215066">׃</pc>
-            <milestone unit="verse" n="Nahum-2-2" xml:id="f315B-v-Nahum-2-2"/>
+            <milestone unit="verse" n="Nahum-2-2" xml:id="f315B-v-Nahum-2-2" facs="#f315B-zone-Nahum-2-2"/>
             <w xml:id="f315B-w-215067">עָלָ֥ה</w>
           <lb xml:id="f315B-lb-3-25" n="25"/>
             <w xml:id="f315B-w-215068">מֵפִ֛יץ</w>

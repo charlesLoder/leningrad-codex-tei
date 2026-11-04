@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-jossi-fresco">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 23 verse zones (89 line segments) from Masoretica HTR page n503. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n503.json"/>
+      </change>
       <change when="2026-10-27T12:47:50.928565+00:00" who="#contrib-jossi-fresco">Encoded by Jossi Fresco.
       </change>
       <change when="2026-10-27T12:43:45.641269+00:00" who="#contrib-jossi-fresco">Aligned Jeremiah 12:6 – Jeremiah 13:13 (360 atoms).
@@ -58,10 +69,146 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-252B">
+    <surface xml:id="surf-252B" ulx="0" uly="0" lrx="4447" lry="5471">
       <graphic xml:id="f252B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F252B.jpg">
         <desc type="sha256">b5659d8e52651a49a891237adb683139d8125fa86824909a1377ea5eb8dc7cd2</desc>
       </graphic>
+      <graphic xml:id="f252B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0503.jp2/full/max/0/default.jpg" width="4447px" height="5471px"/>
+      <zone xml:id="f252B-zone-Jeremiah-12-7" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-7-s1" ulx="2513" uly="1431" lrx="2950" lry="1579"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-7-s2" ulx="2498" uly="1542" lrx="3213" lry="1683"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-7-s3" ulx="2587" uly="1646" lrx="3209" lry="1768"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-8" type="verse" cert="0.929" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-8-s1" ulx="2498" uly="1738" lrx="3202" lry="1861"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-8-s2" ulx="2624" uly="1809" lrx="3224" lry="1957"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-8-s3" ulx="2983" uly="1905" lrx="3217" lry="2053"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-9" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-9-s1" ulx="2490" uly="1905" lrx="2957" lry="2053"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-9-s2" ulx="2483" uly="2016" lrx="3220" lry="2146"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-9-s3" ulx="2538" uly="2094" lrx="3213" lry="2246"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-9-s4" ulx="3005" uly="2191" lrx="3217" lry="2339"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-10" type="verse" cert="0.834" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-10-s1" ulx="2505" uly="2191" lrx="2979" lry="2339"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-10-s2" ulx="2490" uly="2302" lrx="3213" lry="2443"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-10-s3" ulx="2501" uly="2394" lrx="3228" lry="2524"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-11" type="verse" cert="0.93" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-11-s1" ulx="2509" uly="2458" lrx="3224" lry="2624"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-11-s2" ulx="2520" uly="2584" lrx="3232" lry="2710"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-11-s3" ulx="2679" uly="2654" lrx="3220" lry="2810"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-13" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-13-s1" ulx="2516" uly="3158" lrx="3035" lry="3288"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-13-s2" ulx="2513" uly="3225" lrx="3213" lry="3369"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-13-s3" ulx="2520" uly="3329" lrx="3239" lry="3469"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-14" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-14-s1" ulx="2531" uly="3432" lrx="2991" lry="3558"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-14-s2" ulx="2594" uly="3481" lrx="3231" lry="3655"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-14-s3" ulx="2531" uly="3607" lrx="3235" lry="3747"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-14-s4" ulx="2520" uly="3703" lrx="3235" lry="3847"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-14-s5" ulx="2635" uly="3788" lrx="3254" lry="3959"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-14-s6" ulx="1686" uly="1360" lrx="2242" lry="1483"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-15" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-15-s1" ulx="1531" uly="1360" lrx="1664" lry="1483"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-15-s2" ulx="1564" uly="1431" lrx="2238" lry="1583"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-15-s3" ulx="1486" uly="1542" lrx="2249" lry="1672"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-15-s4" ulx="1649" uly="1631" lrx="2246" lry="1761"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-16" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-16-s1" ulx="1512" uly="1631" lrx="1645" lry="1761"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-16-s2" ulx="1582" uly="1709" lrx="2235" lry="1864"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-16-s3" ulx="1586" uly="1824" lrx="2238" lry="1965"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-16-s4" ulx="1534" uly="1920" lrx="2264" lry="2068"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-16-s5" ulx="1564" uly="2031" lrx="2246" lry="2172"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-16-s6" ulx="2120" uly="2120" lrx="2246" lry="2246"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-12-17" type="verse" cert="0.953" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-12-17-s1" ulx="1645" uly="2120" lrx="2112" lry="2246"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-17-s2" ulx="1512" uly="2194" lrx="2246" lry="2354"/>
+        <zone xml:id="f252B-zone-Jeremiah-12-17-s3" ulx="1812" uly="2294" lrx="2253" lry="2446"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-1" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-1-s1" ulx="1531" uly="2346" lrx="2005" lry="2528"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-1-s2" ulx="1534" uly="2454" lrx="2235" lry="2628"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-1-s3" ulx="1505" uly="2572" lrx="2257" lry="2724"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-1-s4" ulx="1934" uly="2676" lrx="2242" lry="2817"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-2" type="verse" cert="0.921" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-2-s1" ulx="1623" uly="2676" lrx="1931" lry="2817"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-2-s2" ulx="1590" uly="2769" lrx="2242" lry="2910"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-2-s3" ulx="2009" uly="2854" lrx="2253" lry="2999"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-3" type="verse" cert="0.988" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-3-s1" ulx="1497" uly="2921" lrx="2072" lry="3099"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-3-s2" ulx="1934" uly="3039" lrx="2253" lry="3203"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-4" type="verse" cert="0.926" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-4-s1" ulx="1531" uly="3039" lrx="1905" lry="3203"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-4-s2" ulx="1542" uly="3165" lrx="2246" lry="3295"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-4-s3" ulx="1564" uly="3251" lrx="2264" lry="3380"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-4-s4" ulx="1901" uly="3343" lrx="2257" lry="3466"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-5" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-5-s1" ulx="1523" uly="3343" lrx="1875" lry="3466"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-5-s2" ulx="1545" uly="3432" lrx="2249" lry="3573"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-6" type="verse" cert="0.923" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-6-s1" ulx="1564" uly="3518" lrx="2272" lry="3673"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-6-s2" ulx="1553" uly="3610" lrx="2275" lry="3759"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-6-s3" ulx="1527" uly="3703" lrx="2268" lry="3862"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-6-s4" ulx="1986" uly="3796" lrx="2264" lry="3966"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-7" type="verse" cert="0.949" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-7-s1" ulx="1660" uly="3796" lrx="1975" lry="3966"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-7-s2" ulx="578" uly="1345" lrx="1267" lry="1497"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-7-s3" ulx="519" uly="1460" lrx="1249" lry="1590"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-7-s4" ulx="530" uly="1535" lrx="1260" lry="1687"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-7-s5" ulx="978" uly="1624" lrx="1267" lry="1776"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-8" type="verse" cert="0.995" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-8-s1" ulx="534" uly="1694" lrx="1256" lry="1876"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-9" type="verse" cert="0.977" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-9-s1" ulx="552" uly="1827" lrx="1253" lry="1979"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-9-s2" ulx="545" uly="1950" lrx="1249" lry="2065"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-9-s3" ulx="893" uly="2013" lrx="1249" lry="2172"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-10" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-10-s1" ulx="626" uly="2013" lrx="863" lry="2172"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-10-s2" ulx="560" uly="2131" lrx="1249" lry="2250"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-10-s3" ulx="545" uly="2198" lrx="1253" lry="2343"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-10-s4" ulx="567" uly="2306" lrx="1267" lry="2432"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-10-s5" ulx="511" uly="2372" lrx="1245" lry="2535"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-10-s6" ulx="563" uly="2506" lrx="1267" lry="2624"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-10-s7" ulx="982" uly="2572" lrx="1279" lry="2732"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-11" type="verse" cert="0.833" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-11-s1" ulx="560" uly="2572" lrx="963" lry="2732"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-11-s2" ulx="649" uly="2691" lrx="1256" lry="2821"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-11-s3" ulx="608" uly="2769" lrx="1253" lry="2917"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-11-s4" ulx="715" uly="2858" lrx="1267" lry="3002"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-11-s5" ulx="511" uly="2947" lrx="1030" lry="3102"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-11-s6" ulx="708" uly="3047" lrx="1271" lry="3203"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-12" type="verse" cert="0.849" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-12-s1" ulx="530" uly="3047" lrx="700" lry="3203"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-12-s2" ulx="704" uly="3169" lrx="1260" lry="3299"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-12-s3" ulx="556" uly="3236" lrx="1071" lry="3380"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-12-s4" ulx="634" uly="3314" lrx="1275" lry="3477"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-12-s5" ulx="574" uly="3432" lrx="1275" lry="3573"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-12-s6" ulx="767" uly="3540" lrx="1260" lry="3666"/>
+      </zone>
+      <zone xml:id="f252B-zone-Jeremiah-13-13" type="verse" cert="0.677" resp="#source-masoretica">
+        <zone xml:id="f252B-zone-Jeremiah-13-13-s1" ulx="574" uly="3540" lrx="767" lry="3666"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-13-s2" ulx="589" uly="3614" lrx="1275" lry="3759"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-13-s3" ulx="615" uly="3699" lrx="1271" lry="3859"/>
+        <zone xml:id="f252B-zone-Jeremiah-13-13-s4" ulx="582" uly="3803" lrx="1267" lry="3955"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -81,7 +228,7 @@
             <pc type="sof-pasuq" xml:id="f252B-pc-171092">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f252B-s-Jeremiah-12-6"/>
           <lb xml:id="f252B-lb-1-2" n="2"/>
-            <milestone unit="verse" n="Jeremiah-12-7" xml:id="f252B-v-Jeremiah-12-7"/>
+            <milestone unit="verse" n="Jeremiah-12-7" xml:id="f252B-v-Jeremiah-12-7" facs="#f252B-zone-Jeremiah-12-7"/>
             <w xml:id="f252B-w-171093">עָזַ֙בְתִּי֙</w>
             <w xml:id="f252B-w-171094">אֶת־</w>
             <w xml:id="f252B-w-171095">בֵּיתִ֔י</w>
@@ -98,7 +245,7 @@
             <w xml:id="f252B-w-171104">אֹיְבֶֽיהָ</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171104">׃</pc>
           <lb xml:id="f252B-lb-1-5" n="5"/>
-            <milestone unit="verse" n="Jeremiah-12-8" xml:id="f252B-v-Jeremiah-12-8"/>
+            <milestone unit="verse" n="Jeremiah-12-8" xml:id="f252B-v-Jeremiah-12-8" facs="#f252B-zone-Jeremiah-12-8"/>
             <w xml:id="f252B-w-171105">הָיְתָה־</w>
             <w xml:id="f252B-w-171106">לִּ֥י</w>
             <w xml:id="f252B-w-171107">נַחֲלָתִ֖י</w>
@@ -113,7 +260,7 @@
           <lb xml:id="f252B-lb-1-7" n="7"/>
             <w xml:id="f252B-w-171115">שְׂנֵאתִֽיהָ</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171115">׃</pc>
-            <milestone unit="verse" n="Jeremiah-12-9" xml:id="f252B-v-Jeremiah-12-9"/>
+            <milestone unit="verse" n="Jeremiah-12-9" xml:id="f252B-v-Jeremiah-12-9" facs="#f252B-zone-Jeremiah-12-9"/>
             <w xml:id="f252B-w-171116">הַעַ֨יִט</w>
             <w xml:id="f252B-w-171117">צָב֤וּעַ</w>
             <w xml:id="f252B-w-171118">נַחֲלָתִי֙</w>
@@ -132,7 +279,7 @@
           <lb xml:id="f252B-lb-1-10" n="10"/>
             <w xml:id="f252B-w-171129">לְאָכְלָֽה</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171129">׃</pc>
-            <milestone unit="verse" n="Jeremiah-12-10" xml:id="f252B-v-Jeremiah-12-10"/>
+            <milestone unit="verse" n="Jeremiah-12-10" xml:id="f252B-v-Jeremiah-12-10" facs="#f252B-zone-Jeremiah-12-10"/>
             <w xml:id="f252B-w-171130">רֹעִ֤ים</w>
             <w xml:id="f252B-w-171131">רַבִּים֙</w>
             <w xml:id="f252B-w-171132">שִֽׁחֲת֣וּ</w>
@@ -150,7 +297,7 @@
             <w xml:id="f252B-w-171142">שְׁמָמָֽה</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171142">׃</pc>
           <lb xml:id="f252B-lb-1-13" n="13"/>
-            <milestone unit="verse" n="Jeremiah-12-11" xml:id="f252B-v-Jeremiah-12-11"/>
+            <milestone unit="verse" n="Jeremiah-12-11" xml:id="f252B-v-Jeremiah-12-11" facs="#f252B-zone-Jeremiah-12-11"/>
             <w xml:id="f252B-w-171143">שָׂמָהּ֙</w>
             <w xml:id="f252B-w-171144">לִשְׁמָמָ֔ה</w>
             <w xml:id="f252B-w-171145">אָבְלָ֥ה</w>
@@ -195,7 +342,7 @@
             <pc type="sof-pasuq" xml:id="f252B-pc-171175">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f252B-s-Jeremiah-12-12"/>
           <lb xml:id="f252B-lb-1-20" n="20"/>
-            <milestone unit="verse" n="Jeremiah-12-13" xml:id="f252B-v-Jeremiah-12-13"/>
+            <milestone unit="verse" n="Jeremiah-12-13" xml:id="f252B-v-Jeremiah-12-13" facs="#f252B-zone-Jeremiah-12-13"/>
             <w xml:id="f252B-w-171176">זָרְע֤וּ</w>
             <w xml:id="f252B-w-171177">חִטִּים֙</w>
             <w xml:id="f252B-w-171178">וְקֹצִ֣ים</w>
@@ -213,7 +360,7 @@
             <pc type="sof-pasuq" xml:id="f252B-pc-171187">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f252B-s-Jeremiah-12-13"/>
           <lb xml:id="f252B-lb-1-23" n="23"/>
-            <milestone unit="verse" n="Jeremiah-12-14" xml:id="f252B-v-Jeremiah-12-14"/>
+            <milestone unit="verse" n="Jeremiah-12-14" xml:id="f252B-v-Jeremiah-12-14" facs="#f252B-zone-Jeremiah-12-14"/>
             <w xml:id="f252B-w-171188">כֹּ֣ה</w>
             <pc type="paseq" xml:id="f252B-pc-171188">׀</pc>
             <w xml:id="f252B-w-171189">אָמַ֣ר</w>
@@ -246,7 +393,7 @@
             <w xml:id="f252B-w-171210">אֶתּ֥וֹשׁ</w>
             <w xml:id="f252B-w-171211">מִתּוֹכָֽם</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171211">׃</pc>
-            <milestone unit="verse" n="Jeremiah-12-15" xml:id="f252B-v-Jeremiah-12-15"/>
+            <milestone unit="verse" n="Jeremiah-12-15" xml:id="f252B-v-Jeremiah-12-15" facs="#f252B-zone-Jeremiah-12-15"/>
             <w xml:id="f252B-w-171212">וְהָיָ֗ה</w>
           <lb xml:id="f252B-lb-2-2" n="2"/>
             <w xml:id="f252B-w-171213">אַֽחֲרֵי֙</w>
@@ -262,7 +409,7 @@
             <w xml:id="f252B-w-171221">וְאִ֥ישׁ</w>
             <w xml:id="f252B-w-171222">לְאַרְצֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171222">׃</pc>
-            <milestone unit="verse" n="Jeremiah-12-16" xml:id="f252B-v-Jeremiah-12-16"/>
+            <milestone unit="verse" n="Jeremiah-12-16" xml:id="f252B-v-Jeremiah-12-16" facs="#f252B-zone-Jeremiah-12-16"/>
             <w xml:id="f252B-w-171223">וְהָיָ֡ה</w>
           <lb xml:id="f252B-lb-2-5" n="5"/>
             <w xml:id="f252B-w-171224">אִם־</w>
@@ -289,7 +436,7 @@
           <lb xml:id="f252B-lb-2-9" n="9"/>
             <w xml:id="f252B-w-171242">עַמִּֽי</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171242">׃</pc>
-            <milestone unit="verse" n="Jeremiah-12-17" xml:id="f252B-v-Jeremiah-12-17"/>
+            <milestone unit="verse" n="Jeremiah-12-17" xml:id="f252B-v-Jeremiah-12-17" facs="#f252B-zone-Jeremiah-12-17"/>
             <w xml:id="f252B-w-171243">וְאִ֖ם</w>
             <w xml:id="f252B-w-171244">לֹ֣א</w>
             <w xml:id="f252B-w-171245">יִשְׁמָ֑עוּ</w>
@@ -306,7 +453,7 @@
             <pc type="sof-pasuq" xml:id="f252B-pc-171253">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f252B-s-Jeremiah-12-17"/>
           <lb xml:id="f252B-lb-2-12" n="12"/>
-            <milestone unit="verse" n="Jeremiah-13-1" xml:id="f252B-v-Jeremiah-13-1"/>
+            <milestone unit="verse" n="Jeremiah-13-1" xml:id="f252B-v-Jeremiah-13-1" facs="#f252B-zone-Jeremiah-13-1"/>
             <w xml:id="f252B-w-171254">כֹּֽה־</w>
             <w xml:id="f252B-w-171255">אָמַ֨ר</w>
             <w xml:id="f252B-w-171256">יְהוָ֜ה</w>
@@ -326,7 +473,7 @@
             <w xml:id="f252B-w-171267">לֹ֥א</w>
             <w xml:id="f252B-w-171268">תְבִאֵֽהוּ</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171268">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-2" xml:id="f252B-v-Jeremiah-13-2"/>
+            <milestone unit="verse" n="Jeremiah-13-2" xml:id="f252B-v-Jeremiah-13-2" facs="#f252B-zone-Jeremiah-13-2"/>
             <w xml:id="f252B-w-171269">וָאֶקְנֶ֥ה</w>
             <w xml:id="f252B-w-171270">אֶת־</w>
           <lb xml:id="f252B-lb-2-16" n="16"/>
@@ -340,7 +487,7 @@
             <pc type="sof-pasuq" xml:id="f252B-pc-171276">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f252B-s-Jeremiah-13-2"/>
           <lb xml:id="f252B-lb-2-18" n="18"/>
-            <milestone unit="verse" n="Jeremiah-13-3" xml:id="f252B-v-Jeremiah-13-3"/>
+            <milestone unit="verse" n="Jeremiah-13-3" xml:id="f252B-v-Jeremiah-13-3" facs="#f252B-zone-Jeremiah-13-3"/>
             <w xml:id="f252B-w-171277">וַיְהִ֧י</w>
             <w xml:id="f252B-w-171278">דְבַר־</w>
             <w xml:id="f252B-w-171279">יְהוָ֛ה</w>
@@ -349,7 +496,7 @@
             <w xml:id="f252B-w-171281">שֵׁנִ֥ית</w>
             <w xml:id="f252B-w-171282">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171282">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-4" xml:id="f252B-v-Jeremiah-13-4"/>
+            <milestone unit="verse" n="Jeremiah-13-4" xml:id="f252B-v-Jeremiah-13-4" facs="#f252B-zone-Jeremiah-13-4"/>
             <w xml:id="f252B-w-171283">קַ֧ח</w>
             <w xml:id="f252B-w-171284">אֶת־</w>
             <w xml:id="f252B-w-171285">הָאֵז֛וֹר</w>
@@ -369,7 +516,7 @@
             <w xml:id="f252B-w-171296">בִּנְקִ֥יק</w>
             <w xml:id="f252B-w-171297">הַסָּֽלַע</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171297">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-5" xml:id="f252B-v-Jeremiah-13-5"/>
+            <milestone unit="verse" n="Jeremiah-13-5" xml:id="f252B-v-Jeremiah-13-5" facs="#f252B-zone-Jeremiah-13-5"/>
             <w xml:id="f252B-w-171298">וָאֵלֵ֕ךְ</w>
             <w xml:id="f252B-w-171299">וָאֶטְמְנֵ֖הוּ</w>
           <lb xml:id="f252B-lb-2-23" n="23"/>
@@ -380,7 +527,7 @@
             <w xml:id="f252B-w-171304">אוֹתִֽי</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171304">׃</pc>
           <lb xml:id="f252B-lb-2-24" n="24"/>
-            <milestone unit="verse" n="Jeremiah-13-6" xml:id="f252B-v-Jeremiah-13-6"/>
+            <milestone unit="verse" n="Jeremiah-13-6" xml:id="f252B-v-Jeremiah-13-6" facs="#f252B-zone-Jeremiah-13-6"/>
             <w xml:id="f252B-w-171305">וַיְהִ֕י</w>
             <w xml:id="f252B-w-171306">מִקֵּ֖ץ</w>
             <w xml:id="f252B-w-171307">יָמִ֣ים</w>
@@ -403,7 +550,7 @@
             <w xml:id="f252B-w-171321">לְטָמְנוֹ־</w>
             <w xml:id="f252B-w-171322">שָֽׁם</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171322">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-7" xml:id="f252B-v-Jeremiah-13-7"/>
+            <milestone unit="verse" n="Jeremiah-13-7" xml:id="f252B-v-Jeremiah-13-7" facs="#f252B-zone-Jeremiah-13-7"/>
             <w xml:id="f252B-w-171323">וָאֵלֵ֣ךְ</w>
             <w xml:id="f252B-w-171324">פְּרָ֔תָה</w>
         <cb xml:id="f252B-cb-3" n="3"/>
@@ -429,7 +576,7 @@
             <pc type="sof-pasuq" xml:id="f252B-pc-171339">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f252B-s-Jeremiah-13-7"/>
           <lb xml:id="f252B-lb-3-5" n="5"/>
-            <milestone unit="verse" n="Jeremiah-13-8" xml:id="f252B-v-Jeremiah-13-8"/>
+            <milestone unit="verse" n="Jeremiah-13-8" xml:id="f252B-v-Jeremiah-13-8" facs="#f252B-zone-Jeremiah-13-8"/>
             <w xml:id="f252B-w-171340">וַיְהִ֥י</w>
             <w xml:id="f252B-w-171341">דְבַר־</w>
             <w xml:id="f252B-w-171342">יְהוָ֖ה</w>
@@ -437,7 +584,7 @@
             <w xml:id="f252B-w-171344">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171344">׃</pc>
           <lb xml:id="f252B-lb-3-6" n="6"/>
-            <milestone unit="verse" n="Jeremiah-13-9" xml:id="f252B-v-Jeremiah-13-9"/>
+            <milestone unit="verse" n="Jeremiah-13-9" xml:id="f252B-v-Jeremiah-13-9" facs="#f252B-zone-Jeremiah-13-9"/>
             <w xml:id="f252B-w-171345">כֹּ֖ה</w>
             <w xml:id="f252B-w-171346">אָמַ֣ר</w>
             <w xml:id="f252B-w-171347">יְהוָ֑ה</w>
@@ -453,7 +600,7 @@
             <w xml:id="f252B-w-171355">יְרוּשָׁלַ֖͏ִם</w>
             <w xml:id="f252B-w-171356">הָרָֽב</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171356">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-10" xml:id="f252B-v-Jeremiah-13-10"/>
+            <milestone unit="verse" n="Jeremiah-13-10" xml:id="f252B-v-Jeremiah-13-10" facs="#f252B-zone-Jeremiah-13-10"/>
             <w xml:id="f252B-w-171357">הָעָם֩</w>
             <w xml:id="f252B-w-171358">הַזֶּ֨ה</w>
           <lb xml:id="f252B-lb-3-9" n="9"/>
@@ -486,7 +633,7 @@
             <w xml:id="f252B-w-171379">יִצְלַ֖ח</w>
             <w xml:id="f252B-w-171380">לַכֹּֽל</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171380">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-11" xml:id="f252B-v-Jeremiah-13-11"/>
+            <milestone unit="verse" n="Jeremiah-13-11" xml:id="f252B-v-Jeremiah-13-11" facs="#f252B-zone-Jeremiah-13-11"/>
             <w xml:id="f252B-w-171381">כִּ֡י</w>
             <w xml:id="f252B-w-171382">כַּאֲשֶׁר֩</w>
             <w xml:id="f252B-w-171383">יִדְבַּ֨ק</w>
@@ -521,7 +668,7 @@
             <w xml:id="f252B-w-171407">וְלֹ֖א</w>
             <w xml:id="f252B-w-171408">שָׁמֵֽעוּ</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171408">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-12" xml:id="f252B-v-Jeremiah-13-12"/>
+            <milestone unit="verse" n="Jeremiah-13-12" xml:id="f252B-v-Jeremiah-13-12" facs="#f252B-zone-Jeremiah-13-12"/>
             <w xml:id="f252B-w-171409">וְאָמַרְתָּ֨</w>
           <lb xml:id="f252B-lb-3-20" n="20"/>
             <w xml:id="f252B-w-171410">אֲלֵיהֶ֜ם</w>
@@ -553,7 +700,7 @@
             <w xml:id="f252B-w-171431">יִמָּ֥לֵא</w>
             <w xml:id="f252B-w-171432">יָֽיִן</w>
             <pc type="sof-pasuq" xml:id="f252B-pc-171432">׃</pc>
-            <milestone unit="verse" n="Jeremiah-13-13" xml:id="f252B-v-Jeremiah-13-13"/>
+            <milestone unit="verse" n="Jeremiah-13-13" xml:id="f252B-v-Jeremiah-13-13" facs="#f252B-zone-Jeremiah-13-13"/>
             <w xml:id="f252B-w-171433">וְאָמַרְתָּ֨</w>
           <lb xml:id="f252B-lb-3-25" n="25"/>
             <w xml:id="f252B-w-171434">אֲלֵיהֶ֜ם</w>

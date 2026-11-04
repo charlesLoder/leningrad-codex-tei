@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 17 verse zones (86 line segments) from Masoretica HTR page n881. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n881.json"/>
+      </change>
       <change when="2026-11-01T20:00:20.990085+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-11-01T19:52:58.481083+00:00" who="#contrib-sarahmccuan">Aligned Daniel 4:22 – Daniel 5:5 (310 atoms).
@@ -58,10 +69,131 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-441B">
+    <surface xml:id="surf-441B" ulx="0" uly="0" lrx="4703" lry="5499">
       <graphic xml:id="f441B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F441B.jpg">
         <desc type="sha256">c21961bb45621e3a58e12f1a5c2b69b4390631274ebaeddd9f78dea29311420b</desc>
       </graphic>
+      <graphic xml:id="f441B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0881.jp2/full/max/0/default.jpg" width="4703px" height="5499px"/>
+      <zone xml:id="f441B-zone-Daniel-4-22" type="verse" cert="0.606" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-22-s1" ulx="3323" uly="1388" lrx="4037" lry="1552"/>
+        <zone xml:id="f441B-zone-Daniel-4-22-s2" ulx="3237" uly="1509" lrx="4005" lry="1658"/>
+        <zone xml:id="f441B-zone-Daniel-4-22-s3" ulx="3280" uly="1603" lrx="4021" lry="1756"/>
+        <zone xml:id="f441B-zone-Daniel-4-22-s4" ulx="3257" uly="1713" lrx="4013" lry="1850"/>
+        <zone xml:id="f441B-zone-Daniel-4-22-s5" ulx="3817" uly="1791" lrx="4025" lry="1960"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-23" type="verse" cert="0.918" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-23-s1" ulx="3225" uly="1791" lrx="3794" lry="1960"/>
+        <zone xml:id="f441B-zone-Daniel-4-23-s2" ulx="3225" uly="1913" lrx="4001" lry="2066"/>
+        <zone xml:id="f441B-zone-Daniel-4-23-s3" ulx="3210" uly="2026" lrx="4001" lry="2160"/>
+        <zone xml:id="f441B-zone-Daniel-4-23-s4" ulx="3308" uly="2105" lrx="3982" lry="2262"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-24" type="verse" cert="0.898" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-24-s1" ulx="3237" uly="2199" lrx="3974" lry="2371"/>
+        <zone xml:id="f441B-zone-Daniel-4-24-s2" ulx="3198" uly="2309" lrx="3986" lry="2477"/>
+        <zone xml:id="f441B-zone-Daniel-4-24-s3" ulx="3233" uly="2434" lrx="3998" lry="2567"/>
+        <zone xml:id="f441B-zone-Daniel-4-24-s4" ulx="3249" uly="2520" lrx="3982" lry="2677"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-25" type="verse" cert="0.989" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-25-s1" ulx="3210" uly="2638" lrx="3966" lry="2775"/>
+        <zone xml:id="f441B-zone-Daniel-4-25-s2" ulx="3758" uly="2732" lrx="3970" lry="2865"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-26" type="verse" cert="0.872" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-26-s1" ulx="3214" uly="2830" lrx="3954" lry="2967"/>
+        <zone xml:id="f441B-zone-Daniel-4-26-s2" ulx="3253" uly="2928" lrx="3962" lry="3057"/>
+        <zone xml:id="f441B-zone-Daniel-4-26-s3" ulx="3492" uly="3018" lrx="3966" lry="3167"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-27" type="verse" cert="0.929" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-27-s1" ulx="3316" uly="3018" lrx="3453" lry="3167"/>
+        <zone xml:id="f441B-zone-Daniel-4-27-s2" ulx="3186" uly="3124" lrx="3962" lry="3257"/>
+        <zone xml:id="f441B-zone-Daniel-4-27-s3" ulx="3202" uly="3187" lrx="3954" lry="3371"/>
+        <zone xml:id="f441B-zone-Daniel-4-27-s4" ulx="3225" uly="3304" lrx="3966" lry="3457"/>
+        <zone xml:id="f441B-zone-Daniel-4-27-s5" ulx="3570" uly="3394" lrx="3982" lry="3559"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-28" type="verse" cert="0.931" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-28-s1" ulx="3222" uly="3394" lrx="3555" lry="3559"/>
+        <zone xml:id="f441B-zone-Daniel-4-28-s2" ulx="3206" uly="3492" lrx="3958" lry="3661"/>
+        <zone xml:id="f441B-zone-Daniel-4-28-s3" ulx="3194" uly="3594" lrx="3970" lry="3774"/>
+        <zone xml:id="f441B-zone-Daniel-4-28-s4" ulx="3178" uly="3712" lrx="3966" lry="3872"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-29" type="verse" cert="0.929" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-29-s1" ulx="3175" uly="3821" lrx="3982" lry="3978"/>
+        <zone xml:id="f441B-zone-Daniel-4-29-s2" ulx="3190" uly="3919" lrx="3962" lry="4076"/>
+        <zone xml:id="f441B-zone-Daniel-4-29-s3" ulx="3120" uly="3990" lrx="3966" lry="4182"/>
+        <zone xml:id="f441B-zone-Daniel-4-29-s4" ulx="2179" uly="1372" lrx="2943" lry="1552"/>
+        <zone xml:id="f441B-zone-Daniel-4-29-s5" ulx="2222" uly="1513" lrx="2943" lry="1638"/>
+        <zone xml:id="f441B-zone-Daniel-4-29-s6" ulx="2163" uly="1580" lrx="2928" lry="1740"/>
+        <zone xml:id="f441B-zone-Daniel-4-29-s7" ulx="2547" uly="1697" lrx="2959" lry="1830"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-30" type="verse" cert="0.949" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-30-s1" ulx="2171" uly="1697" lrx="2508" lry="1830"/>
+        <zone xml:id="f441B-zone-Daniel-4-30-s2" ulx="2144" uly="1772" lrx="2947" lry="1948"/>
+        <zone xml:id="f441B-zone-Daniel-4-30-s3" ulx="2167" uly="1893" lrx="2951" lry="2050"/>
+        <zone xml:id="f441B-zone-Daniel-4-30-s4" ulx="2159" uly="1991" lrx="2935" lry="2144"/>
+        <zone xml:id="f441B-zone-Daniel-4-30-s5" ulx="2246" uly="2105" lrx="2947" lry="2238"/>
+        <zone xml:id="f441B-zone-Daniel-4-30-s6" ulx="2308" uly="2203" lrx="2939" lry="2352"/>
+        <zone xml:id="f441B-zone-Daniel-4-30-s7" ulx="2406" uly="2297" lrx="2947" lry="2461"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-31" type="verse" cert="0.968" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-31-s1" ulx="2163" uly="2297" lrx="2391" lry="2461"/>
+        <zone xml:id="f441B-zone-Daniel-4-31-s2" ulx="2152" uly="2399" lrx="2943" lry="2559"/>
+        <zone xml:id="f441B-zone-Daniel-4-31-s3" ulx="2167" uly="2493" lrx="2924" lry="2657"/>
+        <zone xml:id="f441B-zone-Daniel-4-31-s4" ulx="2171" uly="2606" lrx="2935" lry="2736"/>
+        <zone xml:id="f441B-zone-Daniel-4-31-s5" ulx="2120" uly="2697" lrx="2939" lry="2857"/>
+        <zone xml:id="f441B-zone-Daniel-4-31-s6" ulx="2175" uly="2795" lrx="2920" lry="2947"/>
+        <zone xml:id="f441B-zone-Daniel-4-31-s7" ulx="2246" uly="2912" lrx="2935" lry="3045"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-33" type="verse" cert="0.896" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-33-s1" ulx="2136" uly="3390" lrx="2230" lry="3551"/>
+        <zone xml:id="f441B-zone-Daniel-4-33-s2" ulx="2148" uly="3496" lrx="2920" lry="3633"/>
+        <zone xml:id="f441B-zone-Daniel-4-33-s3" ulx="2179" uly="3586" lrx="2924" lry="3743"/>
+        <zone xml:id="f441B-zone-Daniel-4-33-s4" ulx="2281" uly="3696" lrx="2932" lry="3845"/>
+        <zone xml:id="f441B-zone-Daniel-4-33-s5" ulx="2132" uly="3798" lrx="2924" lry="3955"/>
+        <zone xml:id="f441B-zone-Daniel-4-33-s6" ulx="2120" uly="3912" lrx="2904" lry="4049"/>
+        <zone xml:id="f441B-zone-Daniel-4-33-s7" ulx="2834" uly="4017" lrx="2912" lry="4147"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-4-34" type="verse" cert="0.909" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-4-34-s1" ulx="2148" uly="4017" lrx="2802" lry="4147"/>
+        <zone xml:id="f441B-zone-Daniel-4-34-s2" ulx="1156" uly="1380" lrx="1893" lry="1533"/>
+        <zone xml:id="f441B-zone-Daniel-4-34-s3" ulx="1297" uly="1482" lrx="1885" lry="1646"/>
+        <zone xml:id="f441B-zone-Daniel-4-34-s4" ulx="1117" uly="1576" lrx="1889" lry="1740"/>
+        <zone xml:id="f441B-zone-Daniel-4-34-s5" ulx="1140" uly="1670" lrx="1881" lry="1838"/>
+        <zone xml:id="f441B-zone-Daniel-4-34-s6" ulx="1576" uly="1779" lrx="1885" lry="1932"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-5-1" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-5-1-s1" ulx="1199" uly="1893" lrx="1881" lry="2030"/>
+        <zone xml:id="f441B-zone-Daniel-5-1-s2" ulx="1133" uly="1979" lrx="1881" lry="2144"/>
+        <zone xml:id="f441B-zone-Daniel-5-1-s3" ulx="1238" uly="2077" lrx="1905" lry="2242"/>
+        <zone xml:id="f441B-zone-Daniel-5-1-s4" ulx="1701" uly="2183" lrx="1877" lry="2352"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-5-2" type="verse" cert="0.935" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-5-2-s1" ulx="1129" uly="2183" lrx="1662" lry="2352"/>
+        <zone xml:id="f441B-zone-Daniel-5-2-s2" ulx="1215" uly="2316" lrx="1877" lry="2442"/>
+        <zone xml:id="f441B-zone-Daniel-5-2-s3" ulx="1117" uly="2391" lrx="1866" lry="2555"/>
+        <zone xml:id="f441B-zone-Daniel-5-2-s4" ulx="1090" uly="2508" lrx="1869" lry="2657"/>
+        <zone xml:id="f441B-zone-Daniel-5-2-s5" ulx="1078" uly="2603" lrx="1866" lry="2751"/>
+        <zone xml:id="f441B-zone-Daniel-5-2-s6" ulx="1199" uly="2701" lrx="1869" lry="2849"/>
+        <zone xml:id="f441B-zone-Daniel-5-2-s7" ulx="1360" uly="2798" lrx="1873" lry="2947"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-5-3" type="verse" cert="0.93" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-5-3-s1" ulx="1090" uly="2798" lrx="1282" lry="2947"/>
+        <zone xml:id="f441B-zone-Daniel-5-3-s2" ulx="1188" uly="2904" lrx="1862" lry="3038"/>
+        <zone xml:id="f441B-zone-Daniel-5-3-s3" ulx="1101" uly="2975" lrx="1869" lry="3136"/>
+        <zone xml:id="f441B-zone-Daniel-5-3-s4" ulx="1258" uly="3081" lrx="1858" lry="3241"/>
+        <zone xml:id="f441B-zone-Daniel-5-3-s5" ulx="1219" uly="3175" lrx="1873" lry="3339"/>
+        <zone xml:id="f441B-zone-Daniel-5-3-s6" ulx="1070" uly="3284" lrx="1873" lry="3445"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-5-4" type="verse" cert="0.993" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-5-4-s1" ulx="1168" uly="3386" lrx="1869" lry="3535"/>
+        <zone xml:id="f441B-zone-Daniel-5-4-s2" ulx="1195" uly="3469" lrx="1862" lry="3629"/>
+        <zone xml:id="f441B-zone-Daniel-5-4-s3" ulx="1082" uly="3586" lrx="1877" lry="3739"/>
+        <zone xml:id="f441B-zone-Daniel-5-4-s4" ulx="1642" uly="3676" lrx="1877" lry="3845"/>
+      </zone>
+      <zone xml:id="f441B-zone-Daniel-5-5" type="verse" cert="0.775" resp="#source-masoretica">
+        <zone xml:id="f441B-zone-Daniel-5-5-s1" ulx="1117" uly="3676" lrx="1607" lry="3845"/>
+        <zone xml:id="f441B-zone-Daniel-5-5-s2" ulx="1105" uly="3767" lrx="1858" lry="3939"/>
+        <zone xml:id="f441B-zone-Daniel-5-5-s3" ulx="1109" uly="3868" lrx="1858" lry="4037"/>
+        <zone xml:id="f441B-zone-Daniel-5-5-s4" ulx="1125" uly="3970" lrx="1854" lry="4151"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +204,7 @@
         <ab>
         <cb xml:id="f441B-cb-1" n="1"/>
           <lb xml:id="f441B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Daniel-4-22" xml:id="f441B-v-Daniel-4-22"/>
+            <milestone unit="verse" n="Daniel-4-22" xml:id="f441B-v-Daniel-4-22" facs="#f441B-zone-Daniel-4-22"/>
             <w xml:id="f441B-w-268598">וְשִׁבְעָ֥ה</w>
             <w xml:id="f441B-w-268599">עִדָּנִ֖ין</w>
             <w xml:id="f441B-w-268600">יַחְלְפ֣וּן</w>
@@ -94,7 +226,7 @@
           <lb xml:id="f441B-lb-1-5" n="5"/>
             <w xml:id="f441B-w-268613">יִתְּנִנַּֽהּ</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268613">׃</pc>
-            <milestone unit="verse" n="Daniel-4-23" xml:id="f441B-v-Daniel-4-23"/>
+            <milestone unit="verse" n="Daniel-4-23" xml:id="f441B-v-Daniel-4-23" facs="#f441B-zone-Daniel-4-23"/>
             <w xml:id="f441B-w-268614">וְדִ֣י</w>
             <w xml:id="f441B-w-268615">אֲמַ֗רוּ</w>
             <w xml:id="f441B-w-268616">לְמִשְׁבַּ֞ק</w>
@@ -116,7 +248,7 @@
             <w xml:id="f441B-w-268629">שְׁמַיָּֽא</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268629">׃</pc>
           <lb xml:id="f441B-lb-1-9" n="9"/>
-            <milestone unit="verse" n="Daniel-4-24" xml:id="f441B-v-Daniel-4-24"/>
+            <milestone unit="verse" n="Daniel-4-24" xml:id="f441B-v-Daniel-4-24" facs="#f441B-zone-Daniel-4-24"/>
             <w xml:id="f441B-w-268630">לָהֵ֣ן</w>
             <w xml:id="f441B-w-268631">מַלְכָּ֗א</w>
             <w xml:id="f441B-w-268632">מִלְכִּי֙</w>
@@ -137,7 +269,7 @@
             <w xml:id="f441B-w-268644">לִשְׁלֵוְתָֽךְ</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268644">׃</pc>
           <lb xml:id="f441B-lb-1-13" n="13"/>
-            <milestone unit="verse" n="Daniel-4-25" xml:id="f441B-v-Daniel-4-25"/>
+            <milestone unit="verse" n="Daniel-4-25" xml:id="f441B-v-Daniel-4-25" facs="#f441B-zone-Daniel-4-25"/>
             <w xml:id="f441B-w-268645">כֹּ֣לָּא</w>
             <w xml:id="f441B-w-268646">מְּטָ֔א</w>
             <w xml:id="f441B-w-268647">עַל־</w>
@@ -147,7 +279,7 @@
             <pc type="sof-pasuq" xml:id="f441B-pc-268649">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f441B-s-Daniel-4-25"/>
           <lb xml:id="f441B-lb-1-15" n="15"/>
-            <milestone unit="verse" n="Daniel-4-26" xml:id="f441B-v-Daniel-4-26"/>
+            <milestone unit="verse" n="Daniel-4-26" xml:id="f441B-v-Daniel-4-26" facs="#f441B-zone-Daniel-4-26"/>
             <w xml:id="f441B-w-268650">לִקְצָ֥ת</w>
             <w xml:id="f441B-w-268651">יַרְחִ֖ין</w>
             <w xml:id="f441B-w-268652">תְּרֵֽי־</w>
@@ -162,7 +294,7 @@
             <w xml:id="f441B-w-268659">מְהַלֵּ֥ךְ</w>
             <w xml:id="f441B-w-268660">הֲוָֽה</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268660">׃</pc>
-            <milestone unit="verse" n="Daniel-4-27" xml:id="f441B-v-Daniel-4-27"/>
+            <milestone unit="verse" n="Daniel-4-27" xml:id="f441B-v-Daniel-4-27" facs="#f441B-zone-Daniel-4-27"/>
             <w xml:id="f441B-w-268661">עָנֵ֤ה</w>
           <lb xml:id="f441B-lb-1-18" n="18"/>
             <w xml:id="f441B-w-268662">מַלְכָּא֙</w>
@@ -185,7 +317,7 @@
             <w xml:id="f441B-w-268676">וְלִיקָ֥ר</w>
             <w xml:id="f441B-w-268677">הַדְרִֽי</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268677">׃</pc>
-            <milestone unit="verse" n="Daniel-4-28" xml:id="f441B-v-Daniel-4-28"/>
+            <milestone unit="verse" n="Daniel-4-28" xml:id="f441B-v-Daniel-4-28" facs="#f441B-zone-Daniel-4-28"/>
             <w xml:id="f441B-w-268678">ע֗וֹד</w>
             <w xml:id="f441B-w-268679">מִלְּתָא֙</w>
           <lb xml:id="f441B-lb-1-22" n="22"/>
@@ -206,7 +338,7 @@
             <w xml:id="f441B-w-268692">מִנָּֽךְ</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268692">׃</pc>
           <lb xml:id="f441B-lb-1-25" n="25"/>
-            <milestone unit="verse" n="Daniel-4-29" xml:id="f441B-v-Daniel-4-29"/>
+            <milestone unit="verse" n="Daniel-4-29" xml:id="f441B-v-Daniel-4-29" facs="#f441B-zone-Daniel-4-29"/>
             <w xml:id="f441B-w-268693">וּמִן־</w>
             <w xml:id="f441B-w-268694">אֲנָשָׁא֩</w>
             <w xml:id="f441B-w-268695">לָ֨ךְ</w>
@@ -243,7 +375,7 @@
             <w xml:id="f441B-w-268719">יִצְבֵּ֖א</w>
             <w xml:id="f441B-w-268720">יִתְּנִנַּֽהּ</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268720">׃</pc>
-            <milestone unit="verse" n="Daniel-4-30" xml:id="f441B-v-Daniel-4-30"/>
+            <milestone unit="verse" n="Daniel-4-30" xml:id="f441B-v-Daniel-4-30" facs="#f441B-zone-Daniel-4-30"/>
             <w xml:id="f441B-w-268721">בַּהּ־</w>
             <w xml:id="f441B-w-268722">שַׁעֲתָ֗א</w>
           <lb xml:id="f441B-lb-2-5" n="5"/>
@@ -274,7 +406,7 @@
             <w xml:id="f441B-w-268742">וְטִפְר֥וֹהִי</w>
             <w xml:id="f441B-w-268743">כְצִפְּרִֽין</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268743">׃</pc>
-            <milestone unit="verse" n="Daniel-4-31" xml:id="f441B-v-Daniel-4-31"/>
+            <milestone unit="verse" n="Daniel-4-31" xml:id="f441B-v-Daniel-4-31" facs="#f441B-zone-Daniel-4-31"/>
             <w xml:id="f441B-w-268744">וְלִקְצָ֣ת</w>
           <lb xml:id="f441B-lb-2-11" n="11"/>
             <w xml:id="f441B-w-268745">יֽוֹמַיָּה֩</w>
@@ -334,7 +466,7 @@
             <w xml:id="f441B-w-268786">מָ֥ה</w>
             <w xml:id="f441B-w-268787">עֲבַֽדְתְּ</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268787">׃</pc>
-            <milestone unit="verse" n="Daniel-4-33" xml:id="f441B-v-Daniel-4-33"/>
+            <milestone unit="verse" n="Daniel-4-33" xml:id="f441B-v-Daniel-4-33" facs="#f441B-zone-Daniel-4-33"/>
             <w xml:id="f441B-w-268788">בֵּהּ־</w>
           <lb xml:id="f441B-lb-2-22" n="22"/>
             <w xml:id="f441B-w-268789">זִמְנָ֞א</w>
@@ -365,7 +497,7 @@
           <lb xml:id="f441B-lb-2-27" n="27"/>
             <w xml:id="f441B-w-268809">לִֽי</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268809">׃</pc>
-            <milestone unit="verse" n="Daniel-4-34" xml:id="f441B-v-Daniel-4-34"/>
+            <milestone unit="verse" n="Daniel-4-34" xml:id="f441B-v-Daniel-4-34" facs="#f441B-zone-Daniel-4-34"/>
             <w xml:id="f441B-w-268810">כְּעַ֞ן</w>
             <w xml:id="f441B-w-268811">אֲנָ֣ה</w>
             <w xml:id="f441B-w-268812">נְבוּכַדְנֶצַּ֗ר</w>
@@ -394,7 +526,7 @@
             <pc type="sof-pasuq" xml:id="f441B-pc-268828">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f441B-s-Daniel-4-34"/>
           <lb xml:id="f441B-lb-3-6" n="6"/>
-            <milestone unit="verse" n="Daniel-5-1" xml:id="f441B-v-Daniel-5-1"/>
+            <milestone unit="verse" n="Daniel-5-1" xml:id="f441B-v-Daniel-5-1" facs="#f441B-zone-Daniel-5-1"/>
             <w xml:id="f441B-w-268829">בֵּלְשַׁאצַּ֣ר</w>
             <w xml:id="f441B-w-268830">מַלְכָּ֗א</w>
             <w xml:id="f441B-w-268831">עֲבַד֙</w>
@@ -410,7 +542,7 @@
           <lb xml:id="f441B-lb-3-9" n="9"/>
             <w xml:id="f441B-w-268839">שָׁתֵֽה</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268839">׃</pc>
-            <milestone unit="verse" n="Daniel-5-2" xml:id="f441B-v-Daniel-5-2"/>
+            <milestone unit="verse" n="Daniel-5-2" xml:id="f441B-v-Daniel-5-2" facs="#f441B-zone-Daniel-5-2"/>
             <w xml:id="f441B-w-268840">בֵּלְשַׁאצַּ֞ר</w>
             <w xml:id="f441B-w-268841">אֲמַ֣ר</w>
             <pc type="paseq" xml:id="f441B-pc-268841">׀</pc>
@@ -441,7 +573,7 @@
             <w xml:id="f441B-w-268860">שֵׁגְלָתֵ֖הּ</w>
             <w xml:id="f441B-w-268861">וּלְחֵנָתֵֽהּ</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268861">׃</pc>
-            <milestone unit="verse" n="Daniel-5-3" xml:id="f441B-v-Daniel-5-3"/>
+            <milestone unit="verse" n="Daniel-5-3" xml:id="f441B-v-Daniel-5-3" facs="#f441B-zone-Daniel-5-3"/>
             <w xml:id="f441B-w-268862">בֵּאדַ֗יִן</w>
           <lb xml:id="f441B-lb-3-16" n="16"/>
             <w xml:id="f441B-w-268863">הַיְתִיו֙</w>
@@ -468,7 +600,7 @@
             <w xml:id="f441B-w-268880">וּלְחֵנָתֵֽהּ</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268880">׃</pc>
           <lb xml:id="f441B-lb-3-21" n="21"/>
-            <milestone unit="verse" n="Daniel-5-4" xml:id="f441B-v-Daniel-5-4"/>
+            <milestone unit="verse" n="Daniel-5-4" xml:id="f441B-v-Daniel-5-4" facs="#f441B-zone-Daniel-5-4"/>
             <w xml:id="f441B-w-268881">אִשְׁתִּ֖יו</w>
             <w xml:id="f441B-w-268882">חַמְרָ֑א</w>
             <w xml:id="f441B-w-268883">וְ֠שַׁבַּחוּ</w>
@@ -483,7 +615,7 @@
           <lb xml:id="f441B-lb-3-24" n="24"/>
             <w xml:id="f441B-w-268890">וְאַבְנָֽא</w>
             <pc type="sof-pasuq" xml:id="f441B-pc-268890">׃</pc>
-            <milestone unit="verse" n="Daniel-5-5" xml:id="f441B-v-Daniel-5-5"/>
+            <milestone unit="verse" n="Daniel-5-5" xml:id="f441B-v-Daniel-5-5" facs="#f441B-zone-Daniel-5-5"/>
             <w xml:id="f441B-w-268891">בַּהּ־</w>
             <w xml:id="f441B-w-268892">שַׁעֲתָ֗ה</w>
             <w xml:id="f441B-w-268893">נפקו</w>

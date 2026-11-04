@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 18 verse zones (83 line segments) from Masoretica HTR page n637. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n637.json"/>
+      </change>
       <change when="2026-10-30T15:50:52.868223+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-10-30T15:40:28.896552+00:00" who="#contrib-sarahmccuan">Aligned Haggai 2:12 – Zechariah 1:7 (302 atoms).
@@ -58,10 +69,130 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-319B">
+    <surface xml:id="surf-319B" ulx="0" uly="0" lrx="4159" lry="5289">
       <graphic xml:id="f319B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F319B.jpg">
         <desc type="sha256">ae45ffc4795764a4a0863aef9cbfe9ca14df6661f38be0229d3886dbab75add7</desc>
       </graphic>
+      <graphic xml:id="f319B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0637.jp2/full/max/0/default.jpg" width="4159px" height="5289px"/>
+      <zone xml:id="f319B-zone-Haggai-2-12" type="verse" cert="0.761" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-12-s1" ulx="2703" uly="1206" lrx="3410" lry="1397"/>
+        <zone xml:id="f319B-zone-Haggai-2-12-s2" ulx="2662" uly="1359" lrx="3393" lry="1490"/>
+        <zone xml:id="f319B-zone-Haggai-2-12-s3" ulx="2728" uly="1452" lrx="3407" lry="1584"/>
+        <zone xml:id="f319B-zone-Haggai-2-12-s4" ulx="2662" uly="1539" lrx="3414" lry="1678"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-13" type="verse" cert="0.943" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-13-s1" ulx="2686" uly="1626" lrx="3421" lry="1771"/>
+        <zone xml:id="f319B-zone-Haggai-2-13-s2" ulx="2700" uly="1726" lrx="3410" lry="1882"/>
+        <zone xml:id="f319B-zone-Haggai-2-13-s3" ulx="2721" uly="1840" lrx="3417" lry="1979"/>
+        <zone xml:id="f319B-zone-Haggai-2-13-s4" ulx="3230" uly="1937" lrx="3424" lry="2069"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-14" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-14-s1" ulx="2700" uly="1937" lrx="3192" lry="2069"/>
+        <zone xml:id="f319B-zone-Haggai-2-14-s2" ulx="2672" uly="2031" lrx="3393" lry="2166"/>
+        <zone xml:id="f319B-zone-Haggai-2-14-s3" ulx="2769" uly="2121" lrx="3400" lry="2260"/>
+        <zone xml:id="f319B-zone-Haggai-2-14-s4" ulx="2787" uly="2208" lrx="3407" lry="2364"/>
+        <zone xml:id="f319B-zone-Haggai-2-14-s5" ulx="2714" uly="2319" lrx="3417" lry="2457"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-15" type="verse" cert="0.957" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-15-s1" ulx="2696" uly="2402" lrx="3414" lry="2558"/>
+        <zone xml:id="f319B-zone-Haggai-2-15-s2" ulx="2797" uly="2513" lrx="3400" lry="2644"/>
+        <zone xml:id="f319B-zone-Haggai-2-15-s3" ulx="2658" uly="2593" lrx="3400" lry="2748"/>
+        <zone xml:id="f319B-zone-Haggai-2-15-s4" ulx="3036" uly="2696" lrx="3386" lry="2832"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-16" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-16-s1" ulx="2669" uly="2696" lrx="3012" lry="2832"/>
+        <zone xml:id="f319B-zone-Haggai-2-16-s2" ulx="2658" uly="2780" lrx="3390" lry="2936"/>
+        <zone xml:id="f319B-zone-Haggai-2-16-s3" ulx="2762" uly="2884" lrx="3403" lry="3029"/>
+        <zone xml:id="f319B-zone-Haggai-2-16-s4" ulx="2641" uly="2977" lrx="3379" lry="3123"/>
+        <zone xml:id="f319B-zone-Haggai-2-16-s5" ulx="2908" uly="3088" lrx="3400" lry="3209"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-17" type="verse" cert="0.944" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-17-s1" ulx="2669" uly="3088" lrx="2856" lry="3209"/>
+        <zone xml:id="f319B-zone-Haggai-2-17-s2" ulx="2679" uly="3168" lrx="3390" lry="3306"/>
+        <zone xml:id="f319B-zone-Haggai-2-17-s3" ulx="2741" uly="3268" lrx="3397" lry="3404"/>
+        <zone xml:id="f319B-zone-Haggai-2-17-s4" ulx="2648" uly="3345" lrx="3410" lry="3504"/>
+        <zone xml:id="f319B-zone-Haggai-2-17-s5" ulx="3081" uly="3466" lrx="3403" lry="3601"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-18" type="verse" cert="0.922" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-18-s1" ulx="2651" uly="3466" lrx="3057" lry="3601"/>
+        <zone xml:id="f319B-zone-Haggai-2-18-s2" ulx="2783" uly="3559" lrx="3383" lry="3695"/>
+        <zone xml:id="f319B-zone-Haggai-2-18-s3" ulx="2762" uly="3657" lrx="3400" lry="3795"/>
+        <zone xml:id="f319B-zone-Haggai-2-18-s4" ulx="2665" uly="3736" lrx="3410" lry="3899"/>
+        <zone xml:id="f319B-zone-Haggai-2-18-s5" ulx="1657" uly="1251" lrx="2409" lry="1400"/>
+        <zone xml:id="f319B-zone-Haggai-2-18-s6" ulx="2003" uly="1352" lrx="2416" lry="1483"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-19" type="verse" cert="0.922" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-19-s1" ulx="1667" uly="1352" lrx="1955" lry="1483"/>
+        <zone xml:id="f319B-zone-Haggai-2-19-s2" ulx="1660" uly="1435" lrx="2395" lry="1577"/>
+        <zone xml:id="f319B-zone-Haggai-2-19-s3" ulx="1664" uly="1542" lrx="2412" lry="1684"/>
+        <zone xml:id="f319B-zone-Haggai-2-19-s4" ulx="1851" uly="1632" lrx="2398" lry="1781"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-20" type="verse" cert="0.977" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-20-s1" ulx="1660" uly="1726" lrx="2180" lry="1875"/>
+        <zone xml:id="f319B-zone-Haggai-2-20-s2" ulx="1657" uly="1806" lrx="2405" lry="1986"/>
+        <zone xml:id="f319B-zone-Haggai-2-20-s3" ulx="1969" uly="1931" lrx="2391" lry="2073"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-21" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-21-s1" ulx="1677" uly="1931" lrx="1930" lry="2073"/>
+        <zone xml:id="f319B-zone-Haggai-2-21-s2" ulx="1657" uly="2045" lrx="2419" lry="2166"/>
+        <zone xml:id="f319B-zone-Haggai-2-21-s3" ulx="1681" uly="2111" lrx="2395" lry="2267"/>
+        <zone xml:id="f319B-zone-Haggai-2-21-s4" ulx="2045" uly="2229" lrx="2412" lry="2364"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-22" type="verse" cert="0.939" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-22-s1" ulx="1650" uly="2229" lrx="2024" lry="2364"/>
+        <zone xml:id="f319B-zone-Haggai-2-22-s2" ulx="1674" uly="2312" lrx="2402" lry="2461"/>
+        <zone xml:id="f319B-zone-Haggai-2-22-s3" ulx="1705" uly="2433" lrx="2409" lry="2554"/>
+        <zone xml:id="f319B-zone-Haggai-2-22-s4" ulx="1674" uly="2502" lrx="2419" lry="2655"/>
+        <zone xml:id="f319B-zone-Haggai-2-22-s5" ulx="1768" uly="2620" lrx="2405" lry="2742"/>
+        <zone xml:id="f319B-zone-Haggai-2-22-s6" ulx="2055" uly="2693" lrx="2395" lry="2839"/>
+      </zone>
+      <zone xml:id="f319B-zone-Haggai-2-23" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Haggai-2-23-s1" ulx="1688" uly="2693" lrx="2014" lry="2839"/>
+        <zone xml:id="f319B-zone-Haggai-2-23-s2" ulx="1671" uly="2790" lrx="2409" lry="2939"/>
+        <zone xml:id="f319B-zone-Haggai-2-23-s3" ulx="1778" uly="2880" lrx="2412" lry="3036"/>
+        <zone xml:id="f319B-zone-Haggai-2-23-s4" ulx="1667" uly="3002" lrx="2398" lry="3123"/>
+        <zone xml:id="f319B-zone-Haggai-2-23-s5" ulx="1677" uly="3074" lrx="2395" lry="3223"/>
+        <zone xml:id="f319B-zone-Haggai-2-23-s6" ulx="2045" uly="3171" lrx="2419" lry="3317"/>
+      </zone>
+      <zone xml:id="f319B-zone-Zechariah-1-1" type="verse" cert="0.985" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Zechariah-1-1-s1" ulx="1750" uly="3539" lrx="2402" lry="3695"/>
+        <zone xml:id="f319B-zone-Zechariah-1-1-s2" ulx="1705" uly="3643" lrx="2405" lry="3792"/>
+        <zone xml:id="f319B-zone-Zechariah-1-1-s3" ulx="1677" uly="3740" lrx="2423" lry="3896"/>
+        <zone xml:id="f319B-zone-Zechariah-1-1-s4" ulx="870" uly="1262" lrx="1393" lry="1414"/>
+      </zone>
+      <zone xml:id="f319B-zone-Zechariah-1-2" type="verse" cert="0.959" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Zechariah-1-2-s1" ulx="724" uly="1262" lrx="846" lry="1414"/>
+        <zone xml:id="f319B-zone-Zechariah-1-2-s2" ulx="825" uly="1355" lrx="1407" lry="1508"/>
+      </zone>
+      <zone xml:id="f319B-zone-Zechariah-1-3" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Zechariah-1-3-s1" ulx="645" uly="1355" lrx="814" lry="1508"/>
+        <zone xml:id="f319B-zone-Zechariah-1-3-s2" ulx="638" uly="1456" lrx="1397" lry="1591"/>
+        <zone xml:id="f319B-zone-Zechariah-1-3-s3" ulx="672" uly="1542" lrx="1393" lry="1695"/>
+        <zone xml:id="f319B-zone-Zechariah-1-3-s4" ulx="672" uly="1643" lrx="1400" lry="1792"/>
+      </zone>
+      <zone xml:id="f319B-zone-Zechariah-1-4" type="verse" cert="0.927" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Zechariah-1-4-s1" ulx="679" uly="1754" lrx="1407" lry="1892"/>
+        <zone xml:id="f319B-zone-Zechariah-1-4-s2" ulx="735" uly="1840" lrx="1383" lry="1993"/>
+        <zone xml:id="f319B-zone-Zechariah-1-4-s3" ulx="683" uly="1937" lrx="1397" lry="2080"/>
+        <zone xml:id="f319B-zone-Zechariah-1-4-s4" ulx="669" uly="2041" lrx="1407" lry="2163"/>
+        <zone xml:id="f319B-zone-Zechariah-1-4-s5" ulx="918" uly="2135" lrx="1400" lry="2246"/>
+        <zone xml:id="f319B-zone-Zechariah-1-4-s6" ulx="697" uly="2208" lrx="1411" lry="2360"/>
+        <zone xml:id="f319B-zone-Zechariah-1-4-s7" ulx="679" uly="2301" lrx="1393" lry="2457"/>
+        <zone xml:id="f319B-zone-Zechariah-1-4-s8" ulx="1123" uly="2423" lrx="1404" lry="2558"/>
+      </zone>
+      <zone xml:id="f319B-zone-Zechariah-1-5" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Zechariah-1-5-s1" ulx="683" uly="2423" lrx="1088" lry="2558"/>
+        <zone xml:id="f319B-zone-Zechariah-1-5-s2" ulx="752" uly="2506" lrx="1393" lry="2651"/>
+        <zone xml:id="f319B-zone-Zechariah-1-5-s3" ulx="1289" uly="2613" lrx="1411" lry="2748"/>
+      </zone>
+      <zone xml:id="f319B-zone-Zechariah-1-7" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f319B-zone-Zechariah-1-7-s1" ulx="665" uly="3254" lrx="1074" lry="3397"/>
+        <zone xml:id="f319B-zone-Zechariah-1-7-s2" ulx="679" uly="3362" lrx="1397" lry="3501"/>
+        <zone xml:id="f319B-zone-Zechariah-1-7-s3" ulx="780" uly="3449" lrx="1383" lry="3591"/>
+        <zone xml:id="f319B-zone-Zechariah-1-7-s4" ulx="662" uly="3539" lrx="1379" lry="3695"/>
+        <zone xml:id="f319B-zone-Zechariah-1-7-s5" ulx="679" uly="3650" lrx="1383" lry="3785"/>
+        <zone xml:id="f319B-zone-Zechariah-1-7-s6" ulx="697" uly="3729" lrx="1383" lry="3896"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +203,7 @@
         <ab>
         <cb xml:id="f319B-cb-1" n="1"/>
           <lb xml:id="f319B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Haggai-2-12" xml:id="f319B-v-Haggai-2-12"/>
+            <milestone unit="verse" n="Haggai-2-12" xml:id="f319B-v-Haggai-2-12" facs="#f319B-zone-Haggai-2-12"/>
             <w xml:id="f319B-w-217301">בִּ֠כְנָפוֹ</w>
             <w xml:id="f319B-w-217302">אֶל־</w>
             <w xml:id="f319B-w-217303">הַלֶּ֨חֶם</w>
@@ -95,7 +226,7 @@
             <w xml:id="f319B-w-217317">לֹֽא</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217317">׃</pc>
           <lb xml:id="f319B-lb-1-5" n="5"/>
-            <milestone unit="verse" n="Haggai-2-13" xml:id="f319B-v-Haggai-2-13"/>
+            <milestone unit="verse" n="Haggai-2-13" xml:id="f319B-v-Haggai-2-13" facs="#f319B-zone-Haggai-2-13"/>
             <w xml:id="f319B-w-217318">וַיֹּ֣אמֶר</w>
             <w xml:id="f319B-w-217319">חַגַּ֔י</w>
             <w xml:id="f319B-w-217320">אִם־</w>
@@ -113,7 +244,7 @@
           <lb xml:id="f319B-lb-1-8" n="8"/>
             <w xml:id="f319B-w-217330">יִטְמָֽא</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217330">׃</pc>
-            <milestone unit="verse" n="Haggai-2-14" xml:id="f319B-v-Haggai-2-14"/>
+            <milestone unit="verse" n="Haggai-2-14" xml:id="f319B-v-Haggai-2-14" facs="#f319B-zone-Haggai-2-14"/>
             <w xml:id="f319B-w-217331">וַיַּ֨עַן</w>
             <w xml:id="f319B-w-217332">חַגַּ֜י</w>
             <w xml:id="f319B-w-217333">וַיֹּ֗אמֶר</w>
@@ -141,7 +272,7 @@
             <w xml:id="f319B-w-217351">הֽוּא</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217351">׃</pc>
           <lb xml:id="f319B-lb-1-13" n="13"/>
-            <milestone unit="verse" n="Haggai-2-15" xml:id="f319B-v-Haggai-2-15"/>
+            <milestone unit="verse" n="Haggai-2-15" xml:id="f319B-v-Haggai-2-15" facs="#f319B-zone-Haggai-2-15"/>
             <w xml:id="f319B-w-217352">וְעַתָּה֙</w>
             <w xml:id="f319B-w-217353">שִֽׂימוּ־</w>
             <w xml:id="f319B-w-217354">נָ֣א</w>
@@ -161,7 +292,7 @@
             <w xml:id="f319B-w-217365">בְּהֵיכַ֥ל</w>
             <w xml:id="f319B-w-217366">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217366">׃</pc>
-            <milestone unit="verse" n="Haggai-2-16" xml:id="f319B-v-Haggai-2-16"/>
+            <milestone unit="verse" n="Haggai-2-16" xml:id="f319B-v-Haggai-2-16" facs="#f319B-zone-Haggai-2-16"/>
             <w xml:id="f319B-w-217367">מִֽהְיוֹתָ֥ם</w>
             <w xml:id="f319B-w-217368">בָּא֙</w>
           <lb xml:id="f319B-lb-1-17" n="17"/>
@@ -182,7 +313,7 @@
             <w xml:id="f319B-w-217380">וְהָיְתָ֖ה</w>
             <w xml:id="f319B-w-217381">עֶשְׂרִֽים</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217381">׃</pc>
-            <milestone unit="verse" n="Haggai-2-17" xml:id="f319B-v-Haggai-2-17"/>
+            <milestone unit="verse" n="Haggai-2-17" xml:id="f319B-v-Haggai-2-17" facs="#f319B-zone-Haggai-2-17"/>
             <w xml:id="f319B-w-217382">הִכֵּ֨יתִי</w>
           <lb xml:id="f319B-lb-1-21" n="21"/>
             <w xml:id="f319B-w-217383">אֶתְכֶ֜ם</w>
@@ -202,7 +333,7 @@
             <w xml:id="f319B-w-217394">נְאֻם־</w>
             <w xml:id="f319B-w-217395">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217395">׃</pc>
-            <milestone unit="verse" n="Haggai-2-18" xml:id="f319B-v-Haggai-2-18"/>
+            <milestone unit="verse" n="Haggai-2-18" xml:id="f319B-v-Haggai-2-18" facs="#f319B-zone-Haggai-2-18"/>
             <w xml:id="f319B-w-217396">שִׂימוּ־</w>
             <w xml:id="f319B-w-217397">נָ֣א</w>
           <lb xml:id="f319B-lb-1-25" n="25"/>
@@ -229,7 +360,7 @@
             <w xml:id="f319B-w-217413">שִׂ֥ימוּ</w>
             <w xml:id="f319B-w-217414">לְבַבְכֶֽם</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217414">׃</pc>
-            <milestone unit="verse" n="Haggai-2-19" xml:id="f319B-v-Haggai-2-19"/>
+            <milestone unit="verse" n="Haggai-2-19" xml:id="f319B-v-Haggai-2-19" facs="#f319B-zone-Haggai-2-19"/>
             <w xml:id="f319B-w-217415">הַע֤וֹד</w>
             <w xml:id="f319B-w-217416">הַזֶּ֙רַע֙</w>
           <lb xml:id="f319B-lb-2-3" n="3"/>
@@ -251,7 +382,7 @@
             <pc type="sof-pasuq" xml:id="f319B-pc-217429">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f319B-s-Haggai-2-19"/>
           <lb xml:id="f319B-lb-2-6" n="6"/>
-            <milestone unit="verse" n="Haggai-2-20" xml:id="f319B-v-Haggai-2-20"/>
+            <milestone unit="verse" n="Haggai-2-20" xml:id="f319B-v-Haggai-2-20" facs="#f319B-zone-Haggai-2-20"/>
             <w xml:id="f319B-w-217430">וַיְהִ֨י</w>
             <w xml:id="f319B-w-217431">דְבַר־</w>
             <w xml:id="f319B-w-217432">יְהוָ֤ה</w>
@@ -266,7 +397,7 @@
             <w xml:id="f319B-w-217438">לַחֹ֖דֶשׁ</w>
             <w xml:id="f319B-w-217439">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217439">׃</pc>
-            <milestone unit="verse" n="Haggai-2-21" xml:id="f319B-v-Haggai-2-21"/>
+            <milestone unit="verse" n="Haggai-2-21" xml:id="f319B-v-Haggai-2-21" facs="#f319B-zone-Haggai-2-21"/>
             <w xml:id="f319B-w-217440">אֱמֹ֕ר</w>
             <w xml:id="f319B-w-217441">אֶל־</w>
           <lb xml:id="f319B-lb-2-9" n="9"/>
@@ -283,7 +414,7 @@
             <w xml:id="f319B-w-217450">וְאֶת־</w>
             <w xml:id="f319B-w-217451">הָאָֽרֶץ</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217451">׃</pc>
-            <milestone unit="verse" n="Haggai-2-22" xml:id="f319B-v-Haggai-2-22"/>
+            <milestone unit="verse" n="Haggai-2-22" xml:id="f319B-v-Haggai-2-22" facs="#f319B-zone-Haggai-2-22"/>
             <w xml:id="f319B-w-217452">וְהָֽפַכְתִּי֙</w>
             <w xml:id="f319B-w-217453">כִּסֵּ֣א</w>
           <lb xml:id="f319B-lb-2-12" n="12"/>
@@ -306,7 +437,7 @@
             <w xml:id="f319B-w-217466">בְּחֶ֥רֶב</w>
             <w xml:id="f319B-w-217467">אָחִֽיו</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217467">׃</pc>
-            <milestone unit="verse" n="Haggai-2-23" xml:id="f319B-v-Haggai-2-23"/>
+            <milestone unit="verse" n="Haggai-2-23" xml:id="f319B-v-Haggai-2-23" facs="#f319B-zone-Haggai-2-23"/>
             <w xml:id="f319B-w-217468">בַּיּ֣וֹם</w>
             <w xml:id="f319B-w-217469">הַה֣וּא</w>
           <lb xml:id="f319B-lb-2-17" n="17"/>
@@ -337,7 +468,7 @@
           <lb xml:id="f319B-lb-2-23" n="23"/>
           <lb xml:id="f319B-lb-2-24" n="24"/>
           <lb xml:id="f319B-lb-2-25" n="25"/>
-            <milestone unit="verse" n="Zechariah-1-1" xml:id="f319B-v-Zechariah-1-1"/>
+            <milestone unit="verse" n="Zechariah-1-1" xml:id="f319B-v-Zechariah-1-1" facs="#f319B-zone-Zechariah-1-1"/>
             <w xml:id="f319B-w-217488">בַּחֹ֙דֶשׁ֙</w>
             <w xml:id="f319B-w-217489">הַשְּׁמִינִ֔י</w>
             <w xml:id="f319B-w-217490">בִּשְׁנַ֥ת</w>
@@ -359,7 +490,7 @@
             <w xml:id="f319B-w-217502">הַנָּבִ֖יא</w>
             <w xml:id="f319B-w-217503">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217503">׃</pc>
-            <milestone unit="verse" n="Zechariah-1-2" xml:id="f319B-v-Zechariah-1-2"/>
+            <milestone unit="verse" n="Zechariah-1-2" xml:id="f319B-v-Zechariah-1-2" facs="#f319B-zone-Zechariah-1-2"/>
             <w xml:id="f319B-w-217504">קָצַ֧ף</w>
           <lb xml:id="f319B-lb-3-2" n="2"/>
             <w xml:id="f319B-w-217505">יְהוָ֛ה</w>
@@ -367,7 +498,7 @@
             <w xml:id="f319B-w-217507">אֲבֽוֹתֵיכֶ֖ם</w>
             <w xml:id="f319B-w-217508">קָֽצֶף</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217508">׃</pc>
-            <milestone unit="verse" n="Zechariah-1-3" xml:id="f319B-v-Zechariah-1-3"/>
+            <milestone unit="verse" n="Zechariah-1-3" xml:id="f319B-v-Zechariah-1-3" facs="#f319B-zone-Zechariah-1-3"/>
             <w xml:id="f319B-w-217509">וְאָמַרְתָּ֣</w>
           <lb xml:id="f319B-lb-3-3" n="3"/>
             <w xml:id="f319B-w-217510">אֲלֵהֶ֗ם</w>
@@ -389,7 +520,7 @@
             <w xml:id="f319B-w-217524">צְבָאֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217524">׃</pc>
           <lb xml:id="f319B-lb-3-6" n="6"/>
-            <milestone unit="verse" n="Zechariah-1-4" xml:id="f319B-v-Zechariah-1-4"/>
+            <milestone unit="verse" n="Zechariah-1-4" xml:id="f319B-v-Zechariah-1-4" facs="#f319B-zone-Zechariah-1-4"/>
             <w xml:id="f319B-w-217525">אַל־</w>
             <w xml:id="f319B-w-217526">תִּהְי֣וּ</w>
             <w xml:id="f319B-w-217527">כַאֲבֹֽתֵיכֶ֡ם</w>
@@ -424,7 +555,7 @@
             <w xml:id="f319B-w-217549">נְאֻם־</w>
             <w xml:id="f319B-w-217550">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f319B-pc-217550">׃</pc>
-            <milestone unit="verse" n="Zechariah-1-5" xml:id="f319B-v-Zechariah-1-5"/>
+            <milestone unit="verse" n="Zechariah-1-5" xml:id="f319B-v-Zechariah-1-5" facs="#f319B-zone-Zechariah-1-5"/>
             <w xml:id="f319B-w-217551">אֲבֽוֹתֵיכֶ֖ם</w>
             <w xml:id="f319B-w-217552">אַיֵּה־</w>
           <lb xml:id="f319B-lb-3-14" n="14"/>
@@ -469,7 +600,7 @@
             <pc type="sof-pasuq" xml:id="f319B-pc-217580">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f319B-s-Zechariah-1-6"/>
           <lb xml:id="f319B-lb-3-22" n="22"/>
-            <milestone unit="verse" n="Zechariah-1-7" xml:id="f319B-v-Zechariah-1-7"/>
+            <milestone unit="verse" n="Zechariah-1-7" xml:id="f319B-v-Zechariah-1-7" facs="#f319B-zone-Zechariah-1-7"/>
             <w xml:id="f319B-w-217581">בְּיוֹם֩</w>
             <w xml:id="f319B-w-217582">עֶשְׂרִ֨ים</w>
           <lb xml:id="f319B-lb-3-23" n="23"/>

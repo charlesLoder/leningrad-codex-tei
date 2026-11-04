@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 verse zones (4 line segments) from Masoretica HTR page n317. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n317.json"/>
+      </change>
       <change when="2026-10-25T01:38:07.819122+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-10-24T21:14:18.424528+00:00" who="#contrib-sarahmccuan">Aligned Samuel_1 17:11 – Samuel_1 17:34 (361 atoms).
@@ -58,10 +69,17 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-159B">
+    <surface xml:id="surf-159B" ulx="0" uly="0" lrx="4447" lry="5343">
       <graphic xml:id="f159B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F159B.jpg">
         <desc type="sha256">644002bf98cc4fa2d1cbc3e9c36a51168912ed0fb33fbba6b23e959594e238ad</desc>
       </graphic>
+      <graphic xml:id="f159B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0317.jp2/full/max/0/default.jpg" width="4447px" height="5343px"/>
+      <zone xml:id="f159B-zone-Samuel_1-17-12" type="verse" cert="0.54" resp="#source-masoretica">
+        <zone xml:id="f159B-zone-Samuel_1-17-12-s1" ulx="2976" uly="1408" lrx="3669" lry="1553"/>
+        <zone xml:id="f159B-zone-Samuel_1-17-12-s2" ulx="2916" uly="1504" lrx="3676" lry="1634"/>
+        <zone xml:id="f159B-zone-Samuel_1-17-12-s3" ulx="2942" uly="1604" lrx="3684" lry="1723"/>
+        <zone xml:id="f159B-zone-Samuel_1-17-12-s4" ulx="3057" uly="1667" lrx="3676" lry="1819"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -79,7 +97,7 @@
             <pc type="sof-pasuq" xml:id="f159B-pc-106607">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f159B-s-Samuel_1-17-11"/>
           <lb xml:id="f159B-lb-1-2" n="2"/>
-            <milestone unit="verse" n="Samuel_1-17-12" xml:id="f159B-v-Samuel_1-17-12"/>
+            <milestone unit="verse" n="Samuel_1-17-12" xml:id="f159B-v-Samuel_1-17-12" facs="#f159B-zone-Samuel_1-17-12"/>
             <w xml:id="f159B-w-106608">וְדָוִד֩</w>
             <w xml:id="f159B-w-106609">בֶּן־</w>
             <w xml:id="f159B-w-106610">אִ֨ישׁ</w>

@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 14 verse zones (57 line segments) from Masoretica HTR page n895. Left out 8 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n895.json"/>
+      </change>
       <change when="2026-11-02T02:14:37.598612+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-11-02T02:05:00.518707+00:00" who="#contrib-sarahmccuan">Aligned Ezra 2:44 – Ezra 2:69 (224 atoms).
@@ -58,10 +69,96 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-448B">
+    <surface xml:id="surf-448B" ulx="0" uly="0" lrx="4543" lry="5499">
       <graphic xml:id="f448B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F448B.jpg">
         <desc type="sha256">0bbec92d3a4b867713512a8dff86938e3d18eaace01dd917c47f06af7ac05f5b</desc>
       </graphic>
+      <graphic xml:id="f448B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0895.jp2/full/max/0/default.jpg" width="4543px" height="5499px"/>
+      <zone xml:id="f448B-zone-Ezra-2-51" type="verse" cert="0.689" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-51-s1" ulx="3014" uly="3118" lrx="3074" lry="3240"/>
+        <zone xml:id="f448B-zone-Ezra-2-51-s2" ulx="3048" uly="3217" lrx="3267" lry="3346"/>
+        <zone xml:id="f448B-zone-Ezra-2-51-s3" ulx="3093" uly="3319" lrx="3256" lry="3444"/>
+        <zone xml:id="f448B-zone-Ezra-2-51-s4" ulx="3051" uly="3417" lrx="3263" lry="3539"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-57" type="verse" cert="0.933" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-57-s1" ulx="1476" uly="2206" lrx="1582" lry="2335"/>
+        <zone xml:id="f448B-zone-Ezra-2-57-s2" ulx="1461" uly="2297" lrx="2222" lry="2449"/>
+        <zone xml:id="f448B-zone-Ezra-2-57-s3" ulx="1469" uly="2415" lrx="2211" lry="2536"/>
+        <zone xml:id="f448B-zone-Ezra-2-57-s4" ulx="1469" uly="2498" lrx="2226" lry="2657"/>
+        <zone xml:id="f448B-zone-Ezra-2-57-s5" ulx="2078" uly="2596" lrx="2268" lry="2748"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-58" type="verse" cert="0.92" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-58-s1" ulx="1541" uly="2596" lrx="2033" lry="2748"/>
+        <zone xml:id="f448B-zone-Ezra-2-58-s2" ulx="1446" uly="2695" lrx="2230" lry="2850"/>
+        <zone xml:id="f448B-zone-Ezra-2-58-s3" ulx="1772" uly="2801" lrx="2222" lry="2944"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-59" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-59-s1" ulx="1461" uly="2865" lrx="2022" lry="3050"/>
+        <zone xml:id="f448B-zone-Ezra-2-59-s2" ulx="1454" uly="2982" lrx="2241" lry="3149"/>
+        <zone xml:id="f448B-zone-Ezra-2-59-s3" ulx="1484" uly="3100" lrx="2245" lry="3259"/>
+        <zone xml:id="f448B-zone-Ezra-2-59-s4" ulx="1673" uly="3209" lrx="2237" lry="3342"/>
+        <zone xml:id="f448B-zone-Ezra-2-59-s5" ulx="1844" uly="3289" lrx="2241" lry="3448"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-60" type="verse" cert="0.999" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-60-s1" ulx="1514" uly="3289" lrx="1806" lry="3448"/>
+        <zone xml:id="f448B-zone-Ezra-2-60-s2" ulx="1579" uly="3395" lrx="2234" lry="3557"/>
+        <zone xml:id="f448B-zone-Ezra-2-60-s3" ulx="1465" uly="3512" lrx="2253" lry="3663"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-61" type="verse" cert="0.987" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-61-s1" ulx="1461" uly="3603" lrx="1972" lry="3769"/>
+        <zone xml:id="f448B-zone-Ezra-2-61-s2" ulx="1476" uly="3720" lrx="2253" lry="3868"/>
+        <zone xml:id="f448B-zone-Ezra-2-61-s3" ulx="1480" uly="3811" lrx="2256" lry="3970"/>
+        <zone xml:id="f448B-zone-Ezra-2-61-s4" ulx="1495" uly="3909" lrx="2256" lry="4084"/>
+        <zone xml:id="f448B-zone-Ezra-2-61-s5" ulx="992" uly="1291" lrx="1177" lry="1438"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-62" type="verse" cert="0.961" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-62-s1" ulx="416" uly="1291" lrx="954" lry="1438"/>
+        <zone xml:id="f448B-zone-Ezra-2-62-s2" ulx="420" uly="1393" lrx="1170" lry="1544"/>
+        <zone xml:id="f448B-zone-Ezra-2-62-s3" ulx="655" uly="1506" lrx="1196" lry="1639"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-63" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-63-s1" ulx="409" uly="1506" lrx="636" lry="1639"/>
+        <zone xml:id="f448B-zone-Ezra-2-63-s2" ulx="435" uly="1601" lrx="1181" lry="1748"/>
+        <zone xml:id="f448B-zone-Ezra-2-63-s3" ulx="432" uly="1696" lrx="1204" lry="1854"/>
+        <zone xml:id="f448B-zone-Ezra-2-63-s4" ulx="530" uly="1794" lrx="1185" lry="1953"/>
+        <zone xml:id="f448B-zone-Ezra-2-63-s5" ulx="928" uly="1889" lrx="1193" lry="2059"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-64" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-64-s1" ulx="439" uly="1889" lrx="901" lry="2059"/>
+        <zone xml:id="f448B-zone-Ezra-2-64-s2" ulx="435" uly="2013" lrx="1174" lry="2146"/>
+        <zone xml:id="f448B-zone-Ezra-2-64-s3" ulx="757" uly="2108" lrx="1181" lry="2256"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-65" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-65-s1" ulx="458" uly="2108" lrx="663" lry="2256"/>
+        <zone xml:id="f448B-zone-Ezra-2-65-s2" ulx="420" uly="2191" lrx="1185" lry="2362"/>
+        <zone xml:id="f448B-zone-Ezra-2-65-s3" ulx="538" uly="2301" lrx="1189" lry="2460"/>
+        <zone xml:id="f448B-zone-Ezra-2-65-s4" ulx="447" uly="2418" lrx="1196" lry="2574"/>
+        <zone xml:id="f448B-zone-Ezra-2-65-s5" ulx="435" uly="2524" lrx="1196" lry="2657"/>
+        <zone xml:id="f448B-zone-Ezra-2-65-s6" ulx="935" uly="2600" lrx="1177" lry="2759"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-66" type="verse" cert="1" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-66-s1" ulx="466" uly="2600" lrx="886" lry="2759"/>
+        <zone xml:id="f448B-zone-Ezra-2-66-s2" ulx="447" uly="2725" lrx="1174" lry="2854"/>
+        <zone xml:id="f448B-zone-Ezra-2-66-s3" ulx="428" uly="2797" lrx="1177" lry="2956"/>
+        <zone xml:id="f448B-zone-Ezra-2-66-s4" ulx="928" uly="2899" lrx="1193" lry="3054"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-67" type="verse" cert="0.981" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-67-s1" ulx="454" uly="2899" lrx="901" lry="3054"/>
+        <zone xml:id="f448B-zone-Ezra-2-67-s2" ulx="462" uly="3013" lrx="1193" lry="3164"/>
+        <zone xml:id="f448B-zone-Ezra-2-67-s3" ulx="428" uly="3107" lrx="1193" lry="3277"/>
+        <zone xml:id="f448B-zone-Ezra-2-67-s4" ulx="704" uly="3213" lrx="1193" lry="3361"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-68" type="verse" cert="0.997" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-68-s1" ulx="447" uly="3308" lrx="1200" lry="3463"/>
+        <zone xml:id="f448B-zone-Ezra-2-68-s2" ulx="439" uly="3410" lrx="1181" lry="3576"/>
+        <zone xml:id="f448B-zone-Ezra-2-68-s3" ulx="500" uly="3516" lrx="1196" lry="3679"/>
+        <zone xml:id="f448B-zone-Ezra-2-68-s4" ulx="568" uly="3614" lrx="1177" lry="3773"/>
+      </zone>
+      <zone xml:id="f448B-zone-Ezra-2-69" type="verse" cert="0.736" resp="#source-masoretica">
+        <zone xml:id="f448B-zone-Ezra-2-69-s1" ulx="413" uly="3724" lrx="1189" lry="3875"/>
+        <zone xml:id="f448B-zone-Ezra-2-69-s2" ulx="462" uly="3815" lrx="1196" lry="3981"/>
+        <zone xml:id="f448B-zone-Ezra-2-69-s3" ulx="666" uly="3921" lrx="1227" lry="4091"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -140,7 +237,7 @@
             <w xml:id="f448B-w-272891">בְּנֵ֥י</w>
           <lb xml:id="f448B-lb-1-19" n="19"/>
             <w xml:id="f448B-w-272892">נפיסים</w>
-            <milestone unit="verse" n="Ezra-2-51" xml:id="f448B-v-Ezra-2-51"/>
+            <milestone unit="verse" n="Ezra-2-51" xml:id="f448B-v-Ezra-2-51" facs="#f448B-zone-Ezra-2-51"/>
             <w xml:id="f448B-w-272893">בְּנֵי־</w>
           <lb xml:id="f448B-lb-1-20" n="20"/>
             <w xml:id="f448B-w-272894">בַקְבּ֥וּק</w>
@@ -208,7 +305,7 @@
           <lb xml:id="f448B-lb-2-10" n="10"/>
             <w xml:id="f448B-w-272929">גִדֵּֽל</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-272929">׃</pc>
-            <milestone unit="verse" n="Ezra-2-57" xml:id="f448B-v-Ezra-2-57"/>
+            <milestone unit="verse" n="Ezra-2-57" xml:id="f448B-v-Ezra-2-57" facs="#f448B-zone-Ezra-2-57"/>
             <w xml:id="f448B-w-272930">בְּנֵ֧י</w>
           <lb xml:id="f448B-lb-2-11" n="11"/>
             <w xml:id="f448B-w-272931">שְׁפַטְיָ֣ה</w>
@@ -223,7 +320,7 @@
           <lb xml:id="f448B-lb-2-14" n="14"/>
             <w xml:id="f448B-w-272938">אָמִֽי</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-272938">׃</pc>
-            <milestone unit="verse" n="Ezra-2-58" xml:id="f448B-v-Ezra-2-58"/>
+            <milestone unit="verse" n="Ezra-2-58" xml:id="f448B-v-Ezra-2-58" facs="#f448B-zone-Ezra-2-58"/>
             <w xml:id="f448B-w-272939">כָּ֨ל־</w>
             <w xml:id="f448B-w-272940">הַנְּתִינִ֔ים</w>
             <w xml:id="f448B-w-272941">וּבְנֵ֖י</w>
@@ -238,7 +335,7 @@
             <pc type="sof-pasuq" xml:id="f448B-pc-272947">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f448B-s-Ezra-2-58"/>
           <lb xml:id="f448B-lb-2-17" n="17"/>
-            <milestone unit="verse" n="Ezra-2-59" xml:id="f448B-v-Ezra-2-59"/>
+            <milestone unit="verse" n="Ezra-2-59" xml:id="f448B-v-Ezra-2-59" facs="#f448B-zone-Ezra-2-59"/>
             <w xml:id="f448B-w-272948">וְאֵ֗לֶּה</w>
             <w xml:id="f448B-w-272949">הָֽעֹלִים֙</w>
             <w xml:id="f448B-w-272950">מִתֵּ֥ל</w>
@@ -262,7 +359,7 @@
             <w xml:id="f448B-w-272964">מִיִּשְׂרָאֵ֖ל</w>
             <w xml:id="f448B-w-272965">הֵֽם</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-272965">׃</pc>
-            <milestone unit="verse" n="Ezra-2-60" xml:id="f448B-v-Ezra-2-60"/>
+            <milestone unit="verse" n="Ezra-2-60" xml:id="f448B-v-Ezra-2-60" facs="#f448B-zone-Ezra-2-60"/>
             <w xml:id="f448B-w-272966">בְּנֵי־</w>
             <w xml:id="f448B-w-272967">דְלָיָ֥ה</w>
           <lb xml:id="f448B-lb-2-22" n="22"/>
@@ -278,7 +375,7 @@
             <pc type="sof-pasuq" xml:id="f448B-pc-272975">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f448B-s-Ezra-2-60"/>
           <lb xml:id="f448B-lb-2-24" n="24"/>
-            <milestone unit="verse" n="Ezra-2-61" xml:id="f448B-v-Ezra-2-61"/>
+            <milestone unit="verse" n="Ezra-2-61" xml:id="f448B-v-Ezra-2-61" facs="#f448B-zone-Ezra-2-61"/>
             <w xml:id="f448B-w-272976">וּמִבְּנֵי֙</w>
             <w xml:id="f448B-w-272977">הַכֹּ֣הֲנִ֔ים</w>
             <w xml:id="f448B-w-272978">בְּנֵ֥י</w>
@@ -302,7 +399,7 @@
           <lb xml:id="f448B-lb-3-1" n="1"/>
             <w xml:id="f448B-w-272992">שְׁמָֽם</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-272992">׃</pc>
-            <milestone unit="verse" n="Ezra-2-62" xml:id="f448B-v-Ezra-2-62"/>
+            <milestone unit="verse" n="Ezra-2-62" xml:id="f448B-v-Ezra-2-62" facs="#f448B-zone-Ezra-2-62"/>
             <w xml:id="f448B-w-272993">אֵ֗לֶּה</w>
             <w xml:id="f448B-w-272994">בִּקְשׁ֧וּ</w>
             <w xml:id="f448B-w-272995">כְתָבָ֛ם</w>
@@ -315,7 +412,7 @@
             <w xml:id="f448B-w-273000">מִן־</w>
             <w xml:id="f448B-w-273001">הַכְּהֻנָּֽה</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-273001">׃</pc>
-            <milestone unit="verse" n="Ezra-2-63" xml:id="f448B-v-Ezra-2-63"/>
+            <milestone unit="verse" n="Ezra-2-63" xml:id="f448B-v-Ezra-2-63" facs="#f448B-zone-Ezra-2-63"/>
             <w xml:id="f448B-w-273002">וַיֹּ֤אמֶר</w>
           <lb xml:id="f448B-lb-3-4" n="4"/>
             <w xml:id="f448B-w-273003">הַתִּרְשָׁ֙תָא֙</w>
@@ -334,7 +431,7 @@
           <lb xml:id="f448B-lb-3-7" n="7"/>
             <w xml:id="f448B-w-273014">וּלְתֻמִּֽים</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-273014">׃</pc>
-            <milestone unit="verse" n="Ezra-2-64" xml:id="f448B-v-Ezra-2-64"/>
+            <milestone unit="verse" n="Ezra-2-64" xml:id="f448B-v-Ezra-2-64" facs="#f448B-zone-Ezra-2-64"/>
             <w xml:id="f448B-w-273015">כָּל־</w>
             <w xml:id="f448B-w-273016">הַקָּהָ֖ל</w>
             <w xml:id="f448B-w-273017">כְּאֶחָ֑ד</w>
@@ -347,7 +444,7 @@
             <w xml:id="f448B-w-273022">מֵא֥וֹת</w>
             <w xml:id="f448B-w-273023">שִׁשִּֽׁים</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-273023">׃</pc>
-            <milestone unit="verse" n="Ezra-2-65" xml:id="f448B-v-Ezra-2-65"/>
+            <milestone unit="verse" n="Ezra-2-65" xml:id="f448B-v-Ezra-2-65" facs="#f448B-zone-Ezra-2-65"/>
             <w xml:id="f448B-w-273024">מִ֠לְּבַד</w>
           <lb xml:id="f448B-lb-3-10" n="10"/>
             <w xml:id="f448B-w-273025">עַבְדֵיהֶ֤ם</w>
@@ -368,7 +465,7 @@
           <lb xml:id="f448B-lb-3-14" n="14"/>
             <w xml:id="f448B-w-273037">מָאתָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-273037">׃</pc>
-            <milestone unit="verse" n="Ezra-2-66" xml:id="f448B-v-Ezra-2-66"/>
+            <milestone unit="verse" n="Ezra-2-66" xml:id="f448B-v-Ezra-2-66" facs="#f448B-zone-Ezra-2-66"/>
             <w xml:id="f448B-w-273038">סוּסֵיהֶ֕ם</w>
             <w xml:id="f448B-w-273039">שְׁבַ֥ע</w>
           <lb xml:id="f448B-lb-3-15" n="15"/>
@@ -382,7 +479,7 @@
           <lb xml:id="f448B-lb-3-17" n="17"/>
             <w xml:id="f448B-w-273046">וַחֲמִשָּֽׁה</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-273046">׃</pc>
-            <milestone unit="verse" n="Ezra-2-67" xml:id="f448B-v-Ezra-2-67"/>
+            <milestone unit="verse" n="Ezra-2-67" xml:id="f448B-v-Ezra-2-67" facs="#f448B-zone-Ezra-2-67"/>
             <w xml:id="f448B-w-273047">גְּמַ֨לֵּיהֶ֔ם</w>
             <w xml:id="f448B-w-273048">אַרְבַּ֥ע</w>
           <lb xml:id="f448B-lb-3-18" n="18"/>
@@ -400,7 +497,7 @@
             <pc type="sof-pasuq" xml:id="f448B-pc-273057">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f448B-s-Ezra-2-67"/>
           <lb xml:id="f448B-lb-3-21" n="21"/>
-            <milestone unit="verse" n="Ezra-2-68" xml:id="f448B-v-Ezra-2-68"/>
+            <milestone unit="verse" n="Ezra-2-68" xml:id="f448B-v-Ezra-2-68" facs="#f448B-zone-Ezra-2-68"/>
             <w xml:id="f448B-w-273058">וּמֵרָאשֵׁי֙</w>
             <w xml:id="f448B-w-273059">הָֽאָב֔וֹת</w>
             <w xml:id="f448B-w-273060">בְּבוֹאָ֕ם</w>
@@ -419,7 +516,7 @@
             <w xml:id="f448B-w-273070">מְכוֹנֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f448B-pc-273070">׃</pc>
           <lb xml:id="f448B-lb-3-25" n="25"/>
-            <milestone unit="verse" n="Ezra-2-69" xml:id="f448B-v-Ezra-2-69"/>
+            <milestone unit="verse" n="Ezra-2-69" xml:id="f448B-v-Ezra-2-69" facs="#f448B-zone-Ezra-2-69"/>
             <w xml:id="f448B-w-273071">כְּכֹחָ֗ם</w>
             <w xml:id="f448B-w-273072">נָתְנוּ֮</w>
             <w xml:id="f448B-w-273073">לְאוֹצַ֣ר</w>
