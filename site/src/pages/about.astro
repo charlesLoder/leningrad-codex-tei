@@ -44,11 +44,20 @@ import Base from '../layouts/Base.astro';
     <h2>Data</h2>
     <p>
       The biblical text in the document was not transcribed directly from the images.
-      The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christoper V. Kimball and accessible on the <a href="https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html">tanach.us</a> site.
+      The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christopher V. Kimball and accessible on the <a href="https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html">tanach.us</a> site.
       For this reason, the text in the edition may differ from the images in the manuscript. That is an intentional choice.
     </p>
     <p>
       The text determined to be on each folio was derived from Ben Denckla's index of the <a href="https://github.com/bdenckla/MAM-basics" target="_blank">Leningrad Codex</a>.
+    </p>
+    <p>
+      The verse zones that mark where each verse sits on the facsimile image come from the
+      <a href="https://www.masoretica.org/htr/leningrad/" target="_blank">Masoretica</a> handwritten text recognition (HTR)
+      of the Leningrad Codex by Idan Dershowitz.
+    </p>
+    <p>
+      Each folio page ends with a Credits section. It lists the people and data sources named in the{" "}
+      <code>respStmt</code> elements of that folio's TEI header, including the contributors who encoded it.
     </p>
 
     <h2>Transparency &amp; AI use</h2>

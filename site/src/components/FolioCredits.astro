@@ -1,0 +1,78 @@
+---
+import type { Credit } from '../lib/tei';
+
+interface Props {
+  credits: Credit[];
+  model?: string | null;
+}
+
+const { credits, model = null } = Astro.props;
+---
+
+{(credits.length > 0 || model) && (
+  <section class="credits" aria-labelledby="credits-heading">
+    <h2 id="credits-heading">Credits</h2>
+    <ul>
+      {credits.map((c) => (
+        <li>
+          <span class="names">{c.names.join(', ')}</span>
+          <span class="resp">
+            {c.resp.map((p) => (p.href ? <a href={p.href}>{p.href}</a> : p.text))}
+          </span>
+        </li>
+      ))}
+      {model && (
+        <li>
+          <span class="names">{model}</span>
+          <span class="resp">AI model used to align the text to the columns and lines</span>
+        </li>
+      )}
+    </ul>
+  </section>
+)}
+
+<style>
+  .credits {
+    border-top: 1px solid var(--line);
+    padding: 1rem 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .credits h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .credits ul {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .credits li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .names {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .resp a {
+    overflow-wrap: anywhere;
+  }
+</style>
+
+<style>
+  @media print {
+    .credits {
+      display: none;
+    }
+  }
+</style>
