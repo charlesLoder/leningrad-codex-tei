@@ -399,6 +399,30 @@ Record each hand edit in the folio's `revisionDesc`.
 
 Agents can use the `/update-revisiondesc` skill.
 
+### Adding verse zones
+
+Verse zones show where each verse is on the facsimile image.
+They come from the [Masoretica](https://www.masoretica.org) HTR of the codex by Idan Dershowitz.
+
+Zones are not part of the pipeline.
+Treat them as a hand edit to a committed folio file: run the commands below on the folios you work on, then commit the result.
+The command edits each file in place, so other hand edits stay.
+
+```bash
+uv run python scripts/zones.py download --folio 001B   # omit --folio for all edition folios
+uv run python scripts/zones.py add --folio 001B --dry-run
+uv run python scripts/zones.py add --folio 001B
+```
+
+The `add` command does these steps:
+
+- It removes the rects in the top and bottom margins. The HTR also finds verse words that the masora quotes there.
+- It compares each verse's zone with the columns and lines of the folio. When they do not agree, the verse gets no zone and the command prints the verse. A verse that does not agree can be an alignment error. Examine it.
+- It adds the Archive.org image (the zones use its pixels), the zones, a `facs` on each verse milestone, a `respStmt` for Masoretica, and a `<change>`.
+
+When you run it again with the same data, it does not change the file.
+`generate-tei` does not keep the zones. If you must regenerate a folio, run `add` for it again.
+
 ## Code Contributions
 
 Project instructions for AI coding agents live in [AGENTS.md](./AGENTS.md).

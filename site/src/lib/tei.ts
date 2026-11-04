@@ -29,6 +29,8 @@ export interface Token {
 export interface TeiLine {
   n: string;
   tokens: Token[];
+  /** Section marks on a line with no words (e.g. a lone pe line). */
+  marks: SectionMark[];
 }
 
 export interface TeiColumn {
@@ -36,8 +38,23 @@ export interface TeiColumn {
   lines: TeiLine[];
 }
 
+export interface RespPart {
+  text?: string;
+  /** Link target from a `<ptr>`; shown as a link, never from an email `ref`. */
+  href?: string;
+}
+
+export interface Credit {
+  id: string;
+  resp: RespPart[];
+  names: string[];
+}
+
 export interface FolioDoc {
   title: string;
+  credits: Credit[];
+  /** Model that aligned the folio, from the ai-params feature structure. */
+  model: string | null;
   graphicUrl: string | null;
   columns: TeiColumn[];
   verses: string[];
@@ -188,14 +205,72 @@ function formatRef(n: string): string {
   return `${book} ${m[2]}:${m[3]}`;
 }
 
+function collectByTag(nodes: OrderedNode[], tag: string, out: OrderedNode[]): void {
+  for (const node of nodes) {
+    for (const [key, value] of Object.entries(node)) {
+      if (key === ':@' || key === '#text') continue;
+      if (key === tag) out.push(node);
+      else if (Array.isArray(value)) collectByTag(value as OrderedNode[], tag, out);
+    }
+  }
+}
+
+/**
+ * Read the titleStmt respStmts, skipping the project's own entry (the first).
+ * Only names and resp text are kept: `persName/@ref` (often a mailto:) is dropped.
+ */
+function parseCredits(ordered: OrderedNode[]): Credit[] {
+  const titleStmt = findFirst(ordered, 'titleStmt');
+  if (!titleStmt) return [];
+  const stmts: OrderedNode[] = [];
+  collectByTag(childrenOf(titleStmt, 'titleStmt'), 'respStmt', stmts);
+  return stmts
+    .filter((n) => nodeAttrs(n)['id'] !== 'leningrad-codex-tei')
+    .map((n) => {
+      const kids = childrenOf(n, 'respStmt');
+      const respNode = kids.find((k) => 'resp' in k);
+      const resp: RespPart[] = [];
+      for (const part of respNode ? childrenOf(respNode, 'resp') : []) {
+        if ('#text' in part) {
+          const text = String(part['#text']);
+          if (text) resp.push({ text });
+        } else if ('ptr' in part) {
+          const href = nodeAttrs(part)['target'];
+          if (href) resp.push({ href });
+        }
+      }
+      const names = kids
+        .filter((k) => 'persName' in k || 'name' in k || 'orgName' in k)
+        .map((k) => innerText(Object.values(k).find(Array.isArray) as unknown[]).trim())
+        .filter(Boolean);
+      return { id: nodeAttrs(n)['id'] ?? '', resp, names };
+    })
+    .filter((c) => c.resp.length > 0 || c.names.length > 0);
+}
+
+function parseModel(ordered: OrderedNode[]): string | null {
+  const fsNodes: OrderedNode[] = [];
+  collectByTag(ordered, 'fs', fsNodes);
+  for (const fs of fsNodes) {
+    if (nodeAttrs(fs)['type'] !== 'ai-params') continue;
+    for (const f of childrenOf(fs, 'fs')) {
+      if ('f' in f && nodeAttrs(f)['name'] === 'model') {
+        const value = innerText(childrenOf(f, 'f')).trim();
+        if (value) return value;
+      }
+    }
+  }
+  return null;
+}
+
 export function parseFolioXml(xml: string): FolioDoc {
   let ordered: OrderedNode[];
   try {
     ordered = teiParser.parse(xml) as OrderedNode[];
   } catch {
-    return { title: 'Folio', graphicUrl: null, columns: [], verses: [] };
+    return { title: 'Folio', credits: [], model: null, graphicUrl: null, columns: [], verses: [] };
   }
-  if (!Array.isArray(ordered)) return { title: 'Folio', graphicUrl: null, columns: [], verses: [] };
+  if (!Array.isArray(ordered)) return { title: 'Folio', credits: [], model: null, graphicUrl: null, columns: [], verses: [] };
 
   const titleNode = findFirst(ordered, 'title');
   const title = titleNode ? innerText(childrenOf(titleNode, 'title')).trim() || 'Folio' : 'Folio';
@@ -227,7 +302,7 @@ export function parseFolioXml(xml: string): FolioDoc {
       started = true;
     } else if (tok.tag === 'lb') {
       flushLine();
-      currentLine = { n: tok.attrs['n'] ?? '', tokens: [] };
+      currentLine = { n: tok.attrs['n'] ?? '', tokens: [], marks: [] };
       started = true;
     } else if (tok.tag === 'milestone') {
       const a = tok.attrs;
@@ -240,9 +315,10 @@ export function parseFolioXml(xml: string): FolioDoc {
         // Paragraph divisions (samekh/pe) close the preceding text,
         // so they belong at the end of the current line — not pending
         // for the next token.
-        const mark: InlineMark = { kind: 'section', subtype: a['subtype'] ?? 'section' };
+        const mark: SectionMark = { kind: 'section', subtype: a['subtype'] ?? 'section' };
         const last = currentLine?.tokens[currentLine.tokens.length - 1];
         if (last) last.marks.push(mark);
+        else if (currentLine) currentLine.marks.push(mark);
         else pending.push(mark);
       }
     } else {
@@ -252,7 +328,7 @@ export function parseFolioXml(xml: string): FolioDoc {
         continue;
       }
       if (!currentLine) {
-        currentLine = { n: '', tokens: [] };
+        currentLine = { n: '', tokens: [], marks: [] };
         started = true;
       }
       let kind: Token['kind'] = 'w';
@@ -266,7 +342,7 @@ export function parseFolioXml(xml: string): FolioDoc {
   }
   flushLine();
   if (started) columns.push(currentCol);
-  return { title, graphicUrl, columns, verses };
+  return { title, credits: parseCredits(ordered), model: parseModel(ordered), graphicUrl, columns, verses };
 }
 
 export function abbreviateRange(range: string): string {

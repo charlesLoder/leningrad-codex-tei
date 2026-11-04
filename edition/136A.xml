@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,12 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 24 verse zones (92 line segments) from Masoretica HTR page n270.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n270.json"/>
+      </change>
+      <change when="2026-11-03" who="#contrib-charles-w-loder">
+      Move the pe milestone that ends a line onto the blank line that follows it (#1111).
+      </change>
       <change when="2026-10-24T19:03:50.068157+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-24T18:56:47.967690+00:00" who="#contrib-charles-w-loder">Aligned Judges 1:1 – Judges 1:25 (356 atoms).
@@ -58,10 +68,151 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-136A">
+    <surface xml:id="surf-136A" ulx="0" uly="0" lrx="4367" lry="5327">
       <graphic xml:id="f136A-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F136A.jpg">
         <desc type="sha256">0e468a3d22f556e897e66a8aa6cb5d8648ef14742a34112fe5dc29531863fb5b</desc>
       </graphic>
+      <graphic xml:id="f136A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0270.jp2/full/max/0/default.jpg" width="4367px" height="5327px"/>
+      <zone xml:id="f136A-zone-Judges-1-1" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-1-s1" ulx="3246" uly="1466" lrx="3890" lry="1623"/>
+        <zone xml:id="f136A-zone-Judges-1-1-s2" ulx="3152" uly="1579" lrx="3879" lry="1725"/>
+        <zone xml:id="f136A-zone-Judges-1-1-s3" ulx="3242" uly="1670" lrx="3861" lry="1812"/>
+        <zone xml:id="f136A-zone-Judges-1-1-s4" ulx="3155" uly="1757" lrx="3868" lry="1914"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-2" type="verse" cert="0.998" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-2-s1" ulx="3213" uly="1859" lrx="3894" lry="2009"/>
+        <zone xml:id="f136A-zone-Judges-1-2-s2" ulx="3148" uly="1965" lrx="3872" lry="2103"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-3" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-3-s1" ulx="3119" uly="2041" lrx="3905" lry="2183"/>
+        <zone xml:id="f136A-zone-Judges-1-3-s2" ulx="3152" uly="2147" lrx="3879" lry="2292"/>
+        <zone xml:id="f136A-zone-Judges-1-3-s3" ulx="3133" uly="2252" lrx="3868" lry="2365"/>
+        <zone xml:id="f136A-zone-Judges-1-3-s4" ulx="3162" uly="2336" lrx="3868" lry="2463"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-4" type="verse" cert="0.902" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-4-s1" ulx="3144" uly="2438" lrx="3894" lry="2554"/>
+        <zone xml:id="f136A-zone-Judges-1-4-s2" ulx="3188" uly="2529" lrx="3876" lry="2649"/>
+        <zone xml:id="f136A-zone-Judges-1-4-s3" ulx="3217" uly="2613" lrx="3879" lry="2740"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-5" type="verse" cert="0.917" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-5-s1" ulx="3170" uly="2682" lrx="3898" lry="2831"/>
+        <zone xml:id="f136A-zone-Judges-1-5-s2" ulx="3141" uly="2776" lrx="3919" lry="2925"/>
+        <zone xml:id="f136A-zone-Judges-1-5-s3" ulx="3595" uly="2896" lrx="3905" lry="3020"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-6" type="verse" cert="0.909" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-6-s1" ulx="3195" uly="2896" lrx="3577" lry="3020"/>
+        <zone xml:id="f136A-zone-Judges-1-6-s2" ulx="3195" uly="2980" lrx="3905" lry="3118"/>
+        <zone xml:id="f136A-zone-Judges-1-6-s3" ulx="3235" uly="3060" lrx="3894" lry="3213"/>
+        <zone xml:id="f136A-zone-Judges-1-6-s4" ulx="3701" uly="3158" lrx="3901" lry="3300"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-7" type="verse" cert="0.895" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-7-s1" ulx="3235" uly="3158" lrx="3708" lry="3300"/>
+        <zone xml:id="f136A-zone-Judges-1-7-s2" ulx="3152" uly="3238" lrx="3887" lry="3391"/>
+        <zone xml:id="f136A-zone-Judges-1-7-s3" ulx="3279" uly="3351" lrx="3898" lry="3479"/>
+        <zone xml:id="f136A-zone-Judges-1-7-s4" ulx="3104" uly="3428" lrx="3905" lry="3591"/>
+        <zone xml:id="f136A-zone-Judges-1-7-s5" ulx="3177" uly="3537" lrx="3894" lry="3686"/>
+        <zone xml:id="f136A-zone-Judges-1-7-s6" ulx="3184" uly="3635" lrx="3908" lry="3795"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-8" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-8-s1" ulx="2140" uly="1252" lrx="2904" lry="1441"/>
+        <zone xml:id="f136A-zone-Judges-1-8-s2" ulx="2209" uly="1390" lrx="2908" lry="1528"/>
+        <zone xml:id="f136A-zone-Judges-1-8-s3" ulx="2238" uly="1499" lrx="2879" lry="1623"/>
+        <zone xml:id="f136A-zone-Judges-1-8-s4" ulx="2744" uly="1601" lrx="2879" lry="1725"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-9" type="verse" cert="0.966" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-9-s1" ulx="2136" uly="1601" lrx="2704" lry="1725"/>
+        <zone xml:id="f136A-zone-Judges-1-9-s2" ulx="2133" uly="1677" lrx="2875" lry="1823"/>
+        <zone xml:id="f136A-zone-Judges-1-9-s3" ulx="2413" uly="1787" lrx="2893" lry="1910"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-10" type="verse" cert="0.957" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-10-s1" ulx="2245" uly="1787" lrx="2387" lry="1910"/>
+        <zone xml:id="f136A-zone-Judges-1-10-s2" ulx="2154" uly="1859" lrx="2893" lry="2009"/>
+        <zone xml:id="f136A-zone-Judges-1-10-s3" ulx="2162" uly="1954" lrx="2879" lry="2103"/>
+        <zone xml:id="f136A-zone-Judges-1-10-s4" ulx="2249" uly="2067" lrx="2886" lry="2190"/>
+        <zone xml:id="f136A-zone-Judges-1-10-s5" ulx="2205" uly="2161" lrx="2893" lry="2289"/>
+        <zone xml:id="f136A-zone-Judges-1-10-s6" ulx="2718" uly="2231" lrx="2886" lry="2383"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-11" type="verse" cert="0.933" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-11-s1" ulx="2133" uly="2231" lrx="2711" lry="2383"/>
+        <zone xml:id="f136A-zone-Judges-1-11-s2" ulx="2249" uly="2343" lrx="2886" lry="2471"/>
+        <zone xml:id="f136A-zone-Judges-1-11-s3" ulx="2587" uly="2434" lrx="2897" lry="2573"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-12" type="verse" cert="0.951" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-12-s1" ulx="2220" uly="2434" lrx="2569" lry="2573"/>
+        <zone xml:id="f136A-zone-Judges-1-12-s2" ulx="2173" uly="2525" lrx="2897" lry="2664"/>
+        <zone xml:id="f136A-zone-Judges-1-12-s3" ulx="2147" uly="2616" lrx="2911" lry="2754"/>
+        <zone xml:id="f136A-zone-Judges-1-12-s4" ulx="2580" uly="2707" lrx="2889" lry="2853"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-13" type="verse" cert="0.921" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-13-s1" ulx="2122" uly="2707" lrx="2551" lry="2853"/>
+        <zone xml:id="f136A-zone-Judges-1-13-s2" ulx="2133" uly="2791" lrx="2893" lry="2951"/>
+        <zone xml:id="f136A-zone-Judges-1-13-s3" ulx="2129" uly="2900" lrx="2904" lry="3046"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-14" type="verse" cert="0.934" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-14-s1" ulx="2140" uly="2987" lrx="2911" lry="3140"/>
+        <zone xml:id="f136A-zone-Judges-1-14-s2" ulx="2165" uly="3078" lrx="2897" lry="3235"/>
+        <zone xml:id="f136A-zone-Judges-1-14-s3" ulx="2158" uly="3173" lrx="2893" lry="3322"/>
+        <zone xml:id="f136A-zone-Judges-1-14-s4" ulx="2704" uly="3264" lrx="2897" lry="3417"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-15" type="verse" cert="0.902" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-15-s1" ulx="2187" uly="3264" lrx="2697" lry="3417"/>
+        <zone xml:id="f136A-zone-Judges-1-15-s2" ulx="2176" uly="3373" lrx="2893" lry="3526"/>
+        <zone xml:id="f136A-zone-Judges-1-15-s3" ulx="2213" uly="3475" lrx="2908" lry="3617"/>
+        <zone xml:id="f136A-zone-Judges-1-15-s4" ulx="2143" uly="3548" lrx="2889" lry="3719"/>
+        <zone xml:id="f136A-zone-Judges-1-15-s5" ulx="2686" uly="3664" lrx="2886" lry="3784"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-16" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-16-s1" ulx="2125" uly="3733" lrx="2897" lry="3922"/>
+        <zone xml:id="f136A-zone-Judges-1-16-s2" ulx="1263" uly="1292" lrx="1889" lry="1441"/>
+        <zone xml:id="f136A-zone-Judges-1-16-s3" ulx="1143" uly="1397" lrx="1900" lry="1546"/>
+        <zone xml:id="f136A-zone-Judges-1-16-s4" ulx="1350" uly="1485" lrx="1903" lry="1641"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-17" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-17-s1" ulx="1197" uly="1485" lrx="1343" lry="1641"/>
+        <zone xml:id="f136A-zone-Judges-1-17-s2" ulx="1237" uly="1608" lrx="1900" lry="1728"/>
+        <zone xml:id="f136A-zone-Judges-1-17-s3" ulx="1186" uly="1688" lrx="1911" lry="1830"/>
+        <zone xml:id="f136A-zone-Judges-1-17-s4" ulx="1154" uly="1790" lrx="1911" lry="1918"/>
+        <zone xml:id="f136A-zone-Judges-1-17-s5" ulx="1576" uly="1885" lrx="1911" lry="2023"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-18" type="verse" cert="0.947" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-18-s1" ulx="1194" uly="1885" lrx="1554" lry="2023"/>
+        <zone xml:id="f136A-zone-Judges-1-18-s2" ulx="1241" uly="1990" lrx="1892" lry="2114"/>
+        <zone xml:id="f136A-zone-Judges-1-18-s3" ulx="1241" uly="2070" lrx="1896" lry="2212"/>
+        <zone xml:id="f136A-zone-Judges-1-18-s4" ulx="1430" uly="2158" lrx="1907" lry="2311"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-19" type="verse" cert="0.891" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-19-s1" ulx="1190" uly="2158" lrx="1412" lry="2311"/>
+        <zone xml:id="f136A-zone-Judges-1-19-s2" ulx="1172" uly="2263" lrx="1896" lry="2402"/>
+        <zone xml:id="f136A-zone-Judges-1-19-s3" ulx="1146" uly="2351" lrx="1896" lry="2496"/>
+        <zone xml:id="f136A-zone-Judges-1-19-s4" ulx="1441" uly="2449" lrx="1907" lry="2591"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-20" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-20-s1" ulx="1150" uly="2449" lrx="1427" lry="2591"/>
+        <zone xml:id="f136A-zone-Judges-1-20-s2" ulx="1172" uly="2551" lrx="1903" lry="2678"/>
+        <zone xml:id="f136A-zone-Judges-1-20-s3" ulx="1165" uly="2620" lrx="1911" lry="2769"/>
+        <zone xml:id="f136A-zone-Judges-1-20-s4" ulx="1732" uly="2733" lrx="1903" lry="2860"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-21" type="verse" cert="0.882" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-21-s1" ulx="1281" uly="2733" lrx="1721" lry="2860"/>
+        <zone xml:id="f136A-zone-Judges-1-21-s2" ulx="1146" uly="2809" lrx="1925" lry="2965"/>
+        <zone xml:id="f136A-zone-Judges-1-21-s3" ulx="1215" uly="2922" lrx="1918" lry="3064"/>
+        <zone xml:id="f136A-zone-Judges-1-21-s4" ulx="1248" uly="3027" lrx="1896" lry="3155"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-22" type="verse" cert="0.919" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-22-s1" ulx="1161" uly="3115" lrx="1652" lry="3257"/>
+        <zone xml:id="f136A-zone-Judges-1-22-s2" ulx="1306" uly="3198" lrx="1896" lry="3351"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-23" type="verse" cert="0.839" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-23-s1" ulx="1139" uly="3198" lrx="1292" lry="3351"/>
+        <zone xml:id="f136A-zone-Judges-1-23-s2" ulx="1303" uly="3304" lrx="1896" lry="3446"/>
+        <zone xml:id="f136A-zone-Judges-1-23-s3" ulx="1634" uly="3402" lrx="1889" lry="3526"/>
+      </zone>
+      <zone xml:id="f136A-zone-Judges-1-24" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f136A-zone-Judges-1-24-s1" ulx="1197" uly="3402" lrx="1627" lry="3526"/>
+        <zone xml:id="f136A-zone-Judges-1-24-s2" ulx="1175" uly="3500" lrx="1896" lry="3620"/>
+        <zone xml:id="f136A-zone-Judges-1-24-s3" ulx="1157" uly="3570" lrx="1881" lry="3722"/>
+        <zone xml:id="f136A-zone-Judges-1-24-s4" ulx="1430" uly="3686" lrx="1907" lry="3828"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -74,7 +225,7 @@
           <lb xml:id="f136A-lb-1-1" n="1"/>
           <lb xml:id="f136A-lb-1-2" n="2"/>
           <lb xml:id="f136A-lb-1-3" n="3"/>
-            <milestone unit="verse" n="Judges-1-1" xml:id="f136A-v-Judges-1-1"/>
+            <milestone unit="verse" n="Judges-1-1" xml:id="f136A-v-Judges-1-1" facs="#f136A-zone-Judges-1-1"/>
             <w xml:id="f136A-w-90034">וַיְהִ֗י</w>
             <w xml:id="f136A-w-90035">אַחֲרֵי֙</w>
             <w xml:id="f136A-w-90036">מ֣וֹת</w>
@@ -97,7 +248,7 @@
             <w xml:id="f136A-w-90050">בּֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90050">׃</pc>
           <lb xml:id="f136A-lb-1-7" n="7"/>
-            <milestone unit="verse" n="Judges-1-2" xml:id="f136A-v-Judges-1-2"/>
+            <milestone unit="verse" n="Judges-1-2" xml:id="f136A-v-Judges-1-2" facs="#f136A-zone-Judges-1-2"/>
             <w xml:id="f136A-w-90051">וַיֹּ֣אמֶר</w>
             <w xml:id="f136A-w-90052">יְהוָ֖ה</w>
             <w xml:id="f136A-w-90053">יְהוּדָ֣ה</w>
@@ -110,7 +261,7 @@
             <w xml:id="f136A-w-90059">בְּיָדֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90059">׃</pc>
           <lb xml:id="f136A-lb-1-9" n="9"/>
-            <milestone unit="verse" n="Judges-1-3" xml:id="f136A-v-Judges-1-3"/>
+            <milestone unit="verse" n="Judges-1-3" xml:id="f136A-v-Judges-1-3" facs="#f136A-zone-Judges-1-3"/>
             <w xml:id="f136A-w-90060">וַיֹּ֣אמֶר</w>
             <w xml:id="f136A-w-90061">יְהוּדָה֩</w>
             <w xml:id="f136A-w-90062">לְשִׁמְע֨וֹן</w>
@@ -133,7 +284,7 @@
             <w xml:id="f136A-w-90076">שִׁמְעֽוֹן</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90076">׃</pc>
           <lb xml:id="f136A-lb-1-13" n="13"/>
-            <milestone unit="verse" n="Judges-1-4" xml:id="f136A-v-Judges-1-4"/>
+            <milestone unit="verse" n="Judges-1-4" xml:id="f136A-v-Judges-1-4" facs="#f136A-zone-Judges-1-4"/>
             <w xml:id="f136A-w-90077">וַיַּ֣עַל</w>
             <w xml:id="f136A-w-90078">יְהוּדָ֔ה</w>
             <w xml:id="f136A-w-90079">וַיִּתֵּ֧ן</w>
@@ -151,7 +302,7 @@
             <w xml:id="f136A-w-90089">אִֽישׁ</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90089">׃</pc>
           <lb xml:id="f136A-lb-1-16" n="16"/>
-            <milestone unit="verse" n="Judges-1-5" xml:id="f136A-v-Judges-1-5"/>
+            <milestone unit="verse" n="Judges-1-5" xml:id="f136A-v-Judges-1-5" facs="#f136A-zone-Judges-1-5"/>
             <w xml:id="f136A-w-90090">וַֽ֠יִּמְצְאוּ</w>
             <w xml:id="f136A-w-90091">אֶת־</w>
             <w xml:id="f136A-w-90092">אֲדֹנִ֥י</w>
@@ -167,7 +318,7 @@
             <w xml:id="f136A-w-90100">וְאֶת־</w>
             <w xml:id="f136A-w-90101">הַפְּרִזִּֽי</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90101">׃</pc>
-            <milestone unit="verse" n="Judges-1-6" xml:id="f136A-v-Judges-1-6"/>
+            <milestone unit="verse" n="Judges-1-6" xml:id="f136A-v-Judges-1-6" facs="#f136A-zone-Judges-1-6"/>
             <w xml:id="f136A-w-90102">וַיָּ֙נָס֙</w>
             <w xml:id="f136A-w-90103">אֲדֹ֣נִי</w>
             <w xml:id="f136A-w-90104">בֶ֔זֶק</w>
@@ -184,7 +335,7 @@
           <lb xml:id="f136A-lb-1-21" n="21"/>
             <w xml:id="f136A-w-90113">וְרַגְלָֽיו</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90113">׃</pc>
-            <milestone unit="verse" n="Judges-1-7" xml:id="f136A-v-Judges-1-7"/>
+            <milestone unit="verse" n="Judges-1-7" xml:id="f136A-v-Judges-1-7" facs="#f136A-zone-Judges-1-7"/>
             <w xml:id="f136A-w-90114">וַיֹּ֣אמֶר</w>
             <w xml:id="f136A-w-90115">אֲדֹֽנִי־</w>
             <w xml:id="f136A-w-90116">בֶ֗זֶק</w>
@@ -215,11 +366,11 @@
             <w xml:id="f136A-w-90135">וַיָּ֥מָת</w>
             <w xml:id="f136A-w-90136">שָֽׁם</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90136">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f136A-s-Judges-1-7"/>
           <lb xml:id="f136A-lb-1-27" n="27"/>
+            <milestone unit="section" subtype="pe" xml:id="f136A-s-Judges-1-7"/>
         <cb xml:id="f136A-cb-2" n="2"/>
           <lb xml:id="f136A-lb-2-1" n="1"/>
-            <milestone unit="verse" n="Judges-1-8" xml:id="f136A-v-Judges-1-8"/>
+            <milestone unit="verse" n="Judges-1-8" xml:id="f136A-v-Judges-1-8" facs="#f136A-zone-Judges-1-8"/>
             <w xml:id="f136A-w-90137">וַיִּלָּחֲמ֤וּ</w>
             <w xml:id="f136A-w-90138">בְנֵֽי־</w>
             <w xml:id="f136A-w-90139">יְהוּדָה֙</w>
@@ -237,7 +388,7 @@
           <lb xml:id="f136A-lb-2-4" n="4"/>
             <w xml:id="f136A-w-90149">בָאֵֽשׁ</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90149">׃</pc>
-            <milestone unit="verse" n="Judges-1-9" xml:id="f136A-v-Judges-1-9"/>
+            <milestone unit="verse" n="Judges-1-9" xml:id="f136A-v-Judges-1-9" facs="#f136A-zone-Judges-1-9"/>
             <w xml:id="f136A-w-90150">וְאַחַ֗ר</w>
             <w xml:id="f136A-w-90151">יָֽרְדוּ֙</w>
             <w xml:id="f136A-w-90152">בְּנֵ֣י</w>
@@ -251,7 +402,7 @@
             <w xml:id="f136A-w-90158">וְהַנֶּ֖גֶב</w>
             <w xml:id="f136A-w-90159">וְהַשְּׁפֵלָֽה</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90159">׃</pc>
-            <milestone unit="verse" n="Judges-1-10" xml:id="f136A-v-Judges-1-10"/>
+            <milestone unit="verse" n="Judges-1-10" xml:id="f136A-v-Judges-1-10" facs="#f136A-zone-Judges-1-10"/>
             <w xml:id="f136A-w-90160">וַיֵּ֣לֶךְ</w>
           <lb xml:id="f136A-lb-2-7" n="7"/>
             <w xml:id="f136A-w-90161">יְהוּדָ֗ה</w>
@@ -276,7 +427,7 @@
           <lb xml:id="f136A-lb-2-11" n="11"/>
             <w xml:id="f136A-w-90177">תַּלְמָֽי</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90177">׃</pc>
-            <milestone unit="verse" n="Judges-1-11" xml:id="f136A-v-Judges-1-11"/>
+            <milestone unit="verse" n="Judges-1-11" xml:id="f136A-v-Judges-1-11" facs="#f136A-zone-Judges-1-11"/>
             <w xml:id="f136A-w-90178">וַיֵּ֣לֶךְ</w>
             <w xml:id="f136A-w-90179">מִשָּׁ֔ם</w>
             <w xml:id="f136A-w-90180">אֶל־</w>
@@ -290,7 +441,7 @@
             <w xml:id="f136A-w-90186">קִרְיַת־</w>
             <w xml:id="f136A-w-90187">סֵֽפֶר</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90187">׃</pc>
-            <milestone unit="verse" n="Judges-1-12" xml:id="f136A-v-Judges-1-12"/>
+            <milestone unit="verse" n="Judges-1-12" xml:id="f136A-v-Judges-1-12" facs="#f136A-zone-Judges-1-12"/>
             <w xml:id="f136A-w-90188">וַיֹּ֣אמֶר</w>
             <w xml:id="f136A-w-90189">כָּלֵ֔ב</w>
           <lb xml:id="f136A-lb-2-14" n="14"/>
@@ -309,7 +460,7 @@
             <w xml:id="f136A-w-90200">בִתִּ֖י</w>
             <w xml:id="f136A-w-90201">לְאִשָּֽׁה</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90201">׃</pc>
-            <milestone unit="verse" n="Judges-1-13" xml:id="f136A-v-Judges-1-13"/>
+            <milestone unit="verse" n="Judges-1-13" xml:id="f136A-v-Judges-1-13" facs="#f136A-zone-Judges-1-13"/>
             <w xml:id="f136A-w-90202">וַֽיִּלְכְּדָהּ֙</w>
             <w xml:id="f136A-w-90203">עָתְנִיאֵ֣ל</w>
           <lb xml:id="f136A-lb-2-17" n="17"/>
@@ -328,7 +479,7 @@
             <w xml:id="f136A-w-90215">לְאִשָּֽׁה</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90215">׃</pc>
           <lb xml:id="f136A-lb-2-19" n="19"/>
-            <milestone unit="verse" n="Judges-1-14" xml:id="f136A-v-Judges-1-14"/>
+            <milestone unit="verse" n="Judges-1-14" xml:id="f136A-v-Judges-1-14" facs="#f136A-zone-Judges-1-14"/>
             <w xml:id="f136A-w-90216">וַיְהִ֣י</w>
             <w xml:id="f136A-w-90217">בְּבוֹאָ֗הּ</w>
             <w xml:id="f136A-w-90218">וַתְּסִיתֵ֙הוּ֙</w>
@@ -348,7 +499,7 @@
             <w xml:id="f136A-w-90229">מַה־</w>
             <w xml:id="f136A-w-90230">לָּֽךְ</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90230">׃</pc>
-            <milestone unit="verse" n="Judges-1-15" xml:id="f136A-v-Judges-1-15"/>
+            <milestone unit="verse" n="Judges-1-15" xml:id="f136A-v-Judges-1-15" facs="#f136A-zone-Judges-1-15"/>
             <w xml:id="f136A-w-90231">וַתֹּ֨אמֶר</w>
             <w xml:id="f136A-w-90232">ל֜וֹ</w>
             <w xml:id="f136A-w-90233">הָֽבָה־</w>
@@ -378,7 +529,7 @@
             <pc type="sof-pasuq" xml:id="f136A-pc-90252">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f136A-s-Judges-1-15"/>
           <lb xml:id="f136A-lb-2-27" n="27"/>
-            <milestone unit="verse" n="Judges-1-16" xml:id="f136A-v-Judges-1-16"/>
+            <milestone unit="verse" n="Judges-1-16" xml:id="f136A-v-Judges-1-16" facs="#f136A-zone-Judges-1-16"/>
             <w xml:id="f136A-w-90253">וּבְנֵ֣י</w>
             <w xml:id="f136A-w-90254">קֵינִי֩</w>
             <w xml:id="f136A-w-90255">חֹתֵ֨ן</w>
@@ -403,7 +554,7 @@
             <w xml:id="f136A-w-90270">אֶת־</w>
             <w xml:id="f136A-w-90271">הָעָֽם</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90271">׃</pc>
-            <milestone unit="verse" n="Judges-1-17" xml:id="f136A-v-Judges-1-17"/>
+            <milestone unit="verse" n="Judges-1-17" xml:id="f136A-v-Judges-1-17" facs="#f136A-zone-Judges-1-17"/>
             <w xml:id="f136A-w-90272">וַיֵּ֤לֶךְ</w>
           <lb xml:id="f136A-lb-3-4" n="4"/>
             <w xml:id="f136A-w-90273">יְהוּדָה֙</w>
@@ -426,7 +577,7 @@
             <w xml:id="f136A-w-90287">הָעִ֖יר</w>
             <w xml:id="f136A-w-90288">חָרְמָֽה</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90288">׃</pc>
-            <milestone unit="verse" n="Judges-1-18" xml:id="f136A-v-Judges-1-18"/>
+            <milestone unit="verse" n="Judges-1-18" xml:id="f136A-v-Judges-1-18" facs="#f136A-zone-Judges-1-18"/>
             <w xml:id="f136A-w-90289">וַיִּלְכֹּ֤ד</w>
             <w xml:id="f136A-w-90290">יְהוּדָה֙</w>
           <lb xml:id="f136A-lb-3-8" n="8"/>
@@ -445,7 +596,7 @@
             <w xml:id="f136A-w-90301">וְאֶת־</w>
             <w xml:id="f136A-w-90302">גְּבוּלָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90302">׃</pc>
-            <milestone unit="verse" n="Judges-1-19" xml:id="f136A-v-Judges-1-19"/>
+            <milestone unit="verse" n="Judges-1-19" xml:id="f136A-v-Judges-1-19" facs="#f136A-zone-Judges-1-19"/>
             <w xml:id="f136A-w-90303">וַיְהִ֤י</w>
             <w xml:id="f136A-w-90304">יְהוָה֙</w>
           <lb xml:id="f136A-lb-3-11" n="11"/>
@@ -467,7 +618,7 @@
             <w xml:id="f136A-w-90318">בַּרְזֶ֖ל</w>
             <w xml:id="f136A-w-90319">לָהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90319">׃</pc>
-            <milestone unit="verse" n="Judges-1-20" xml:id="f136A-v-Judges-1-20"/>
+            <milestone unit="verse" n="Judges-1-20" xml:id="f136A-v-Judges-1-20" facs="#f136A-zone-Judges-1-20"/>
             <w xml:id="f136A-w-90320">וַיִּתְּנ֤וּ</w>
             <w xml:id="f136A-w-90321">לְכָלֵב֙</w>
           <lb xml:id="f136A-lb-3-14" n="14"/>
@@ -485,7 +636,7 @@
           <lb xml:id="f136A-lb-3-16" n="16"/>
             <w xml:id="f136A-w-90332">הָעֲנָֽק</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90332">׃</pc>
-            <milestone unit="verse" n="Judges-1-21" xml:id="f136A-v-Judges-1-21"/>
+            <milestone unit="verse" n="Judges-1-21" xml:id="f136A-v-Judges-1-21" facs="#f136A-zone-Judges-1-21"/>
             <w xml:id="f136A-w-90333">וְאֶת־</w>
             <w xml:id="f136A-w-90334">הַיְבוּסִי֙</w>
             <w xml:id="f136A-w-90335">יֹשֵׁ֣ב</w>
@@ -509,7 +660,7 @@
             <pc type="sof-pasuq" xml:id="f136A-pc-90349">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f136A-s-Judges-1-21"/>
           <lb xml:id="f136A-lb-3-20" n="20"/>
-            <milestone unit="verse" n="Judges-1-22" xml:id="f136A-v-Judges-1-22"/>
+            <milestone unit="verse" n="Judges-1-22" xml:id="f136A-v-Judges-1-22" facs="#f136A-zone-Judges-1-22"/>
             <w xml:id="f136A-w-90350">וַיַּעֲל֧וּ</w>
             <w xml:id="f136A-w-90351">בֵית־</w>
             <w xml:id="f136A-w-90352">יוֹסֵ֛ף</w>
@@ -521,7 +672,7 @@
             <w xml:id="f136A-w-90357">וַֽיהוָ֖ה</w>
             <w xml:id="f136A-w-90358">עִמָּֽם</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90358">׃</pc>
-            <milestone unit="verse" n="Judges-1-23" xml:id="f136A-v-Judges-1-23"/>
+            <milestone unit="verse" n="Judges-1-23" xml:id="f136A-v-Judges-1-23" facs="#f136A-zone-Judges-1-23"/>
             <w xml:id="f136A-w-90359">וַיָּתִ֥ירוּ</w>
           <lb xml:id="f136A-lb-3-22" n="22"/>
             <w xml:id="f136A-w-90360">בֵית־</w>
@@ -534,7 +685,7 @@
             <w xml:id="f136A-w-90366">לְפָנִ֖ים</w>
             <w xml:id="f136A-w-90367">לֽוּז</w>
             <pc type="sof-pasuq" xml:id="f136A-pc-90367">׃</pc>
-            <milestone unit="verse" n="Judges-1-24" xml:id="f136A-v-Judges-1-24"/>
+            <milestone unit="verse" n="Judges-1-24" xml:id="f136A-v-Judges-1-24" facs="#f136A-zone-Judges-1-24"/>
             <w xml:id="f136A-w-90368">וַיִּרְאוּ֙</w>
             <w xml:id="f136A-w-90369">הַשֹּׁ֣מְרִ֔ים</w>
           <lb xml:id="f136A-lb-3-24" n="24"/>

@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 11 verse zones (47 line segments) from Masoretica HTR page n333. Left out 5 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n333.json"/>
+      </change>
       <change when="2026-10-24T21:57:08.681148+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-24T21:50:33.928416+00:00" who="#contrib-charles-w-loder">Aligned Samuel_1 29:6 – Samuel_1 30:17 (356 atoms).
@@ -58,10 +65,80 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-167B">
+    <surface xml:id="surf-167B" ulx="0" uly="0" lrx="4463" lry="5343">
       <graphic xml:id="f167B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F167B.jpg">
         <desc type="sha256">69f78e545b54fd76d4be07fea30217a6258a4f5ec726e53cc062f167d5ef6956</desc>
       </graphic>
+      <graphic xml:id="f167B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0333.jp2/full/max/0/default.jpg" width="4463px" height="5343px"/>
+      <zone xml:id="f167B-zone-Samuel_1-29-7" type="verse" cert="0.941" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-29-7-s1" ulx="2912" uly="1394" lrx="3663" lry="1539"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-7-s2" ulx="3039" uly="1506" lrx="3697" lry="1636"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-7-s3" ulx="3392" uly="1584" lrx="3660" lry="1725"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-29-8" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-29-8-s1" ulx="2931" uly="1584" lrx="3239" lry="1725"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-8-s2" ulx="2975" uly="1673" lrx="3649" lry="1818"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-8-s3" ulx="2931" uly="1766" lrx="3660" lry="1919"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-8-s4" ulx="2927" uly="1867" lrx="3637" lry="2026"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-8-s5" ulx="2908" uly="1989" lrx="3645" lry="2112"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-8-s6" ulx="3117" uly="2082" lrx="3656" lry="2212"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-29-9" type="verse" cert="0.92" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-29-9-s1" ulx="2942" uly="2082" lrx="3098" lry="2212"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-9-s2" ulx="2882" uly="2179" lrx="3656" lry="2301"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-9-s3" ulx="2912" uly="2261" lrx="3649" lry="2391"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-9-s4" ulx="2934" uly="2350" lrx="3693" lry="2480"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-9-s5" ulx="3024" uly="2432" lrx="3641" lry="2577"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-9-s6" ulx="3373" uly="2525" lrx="3637" lry="2673"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-29-10" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-29-10-s1" ulx="2964" uly="2525" lrx="3358" lry="2673"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-10-s2" ulx="2942" uly="2644" lrx="3649" lry="2766"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-10-s3" ulx="2916" uly="2729" lrx="3645" lry="2859"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-10-s4" ulx="3236" uly="2811" lrx="3671" lry="2952"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-29-11" type="verse" cert="0.929" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-29-11-s1" ulx="2923" uly="2811" lrx="3232" lry="2952"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-11-s2" ulx="2934" uly="2911" lrx="3656" lry="3056"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-11-s3" ulx="2964" uly="3004" lrx="3645" lry="3134"/>
+        <zone xml:id="f167B-zone-Samuel_1-29-11-s4" ulx="3005" uly="3082" lrx="3671" lry="3227"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-30-1" type="verse" cert="0.913" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-30-1-s1" ulx="2916" uly="3168" lrx="3459" lry="3324"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-1-s2" ulx="3076" uly="3283" lrx="3671" lry="3424"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-1-s3" ulx="2994" uly="3384" lrx="3675" lry="3502"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-1-s4" ulx="2964" uly="3450" lrx="3671" lry="3603"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-1-s5" ulx="3158" uly="3569" lrx="3671" lry="3692"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-30-2" type="verse" cert="0.916" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-30-2-s1" ulx="2934" uly="3569" lrx="3120" lry="3692"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-2-s2" ulx="2942" uly="3659" lrx="3660" lry="3807"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-2-s3" ulx="2987" uly="3752" lrx="3682" lry="3904"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-2-s4" ulx="2105" uly="1275" lrx="2682" lry="1439"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-30-3" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-30-3-s1" ulx="1930" uly="1275" lrx="2086" lry="1439"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-3-s2" ulx="1915" uly="1387" lrx="2659" lry="1539"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-3-s3" ulx="1882" uly="1480" lrx="2667" lry="1632"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-3-s4" ulx="2250" uly="1573" lrx="2685" lry="1722"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-30-4" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-30-4-s1" ulx="1945" uly="1573" lrx="2235" lry="1722"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-4-s2" ulx="1919" uly="1677" lrx="2670" lry="1818"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-4-s3" ulx="1982" uly="1774" lrx="2682" lry="1919"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-4-s4" ulx="2362" uly="1863" lrx="2659" lry="2015"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-30-6" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-30-6-s1" ulx="1923" uly="2149" lrx="2667" lry="2302"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-6-s2" ulx="1979" uly="2238" lrx="2655" lry="2391"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-6-s3" ulx="1945" uly="2339" lrx="2667" lry="2484"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-6-s4" ulx="1953" uly="2439" lrx="2663" lry="2580"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-6-s5" ulx="2462" uly="2521" lrx="2667" lry="2670"/>
+      </zone>
+      <zone xml:id="f167B-zone-Samuel_1-30-17" type="verse" cert="0.571" resp="#source-masoretica">
+        <zone xml:id="f167B-zone-Samuel_1-30-17-s1" ulx="952" uly="3636" lrx="1514" lry="3789"/>
+        <zone xml:id="f167B-zone-Samuel_1-30-17-s2" ulx="989" uly="3726" lrx="1681" lry="3904"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -80,7 +157,7 @@
             <w xml:id="f167B-w-112413">אָֽתָּה</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112413">׃</pc>
           <lb xml:id="f167B-lb-1-2" n="2"/>
-            <milestone unit="verse" n="Samuel_1-29-7" xml:id="f167B-v-Samuel_1-29-7"/>
+            <milestone unit="verse" n="Samuel_1-29-7" xml:id="f167B-v-Samuel_1-29-7" facs="#f167B-zone-Samuel_1-29-7"/>
             <w xml:id="f167B-w-112414">וְעַתָּ֥ה</w>
             <w xml:id="f167B-w-112415">שׁ֖וּב</w>
             <w xml:id="f167B-w-112416">וְלֵ֣ךְ</w>
@@ -95,7 +172,7 @@
             <w xml:id="f167B-w-112423">פְלִשְׁתִּֽים</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112423">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f167B-s-Samuel_1-29-7"/>
-            <milestone unit="verse" n="Samuel_1-29-8" xml:id="f167B-v-Samuel_1-29-8"/>
+            <milestone unit="verse" n="Samuel_1-29-8" xml:id="f167B-v-Samuel_1-29-8" facs="#f167B-zone-Samuel_1-29-8"/>
             <w xml:id="f167B-w-112424">וַיֹּ֨אמֶר</w>
             <w xml:id="f167B-w-112425">דָּוִ֜ד</w>
           <lb xml:id="f167B-lb-1-5" n="5"/>
@@ -126,7 +203,7 @@
             <w xml:id="f167B-w-112446">אֲדֹנִ֥י</w>
             <w xml:id="f167B-w-112447">הַמֶּֽלֶךְ</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112447">׃</pc>
-            <milestone unit="verse" n="Samuel_1-29-9" xml:id="f167B-v-Samuel_1-29-9"/>
+            <milestone unit="verse" n="Samuel_1-29-9" xml:id="f167B-v-Samuel_1-29-9" facs="#f167B-zone-Samuel_1-29-9"/>
             <w xml:id="f167B-w-112448">וַיַּ֣עַן</w>
           <lb xml:id="f167B-lb-1-10" n="10"/>
             <w xml:id="f167B-w-112449">אָכִישׁ֮</w>
@@ -153,7 +230,7 @@
           <lb xml:id="f167B-lb-1-14" n="14"/>
             <w xml:id="f167B-w-112467">בַּמִּלְחָמָֽה</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112467">׃</pc>
-            <milestone unit="verse" n="Samuel_1-29-10" xml:id="f167B-v-Samuel_1-29-10"/>
+            <milestone unit="verse" n="Samuel_1-29-10" xml:id="f167B-v-Samuel_1-29-10" facs="#f167B-zone-Samuel_1-29-10"/>
             <w xml:id="f167B-w-112468">וְעַתָּה֙</w>
             <w xml:id="f167B-w-112469">הַשְׁכֵּ֣ם</w>
           <lb xml:id="f167B-lb-1-15" n="15"/>
@@ -171,7 +248,7 @@
             <w xml:id="f167B-w-112479">לָכֶ֖ם</w>
             <w xml:id="f167B-w-112480">וָלֵֽכוּ</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112480">׃</pc>
-            <milestone unit="verse" n="Samuel_1-29-11" xml:id="f167B-v-Samuel_1-29-11"/>
+            <milestone unit="verse" n="Samuel_1-29-11" xml:id="f167B-v-Samuel_1-29-11" facs="#f167B-zone-Samuel_1-29-11"/>
             <w xml:id="f167B-w-112481">וַיַּשְׁכֵּ֨ם</w>
             <w xml:id="f167B-w-112482">דָּוִ֜ד</w>
           <lb xml:id="f167B-lb-1-18" n="18"/>
@@ -191,7 +268,7 @@
             <pc type="sof-pasuq" xml:id="f167B-pc-112493">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f167B-s-Samuel_1-29-11"/>
           <lb xml:id="f167B-lb-1-21" n="21"/>
-            <milestone unit="verse" n="Samuel_1-30-1" xml:id="f167B-v-Samuel_1-30-1"/>
+            <milestone unit="verse" n="Samuel_1-30-1" xml:id="f167B-v-Samuel_1-30-1" facs="#f167B-zone-Samuel_1-30-1"/>
             <w xml:id="f167B-w-112494">וַיְהִ֞י</w>
             <w xml:id="f167B-w-112495">בְּבֹ֨א</w>
             <w xml:id="f167B-w-112496">דָוִ֧ד</w>
@@ -216,7 +293,7 @@
             <w xml:id="f167B-w-112511">אֹתָ֖הּ</w>
             <w xml:id="f167B-w-112512">בָּאֵֽשׁ</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112512">׃</pc>
-            <milestone unit="verse" n="Samuel_1-30-2" xml:id="f167B-v-Samuel_1-30-2"/>
+            <milestone unit="verse" n="Samuel_1-30-2" xml:id="f167B-v-Samuel_1-30-2" facs="#f167B-zone-Samuel_1-30-2"/>
             <w xml:id="f167B-w-112513">וַיִּשְׁבּ֨וּ</w>
           <lb xml:id="f167B-lb-1-26" n="26"/>
             <w xml:id="f167B-w-112514">אֶת־</w>
@@ -236,7 +313,7 @@
             <w xml:id="f167B-w-112525">וַיֵּלְכ֖וּ</w>
             <w xml:id="f167B-w-112526">לְדַרְכָּֽם</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112526">׃</pc>
-            <milestone unit="verse" n="Samuel_1-30-3" xml:id="f167B-v-Samuel_1-30-3"/>
+            <milestone unit="verse" n="Samuel_1-30-3" xml:id="f167B-v-Samuel_1-30-3" facs="#f167B-zone-Samuel_1-30-3"/>
             <w xml:id="f167B-w-112527">וַיָּבֹ֨א</w>
           <lb xml:id="f167B-lb-2-2" n="2"/>
             <w xml:id="f167B-w-112528">דָוִ֤ד</w>
@@ -253,7 +330,7 @@
             <w xml:id="f167B-w-112537">וּבְנֹתֵיהֶ֖ם</w>
             <w xml:id="f167B-w-112538">נִשְׁבּֽוּ</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112538">׃</pc>
-            <milestone unit="verse" n="Samuel_1-30-4" xml:id="f167B-v-Samuel_1-30-4"/>
+            <milestone unit="verse" n="Samuel_1-30-4" xml:id="f167B-v-Samuel_1-30-4" facs="#f167B-zone-Samuel_1-30-4"/>
             <w xml:id="f167B-w-112539">וַיִּשָּׂ֨א</w>
             <w xml:id="f167B-w-112540">דָוִ֜ד</w>
           <lb xml:id="f167B-lb-2-5" n="5"/>
@@ -287,7 +364,7 @@
             <w xml:id="f167B-w-112562">הַֽכַּרְמְלִֽי</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112562">׃</pc>
           <lb xml:id="f167B-lb-2-10" n="10"/>
-            <milestone unit="verse" n="Samuel_1-30-6" xml:id="f167B-v-Samuel_1-30-6"/>
+            <milestone unit="verse" n="Samuel_1-30-6" xml:id="f167B-v-Samuel_1-30-6" facs="#f167B-zone-Samuel_1-30-6"/>
             <w xml:id="f167B-w-112563">וַתֵּ֨צֶר</w>
             <w xml:id="f167B-w-112564">לְדָוִ֜ד</w>
             <w xml:id="f167B-w-112565">מְאֹ֗ד</w>
@@ -549,7 +626,7 @@
           <lb xml:id="f167B-lb-3-26" n="26"/>
             <w xml:id="f167B-w-112756">יְהוּדָֽה</w>
             <pc type="sof-pasuq" xml:id="f167B-pc-112756">׃</pc>
-            <milestone unit="verse" n="Samuel_1-30-17" xml:id="f167B-v-Samuel_1-30-17"/>
+            <milestone unit="verse" n="Samuel_1-30-17" xml:id="f167B-v-Samuel_1-30-17" facs="#f167B-zone-Samuel_1-30-17"/>
             <w xml:id="f167B-w-112757">וַיַּכֵּ֥ם</w>
             <w xml:id="f167B-w-112758">דָּוִ֛ד</w>
             <w xml:id="f167B-w-112759">מֵהַנֶּ֥שֶׁף</w>

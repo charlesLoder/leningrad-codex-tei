@@ -1,14 +1,15 @@
 ---
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Base from '../../layouts/Base.astro';
 import Button from '../../components/Button.astro';
-import FacsimileViewer from '../../components/FacsimileViewer.astro';
 import FeedbackForm from '../../components/FeedbackForm.astro';
+import FolioCredits from '../../components/FolioCredits.astro';
 import FolioColumns from '../../components/FolioColumns.astro';
 import FolioHead from '../../components/FolioHead.astro';
 import FolioToolbar from '../../components/FolioToolbar.astro';
+import IiifViewer from '../../components/IiifViewer.astro';
 import Pager from '../../components/Pager.astro';
 import Toggle from '../../components/Toggle.astro';
 import { parseFolioXml, folioSideLabel, abbreviateRange } from '../../lib/tei';
@@ -25,6 +26,9 @@ const xmlPath = join(here, '../../../../edition', `${folio}.xml`);
 const xml = readFileSync(xmlPath, 'utf8');
 const doc = parseFolioXml(xml);
 const entry = folios.find((f) => f.folio === folio);
+// A IIIF manifest exists only for folios with verse zones (see build-iiif).
+const iiifPath = join(here, '../../../public/iiif', `${folio}.json`);
+const iiifManifest = existsSync(iiifPath) ? `/iiif/${folio}.json` : null;
 
 const idx = folios.findIndex((f) => f.folio === folio);
 const prev = idx > 0 ? folios[idx - 1] : null;
@@ -50,8 +54,8 @@ const folioSchema = {
     <p class="print-only">{folioIdLine}</p>
     <Pager prev={prev} next={next} />
     <FolioToolbar>
-      {doc.graphicUrl && <Button variant="primary" target="_blank" rel="noopener noreferrer" href={doc.graphicUrl}>Facsimile image <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg></Button>}
-      <Button href={`/edition/${folio}.xml`} target="_blank">Raw TEI XML</Button>
+      <Button variant="primary" href={`/edition/${folio}.xml`} target="_blank">Raw TEI XML <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg></Button>
+      {iiifManifest && <Button href="#facsimile">View Facsimile</Button>}
       <Button id="print-folio" type="button">Print</Button>
       <Toggle />
       <FeedbackForm folio={folio ?? ''} version={meta.version} />
@@ -60,13 +64,17 @@ const folioSchema = {
 
   <FolioColumns columns={doc.columns} />
 
-  {doc.graphicUrl && (
-    <FacsimileViewer url={doc.graphicUrl} folio={folio ?? ''} />
+  {iiifManifest && (
+    <IiifViewer manifestUrl={iiifManifest} folio={folio ?? ''} />
   )}
+
+  <FolioCredits credits={doc.credits} model={doc.model} />
 
   <script>
     const toggle = document.querySelector('#toggle-verses') as HTMLInputElement | null;
     const apply = (on: boolean) => {
+      // Print styles key off this class so print follows the toggle.
+      document.querySelector('.columns')?.classList.toggle('show-verses', on);
       document.querySelectorAll('.verse-tag').forEach((el) => {
         (el as HTMLElement).style.display = on ? '' : 'none';
       });

@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-jossi-fresco">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI revision</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,12 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 26 verse zones (98 line segments) from Masoretica HTR page n559.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n559.json"/>
+      </change>
+      <change when="2026-11-03" who="#contrib-charles-w-loder">
+      Move the pe milestone that ends a line onto the blank line that follows it (#1111).
+      </change>
       <change when="2026-10-28T14:48:52.496884+00:00" who="#contrib-jossi-fresco">Encoded by Jossi Fresco.
       </change>
       <change when="2026-10-28T14:44:05.596004+00:00" who="#contrib-jossi-fresco">Aligned Ezekiel 10:7 – Ezekiel 11:10 (328 atoms).
@@ -58,10 +72,161 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-280B">
+    <surface xml:id="surf-280B" ulx="0" uly="0" lrx="4447" lry="5263">
       <graphic xml:id="f280B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F280B.jpg">
         <desc type="sha256">fdbcf9ec1c1064241a388cf5849cc0008d8e0cb48b26b920bea1479287741b58</desc>
       </graphic>
+      <graphic xml:id="f280B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0559.jp2/full/max/0/default.jpg" width="4447px" height="5263px"/>
+      <zone xml:id="f280B-zone-Ezekiel-10-7" type="verse" cert="0.668" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-7-s1" ulx="2920" uly="1260" lrx="3643" lry="1438"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-7-s2" ulx="3017" uly="1386" lrx="3643" lry="1531"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-8" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-8-s1" ulx="2916" uly="1468" lrx="3669" lry="1623"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-8-s2" ulx="3280" uly="1586" lrx="3643" lry="1709"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-9" type="verse" cert="0.941" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-9-s1" ulx="2916" uly="1586" lrx="3265" lry="1709"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-9-s2" ulx="3057" uly="1679" lrx="3654" lry="1801"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-9-s3" ulx="2924" uly="1753" lrx="3650" lry="1901"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-9-s4" ulx="2954" uly="1857" lrx="3647" lry="2001"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-9-s5" ulx="2942" uly="1938" lrx="3661" lry="2094"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-9-s6" ulx="2905" uly="2053" lrx="3650" lry="2179"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-10" type="verse" cert="0.965" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-10-s1" ulx="3043" uly="2153" lrx="3665" lry="2276"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-10-s2" ulx="2954" uly="2235" lrx="3650" lry="2376"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-10-s3" ulx="3098" uly="2335" lrx="3647" lry="2480"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-11" type="verse" cert="0.919" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-11-s1" ulx="2902" uly="2335" lrx="3072" lry="2480"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-11-s2" ulx="2928" uly="2442" lrx="3661" lry="2546"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-11-s3" ulx="2935" uly="2528" lrx="3658" lry="2650"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-11-s4" ulx="2950" uly="2613" lrx="3654" lry="2739"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-11-s5" ulx="3061" uly="2680" lrx="3661" lry="2832"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-12" type="verse" cert="0.887" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-12-s1" ulx="2939" uly="2680" lrx="3009" lry="2832"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-12-s2" ulx="3087" uly="2776" lrx="3661" lry="2932"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-12-s3" ulx="2939" uly="2884" lrx="3676" lry="3028"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-12-s4" ulx="3031" uly="2965" lrx="3669" lry="3113"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-12-s5" ulx="3424" uly="3061" lrx="3665" lry="3210"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-13" type="verse" cert="0.901" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-13-s1" ulx="3017" uly="3061" lrx="3383" lry="3210"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-13-s2" ulx="3120" uly="3147" lrx="3647" lry="3306"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-14" type="verse" cert="0.893" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-14-s1" ulx="2898" uly="3147" lrx="3113" lry="3306"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-14-s2" ulx="2957" uly="3262" lrx="3672" lry="3388"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-14-s3" ulx="2987" uly="3339" lrx="3669" lry="3484"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-14-s4" ulx="2909" uly="3443" lrx="3680" lry="3573"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-14-s5" ulx="3469" uly="3543" lrx="3676" lry="3669"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-15" type="verse" cert="0.846" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-15-s1" ulx="2946" uly="3543" lrx="3454" lry="3669"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-15-s2" ulx="2924" uly="3632" lrx="3669" lry="3777"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-16" type="verse" cert="0.873" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-16-s1" ulx="2902" uly="3706" lrx="3687" lry="3873"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-16-s2" ulx="1990" uly="1279" lrx="2653" lry="1434"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-16-s3" ulx="1916" uly="1386" lrx="2650" lry="1531"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-16-s4" ulx="2023" uly="1501" lrx="2650" lry="1620"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-16-s5" ulx="2457" uly="1571" lrx="2676" lry="1712"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-17" type="verse" cert="0.929" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-17-s1" ulx="2031" uly="1571" lrx="2420" lry="1712"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-17-s2" ulx="1964" uly="1679" lrx="2676" lry="1805"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-17-s3" ulx="2390" uly="1749" lrx="2657" lry="1901"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-18" type="verse" cert="0.933" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-18-s1" ulx="1909" uly="1749" lrx="2368" lry="1901"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-18-s2" ulx="1927" uly="1853" lrx="2664" lry="1994"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-18-s3" ulx="2416" uly="1957" lrx="2653" lry="2083"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-19" type="verse" cert="0.931" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-19-s1" ulx="1953" uly="1957" lrx="2409" lry="2083"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-19-s2" ulx="1912" uly="2042" lrx="2661" lry="2183"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-19-s3" ulx="2005" uly="2120" lrx="2653" lry="2276"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-19-s4" ulx="1938" uly="2220" lrx="2650" lry="2368"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-19-s5" ulx="1990" uly="2335" lrx="2661" lry="2461"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-19-s6" ulx="2068" uly="2409" lrx="2650" lry="2554"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-19-s7" ulx="2401" uly="2498" lrx="2665" lry="2650"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-20" type="verse" cert="0.902" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-20-s1" ulx="1949" uly="2498" lrx="2368" lry="2650"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-20-s2" ulx="1960" uly="2594" lrx="2657" lry="2746"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-20-s3" ulx="1942" uly="2709" lrx="2657" lry="2835"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-20-s4" ulx="2524" uly="2780" lrx="2650" lry="2924"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-21" type="verse" cert="0.903" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-21-s1" ulx="1938" uly="2780" lrx="2498" lry="2924"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-21-s2" ulx="1927" uly="2884" lrx="2661" lry="3024"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-21-s3" ulx="1949" uly="2984" lrx="2687" lry="3102"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-10-22" type="verse" cert="0.9" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-10-22-s1" ulx="2038" uly="3073" lrx="2676" lry="3202"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-22-s2" ulx="2016" uly="3165" lrx="2668" lry="3291"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-22-s3" ulx="2031" uly="3258" lrx="2679" lry="3388"/>
+        <zone xml:id="f280B-zone-Ezekiel-10-22-s4" ulx="2279" uly="3336" lrx="2676" lry="3477"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-1" type="verse" cert="0.958" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-1-s1" ulx="1946" uly="3336" lrx="2268" lry="3477"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-1-s2" ulx="1916" uly="3428" lrx="2676" lry="3577"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-1-s3" ulx="1934" uly="3517" lrx="2687" lry="3666"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-1-s4" ulx="1964" uly="3632" lrx="2690" lry="3751"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-1-s5" ulx="1942" uly="3699" lrx="2683" lry="3851"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-1-s6" ulx="1075" uly="1316" lrx="1686" lry="1457"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-1-s7" ulx="1001" uly="1397" lrx="1694" lry="1557"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-2" type="verse" cert="0.936" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-2-s1" ulx="993" uly="1523" lrx="1701" lry="1731"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-2-s2" ulx="1052" uly="1675" lrx="1671" lry="1824"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-2-s3" ulx="986" uly="1790" lrx="1694" lry="1909"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-2-s4" ulx="1508" uly="1868" lrx="1675" lry="1998"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-3" type="verse" cert="0.882" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-3-s1" ulx="964" uly="1868" lrx="1486" lry="1998"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-3-s2" ulx="964" uly="1961" lrx="1682" lry="2083"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-3-s3" ulx="1490" uly="2042" lrx="1682" lry="2183"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-4" type="verse" cert="0.929" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-4-s1" ulx="989" uly="2042" lrx="1468" lry="2183"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-4-s2" ulx="1301" uly="2150" lrx="1668" lry="2276"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-5" type="verse" cert="0.939" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-5-s1" ulx="1001" uly="2150" lrx="1301" lry="2276"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-5-s2" ulx="960" uly="2231" lrx="1671" lry="2376"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-5-s3" ulx="993" uly="2316" lrx="1675" lry="2472"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-5-s4" ulx="949" uly="2413" lrx="1660" lry="2561"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-5-s5" ulx="1323" uly="2502" lrx="1671" lry="2650"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-6" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-6-s1" ulx="1067" uly="2502" lrx="1301" lry="2650"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-6-s2" ulx="1108" uly="2606" lrx="1682" lry="2746"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-6-s3" ulx="1064" uly="2687" lrx="1694" lry="2850"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-7" type="verse" cert="0.911" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-7-s1" ulx="1075" uly="2835" lrx="1682" lry="3028"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-7-s2" ulx="949" uly="2965" lrx="1682" lry="3110"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-7-s3" ulx="1060" uly="3065" lrx="1679" lry="3191"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-7-s4" ulx="1064" uly="3139" lrx="1690" lry="3295"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-8" type="verse" cert="0.952" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-8-s1" ulx="952" uly="3139" lrx="1049" lry="3295"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-8-s2" ulx="971" uly="3228" lrx="1694" lry="3388"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-8-s3" ulx="1271" uly="3339" lrx="1697" lry="3484"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-9" type="verse" cert="0.898" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-9-s1" ulx="978" uly="3339" lrx="1256" lry="3484"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-9-s2" ulx="975" uly="3432" lrx="1682" lry="3573"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-9-s3" ulx="1104" uly="3532" lrx="1675" lry="3662"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-9-s4" ulx="1460" uly="3588" lrx="1686" lry="3758"/>
+      </zone>
+      <zone xml:id="f280B-zone-Ezekiel-11-10" type="verse" cert="0.683" resp="#source-masoretica">
+        <zone xml:id="f280B-zone-Ezekiel-11-10-s1" ulx="956" uly="3588" lrx="1442" lry="3758"/>
+        <zone xml:id="f280B-zone-Ezekiel-11-10-s2" ulx="960" uly="3688" lrx="1694" lry="3858"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +237,7 @@
         <ab>
         <cb xml:id="f280B-cb-1" n="1"/>
           <lb xml:id="f280B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Ezekiel-10-7" xml:id="f280B-v-Ezekiel-10-7"/>
+            <milestone unit="verse" n="Ezekiel-10-7" xml:id="f280B-v-Ezekiel-10-7" facs="#f280B-zone-Ezekiel-10-7"/>
             <w xml:id="f280B-w-191085">הַכְּרֻבִ֔ים</w>
             <w xml:id="f280B-w-191086">וַיִּשָּׂא֙</w>
             <w xml:id="f280B-w-191087">וַיִּתֵּ֔ן</w>
@@ -85,7 +250,7 @@
             <w xml:id="f280B-w-191093">וַיֵּצֵֽא</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191093">׃</pc>
           <lb xml:id="f280B-lb-1-3" n="3"/>
-            <milestone unit="verse" n="Ezekiel-10-8" xml:id="f280B-v-Ezekiel-10-8"/>
+            <milestone unit="verse" n="Ezekiel-10-8" xml:id="f280B-v-Ezekiel-10-8" facs="#f280B-zone-Ezekiel-10-8"/>
             <w xml:id="f280B-w-191094">וַיֵּרָ֖א</w>
             <w xml:id="f280B-w-191095">לַכְּרֻבִ֑ים</w>
             <w xml:id="f280B-w-191096">תַּבְנִית֙</w>
@@ -95,7 +260,7 @@
             <w xml:id="f280B-w-191099">תַּ֖חַת</w>
             <w xml:id="f280B-w-191100">כַּנְפֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191100">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-9" xml:id="f280B-v-Ezekiel-10-9"/>
+            <milestone unit="verse" n="Ezekiel-10-9" xml:id="f280B-v-Ezekiel-10-9" facs="#f280B-zone-Ezekiel-10-9"/>
             <w xml:id="f280B-w-191101">וָאֶרְאֶ֗ה</w>
             <w xml:id="f280B-w-191102">וְהִנֵּ֨ה</w>
           <lb xml:id="f280B-lb-1-5" n="5"/>
@@ -124,7 +289,7 @@
             <w xml:id="f280B-w-191121">תַּרְשִֽׁישׁ</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191121">׃</pc>
           <lb xml:id="f280B-lb-1-10" n="10"/>
-            <milestone unit="verse" n="Ezekiel-10-10" xml:id="f280B-v-Ezekiel-10-10"/>
+            <milestone unit="verse" n="Ezekiel-10-10" xml:id="f280B-v-Ezekiel-10-10" facs="#f280B-zone-Ezekiel-10-10"/>
             <w xml:id="f280B-w-191122">וּמַ֨רְאֵיהֶ֔ם</w>
             <w xml:id="f280B-w-191123">דְּמ֥וּת</w>
             <w xml:id="f280B-w-191124">אֶחָ֖ד</w>
@@ -137,7 +302,7 @@
             <w xml:id="f280B-w-191129">בְּת֥וֹךְ</w>
             <w xml:id="f280B-w-191130">הָאוֹפָֽן</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191130">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-11" xml:id="f280B-v-Ezekiel-10-11"/>
+            <milestone unit="verse" n="Ezekiel-10-11" xml:id="f280B-v-Ezekiel-10-11" facs="#f280B-zone-Ezekiel-10-11"/>
             <w xml:id="f280B-w-191131">בְּלֶכְתָּ֗ם</w>
           <lb xml:id="f280B-lb-1-13" n="13"/>
             <w xml:id="f280B-w-191132">אֶל־</w>
@@ -161,7 +326,7 @@
             <w xml:id="f280B-w-191147">יִסַּ֖בּוּ</w>
             <w xml:id="f280B-w-191148">בְּלֶכְתָּֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191148">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-12" xml:id="f280B-v-Ezekiel-10-12"/>
+            <milestone unit="verse" n="Ezekiel-10-12" xml:id="f280B-v-Ezekiel-10-12" facs="#f280B-zone-Ezekiel-10-12"/>
             <w xml:id="f280B-w-191149">וְכָל־</w>
           <lb xml:id="f280B-lb-1-17" n="17"/>
             <w xml:id="f280B-w-191150">בְּשָׂרָם֙</w>
@@ -178,7 +343,7 @@
           <lb xml:id="f280B-lb-1-20" n="20"/>
             <w xml:id="f280B-w-191159">אוֹפַנֵּיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191159">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-13" xml:id="f280B-v-Ezekiel-10-13"/>
+            <milestone unit="verse" n="Ezekiel-10-13" xml:id="f280B-v-Ezekiel-10-13" facs="#f280B-zone-Ezekiel-10-13"/>
             <w xml:id="f280B-w-191160">לָא֖וֹפַנִּ֑ים</w>
             <w xml:id="f280B-w-191161">לָהֶ֛ם</w>
           <lb xml:id="f280B-lb-1-21" n="21"/>
@@ -186,7 +351,7 @@
             <w xml:id="f280B-w-191163">הַגַּלְגַּ֖ל</w>
             <w xml:id="f280B-w-191164">בְּאָזְנָֽי</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191164">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-14" xml:id="f280B-v-Ezekiel-10-14"/>
+            <milestone unit="verse" n="Ezekiel-10-14" xml:id="f280B-v-Ezekiel-10-14" facs="#f280B-zone-Ezekiel-10-14"/>
             <w xml:id="f280B-w-191165">וְאַרְבָּעָ֥ה</w>
           <lb xml:id="f280B-lb-1-22" n="22"/>
             <w xml:id="f280B-w-191166">פָנִ֖ים</w>
@@ -209,7 +374,7 @@
             <w xml:id="f280B-w-191180">פְּנֵי־</w>
             <w xml:id="f280B-w-191181">נָֽשֶׁר</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191181">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-15" xml:id="f280B-v-Ezekiel-10-15"/>
+            <milestone unit="verse" n="Ezekiel-10-15" xml:id="f280B-v-Ezekiel-10-15" facs="#f280B-zone-Ezekiel-10-15"/>
             <w xml:id="f280B-w-191182">וַיֵּרֹ֖מּוּ</w>
             <w xml:id="f280B-w-191183">הַכְּרוּבִ֑ים</w>
             <w xml:id="f280B-w-191184">הִ֣יא</w>
@@ -221,7 +386,7 @@
             <w xml:id="f280B-w-191189">כְּבָֽר</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191189">׃</pc>
           <lb xml:id="f280B-lb-1-27" n="27"/>
-            <milestone unit="verse" n="Ezekiel-10-16" xml:id="f280B-v-Ezekiel-10-16"/>
+            <milestone unit="verse" n="Ezekiel-10-16" xml:id="f280B-v-Ezekiel-10-16" facs="#f280B-zone-Ezekiel-10-16"/>
             <w xml:id="f280B-w-191190">וּבְלֶ֙כֶת֙</w>
             <w xml:id="f280B-w-191191">הַכְּרוּבִ֔ים</w>
             <w xml:id="f280B-w-191192">יֵלְכ֥וּ</w>
@@ -246,7 +411,7 @@
           <lb xml:id="f280B-lb-2-4" n="4"/>
             <w xml:id="f280B-w-191207">מֵאֶצְלָֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191207">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-17" xml:id="f280B-v-Ezekiel-10-17"/>
+            <milestone unit="verse" n="Ezekiel-10-17" xml:id="f280B-v-Ezekiel-10-17" facs="#f280B-zone-Ezekiel-10-17"/>
             <w xml:id="f280B-w-191208">בְּעָמְדָ֣ם</w>
             <w xml:id="f280B-w-191209">יַעֲמֹ֔דוּ</w>
           <lb xml:id="f280B-lb-2-5" n="5"/>
@@ -259,7 +424,7 @@
             <w xml:id="f280B-w-191215">הַחַיָּ֖ה</w>
             <w xml:id="f280B-w-191216">בָּהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191216">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-18" xml:id="f280B-v-Ezekiel-10-18"/>
+            <milestone unit="verse" n="Ezekiel-10-18" xml:id="f280B-v-Ezekiel-10-18" facs="#f280B-zone-Ezekiel-10-18"/>
             <w xml:id="f280B-w-191217">וַיֵּצֵא֙</w>
             <w xml:id="f280B-w-191218">כְּב֣וֹד</w>
             <w xml:id="f280B-w-191219">יְהוָ֔ה</w>
@@ -272,7 +437,7 @@
           <lb xml:id="f280B-lb-2-8" n="8"/>
             <w xml:id="f280B-w-191225">הַכְּרוּבִֽים</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191225">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-19" xml:id="f280B-v-Ezekiel-10-19"/>
+            <milestone unit="verse" n="Ezekiel-10-19" xml:id="f280B-v-Ezekiel-10-19" facs="#f280B-zone-Ezekiel-10-19"/>
             <w xml:id="f280B-w-191226">וַיִּשְׂא֣וּ</w>
             <w xml:id="f280B-w-191227">הַכְּרוּבִ֣ים</w>
           <lb xml:id="f280B-lb-2-9" n="9"/>
@@ -302,7 +467,7 @@
           <lb xml:id="f280B-lb-2-14" n="14"/>
             <w xml:id="f280B-w-191247">מִלְמָֽעְלָה</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191247">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-20" xml:id="f280B-v-Ezekiel-10-20"/>
+            <milestone unit="verse" n="Ezekiel-10-20" xml:id="f280B-v-Ezekiel-10-20" facs="#f280B-zone-Ezekiel-10-20"/>
             <w xml:id="f280B-w-191248">הִ֣יא</w>
             <w xml:id="f280B-w-191249">הַחַיָּ֗ה</w>
             <w xml:id="f280B-w-191250">אֲשֶׁ֥ר</w>
@@ -320,7 +485,7 @@
           <lb xml:id="f280B-lb-2-17" n="17"/>
             <w xml:id="f280B-w-191260">הֵֽמָּה</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191260">׃</pc>
-            <milestone unit="verse" n="Ezekiel-10-21" xml:id="f280B-v-Ezekiel-10-21"/>
+            <milestone unit="verse" n="Ezekiel-10-21" xml:id="f280B-v-Ezekiel-10-21" facs="#f280B-zone-Ezekiel-10-21"/>
             <w xml:id="f280B-w-191261">אַרְבָּעָ֨ה</w>
             <w xml:id="f280B-w-191262">אַרְבָּעָ֤ה</w>
             <w xml:id="f280B-w-191263">פָנִים֙</w>
@@ -337,7 +502,7 @@
             <w xml:id="f280B-w-191272">כַּנְפֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191272">׃</pc>
           <lb xml:id="f280B-lb-2-20" n="20"/>
-            <milestone unit="verse" n="Ezekiel-10-22" xml:id="f280B-v-Ezekiel-10-22"/>
+            <milestone unit="verse" n="Ezekiel-10-22" xml:id="f280B-v-Ezekiel-10-22" facs="#f280B-zone-Ezekiel-10-22"/>
             <w xml:id="f280B-w-191273">וּדְמ֣וּת</w>
             <w xml:id="f280B-w-191274">פְּנֵיהֶ֔ם</w>
             <w xml:id="f280B-w-191275">הֵ֣מָּה</w>
@@ -358,7 +523,7 @@
             <w xml:id="f280B-w-191287">פָּנָ֖יו</w>
             <w xml:id="f280B-w-191288">יֵלֵֽכוּ</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191288">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-1" xml:id="f280B-v-Ezekiel-11-1"/>
+            <milestone unit="verse" n="Ezekiel-11-1" xml:id="f280B-v-Ezekiel-11-1" facs="#f280B-zone-Ezekiel-11-1"/>
             <w xml:id="f280B-w-191289">וַתִּשָּׂ֨א</w>
             <w xml:id="f280B-w-191290">אֹתִ֜י</w>
           <lb xml:id="f280B-lb-2-24" n="24"/>
@@ -397,10 +562,10 @@
             <w xml:id="f280B-w-191317">שָׂרֵ֖י</w>
             <w xml:id="f280B-w-191318">הָעָֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191318">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f280B-s-Ezekiel-11-1"/>
           <lb xml:id="f280B-lb-3-3" n="3"/>
+            <milestone unit="section" subtype="pe" xml:id="f280B-s-Ezekiel-11-1"/>
           <lb xml:id="f280B-lb-3-4" n="4"/>
-            <milestone unit="verse" n="Ezekiel-11-2" xml:id="f280B-v-Ezekiel-11-2"/>
+            <milestone unit="verse" n="Ezekiel-11-2" xml:id="f280B-v-Ezekiel-11-2" facs="#f280B-zone-Ezekiel-11-2"/>
             <w xml:id="f280B-w-191319">וַיֹּ֖אמֶר</w>
             <w xml:id="f280B-w-191320">אֵלָ֑י</w>
             <w xml:id="f280B-w-191321">בֶּן־</w>
@@ -418,7 +583,7 @@
           <lb xml:id="f280B-lb-3-7" n="7"/>
             <w xml:id="f280B-w-191331">הַזֹּֽאת</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191331">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-3" xml:id="f280B-v-Ezekiel-11-3"/>
+            <milestone unit="verse" n="Ezekiel-11-3" xml:id="f280B-v-Ezekiel-11-3" facs="#f280B-zone-Ezekiel-11-3"/>
             <w xml:id="f280B-w-191332">הָאֹ֣מְרִ֔ים</w>
             <w xml:id="f280B-w-191333">לֹ֥א</w>
             <w xml:id="f280B-w-191334">בְקָר֖וֹב</w>
@@ -431,7 +596,7 @@
           <lb xml:id="f280B-lb-3-9" n="9"/>
             <w xml:id="f280B-w-191340">הַבָּשָֽׂר</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191340">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-4" xml:id="f280B-v-Ezekiel-11-4"/>
+            <milestone unit="verse" n="Ezekiel-11-4" xml:id="f280B-v-Ezekiel-11-4" facs="#f280B-zone-Ezekiel-11-4"/>
             <w xml:id="f280B-w-191341">לָכֵ֖ן</w>
             <w xml:id="f280B-w-191342">הִנָּבֵ֣א</w>
             <w xml:id="f280B-w-191343">עֲלֵיהֶ֑ם</w>
@@ -440,7 +605,7 @@
             <w xml:id="f280B-w-191345">בֶּן־</w>
             <w xml:id="f280B-w-191346">אָדָֽם</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191346">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-5" xml:id="f280B-v-Ezekiel-11-5"/>
+            <milestone unit="verse" n="Ezekiel-11-5" xml:id="f280B-v-Ezekiel-11-5" facs="#f280B-zone-Ezekiel-11-5"/>
             <w xml:id="f280B-w-191347">וַתִּפֹּ֣ל</w>
             <w xml:id="f280B-w-191348">עָלַי֮</w>
           <lb xml:id="f280B-lb-3-11" n="11"/>
@@ -464,7 +629,7 @@
             <w xml:id="f280B-w-191363">אֲנִ֥י</w>
             <w xml:id="f280B-w-191364">יְדַעְתִּֽיהָ</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191364">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-6" xml:id="f280B-v-Ezekiel-11-6"/>
+            <milestone unit="verse" n="Ezekiel-11-6" xml:id="f280B-v-Ezekiel-11-6" facs="#f280B-zone-Ezekiel-11-6"/>
             <w xml:id="f280B-w-191365">הִרְבֵּיתֶ֥ם</w>
           <lb xml:id="f280B-lb-3-15" n="15"/>
             <w xml:id="f280B-w-191366">חַלְלֵיכֶ֖ם</w>
@@ -475,10 +640,10 @@
             <w xml:id="f280B-w-191370">חוּצֹתֶ֖יהָ</w>
             <w xml:id="f280B-w-191371">חָלָֽל</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191371">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f280B-s-Ezekiel-11-6"/>
           <lb xml:id="f280B-lb-3-17" n="17"/>
+            <milestone unit="section" subtype="pe" xml:id="f280B-s-Ezekiel-11-6"/>
           <lb xml:id="f280B-lb-3-18" n="18"/>
-            <milestone unit="verse" n="Ezekiel-11-7" xml:id="f280B-v-Ezekiel-11-7"/>
+            <milestone unit="verse" n="Ezekiel-11-7" xml:id="f280B-v-Ezekiel-11-7" facs="#f280B-zone-Ezekiel-11-7"/>
             <w xml:id="f280B-w-191372">לָכֵ֗ן</w>
             <w xml:id="f280B-w-191373">כֹּֽה־</w>
             <w xml:id="f280B-w-191374">אָמַר֮</w>
@@ -499,7 +664,7 @@
             <w xml:id="f280B-w-191386">הוֹצִ֥יא</w>
             <w xml:id="f280B-w-191387">מִתּוֹכָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191387">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-8" xml:id="f280B-v-Ezekiel-11-8"/>
+            <milestone unit="verse" n="Ezekiel-11-8" xml:id="f280B-v-Ezekiel-11-8" facs="#f280B-zone-Ezekiel-11-8"/>
             <w xml:id="f280B-w-191388">חֶ֖רֶב</w>
           <lb xml:id="f280B-lb-3-22" n="22"/>
             <w xml:id="f280B-w-191389">יְרֵאתֶ֑ם</w>
@@ -511,7 +676,7 @@
             <w xml:id="f280B-w-191394">אֲדֹנָ֥י</w>
             <w xml:id="f280B-w-191395">יְהוִֽה</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191395">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-9" xml:id="f280B-v-Ezekiel-11-9"/>
+            <milestone unit="verse" n="Ezekiel-11-9" xml:id="f280B-v-Ezekiel-11-9" facs="#f280B-zone-Ezekiel-11-9"/>
             <w xml:id="f280B-w-191396">וְהוֹצֵאתִ֤י</w>
           <lb xml:id="f280B-lb-3-24" n="24"/>
             <w xml:id="f280B-w-191397">אֶתְכֶם֙</w>
@@ -526,7 +691,7 @@
           <lb xml:id="f280B-lb-3-26" n="26"/>
             <w xml:id="f280B-w-191405">שְׁפָטִֽים</w>
             <pc type="sof-pasuq" xml:id="f280B-pc-191405">׃</pc>
-            <milestone unit="verse" n="Ezekiel-11-10" xml:id="f280B-v-Ezekiel-11-10"/>
+            <milestone unit="verse" n="Ezekiel-11-10" xml:id="f280B-v-Ezekiel-11-10" facs="#f280B-zone-Ezekiel-11-10"/>
             <w xml:id="f280B-w-191406">בַּחֶ֣רֶב</w>
             <w xml:id="f280B-w-191407">תִּפֹּ֔לוּ</w>
             <w xml:id="f280B-w-191408">עַל־</w>

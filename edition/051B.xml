@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 23 verse zones (88 line segments) from Masoretica HTR page n101. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n101.json"/>
+      </change>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
       </change>
@@ -65,10 +72,145 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-051B">
+    <surface xml:id="surf-051B" ulx="0" uly="0" lrx="4447" lry="5231">
       <graphic xml:id="f051B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F051B.jpg">
         <desc type="sha256">1552fd09381a295424cfaa45fa98acb15d3a4941396c3b67db05fb001269834e</desc>
       </graphic>
+      <graphic xml:id="f051B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0101.jp2/full/max/0/default.jpg" width="4447px" height="5231px"/>
+      <zone xml:id="f051B-zone-Exodus-32-32" type="verse" cert="0.529" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-32-32-s1" ulx="3432" uly="1334" lrx="3754" lry="1474"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-32-33" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-32-33-s1" ulx="3061" uly="1334" lrx="3406" lry="1474"/>
+        <zone xml:id="f051B-zone-Exodus-32-33-s2" ulx="3050" uly="1430" lrx="3761" lry="1556"/>
+        <zone xml:id="f051B-zone-Exodus-32-33-s3" ulx="3339" uly="1497" lrx="3758" lry="1667"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-32-34" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-32-34-s1" ulx="3065" uly="1497" lrx="3328" lry="1667"/>
+        <zone xml:id="f051B-zone-Exodus-32-34-s2" ulx="3128" uly="1615" lrx="3784" lry="1760"/>
+        <zone xml:id="f051B-zone-Exodus-32-34-s3" ulx="3054" uly="1708" lrx="3776" lry="1849"/>
+        <zone xml:id="f051B-zone-Exodus-32-34-s4" ulx="3050" uly="1808" lrx="3769" lry="1956"/>
+        <zone xml:id="f051B-zone-Exodus-32-34-s5" ulx="3324" uly="1912" lrx="3761" lry="2038"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-32-35" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-32-35-s1" ulx="3039" uly="1912" lrx="3306" lry="2038"/>
+        <zone xml:id="f051B-zone-Exodus-32-35-s2" ulx="3050" uly="2004" lrx="3773" lry="2126"/>
+        <zone xml:id="f051B-zone-Exodus-32-35-s3" ulx="3020" uly="2078" lrx="3773" lry="2227"/>
+        <zone xml:id="f051B-zone-Exodus-32-35-s4" ulx="3595" uly="2175" lrx="3776" lry="2315"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-1" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-1-s1" ulx="3020" uly="2219" lrx="3595" lry="2397"/>
+        <zone xml:id="f051B-zone-Exodus-33-1-s2" ulx="3076" uly="2349" lrx="3765" lry="2504"/>
+        <zone xml:id="f051B-zone-Exodus-33-1-s3" ulx="3013" uly="2456" lrx="3780" lry="2608"/>
+        <zone xml:id="f051B-zone-Exodus-33-1-s4" ulx="3098" uly="2564" lrx="3769" lry="2690"/>
+        <zone xml:id="f051B-zone-Exodus-33-1-s5" ulx="3061" uly="2630" lrx="3769" lry="2786"/>
+        <zone xml:id="f051B-zone-Exodus-33-1-s6" ulx="3131" uly="2730" lrx="3773" lry="2879"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-2" type="verse" cert="0.933" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-2-s1" ulx="3176" uly="2819" lrx="3787" lry="2967"/>
+        <zone xml:id="f051B-zone-Exodus-33-2-s2" ulx="3020" uly="2912" lrx="3784" lry="3056"/>
+        <zone xml:id="f051B-zone-Exodus-33-2-s3" ulx="3028" uly="3008" lrx="3795" lry="3153"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-3" type="verse" cert="0.92" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-3-s1" ulx="3057" uly="3093" lrx="3780" lry="3260"/>
+        <zone xml:id="f051B-zone-Exodus-33-3-s2" ulx="3209" uly="3193" lrx="3780" lry="3353"/>
+        <zone xml:id="f051B-zone-Exodus-33-3-s3" ulx="3061" uly="3305" lrx="3784" lry="3434"/>
+        <zone xml:id="f051B-zone-Exodus-33-3-s4" ulx="3621" uly="3405" lrx="3795" lry="3523"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-4" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-4-s1" ulx="3083" uly="3405" lrx="3609" lry="3523"/>
+        <zone xml:id="f051B-zone-Exodus-33-4-s2" ulx="3068" uly="3479" lrx="3795" lry="3608"/>
+        <zone xml:id="f051B-zone-Exodus-33-4-s3" ulx="3117" uly="3553" lrx="3824" lry="3701"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-5" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-5-s1" ulx="3054" uly="3642" lrx="3817" lry="3786"/>
+        <zone xml:id="f051B-zone-Exodus-33-5-s2" ulx="3113" uly="3723" lrx="3806" lry="3894"/>
+        <zone xml:id="f051B-zone-Exodus-33-5-s3" ulx="2153" uly="1308" lrx="2779" lry="1452"/>
+        <zone xml:id="f051B-zone-Exodus-33-5-s4" ulx="2127" uly="1389" lrx="2779" lry="1545"/>
+        <zone xml:id="f051B-zone-Exodus-33-5-s5" ulx="2086" uly="1493" lrx="2787" lry="1649"/>
+        <zone xml:id="f051B-zone-Exodus-33-5-s6" ulx="2175" uly="1608" lrx="2805" lry="1738"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-6" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-6-s1" ulx="2109" uly="1700" lrx="2809" lry="1841"/>
+        <zone xml:id="f051B-zone-Exodus-33-6-s2" ulx="2368" uly="1812" lrx="2798" lry="1938"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-7" type="verse" cert="0.98" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-7-s1" ulx="2153" uly="1812" lrx="2361" lry="1938"/>
+        <zone xml:id="f051B-zone-Exodus-33-7-s2" ulx="2064" uly="1904" lrx="2813" lry="2026"/>
+        <zone xml:id="f051B-zone-Exodus-33-7-s3" ulx="2105" uly="1975" lrx="2798" lry="2127"/>
+        <zone xml:id="f051B-zone-Exodus-33-7-s4" ulx="2079" uly="2064" lrx="2790" lry="2223"/>
+        <zone xml:id="f051B-zone-Exodus-33-7-s5" ulx="2123" uly="2156" lrx="2816" lry="2312"/>
+        <zone xml:id="f051B-zone-Exodus-33-7-s6" ulx="2094" uly="2267" lrx="2805" lry="2390"/>
+        <zone xml:id="f051B-zone-Exodus-33-7-s7" ulx="2613" uly="2341" lrx="2813" lry="2486"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-8" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-8-s1" ulx="2120" uly="2341" lrx="2598" lry="2486"/>
+        <zone xml:id="f051B-zone-Exodus-33-8-s2" ulx="2146" uly="2438" lrx="2816" lry="2582"/>
+        <zone xml:id="f051B-zone-Exodus-33-8-s3" ulx="2038" uly="2530" lrx="2828" lry="2686"/>
+        <zone xml:id="f051B-zone-Exodus-33-8-s4" ulx="2098" uly="2653" lrx="2816" lry="2771"/>
+        <zone xml:id="f051B-zone-Exodus-33-8-s5" ulx="2590" uly="2712" lrx="2809" lry="2864"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-9" type="verse" cert="0.917" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-9-s1" ulx="2120" uly="2712" lrx="2576" lry="2864"/>
+        <zone xml:id="f051B-zone-Exodus-33-9-s2" ulx="2142" uly="2812" lrx="2813" lry="2956"/>
+        <zone xml:id="f051B-zone-Exodus-33-9-s3" ulx="2023" uly="2908" lrx="2831" lry="3053"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-10" type="verse" cert="0.965" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-10-s1" ulx="2135" uly="2993" lrx="2839" lry="3138"/>
+        <zone xml:id="f051B-zone-Exodus-33-10-s2" ulx="2105" uly="3090" lrx="2824" lry="3234"/>
+        <zone xml:id="f051B-zone-Exodus-33-10-s3" ulx="2216" uly="3179" lrx="2828" lry="3327"/>
+        <zone xml:id="f051B-zone-Exodus-33-10-s4" ulx="2535" uly="3268" lrx="2835" lry="3427"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-11" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-11-s1" ulx="2157" uly="3268" lrx="2535" lry="3427"/>
+        <zone xml:id="f051B-zone-Exodus-33-11-s2" ulx="2127" uly="3371" lrx="2831" lry="3516"/>
+        <zone xml:id="f051B-zone-Exodus-33-11-s3" ulx="2094" uly="3475" lrx="2850" lry="3601"/>
+        <zone xml:id="f051B-zone-Exodus-33-11-s4" ulx="2105" uly="3560" lrx="2835" lry="3682"/>
+        <zone xml:id="f051B-zone-Exodus-33-11-s5" ulx="2142" uly="3627" lrx="2839" lry="3782"/>
+        <zone xml:id="f051B-zone-Exodus-33-11-s6" ulx="2646" uly="3731" lrx="2835" lry="3871"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-12" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-12-s1" ulx="1067" uly="1308" lrx="1664" lry="1460"/>
+        <zone xml:id="f051B-zone-Exodus-33-12-s2" ulx="1108" uly="1411" lrx="1816" lry="1552"/>
+        <zone xml:id="f051B-zone-Exodus-33-12-s3" ulx="1160" uly="1497" lrx="1816" lry="1649"/>
+        <zone xml:id="f051B-zone-Exodus-33-12-s4" ulx="1130" uly="1615" lrx="1827" lry="1734"/>
+        <zone xml:id="f051B-zone-Exodus-33-12-s5" ulx="1145" uly="1704" lrx="1838" lry="1834"/>
+        <zone xml:id="f051B-zone-Exodus-33-12-s6" ulx="1175" uly="1789" lrx="1838" lry="1934"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-13" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-13-s1" ulx="1204" uly="1882" lrx="1846" lry="2030"/>
+        <zone xml:id="f051B-zone-Exodus-33-13-s2" ulx="1093" uly="1967" lrx="1849" lry="2126"/>
+        <zone xml:id="f051B-zone-Exodus-33-13-s3" ulx="1156" uly="2082" lrx="1853" lry="2212"/>
+        <zone xml:id="f051B-zone-Exodus-33-13-s4" ulx="1153" uly="2156" lrx="1842" lry="2301"/>
+        <zone xml:id="f051B-zone-Exodus-33-13-s5" ulx="1742" uly="2241" lrx="1849" lry="2397"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-14" type="verse" cert="0.927" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-14-s1" ulx="1112" uly="2241" lrx="1723" lry="2397"/>
+        <zone xml:id="f051B-zone-Exodus-33-14-s2" ulx="1775" uly="2349" lrx="1857" lry="2497"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-15" type="verse" cert="0.976" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-15-s1" ulx="1104" uly="2349" lrx="1749" lry="2497"/>
+        <zone xml:id="f051B-zone-Exodus-33-15-s2" ulx="1275" uly="2438" lrx="1846" lry="2590"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-17" type="verse" cert="0.985" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-17-s1" ulx="1130" uly="2979" lrx="1886" lry="3134"/>
+        <zone xml:id="f051B-zone-Exodus-33-17-s2" ulx="1115" uly="3090" lrx="1875" lry="3230"/>
+        <zone xml:id="f051B-zone-Exodus-33-17-s3" ulx="1149" uly="3175" lrx="1875" lry="3327"/>
+        <zone xml:id="f051B-zone-Exodus-33-17-s4" ulx="1742" uly="3301" lrx="1883" lry="3419"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-18" type="verse" cert="0.949" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-18-s1" ulx="1134" uly="3301" lrx="1731" lry="3419"/>
+        <zone xml:id="f051B-zone-Exodus-33-18-s2" ulx="1727" uly="3368" lrx="1886" lry="3516"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-19" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-19-s1" ulx="1141" uly="3368" lrx="1712" lry="3516"/>
+        <zone xml:id="f051B-zone-Exodus-33-19-s2" ulx="1171" uly="3464" lrx="1890" lry="3594"/>
+        <zone xml:id="f051B-zone-Exodus-33-19-s3" ulx="1208" uly="3557" lrx="1912" lry="3675"/>
+        <zone xml:id="f051B-zone-Exodus-33-19-s4" ulx="1145" uly="3619" lrx="1897" lry="3771"/>
+      </zone>
+      <zone xml:id="f051B-zone-Exodus-33-20" type="verse" cert="0.618" resp="#source-masoretica">
+        <zone xml:id="f051B-zone-Exodus-33-20-s1" ulx="1186" uly="3716" lrx="1901" lry="3864"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -79,11 +221,11 @@
         <ab>
         <cb xml:id="f051B-cb-1" n="1"/>
           <lb xml:id="f051B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Exodus-32-32" xml:id="f051B-v-Exodus-32-32"/>
+            <milestone unit="verse" n="Exodus-32-32" xml:id="f051B-v-Exodus-32-32" facs="#f051B-zone-Exodus-32-32"/>
             <w xml:id="f051B-w-33653">אֲשֶׁ֥ר</w>
             <w xml:id="f051B-w-33654">כָּתָֽבְתָּ</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33654">׃</pc>
-            <milestone unit="verse" n="Exodus-32-33" xml:id="f051B-v-Exodus-32-33"/>
+            <milestone unit="verse" n="Exodus-32-33" xml:id="f051B-v-Exodus-32-33" facs="#f051B-zone-Exodus-32-33"/>
             <w xml:id="f051B-w-33655">וַיֹּ֥אמֶר</w>
             <w xml:id="f051B-w-33656">יְהוָ֖ה</w>
           <lb xml:id="f051B-lb-1-2" n="2"/>
@@ -97,7 +239,7 @@
             <w xml:id="f051B-w-33663">אֶמְחֶ֖נּוּ</w>
             <w xml:id="f051B-w-33664">מִסִּפְרִֽי</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33664">׃</pc>
-            <milestone unit="verse" n="Exodus-32-34" xml:id="f051B-v-Exodus-32-34"/>
+            <milestone unit="verse" n="Exodus-32-34" xml:id="f051B-v-Exodus-32-34" facs="#f051B-zone-Exodus-32-34"/>
             <w xml:id="f051B-w-33665">וְעַתָּ֞ה</w>
             <w xml:id="f051B-w-33666">לֵ֣ךְ</w>
             <pc type="paseq" xml:id="f051B-pc-33666">׀</pc>
@@ -122,7 +264,7 @@
             <w xml:id="f051B-w-33681">עֲלֵיהֶ֖ם</w>
             <w xml:id="f051B-w-33682">חַטָּאתָֽם</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33682">׃</pc>
-            <milestone unit="verse" n="Exodus-32-35" xml:id="f051B-v-Exodus-32-35"/>
+            <milestone unit="verse" n="Exodus-32-35" xml:id="f051B-v-Exodus-32-35" facs="#f051B-zone-Exodus-32-35"/>
             <w xml:id="f051B-w-33683">וַיִּגֹּ֥ף</w>
             <w xml:id="f051B-w-33684">יְהוָ֖ה</w>
           <lb xml:id="f051B-lb-1-8" n="8"/>
@@ -141,7 +283,7 @@
             <pc type="sof-pasuq" xml:id="f051B-pc-33694">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f051B-s-Exodus-32-35"/>
           <lb xml:id="f051B-lb-1-11" n="11"/>
-            <milestone unit="verse" n="Exodus-33-1" xml:id="f051B-v-Exodus-33-1"/>
+            <milestone unit="verse" n="Exodus-33-1" xml:id="f051B-v-Exodus-33-1" facs="#f051B-zone-Exodus-33-1"/>
             <w xml:id="f051B-w-33695">וַיְדַבֵּ֨ר</w>
             <w xml:id="f051B-w-33696">יְהוָ֤ה</w>
             <w xml:id="f051B-w-33697">אֶל־</w>
@@ -172,7 +314,7 @@
             <w xml:id="f051B-w-33717">אֶתְּנֶֽנָּה</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33717">׃</pc>
           <lb xml:id="f051B-lb-1-17" n="17"/>
-            <milestone unit="verse" n="Exodus-33-2" xml:id="f051B-v-Exodus-33-2"/>
+            <milestone unit="verse" n="Exodus-33-2" xml:id="f051B-v-Exodus-33-2" facs="#f051B-zone-Exodus-33-2"/>
             <w xml:id="f051B-w-33718">וְשָׁלַחְתִּ֥י</w>
             <w xml:id="f051B-w-33719">לְפָנֶ֖יךָ</w>
             <w xml:id="f051B-w-33720">מַלְאָ֑ךְ</w>
@@ -188,7 +330,7 @@
             <w xml:id="f051B-w-33728">וְהַיְבוּסִֽי</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33728">׃</pc>
           <lb xml:id="f051B-lb-1-20" n="20"/>
-            <milestone unit="verse" n="Exodus-33-3" xml:id="f051B-v-Exodus-33-3"/>
+            <milestone unit="verse" n="Exodus-33-3" xml:id="f051B-v-Exodus-33-3" facs="#f051B-zone-Exodus-33-3"/>
             <w xml:id="f051B-w-33729">אֶל־</w>
             <w xml:id="f051B-w-33730">אֶ֛רֶץ</w>
             <w xml:id="f051B-w-33731">זָבַ֥ת</w>
@@ -210,7 +352,7 @@
           <lb xml:id="f051B-lb-1-23" n="23"/>
             <w xml:id="f051B-w-33745">בַּדָּֽרֶךְ</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33745">׃</pc>
-            <milestone unit="verse" n="Exodus-33-4" xml:id="f051B-v-Exodus-33-4"/>
+            <milestone unit="verse" n="Exodus-33-4" xml:id="f051B-v-Exodus-33-4" facs="#f051B-zone-Exodus-33-4"/>
             <w xml:id="f051B-w-33746">וַיִּשְׁמַ֣ע</w>
             <w xml:id="f051B-w-33747">הָעָ֗ם</w>
             <w xml:id="f051B-w-33748">אֶת־</w>
@@ -227,7 +369,7 @@
             <w xml:id="f051B-w-33757">עָלָֽיו</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33757">׃</pc>
           <lb xml:id="f051B-lb-1-26" n="26"/>
-            <milestone unit="verse" n="Exodus-33-5" xml:id="f051B-v-Exodus-33-5"/>
+            <milestone unit="verse" n="Exodus-33-5" xml:id="f051B-v-Exodus-33-5" facs="#f051B-zone-Exodus-33-5"/>
             <w xml:id="f051B-w-33758">וַיֹּ֨אמֶר</w>
             <w xml:id="f051B-w-33759">יְהוָ֜ה</w>
             <w xml:id="f051B-w-33760">אֶל־</w>
@@ -261,7 +403,7 @@
             <w xml:id="f051B-w-33782">לָּֽךְ</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33782">׃</pc>
           <lb xml:id="f051B-lb-2-5" n="5"/>
-            <milestone unit="verse" n="Exodus-33-6" xml:id="f051B-v-Exodus-33-6"/>
+            <milestone unit="verse" n="Exodus-33-6" xml:id="f051B-v-Exodus-33-6" facs="#f051B-zone-Exodus-33-6"/>
             <w xml:id="f051B-w-33783">וַיִּֽתְנַצְּל֧וּ</w>
             <w xml:id="f051B-w-33784">בְנֵֽי־</w>
             <w xml:id="f051B-w-33785">יִשְׂרָאֵ֛ל</w>
@@ -271,7 +413,7 @@
             <w xml:id="f051B-w-33788">מֵהַ֥ר</w>
             <w xml:id="f051B-w-33789">חוֹרֵֽב</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33789">׃</pc>
-            <milestone unit="verse" n="Exodus-33-7" xml:id="f051B-v-Exodus-33-7"/>
+            <milestone unit="verse" n="Exodus-33-7" xml:id="f051B-v-Exodus-33-7" facs="#f051B-zone-Exodus-33-7"/>
             <w xml:id="f051B-w-33790">וּמֹשֶׁה֩</w>
           <lb xml:id="f051B-lb-2-7" n="7"/>
             <w xml:id="f051B-w-33791">יִקַּ֨ח</w>
@@ -306,7 +448,7 @@
           <lb xml:id="f051B-lb-2-12" n="12"/>
             <w xml:id="f051B-w-33815">לַֽמַּחֲנֶֽה</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33815">׃</pc>
-            <milestone unit="verse" n="Exodus-33-8" xml:id="f051B-v-Exodus-33-8"/>
+            <milestone unit="verse" n="Exodus-33-8" xml:id="f051B-v-Exodus-33-8" facs="#f051B-zone-Exodus-33-8"/>
             <w xml:id="f051B-w-33816">וְהָיָ֗ה</w>
             <w xml:id="f051B-w-33817">כְּצֵ֤את</w>
             <w xml:id="f051B-w-33818">מֹשֶׁה֙</w>
@@ -330,7 +472,7 @@
             <w xml:id="f051B-w-33832">בֹּא֖וֹ</w>
             <w xml:id="f051B-w-33833">הָאֹֽהֱלָה</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33833">׃</pc>
-            <milestone unit="verse" n="Exodus-33-9" xml:id="f051B-v-Exodus-33-9"/>
+            <milestone unit="verse" n="Exodus-33-9" xml:id="f051B-v-Exodus-33-9" facs="#f051B-zone-Exodus-33-9"/>
             <w xml:id="f051B-w-33834">וְהָיָ֗ה</w>
             <w xml:id="f051B-w-33835">כְּבֹ֤א</w>
             <w xml:id="f051B-w-33836">מֹשֶׁה֙</w>
@@ -348,7 +490,7 @@
             <w xml:id="f051B-w-33846">מֹשֶֽׁה</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33846">׃</pc>
           <lb xml:id="f051B-lb-2-19" n="19"/>
-            <milestone unit="verse" n="Exodus-33-10" xml:id="f051B-v-Exodus-33-10"/>
+            <milestone unit="verse" n="Exodus-33-10" xml:id="f051B-v-Exodus-33-10" facs="#f051B-zone-Exodus-33-10"/>
             <w xml:id="f051B-w-33847">וְרָאָ֤ה</w>
             <w xml:id="f051B-w-33848">כָל־</w>
             <w xml:id="f051B-w-33849">הָעָם֙</w>
@@ -369,7 +511,7 @@
             <w xml:id="f051B-w-33861">פֶּ֥תַח</w>
             <w xml:id="f051B-w-33862">אָהֳלֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33862">׃</pc>
-            <milestone unit="verse" n="Exodus-33-11" xml:id="f051B-v-Exodus-33-11"/>
+            <milestone unit="verse" n="Exodus-33-11" xml:id="f051B-v-Exodus-33-11" facs="#f051B-zone-Exodus-33-11"/>
             <w xml:id="f051B-w-33863">וְדִבֶּ֨ר</w>
             <w xml:id="f051B-w-33864">יְהוָ֤ה</w>
             <w xml:id="f051B-w-33865">אֶל־</w>
@@ -403,7 +545,7 @@
             <milestone unit="section" subtype="samekh" xml:id="f051B-s-Exodus-33-11"/>
         <cb xml:id="f051B-cb-3" n="3"/>
           <lb xml:id="f051B-lb-3-1" n="1"/>
-            <milestone unit="verse" n="Exodus-33-12" xml:id="f051B-v-Exodus-33-12"/>
+            <milestone unit="verse" n="Exodus-33-12" xml:id="f051B-v-Exodus-33-12" facs="#f051B-zone-Exodus-33-12"/>
             <w xml:id="f051B-w-33887">וַיֹּ֨אמֶר</w>
             <w xml:id="f051B-w-33888">מֹשֶׁ֜ה</w>
             <w xml:id="f051B-w-33889">אֶל־</w>
@@ -438,7 +580,7 @@
             <w xml:id="f051B-w-33913">בְּעֵינָֽי</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33913">׃</pc>
           <lb xml:id="f051B-lb-3-7" n="7"/>
-            <milestone unit="verse" n="Exodus-33-13" xml:id="f051B-v-Exodus-33-13"/>
+            <milestone unit="verse" n="Exodus-33-13" xml:id="f051B-v-Exodus-33-13" facs="#f051B-zone-Exodus-33-13"/>
             <w xml:id="f051B-w-33914">וְעַתָּ֡ה</w>
             <w xml:id="f051B-w-33915">אִם־</w>
             <w xml:id="f051B-w-33916">נָא֩</w>
@@ -464,7 +606,7 @@
           <lb xml:id="f051B-lb-3-11" n="11"/>
             <w xml:id="f051B-w-33933">הַזֶּֽה</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33933">׃</pc>
-            <milestone unit="verse" n="Exodus-33-14" xml:id="f051B-v-Exodus-33-14"/>
+            <milestone unit="verse" n="Exodus-33-14" xml:id="f051B-v-Exodus-33-14" facs="#f051B-zone-Exodus-33-14"/>
             <w xml:id="f051B-w-33934">וַיֹּאמַ֑ר</w>
             <w xml:id="f051B-w-33935">פָּנַ֥י</w>
             <w xml:id="f051B-w-33936">יֵלֵ֖כוּ</w>
@@ -472,7 +614,7 @@
           <lb xml:id="f051B-lb-3-12" n="12"/>
             <w xml:id="f051B-w-33938">לָֽךְ</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33938">׃</pc>
-            <milestone unit="verse" n="Exodus-33-15" xml:id="f051B-v-Exodus-33-15"/>
+            <milestone unit="verse" n="Exodus-33-15" xml:id="f051B-v-Exodus-33-15" facs="#f051B-zone-Exodus-33-15"/>
             <w xml:id="f051B-w-33939">וַיֹּ֖אמֶר</w>
             <w xml:id="f051B-w-33940">אֵלָ֑יו</w>
             <w xml:id="f051B-w-33941">אִם־</w>
@@ -515,7 +657,7 @@
             <pc type="sof-pasuq" xml:id="f051B-pc-33968">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f051B-s-Exodus-33-16"/>
           <lb xml:id="f051B-lb-3-19" n="19"/>
-            <milestone unit="verse" n="Exodus-33-17" xml:id="f051B-v-Exodus-33-17"/>
+            <milestone unit="verse" n="Exodus-33-17" xml:id="f051B-v-Exodus-33-17" facs="#f051B-zone-Exodus-33-17"/>
             <w xml:id="f051B-w-33969">וַיֹּ֤אמֶר</w>
             <w xml:id="f051B-w-33970">יְהוָה֙</w>
             <w xml:id="f051B-w-33971">אֶל־</w>
@@ -537,7 +679,7 @@
           <lb xml:id="f051B-lb-3-22" n="22"/>
             <w xml:id="f051B-w-33985">בְּשֵֽׁם</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33985">׃</pc>
-            <milestone unit="verse" n="Exodus-33-18" xml:id="f051B-v-Exodus-33-18"/>
+            <milestone unit="verse" n="Exodus-33-18" xml:id="f051B-v-Exodus-33-18" facs="#f051B-zone-Exodus-33-18"/>
             <w xml:id="f051B-w-33986">וַיֹּאמַ֑ר</w>
             <w xml:id="f051B-w-33987">הַרְאֵ֥נִי</w>
             <w xml:id="f051B-w-33988">נָ֖א</w>
@@ -545,7 +687,7 @@
           <lb xml:id="f051B-lb-3-23" n="23"/>
             <w xml:id="f051B-w-33990">כְּבֹדֶֽךָ</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-33990">׃</pc>
-            <milestone unit="verse" n="Exodus-33-19" xml:id="f051B-v-Exodus-33-19"/>
+            <milestone unit="verse" n="Exodus-33-19" xml:id="f051B-v-Exodus-33-19" facs="#f051B-zone-Exodus-33-19"/>
             <w xml:id="f051B-w-33991">וַיֹּ֗אמֶר</w>
             <w xml:id="f051B-w-33992">אֲנִ֨י</w>
             <w xml:id="f051B-w-33993">אַעֲבִ֤יר</w>
@@ -570,7 +712,7 @@
             <w xml:id="f051B-w-34009">אֲרַחֵֽם</w>
             <pc type="sof-pasuq" xml:id="f051B-pc-34009">׃</pc>
           <lb xml:id="f051B-lb-3-27" n="27"/>
-            <milestone unit="verse" n="Exodus-33-20" xml:id="f051B-v-Exodus-33-20"/>
+            <milestone unit="verse" n="Exodus-33-20" xml:id="f051B-v-Exodus-33-20" facs="#f051B-zone-Exodus-33-20"/>
             <w xml:id="f051B-w-34010">וַיֹּ֕אמֶר</w>
             <w xml:id="f051B-w-34011">לֹ֥א</w>
             <w xml:id="f051B-w-34012">תוּכַ֖ל</w>

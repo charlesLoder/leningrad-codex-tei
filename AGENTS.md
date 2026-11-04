@@ -50,6 +50,7 @@ If making updates to the Python code, check if the README, AGENTS, or CONTRIBUTI
 - **Audit trail**: Per-folio record of which AI runs touched the folio: prompt version, model, inputs, results, check outcomes.
 - **Verified folio**: A folio whose automated cross-checks passed and whose informal human review is complete.
 - **Main biblical text**: The continuous scriptural text only; excludes marginalia (masora etc.) and Documentary Hypothesis tags.
+- **Verse zone**: A TEI `<zone type="verse">` in the facsimile with one child zone per line segment of the verse, in Archive.org image pixels. The verse milestone points to it with `facs`. Source: Masoretica HTR (Idan Dershowitz), added to a committed folio by `scripts/zones.py` as a hand edit, not a pipeline stage; `generate-tei` does not keep it.
 - **Batch job**: One Batch API submission. Lives in `{alignments}/batch/{ts}/`, where `{alignments}` is `config.paths.alignments` and `{ts}` is the submit timestamp.
 
 ## Pipeline config paths

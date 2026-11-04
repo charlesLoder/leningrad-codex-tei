@@ -116,3 +116,17 @@ describe('parseFolioXml', () => {
     assert.deepEqual(kinds, ['w', 'sof-pasuq', 'inverted-nun']);
   });
 });
+
+it('parseFolioXml reads credits, skips the project entry, and drops emails', () => {
+  const xml = readFileSync(join(editionDir, '001B.xml'), 'utf8');
+  const doc = parseFolioXml(xml);
+  assert.ok(!doc.credits.some((c) => c.id === 'leningrad-codex-tei'));
+  const names = doc.credits.flatMap((c) => c.names);
+  assert.ok(names.includes('Christopher V. Kimball'));
+  assert.ok(names.includes('Charles W. Loder'));
+  assert.ok(!JSON.stringify(doc.credits).includes('mailto'));
+  assert.ok(!JSON.stringify(doc.credits).includes('@'));
+  const uxlc = doc.credits.find((c) => c.id === 'source-uxlc');
+  assert.equal(doc.model, 'gemini-3.8-flash');
+  assert.ok(uxlc.resp.some((p) => p.href?.includes('tanach.us')));
+});

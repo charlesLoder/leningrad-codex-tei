@@ -9,34 +9,75 @@ interface Props {
 const { columns } = Astro.props;
 ---
 
-<div class="columns" data-cols={String(columns.length)}>
-  {columns.map((col) => (
-    <ManuscriptColumn col={col} />
-  ))}
+<p class="small-screen-note">Best viewed on larger screens</p>
+
+<!-- The frame is the size container that the Hebrew text scales against. -->
+<div class="columns-frame">
+  <div class="columns" data-cols={String(columns.length)}>
+    {columns.map((col, i) => (
+      <ManuscriptColumn col={col} showLineNumbers={i === 0} />
+    ))}
+  </div>
 </div>
 
 <style>
+  .small-screen-note {
+    display: none;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  @media screen and (max-width: 1099px) {
+    .small-screen-note {
+      display: block;
+    }
+  }
+
+  .columns-frame {
+    container-type: inline-size;
+  }
+
+  /* Narrow screens: columns stack as separate cards. */
   .columns {
     display: grid;
     gap: 1.2rem;
-    padding-bottom: 3rem;
+    margin-bottom: 3rem;
     direction: rtl;
+    color: var(--ink);
   }
 
-  @media (min-width: 60rem) {
+  /* Wide screens: one parchment leaf holding all columns, like the codex page. */
+  @container (min-width: 60rem) {
+    .columns {
+      gap: 0;
+      padding: 2.2rem 2rem 2.6rem;
+      background: var(--parchment);
+      border: 1px solid var(--parchment-edge);
+      border-radius: 0.4rem;
+      box-shadow: 0 0.6rem 1.6rem var(--parchment-shadow);
+    }
+
     .columns[data-cols='3'] {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, auto);
     }
 
     .columns[data-cols='2'] {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, auto);
     }
   }
 
   @media print {
     .columns {
       gap: 0.9rem;
-      padding-bottom: 0;
+      margin-bottom: 0;
+      padding: 0;
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      color: inherit;
     }
 
     .columns[data-cols='3'] {

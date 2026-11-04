@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 18 verse zones (87 line segments) from Masoretica HTR page n533. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n533.json"/>
+      </change>
       <change when="2026-10-28" who="#contrib-charles-w-loder">
       Moved the pe section marker after Jeremiah 38:23 to column 3, line 27.
       </change>
@@ -61,10 +68,134 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-267B">
+    <surface xml:id="surf-267B" ulx="0" uly="0" lrx="4479" lry="5359">
       <graphic xml:id="f267B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F267B.jpg">
         <desc type="sha256">c1cdfc246d7602bce528d537b3aa55df55ed0f04c8d2f2f508896df9b482fb24</desc>
       </graphic>
+      <graphic xml:id="f267B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0533.jp2/full/max/0/default.jpg" width="4479px" height="5359px"/>
+      <zone xml:id="f267B-zone-Jeremiah-38-5" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-5-s1" ulx="2426" uly="1314" lrx="3176" lry="1474"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-5-s2" ulx="2441" uly="1414" lrx="3173" lry="1571"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-5-s3" ulx="2867" uly="1526" lrx="3169" lry="1650"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-6" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-6-s1" ulx="2426" uly="1526" lrx="2859" lry="1650"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-6-s2" ulx="2422" uly="1597" lrx="3176" lry="1739"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-6-s3" ulx="2422" uly="1683" lrx="3165" lry="1847"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-6-s4" ulx="2471" uly="1806" lrx="3195" lry="1952"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-6-s5" ulx="2538" uly="1911" lrx="3191" lry="2038"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-6-s6" ulx="2646" uly="2004" lrx="3188" lry="2127"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-7" type="verse" cert="0.911" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-7-s1" ulx="2452" uly="2049" lrx="2923" lry="2220"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-7-s2" ulx="2449" uly="2183" lrx="3169" lry="2310"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-7-s3" ulx="2460" uly="2258" lrx="3176" lry="2418"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-7-s4" ulx="2475" uly="2377" lrx="3165" lry="2508"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-7-s5" ulx="3020" uly="2478" lrx="3161" lry="2609"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-8" type="verse" cert="0.921" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-8-s1" ulx="2452" uly="2478" lrx="3008" lry="2609"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-8-s2" ulx="2426" uly="2568" lrx="3173" lry="2698"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-9" type="verse" cert="0.797" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-9-s1" ulx="2475" uly="2672" lrx="3173" lry="2795"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-9-s2" ulx="2557" uly="2736" lrx="3128" lry="2889"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-9-s3" ulx="2490" uly="2847" lrx="3165" lry="2974"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-9-s4" ulx="2422" uly="2922" lrx="3165" lry="3082"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-9-s5" ulx="2430" uly="3042" lrx="3173" lry="3168"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-9-s6" ulx="3016" uly="3127" lrx="3169" lry="3254"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-10" type="verse" cert="0.807" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-10-s1" ulx="2434" uly="3127" lrx="3001" lry="3254"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-10-s2" ulx="2445" uly="3198" lrx="3161" lry="3351"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-10-s3" ulx="2445" uly="3299" lrx="3165" lry="3445"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-10-s4" ulx="2478" uly="3415" lrx="3109" lry="3545"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-10-s5" ulx="2874" uly="3489" lrx="3173" lry="3646"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-11" type="verse" cert="0.947" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-11-s1" ulx="2449" uly="3489" lrx="2848" lry="3646"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-11-s2" ulx="2460" uly="3594" lrx="3165" lry="3751"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-11-s3" ulx="2452" uly="3687" lrx="3161" lry="3851"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-11-s4" ulx="1422" uly="1213" lrx="2187" lry="1366"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-11-s5" ulx="1508" uly="1321" lrx="2191" lry="1467"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-11-s6" ulx="1739" uly="1407" lrx="2180" lry="1560"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-12" type="verse" cert="0.951" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-12-s1" ulx="1437" uly="1407" lrx="1732" lry="1560"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-12-s2" ulx="1448" uly="1493" lrx="2187" lry="1646"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-12-s3" ulx="1433" uly="1593" lrx="2184" lry="1743"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-12-s4" ulx="1482" uly="1679" lrx="2172" lry="1836"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-12-s5" ulx="1769" uly="1806" lrx="2187" lry="1937"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-13" type="verse" cert="0.944" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-13-s1" ulx="1452" uly="1806" lrx="1769" lry="1937"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-13-s2" ulx="1441" uly="1911" lrx="2187" lry="2038"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-13-s3" ulx="1553" uly="2008" lrx="2184" lry="2131"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-13-s4" ulx="1960" uly="2071" lrx="2176" lry="2217"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-14" type="verse" cert="0.906" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-14-s1" ulx="1463" uly="2071" lrx="1672" lry="2217"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-14-s2" ulx="1527" uly="2165" lrx="2176" lry="2321"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-14-s3" ulx="1452" uly="2276" lrx="2191" lry="2407"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-14-s4" ulx="1530" uly="2362" lrx="2180" lry="2512"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-14-s5" ulx="1444" uly="2444" lrx="2191" lry="2601"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-14-s6" ulx="1441" uly="2549" lrx="2176" lry="2694"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-14-s7" ulx="2049" uly="2638" lrx="2165" lry="2791"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-15" type="verse" cert="0.891" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-15-s1" ulx="1415" uly="2638" lrx="2045" lry="2791"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-15-s2" ulx="1433" uly="2739" lrx="2184" lry="2889"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-15-s3" ulx="1430" uly="2832" lrx="2187" lry="2978"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-16" type="verse" cert="0.913" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-16-s1" ulx="1471" uly="2930" lrx="2202" lry="3079"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-16-s2" ulx="1459" uly="3019" lrx="2195" lry="3161"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-16-s3" ulx="1463" uly="3109" lrx="2172" lry="3258"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-16-s4" ulx="1441" uly="3213" lrx="2184" lry="3344"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-16-s5" ulx="1542" uly="3310" lrx="2180" lry="3452"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-16-s6" ulx="1646" uly="3400" lrx="2187" lry="3545"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-17" type="verse" cert="0.932" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-17-s1" ulx="1459" uly="3500" lrx="1952" lry="3646"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-17-s2" ulx="1444" uly="3583" lrx="2172" lry="3743"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-17-s3" ulx="1407" uly="3683" lrx="2172" lry="3851"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-17-s4" ulx="437" uly="1209" lrx="1179" lry="1373"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-17-s5" ulx="485" uly="1321" lrx="1198" lry="1482"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-17-s6" ulx="452" uly="1440" lrx="1176" lry="1567"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-17-s7" ulx="1023" uly="1504" lrx="1191" lry="1657"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-18" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-18-s1" ulx="437" uly="1504" lrx="1015" lry="1657"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-18-s2" ulx="459" uly="1601" lrx="1191" lry="1758"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-18-s3" ulx="515" uly="1717" lrx="1183" lry="1858"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-18-s4" ulx="593" uly="1817" lrx="1202" lry="1959"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-19" type="verse" cert="0.915" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-19-s1" ulx="440" uly="1907" lrx="967" lry="2049"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-19-s2" ulx="467" uly="2004" lrx="1183" lry="2127"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-19-s3" ulx="590" uly="2097" lrx="1179" lry="2217"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-19-s4" ulx="489" uly="2191" lrx="1176" lry="2321"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-19-s5" ulx="862" uly="2269" lrx="1191" lry="2411"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-20" type="verse" cert="0.91" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-20-s1" ulx="463" uly="2344" lrx="1191" lry="2512"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-20-s2" ulx="478" uly="2478" lrx="1179" lry="2605"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-20-s3" ulx="541" uly="2560" lrx="1176" lry="2702"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-20-s4" ulx="1004" uly="2672" lrx="1183" lry="2784"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-22" type="verse" cert="0.907" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-22-s1" ulx="463" uly="2829" lrx="1198" lry="2982"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-22-s2" ulx="470" uly="2922" lrx="1172" lry="3075"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-22-s3" ulx="493" uly="3038" lrx="1179" lry="3165"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-22-s4" ulx="463" uly="3097" lrx="1187" lry="3258"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-22-s5" ulx="470" uly="3221" lrx="1187" lry="3351"/>
+      </zone>
+      <zone xml:id="f267B-zone-Jeremiah-38-23" type="verse" cert="0.861" resp="#source-masoretica">
+        <zone xml:id="f267B-zone-Jeremiah-38-23-s1" ulx="455" uly="3299" lrx="1198" lry="3456"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-23-s2" ulx="511" uly="3396" lrx="1183" lry="3545"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-23-s3" ulx="504" uly="3489" lrx="1183" lry="3653"/>
+        <zone xml:id="f267B-zone-Jeremiah-38-23-s4" ulx="478" uly="3609" lrx="1202" lry="3762"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -83,7 +214,7 @@
             <w xml:id="f267B-w-181744">לְרָעָֽה</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181744">׃</pc>
           <lb xml:id="f267B-lb-1-2" n="2"/>
-            <milestone unit="verse" n="Jeremiah-38-5" xml:id="f267B-v-Jeremiah-38-5"/>
+            <milestone unit="verse" n="Jeremiah-38-5" xml:id="f267B-v-Jeremiah-38-5" facs="#f267B-zone-Jeremiah-38-5"/>
             <w xml:id="f267B-w-181745">וַיֹּ֙אמֶר֙</w>
             <w xml:id="f267B-w-181746">הַמֶּ֣לֶךְ</w>
             <w xml:id="f267B-w-181747">צִדְקִיָּ֔הוּ</w>
@@ -99,7 +230,7 @@
             <w xml:id="f267B-w-181755">אֶתְכֶ֖ם</w>
             <w xml:id="f267B-w-181756">דָּבָֽר</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181756">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-6" xml:id="f267B-v-Jeremiah-38-6"/>
+            <milestone unit="verse" n="Jeremiah-38-6" xml:id="f267B-v-Jeremiah-38-6" facs="#f267B-zone-Jeremiah-38-6"/>
             <w xml:id="f267B-w-181757">וַיִּקְח֣וּ</w>
             <w xml:id="f267B-w-181758">אֶֽת־</w>
             <w xml:id="f267B-w-181759">יִרְמְיָ֗הוּ</w>
@@ -135,7 +266,7 @@
             <pc type="sof-pasuq" xml:id="f267B-pc-181782">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f267B-s-Jeremiah-38-6"/>
           <lb xml:id="f267B-lb-1-10" n="10"/>
-            <milestone unit="verse" n="Jeremiah-38-7" xml:id="f267B-v-Jeremiah-38-7"/>
+            <milestone unit="verse" n="Jeremiah-38-7" xml:id="f267B-v-Jeremiah-38-7" facs="#f267B-zone-Jeremiah-38-7"/>
             <w xml:id="f267B-w-181783">וַיִּשְׁמַ֡ע</w>
             <w xml:id="f267B-w-181784">עֶֽבֶד־</w>
             <w xml:id="f267B-w-181785">מֶ֨לֶךְ</w>
@@ -160,7 +291,7 @@
           <lb xml:id="f267B-lb-1-14" n="14"/>
             <w xml:id="f267B-w-181801">בִּנְיָמִֽן</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181801">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-8" xml:id="f267B-v-Jeremiah-38-8"/>
+            <milestone unit="verse" n="Jeremiah-38-8" xml:id="f267B-v-Jeremiah-38-8" facs="#f267B-zone-Jeremiah-38-8"/>
             <w xml:id="f267B-w-181802">וַיֵּצֵ֥א</w>
             <w xml:id="f267B-w-181803">עֶֽבֶד־</w>
             <w xml:id="f267B-w-181804">מֶ֖לֶךְ</w>
@@ -173,7 +304,7 @@
             <w xml:id="f267B-w-181810">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181810">׃</pc>
           <lb xml:id="f267B-lb-1-16" n="16"/>
-            <milestone unit="verse" n="Jeremiah-38-9" xml:id="f267B-v-Jeremiah-38-9"/>
+            <milestone unit="verse" n="Jeremiah-38-9" xml:id="f267B-v-Jeremiah-38-9" facs="#f267B-zone-Jeremiah-38-9"/>
             <w xml:id="f267B-w-181811">אֲדֹנִ֣י</w>
             <w xml:id="f267B-w-181812">הַמֶּ֗לֶךְ</w>
             <w xml:id="f267B-w-181813">הֵרֵ֜עוּ</w>
@@ -205,7 +336,7 @@
           <lb xml:id="f267B-lb-1-21" n="21"/>
             <w xml:id="f267B-w-181835">בָּעִֽיר</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181835">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-10" xml:id="f267B-v-Jeremiah-38-10"/>
+            <milestone unit="verse" n="Jeremiah-38-10" xml:id="f267B-v-Jeremiah-38-10" facs="#f267B-zone-Jeremiah-38-10"/>
             <w xml:id="f267B-w-181836">וַיְצַוֶּ֣ה</w>
             <w xml:id="f267B-w-181837">הַמֶּ֔לֶךְ</w>
             <w xml:id="f267B-w-181838">אֵ֛ת</w>
@@ -231,7 +362,7 @@
             <w xml:id="f267B-w-181854">בְּטֶ֥רֶם</w>
             <w xml:id="f267B-w-181855">יָמֽוּת</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181855">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-11" xml:id="f267B-v-Jeremiah-38-11"/>
+            <milestone unit="verse" n="Jeremiah-38-11" xml:id="f267B-v-Jeremiah-38-11" facs="#f267B-zone-Jeremiah-38-11"/>
             <w xml:id="f267B-w-181856">וַיִּקַּ֣ח</w>
             <pc type="paseq" xml:id="f267B-pc-181856">׀</pc>
             <w xml:id="f267B-w-181857">עֶֽבֶד־</w>
@@ -264,7 +395,7 @@
             <w xml:id="f267B-w-181878">הַבּ֖וֹר</w>
             <w xml:id="f267B-w-181879">בַּחֲבָלִֽים</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181879">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-12" xml:id="f267B-v-Jeremiah-38-12"/>
+            <milestone unit="verse" n="Jeremiah-38-12" xml:id="f267B-v-Jeremiah-38-12" facs="#f267B-zone-Jeremiah-38-12"/>
             <w xml:id="f267B-w-181880">וַיֹּ֡אמֶר</w>
             <w xml:id="f267B-w-181881">עֶבֶד־</w>
           <lb xml:id="f267B-lb-2-4" n="4"/>
@@ -289,7 +420,7 @@
             <w xml:id="f267B-w-181897">יִרְמְיָ֖הוּ</w>
             <w xml:id="f267B-w-181898">כֵּֽן</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181898">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-13" xml:id="f267B-v-Jeremiah-38-13"/>
+            <milestone unit="verse" n="Jeremiah-38-13" xml:id="f267B-v-Jeremiah-38-13" facs="#f267B-zone-Jeremiah-38-13"/>
             <w xml:id="f267B-w-181899">וַיִּמְשְׁכ֤וּ</w>
             <w xml:id="f267B-w-181900">אֶֽת־</w>
           <lb xml:id="f267B-lb-2-8" n="8"/>
@@ -307,7 +438,7 @@
             <w xml:id="f267B-w-181910">הַמַּטָּרָֽה</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181910">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f267B-s-Jeremiah-38-13"/>
-            <milestone unit="verse" n="Jeremiah-38-14" xml:id="f267B-v-Jeremiah-38-14"/>
+            <milestone unit="verse" n="Jeremiah-38-14" xml:id="f267B-v-Jeremiah-38-14" facs="#f267B-zone-Jeremiah-38-14"/>
             <w xml:id="f267B-w-181911">וַיִּשְׁלַ֞ח</w>
           <lb xml:id="f267B-lb-2-11" n="11"/>
             <w xml:id="f267B-w-181912">הַמֶּ֣לֶךְ</w>
@@ -341,7 +472,7 @@
           <lb xml:id="f267B-lb-2-16" n="16"/>
             <w xml:id="f267B-w-181936">דָּבָֽר</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181936">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-15" xml:id="f267B-v-Jeremiah-38-15"/>
+            <milestone unit="verse" n="Jeremiah-38-15" xml:id="f267B-v-Jeremiah-38-15" facs="#f267B-zone-Jeremiah-38-15"/>
             <w xml:id="f267B-w-181937">וַיֹּ֤אמֶר</w>
             <w xml:id="f267B-w-181938">יִרְמְיָ֙הוּ֙</w>
             <w xml:id="f267B-w-181939">אֶל־</w>
@@ -361,7 +492,7 @@
             <w xml:id="f267B-w-181951">אֵלָֽי</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-181951">׃</pc>
           <lb xml:id="f267B-lb-2-19" n="19"/>
-            <milestone unit="verse" n="Jeremiah-38-16" xml:id="f267B-v-Jeremiah-38-16"/>
+            <milestone unit="verse" n="Jeremiah-38-16" xml:id="f267B-v-Jeremiah-38-16" facs="#f267B-zone-Jeremiah-38-16"/>
             <w xml:id="f267B-w-181952">וַיִּשָּׁבַ֞ע</w>
             <w xml:id="f267B-w-181953">הַמֶּ֧לֶךְ</w>
             <w xml:id="f267B-w-181954">צִדְקִיָּ֛הוּ</w>
@@ -397,7 +528,7 @@
             <pc type="sof-pasuq" xml:id="f267B-pc-181978">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f267B-s-Jeremiah-38-16"/>
           <lb xml:id="f267B-lb-2-25" n="25"/>
-            <milestone unit="verse" n="Jeremiah-38-17" xml:id="f267B-v-Jeremiah-38-17"/>
+            <milestone unit="verse" n="Jeremiah-38-17" xml:id="f267B-v-Jeremiah-38-17" facs="#f267B-zone-Jeremiah-38-17"/>
             <w xml:id="f267B-w-181979">וַיֹּ֣אמֶר</w>
             <w xml:id="f267B-w-181980">יִרְמְיָ֣הוּ</w>
             <w xml:id="f267B-w-181981">אֶל־</w>
@@ -434,7 +565,7 @@
           <lb xml:id="f267B-lb-3-4" n="4"/>
             <w xml:id="f267B-w-182006">וּבֵיתֶֽךָ</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-182006">׃</pc>
-            <milestone unit="verse" n="Jeremiah-38-18" xml:id="f267B-v-Jeremiah-38-18"/>
+            <milestone unit="verse" n="Jeremiah-38-18" xml:id="f267B-v-Jeremiah-38-18" facs="#f267B-zone-Jeremiah-38-18"/>
             <w xml:id="f267B-w-182007">וְאִ֣ם</w>
             <w xml:id="f267B-w-182008">לֹֽא־</w>
             <w xml:id="f267B-w-182009">תֵצֵ֗א</w>
@@ -459,7 +590,7 @@
             <pc type="sof-pasuq" xml:id="f267B-pc-182024">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f267B-s-Jeremiah-38-18"/>
           <lb xml:id="f267B-lb-3-8" n="8"/>
-            <milestone unit="verse" n="Jeremiah-38-19" xml:id="f267B-v-Jeremiah-38-19"/>
+            <milestone unit="verse" n="Jeremiah-38-19" xml:id="f267B-v-Jeremiah-38-19" facs="#f267B-zone-Jeremiah-38-19"/>
             <w xml:id="f267B-w-182025">וַיֹּ֛אמֶר</w>
             <w xml:id="f267B-w-182026">הַמֶּ֥לֶךְ</w>
             <w xml:id="f267B-w-182027">צִדְקִיָּ֖הוּ</w>
@@ -486,7 +617,7 @@
             <pc type="sof-pasuq" xml:id="f267B-pc-182043">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f267B-s-Jeremiah-38-19"/>
           <lb xml:id="f267B-lb-3-13" n="13"/>
-            <milestone unit="verse" n="Jeremiah-38-20" xml:id="f267B-v-Jeremiah-38-20"/>
+            <milestone unit="verse" n="Jeremiah-38-20" xml:id="f267B-v-Jeremiah-38-20" facs="#f267B-zone-Jeremiah-38-20"/>
             <w xml:id="f267B-w-182044">וַיֹּ֥אמֶר</w>
             <w xml:id="f267B-w-182045">יִרְמְיָ֖הוּ</w>
             <w xml:id="f267B-w-182046">לֹ֣א</w>
@@ -521,7 +652,7 @@
             <w xml:id="f267B-w-182068">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-182068">׃</pc>
           <lb xml:id="f267B-lb-3-18" n="18"/>
-            <milestone unit="verse" n="Jeremiah-38-22" xml:id="f267B-v-Jeremiah-38-22"/>
+            <milestone unit="verse" n="Jeremiah-38-22" xml:id="f267B-v-Jeremiah-38-22" facs="#f267B-zone-Jeremiah-38-22"/>
             <w xml:id="f267B-w-182069">וְהִנֵּ֣ה</w>
             <w xml:id="f267B-w-182070">כָל־</w>
             <w xml:id="f267B-w-182071">הַנָּשִׁ֗ים</w>
@@ -553,7 +684,7 @@
             <w xml:id="f267B-w-182093">אָחֽוֹר</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-182093">׃</pc>
           <lb xml:id="f267B-lb-3-23" n="23"/>
-            <milestone unit="verse" n="Jeremiah-38-23" xml:id="f267B-v-Jeremiah-38-23"/>
+            <milestone unit="verse" n="Jeremiah-38-23" xml:id="f267B-v-Jeremiah-38-23" facs="#f267B-zone-Jeremiah-38-23"/>
             <w xml:id="f267B-w-182094">וְאֶת־</w>
             <w xml:id="f267B-w-182095">כָּל־</w>
             <w xml:id="f267B-w-182096">נָשֶׁ֣יךָ</w>

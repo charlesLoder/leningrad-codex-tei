@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 18 verse zones (85 line segments) from Masoretica HTR page n245. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n245.json"/>
+      </change>
       <change when="2026-10-24T16:29:44.175577+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-10-24T16:27:38.615633+00:00" who="#contrib-sarahmccuan">Aligned Joshua 4:21 – Joshua 5:15 (344 atoms).
@@ -58,10 +69,132 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-123B">
+    <surface xml:id="surf-123B" ulx="0" uly="0" lrx="4447" lry="5215">
       <graphic xml:id="f123B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F123B.jpg">
         <desc type="sha256">39b3d24af7cc6699be0c86c024f5dab89a997068b3969e86dff86ddc7844b906</desc>
       </graphic>
+      <graphic xml:id="f123B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0245.jp2/full/max/0/default.jpg" width="4447px" height="5215px"/>
+      <zone xml:id="f123B-zone-Joshua-4-21" type="verse" cert="0.793" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-4-21-s1" ulx="2587" uly="1260" lrx="3239" lry="1416"/>
+        <zone xml:id="f123B-zone-Joshua-4-21-s2" ulx="2553" uly="1375" lrx="3243" lry="1523"/>
+        <zone xml:id="f123B-zone-Joshua-4-21-s3" ulx="2527" uly="1471" lrx="3239" lry="1623"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-4-22" type="verse" cert="0.852" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-4-22-s1" ulx="2646" uly="1590" lrx="3257" lry="1709"/>
+        <zone xml:id="f123B-zone-Joshua-4-22-s2" ulx="2657" uly="1661" lrx="3254" lry="1812"/>
+        <zone xml:id="f123B-zone-Joshua-4-22-s3" ulx="2550" uly="1779" lrx="3257" lry="1901"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-4-23" type="verse" cert="0.902" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-4-23-s1" ulx="2524" uly="1857" lrx="3246" lry="2002"/>
+        <zone xml:id="f123B-zone-Joshua-4-23-s2" ulx="2542" uly="1968" lrx="3232" lry="2098"/>
+        <zone xml:id="f123B-zone-Joshua-4-23-s3" ulx="2531" uly="2042" lrx="3257" lry="2191"/>
+        <zone xml:id="f123B-zone-Joshua-4-23-s4" ulx="2568" uly="2157" lrx="3254" lry="2279"/>
+        <zone xml:id="f123B-zone-Joshua-4-23-s5" ulx="2546" uly="2246" lrx="3243" lry="2372"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-4-24" type="verse" cert="0.871" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-4-24-s1" ulx="2657" uly="2339" lrx="3202" lry="2469"/>
+        <zone xml:id="f123B-zone-Joshua-4-24-s2" ulx="2609" uly="2435" lrx="3257" lry="2554"/>
+        <zone xml:id="f123B-zone-Joshua-4-24-s3" ulx="2527" uly="2509" lrx="3254" lry="2658"/>
+        <zone xml:id="f123B-zone-Joshua-4-24-s4" ulx="2605" uly="2624" lrx="3257" lry="2739"/>
+        <zone xml:id="f123B-zone-Joshua-4-24-s5" ulx="3068" uly="2695" lrx="3250" lry="2835"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-1" type="verse" cert="0.833" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-1-s1" ulx="2590" uly="2695" lrx="2939" lry="2835"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s2" ulx="2550" uly="2795" lrx="3261" lry="2924"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s3" ulx="2513" uly="2865" lrx="3235" lry="3021"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s4" ulx="2535" uly="2991" lrx="3250" lry="3117"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s5" ulx="2516" uly="3084" lrx="3239" lry="3199"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s6" ulx="2665" uly="3176" lrx="3243" lry="3295"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s7" ulx="2568" uly="3239" lrx="3257" lry="3380"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s8" ulx="2579" uly="3325" lrx="3239" lry="3484"/>
+        <zone xml:id="f123B-zone-Joshua-5-1-s9" ulx="2694" uly="3436" lrx="3235" lry="3584"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-2" type="verse" cert="0.861" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-2-s1" ulx="2542" uly="3529" lrx="3035" lry="3658"/>
+        <zone xml:id="f123B-zone-Joshua-5-2-s2" ulx="2501" uly="3610" lrx="3261" lry="3758"/>
+        <zone xml:id="f123B-zone-Joshua-5-2-s3" ulx="2505" uly="3710" lrx="3231" lry="3870"/>
+        <zone xml:id="f123B-zone-Joshua-5-2-s4" ulx="1797" uly="1245" lrx="2279" lry="1416"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-3" type="verse" cert="0.916" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-3-s1" ulx="1531" uly="1245" lrx="1775" lry="1416"/>
+        <zone xml:id="f123B-zone-Joshua-5-3-s2" ulx="1553" uly="1368" lrx="2298" lry="1520"/>
+        <zone xml:id="f123B-zone-Joshua-5-3-s3" ulx="1542" uly="1490" lrx="2272" lry="1620"/>
+        <zone xml:id="f123B-zone-Joshua-5-3-s4" ulx="2012" uly="1579" lrx="2261" lry="1720"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-4" type="verse" cert="0.765" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-4-s1" ulx="1538" uly="1579" lrx="1983" lry="1720"/>
+        <zone xml:id="f123B-zone-Joshua-5-4-s2" ulx="1545" uly="1661" lrx="2275" lry="1816"/>
+        <zone xml:id="f123B-zone-Joshua-5-4-s3" ulx="1534" uly="1764" lrx="2290" lry="1920"/>
+        <zone xml:id="f123B-zone-Joshua-5-4-s4" ulx="1857" uly="1890" lrx="2101" lry="2005"/>
+        <zone xml:id="f123B-zone-Joshua-5-4-s5" ulx="1597" uly="1957" lrx="2049" lry="2102"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-5" type="verse" cert="0.798" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-5-s1" ulx="1527" uly="2065" lrx="2275" lry="2191"/>
+        <zone xml:id="f123B-zone-Joshua-5-5-s2" ulx="1734" uly="2135" lrx="2294" lry="2287"/>
+        <zone xml:id="f123B-zone-Joshua-5-5-s3" ulx="1605" uly="2261" lrx="2286" lry="2380"/>
+        <zone xml:id="f123B-zone-Joshua-5-5-s4" ulx="2049" uly="2328" lrx="2272" lry="2476"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-6" type="verse" cert="0.717" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-6-s1" ulx="1560" uly="2328" lrx="2027" lry="2476"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s2" ulx="1571" uly="2443" lrx="2253" lry="2565"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s3" ulx="1505" uly="2520" lrx="2075" lry="2650"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s4" ulx="1805" uly="2628" lrx="2279" lry="2739"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s5" ulx="1608" uly="2687" lrx="2242" lry="2835"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s6" ulx="1608" uly="2772" lrx="2283" lry="2928"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s7" ulx="1538" uly="2880" lrx="2275" lry="3021"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s8" ulx="1560" uly="2984" lrx="2127" lry="3110"/>
+        <zone xml:id="f123B-zone-Joshua-5-6-s9" ulx="1627" uly="3054" lrx="2264" lry="3202"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-7" type="verse" cert="0.668" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-7-s1" ulx="1597" uly="3169" lrx="2242" lry="3288"/>
+        <zone xml:id="f123B-zone-Joshua-5-7-s2" ulx="1727" uly="3236" lrx="2242" lry="3380"/>
+        <zone xml:id="f123B-zone-Joshua-5-7-s3" ulx="1531" uly="3328" lrx="2261" lry="3473"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-8" type="verse" cert="0.798" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-8-s1" ulx="1638" uly="3421" lrx="2279" lry="3566"/>
+        <zone xml:id="f123B-zone-Joshua-5-8-s2" ulx="1538" uly="3510" lrx="2261" lry="3666"/>
+        <zone xml:id="f123B-zone-Joshua-5-8-s3" ulx="1994" uly="3614" lrx="2261" lry="3744"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-9" type="verse" cert="0.823" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-9-s1" ulx="1527" uly="3684" lrx="2283" lry="3847"/>
+        <zone xml:id="f123B-zone-Joshua-5-9-s2" ulx="630" uly="1279" lrx="1290" lry="1431"/>
+        <zone xml:id="f123B-zone-Joshua-5-9-s3" ulx="567" uly="1382" lrx="1290" lry="1531"/>
+        <zone xml:id="f123B-zone-Joshua-5-9-s4" ulx="645" uly="1509" lrx="1279" lry="1623"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-11" type="verse" cert="0.836" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-11-s1" ulx="671" uly="1887" lrx="882" lry="2005"/>
+        <zone xml:id="f123B-zone-Joshua-5-11-s2" ulx="667" uly="1961" lrx="1286" lry="2105"/>
+        <zone xml:id="f123B-zone-Joshua-5-11-s3" ulx="608" uly="2065" lrx="1282" lry="2205"/>
+        <zone xml:id="f123B-zone-Joshua-5-11-s4" ulx="1052" uly="2150" lrx="1297" lry="2276"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-12" type="verse" cert="0.831" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-12-s1" ulx="700" uly="2150" lrx="967" lry="2276"/>
+        <zone xml:id="f123B-zone-Joshua-5-12-s2" ulx="645" uly="2235" lrx="1290" lry="2383"/>
+        <zone xml:id="f123B-zone-Joshua-5-12-s3" ulx="593" uly="2335" lrx="1282" lry="2476"/>
+        <zone xml:id="f123B-zone-Joshua-5-12-s4" ulx="548" uly="2431" lrx="1301" lry="2561"/>
+        <zone xml:id="f123B-zone-Joshua-5-12-s5" ulx="663" uly="2532" lrx="1286" lry="2661"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-13" type="verse" cert="0.845" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-13-s1" ulx="641" uly="2613" lrx="1149" lry="2739"/>
+        <zone xml:id="f123B-zone-Joshua-5-13-s2" ulx="537" uly="2709" lrx="1279" lry="2832"/>
+        <zone xml:id="f123B-zone-Joshua-5-13-s3" ulx="656" uly="2802" lrx="1290" lry="2917"/>
+        <zone xml:id="f123B-zone-Joshua-5-13-s4" ulx="604" uly="2873" lrx="1293" lry="3017"/>
+        <zone xml:id="f123B-zone-Joshua-5-13-s5" ulx="593" uly="2961" lrx="1282" lry="3110"/>
+        <zone xml:id="f123B-zone-Joshua-5-13-s6" ulx="975" uly="3084" lrx="1286" lry="3195"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-14" type="verse" cert="0.823" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-14-s1" ulx="604" uly="3084" lrx="1171" lry="3195"/>
+        <zone xml:id="f123B-zone-Joshua-5-14-s2" ulx="526" uly="3173" lrx="1286" lry="3291"/>
+        <zone xml:id="f123B-zone-Joshua-5-14-s3" ulx="571" uly="3239" lrx="1297" lry="3380"/>
+        <zone xml:id="f123B-zone-Joshua-5-14-s4" ulx="563" uly="3358" lrx="1297" lry="3469"/>
+        <zone xml:id="f123B-zone-Joshua-5-14-s5" ulx="849" uly="3421" lrx="1282" lry="3569"/>
+      </zone>
+      <zone xml:id="f123B-zone-Joshua-5-15" type="verse" cert="0.686" resp="#source-masoretica">
+        <zone xml:id="f123B-zone-Joshua-5-15-s1" ulx="571" uly="3421" lrx="919" lry="3569"/>
+        <zone xml:id="f123B-zone-Joshua-5-15-s2" ulx="600" uly="3525" lrx="1275" lry="3651"/>
+        <zone xml:id="f123B-zone-Joshua-5-15-s3" ulx="560" uly="3599" lrx="1275" lry="3766"/>
+        <zone xml:id="f123B-zone-Joshua-5-15-s4" ulx="563" uly="3718" lrx="1275" lry="3870"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +205,7 @@
         <ab>
         <cb xml:id="f123B-cb-1" n="1"/>
           <lb xml:id="f123B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Joshua-4-21" xml:id="f123B-v-Joshua-4-21"/>
+            <milestone unit="verse" n="Joshua-4-21" xml:id="f123B-v-Joshua-4-21" facs="#f123B-zone-Joshua-4-21"/>
             <w xml:id="f123B-w-81329">לֵאמֹ֑ר</w>
             <w xml:id="f123B-w-81330">אֲשֶׁר֩</w>
             <w xml:id="f123B-w-81331">יִשְׁאָל֨וּן</w>
@@ -88,7 +221,7 @@
             <w xml:id="f123B-w-81339">הָאֵֽלֶּה</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81339">׃</pc>
           <lb xml:id="f123B-lb-1-4" n="4"/>
-            <milestone unit="verse" n="Joshua-4-22" xml:id="f123B-v-Joshua-4-22"/>
+            <milestone unit="verse" n="Joshua-4-22" xml:id="f123B-v-Joshua-4-22" facs="#f123B-zone-Joshua-4-22"/>
             <w xml:id="f123B-w-81340">וְהוֹדַעְתֶּ֖ם</w>
             <w xml:id="f123B-w-81341">אֶת־</w>
             <w xml:id="f123B-w-81342">בְּנֵיכֶ֣ם</w>
@@ -103,7 +236,7 @@
             <w xml:id="f123B-w-81349">הַזֶּֽה</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81349">׃</pc>
           <lb xml:id="f123B-lb-1-7" n="7"/>
-            <milestone unit="verse" n="Joshua-4-23" xml:id="f123B-v-Joshua-4-23"/>
+            <milestone unit="verse" n="Joshua-4-23" xml:id="f123B-v-Joshua-4-23" facs="#f123B-zone-Joshua-4-23"/>
             <w xml:id="f123B-w-81350">אֲשֶׁר־</w>
             <w xml:id="f123B-w-81351">הוֹבִישׁ֩</w>
             <w xml:id="f123B-w-81352">יְהוָ֨ה</w>
@@ -131,7 +264,7 @@
             <w xml:id="f123B-w-81370">עָבְרֵֽנוּ</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81370">׃</pc>
           <lb xml:id="f123B-lb-1-12" n="12"/>
-            <milestone unit="verse" n="Joshua-4-24" xml:id="f123B-v-Joshua-4-24"/>
+            <milestone unit="verse" n="Joshua-4-24" xml:id="f123B-v-Joshua-4-24" facs="#f123B-zone-Joshua-4-24"/>
             <w xml:id="f123B-w-81371">לְ֠מַעַן</w>
             <w xml:id="f123B-w-81372">דַּ֜עַת</w>
             <w xml:id="f123B-w-81373">כָּל־</w>
@@ -156,7 +289,7 @@
             <w xml:id="f123B-w-81388">הַיָּמִֽים</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81388">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f123B-s-Joshua-4-24"/>
-            <milestone unit="verse" n="Joshua-5-1" xml:id="f123B-v-Joshua-5-1"/>
+            <milestone unit="verse" n="Joshua-5-1" xml:id="f123B-v-Joshua-5-1" facs="#f123B-zone-Joshua-5-1"/>
             <w xml:id="f123B-w-81389">וַיְהִ֣י</w>
             <w xml:id="f123B-w-81390">כִשְׁמֹ֣עַ</w>
           <lb xml:id="f123B-lb-1-17" n="17"/>
@@ -205,7 +338,7 @@
             <pc type="sof-pasuq" xml:id="f123B-pc-81425">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f123B-s-Joshua-5-1"/>
           <lb xml:id="f123B-lb-1-25" n="25"/>
-            <milestone unit="verse" n="Joshua-5-2" xml:id="f123B-v-Joshua-5-2"/>
+            <milestone unit="verse" n="Joshua-5-2" xml:id="f123B-v-Joshua-5-2" facs="#f123B-zone-Joshua-5-2"/>
             <w xml:id="f123B-w-81426">בָּעֵ֣ת</w>
             <w xml:id="f123B-w-81427">הַהִ֗יא</w>
             <w xml:id="f123B-w-81428">אָמַ֤ר</w>
@@ -227,7 +360,7 @@
             <w xml:id="f123B-w-81440">יִשְׂרָאֵ֖ל</w>
             <w xml:id="f123B-w-81441">שֵׁנִֽית</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81441">׃</pc>
-            <milestone unit="verse" n="Joshua-5-3" xml:id="f123B-v-Joshua-5-3"/>
+            <milestone unit="verse" n="Joshua-5-3" xml:id="f123B-v-Joshua-5-3" facs="#f123B-zone-Joshua-5-3"/>
             <w xml:id="f123B-w-81442">וַיַּעַשׂ־</w>
             <w xml:id="f123B-w-81443">ל֥וֹ</w>
           <lb xml:id="f123B-lb-2-2" n="2"/>
@@ -244,7 +377,7 @@
           <lb xml:id="f123B-lb-2-4" n="4"/>
             <w xml:id="f123B-w-81453">הָעֲרָלֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81453">׃</pc>
-            <milestone unit="verse" n="Joshua-5-4" xml:id="f123B-v-Joshua-5-4"/>
+            <milestone unit="verse" n="Joshua-5-4" xml:id="f123B-v-Joshua-5-4" facs="#f123B-zone-Joshua-5-4"/>
             <w xml:id="f123B-w-81454">וְזֶ֥ה</w>
             <w xml:id="f123B-w-81455">הַדָּבָ֖ר</w>
             <w xml:id="f123B-w-81456">אֲשֶׁר־</w>
@@ -270,7 +403,7 @@
             <w xml:id="f123B-w-81471">מִמִּצְרָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81471">׃</pc>
           <lb xml:id="f123B-lb-2-9" n="9"/>
-            <milestone unit="verse" n="Joshua-5-5" xml:id="f123B-v-Joshua-5-5"/>
+            <milestone unit="verse" n="Joshua-5-5" xml:id="f123B-v-Joshua-5-5" facs="#f123B-zone-Joshua-5-5"/>
             <w xml:id="f123B-w-81472">כִּֽי־</w>
             <w xml:id="f123B-w-81473">מֻלִ֣ים</w>
             <w xml:id="f123B-w-81474">הָי֔וּ</w>
@@ -290,7 +423,7 @@
             <w xml:id="f123B-w-81485">לֹא־</w>
             <w xml:id="f123B-w-81486">מָֽלוּ</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81486">׃</pc>
-            <milestone unit="verse" n="Joshua-5-6" xml:id="f123B-v-Joshua-5-6"/>
+            <milestone unit="verse" n="Joshua-5-6" xml:id="f123B-v-Joshua-5-6" facs="#f123B-zone-Joshua-5-6"/>
             <w xml:id="f123B-w-81487">כִּ֣י</w>
             <pc type="paseq" xml:id="f123B-pc-81487">׀</pc>
             <w xml:id="f123B-w-81488">אַרְבָּעִ֣ים</w>
@@ -340,7 +473,7 @@
             <w xml:id="f123B-w-81524">וּדְבָֽשׁ</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81524">׃</pc>
           <lb xml:id="f123B-lb-2-21" n="21"/>
-            <milestone unit="verse" n="Joshua-5-7" xml:id="f123B-v-Joshua-5-7"/>
+            <milestone unit="verse" n="Joshua-5-7" xml:id="f123B-v-Joshua-5-7" facs="#f123B-zone-Joshua-5-7"/>
             <w xml:id="f123B-w-81525">וְאֶת־</w>
             <w xml:id="f123B-w-81526">בְּנֵיהֶם֙</w>
             <w xml:id="f123B-w-81527">הֵקִ֣ים</w>
@@ -360,7 +493,7 @@
             <w xml:id="f123B-w-81539">בַּדָּֽרֶךְ</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81539">׃</pc>
           <lb xml:id="f123B-lb-2-24" n="24"/>
-            <milestone unit="verse" n="Joshua-5-8" xml:id="f123B-v-Joshua-5-8"/>
+            <milestone unit="verse" n="Joshua-5-8" xml:id="f123B-v-Joshua-5-8" facs="#f123B-zone-Joshua-5-8"/>
             <w xml:id="f123B-w-81540">וַיְהִ֛י</w>
             <w xml:id="f123B-w-81541">כַּאֲשֶׁר־</w>
             <w xml:id="f123B-w-81542">תַּ֥מּוּ</w>
@@ -377,7 +510,7 @@
             <pc type="sof-pasuq" xml:id="f123B-pc-81550">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f123B-s-Joshua-5-8"/>
           <lb xml:id="f123B-lb-2-27" n="27"/>
-            <milestone unit="verse" n="Joshua-5-9" xml:id="f123B-v-Joshua-5-9"/>
+            <milestone unit="verse" n="Joshua-5-9" xml:id="f123B-v-Joshua-5-9" facs="#f123B-zone-Joshua-5-9"/>
             <w xml:id="f123B-w-81551">וַיֹּ֤אמֶר</w>
             <w xml:id="f123B-w-81552">יְהוָה֙</w>
             <w xml:id="f123B-w-81553">אֶל־</w>
@@ -421,7 +554,7 @@
             <w xml:id="f123B-w-81581">בְּעַֽרְב֥וֹת</w>
             <w xml:id="f123B-w-81582">יְרִיחֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81582">׃</pc>
-            <milestone unit="verse" n="Joshua-5-11" xml:id="f123B-v-Joshua-5-11"/>
+            <milestone unit="verse" n="Joshua-5-11" xml:id="f123B-v-Joshua-5-11" facs="#f123B-zone-Joshua-5-11"/>
             <w xml:id="f123B-w-81583">וַיֹּ֨אכְל֜וּ</w>
           <lb xml:id="f123B-lb-3-8" n="8"/>
             <w xml:id="f123B-w-81584">מֵעֲב֥וּר</w>
@@ -436,7 +569,7 @@
             <w xml:id="f123B-w-81591">הַיּ֥וֹם</w>
             <w xml:id="f123B-w-81592">הַזֶּֽה</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81592">׃</pc>
-            <milestone unit="verse" n="Joshua-5-12" xml:id="f123B-v-Joshua-5-12"/>
+            <milestone unit="verse" n="Joshua-5-12" xml:id="f123B-v-Joshua-5-12" facs="#f123B-zone-Joshua-5-12"/>
             <w xml:id="f123B-w-81593">וַיִּשְׁבֹּ֨ת</w>
             <w xml:id="f123B-w-81594">הַמָּ֜ן</w>
           <lb xml:id="f123B-lb-3-11" n="11"/>
@@ -462,7 +595,7 @@
             <pc type="sof-pasuq" xml:id="f123B-pc-81610">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f123B-s-Joshua-5-12"/>
           <lb xml:id="f123B-lb-3-15" n="15"/>
-            <milestone unit="verse" n="Joshua-5-13" xml:id="f123B-v-Joshua-5-13"/>
+            <milestone unit="verse" n="Joshua-5-13" xml:id="f123B-v-Joshua-5-13" facs="#f123B-zone-Joshua-5-13"/>
             <w xml:id="f123B-w-81611">וַיְהִ֗י</w>
             <w xml:id="f123B-w-81612">בִּֽהְי֣וֹת</w>
             <w xml:id="f123B-w-81613">יְהוֹשֻׁעַ֮</w>
@@ -492,7 +625,7 @@
             <w xml:id="f123B-w-81632">אִם־</w>
             <w xml:id="f123B-w-81633">לְצָרֵֽינוּ</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81633">׃</pc>
-            <milestone unit="verse" n="Joshua-5-14" xml:id="f123B-v-Joshua-5-14"/>
+            <milestone unit="verse" n="Joshua-5-14" xml:id="f123B-v-Joshua-5-14" facs="#f123B-zone-Joshua-5-14"/>
             <w xml:id="f123B-w-81634">וַיֹּ֣אמֶר</w>
             <pc type="paseq" xml:id="f123B-pc-81634">׀</pc>
             <w xml:id="f123B-w-81635">לֹ֗א</w>
@@ -521,7 +654,7 @@
             <w xml:id="f123B-w-81654">אֶל־</w>
             <w xml:id="f123B-w-81655">עַבְדּֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f123B-pc-81655">׃</pc>
-            <milestone unit="verse" n="Joshua-5-15" xml:id="f123B-v-Joshua-5-15"/>
+            <milestone unit="verse" n="Joshua-5-15" xml:id="f123B-v-Joshua-5-15" facs="#f123B-zone-Joshua-5-15"/>
             <w xml:id="f123B-w-81656">וַיֹּאמֶר֩</w>
             <w xml:id="f123B-w-81657">שַׂר־</w>
           <lb xml:id="f123B-lb-3-25" n="25"/>
