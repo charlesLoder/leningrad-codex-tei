@@ -1,0 +1,102 @@
+---
+/**
+ * Prototype IIIF viewer (triiiceratops web component).
+ * Renders the per-folio manifest from /iiif/<folio>.json with verse zones
+ * as annotations. Prototype scope: folios that have a built manifest only.
+ */
+interface Props {
+  manifestUrl: string;
+  folio: string;
+}
+
+const { manifestUrl, folio } = Astro.props;
+---
+
+<section class="iiif" aria-label={`IIIF viewer for folio ${folio}`}>
+  <h2 class="iiif-heading">Verse zones (IIIF prototype)</h2>
+  <p class="iiif-note">
+    Zones from the HTR model, shown as annotations.
+    <a href={manifestUrl} target="_blank" rel="noopener noreferrer">Manifest JSON</a>
+  </p>
+  <triiiceratops-viewer
+    id="iiif-viewer"
+    manifest-id={manifestUrl}
+  ></triiiceratops-viewer>
+  <noscript>
+    <a href={manifestUrl} target="_blank" rel="noopener noreferrer">View the IIIF manifest for folio {folio}</a>
+  </noscript>
+</section>
+
+<script>
+  import 'triiiceratops/element/register';
+  import 'triiiceratops/style.css';
+
+  const viewer = /** @type {any} */ (document.getElementById('iiif-viewer'));
+  if (viewer) {
+    // Annotations panel open by default; hide the toolbar button for it
+    // (`config` is a property-tier input).
+    viewer.config = { annotations: { open: true }, toolbar: { showAnnotations: false } };
+
+    // Highlights only for the hovered/selected annotation: keep the
+    // visible set equal to {hovered, active}. Converges without loops
+    // since it only writes on diff. This overrides the panel's
+    // per-annotation eye toggles by design (prototype).
+    const sync = (vs) => {
+      const want = new Set(
+        [vs.hoveredAnnotationId, vs.activeAnnotationId].filter(Boolean),
+      );
+      const vis = vs.visibleAnnotationIds ?? new Set();
+      for (const id of vis) {
+        if (!want.has(id)) vs.setAnnotationVisible(id, false);
+      }
+      for (const id of want) {
+        if (!vis.has(id)) vs.setAnnotationVisible(id, true);
+      }
+    };
+    const bind = (vs) => {
+      if (!vs || viewer.dataset.iiifBound) return;
+      viewer.dataset.iiifBound = 'true';
+      viewer.addEventListener('manifestchange', () => {
+        // Hides everything and marks visibility user-touched, so the
+        // viewer's show-everything default stays off.
+        vs.setAllAnnotationsVisible(false);
+        sync(vs);
+      });
+      viewer.addEventListener('statechange', () => sync(vs));
+      sync(vs);
+    };
+    // The state may already exist before this script runs, so check
+    // first and listen second (docs' recommended pattern).
+    bind(viewer.viewerState);
+    viewer.addEventListener('viewerstateavailable', (e) =>
+      bind(/** @type {any} */ (e).detail ?? viewer.viewerState),
+    );
+  }
+</script>
+
+<style>
+  .iiif {
+    padding-bottom: 1.5rem;
+  }
+  .iiif-heading {
+    font-size: 1.1rem;
+    margin: 0 0 0.25rem;
+  }
+  .iiif-note {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 0 0 0.5rem;
+  }
+  /* Wider than the text column: up to 90vw, centered on the column.
+     Soften verse overlays: no borders, faint fill. These tokens pierce
+     the viewer's shadow DOM by inheritance. */
+  triiiceratops-viewer {
+    position: relative;
+    left: calc((100% - max(100%, 90vw)) / 2);
+    display: block;
+    width: max(100%, 90vw);
+    height: clamp(24rem, 65vh, 44rem);
+    --tri-annotation-border-width: 0px;
+    --tri-annotation-fill-opacity: 15%;
+  }
+</style>
