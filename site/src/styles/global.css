@@ -28,6 +28,12 @@ body {
   flex-direction: column;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body > main {
   flex: 1;
   width: 100%;
