@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (4 line segments) from Masoretica HTR page n539.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n539.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 17 verse zones (87 line segments) from Masoretica HTR page n539. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n539.json"/>
       </change>
@@ -70,6 +73,12 @@
         <desc type="sha256">8914a5df134f7a19ca626f5f57b60e0cfee8ff343dcfb612ec457507c9587e4d</desc>
       </graphic>
       <graphic xml:id="f270B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0539.jp2/full/max/0/default.jpg" width="4479px" height="5343px"/>
+      <zone xml:id="f270B-zone-Jeremiah-44-3" type="verse" cert="0.772" resp="#source-masoretica">
+        <zone xml:id="f270B-zone-Jeremiah-44-3-s1" ulx="1209" uly="1004" lrx="1456" lry="1184"/>
+        <zone xml:id="f270B-zone-Jeremiah-44-3-s2" ulx="2848" uly="1221" lrx="3594" lry="1456"/>
+        <zone xml:id="f270B-zone-Jeremiah-44-3-s3" ulx="2926" uly="1393" lrx="3594" lry="1546"/>
+        <zone xml:id="f270B-zone-Jeremiah-44-3-s4" ulx="3035" uly="1505" lrx="3587" lry="1632"/>
+      </zone>
       <zone xml:id="f270B-zone-Jeremiah-44-4" type="verse" cert="0.957" resp="#source-masoretica">
         <zone xml:id="f270B-zone-Jeremiah-44-4-s1" ulx="2848" uly="1505" lrx="3027" lry="1632"/>
         <zone xml:id="f270B-zone-Jeremiah-44-4-s2" ulx="2855" uly="1587" lrx="3598" lry="1729"/>
@@ -201,7 +210,7 @@
         <ab>
         <cb xml:id="f270B-cb-1" n="1"/>
           <lb xml:id="f270B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Jeremiah-44-3" xml:id="f270B-v-Jeremiah-44-3"/>
+            <milestone unit="verse" n="Jeremiah-44-3" xml:id="f270B-v-Jeremiah-44-3" facs="#f270B-zone-Jeremiah-44-3"/>
             <w xml:id="f270B-w-183923">לָלֶ֣כֶת</w>
             <w xml:id="f270B-w-183924">לְקַטֵּ֔ר</w>
             <w xml:id="f270B-w-183925">לַעֲבֹ֖ד</w>

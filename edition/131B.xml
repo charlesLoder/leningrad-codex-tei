@@ -47,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 3 missing verse zones (15 line segments) from Masoretica HTR page n261.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n261.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 22 verse zones (74 line segments) from Masoretica HTR page n261. Left out 3 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n261.json"/>
       </change>
@@ -74,6 +77,12 @@
         <desc type="sha256">4d613a778d9b03dea837d21ca610f4357032a765fe56b390c5b360eebdd90d9c</desc>
       </graphic>
       <graphic xml:id="f131B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0261.jp2/full/max/0/default.jpg" width="4335px" height="5279px"/>
+      <zone xml:id="f131B-zone-Joshua-18-6" type="verse" cert="0.673" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-6-s1" ulx="2283" uly="849" lrx="2435" lry="1044"/>
+        <zone xml:id="f131B-zone-Joshua-18-6-s2" ulx="2084" uly="871" lrx="2276" lry="961"/>
+        <zone xml:id="f131B-zone-Joshua-18-6-s3" ulx="2919" uly="1149" lrx="3594" lry="1322"/>
+        <zone xml:id="f131B-zone-Joshua-18-6-s4" ulx="3121" uly="1265" lrx="3594" lry="1424"/>
+      </zone>
       <zone xml:id="f131B-zone-Joshua-18-7" type="verse" cert="0.948" resp="#source-masoretica">
         <zone xml:id="f131B-zone-Joshua-18-7-s1" ulx="2836" uly="1265" lrx="3103" lry="1424"/>
         <zone xml:id="f131B-zone-Joshua-18-7-s2" ulx="2865" uly="1373" lrx="3602" lry="1518"/>
@@ -123,6 +132,15 @@
         <zone xml:id="f131B-zone-Joshua-18-13-s3" ulx="1864" uly="1485" lrx="2612" lry="1604"/>
         <zone xml:id="f131B-zone-Joshua-18-13-s4" ulx="1868" uly="1565" lrx="2601" lry="1691"/>
         <zone xml:id="f131B-zone-Joshua-18-13-s5" ulx="1965" uly="1644" lrx="2619" lry="1796"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-14" type="verse" cert="0.959" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-14-s1" ulx="1904" uly="1756" lrx="2634" lry="1893"/>
+        <zone xml:id="f131B-zone-Joshua-18-14-s2" ulx="1203" uly="1156" lrx="1438" lry="1348"/>
+        <zone xml:id="f131B-zone-Joshua-18-14-s3" ulx="1900" uly="1839" lrx="2449" lry="1995"/>
+        <zone xml:id="f131B-zone-Joshua-18-14-s4" ulx="1889" uly="1944" lrx="2612" lry="2092"/>
+        <zone xml:id="f131B-zone-Joshua-18-14-s5" ulx="1907" uly="2038" lrx="2615" lry="2179"/>
+        <zone xml:id="f131B-zone-Joshua-18-14-s6" ulx="1889" uly="2157" lrx="2634" lry="2269"/>
+        <zone xml:id="f131B-zone-Joshua-18-14-s7" ulx="2413" uly="2233" lrx="2619" lry="2370"/>
       </zone>
       <zone xml:id="f131B-zone-Joshua-18-15" type="verse" cert="0.922" resp="#source-masoretica">
         <zone xml:id="f131B-zone-Joshua-18-15-s1" ulx="1904" uly="2233" lrx="2395" lry="2370"/>
@@ -176,6 +194,12 @@
         <zone xml:id="f131B-zone-Joshua-19-1-s3" ulx="936" uly="3075" lrx="1662" lry="3223"/>
         <zone xml:id="f131B-zone-Joshua-19-1-s4" ulx="2106" uly="3259" lrx="2521" lry="3404"/>
       </zone>
+      <zone xml:id="f131B-zone-Joshua-19-2" type="verse" cert="0.945" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-19-2-s1" ulx="1958" uly="3259" lrx="2110" lry="3404"/>
+        <zone xml:id="f131B-zone-Joshua-19-2-s2" ulx="2384" uly="3375" lrx="2637" lry="3494"/>
+        <zone xml:id="f131B-zone-Joshua-19-2-s3" ulx="910" uly="3183" lrx="1477" lry="3321"/>
+        <zone xml:id="f131B-zone-Joshua-19-2-s4" ulx="1087" uly="3288" lrx="1651" lry="3407"/>
+      </zone>
       <zone xml:id="f131B-zone-Joshua-19-3" type="verse" cert="0.944" resp="#source-masoretica">
         <zone xml:id="f131B-zone-Joshua-19-3-s1" ulx="936" uly="3288" lrx="1087" lry="3407"/>
         <zone xml:id="f131B-zone-Joshua-19-3-s2" ulx="1174" uly="3368" lrx="1662" lry="3508"/>
@@ -202,7 +226,7 @@
         <ab>
         <cb xml:id="f131B-cb-1" n="1"/>
           <lb xml:id="f131B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Joshua-18-6" xml:id="f131B-v-Joshua-18-6"/>
+            <milestone unit="verse" n="Joshua-18-6" xml:id="f131B-v-Joshua-18-6" facs="#f131B-zone-Joshua-18-6"/>
             <w xml:id="f131B-w-86909">הֵ֑נָּה</w>
             <w xml:id="f131B-w-86910">וְיָרִ֨יתִי</w>
             <w xml:id="f131B-w-86911">לָכֶ֤ם</w>
@@ -400,7 +424,7 @@
             <w xml:id="f131B-w-87055">תַּחְתּֽוֹן</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87055">׃</pc>
           <lb xml:id="f131B-lb-2-7" n="7"/>
-            <milestone unit="verse" n="Joshua-18-14" xml:id="f131B-v-Joshua-18-14"/>
+            <milestone unit="verse" n="Joshua-18-14" xml:id="f131B-v-Joshua-18-14" facs="#f131B-zone-Joshua-18-14"/>
             <w xml:id="f131B-w-87056">וְתָאַ֣ר</w>
             <w xml:id="f131B-w-87057">הַגְּבוּל֩</w>
             <w xml:id="f131B-w-87058">וְנָסַ֨ב</w>
@@ -667,7 +691,7 @@
           <lb xml:id="f131B-lb-3-22" n="22"/>
             <w xml:id="f131B-w-87246">יְהוּדָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87246">׃</pc>
-            <milestone unit="verse" n="Joshua-19-2" xml:id="f131B-v-Joshua-19-2"/>
+            <milestone unit="verse" n="Joshua-19-2" xml:id="f131B-v-Joshua-19-2" facs="#f131B-zone-Joshua-19-2"/>
             <w xml:id="f131B-w-87247">וַיְהִ֥י</w>
             <w xml:id="f131B-w-87248">לָהֶ֖ם</w>
             <w xml:id="f131B-w-87249">בְּנַֽחֲלָתָ֑ם</w>

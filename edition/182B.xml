@@ -47,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 3 missing verse zones (7 line segments) from Masoretica HTR page n363.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n363.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 27 verse zones (37 line segments) from Masoretica HTR page n363. Left out 3 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n363.json"/>
       </change>
@@ -74,11 +77,20 @@
         <desc type="sha256">c45e73950edd20bd73dca44b585305e1346da49ede27090ec6720442dcd5e938</desc>
       </graphic>
       <graphic xml:id="f182B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0363.jp2/full/max/0/default.jpg" width="4495px" height="5375px"/>
+      <zone xml:id="f182B-zone-Samuel_2-22-25" type="verse" cert="0.943" resp="#source-masoretica">
+        <zone xml:id="f182B-zone-Samuel_2-22-25-s1" ulx="2660" uly="1367" lrx="3270" lry="1521"/>
+        <zone xml:id="f182B-zone-Samuel_2-22-25-s2" ulx="3191" uly="1760" lrx="3251" lry="1892"/>
+        <zone xml:id="f182B-zone-Samuel_2-22-25-s3" ulx="1461" uly="1337" lrx="1910" lry="1536"/>
+      </zone>
       <zone xml:id="f182B-zone-Samuel_2-22-26" type="verse" cert="0.653" resp="#source-masoretica">
         <zone xml:id="f182B-zone-Samuel_2-22-26-s1" ulx="1483" uly="1495" lrx="2041" lry="1622"/>
       </zone>
       <zone xml:id="f182B-zone-Samuel_2-22-27" type="verse" cert="0.633" resp="#source-masoretica">
         <zone xml:id="f182B-zone-Samuel_2-22-27-s1" ulx="1558" uly="1577" lrx="2064" lry="1727"/>
+      </zone>
+      <zone xml:id="f182B-zone-Samuel_2-22-28" type="verse" cert="0.659" resp="#source-masoretica">
+        <zone xml:id="f182B-zone-Samuel_2-22-28-s1" ulx="1405" uly="1577" lrx="1510" lry="1727"/>
+        <zone xml:id="f182B-zone-Samuel_2-22-28-s2" ulx="1442" uly="1686" lrx="2075" lry="1809"/>
       </zone>
       <zone xml:id="f182B-zone-Samuel_2-22-29" type="verse" cert="0.587" resp="#source-masoretica">
         <zone xml:id="f182B-zone-Samuel_2-22-29-s1" ulx="1495" uly="1768" lrx="1937" lry="1899"/>
@@ -133,6 +145,10 @@
       <zone xml:id="f182B-zone-Samuel_2-22-44" type="verse" cert="0.962" resp="#source-masoretica">
         <zone xml:id="f182B-zone-Samuel_2-22-44-s1" ulx="1453" uly="2884" lrx="3244" lry="3038"/>
       </zone>
+      <zone xml:id="f182B-zone-Samuel_2-22-45" type="verse" cert="0.866" resp="#source-masoretica">
+        <zone xml:id="f182B-zone-Samuel_2-22-45-s1" ulx="2753" uly="2993" lrx="3225" lry="3124"/>
+        <zone xml:id="f182B-zone-Samuel_2-22-45-s2" ulx="1453" uly="2985" lrx="2101" lry="3113"/>
+      </zone>
       <zone xml:id="f182B-zone-Samuel_2-22-46" type="verse" cert="0.893" resp="#source-masoretica">
         <zone xml:id="f182B-zone-Samuel_2-22-46-s1" ulx="2012" uly="3086" lrx="3218" lry="3210"/>
       </zone>
@@ -174,7 +190,7 @@
         <pb xml:id="f182B-pb-182B" n="182B"/>
         <ab>
           <lb xml:id="f182B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Samuel_2-22-25" xml:id="f182B-v-Samuel_2-22-25"/>
+            <milestone unit="verse" n="Samuel_2-22-25" xml:id="f182B-v-Samuel_2-22-25" facs="#f182B-zone-Samuel_2-22-25"/>
             <w xml:id="f182B-w-123126">וַיָּ֧שֶׁב</w>
             <w xml:id="f182B-w-123127">יְהוָ֛ה</w>
             <w xml:id="f182B-w-123128">לִ֖י</w>
@@ -203,7 +219,7 @@
             <w xml:id="f182B-w-123145">תִּתַּפָּֽל</w>
             <pc type="sof-pasuq" xml:id="f182B-pc-123145">׃</pc>
           <lb xml:id="f182B-lb-1-4" n="4"/>
-            <milestone unit="verse" n="Samuel_2-22-28" xml:id="f182B-v-Samuel_2-22-28"/>
+            <milestone unit="verse" n="Samuel_2-22-28" xml:id="f182B-v-Samuel_2-22-28" facs="#f182B-zone-Samuel_2-22-28"/>
             <w xml:id="f182B-w-123146">וְאֶת־</w>
             <w xml:id="f182B-w-123147">עַ֥ם</w>
             <w xml:id="f182B-w-123148">עָנִ֖י</w>
@@ -373,7 +389,7 @@
             <w xml:id="f182B-w-123268">יַעַבְדֻֽנִי</w>
             <pc type="sof-pasuq" xml:id="f182B-pc-123268">׃</pc>
           <lb xml:id="f182B-lb-1-18" n="18"/>
-            <milestone unit="verse" n="Samuel_2-22-45" xml:id="f182B-v-Samuel_2-22-45"/>
+            <milestone unit="verse" n="Samuel_2-22-45" xml:id="f182B-v-Samuel_2-22-45" facs="#f182B-zone-Samuel_2-22-45"/>
             <w xml:id="f182B-w-123269">בְּנֵ֥י</w>
             <w xml:id="f182B-w-123270">נֵכָ֖ר</w>
             <w xml:id="f182B-w-123271">יִתְכַּֽחֲשׁוּ־</w>

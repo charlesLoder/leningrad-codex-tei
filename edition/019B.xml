@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (5 line segments) from Masoretica HTR page n37.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n37.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 24 verse zones (93 line segments) from Masoretica HTR page n37. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n37.json"/>
       </change>
@@ -80,6 +83,13 @@
         <desc type="sha256">a5da8ae85466024e1b5bcf99c2a3d0d456cfd27e0921e6cbadc14c65b7fd7146</desc>
       </graphic>
       <graphic xml:id="f019B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0037.jp2/full/max/0/default.jpg" width="4463px" height="5295px"/>
+      <zone xml:id="f019B-zone-Genesis-31-43" type="verse" cert="0.775" resp="#source-masoretica">
+        <zone xml:id="f019B-zone-Genesis-31-43-s1" ulx="1564" uly="954" lrx="1620" lry="1092"/>
+        <zone xml:id="f019B-zone-Genesis-31-43-s2" ulx="2933" uly="1233" lrx="3663" lry="1399"/>
+        <zone xml:id="f019B-zone-Genesis-31-43-s3" ulx="2914" uly="1363" lrx="3649" lry="1480"/>
+        <zone xml:id="f019B-zone-Genesis-31-43-s4" ulx="2923" uly="1436" lrx="3658" lry="1592"/>
+        <zone xml:id="f019B-zone-Genesis-31-43-s5" ulx="3148" uly="1559" lrx="3649" lry="1689"/>
+      </zone>
       <zone xml:id="f019B-zone-Genesis-31-44" type="verse" cert="0.961" resp="#source-masoretica">
         <zone xml:id="f019B-zone-Genesis-31-44-s1" ulx="2936" uly="1559" lrx="3111" lry="1689"/>
         <zone xml:id="f019B-zone-Genesis-31-44-s2" ulx="2923" uly="1626" lrx="3654" lry="1782"/>
@@ -231,7 +241,7 @@
         <ab>
         <cb xml:id="f019B-cb-1" n="1"/>
           <lb xml:id="f019B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Genesis-31-43" xml:id="f019B-v-Genesis-31-43"/>
+            <milestone unit="verse" n="Genesis-31-43" xml:id="f019B-v-Genesis-31-43" facs="#f019B-zone-Genesis-31-43"/>
             <w xml:id="f019B-w-12232">וְהַצֹּ֣אן</w>
             <w xml:id="f019B-w-12233">צֹאנִ֔י</w>
             <w xml:id="f019B-w-12234">וְכֹ֛ל</w>

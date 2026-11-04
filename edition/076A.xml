@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (4 line segments) from Masoretica HTR page n150.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n150.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 27 verse zones (99 line segments) from Masoretica HTR page n150. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n150.json"/>
       </change>
@@ -77,6 +80,12 @@
         <desc type="sha256">3bb0fe516bf6c4caf8b317c4710141aceab492a878b2f45b519916eeb312da4f</desc>
       </graphic>
       <graphic xml:id="f076A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0150.jp2/full/max/0/default.jpg" width="4399px" height="5311px"/>
+      <zone xml:id="f076A-zone-Numbers-3-32" type="verse" cert="0.799" resp="#source-masoretica">
+        <zone xml:id="f076A-zone-Numbers-3-32-s1" ulx="3428" uly="1265" lrx="3651" lry="1356"/>
+        <zone xml:id="f076A-zone-Numbers-3-32-s2" ulx="3120" uly="1342" lrx="3754" lry="1499"/>
+        <zone xml:id="f076A-zone-Numbers-3-32-s3" ulx="3039" uly="1459" lrx="3761" lry="1587"/>
+        <zone xml:id="f076A-zone-Numbers-3-32-s4" ulx="3571" uly="1532" lrx="3754" lry="1690"/>
+      </zone>
       <zone xml:id="f076A-zone-Numbers-3-33" type="verse" cert="0.925" resp="#source-masoretica">
         <zone xml:id="f076A-zone-Numbers-3-33-s1" ulx="3072" uly="1532" lrx="3505" lry="1690"/>
         <zone xml:id="f076A-zone-Numbers-3-33-s2" ulx="2988" uly="1627" lrx="3743" lry="1778"/>
@@ -241,7 +250,7 @@
         <cb xml:id="f076A-cb-1" n="1"/>
           <lb xml:id="f076A-lb-1-1" n="1"/>
           <lb xml:id="f076A-lb-1-2" n="2"/>
-            <milestone unit="verse" n="Numbers-3-32" xml:id="f076A-v-Numbers-3-32"/>
+            <milestone unit="verse" n="Numbers-3-32" xml:id="f076A-v-Numbers-3-32" facs="#f076A-zone-Numbers-3-32"/>
             <w xml:id="f076A-w-50552">אֶלְעָזָ֖ר</w>
             <w xml:id="f076A-w-50553">בֶּן־</w>
             <w xml:id="f076A-w-50554">אַהֲרֹ֣ן</w>

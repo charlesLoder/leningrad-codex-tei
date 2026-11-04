@@ -47,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (5 line segments) from Masoretica HTR page n361.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n361.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 18 verse zones (88 line segments) from Masoretica HTR page n361. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n361.json"/>
       </change>
@@ -77,6 +80,13 @@
         <desc type="sha256">b75d782821db5502ba60f994592d0c14dc672dc912ee2d579e2d9422d21ac739</desc>
       </graphic>
       <graphic xml:id="f181B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0361.jp2/full/max/0/default.jpg" width="4431px" height="5279px"/>
+      <zone xml:id="f181B-zone-Samuel_2-21-4" type="verse" cert="0.78" resp="#source-masoretica">
+        <zone xml:id="f181B-zone-Samuel_2-21-4-s1" ulx="1034" uly="986" lrx="1617" lry="1130"/>
+        <zone xml:id="f181B-zone-Samuel_2-21-4-s2" ulx="3009" uly="1255" lrx="3670" lry="1436"/>
+        <zone xml:id="f181B-zone-Samuel_2-21-4-s3" ulx="2928" uly="1381" lrx="3667" lry="1532"/>
+        <zone xml:id="f181B-zone-Samuel_2-21-4-s4" ulx="2987" uly="1495" lrx="3685" lry="1617"/>
+        <zone xml:id="f181B-zone-Samuel_2-21-4-s5" ulx="3556" uly="1584" lrx="3670" lry="1702"/>
+      </zone>
       <zone xml:id="f181B-zone-Samuel_2-21-5" type="verse" cert="0.917" resp="#source-masoretica">
         <zone xml:id="f181B-zone-Samuel_2-21-5-s1" ulx="3028" uly="1584" lrx="3534" lry="1702"/>
         <zone xml:id="f181B-zone-Samuel_2-21-5-s2" ulx="2984" uly="1669" lrx="3670" lry="1798"/>
@@ -211,7 +221,7 @@
         <ab>
         <cb xml:id="f181B-cb-1" n="1"/>
           <lb xml:id="f181B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Samuel_2-21-4" xml:id="f181B-v-Samuel_2-21-4"/>
+            <milestone unit="verse" n="Samuel_2-21-4" xml:id="f181B-v-Samuel_2-21-4" facs="#f181B-zone-Samuel_2-21-4"/>
             <w xml:id="f181B-w-122591">שָׁא֣וּל</w>
             <w xml:id="f181B-w-122592">וְעִם־</w>
             <w xml:id="f181B-w-122593">בֵּית֔וֹ</w>

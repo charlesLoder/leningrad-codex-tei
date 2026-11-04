@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (4 line segments) from Masoretica HTR page n419.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n419.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 18 verse zones (87 line segments) from Masoretica HTR page n419. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n419.json"/>
       </change>
@@ -73,6 +76,12 @@
         <desc type="sha256">6539bbb0a0b2d440dc0f1c56b56e06b2a8cd29c19b00430e889fc8a1924bcecc</desc>
       </graphic>
       <graphic xml:id="f210B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0419.jp2/full/max/0/default.jpg" width="4399px" height="5471px"/>
+      <zone xml:id="f210B-zone-Kings_2-12-5" type="verse" cert="0.538" resp="#source-masoretica">
+        <zone xml:id="f210B-zone-Kings_2-12-5-s1" ulx="1019" uly="1089" lrx="1140" lry="1232"/>
+        <zone xml:id="f210B-zone-Kings_2-12-5-s2" ulx="2896" uly="1379" lrx="3625" lry="1558"/>
+        <zone xml:id="f210B-zone-Kings_2-12-5-s3" ulx="2874" uly="1518" lrx="3629" lry="1643"/>
+        <zone xml:id="f210B-zone-Kings_2-12-5-s4" ulx="3486" uly="1595" lrx="3633" lry="1745"/>
+      </zone>
       <zone xml:id="f210B-zone-Kings_2-12-6" type="verse" cert="0.905" resp="#source-masoretica">
         <zone xml:id="f210B-zone-Kings_2-12-6-s1" ulx="2918" uly="1595" lrx="3461" lry="1745"/>
         <zone xml:id="f210B-zone-Kings_2-12-6-s2" ulx="3002" uly="1690" lrx="3622" lry="1837"/>
@@ -206,7 +215,7 @@
         <ab>
         <cb xml:id="f210B-cb-1" n="1"/>
           <lb xml:id="f210B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Kings_2-12-5" xml:id="f210B-v-Kings_2-12-5"/>
+            <milestone unit="verse" n="Kings_2-12-5" xml:id="f210B-v-Kings_2-12-5" facs="#f210B-zone-Kings_2-12-5"/>
             <w xml:id="f210B-w-142839">עֶרְכּ֑וֹ</w>
             <w xml:id="f210B-w-142840">כָּל־</w>
             <w xml:id="f210B-w-142841">כֶּ֗סֶף</w>
