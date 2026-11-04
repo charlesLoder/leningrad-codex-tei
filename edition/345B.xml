@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 18 verse zones (87 line segments) from Masoretica HTR page n689. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n689.json"/>
+      </change>
       <change when="2026-11-03" who="#contrib-charles-w-loder">
       Move the pe milestone that ends a line onto the blank line that follows it (#1111).
       </change>
@@ -61,10 +68,134 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-345B">
+    <surface xml:id="surf-345B" ulx="0" uly="0" lrx="4383" lry="5375">
       <graphic xml:id="f345B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F345B.jpg">
         <desc type="sha256">de3bffda6a0149ac82cc42016e7b6721d55d968516cbea63367b4129664ecc09</desc>
       </graphic>
+      <graphic xml:id="f345B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0689.jp2/full/max/0/default.jpg" width="4383px" height="5375px"/>
+      <zone xml:id="f345B-zone-Chronicles_2-2-7" type="verse" cert="0.569" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-7-s1" ulx="2444" uly="1099" lrx="3203" lry="1271"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-7-s2" ulx="2447" uly="1227" lrx="3189" lry="1373"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-8" type="verse" cert="0.944" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-8-s1" ulx="2531" uly="1333" lrx="3222" lry="1461"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-8-s2" ulx="2476" uly="1402" lrx="3200" lry="1559"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-8-s3" ulx="3010" uly="1515" lrx="3222" lry="1643"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-9" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-9-s1" ulx="2601" uly="1515" lrx="2995" lry="1643"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-9-s2" ulx="2473" uly="1585" lrx="3203" lry="1745"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-9-s3" ulx="2454" uly="1709" lrx="3211" lry="1855"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-9-s4" ulx="2454" uly="1789" lrx="3200" lry="1950"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-9-s5" ulx="2462" uly="1888" lrx="3196" lry="2048"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-9-s6" ulx="2476" uly="2001" lrx="3203" lry="2151"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-10" type="verse" cert="0.978" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-10-s1" ulx="2454" uly="2154" lrx="3200" lry="2326"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-10-s2" ulx="2451" uly="2264" lrx="3203" lry="2417"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-10-s3" ulx="2447" uly="2370" lrx="3207" lry="2516"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-10-s4" ulx="3046" uly="2454" lrx="3192" lry="2614"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-11" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-11-s1" ulx="2465" uly="2454" lrx="3035" lry="2614"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-11-s2" ulx="2454" uly="2549" lrx="3211" lry="2713"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-11-s3" ulx="2440" uly="2658" lrx="3170" lry="2801"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-11-s4" ulx="2509" uly="2757" lrx="3174" lry="2903"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-11-s5" ulx="2465" uly="2845" lrx="3178" lry="2998"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-11-s6" ulx="2454" uly="2932" lrx="3203" lry="3075"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-11-s7" ulx="2791" uly="3027" lrx="3192" lry="3169"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-12" type="verse" cert="0.92" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-12-s1" ulx="2444" uly="3027" lrx="2787" lry="3169"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-12-s2" ulx="2528" uly="3133" lrx="3192" lry="3272"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-12-s3" ulx="2707" uly="3232" lrx="3170" lry="3370"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-13" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s1" ulx="2447" uly="3232" lrx="2681" lry="3370"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s2" ulx="2436" uly="3337" lrx="3185" lry="3462"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s3" ulx="2484" uly="3414" lrx="3174" lry="3571"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s4" ulx="2444" uly="3516" lrx="3189" lry="3670"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s5" ulx="2458" uly="3637" lrx="3181" lry="3779"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s6" ulx="1494" uly="1081" lrx="2195" lry="1289"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s7" ulx="1461" uly="1216" lrx="2213" lry="1384"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s8" ulx="1454" uly="1333" lrx="2184" lry="1482"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s9" ulx="1512" uly="1428" lrx="2195" lry="1574"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-13-s10" ulx="1877" uly="1534" lrx="2192" lry="1658"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-14" type="verse" cert="0.979" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-14-s1" ulx="1472" uly="1534" lrx="1859" lry="1658"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-14-s2" ulx="1512" uly="1614" lrx="2202" lry="1760"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-14-s3" ulx="1541" uly="1705" lrx="2192" lry="1862"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-14-s4" ulx="1961" uly="1815" lrx="2184" lry="1972"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-15" type="verse" cert="0.951" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-15-s1" ulx="1439" uly="1815" lrx="1950" lry="1972"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-15-s2" ulx="1589" uly="1910" lrx="2202" lry="2059"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-15-s3" ulx="1468" uly="1994" lrx="2199" lry="2154"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-15-s4" ulx="1472" uly="2114" lrx="2206" lry="2253"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-15-s5" ulx="1939" uly="2202" lrx="2195" lry="2326"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-2-17" type="verse" cert="0.959" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-2-17-s1" ulx="1483" uly="2757" lrx="1625" lry="2910"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-17-s2" ulx="1435" uly="2855" lrx="2192" lry="3002"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-17-s3" ulx="1435" uly="2961" lrx="2202" lry="3086"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-17-s4" ulx="1479" uly="3034" lrx="2206" lry="3177"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-17-s5" ulx="1512" uly="3133" lrx="2192" lry="3275"/>
+        <zone xml:id="f345B-zone-Chronicles_2-2-17-s6" ulx="1936" uly="3232" lrx="2181" lry="3370"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-1" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-1-s1" ulx="1549" uly="3232" lrx="1910" lry="3370"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-1-s2" ulx="1428" uly="3312" lrx="2184" lry="3473"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-1-s3" ulx="1487" uly="3447" lrx="2188" lry="3571"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-1-s4" ulx="1479" uly="3538" lrx="2181" lry="3677"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-1-s5" ulx="1516" uly="3633" lrx="2181" lry="3779"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-1-s6" ulx="979" uly="1136" lrx="1191" lry="1289"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-2" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-2-s1" ulx="497" uly="1136" lrx="964" lry="1289"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-2-s2" ulx="526" uly="1245" lrx="1187" lry="1395"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-2-s3" ulx="909" uly="1336" lrx="1183" lry="1482"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-3" type="verse" cert="0.953" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-3-s1" ulx="460" uly="1336" lrx="902" lry="1482"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-3-s2" ulx="555" uly="1450" lrx="1191" lry="1574"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-3-s3" ulx="548" uly="1519" lrx="1202" lry="1665"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-3-s4" ulx="489" uly="1621" lrx="1191" lry="1764"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-3-s5" ulx="636" uly="1734" lrx="1194" lry="1859"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-3-s6" ulx="961" uly="1815" lrx="1194" lry="1972"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-4" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-4-s1" ulx="493" uly="1815" lrx="942" lry="1972"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-4-s2" ulx="497" uly="1913" lrx="1194" lry="2052"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-4-s3" ulx="468" uly="2012" lrx="1187" lry="2154"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-4-s4" ulx="530" uly="2114" lrx="1191" lry="2235"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-4-s5" ulx="650" uly="2202" lrx="1198" lry="2341"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-5" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-5-s1" ulx="471" uly="2202" lrx="610" lry="2341"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-5-s2" ulx="544" uly="2300" lrx="1180" lry="2428"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-5-s3" ulx="489" uly="2392" lrx="1191" lry="2516"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-5-s4" ulx="431" uly="2468" lrx="1209" lry="2618"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-6" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-6-s1" ulx="588" uly="2585" lrx="1202" lry="2709"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-6-s2" ulx="544" uly="2680" lrx="1202" lry="2808"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-6-s3" ulx="888" uly="2757" lrx="1205" lry="2914"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-7" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-7-s1" ulx="475" uly="2757" lrx="866" lry="2914"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-7-s2" ulx="497" uly="2874" lrx="1183" lry="3002"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-7-s3" ulx="460" uly="2965" lrx="1209" lry="3093"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-7-s4" ulx="614" uly="3060" lrx="1191" lry="3180"/>
+      </zone>
+      <zone xml:id="f345B-zone-Chronicles_2-3-8" type="verse" cert="0.968" resp="#source-masoretica">
+        <zone xml:id="f345B-zone-Chronicles_2-3-8-s1" ulx="449" uly="3137" lrx="1001" lry="3275"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-8-s2" ulx="500" uly="3221" lrx="1169" lry="3378"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-8-s3" ulx="489" uly="3316" lrx="1187" lry="3476"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-8-s4" ulx="603" uly="3425" lrx="1194" lry="3575"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-8-s5" ulx="500" uly="3535" lrx="1183" lry="3681"/>
+        <zone xml:id="f345B-zone-Chronicles_2-3-8-s6" ulx="625" uly="3622" lrx="1176" lry="3779"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -75,7 +206,7 @@
         <ab>
         <cb xml:id="f345B-cb-1" n="1"/>
           <lb xml:id="f345B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Chronicles_2-2-7" xml:id="f345B-v-Chronicles_2-2-7"/>
+            <milestone unit="verse" n="Chronicles_2-2-7" xml:id="f345B-v-Chronicles_2-2-7" facs="#f345B-zone-Chronicles_2-2-7"/>
             <w xml:id="f345B-w-292598">עֲבָדֶ֙יךָ֙</w>
             <w xml:id="f345B-w-292599">יֽוֹדְעִ֔ים</w>
             <w xml:id="f345B-w-292600">לִכְר֖וֹת</w>
@@ -88,7 +219,7 @@
             <w xml:id="f345B-w-292606">עֲבָדֶֽיךָ</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292606">׃</pc>
           <lb xml:id="f345B-lb-1-3" n="3"/>
-            <milestone unit="verse" n="Chronicles_2-2-8" xml:id="f345B-v-Chronicles_2-2-8"/>
+            <milestone unit="verse" n="Chronicles_2-2-8" xml:id="f345B-v-Chronicles_2-2-8" facs="#f345B-zone-Chronicles_2-2-8"/>
             <w xml:id="f345B-w-292607">וּלְהָכִ֥ין</w>
             <w xml:id="f345B-w-292608">לִ֛י</w>
             <w xml:id="f345B-w-292609">עֵצִ֖ים</w>
@@ -103,7 +234,7 @@
           <lb xml:id="f345B-lb-1-5" n="5"/>
             <w xml:id="f345B-w-292617">וְהַפְלֵֽא</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292617">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-2-9" xml:id="f345B-v-Chronicles_2-2-9"/>
+            <milestone unit="verse" n="Chronicles_2-2-9" xml:id="f345B-v-Chronicles_2-2-9" facs="#f345B-zone-Chronicles_2-2-9"/>
             <w xml:id="f345B-w-292618">וְהִנֵּ֣ה</w>
             <w xml:id="f345B-w-292619">לַֽחֹטְבִ֣ים</w>
             <pc type="paseq" xml:id="f345B-pc-292619">׀</pc>
@@ -139,7 +270,7 @@
           <lb xml:id="f345B-lb-1-11" n="11"/>
             <milestone unit="section" subtype="pe" xml:id="f345B-s-Chronicles_2-2-9"/>
           <lb xml:id="f345B-lb-1-12" n="12"/>
-            <milestone unit="verse" n="Chronicles_2-2-10" xml:id="f345B-v-Chronicles_2-2-10"/>
+            <milestone unit="verse" n="Chronicles_2-2-10" xml:id="f345B-v-Chronicles_2-2-10" facs="#f345B-zone-Chronicles_2-2-10"/>
             <w xml:id="f345B-w-292641">וַיֹּ֨אמֶר</w>
             <w xml:id="f345B-w-292642">חוּרָ֤ם</w>
             <w xml:id="f345B-w-292643">מֶֽלֶךְ־</w>
@@ -159,7 +290,7 @@
           <lb xml:id="f345B-lb-1-15" n="15"/>
             <w xml:id="f345B-w-292655">מֶֽלֶךְ</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292655">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-2-11" xml:id="f345B-v-Chronicles_2-2-11"/>
+            <milestone unit="verse" n="Chronicles_2-2-11" xml:id="f345B-v-Chronicles_2-2-11" facs="#f345B-zone-Chronicles_2-2-11"/>
             <w xml:id="f345B-w-292656">וַיֹּאמֶר֮</w>
             <w xml:id="f345B-w-292657">חוּרָם֒</w>
             <w xml:id="f345B-w-292658">בָּר֤וּךְ</w>
@@ -194,7 +325,7 @@
             <w xml:id="f345B-w-292681">וּבַ֖יִת</w>
             <w xml:id="f345B-w-292682">לְמַלְכוּתֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292682">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-2-12" xml:id="f345B-v-Chronicles_2-2-12"/>
+            <milestone unit="verse" n="Chronicles_2-2-12" xml:id="f345B-v-Chronicles_2-2-12" facs="#f345B-zone-Chronicles_2-2-12"/>
             <w xml:id="f345B-w-292683">וְעַתָּ֗ה</w>
           <lb xml:id="f345B-lb-1-22" n="22"/>
             <w xml:id="f345B-w-292684">שָׁלַ֧חְתִּי</w>
@@ -206,7 +337,7 @@
             <w xml:id="f345B-w-292689">לְחוּרָ֥ם</w>
             <w xml:id="f345B-w-292690">אָבִֽי</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292690">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-2-13" xml:id="f345B-v-Chronicles_2-2-13"/>
+            <milestone unit="verse" n="Chronicles_2-2-13" xml:id="f345B-v-Chronicles_2-2-13" facs="#f345B-zone-Chronicles_2-2-13"/>
             <w xml:id="f345B-w-292691">בֶּן־</w>
             <w xml:id="f345B-w-292692">אִשָּׁ֞ה</w>
           <lb xml:id="f345B-lb-1-24" n="24"/>
@@ -253,7 +384,7 @@
             <w xml:id="f345B-w-292724">דָּוִ֥יד</w>
             <w xml:id="f345B-w-292725">אָבִֽיךָ</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292725">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-2-14" xml:id="f345B-v-Chronicles_2-2-14"/>
+            <milestone unit="verse" n="Chronicles_2-2-14" xml:id="f345B-v-Chronicles_2-2-14" facs="#f345B-zone-Chronicles_2-2-14"/>
             <w xml:id="f345B-w-292726">וְ֠עַתָּה</w>
             <w xml:id="f345B-w-292727">הַחִטִּ֨ים</w>
           <lb xml:id="f345B-lb-2-6" n="6"/>
@@ -268,7 +399,7 @@
           <lb xml:id="f345B-lb-2-8" n="8"/>
             <w xml:id="f345B-w-292735">לַעֲבָדָֽיו</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292735">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-2-15" xml:id="f345B-v-Chronicles_2-2-15"/>
+            <milestone unit="verse" n="Chronicles_2-2-15" xml:id="f345B-v-Chronicles_2-2-15" facs="#f345B-zone-Chronicles_2-2-15"/>
             <w xml:id="f345B-w-292736">וַ֠אֲנַחְנוּ</w>
             <w xml:id="f345B-w-292737">נִכְרֹ֨ת</w>
             <w xml:id="f345B-w-292738">עֵצִ֤ים</w>
@@ -322,7 +453,7 @@
             <w xml:id="f345B-w-292773">וְשֵׁ֥שׁ</w>
             <w xml:id="f345B-w-292774">מֵאֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292774">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-2-17" xml:id="f345B-v-Chronicles_2-2-17"/>
+            <milestone unit="verse" n="Chronicles_2-2-17" xml:id="f345B-v-Chronicles_2-2-17" facs="#f345B-zone-Chronicles_2-2-17"/>
             <w xml:id="f345B-w-292775">וַיַּ֨עַשׂ</w>
           <lb xml:id="f345B-lb-2-19" n="19"/>
             <w xml:id="f345B-w-292776">מֵהֶ֜ם</w>
@@ -346,7 +477,7 @@
             <w xml:id="f345B-w-292790">אֶת־</w>
             <w xml:id="f345B-w-292791">הָעָֽם</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292791">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-3-1" xml:id="f345B-v-Chronicles_2-3-1"/>
+            <milestone unit="verse" n="Chronicles_2-3-1" xml:id="f345B-v-Chronicles_2-3-1" facs="#f345B-zone-Chronicles_2-3-1"/>
             <w xml:id="f345B-w-292792">וַיָּ֣חֶל</w>
             <w xml:id="f345B-w-292793">שְׁלֹמֹ֗ה</w>
           <lb xml:id="f345B-lb-2-24" n="24"/>
@@ -374,7 +505,7 @@
           <lb xml:id="f345B-lb-3-1" n="1"/>
             <w xml:id="f345B-w-292811">הַיְבוּסִֽי</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292811">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-3-2" xml:id="f345B-v-Chronicles_2-3-2"/>
+            <milestone unit="verse" n="Chronicles_2-3-2" xml:id="f345B-v-Chronicles_2-3-2" facs="#f345B-zone-Chronicles_2-3-2"/>
             <w xml:id="f345B-w-292812">וַ֠יָּחֶל</w>
             <w xml:id="f345B-w-292813">לִבְנ֞וֹת</w>
             <w xml:id="f345B-w-292814">בַּחֹ֤דֶשׁ</w>
@@ -386,7 +517,7 @@
           <lb xml:id="f345B-lb-3-3" n="3"/>
             <w xml:id="f345B-w-292819">לְמַלְכוּתֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292819">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-3-3" xml:id="f345B-v-Chronicles_2-3-3"/>
+            <milestone unit="verse" n="Chronicles_2-3-3" xml:id="f345B-v-Chronicles_2-3-3" facs="#f345B-zone-Chronicles_2-3-3"/>
             <w xml:id="f345B-w-292820">וְאֵ֙לֶּה֙</w>
             <w xml:id="f345B-w-292821">הוּסַ֣ד</w>
           <lb xml:id="f345B-lb-3-4" n="4"/>
@@ -409,7 +540,7 @@
           <lb xml:id="f345B-lb-3-8" n="8"/>
             <w xml:id="f345B-w-292835">עֶשְׂרִֽים</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292835">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-3-4" xml:id="f345B-v-Chronicles_2-3-4"/>
+            <milestone unit="verse" n="Chronicles_2-3-4" xml:id="f345B-v-Chronicles_2-3-4" facs="#f345B-zone-Chronicles_2-3-4"/>
             <w xml:id="f345B-w-292836">וְהָאוּלָ֡ם</w>
             <w xml:id="f345B-w-292837">אֲשֶׁר֩</w>
           <lb xml:id="f345B-lb-3-9" n="9"/>
@@ -433,7 +564,7 @@
             <w xml:id="f345B-w-292852">זָהָ֥ב</w>
             <w xml:id="f345B-w-292853">טָהֽוֹר</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292853">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-3-5" xml:id="f345B-v-Chronicles_2-3-5"/>
+            <milestone unit="verse" n="Chronicles_2-3-5" xml:id="f345B-v-Chronicles_2-3-5" facs="#f345B-zone-Chronicles_2-3-5"/>
             <w xml:id="f345B-w-292854">וְאֵ֣ת</w>
             <pc type="paseq" xml:id="f345B-pc-292854">׀</pc>
           <lb xml:id="f345B-lb-3-13" n="13"/>
@@ -453,7 +584,7 @@
             <w xml:id="f345B-w-292866">וְשַׁרְשְׁרֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292866">׃</pc>
           <lb xml:id="f345B-lb-3-16" n="16"/>
-            <milestone unit="verse" n="Chronicles_2-3-6" xml:id="f345B-v-Chronicles_2-3-6"/>
+            <milestone unit="verse" n="Chronicles_2-3-6" xml:id="f345B-v-Chronicles_2-3-6" facs="#f345B-zone-Chronicles_2-3-6"/>
             <w xml:id="f345B-w-292867">וַיְצַ֧ף</w>
             <w xml:id="f345B-w-292868">אֶת־</w>
             <w xml:id="f345B-w-292869">הַבַּ֛יִת</w>
@@ -466,7 +597,7 @@
             <w xml:id="f345B-w-292874">זְהַ֥ב</w>
             <w xml:id="f345B-w-292875">פַּרְוָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f345B-pc-292875">׃</pc>
-            <milestone unit="verse" n="Chronicles_2-3-7" xml:id="f345B-v-Chronicles_2-3-7"/>
+            <milestone unit="verse" n="Chronicles_2-3-7" xml:id="f345B-v-Chronicles_2-3-7" facs="#f345B-zone-Chronicles_2-3-7"/>
             <w xml:id="f345B-w-292876">וַיְחַ֨ף</w>
             <w xml:id="f345B-w-292877">אֶת־</w>
             <w xml:id="f345B-w-292878">הַבַּ֜יִת</w>
@@ -485,7 +616,7 @@
             <pc type="sof-pasuq" xml:id="f345B-pc-292887">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f345B-s-Chronicles_2-3-7"/>
           <lb xml:id="f345B-lb-3-22" n="22"/>
-            <milestone unit="verse" n="Chronicles_2-3-8" xml:id="f345B-v-Chronicles_2-3-8"/>
+            <milestone unit="verse" n="Chronicles_2-3-8" xml:id="f345B-v-Chronicles_2-3-8" facs="#f345B-zone-Chronicles_2-3-8"/>
             <w xml:id="f345B-w-292888">וַיַּ֙עַשׂ֙</w>
             <w xml:id="f345B-w-292889">אֶת־</w>
             <w xml:id="f345B-w-292890">בֵּֽית־</w>

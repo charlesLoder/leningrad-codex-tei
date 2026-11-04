@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-ken-penner">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:kmpenner@gmail.com">Ken Penner</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 25 verse zones (99 line segments) from Masoretica HTR page n197.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n197.json"/>
+      </change>
       <change when="2026-10-24T01:07:05.184426+00:00" who="#contrib-ken-penner">Encoded by Ken Penner.
       </change>
       <change when="2026-10-21T15:21:42.857821+00:00" who="#contrib-ken-penner">Aligned Deuteronomy 1:44 – Deuteronomy 2:23 (333 atoms).
@@ -58,10 +69,160 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-099B">
+    <surface xml:id="surf-099B" ulx="0" uly="0" lrx="4415" lry="5343">
       <graphic xml:id="f099B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F099B.jpg">
         <desc type="sha256">9b951c02d3de7b4082709171ab3f9de45f152e029aef1244102cc7f6d033b695</desc>
       </graphic>
+      <graphic xml:id="f099B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0197.jp2/full/max/0/default.jpg" width="4415px" height="5343px"/>
+      <zone xml:id="f099B-zone-Deuteronomy-1-45" type="verse" cert="0.949" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-1-45-s1" ulx="2829" uly="1354" lrx="3377" lry="1516"/>
+        <zone xml:id="f099B-zone-Deuteronomy-1-45-s2" ulx="3006" uly="1465" lrx="3595" lry="1590"/>
+        <zone xml:id="f099B-zone-Deuteronomy-1-45-s3" ulx="2866" uly="1546" lrx="3595" lry="1693"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-1-46" type="verse" cert="0.876" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-1-46-s1" ulx="2870" uly="1641" lrx="3602" lry="1785"/>
+        <zone xml:id="f099B-zone-Deuteronomy-1-46-s2" ulx="3010" uly="1737" lrx="3591" lry="1880"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-1" type="verse" cert="0.861" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-1-s1" ulx="2870" uly="1737" lrx="2995" lry="1880"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-1-s2" ulx="2840" uly="1836" lrx="3602" lry="1976"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-1-s3" ulx="2870" uly="1913" lrx="3587" lry="2068"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-1-s4" ulx="2903" uly="2017" lrx="3587" lry="2156"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-2" type="verse" cert="0.851" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-2-s1" ulx="2870" uly="2120" lrx="3308" lry="2230"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-2-s2" ulx="3260" uly="2171" lrx="3591" lry="2326"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-3" type="verse" cert="0.924" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-3-s1" ulx="2877" uly="2171" lrx="3227" lry="2326"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-3-s2" ulx="2962" uly="2278" lrx="3587" lry="2421"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-3-s3" ulx="3429" uly="2355" lrx="3591" lry="2513"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-4" type="verse" cert="0.932" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-4-s1" ulx="2859" uly="2355" lrx="3429" lry="2513"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-4-s2" ulx="2851" uly="2469" lrx="3580" lry="2609"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-4-s3" ulx="2859" uly="2550" lrx="3584" lry="2712"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-4-s4" ulx="2829" uly="2660" lrx="3595" lry="2800"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-5" type="verse" cert="0.889" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-5-s1" ulx="2862" uly="2756" lrx="3576" lry="2874"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-5-s2" ulx="2826" uly="2815" lrx="3576" lry="2970"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-5-s3" ulx="2848" uly="2933" lrx="3569" lry="3047"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-5-s4" ulx="3149" uly="3021" lrx="3569" lry="3143"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-6" type="verse" cert="0.88" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-6-s1" ulx="2980" uly="3021" lrx="3120" lry="3143"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-6-s2" ulx="2962" uly="3095" lrx="3561" lry="3234"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-6-s3" ulx="2862" uly="3176" lrx="3583" lry="3315"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-6-s4" ulx="2925" uly="3275" lrx="3569" lry="3400"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-7" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-7-s1" ulx="2840" uly="3275" lrx="2940" lry="3400"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-7-s2" ulx="2873" uly="3349" lrx="3587" lry="3488"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-7-s3" ulx="2895" uly="3426" lrx="3576" lry="3584"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-7-s4" ulx="2859" uly="3518" lrx="3572" lry="3676"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-7-s5" ulx="2811" uly="3625" lrx="3572" lry="3772"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-7-s6" ulx="2947" uly="3720" lrx="3580" lry="3871"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-8" type="verse" cert="0.902" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-8-s1" ulx="1917" uly="1369" lrx="2623" lry="1523"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-8-s2" ulx="1983" uly="1468" lrx="2623" lry="1608"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-8-s3" ulx="1932" uly="1549" lrx="2627" lry="1704"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-8-s4" ulx="2252" uly="1663" lrx="2634" lry="1807"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-8-s5" ulx="1840" uly="1733" lrx="2465" lry="1899"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-8-s6" ulx="2428" uly="1836" lrx="2620" lry="1987"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-9" type="verse" cert="0.926" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-9-s1" ulx="1909" uly="1836" lrx="2414" lry="1987"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-9-s2" ulx="1884" uly="1928" lrx="2609" lry="2075"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-9-s3" ulx="1913" uly="2020" lrx="2605" lry="2171"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-9-s4" ulx="1921" uly="2109" lrx="2597" lry="2252"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-9-s5" ulx="1887" uly="2212" lrx="2601" lry="2337"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-9-s6" ulx="2425" uly="2289" lrx="2620" lry="2432"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-10" type="verse" cert="0.929" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-10-s1" ulx="1983" uly="2289" lrx="2384" lry="2432"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-10-s2" ulx="1869" uly="2381" lrx="2620" lry="2521"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-10-s3" ulx="2336" uly="2473" lrx="2605" lry="2613"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-11" type="verse" cert="0.882" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-11-s1" ulx="1880" uly="2473" lrx="2303" lry="2613"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-11-s2" ulx="1854" uly="2557" lrx="2594" lry="2712"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-11-s3" ulx="2101" uly="2660" lrx="2627" lry="2804"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-12" type="verse" cert="0.88" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-12-s1" ulx="1832" uly="2660" lrx="2071" lry="2804"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-12-s2" ulx="1935" uly="2760" lrx="2612" lry="2881"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-12-s3" ulx="1917" uly="2848" lrx="2605" lry="2973"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-12-s4" ulx="1987" uly="2936" lrx="2609" lry="3076"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-12-s5" ulx="1968" uly="3028" lrx="2590" lry="3154"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-12-s6" ulx="1932" uly="3098" lrx="2590" lry="3246"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-12-s7" ulx="2329" uly="3179" lrx="2612" lry="3323"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-13" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-13-s1" ulx="1851" uly="3179" lrx="2311" lry="3323"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-13-s2" ulx="1913" uly="3260" lrx="2601" lry="3418"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-13-s3" ulx="2263" uly="3363" lrx="2601" lry="3507"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-14" type="verse" cert="0.919" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-14-s1" ulx="1873" uly="3363" lrx="2241" lry="3507"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-14-s2" ulx="1902" uly="3452" lrx="2590" lry="3599"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-14-s3" ulx="1887" uly="3533" lrx="2597" lry="3683"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-14-s4" ulx="1884" uly="3632" lrx="2609" lry="3779"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-14-s5" ulx="1818" uly="3717" lrx="2586" lry="3886"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-14-s6" ulx="912" uly="1391" lrx="1615" lry="1546"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-14-s7" ulx="1111" uly="1501" lrx="1619" lry="1630"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-15" type="verse" cert="0.909" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-15-s1" ulx="901" uly="1501" lrx="1093" lry="1630"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-15-s2" ulx="920" uly="1571" lrx="1615" lry="1726"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-15-s3" ulx="920" uly="1674" lrx="1608" lry="1818"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-16" type="verse" cert="0.953" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-16-s1" ulx="879" uly="1755" lrx="1623" lry="1913"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-16-s2" ulx="946" uly="1855" lrx="1597" lry="2005"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-16-s3" ulx="1450" uly="1947" lrx="1608" lry="2090"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-17" type="verse" cert="0.906" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-17-s1" ulx="931" uly="1947" lrx="1251" lry="2090"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-17-s2" ulx="1295" uly="2024" lrx="1608" lry="2175"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-18" type="verse" cert="0.959" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-18-s1" ulx="975" uly="2024" lrx="1269" lry="2175"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-18-s2" ulx="920" uly="2134" lrx="1615" lry="2256"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-18-s3" ulx="1512" uly="2219" lrx="1611" lry="2348"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-19" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-19-s1" ulx="916" uly="2219" lrx="1501" lry="2348"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-19-s2" ulx="949" uly="2289" lrx="1608" lry="2440"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-19-s3" ulx="883" uly="2381" lrx="1611" lry="2528"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-19-s4" ulx="887" uly="2469" lrx="1608" lry="2620"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-19-s5" ulx="1210" uly="2576" lrx="1623" lry="2719"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-20" type="verse" cert="0.981" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-20-s1" ulx="868" uly="2576" lrx="1181" lry="2719"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-20-s2" ulx="971" uly="2672" lrx="1615" lry="2811"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-20-s3" ulx="935" uly="2771" lrx="1637" lry="2896"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-20-s4" ulx="1041" uly="2859" lrx="1634" lry="2988"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-21" type="verse" cert="0.922" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-21-s1" ulx="909" uly="2859" lrx="1015" lry="2988"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-21-s2" ulx="953" uly="2940" lrx="1626" lry="3087"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-21-s3" ulx="949" uly="3043" lrx="1626" lry="3154"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-21-s4" ulx="982" uly="3128" lrx="1634" lry="3249"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-22" type="verse" cert="0.976" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-22-s1" ulx="916" uly="3209" lrx="1619" lry="3338"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-22-s2" ulx="979" uly="3290" lrx="1608" lry="3430"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-22-s3" ulx="846" uly="3367" lrx="1611" lry="3518"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-22-s4" ulx="993" uly="3455" lrx="1630" lry="3602"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-22-s5" ulx="1240" uly="3558" lrx="1619" lry="3698"/>
+      </zone>
+      <zone xml:id="f099B-zone-Deuteronomy-2-23" type="verse" cert="0.673" resp="#source-masoretica">
+        <zone xml:id="f099B-zone-Deuteronomy-2-23-s1" ulx="997" uly="3558" lrx="1221" lry="3698"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-23-s2" ulx="894" uly="3665" lrx="1600" lry="3783"/>
+        <zone xml:id="f099B-zone-Deuteronomy-2-23-s3" ulx="993" uly="3731" lrx="1626" lry="3889"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -75,7 +236,7 @@
             <milestone unit="verse" n="Deuteronomy-1-44" xml:id="f099B-v-Deuteronomy-1-44"/>
             <w xml:id="f099B-w-66324">חָרְמָֽה</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66324">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-1-45" xml:id="f099B-v-Deuteronomy-1-45"/>
+            <milestone unit="verse" n="Deuteronomy-1-45" xml:id="f099B-v-Deuteronomy-1-45" facs="#f099B-zone-Deuteronomy-1-45"/>
             <w xml:id="f099B-w-66325">וַתָּשֻׁ֥בוּ</w>
             <w xml:id="f099B-w-66326">וַתִּבְכּ֖וּ</w>
             <w xml:id="f099B-w-66327">לִפְנֵ֣י</w>
@@ -91,7 +252,7 @@
             <w xml:id="f099B-w-66335">אֲלֵיכֶֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66335">׃</pc>
           <lb xml:id="f099B-lb-1-4" n="4"/>
-            <milestone unit="verse" n="Deuteronomy-1-46" xml:id="f099B-v-Deuteronomy-1-46"/>
+            <milestone unit="verse" n="Deuteronomy-1-46" xml:id="f099B-v-Deuteronomy-1-46" facs="#f099B-zone-Deuteronomy-1-46"/>
             <w xml:id="f099B-w-66336">וַתֵּשְׁב֥וּ</w>
             <w xml:id="f099B-w-66337">בְקָדֵ֖שׁ</w>
             <w xml:id="f099B-w-66338">יָמִ֣ים</w>
@@ -101,7 +262,7 @@
             <w xml:id="f099B-w-66341">אֲשֶׁ֥ר</w>
             <w xml:id="f099B-w-66342">יְשַׁבְתֶּֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66342">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-1" xml:id="f099B-v-Deuteronomy-2-1"/>
+            <milestone unit="verse" n="Deuteronomy-2-1" xml:id="f099B-v-Deuteronomy-2-1" facs="#f099B-zone-Deuteronomy-2-1"/>
             <w xml:id="f099B-w-66343">וַנֵּ֜פֶן</w>
           <lb xml:id="f099B-lb-1-6" n="6"/>
             <w xml:id="f099B-w-66344">וַנִּסַּ֤ע</w>
@@ -124,14 +285,14 @@
             <pc type="sof-pasuq" xml:id="f099B-pc-66358">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f099B-s-Deuteronomy-2-1"/>
           <lb xml:id="f099B-lb-1-9" n="9"/>
-            <milestone unit="verse" n="Deuteronomy-2-2" xml:id="f099B-v-Deuteronomy-2-2"/>
+            <milestone unit="verse" n="Deuteronomy-2-2" xml:id="f099B-v-Deuteronomy-2-2" facs="#f099B-zone-Deuteronomy-2-2"/>
             <w xml:id="f099B-w-66359">וַיֹּ֥אמֶר</w>
             <w xml:id="f099B-w-66360">יְהוָ֖ה</w>
           <lb xml:id="f099B-lb-1-10" n="10"/>
             <w xml:id="f099B-w-66361">אֵלַ֥י</w>
             <w xml:id="f099B-w-66362">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66362">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-3" xml:id="f099B-v-Deuteronomy-2-3"/>
+            <milestone unit="verse" n="Deuteronomy-2-3" xml:id="f099B-v-Deuteronomy-2-3" facs="#f099B-zone-Deuteronomy-2-3"/>
             <w xml:id="f099B-w-66363">רַב־</w>
             <w xml:id="f099B-w-66364">לָכֶ֕ם</w>
             <w xml:id="f099B-w-66365">סֹ֖ב</w>
@@ -144,7 +305,7 @@
           <lb xml:id="f099B-lb-1-12" n="12"/>
             <w xml:id="f099B-w-66371">צָפֹֽנָה</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66371">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-4" xml:id="f099B-v-Deuteronomy-2-4"/>
+            <milestone unit="verse" n="Deuteronomy-2-4" xml:id="f099B-v-Deuteronomy-2-4" facs="#f099B-zone-Deuteronomy-2-4"/>
             <w xml:id="f099B-w-66372">וְאֶת־</w>
             <w xml:id="f099B-w-66373">הָעָם֮</w>
             <w xml:id="f099B-w-66374">צַ֣ו</w>
@@ -166,7 +327,7 @@
             <w xml:id="f099B-w-66387">מְאֹֽד</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66387">׃</pc>
           <lb xml:id="f099B-lb-1-16" n="16"/>
-            <milestone unit="verse" n="Deuteronomy-2-5" xml:id="f099B-v-Deuteronomy-2-5"/>
+            <milestone unit="verse" n="Deuteronomy-2-5" xml:id="f099B-v-Deuteronomy-2-5" facs="#f099B-zone-Deuteronomy-2-5"/>
             <w xml:id="f099B-w-66388">אַל־</w>
             <w xml:id="f099B-w-66389">תִּתְגָּר֣וּ</w>
             <w xml:id="f099B-w-66390">בָ֔ם</w>
@@ -190,7 +351,7 @@
             <w xml:id="f099B-w-66405">הַ֥ר</w>
             <w xml:id="f099B-w-66406">שֵׂעִֽיר</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66406">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-6" xml:id="f099B-v-Deuteronomy-2-6"/>
+            <milestone unit="verse" n="Deuteronomy-2-6" xml:id="f099B-v-Deuteronomy-2-6" facs="#f099B-zone-Deuteronomy-2-6"/>
             <w xml:id="f099B-w-66407">אֹ֣כֶל</w>
           <lb xml:id="f099B-lb-1-20" n="20"/>
             <w xml:id="f099B-w-66408">תִּשְׁבְּר֧וּ</w>
@@ -206,7 +367,7 @@
             <w xml:id="f099B-w-66416">בַּכֶּ֖סֶף</w>
             <w xml:id="f099B-w-66417">וּשְׁתִיתֶֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66417">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-7" xml:id="f099B-v-Deuteronomy-2-7"/>
+            <milestone unit="verse" n="Deuteronomy-2-7" xml:id="f099B-v-Deuteronomy-2-7" facs="#f099B-zone-Deuteronomy-2-7"/>
             <w xml:id="f099B-w-66418">כִּי֩</w>
           <lb xml:id="f099B-lb-1-23" n="23"/>
             <w xml:id="f099B-w-66419">יְהוָ֨ה</w>
@@ -238,7 +399,7 @@
             <pc type="sof-pasuq" xml:id="f099B-pc-66439">׃</pc>
         <cb xml:id="f099B-cb-2" n="2"/>
           <lb xml:id="f099B-lb-2-1" n="1"/>
-            <milestone unit="verse" n="Deuteronomy-2-8" xml:id="f099B-v-Deuteronomy-2-8"/>
+            <milestone unit="verse" n="Deuteronomy-2-8" xml:id="f099B-v-Deuteronomy-2-8" facs="#f099B-zone-Deuteronomy-2-8"/>
             <w xml:id="f099B-w-66440">וַֽנַּעֲבֹ֞ר</w>
             <w xml:id="f099B-w-66441">מֵאֵ֧ת</w>
             <w xml:id="f099B-w-66442">אַחֵ֣ינוּ</w>
@@ -263,7 +424,7 @@
           <lb xml:id="f099B-lb-2-6" n="6"/>
             <w xml:id="f099B-w-66456">מוֹאָֽב</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66456">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-9" xml:id="f099B-v-Deuteronomy-2-9"/>
+            <milestone unit="verse" n="Deuteronomy-2-9" xml:id="f099B-v-Deuteronomy-2-9" facs="#f099B-zone-Deuteronomy-2-9"/>
             <w xml:id="f099B-w-66457">וַיֹּ֨אמֶר</w>
             <w xml:id="f099B-w-66458">יְהוָ֜ה</w>
             <w xml:id="f099B-w-66459">אֵלַ֗י</w>
@@ -294,7 +455,7 @@
           <lb xml:id="f099B-lb-2-11" n="11"/>
             <w xml:id="f099B-w-66480">יְרֻשָּֽׁה</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66480">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-10" xml:id="f099B-v-Deuteronomy-2-10"/>
+            <milestone unit="verse" n="Deuteronomy-2-10" xml:id="f099B-v-Deuteronomy-2-10" facs="#f099B-zone-Deuteronomy-2-10"/>
             <w xml:id="f099B-w-66481">הָאֵמִ֥ים</w>
             <w xml:id="f099B-w-66482">לְפָנִ֖ים</w>
           <lb xml:id="f099B-lb-2-12" n="12"/>
@@ -307,7 +468,7 @@
           <lb xml:id="f099B-lb-2-13" n="13"/>
             <w xml:id="f099B-w-66489">כָּעֲנָקִֽים</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66489">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-11" xml:id="f099B-v-Deuteronomy-2-11"/>
+            <milestone unit="verse" n="Deuteronomy-2-11" xml:id="f099B-v-Deuteronomy-2-11" facs="#f099B-zone-Deuteronomy-2-11"/>
             <w xml:id="f099B-w-66490">רְפָאִ֛ים</w>
             <w xml:id="f099B-w-66491">יֵחָשְׁב֥וּ</w>
           <lb xml:id="f099B-lb-2-14" n="14"/>
@@ -320,7 +481,7 @@
             <w xml:id="f099B-w-66497">לָהֶ֖ם</w>
             <w xml:id="f099B-w-66498">אֵמִֽים</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66498">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-12" xml:id="f099B-v-Deuteronomy-2-12"/>
+            <milestone unit="verse" n="Deuteronomy-2-12" xml:id="f099B-v-Deuteronomy-2-12" facs="#f099B-zone-Deuteronomy-2-12"/>
             <w xml:id="f099B-w-66499">וּבְשֵׂעִ֞יר</w>
           <lb xml:id="f099B-lb-2-16" n="16"/>
             <w xml:id="f099B-w-66500">יָשְׁב֣וּ</w>
@@ -348,7 +509,7 @@
             <w xml:id="f099B-w-66517">יְהוָ֖ה</w>
             <w xml:id="f099B-w-66518">לָהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66518">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-13" xml:id="f099B-v-Deuteronomy-2-13"/>
+            <milestone unit="verse" n="Deuteronomy-2-13" xml:id="f099B-v-Deuteronomy-2-13" facs="#f099B-zone-Deuteronomy-2-13"/>
             <w xml:id="f099B-w-66519">עַתָּ֗ה</w>
             <w xml:id="f099B-w-66520">קֻ֛מוּ</w>
             <w xml:id="f099B-w-66521">וְעִבְר֥וּ</w>
@@ -363,7 +524,7 @@
             <w xml:id="f099B-w-66528">נַ֥חַל</w>
             <w xml:id="f099B-w-66529">זָֽרֶד</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66529">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-14" xml:id="f099B-v-Deuteronomy-2-14"/>
+            <milestone unit="verse" n="Deuteronomy-2-14" xml:id="f099B-v-Deuteronomy-2-14" facs="#f099B-zone-Deuteronomy-2-14"/>
             <w xml:id="f099B-w-66530">וְהַיָּמִ֞ים</w>
             <w xml:id="f099B-w-66531">אֲשֶׁר־</w>
           <lb xml:id="f099B-lb-2-24" n="24"/>
@@ -399,7 +560,7 @@
             <w xml:id="f099B-w-66554">יְהוָ֖ה</w>
             <w xml:id="f099B-w-66555">לָהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66555">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-15" xml:id="f099B-v-Deuteronomy-2-15"/>
+            <milestone unit="verse" n="Deuteronomy-2-15" xml:id="f099B-v-Deuteronomy-2-15" facs="#f099B-zone-Deuteronomy-2-15"/>
             <w xml:id="f099B-w-66556">וְגַ֤ם</w>
             <w xml:id="f099B-w-66557">יַד־</w>
           <lb xml:id="f099B-lb-3-3" n="3"/>
@@ -414,7 +575,7 @@
             <w xml:id="f099B-w-66565">תֻּמָּֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66565">׃</pc>
           <lb xml:id="f099B-lb-3-5" n="5"/>
-            <milestone unit="verse" n="Deuteronomy-2-16" xml:id="f099B-v-Deuteronomy-2-16"/>
+            <milestone unit="verse" n="Deuteronomy-2-16" xml:id="f099B-v-Deuteronomy-2-16" facs="#f099B-zone-Deuteronomy-2-16"/>
             <w xml:id="f099B-w-66566">וַיְהִ֨י</w>
             <w xml:id="f099B-w-66567">כַאֲשֶׁר־</w>
             <w xml:id="f099B-w-66568">תַּ֜מּוּ</w>
@@ -428,14 +589,14 @@
             <w xml:id="f099B-w-66574">הָעָֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66574">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f099B-s-Deuteronomy-2-16"/>
-            <milestone unit="verse" n="Deuteronomy-2-17" xml:id="f099B-v-Deuteronomy-2-17"/>
+            <milestone unit="verse" n="Deuteronomy-2-17" xml:id="f099B-v-Deuteronomy-2-17" facs="#f099B-zone-Deuteronomy-2-17"/>
             <w xml:id="f099B-w-66575">וַיְדַבֵּ֥ר</w>
             <w xml:id="f099B-w-66576">יְהוָ֖ה</w>
           <lb xml:id="f099B-lb-3-8" n="8"/>
             <w xml:id="f099B-w-66577">אֵלַ֥י</w>
             <w xml:id="f099B-w-66578">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66578">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-18" xml:id="f099B-v-Deuteronomy-2-18"/>
+            <milestone unit="verse" n="Deuteronomy-2-18" xml:id="f099B-v-Deuteronomy-2-18" facs="#f099B-zone-Deuteronomy-2-18"/>
             <w xml:id="f099B-w-66579">אַתָּ֨ה</w>
             <w xml:id="f099B-w-66580">עֹבֵ֥ר</w>
           <lb xml:id="f099B-lb-3-9" n="9"/>
@@ -447,7 +608,7 @@
           <lb xml:id="f099B-lb-3-10" n="10"/>
             <w xml:id="f099B-w-66586">עָֽר</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66586">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-19" xml:id="f099B-v-Deuteronomy-2-19"/>
+            <milestone unit="verse" n="Deuteronomy-2-19" xml:id="f099B-v-Deuteronomy-2-19" facs="#f099B-zone-Deuteronomy-2-19"/>
             <w xml:id="f099B-w-66587">וְקָרַבְתָּ֗</w>
             <w xml:id="f099B-w-66588">מ֚וּל</w>
             <w xml:id="f099B-w-66589">בְּנֵ֣י</w>
@@ -475,7 +636,7 @@
             <w xml:id="f099B-w-66607">נְתַתִּ֥יהָ</w>
             <w xml:id="f099B-w-66608">יְרֻשָּֽׁה</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66608">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-20" xml:id="f099B-v-Deuteronomy-2-20"/>
+            <milestone unit="verse" n="Deuteronomy-2-20" xml:id="f099B-v-Deuteronomy-2-20" facs="#f099B-zone-Deuteronomy-2-20"/>
             <w xml:id="f099B-w-66609">אֶֽרֶץ־</w>
             <w xml:id="f099B-w-66610">רְפָאִ֥ים</w>
           <lb xml:id="f099B-lb-3-15" n="15"/>
@@ -493,7 +654,7 @@
             <w xml:id="f099B-w-66620">לָהֶ֖ם</w>
             <w xml:id="f099B-w-66621">זַמְזֻמִּֽים</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66621">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-21" xml:id="f099B-v-Deuteronomy-2-21"/>
+            <milestone unit="verse" n="Deuteronomy-2-21" xml:id="f099B-v-Deuteronomy-2-21" facs="#f099B-zone-Deuteronomy-2-21"/>
             <w xml:id="f099B-w-66622">עַ֣ם</w>
           <lb xml:id="f099B-lb-3-18" n="18"/>
             <w xml:id="f099B-w-66623">גָּד֥וֹל</w>
@@ -510,7 +671,7 @@
             <w xml:id="f099B-w-66632">תַחְתָּֽם</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66632">׃</pc>
           <lb xml:id="f099B-lb-3-21" n="21"/>
-            <milestone unit="verse" n="Deuteronomy-2-22" xml:id="f099B-v-Deuteronomy-2-22"/>
+            <milestone unit="verse" n="Deuteronomy-2-22" xml:id="f099B-v-Deuteronomy-2-22" facs="#f099B-zone-Deuteronomy-2-22"/>
             <w xml:id="f099B-w-66633">כַּאֲשֶׁ֤ר</w>
             <w xml:id="f099B-w-66634">עָשָׂה֙</w>
             <w xml:id="f099B-w-66635">לִבְנֵ֣י</w>
@@ -533,7 +694,7 @@
             <w xml:id="f099B-w-66648">הַיּ֥וֹם</w>
             <w xml:id="f099B-w-66649">הַזֶּֽה</w>
             <pc type="sof-pasuq" xml:id="f099B-pc-66649">׃</pc>
-            <milestone unit="verse" n="Deuteronomy-2-23" xml:id="f099B-v-Deuteronomy-2-23"/>
+            <milestone unit="verse" n="Deuteronomy-2-23" xml:id="f099B-v-Deuteronomy-2-23" facs="#f099B-zone-Deuteronomy-2-23"/>
             <w xml:id="f099B-w-66650">וְהָֽעַוִּ֛ים</w>
           <lb xml:id="f099B-lb-3-26" n="26"/>
             <w xml:id="f099B-w-66651">הַיֹּשְׁבִ֥ים</w>

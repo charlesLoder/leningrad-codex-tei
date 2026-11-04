@@ -1,0 +1,73 @@
+---
+/**
+ * IIIF viewer (triiiceratops web component).
+ * Renders the per-folio manifest from /iiif/<folio>.json with verse zones
+ * as annotations. Only folios with zones have a built manifest.
+ */
+interface Props {
+  manifestUrl: string;
+  folio: string;
+}
+
+const { manifestUrl, folio } = Astro.props;
+---
+
+<section id="facsimile" class="iiif" aria-label={`IIIF viewer for folio ${folio}`}>
+  <h2 class="iiif-heading">Facsimile</h2>
+  <p class="iiif-note">
+    OCR courtesy of <a href="https://www.masoretica.org" target="_blank" rel="noopener noreferrer">Masoretica</a>.
+  </p>
+  <triiiceratops-viewer
+    id="iiif-viewer"
+    manifest-id={manifestUrl}
+  ></triiiceratops-viewer>
+  <noscript>
+    <a href={manifestUrl} target="_blank" rel="noopener noreferrer">View the IIIF manifest for folio {folio}</a>
+  </noscript>
+</section>
+
+<script>
+  import 'triiiceratops/element/register';
+import 'triiiceratops/style.css';
+
+  const viewer = /** @type {any} */ (document.getElementById('iiif-viewer'));
+  if (viewer) {
+    // With the annotations panel open, the viewer shows every verse zone.
+    // `config` is a property-tier input.
+    viewer.config = { information: { open: true }, annotations: { open: true } };
+
+    // The viewer hardcodes annotations above information, with no config for
+    // the order. If an update renames these internals, the panel only goes
+    // back below the annotations.
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync('.panel-slot:has([data-panel-id="metadata"]) { order: -1; }');
+    viewer.shadowRoot?.adoptedStyleSheets.push(sheet);
+  }
+</script>
+
+<style>
+  .iiif {
+    padding-bottom: 1.5rem;
+  }
+  .iiif-heading {
+    font-size: 1.1rem;
+    margin: 0 0 0.25rem;
+  }
+  .iiif-note {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 0 0 0.5rem;
+  }
+  /* Wider than the text column: up to 90vw, centered on the column.
+     Soften verse overlays: no borders, faint fill. These tokens pierce
+     the viewer's shadow DOM by inheritance. */
+  triiiceratops-viewer {
+    position: relative;
+    left: calc((100% - max(100%, 90vw)) / 2);
+    display: block;
+    width: max(100%, 90vw);
+    height: clamp(24rem, 65vh, 44rem);
+    --tri-annotation-border-width: 0px;
+    --tri-annotation-fill-opacity: 15%;
+  }
+</style>

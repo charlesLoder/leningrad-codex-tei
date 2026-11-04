@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 35 verse zones (70 line segments) from Masoretica HTR page n810. Left out 3 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n810.json"/>
+      </change>
       <change when="2026-11-03" who="#contrib-charles-w-loder">
       Move the pe milestone that ends a line onto the blank line that follows it (#1111).
       </change>
@@ -61,10 +68,151 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-406A">
+    <surface xml:id="surf-406A" ulx="0" uly="0" lrx="4671" lry="5499">
       <graphic xml:id="f406A-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F406A.jpg">
         <desc type="sha256">ae4680426bcf2b2cdb1dd7f5bae9b16b43725003fd7831596a916a4eed1c1eff</desc>
       </graphic>
+      <graphic xml:id="f406A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0810.jp2/full/max/0/default.jpg" width="4671px" height="5499px"/>
+      <zone xml:id="f406A-zone-Job-31-35" type="verse" cert="0.687" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-31-35-s1" ulx="3098" uly="1327" lrx="4095" lry="1502"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-31-36" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-31-36-s1" ulx="2842" uly="1327" lrx="3067" lry="1502"/>
+        <zone xml:id="f406A-zone-Job-31-36-s2" ulx="2814" uly="1436" lrx="4087" lry="1611"/>
+        <zone xml:id="f406A-zone-Job-31-36-s3" ulx="4005" uly="1549" lrx="4072" lry="1712"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-31-37" type="verse" cert="1" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-31-37-s1" ulx="2873" uly="1549" lrx="3978" lry="1712"/>
+        <zone xml:id="f406A-zone-Job-31-37-s2" ulx="3822" uly="1646" lrx="4079" lry="1817"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-31-38" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-31-38-s1" ulx="2849" uly="1646" lrx="3795" lry="1817"/>
+        <zone xml:id="f406A-zone-Job-31-38-s2" ulx="3682" uly="1747" lrx="4087" lry="1915"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-31-39" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-31-39-s1" ulx="2908" uly="1747" lrx="3651" lry="1915"/>
+        <zone xml:id="f406A-zone-Job-31-39-s2" ulx="3460" uly="1860" lrx="4110" lry="2016"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-31-40" type="verse" cert="0.977" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-31-40-s1" ulx="2849" uly="1860" lrx="3301" lry="2016"/>
+        <zone xml:id="f406A-zone-Job-31-40-s2" ulx="2845" uly="1946" lrx="4075" lry="2121"/>
+        <zone xml:id="f406A-zone-Job-31-40-s3" ulx="3939" uly="2063" lrx="4083" lry="2210"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-1" type="verse" cert="0.966" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-1-s1" ulx="2908" uly="2109" lrx="4091" lry="2327"/>
+        <zone xml:id="f406A-zone-Job-32-1-s2" ulx="2884" uly="2277" lrx="4083" lry="2425"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-2" type="verse" cert="0.935" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-2-s1" ulx="2838" uly="2413" lrx="4091" lry="2627"/>
+        <zone xml:id="f406A-zone-Job-32-2-s2" ulx="2869" uly="2565" lrx="4075" lry="2720"/>
+        <zone xml:id="f406A-zone-Job-32-2-s3" ulx="3414" uly="2658" lrx="4075" lry="2814"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-5" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-5-s1" ulx="2919" uly="3059" lrx="4091" lry="3215"/>
+        <zone xml:id="f406A-zone-Job-32-5-s2" ulx="2857" uly="3160" lrx="4087" lry="3331"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-6" type="verse" cert="0.993" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-6-s1" ulx="2939" uly="3320" lrx="4091" lry="3526"/>
+        <zone xml:id="f406A-zone-Job-32-6-s2" ulx="2861" uly="3475" lrx="4079" lry="3627"/>
+        <zone xml:id="f406A-zone-Job-32-6-s3" ulx="2877" uly="3561" lrx="4079" lry="3732"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-7" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-7-s1" ulx="2810" uly="3666" lrx="4079" lry="3833"/>
+        <zone xml:id="f406A-zone-Job-32-7-s2" ulx="3892" uly="3779" lrx="4075" lry="3931"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-8" type="verse" cert="0.992" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-8-s1" ulx="2834" uly="3779" lrx="3854" lry="3931"/>
+        <zone xml:id="f406A-zone-Job-32-8-s2" ulx="3612" uly="3864" lrx="4083" lry="4032"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-9" type="verse" cert="0.999" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-9-s1" ulx="2888" uly="3864" lrx="3597" lry="4032"/>
+        <zone xml:id="f406A-zone-Job-32-9-s2" ulx="3737" uly="3962" lrx="4095" lry="4145"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-10" type="verse" cert="0.998" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-10-s1" ulx="2830" uly="3962" lrx="3678" lry="4145"/>
+        <zone xml:id="f406A-zone-Job-32-10-s2" ulx="2102" uly="1323" lrx="2495" lry="1502"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-11" type="verse" cert="0.98" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-11-s1" ulx="1249" uly="1323" lrx="2055" lry="1502"/>
+        <zone xml:id="f406A-zone-Job-32-11-s2" ulx="1308" uly="1444" lrx="2515" lry="1603"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-12" type="verse" cert="0.939" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-12-s1" ulx="1316" uly="1549" lrx="2518" lry="1708"/>
+        <zone xml:id="f406A-zone-Job-32-12-s2" ulx="1740" uly="1666" lrx="2507" lry="1802"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-13" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-13-s1" ulx="1378" uly="1666" lrx="1701" lry="1802"/>
+        <zone xml:id="f406A-zone-Job-32-13-s2" ulx="1327" uly="1747" lrx="2515" lry="1907"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-14" type="verse" cert="0.944" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-14-s1" ulx="1277" uly="1856" lrx="2526" lry="2012"/>
+        <zone xml:id="f406A-zone-Job-32-14-s2" ulx="2246" uly="1954" lrx="2499" lry="2113"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-15" type="verse" cert="0.96" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-15-s1" ulx="1246" uly="1954" lrx="2199" lry="2113"/>
+        <zone xml:id="f406A-zone-Job-32-15-s2" ulx="2149" uly="2055" lrx="2511" lry="2214"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-16" type="verse" cert="1" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-16-s1" ulx="1273" uly="2055" lrx="1989" lry="2214"/>
+        <zone xml:id="f406A-zone-Job-32-16-s2" ulx="1822" uly="2152" lrx="2507" lry="2319"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-17" type="verse" cert="0.97" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-17-s1" ulx="1238" uly="2152" lrx="1662" lry="2319"/>
+        <zone xml:id="f406A-zone-Job-32-17-s2" ulx="1697" uly="2269" lrx="2515" lry="2428"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-18" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-18-s1" ulx="1246" uly="2269" lrx="1650" lry="2428"/>
+        <zone xml:id="f406A-zone-Job-32-18-s2" ulx="1685" uly="2366" lrx="2503" lry="2533"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-19" type="verse" cert="0.968" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-19-s1" ulx="1234" uly="2366" lrx="1639" lry="2533"/>
+        <zone xml:id="f406A-zone-Job-32-19-s2" ulx="1265" uly="2460" lrx="2503" lry="2627"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-20" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-20-s1" ulx="1265" uly="2569" lrx="2491" lry="2736"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-32-21" type="verse" cert="0.965" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-32-21-s1" ulx="1288" uly="2662" lrx="2499" lry="2829"/>
+        <zone xml:id="f406A-zone-Job-32-21-s2" ulx="2195" uly="2763" lrx="2495" lry="2934"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-1" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-1-s1" ulx="1230" uly="2872" lrx="1833" lry="3028"/>
+        <zone xml:id="f406A-zone-Job-33-1-s2" ulx="1464" uly="2985" lrx="2511" lry="3121"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-2" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-2-s1" ulx="1288" uly="2985" lrx="1409" lry="3121"/>
+        <zone xml:id="f406A-zone-Job-33-2-s2" ulx="1296" uly="3063" lrx="2522" lry="3234"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-3" type="verse" cert="0.934" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-3-s1" ulx="1230" uly="3168" lrx="2526" lry="3335"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-4" type="verse" cert="0.961" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-4-s1" ulx="1281" uly="3285" lrx="2515" lry="3440"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-5" type="verse" cert="0.998" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-5-s1" ulx="1285" uly="3370" lrx="2515" lry="3534"/>
+        <zone xml:id="f406A-zone-Job-33-5-s2" ulx="2223" uly="3468" lrx="2511" lry="3635"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-6" type="verse" cert="0.911" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-6-s1" ulx="1222" uly="3468" lrx="2184" lry="3635"/>
+        <zone xml:id="f406A-zone-Job-33-6-s2" ulx="2277" uly="3588" lrx="2518" lry="3736"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-7" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-7-s1" ulx="1238" uly="3588" lrx="2238" lry="3736"/>
+        <zone xml:id="f406A-zone-Job-33-7-s2" ulx="2059" uly="3666" lrx="2522" lry="3837"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-8" type="verse" cert="0.898" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-8-s1" ulx="1323" uly="3666" lrx="1837" lry="3837"/>
+        <zone xml:id="f406A-zone-Job-33-8-s2" ulx="1946" uly="3771" lrx="2546" lry="3938"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-9" type="verse" cert="0.989" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-9-s1" ulx="1281" uly="3771" lrx="1756" lry="3938"/>
+        <zone xml:id="f406A-zone-Job-33-9-s2" ulx="1880" uly="3880" lrx="2526" lry="4043"/>
+      </zone>
+      <zone xml:id="f406A-zone-Job-33-10" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f406A-zone-Job-33-10-s1" ulx="1242" uly="3880" lrx="1569" lry="4043"/>
+        <zone xml:id="f406A-zone-Job-33-10-s2" ulx="1611" uly="3977" lrx="2522" lry="4160"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -75,7 +223,7 @@
         <ab>
         <cb xml:id="f406A-cb-1" n="1"/>
           <lb xml:id="f406A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Job-31-35" xml:id="f406A-v-Job-31-35"/>
+            <milestone unit="verse" n="Job-31-35" xml:id="f406A-v-Job-31-35" facs="#f406A-zone-Job-31-35"/>
             <w xml:id="f406A-w-253860">שַׁדַּ֣י</w>
             <w xml:id="f406A-w-253861">יַעֲנֵ֑נִי</w>
             <w xml:id="f406A-w-253862">וְסֵ֥פֶר</w>
@@ -83,7 +231,7 @@
             <w xml:id="f406A-w-253864">אִ֣ישׁ</w>
             <w xml:id="f406A-w-253865">רִיבִֽי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253865">׃</pc>
-            <milestone unit="verse" n="Job-31-36" xml:id="f406A-v-Job-31-36"/>
+            <milestone unit="verse" n="Job-31-36" xml:id="f406A-v-Job-31-36" facs="#f406A-zone-Job-31-36"/>
             <w xml:id="f406A-w-253866">אִם־</w>
             <w xml:id="f406A-w-253867">לֹ֣א</w>
           <lb xml:id="f406A-lb-1-2" n="2"/>
@@ -95,7 +243,7 @@
           <lb xml:id="f406A-lb-1-3" n="3"/>
             <w xml:id="f406A-w-253873">לִֽי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253873">׃</pc>
-            <milestone unit="verse" n="Job-31-37" xml:id="f406A-v-Job-31-37"/>
+            <milestone unit="verse" n="Job-31-37" xml:id="f406A-v-Job-31-37" facs="#f406A-zone-Job-31-37"/>
             <w xml:id="f406A-w-253874">מִסְפַּ֣ר</w>
             <w xml:id="f406A-w-253875">צְ֭עָדַי</w>
             <w xml:id="f406A-w-253876">אַגִּידֶ֑נּוּ</w>
@@ -104,7 +252,7 @@
           <lb xml:id="f406A-lb-1-4" n="4"/>
             <w xml:id="f406A-w-253879">אֲקָרֲבֶֽנּוּ</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253879">׃</pc>
-            <milestone unit="verse" n="Job-31-38" xml:id="f406A-v-Job-31-38"/>
+            <milestone unit="verse" n="Job-31-38" xml:id="f406A-v-Job-31-38" facs="#f406A-zone-Job-31-38"/>
             <w xml:id="f406A-w-253880">אִם־</w>
             <w xml:id="f406A-w-253881">עָ֭לַי</w>
             <w xml:id="f406A-w-253882">אַדְמָתִ֣י</w>
@@ -114,7 +262,7 @@
             <w xml:id="f406A-w-253885">תְּלָמֶ֥יהָ</w>
             <w xml:id="f406A-w-253886">יִבְכָּיֽוּן</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253886">׃</pc>
-            <milestone unit="verse" n="Job-31-39" xml:id="f406A-v-Job-31-39"/>
+            <milestone unit="verse" n="Job-31-39" xml:id="f406A-v-Job-31-39" facs="#f406A-zone-Job-31-39"/>
             <w xml:id="f406A-w-253887">אִם־</w>
             <w xml:id="f406A-w-253888">כֹּ֭חָהּ</w>
             <w xml:id="f406A-w-253889">אָכַ֣לְתִּי</w>
@@ -125,7 +273,7 @@
             <w xml:id="f406A-w-253893">בְּעָלֶ֣יהָ</w>
             <w xml:id="f406A-w-253894">הִפָּֽחְתִּי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253894">׃</pc>
-            <milestone unit="verse" n="Job-31-40" xml:id="f406A-v-Job-31-40"/>
+            <milestone unit="verse" n="Job-31-40" xml:id="f406A-v-Job-31-40" facs="#f406A-zone-Job-31-40"/>
             <w xml:id="f406A-w-253895">תַּ֤חַת</w>
             <w xml:id="f406A-w-253896">חִטָּ֨ה</w>
             <pc type="paseq" xml:id="f406A-pc-253896">׀</pc>
@@ -142,7 +290,7 @@
             <pc type="sof-pasuq" xml:id="f406A-pc-253904">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f406A-s-Job-31-40"/>
           <lb xml:id="f406A-lb-1-9" n="9"/>
-            <milestone unit="verse" n="Job-32-1" xml:id="f406A-v-Job-32-1"/>
+            <milestone unit="verse" n="Job-32-1" xml:id="f406A-v-Job-32-1" facs="#f406A-zone-Job-32-1"/>
             <w xml:id="f406A-w-253905">וַֽיִּשְׁבְּת֡וּ</w>
             <w xml:id="f406A-w-253906">שְׁלֹ֤שֶׁת</w>
             <w xml:id="f406A-w-253907">הָאֲנָשִׁ֣ים</w>
@@ -159,7 +307,7 @@
           <lb xml:id="f406A-lb-1-11" n="11"/>
             <milestone unit="section" subtype="pe" xml:id="f406A-s-Job-32-1"/>
           <lb xml:id="f406A-lb-1-12" n="12"/>
-            <milestone unit="verse" n="Job-32-2" xml:id="f406A-v-Job-32-2"/>
+            <milestone unit="verse" n="Job-32-2" xml:id="f406A-v-Job-32-2" facs="#f406A-zone-Job-32-2"/>
             <w xml:id="f406A-w-253916">וַיִּ֤חַר</w>
             <w xml:id="f406A-w-253917">אַ֨ף</w>
             <pc type="paseq" xml:id="f406A-pc-253917">׀</pc>
@@ -209,7 +357,7 @@
             <w xml:id="f406A-w-253952">לְיָמִֽים</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253952">׃</pc>
           <lb xml:id="f406A-lb-1-18" n="18"/>
-            <milestone unit="verse" n="Job-32-5" xml:id="f406A-v-Job-32-5"/>
+            <milestone unit="verse" n="Job-32-5" xml:id="f406A-v-Job-32-5" facs="#f406A-zone-Job-32-5"/>
             <w xml:id="f406A-w-253953">וַיַּ֤רְא</w>
             <w xml:id="f406A-w-253954">אֱלִיה֗וּא</w>
             <w xml:id="f406A-w-253955">כִּ֘י</w>
@@ -225,7 +373,7 @@
           <lb xml:id="f406A-lb-1-20" n="20"/>
             <milestone unit="section" subtype="pe" xml:id="f406A-s-Job-32-5"/>
           <lb xml:id="f406A-lb-1-21" n="21"/>
-            <milestone unit="verse" n="Job-32-6" xml:id="f406A-v-Job-32-6"/>
+            <milestone unit="verse" n="Job-32-6" xml:id="f406A-v-Job-32-6" facs="#f406A-zone-Job-32-6"/>
             <w xml:id="f406A-w-253963">וַיַּ֤עַן</w>
             <pc type="paseq" xml:id="f406A-pc-253963">׀</pc>
             <w xml:id="f406A-w-253964">אֱלִיה֖וּא</w>
@@ -250,7 +398,7 @@
             <w xml:id="f406A-w-253980">אֶתְכֶֽם</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253980">׃</pc>
           <lb xml:id="f406A-lb-1-24" n="24"/>
-            <milestone unit="verse" n="Job-32-7" xml:id="f406A-v-Job-32-7"/>
+            <milestone unit="verse" n="Job-32-7" xml:id="f406A-v-Job-32-7" facs="#f406A-zone-Job-32-7"/>
             <w xml:id="f406A-w-253981">אָ֭מַרְתִּי</w>
             <w xml:id="f406A-w-253982">יָמִ֣ים</w>
             <w xml:id="f406A-w-253983">יְדַבֵּ֑רוּ</w>
@@ -260,7 +408,7 @@
           <lb xml:id="f406A-lb-1-25" n="25"/>
             <w xml:id="f406A-w-253987">חָכְמָֽה</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253987">׃</pc>
-            <milestone unit="verse" n="Job-32-8" xml:id="f406A-v-Job-32-8"/>
+            <milestone unit="verse" n="Job-32-8" xml:id="f406A-v-Job-32-8" facs="#f406A-zone-Job-32-8"/>
             <w xml:id="f406A-w-253988">אָ֭כֵן</w>
             <w xml:id="f406A-w-253989">רֽוּחַ־</w>
             <w xml:id="f406A-w-253990">הִ֣יא</w>
@@ -270,7 +418,7 @@
           <lb xml:id="f406A-lb-1-26" n="26"/>
             <w xml:id="f406A-w-253994">תְּבִינֵֽם</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-253994">׃</pc>
-            <milestone unit="verse" n="Job-32-9" xml:id="f406A-v-Job-32-9"/>
+            <milestone unit="verse" n="Job-32-9" xml:id="f406A-v-Job-32-9" facs="#f406A-zone-Job-32-9"/>
             <w xml:id="f406A-w-253995">לֹֽא־</w>
             <w xml:id="f406A-w-253996">רַבִּ֥ים</w>
             <w xml:id="f406A-w-253997">יֶחְכָּ֑מוּ</w>
@@ -279,7 +427,7 @@
             <w xml:id="f406A-w-253999">יָבִ֥ינוּ</w>
             <w xml:id="f406A-w-254000">מִשְׁפָּֽט</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254000">׃</pc>
-            <milestone unit="verse" n="Job-32-10" xml:id="f406A-v-Job-32-10"/>
+            <milestone unit="verse" n="Job-32-10" xml:id="f406A-v-Job-32-10" facs="#f406A-zone-Job-32-10"/>
             <w xml:id="f406A-w-254001">לָכֵ֣ן</w>
             <w xml:id="f406A-w-254002">אָ֭מַרְתִּי</w>
             <w xml:id="f406A-w-254003">שִׁמְעָה־</w>
@@ -291,7 +439,7 @@
             <w xml:id="f406A-w-254007">אַף־</w>
             <w xml:id="f406A-w-254008">אָֽנִי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254008">׃</pc>
-            <milestone unit="verse" n="Job-32-11" xml:id="f406A-v-Job-32-11"/>
+            <milestone unit="verse" n="Job-32-11" xml:id="f406A-v-Job-32-11" facs="#f406A-zone-Job-32-11"/>
             <w xml:id="f406A-w-254009">הֵ֤ן</w>
             <w xml:id="f406A-w-254010">הוֹחַ֨לְתִּי</w>
             <w xml:id="f406A-w-254011">לְֽדִבְרֵיכֶ֗ם</w>
@@ -304,7 +452,7 @@
             <w xml:id="f406A-w-254017">מִלִּֽין</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254017">׃</pc>
           <lb xml:id="f406A-lb-2-3" n="3"/>
-            <milestone unit="verse" n="Job-32-12" xml:id="f406A-v-Job-32-12"/>
+            <milestone unit="verse" n="Job-32-12" xml:id="f406A-v-Job-32-12" facs="#f406A-zone-Job-32-12"/>
             <w xml:id="f406A-w-254018">וְעָֽדֵיכֶ֗ם</w>
             <w xml:id="f406A-w-254019">אֶתְבּ֫וֹנָ֥ן</w>
             <w xml:id="f406A-w-254020">וְהִנֵּ֤ה</w>
@@ -316,7 +464,7 @@
             <w xml:id="f406A-w-254025">אֲמָרָ֣יו</w>
             <w xml:id="f406A-w-254026">מִכֶּֽם</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254026">׃</pc>
-            <milestone unit="verse" n="Job-32-13" xml:id="f406A-v-Job-32-13"/>
+            <milestone unit="verse" n="Job-32-13" xml:id="f406A-v-Job-32-13" facs="#f406A-zone-Job-32-13"/>
             <w xml:id="f406A-w-254027">פֶּן־</w>
             <w xml:id="f406A-w-254028">תֹּ֣֭אמְרוּ</w>
           <lb xml:id="f406A-lb-2-5" n="5"/>
@@ -328,7 +476,7 @@
             <w xml:id="f406A-w-254034">אִֽישׁ</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254034">׃</pc>
           <lb xml:id="f406A-lb-2-6" n="6"/>
-            <milestone unit="verse" n="Job-32-14" xml:id="f406A-v-Job-32-14"/>
+            <milestone unit="verse" n="Job-32-14" xml:id="f406A-v-Job-32-14" facs="#f406A-zone-Job-32-14"/>
             <w xml:id="f406A-w-254035">וְלֹא־</w>
             <w xml:id="f406A-w-254036">עָרַ֣ךְ</w>
             <w xml:id="f406A-w-254037">אֵלַ֣י</w>
@@ -338,7 +486,7 @@
           <lb xml:id="f406A-lb-2-7" n="7"/>
             <w xml:id="f406A-w-254041">אֲשִׁיבֶֽנּוּ</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254041">׃</pc>
-            <milestone unit="verse" n="Job-32-15" xml:id="f406A-v-Job-32-15"/>
+            <milestone unit="verse" n="Job-32-15" xml:id="f406A-v-Job-32-15" facs="#f406A-zone-Job-32-15"/>
             <w xml:id="f406A-w-254042">חַ֭תּוּ</w>
             <w xml:id="f406A-w-254043">לֹא־</w>
             <w xml:id="f406A-w-254044">עָ֣נוּ</w>
@@ -348,7 +496,7 @@
             <w xml:id="f406A-w-254047">מֵהֶ֣ם</w>
             <w xml:id="f406A-w-254048">מִלִּֽים</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254048">׃</pc>
-            <milestone unit="verse" n="Job-32-16" xml:id="f406A-v-Job-32-16"/>
+            <milestone unit="verse" n="Job-32-16" xml:id="f406A-v-Job-32-16" facs="#f406A-zone-Job-32-16"/>
             <w xml:id="f406A-w-254049">וְ֭הוֹחַלְתִּי</w>
             <w xml:id="f406A-w-254050">כִּי־</w>
             <w xml:id="f406A-w-254051">לֹ֣א</w>
@@ -360,7 +508,7 @@
             <w xml:id="f406A-w-254056">עָ֥נוּ</w>
             <w xml:id="f406A-w-254057">עֽוֹד</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254057">׃</pc>
-            <milestone unit="verse" n="Job-32-17" xml:id="f406A-v-Job-32-17"/>
+            <milestone unit="verse" n="Job-32-17" xml:id="f406A-v-Job-32-17" facs="#f406A-zone-Job-32-17"/>
             <w xml:id="f406A-w-254058">אַעֲנֶ֣ה</w>
             <w xml:id="f406A-w-254059">אַף־</w>
             <w xml:id="f406A-w-254060">אֲנִ֣י</w>
@@ -371,7 +519,7 @@
             <w xml:id="f406A-w-254064">אַף־</w>
             <w xml:id="f406A-w-254065">אָֽנִי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254065">׃</pc>
-            <milestone unit="verse" n="Job-32-18" xml:id="f406A-v-Job-32-18"/>
+            <milestone unit="verse" n="Job-32-18" xml:id="f406A-v-Job-32-18" facs="#f406A-zone-Job-32-18"/>
             <w xml:id="f406A-w-254066">כִּ֭י</w>
             <w xml:id="f406A-w-254067">מָלֵ֣תִי</w>
             <w xml:id="f406A-w-254068">מִלִּ֑ים</w>
@@ -380,7 +528,7 @@
             <w xml:id="f406A-w-254070">ר֣וּחַ</w>
             <w xml:id="f406A-w-254071">בִּטְנִֽי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254071">׃</pc>
-            <milestone unit="verse" n="Job-32-19" xml:id="f406A-v-Job-32-19"/>
+            <milestone unit="verse" n="Job-32-19" xml:id="f406A-v-Job-32-19" facs="#f406A-zone-Job-32-19"/>
             <w xml:id="f406A-w-254072">הִנֵּֽה־</w>
             <w xml:id="f406A-w-254073">בִטְנִ֗י</w>
             <w xml:id="f406A-w-254074">כְּיַ֥יִן</w>
@@ -392,7 +540,7 @@
             <w xml:id="f406A-w-254079">יִבָּקֵֽעַ</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254079">׃</pc>
           <lb xml:id="f406A-lb-2-13" n="13"/>
-            <milestone unit="verse" n="Job-32-20" xml:id="f406A-v-Job-32-20"/>
+            <milestone unit="verse" n="Job-32-20" xml:id="f406A-v-Job-32-20" facs="#f406A-zone-Job-32-20"/>
             <w xml:id="f406A-w-254080">אֲדַבְּרָ֥ה</w>
             <w xml:id="f406A-w-254081">וְיִֽרְוַֽח־</w>
             <w xml:id="f406A-w-254082">לִ֑י</w>
@@ -401,7 +549,7 @@
             <w xml:id="f406A-w-254085">וְאֶֽעֱנֶֽה</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254085">׃</pc>
           <lb xml:id="f406A-lb-2-14" n="14"/>
-            <milestone unit="verse" n="Job-32-21" xml:id="f406A-v-Job-32-21"/>
+            <milestone unit="verse" n="Job-32-21" xml:id="f406A-v-Job-32-21" facs="#f406A-zone-Job-32-21"/>
             <w xml:id="f406A-w-254086">אַל־</w>
             <w xml:id="f406A-w-254087">נָ֭א</w>
             <w xml:id="f406A-w-254088">אֶשָּׂ֣א</w>
@@ -423,7 +571,7 @@
             <w xml:id="f406A-w-254100">יִשָּׂאֵ֥נִי</w>
             <w xml:id="f406A-w-254101">עֹשֵֽׂנִי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254101">׃</pc>
-            <milestone unit="verse" n="Job-33-1" xml:id="f406A-v-Job-33-1"/>
+            <milestone unit="verse" n="Job-33-1" xml:id="f406A-v-Job-33-1" facs="#f406A-zone-Job-33-1"/>
             <w xml:id="f406A-w-254102">וְֽאוּלָ֗ם</w>
             <w xml:id="f406A-w-254103">שְׁמַֽע־</w>
             <w xml:id="f406A-w-254104">נָ֣א</w>
@@ -434,7 +582,7 @@
             <w xml:id="f406A-w-254108">דְּבָרַ֥י</w>
             <w xml:id="f406A-w-254109">הַאֲזִֽינָה</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254109">׃</pc>
-            <milestone unit="verse" n="Job-33-2" xml:id="f406A-v-Job-33-2"/>
+            <milestone unit="verse" n="Job-33-2" xml:id="f406A-v-Job-33-2" facs="#f406A-zone-Job-33-2"/>
             <w xml:id="f406A-w-254110">הִנֵּה־</w>
           <lb xml:id="f406A-lb-2-18" n="18"/>
             <w xml:id="f406A-w-254111">נָ֭א</w>
@@ -445,7 +593,7 @@
             <w xml:id="f406A-w-254116">בְחִכִּֽי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254116">׃</pc>
           <lb xml:id="f406A-lb-2-19" n="19"/>
-            <milestone unit="verse" n="Job-33-3" xml:id="f406A-v-Job-33-3"/>
+            <milestone unit="verse" n="Job-33-3" xml:id="f406A-v-Job-33-3" facs="#f406A-zone-Job-33-3"/>
             <w xml:id="f406A-w-254117">יֹֽשֶׁר־</w>
             <w xml:id="f406A-w-254118">לִבִּ֥י</w>
             <w xml:id="f406A-w-254119">אֲמָרָ֑י</w>
@@ -455,7 +603,7 @@
             <w xml:id="f406A-w-254123">מִלֵּֽלוּ</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254123">׃</pc>
           <lb xml:id="f406A-lb-2-20" n="20"/>
-            <milestone unit="verse" n="Job-33-4" xml:id="f406A-v-Job-33-4"/>
+            <milestone unit="verse" n="Job-33-4" xml:id="f406A-v-Job-33-4" facs="#f406A-zone-Job-33-4"/>
             <w xml:id="f406A-w-254124">רֽוּחַ־</w>
             <w xml:id="f406A-w-254125">אֵ֥ל</w>
             <w xml:id="f406A-w-254126">עָשָׂ֑תְנִי</w>
@@ -464,7 +612,7 @@
             <w xml:id="f406A-w-254129">תְּחַיֵּֽנִי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254129">׃</pc>
           <lb xml:id="f406A-lb-2-21" n="21"/>
-            <milestone unit="verse" n="Job-33-5" xml:id="f406A-v-Job-33-5"/>
+            <milestone unit="verse" n="Job-33-5" xml:id="f406A-v-Job-33-5" facs="#f406A-zone-Job-33-5"/>
             <w xml:id="f406A-w-254130">אִם־</w>
             <w xml:id="f406A-w-254131">תּוּכַ֥ל</w>
             <w xml:id="f406A-w-254132">הֲשִׁיבֵ֑נִי</w>
@@ -473,7 +621,7 @@
           <lb xml:id="f406A-lb-2-22" n="22"/>
             <w xml:id="f406A-w-254135">הִתְיַצָּֽבָה</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254135">׃</pc>
-            <milestone unit="verse" n="Job-33-6" xml:id="f406A-v-Job-33-6"/>
+            <milestone unit="verse" n="Job-33-6" xml:id="f406A-v-Job-33-6" facs="#f406A-zone-Job-33-6"/>
             <w xml:id="f406A-w-254136">הֵן־</w>
             <w xml:id="f406A-w-254137">אֲנִ֣י</w>
             <w xml:id="f406A-w-254138">כְפִ֣יךָ</w>
@@ -484,7 +632,7 @@
             <w xml:id="f406A-w-254142">גַם־</w>
             <w xml:id="f406A-w-254143">אָֽנִי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254143">׃</pc>
-            <milestone unit="verse" n="Job-33-7" xml:id="f406A-v-Job-33-7"/>
+            <milestone unit="verse" n="Job-33-7" xml:id="f406A-v-Job-33-7" facs="#f406A-zone-Job-33-7"/>
             <w xml:id="f406A-w-254144">הִנֵּ֣ה</w>
             <w xml:id="f406A-w-254145">אֵ֭מָתִי</w>
             <w xml:id="f406A-w-254146">לֹ֣א</w>
@@ -495,7 +643,7 @@
             <w xml:id="f406A-w-254150">לֹא־</w>
             <w xml:id="f406A-w-254151">יִכְבָּֽד</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254151">׃</pc>
-            <milestone unit="verse" n="Job-33-8" xml:id="f406A-v-Job-33-8"/>
+            <milestone unit="verse" n="Job-33-8" xml:id="f406A-v-Job-33-8" facs="#f406A-zone-Job-33-8"/>
             <w xml:id="f406A-w-254152">אַ֭ךְ</w>
             <w xml:id="f406A-w-254153">אָמַ֣רְתָּ</w>
             <w xml:id="f406A-w-254154">בְאָזְנָ֑י</w>
@@ -504,7 +652,7 @@
             <w xml:id="f406A-w-254156">מִלִּ֣ין</w>
             <w xml:id="f406A-w-254157">אֶשְׁמָֽע</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254157">׃</pc>
-            <milestone unit="verse" n="Job-33-9" xml:id="f406A-v-Job-33-9"/>
+            <milestone unit="verse" n="Job-33-9" xml:id="f406A-v-Job-33-9" facs="#f406A-zone-Job-33-9"/>
             <w xml:id="f406A-w-254158">זַ֥ךְ</w>
             <w xml:id="f406A-w-254159">אֲנִ֗י</w>
             <w xml:id="f406A-w-254160">בְּֽלִ֫י</w>
@@ -516,7 +664,7 @@
             <w xml:id="f406A-w-254165">עָוֺ֣ן</w>
             <w xml:id="f406A-w-254166">לִֽי</w>
             <pc type="sof-pasuq" xml:id="f406A-pc-254166">׃</pc>
-            <milestone unit="verse" n="Job-33-10" xml:id="f406A-v-Job-33-10"/>
+            <milestone unit="verse" n="Job-33-10" xml:id="f406A-v-Job-33-10" facs="#f406A-zone-Job-33-10"/>
             <w xml:id="f406A-w-254167">הֵ֣ן</w>
             <w xml:id="f406A-w-254168">תְּ֭נוּאוֹת</w>
           <lb xml:id="f406A-lb-2-27" n="27"/>

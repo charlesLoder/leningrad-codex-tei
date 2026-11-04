@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
@@ -43,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 21 verse zones (86 line segments) from Masoretica HTR page n643. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n643.json"/>
+      </change>
       <change when="2026-11-03" who="#contrib-charles-w-loder">
       Move the pe milestone that ends a line onto the blank line that follows it (#1111).
       </change>
@@ -65,10 +72,139 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-322B">
+    <surface xml:id="surf-322B" ulx="0" uly="0" lrx="4207" lry="5499">
       <graphic xml:id="f322B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F322B.jpg">
         <desc type="sha256">e0c0e930f351602421d1da9cfa43977686da6018f1dbe9ae5f6cd7437d73ff7a</desc>
       </graphic>
+      <graphic xml:id="f322B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0643.jp2/full/max/0/default.jpg" width="4207px" height="5499px"/>
+      <zone xml:id="f322B-zone-Zechariah-8-22" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-8-22-s1" ulx="2517" uly="1314" lrx="3250" lry="1454"/>
+        <zone xml:id="f322B-zone-Zechariah-8-22-s2" ulx="2517" uly="1416" lrx="3246" lry="1570"/>
+        <zone xml:id="f322B-zone-Zechariah-8-22-s3" ulx="2482" uly="1518" lrx="3236" lry="1668"/>
+        <zone xml:id="f322B-zone-Zechariah-8-22-s4" ulx="2871" uly="1619" lrx="3250" lry="1770"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-8-23" type="verse" cert="0.943" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-8-23-s1" ulx="2458" uly="1693" lrx="3033" lry="1861"/>
+        <zone xml:id="f322B-zone-Zechariah-8-23-s2" ulx="2489" uly="1819" lrx="3243" lry="1973"/>
+        <zone xml:id="f322B-zone-Zechariah-8-23-s3" ulx="2654" uly="1928" lrx="3257" lry="2075"/>
+        <zone xml:id="f322B-zone-Zechariah-8-23-s4" ulx="2538" uly="2015" lrx="3250" lry="2166"/>
+        <zone xml:id="f322B-zone-Zechariah-8-23-s5" ulx="2503" uly="2120" lrx="3243" lry="2264"/>
+        <zone xml:id="f322B-zone-Zechariah-8-23-s6" ulx="2542" uly="2229" lrx="3264" lry="2376"/>
+        <zone xml:id="f322B-zone-Zechariah-8-23-s7" ulx="2829" uly="2320" lrx="3257" lry="2474"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-1" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-1-s1" ulx="2493" uly="2411" lrx="2948" lry="2566"/>
+        <zone xml:id="f322B-zone-Zechariah-9-1-s2" ulx="2549" uly="2509" lrx="3246" lry="2674"/>
+        <zone xml:id="f322B-zone-Zechariah-9-1-s3" ulx="2514" uly="2608" lrx="3250" lry="2769"/>
+        <zone xml:id="f322B-zone-Zechariah-9-1-s4" ulx="2650" uly="2713" lrx="3260" lry="2867"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-2" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-2-s1" ulx="2510" uly="2713" lrx="2615" lry="2867"/>
+        <zone xml:id="f322B-zone-Zechariah-9-2-s2" ulx="2496" uly="2807" lrx="3243" lry="2962"/>
+        <zone xml:id="f322B-zone-Zechariah-9-2-s3" ulx="2801" uly="2905" lrx="3246" lry="3067"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-3" type="verse" cert="0.901" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-3-s1" ulx="2510" uly="2905" lrx="2780" lry="3067"/>
+        <zone xml:id="f322B-zone-Zechariah-9-3-s2" ulx="2570" uly="3025" lrx="3260" lry="3172"/>
+        <zone xml:id="f322B-zone-Zechariah-9-3-s3" ulx="2647" uly="3123" lrx="3260" lry="3270"/>
+        <zone xml:id="f322B-zone-Zechariah-9-3-s4" ulx="3040" uly="3207" lrx="3250" lry="3365"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-4" type="verse" cert="0.976" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-4-s1" ulx="2493" uly="3207" lrx="2994" lry="3365"/>
+        <zone xml:id="f322B-zone-Zechariah-9-4-s2" ulx="2608" uly="3326" lrx="3271" lry="3459"/>
+        <zone xml:id="f322B-zone-Zechariah-9-4-s3" ulx="2857" uly="3410" lrx="3253" lry="3564"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-5" type="verse" cert="0.987" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-5-s1" ulx="2664" uly="3410" lrx="2812" lry="3564"/>
+        <zone xml:id="f322B-zone-Zechariah-9-5-s2" ulx="2517" uly="3508" lrx="3260" lry="3670"/>
+        <zone xml:id="f322B-zone-Zechariah-9-5-s3" ulx="2503" uly="3631" lrx="3271" lry="3775"/>
+        <zone xml:id="f322B-zone-Zechariah-9-5-s4" ulx="2500" uly="3708" lrx="3257" lry="3873"/>
+        <zone xml:id="f322B-zone-Zechariah-9-5-s5" ulx="2475" uly="3824" lrx="3271" lry="3981"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-6" type="verse" cert="0.921" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-6-s1" ulx="1560" uly="1199" lrx="2237" lry="1356"/>
+        <zone xml:id="f322B-zone-Zechariah-9-6-s2" ulx="1518" uly="1318" lrx="2219" lry="1461"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-7" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-7-s1" ulx="1413" uly="1405" lrx="2223" lry="1567"/>
+        <zone xml:id="f322B-zone-Zechariah-9-7-s2" ulx="1451" uly="1528" lrx="2216" lry="1661"/>
+        <zone xml:id="f322B-zone-Zechariah-9-7-s3" ulx="1550" uly="1605" lrx="2202" lry="1759"/>
+        <zone xml:id="f322B-zone-Zechariah-9-7-s4" ulx="1465" uly="1703" lrx="2209" lry="1868"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-8" type="verse" cert="0.953" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-8-s1" ulx="1560" uly="1833" lrx="2223" lry="1973"/>
+        <zone xml:id="f322B-zone-Zechariah-9-8-s2" ulx="1455" uly="1917" lrx="2216" lry="2071"/>
+        <zone xml:id="f322B-zone-Zechariah-9-8-s3" ulx="1455" uly="2015" lrx="2216" lry="2177"/>
+        <zone xml:id="f322B-zone-Zechariah-9-8-s4" ulx="1813" uly="2117" lrx="2216" lry="2275"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-9" type="verse" cert="0.951" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-9-s1" ulx="1409" uly="2208" lrx="1974" lry="2373"/>
+        <zone xml:id="f322B-zone-Zechariah-9-9-s2" ulx="1458" uly="2327" lrx="2205" lry="2467"/>
+        <zone xml:id="f322B-zone-Zechariah-9-9-s3" ulx="1511" uly="2404" lrx="2216" lry="2572"/>
+        <zone xml:id="f322B-zone-Zechariah-9-9-s4" ulx="1518" uly="2534" lrx="2223" lry="2671"/>
+        <zone xml:id="f322B-zone-Zechariah-9-9-s5" ulx="1458" uly="2625" lrx="2219" lry="2772"/>
+        <zone xml:id="f322B-zone-Zechariah-9-9-s6" ulx="1970" uly="2727" lrx="2212" lry="2870"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-10" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-10-s1" ulx="1451" uly="2727" lrx="1949" lry="2870"/>
+        <zone xml:id="f322B-zone-Zechariah-9-10-s2" ulx="1430" uly="2818" lrx="2216" lry="2969"/>
+        <zone xml:id="f322B-zone-Zechariah-9-10-s3" ulx="1465" uly="2937" lrx="2233" lry="3077"/>
+        <zone xml:id="f322B-zone-Zechariah-9-10-s4" ulx="1434" uly="3014" lrx="2226" lry="3175"/>
+        <zone xml:id="f322B-zone-Zechariah-9-10-s5" ulx="1416" uly="3144" lrx="2209" lry="3277"/>
+        <zone xml:id="f322B-zone-Zechariah-9-10-s6" ulx="1820" uly="3231" lrx="2216" lry="3372"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-11" type="verse" cert="0.995" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-11-s1" ulx="1434" uly="3231" lrx="1784" lry="3372"/>
+        <zone xml:id="f322B-zone-Zechariah-9-11-s2" ulx="1451" uly="3326" lrx="2216" lry="3473"/>
+        <zone xml:id="f322B-zone-Zechariah-9-11-s3" ulx="1683" uly="3431" lrx="2219" lry="3568"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-12" type="verse" cert="0.999" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-12-s1" ulx="1458" uly="3431" lrx="1634" lry="3568"/>
+        <zone xml:id="f322B-zone-Zechariah-9-12-s2" ulx="1462" uly="3515" lrx="2212" lry="3673"/>
+        <zone xml:id="f322B-zone-Zechariah-9-12-s3" ulx="1430" uly="3613" lrx="2233" lry="3768"/>
+        <zone xml:id="f322B-zone-Zechariah-9-12-s4" ulx="2128" uly="3719" lrx="2209" lry="3873"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-14" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-14-s1" ulx="410" uly="1419" lrx="992" lry="1574"/>
+        <zone xml:id="f322B-zone-Zechariah-9-14-s2" ulx="449" uly="1535" lrx="1185" lry="1675"/>
+        <zone xml:id="f322B-zone-Zechariah-9-14-s3" ulx="410" uly="1619" lrx="1181" lry="1780"/>
+        <zone xml:id="f322B-zone-Zechariah-9-14-s4" ulx="736" uly="1731" lrx="1160" lry="1872"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-15" type="verse" cert="0.92" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-15-s1" ulx="575" uly="1731" lrx="722" lry="1872"/>
+        <zone xml:id="f322B-zone-Zechariah-9-15-s2" ulx="407" uly="1801" lrx="1164" lry="1984"/>
+        <zone xml:id="f322B-zone-Zechariah-9-15-s3" ulx="407" uly="1931" lrx="1174" lry="2078"/>
+        <zone xml:id="f322B-zone-Zechariah-9-15-s4" ulx="417" uly="2047" lrx="1164" lry="2183"/>
+        <zone xml:id="f322B-zone-Zechariah-9-15-s5" ulx="789" uly="2124" lrx="1153" lry="2275"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-16" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-16-s1" ulx="477" uly="2124" lrx="771" lry="2275"/>
+        <zone xml:id="f322B-zone-Zechariah-9-16-s2" ulx="414" uly="2219" lrx="1171" lry="2369"/>
+        <zone xml:id="f322B-zone-Zechariah-9-16-s3" ulx="414" uly="2320" lrx="1157" lry="2474"/>
+        <zone xml:id="f322B-zone-Zechariah-9-16-s4" ulx="463" uly="2425" lrx="1164" lry="2566"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-9-17" type="verse" cert="0.96" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-9-17-s1" ulx="414" uly="2509" lrx="1157" lry="2667"/>
+        <zone xml:id="f322B-zone-Zechariah-9-17-s2" ulx="484" uly="2625" lrx="1143" lry="2769"/>
+        <zone xml:id="f322B-zone-Zechariah-9-17-s3" ulx="954" uly="2713" lrx="1160" lry="2874"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-10-1" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-10-1-s1" ulx="389" uly="2713" lrx="912" lry="2874"/>
+        <zone xml:id="f322B-zone-Zechariah-10-1-s2" ulx="421" uly="2814" lrx="1153" lry="2979"/>
+        <zone xml:id="f322B-zone-Zechariah-10-1-s3" ulx="414" uly="2930" lrx="1139" lry="3081"/>
+        <zone xml:id="f322B-zone-Zechariah-10-1-s4" ulx="410" uly="3014" lrx="1139" lry="3175"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-10-2" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-10-2-s1" ulx="505" uly="3112" lrx="1153" lry="3280"/>
+        <zone xml:id="f322B-zone-Zechariah-10-2-s2" ulx="522" uly="3221" lrx="1164" lry="3379"/>
+        <zone xml:id="f322B-zone-Zechariah-10-2-s3" ulx="484" uly="3319" lrx="1164" lry="3477"/>
+        <zone xml:id="f322B-zone-Zechariah-10-2-s4" ulx="431" uly="3414" lrx="1150" lry="3582"/>
+        <zone xml:id="f322B-zone-Zechariah-10-2-s5" ulx="417" uly="3526" lrx="1157" lry="3684"/>
+      </zone>
+      <zone xml:id="f322B-zone-Zechariah-10-3" type="verse" cert="0.627" resp="#source-masoretica">
+        <zone xml:id="f322B-zone-Zechariah-10-3-s1" ulx="424" uly="3659" lrx="1167" lry="3876"/>
+        <zone xml:id="f322B-zone-Zechariah-10-3-s2" ulx="396" uly="3796" lrx="1167" lry="3988"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -86,7 +222,7 @@
             <w xml:id="f322B-w-219194">אָֽנִי</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219194">׃</pc>
           <lb xml:id="f322B-lb-1-2" n="2"/>
-            <milestone unit="verse" n="Zechariah-8-22" xml:id="f322B-v-Zechariah-8-22"/>
+            <milestone unit="verse" n="Zechariah-8-22" xml:id="f322B-v-Zechariah-8-22" facs="#f322B-zone-Zechariah-8-22"/>
             <w xml:id="f322B-w-219195">וּבָ֨אוּ</w>
             <w xml:id="f322B-w-219196">עַמִּ֤ים</w>
             <w xml:id="f322B-w-219197">רַבִּים֙</w>
@@ -107,7 +243,7 @@
             <pc type="sof-pasuq" xml:id="f322B-pc-219208">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f322B-s-Zechariah-8-22"/>
           <lb xml:id="f322B-lb-1-6" n="6"/>
-            <milestone unit="verse" n="Zechariah-8-23" xml:id="f322B-v-Zechariah-8-23"/>
+            <milestone unit="verse" n="Zechariah-8-23" xml:id="f322B-v-Zechariah-8-23" facs="#f322B-zone-Zechariah-8-23"/>
             <w xml:id="f322B-w-219209">כֹּ֥ה</w>
             <w xml:id="f322B-w-219210">אָמַר֮</w>
             <w xml:id="f322B-w-219211">יְהוָ֣ה</w>
@@ -141,7 +277,7 @@
             <pc type="sof-pasuq" xml:id="f322B-pc-219232">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f322B-s-Zechariah-8-23"/>
           <lb xml:id="f322B-lb-1-13" n="13"/>
-            <milestone unit="verse" n="Zechariah-9-1" xml:id="f322B-v-Zechariah-9-1"/>
+            <milestone unit="verse" n="Zechariah-9-1" xml:id="f322B-v-Zechariah-9-1" facs="#f322B-zone-Zechariah-9-1"/>
             <w xml:id="f322B-w-219233">מַשָּׂ֤א</w>
             <w xml:id="f322B-w-219234">דְבַר־</w>
             <w xml:id="f322B-w-219235">יְהוָה֙</w>
@@ -160,7 +296,7 @@
             <w xml:id="f322B-w-219245">שִׁבְטֵ֥י</w>
             <w xml:id="f322B-w-219246">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219246">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-2" xml:id="f322B-v-Zechariah-9-2"/>
+            <milestone unit="verse" n="Zechariah-9-2" xml:id="f322B-v-Zechariah-9-2" facs="#f322B-zone-Zechariah-9-2"/>
             <w xml:id="f322B-w-219247">וְגַם־</w>
           <lb xml:id="f322B-lb-1-17" n="17"/>
             <w xml:id="f322B-w-219248">חֲמָ֖ת</w>
@@ -173,7 +309,7 @@
             <w xml:id="f322B-w-219254">חָֽכְמָ֖ה</w>
             <w xml:id="f322B-w-219255">מְאֹֽד</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219255">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-3" xml:id="f322B-v-Zechariah-9-3"/>
+            <milestone unit="verse" n="Zechariah-9-3" xml:id="f322B-v-Zechariah-9-3" facs="#f322B-zone-Zechariah-9-3"/>
             <w xml:id="f322B-w-219256">וַתִּ֥בֶן</w>
             <w xml:id="f322B-w-219257">צֹ֛ר</w>
           <lb xml:id="f322B-lb-1-19" n="19"/>
@@ -188,7 +324,7 @@
           <lb xml:id="f322B-lb-1-21" n="21"/>
             <w xml:id="f322B-w-219265">חוּצֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219265">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-4" xml:id="f322B-v-Zechariah-9-4"/>
+            <milestone unit="verse" n="Zechariah-9-4" xml:id="f322B-v-Zechariah-9-4" facs="#f322B-zone-Zechariah-9-4"/>
             <w xml:id="f322B-w-219266">הִנֵּ֤ה</w>
             <w xml:id="f322B-w-219267">אֲדֹנָי֙</w>
             <w xml:id="f322B-w-219268">יֽוֹרִשֶׁ֔נָּה</w>
@@ -201,7 +337,7 @@
             <w xml:id="f322B-w-219273">בָּאֵ֥שׁ</w>
             <w xml:id="f322B-w-219274">תֵּאָכֵֽל</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219274">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-5" xml:id="f322B-v-Zechariah-9-5"/>
+            <milestone unit="verse" n="Zechariah-9-5" xml:id="f322B-v-Zechariah-9-5" facs="#f322B-zone-Zechariah-9-5"/>
             <w xml:id="f322B-w-219275">תֵּרֶ֨א</w>
           <lb xml:id="f322B-lb-1-24" n="24"/>
             <w xml:id="f322B-w-219276">אַשְׁקְל֜וֹן</w>
@@ -225,7 +361,7 @@
             <pc type="sof-pasuq" xml:id="f322B-pc-219290">׃</pc>
         <cb xml:id="f322B-cb-2" n="2"/>
           <lb xml:id="f322B-lb-2-1" n="1"/>
-            <milestone unit="verse" n="Zechariah-9-6" xml:id="f322B-v-Zechariah-9-6"/>
+            <milestone unit="verse" n="Zechariah-9-6" xml:id="f322B-v-Zechariah-9-6" facs="#f322B-zone-Zechariah-9-6"/>
             <w xml:id="f322B-w-219291">וְיָשַׁ֥ב</w>
             <w xml:id="f322B-w-219292">מַמְזֵ֖ר</w>
             <w xml:id="f322B-w-219293">בְּאַשְׁדּ֑וֹד</w>
@@ -235,7 +371,7 @@
             <w xml:id="f322B-w-219296">פְּלִשְׁתִּֽים</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219296">׃</pc>
           <lb xml:id="f322B-lb-2-3" n="3"/>
-            <milestone unit="verse" n="Zechariah-9-7" xml:id="f322B-v-Zechariah-9-7"/>
+            <milestone unit="verse" n="Zechariah-9-7" xml:id="f322B-v-Zechariah-9-7" facs="#f322B-zone-Zechariah-9-7"/>
             <w xml:id="f322B-w-219297">וַהֲסִרֹתִ֨י</w>
             <w xml:id="f322B-w-219298">דָמָ֜יו</w>
             <w xml:id="f322B-w-219299">מִפִּ֗יו</w>
@@ -256,7 +392,7 @@
             <w xml:id="f322B-w-219311">כִּיבוּסִֽי</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219311">׃</pc>
           <lb xml:id="f322B-lb-2-7" n="7"/>
-            <milestone unit="verse" n="Zechariah-9-8" xml:id="f322B-v-Zechariah-9-8"/>
+            <milestone unit="verse" n="Zechariah-9-8" xml:id="f322B-v-Zechariah-9-8" facs="#f322B-zone-Zechariah-9-8"/>
             <w xml:id="f322B-w-219312">וְחָנִ֨יתִי</w>
             <w xml:id="f322B-w-219313">לְבֵיתִ֤י</w>
             <w xml:id="f322B-w-219314">מִצָּבָה֙</w>
@@ -277,7 +413,7 @@
             <pc type="sof-pasuq" xml:id="f322B-pc-219325">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f322B-s-Zechariah-9-8"/>
           <lb xml:id="f322B-lb-2-11" n="11"/>
-            <milestone unit="verse" n="Zechariah-9-9" xml:id="f322B-v-Zechariah-9-9"/>
+            <milestone unit="verse" n="Zechariah-9-9" xml:id="f322B-v-Zechariah-9-9" facs="#f322B-zone-Zechariah-9-9"/>
             <w xml:id="f322B-w-219326">גִּילִ֨י</w>
             <w xml:id="f322B-w-219327">מְאֹ֜ד</w>
             <w xml:id="f322B-w-219328">בַּת־</w>
@@ -306,7 +442,7 @@
           <lb xml:id="f322B-lb-2-16" n="16"/>
             <w xml:id="f322B-w-219347">אֲתֹנֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219347">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-10" xml:id="f322B-v-Zechariah-9-10"/>
+            <milestone unit="verse" n="Zechariah-9-10" xml:id="f322B-v-Zechariah-9-10" facs="#f322B-zone-Zechariah-9-10"/>
             <w xml:id="f322B-w-219348">וְהִכְרַתִּי־</w>
             <w xml:id="f322B-w-219349">רֶ֣כֶב</w>
           <lb xml:id="f322B-lb-2-17" n="17"/>
@@ -332,7 +468,7 @@
             <w xml:id="f322B-w-219365">אַפְסֵי־</w>
             <w xml:id="f322B-w-219366">אָֽרֶץ</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219366">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-11" xml:id="f322B-v-Zechariah-9-11"/>
+            <milestone unit="verse" n="Zechariah-9-11" xml:id="f322B-v-Zechariah-9-11" facs="#f322B-zone-Zechariah-9-11"/>
             <w xml:id="f322B-w-219367">גַּם־</w>
             <w xml:id="f322B-w-219368">אַ֣תְּ</w>
             <w xml:id="f322B-w-219369">בְּדַם־</w>
@@ -346,7 +482,7 @@
             <w xml:id="f322B-w-219375">מַ֖יִם</w>
             <w xml:id="f322B-w-219376">בּֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219376">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-12" xml:id="f322B-v-Zechariah-9-12"/>
+            <milestone unit="verse" n="Zechariah-9-12" xml:id="f322B-v-Zechariah-9-12" facs="#f322B-zone-Zechariah-9-12"/>
             <w xml:id="f322B-w-219377">שׁ֚וּבוּ</w>
           <lb xml:id="f322B-lb-2-24" n="24"/>
             <w xml:id="f322B-w-219378">לְבִצָּר֔וֹן</w>
@@ -384,7 +520,7 @@
           <lb xml:id="f322B-lb-3-3" n="3"/>
             <w xml:id="f322B-w-219402">גִּבּֽוֹר</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219402">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-14" xml:id="f322B-v-Zechariah-9-14"/>
+            <milestone unit="verse" n="Zechariah-9-14" xml:id="f322B-v-Zechariah-9-14" facs="#f322B-zone-Zechariah-9-14"/>
             <w xml:id="f322B-w-219403">וַֽיהוָה֙</w>
             <w xml:id="f322B-w-219404">עֲלֵיהֶ֣ם</w>
             <w xml:id="f322B-w-219405">יֵֽרָאֶ֔ה</w>
@@ -402,7 +538,7 @@
             <w xml:id="f322B-w-219414">בְּסַעֲר֥וֹת</w>
             <w xml:id="f322B-w-219415">תֵּימָֽן</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219415">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-15" xml:id="f322B-v-Zechariah-9-15"/>
+            <milestone unit="verse" n="Zechariah-9-15" xml:id="f322B-v-Zechariah-9-15" facs="#f322B-zone-Zechariah-9-15"/>
             <w xml:id="f322B-w-219416">יְהוָ֣ה</w>
           <lb xml:id="f322B-lb-3-7" n="7"/>
             <w xml:id="f322B-w-219417">צְבָאוֹת֮</w>
@@ -424,7 +560,7 @@
             <w xml:id="f322B-w-219430">כְּזָוִיּ֖וֹת</w>
             <w xml:id="f322B-w-219431">מִזְבֵּֽחַ</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219431">׃</pc>
-            <milestone unit="verse" n="Zechariah-9-16" xml:id="f322B-v-Zechariah-9-16"/>
+            <milestone unit="verse" n="Zechariah-9-16" xml:id="f322B-v-Zechariah-9-16" facs="#f322B-zone-Zechariah-9-16"/>
             <w xml:id="f322B-w-219432">וְֽהוֹשִׁיעָ֞ם</w>
           <lb xml:id="f322B-lb-3-11" n="11"/>
             <w xml:id="f322B-w-219433">יְהוָ֧ה</w>
@@ -443,7 +579,7 @@
             <w xml:id="f322B-w-219444">אַדְמָתֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219444">׃</pc>
           <lb xml:id="f322B-lb-3-14" n="14"/>
-            <milestone unit="verse" n="Zechariah-9-17" xml:id="f322B-v-Zechariah-9-17"/>
+            <milestone unit="verse" n="Zechariah-9-17" xml:id="f322B-v-Zechariah-9-17" facs="#f322B-zone-Zechariah-9-17"/>
             <w xml:id="f322B-w-219445">כִּ֥י</w>
             <w xml:id="f322B-w-219446">מַה־</w>
             <w xml:id="f322B-w-219447">טּוּב֖וֹ</w>
@@ -457,7 +593,7 @@
           <lb xml:id="f322B-lb-3-16" n="16"/>
             <w xml:id="f322B-w-219454">בְּתֻלֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219454">׃</pc>
-            <milestone unit="verse" n="Zechariah-10-1" xml:id="f322B-v-Zechariah-10-1"/>
+            <milestone unit="verse" n="Zechariah-10-1" xml:id="f322B-v-Zechariah-10-1" facs="#f322B-zone-Zechariah-10-1"/>
             <w xml:id="f322B-w-219455">שַׁאֲל֨וּ</w>
             <w xml:id="f322B-w-219456">מֵיְהוָ֤ה</w>
             <w xml:id="f322B-w-219457">מָטָר֙</w>
@@ -478,7 +614,7 @@
             <w xml:id="f322B-w-219469">בַּשָּׂדֶֽה</w>
             <pc type="sof-pasuq" xml:id="f322B-pc-219469">׃</pc>
           <lb xml:id="f322B-lb-3-20" n="20"/>
-            <milestone unit="verse" n="Zechariah-10-2" xml:id="f322B-v-Zechariah-10-2"/>
+            <milestone unit="verse" n="Zechariah-10-2" xml:id="f322B-v-Zechariah-10-2" facs="#f322B-zone-Zechariah-10-2"/>
             <w xml:id="f322B-w-219470">כִּ֧י</w>
             <w xml:id="f322B-w-219471">הַתְּרָפִ֣ים</w>
             <w xml:id="f322B-w-219472">דִּבְּרוּ־</w>
@@ -508,7 +644,7 @@
           <lb xml:id="f322B-lb-3-25" n="25"/>
             <milestone unit="section" subtype="pe" xml:id="f322B-s-Zechariah-10-2"/>
           <lb xml:id="f322B-lb-3-26" n="26"/>
-            <milestone unit="verse" n="Zechariah-10-3" xml:id="f322B-v-Zechariah-10-3"/>
+            <milestone unit="verse" n="Zechariah-10-3" xml:id="f322B-v-Zechariah-10-3" facs="#f322B-zone-Zechariah-10-3"/>
             <w xml:id="f322B-w-219491">עַל־</w>
             <w xml:id="f322B-w-219492">הָֽרֹעִים֙</w>
             <w xml:id="f322B-w-219493">חָרָ֣ה</w>

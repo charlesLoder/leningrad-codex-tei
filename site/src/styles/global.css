@@ -28,6 +28,12 @@ body {
   flex-direction: column;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body > main {
   flex: 1;
   width: 100%;
@@ -67,7 +73,7 @@ body > main {
   .site-header,
   .site-footer,
   .folio-toolbar,
-  .facsimile,
+  .iiif,
   .pager,
   #feedback-open,
   #feedback-dialog,

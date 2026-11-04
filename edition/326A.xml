@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 7 verse zones (30 line segments) from Masoretica HTR page n650. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n650.json"/>
+      </change>
       <change when="2026-10-30T19:27:53.462653+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-10-30T19:02:47.192710+00:00" who="#contrib-sarahmccuan">Aligned Malachi 3:17 – Malachi 3:24 (113 atoms).
@@ -58,10 +69,55 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-326A">
+    <surface xml:id="surf-326A" ulx="0" uly="0" lrx="4303" lry="5287">
       <graphic xml:id="f326A-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F326A.jpg">
         <desc type="sha256">dec0543a5e988552403bcdb5e41d8b679c3b67eddd56e8e317beae3c66686453</desc>
       </graphic>
+      <graphic xml:id="f326A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0650.jp2/full/max/0/default.jpg" width="4303px" height="5287px"/>
+      <zone xml:id="f326A-zone-Malachi-3-18" type="verse" cert="0.943" resp="#source-masoretica">
+        <zone xml:id="f326A-zone-Malachi-3-18-s1" ulx="3059" uly="1474" lrx="3794" lry="1628"/>
+        <zone xml:id="f326A-zone-Malachi-3-18-s2" ulx="3091" uly="1575" lrx="3769" lry="1725"/>
+        <zone xml:id="f326A-zone-Malachi-3-18-s3" ulx="3270" uly="1664" lrx="3769" lry="1822"/>
+      </zone>
+      <zone xml:id="f326A-zone-Malachi-3-19" type="verse" cert="0.945" resp="#source-masoretica">
+        <zone xml:id="f326A-zone-Malachi-3-19-s1" ulx="3091" uly="1758" lrx="3546" lry="1915"/>
+        <zone xml:id="f326A-zone-Malachi-3-19-s2" ulx="3059" uly="1854" lrx="3772" lry="2012"/>
+        <zone xml:id="f326A-zone-Malachi-3-19-s3" ulx="3016" uly="1951" lrx="3787" lry="2105"/>
+        <zone xml:id="f326A-zone-Malachi-3-19-s4" ulx="3109" uly="2048" lrx="3787" lry="2192"/>
+        <zone xml:id="f326A-zone-Malachi-3-19-s5" ulx="3034" uly="2138" lrx="3758" lry="2288"/>
+        <zone xml:id="f326A-zone-Malachi-3-19-s6" ulx="3026" uly="2235" lrx="3751" lry="2389"/>
+      </zone>
+      <zone xml:id="f326A-zone-Malachi-3-20" type="verse" cert="0.9" resp="#source-masoretica">
+        <zone xml:id="f326A-zone-Malachi-3-20-s1" ulx="3098" uly="2331" lrx="3776" lry="2486"/>
+        <zone xml:id="f326A-zone-Malachi-3-20-s2" ulx="3145" uly="2450" lrx="3769" lry="2568"/>
+        <zone xml:id="f326A-zone-Malachi-3-20-s3" ulx="3044" uly="2532" lrx="3772" lry="2669"/>
+        <zone xml:id="f326A-zone-Malachi-3-20-s4" ulx="3367" uly="2615" lrx="3762" lry="2765"/>
+      </zone>
+      <zone xml:id="f326A-zone-Malachi-3-21" type="verse" cert="0.936" resp="#source-masoretica">
+        <zone xml:id="f326A-zone-Malachi-3-21-s1" ulx="3080" uly="2615" lrx="3342" lry="2765"/>
+        <zone xml:id="f326A-zone-Malachi-3-21-s2" ulx="3023" uly="2719" lrx="3758" lry="2844"/>
+        <zone xml:id="f326A-zone-Malachi-3-21-s3" ulx="3034" uly="2794" lrx="3758" lry="2941"/>
+        <zone xml:id="f326A-zone-Malachi-3-21-s4" ulx="3156" uly="2887" lrx="3769" lry="3038"/>
+        <zone xml:id="f326A-zone-Malachi-3-21-s5" ulx="3539" uly="2984" lrx="3769" lry="3131"/>
+      </zone>
+      <zone xml:id="f326A-zone-Malachi-3-22" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f326A-zone-Malachi-3-22-s1" ulx="3005" uly="3070" lrx="3787" lry="3217"/>
+        <zone xml:id="f326A-zone-Malachi-3-22-s2" ulx="3052" uly="3174" lrx="3772" lry="3311"/>
+        <zone xml:id="f326A-zone-Malachi-3-22-s3" ulx="3159" uly="3253" lrx="3783" lry="3404"/>
+        <zone xml:id="f326A-zone-Malachi-3-22-s4" ulx="3453" uly="3361" lrx="3790" lry="3501"/>
+      </zone>
+      <zone xml:id="f326A-zone-Malachi-3-23" type="verse" cert="0.981" resp="#source-masoretica">
+        <zone xml:id="f326A-zone-Malachi-3-23-s1" ulx="3016" uly="3361" lrx="3407" lry="3501"/>
+        <zone xml:id="f326A-zone-Malachi-3-23-s2" ulx="3156" uly="3451" lrx="3787" lry="3598"/>
+        <zone xml:id="f326A-zone-Malachi-3-23-s3" ulx="3030" uly="3533" lrx="3772" lry="3691"/>
+        <zone xml:id="f326A-zone-Malachi-3-23-s4" ulx="3346" uly="3637" lrx="3772" lry="3788"/>
+      </zone>
+      <zone xml:id="f326A-zone-Malachi-3-24" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f326A-zone-Malachi-3-24-s1" ulx="3069" uly="3637" lrx="3295" lry="3788"/>
+        <zone xml:id="f326A-zone-Malachi-3-24-s2" ulx="3062" uly="3730" lrx="3769" lry="3892"/>
+        <zone xml:id="f326A-zone-Malachi-3-24-s3" ulx="2055" uly="1255" lrx="2790" lry="1413"/>
+        <zone xml:id="f326A-zone-Malachi-3-24-s4" ulx="2080" uly="1370" lrx="2818" lry="1524"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -84,7 +140,7 @@
             <w xml:id="f326A-w-221386">אֹתֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f326A-pc-221386">׃</pc>
           <lb xml:id="f326A-lb-1-3" n="3"/>
-            <milestone unit="verse" n="Malachi-3-18" xml:id="f326A-v-Malachi-3-18"/>
+            <milestone unit="verse" n="Malachi-3-18" xml:id="f326A-v-Malachi-3-18" facs="#f326A-zone-Malachi-3-18"/>
             <w xml:id="f326A-w-221387">וְשַׁבְתֶּם֙</w>
             <w xml:id="f326A-w-221388">וּרְאִיתֶ֔ם</w>
             <w xml:id="f326A-w-221389">בֵּ֥ין</w>
@@ -101,7 +157,7 @@
             <pc type="sof-pasuq" xml:id="f326A-pc-221397">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f326A-s-Malachi-3-18"/>
           <lb xml:id="f326A-lb-1-6" n="6"/>
-            <milestone unit="verse" n="Malachi-3-19" xml:id="f326A-v-Malachi-3-19"/>
+            <milestone unit="verse" n="Malachi-3-19" xml:id="f326A-v-Malachi-3-19" facs="#f326A-zone-Malachi-3-19"/>
             <w xml:id="f326A-w-221398">כִּֽי־</w>
             <w xml:id="f326A-w-221399">הִנֵּ֤ה</w>
             <w xml:id="f326A-w-221400">הַיּוֹם֙</w>
@@ -135,7 +191,7 @@
             <w xml:id="f326A-w-221423">וְעָנָֽף</w>
             <pc type="sof-pasuq" xml:id="f326A-pc-221423">׃</pc>
           <lb xml:id="f326A-lb-1-12" n="12"/>
-            <milestone unit="verse" n="Malachi-3-20" xml:id="f326A-v-Malachi-3-20"/>
+            <milestone unit="verse" n="Malachi-3-20" xml:id="f326A-v-Malachi-3-20" facs="#f326A-zone-Malachi-3-20"/>
             <w xml:id="f326A-w-221424">וְזָרְחָ֨ה</w>
             <w xml:id="f326A-w-221425">לָכֶ֜ם</w>
             <w xml:id="f326A-w-221426">יִרְאֵ֤י</w>
@@ -152,7 +208,7 @@
             <w xml:id="f326A-w-221434">כְּעֶגְלֵ֥י</w>
             <w xml:id="f326A-w-221435">מַרְבֵּֽק</w>
             <pc type="sof-pasuq" xml:id="f326A-pc-221435">׃</pc>
-            <milestone unit="verse" n="Malachi-3-21" xml:id="f326A-v-Malachi-3-21"/>
+            <milestone unit="verse" n="Malachi-3-21" xml:id="f326A-v-Malachi-3-21" facs="#f326A-zone-Malachi-3-21"/>
             <w xml:id="f326A-w-221436">וְעַסּוֹתֶ֣ם</w>
           <lb xml:id="f326A-lb-1-16" n="16"/>
             <w xml:id="f326A-w-221437">רְשָׁעִ֔ים</w>
@@ -175,7 +231,7 @@
             <pc type="sof-pasuq" xml:id="f326A-pc-221450">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f326A-s-Malachi-3-21"/>
           <lb xml:id="f326A-lb-1-20" n="20"/>
-            <milestone unit="verse" n="Malachi-3-22" xml:id="f326A-v-Malachi-3-22"/>
+            <milestone unit="verse" n="Malachi-3-22" xml:id="f326A-v-Malachi-3-22" facs="#f326A-zone-Malachi-3-22"/>
             <w xml:id="f326A-w-221451">זִכְר֕וּ</w>
             <w xml:id="f326A-w-221452">תּוֹרַ֖ת</w>
             <w xml:id="f326A-w-221453">מֹשֶׁ֣ה</w>
@@ -193,7 +249,7 @@
           <lb xml:id="f326A-lb-1-23" n="23"/>
             <w xml:id="f326A-w-221463">וּמִשְׁפָּטִֽים</w>
             <pc type="sof-pasuq" xml:id="f326A-pc-221463">׃</pc>
-            <milestone unit="verse" n="Malachi-3-23" xml:id="f326A-v-Malachi-3-23"/>
+            <milestone unit="verse" n="Malachi-3-23" xml:id="f326A-v-Malachi-3-23" facs="#f326A-zone-Malachi-3-23"/>
             <w xml:id="f326A-w-221464">הִנֵּ֤ה</w>
             <w xml:id="f326A-w-221465">אָֽנֹכִי֙</w>
           <lb xml:id="f326A-lb-1-24" n="24"/>
@@ -211,7 +267,7 @@
             <w xml:id="f326A-w-221475">הַגָּד֖וֹל</w>
             <w xml:id="f326A-w-221476">וְהַנּוֹרָֽא</w>
             <pc type="sof-pasuq" xml:id="f326A-pc-221476">׃</pc>
-            <milestone unit="verse" n="Malachi-3-24" xml:id="f326A-v-Malachi-3-24"/>
+            <milestone unit="verse" n="Malachi-3-24" xml:id="f326A-v-Malachi-3-24" facs="#f326A-zone-Malachi-3-24"/>
             <w xml:id="f326A-w-221477">וְהֵשִׁ֤יב</w>
           <lb xml:id="f326A-lb-1-27" n="27"/>
             <w xml:id="f326A-w-221478">לֵב־</w>

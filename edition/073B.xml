@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 23 verse zones (87 line segments) from Masoretica HTR page n145. Left out 2 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n145.json"/>
+      </change>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
       Fix line breaks in column 1 to match the page image (issue #552).
       </change>
@@ -68,10 +75,144 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-073B">
+    <surface xml:id="surf-073B" ulx="0" uly="0" lrx="4367" lry="5263">
       <graphic xml:id="f073B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F073B.jpg">
         <desc type="sha256">eb30208bb7b3d80e6e9f05bfbef2715e74c03e9824025e69476abb80f32ec857</desc>
       </graphic>
+      <graphic xml:id="f073B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0145.jp2/full/max/0/default.jpg" width="4367px" height="5263px"/>
+      <zone xml:id="f073B-zone-Leviticus-27-12" type="verse" cert="0.867" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-12-s1" ulx="2486" uly="1190" lrx="2890" lry="1347"/>
+        <zone xml:id="f073B-zone-Leviticus-27-12-s2" ulx="2646" uly="1292" lrx="3228" lry="1438"/>
+        <zone xml:id="f073B-zone-Leviticus-27-12-s3" ulx="2598" uly="1405" lrx="3232" lry="1529"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-13" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-13-s1" ulx="2467" uly="1405" lrx="2587" lry="1529"/>
+        <zone xml:id="f073B-zone-Leviticus-27-13-s2" ulx="2478" uly="1470" lrx="3224" lry="1631"/>
+        <zone xml:id="f073B-zone-Leviticus-27-13-s3" ulx="2926" uly="1565" lrx="3228" lry="1707"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-14" type="verse" cert="0.893" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-14-s1" ulx="2529" uly="1565" lrx="2919" lry="1707"/>
+        <zone xml:id="f073B-zone-Leviticus-27-14-s2" ulx="2617" uly="1656" lrx="3221" lry="1805"/>
+        <zone xml:id="f073B-zone-Leviticus-27-14-s3" ulx="2507" uly="1747" lrx="3239" lry="1893"/>
+        <zone xml:id="f073B-zone-Leviticus-27-14-s4" ulx="2460" uly="1856" lrx="3221" lry="1969"/>
+        <zone xml:id="f073B-zone-Leviticus-27-14-s5" ulx="2995" uly="1936" lrx="3210" lry="2075"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-15" type="verse" cert="0.891" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-15-s1" ulx="2453" uly="1936" lrx="2970" lry="2075"/>
+        <zone xml:id="f073B-zone-Leviticus-27-15-s2" ulx="2660" uly="2024" lrx="3228" lry="2166"/>
+        <zone xml:id="f073B-zone-Leviticus-27-15-s3" ulx="2475" uly="2111" lrx="3213" lry="2260"/>
+        <zone xml:id="f073B-zone-Leviticus-27-15-s4" ulx="2991" uly="2202" lrx="3224" lry="2351"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-16" type="verse" cert="0.906" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-16-s1" ulx="2631" uly="2202" lrx="2977" lry="2351"/>
+        <zone xml:id="f073B-zone-Leviticus-27-16-s2" ulx="2467" uly="2282" lrx="3221" lry="2450"/>
+        <zone xml:id="f073B-zone-Leviticus-27-16-s3" ulx="2496" uly="2395" lrx="3217" lry="2541"/>
+        <zone xml:id="f073B-zone-Leviticus-27-16-s4" ulx="2551" uly="2500" lrx="3210" lry="2642"/>
+        <zone xml:id="f073B-zone-Leviticus-27-16-s5" ulx="2922" uly="2588" lrx="3217" lry="2741"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-17" type="verse" cert="0.884" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-17-s1" ulx="2460" uly="2588" lrx="2889" lry="2741"/>
+        <zone xml:id="f073B-zone-Leviticus-27-17-s2" ulx="2464" uly="2686" lrx="3224" lry="2824"/>
+        <zone xml:id="f073B-zone-Leviticus-27-17-s3" ulx="3061" uly="2784" lrx="3210" lry="2904"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-18" type="verse" cert="0.92" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-18-s1" ulx="2467" uly="2784" lrx="3039" lry="2904"/>
+        <zone xml:id="f073B-zone-Leviticus-27-18-s2" ulx="2511" uly="2846" lrx="3213" lry="2995"/>
+        <zone xml:id="f073B-zone-Leviticus-27-18-s3" ulx="2540" uly="2944" lrx="3213" lry="3086"/>
+        <zone xml:id="f073B-zone-Leviticus-27-18-s4" ulx="2500" uly="3021" lrx="3221" lry="3181"/>
+        <zone xml:id="f073B-zone-Leviticus-27-18-s5" ulx="2646" uly="3112" lrx="3210" lry="3279"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-19" type="verse" cert="0.951" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-19-s1" ulx="2500" uly="3112" lrx="2638" lry="3279"/>
+        <zone xml:id="f073B-zone-Leviticus-27-19-s2" ulx="2620" uly="3217" lrx="3235" lry="3363"/>
+        <zone xml:id="f073B-zone-Leviticus-27-19-s3" ulx="2438" uly="3308" lrx="3217" lry="3458"/>
+        <zone xml:id="f073B-zone-Leviticus-27-19-s4" ulx="2529" uly="3396" lrx="3213" lry="3545"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-20" type="verse" cert="0.959" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-20-s1" ulx="2511" uly="3480" lrx="3224" lry="3632"/>
+        <zone xml:id="f073B-zone-Leviticus-27-20-s2" ulx="2453" uly="3578" lrx="3239" lry="3742"/>
+        <zone xml:id="f073B-zone-Leviticus-27-20-s3" ulx="1685" uly="1197" lrx="2234" lry="1347"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-21" type="verse" cert="0.897" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-21-s1" ulx="1521" uly="1197" lrx="1678" lry="1347"/>
+        <zone xml:id="f073B-zone-Leviticus-27-21-s2" ulx="1514" uly="1303" lrx="2227" lry="1449"/>
+        <zone xml:id="f073B-zone-Leviticus-27-21-s3" ulx="1488" uly="1387" lrx="2234" lry="1540"/>
+        <zone xml:id="f073B-zone-Leviticus-27-21-s4" ulx="1838" uly="1474" lrx="2234" lry="1623"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-23" type="verse" cert="0.922" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-23-s1" ulx="1503" uly="1747" lrx="2031" lry="1896"/>
+        <zone xml:id="f073B-zone-Leviticus-27-23-s2" ulx="1528" uly="1845" lrx="2227" lry="1991"/>
+        <zone xml:id="f073B-zone-Leviticus-27-23-s3" ulx="1539" uly="1936" lrx="2216" lry="2078"/>
+        <zone xml:id="f073B-zone-Leviticus-27-23-s4" ulx="1685" uly="2042" lrx="2220" lry="2162"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-24" type="verse" cert="0.947" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-24-s1" ulx="1496" uly="2042" lrx="1656" lry="2162"/>
+        <zone xml:id="f073B-zone-Leviticus-27-24-s2" ulx="1488" uly="2111" lrx="2220" lry="2257"/>
+        <zone xml:id="f073B-zone-Leviticus-27-24-s3" ulx="1470" uly="2217" lrx="2227" lry="2362"/>
+        <zone xml:id="f073B-zone-Leviticus-27-24-s4" ulx="2027" uly="2304" lrx="2224" lry="2457"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-25" type="verse" cert="0.933" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-25-s1" ulx="1554" uly="2304" lrx="2012" lry="2457"/>
+        <zone xml:id="f073B-zone-Leviticus-27-25-s2" ulx="1470" uly="2406" lrx="2220" lry="2551"/>
+        <zone xml:id="f073B-zone-Leviticus-27-25-s3" ulx="1856" uly="2508" lrx="2242" lry="2632"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-26" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-26-s1" ulx="1510" uly="2573" lrx="2045" lry="2715"/>
+        <zone xml:id="f073B-zone-Leviticus-27-26-s2" ulx="1521" uly="2668" lrx="2242" lry="2810"/>
+        <zone xml:id="f073B-zone-Leviticus-27-26-s3" ulx="1492" uly="2770" lrx="2245" lry="2890"/>
+        <zone xml:id="f073B-zone-Leviticus-27-26-s4" ulx="1681" uly="2861" lrx="2224" lry="2985"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-27" type="verse" cert="0.917" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-27-s1" ulx="1521" uly="2861" lrx="1656" lry="2985"/>
+        <zone xml:id="f073B-zone-Leviticus-27-27-s2" ulx="1623" uly="2937" lrx="2238" lry="3079"/>
+        <zone xml:id="f073B-zone-Leviticus-27-27-s3" ulx="1481" uly="3021" lrx="2220" lry="3174"/>
+        <zone xml:id="f073B-zone-Leviticus-27-27-s4" ulx="1477" uly="3116" lrx="2234" lry="3265"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-28" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-28-s1" ulx="1510" uly="3214" lrx="2227" lry="3352"/>
+        <zone xml:id="f073B-zone-Leviticus-27-28-s2" ulx="1456" uly="3298" lrx="2216" lry="3425"/>
+        <zone xml:id="f073B-zone-Leviticus-27-28-s3" ulx="1514" uly="3378" lrx="2224" lry="3527"/>
+        <zone xml:id="f073B-zone-Leviticus-27-28-s4" ulx="1488" uly="3465" lrx="2213" lry="3622"/>
+        <zone xml:id="f073B-zone-Leviticus-27-28-s5" ulx="1481" uly="3560" lrx="2216" lry="3723"/>
+        <zone xml:id="f073B-zone-Leviticus-27-28-s6" ulx="1059" uly="1227" lrx="1241" lry="1379"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-29" type="verse" cert="0.974" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-29-s1" ulx="495" uly="1227" lrx="1033" lry="1379"/>
+        <zone xml:id="f073B-zone-Leviticus-27-29-s2" ulx="557" uly="1325" lrx="1245" lry="1467"/>
+        <zone xml:id="f073B-zone-Leviticus-27-29-s3" ulx="1103" uly="1434" lrx="1256" lry="1551"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-30" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-30-s1" ulx="553" uly="1434" lrx="1081" lry="1551"/>
+        <zone xml:id="f073B-zone-Leviticus-27-30-s2" ulx="520" uly="1514" lrx="1252" lry="1641"/>
+        <zone xml:id="f073B-zone-Leviticus-27-30-s3" ulx="557" uly="1605" lrx="1234" lry="1732"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-31" type="verse" cert="0.996" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-31-s1" ulx="713" uly="1696" lrx="1259" lry="1820"/>
+        <zone xml:id="f073B-zone-Leviticus-27-31-s2" ulx="590" uly="1765" lrx="1237" lry="1918"/>
+        <zone xml:id="f073B-zone-Leviticus-27-31-s3" ulx="1110" uly="1860" lrx="1248" lry="2005"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-32" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-32-s1" ulx="502" uly="1860" lrx="1103" lry="2005"/>
+        <zone xml:id="f073B-zone-Leviticus-27-32-s2" ulx="535" uly="1958" lrx="1248" lry="2086"/>
+        <zone xml:id="f073B-zone-Leviticus-27-32-s3" ulx="502" uly="2035" lrx="1237" lry="2177"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-33" type="verse" cert="0.961" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-33-s1" ulx="611" uly="2115" lrx="1245" lry="2268"/>
+        <zone xml:id="f073B-zone-Leviticus-27-33-s2" ulx="484" uly="2206" lrx="1248" lry="2366"/>
+        <zone xml:id="f073B-zone-Leviticus-27-33-s3" ulx="535" uly="2322" lrx="1252" lry="2450"/>
+        <zone xml:id="f073B-zone-Leviticus-27-33-s4" ulx="808" uly="2409" lrx="1248" lry="2551"/>
+      </zone>
+      <zone xml:id="f073B-zone-Leviticus-27-34" type="verse" cert="0.961" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Leviticus-27-34-s1" ulx="648" uly="2409" lrx="782" lry="2551"/>
+        <zone xml:id="f073B-zone-Leviticus-27-34-s2" ulx="517" uly="2508" lrx="1237" lry="2635"/>
+        <zone xml:id="f073B-zone-Leviticus-27-34-s3" ulx="539" uly="2577" lrx="1252" lry="2752"/>
+        <zone xml:id="f073B-zone-Leviticus-27-34-s4" ulx="1117" uly="2679" lrx="1245" lry="2828"/>
+      </zone>
+      <zone xml:id="f073B-zone-Numbers-1-2" type="verse" cert="0.872" resp="#source-masoretica">
+        <zone xml:id="f073B-zone-Numbers-1-2-s1" ulx="557" uly="3396" lrx="1041" lry="3516"/>
+        <zone xml:id="f073B-zone-Numbers-1-2-s2" ulx="473" uly="3472" lrx="1241" lry="3618"/>
+        <zone xml:id="f073B-zone-Numbers-1-2-s3" ulx="491" uly="3563" lrx="1245" lry="3727"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -86,7 +227,7 @@
             <w xml:id="f073B-w-48975">לִפְנֵ֥י</w>
             <w xml:id="f073B-w-48976">הַכֹּהֵֽן</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-48976">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-12" xml:id="f073B-v-Leviticus-27-12"/>
+            <milestone unit="verse" n="Leviticus-27-12" xml:id="f073B-v-Leviticus-27-12" facs="#f073B-zone-Leviticus-27-12"/>
             <w xml:id="f073B-w-48977">וְהֶעֱרִ֤יךְ</w>
             <w xml:id="f073B-w-48978">הַכֹּהֵן֙</w>
           <lb xml:id="f073B-lb-1-2" n="2"/>
@@ -101,7 +242,7 @@
             <w xml:id="f073B-w-48986">כֵּ֥ן</w>
             <w xml:id="f073B-w-48987">יִהְיֶֽה</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-48987">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-13" xml:id="f073B-v-Leviticus-27-13"/>
+            <milestone unit="verse" n="Leviticus-27-13" xml:id="f073B-v-Leviticus-27-13" facs="#f073B-zone-Leviticus-27-13"/>
             <w xml:id="f073B-w-48988">וְאִם־</w>
           <lb xml:id="f073B-lb-1-4" n="4"/>
             <w xml:id="f073B-w-48989">גָּאֹ֖ל</w>
@@ -112,7 +253,7 @@
             <w xml:id="f073B-w-48993">עַל־</w>
             <w xml:id="f073B-w-48994">עֶרְכֶּֽךָ</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-48994">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-14" xml:id="f073B-v-Leviticus-27-14"/>
+            <milestone unit="verse" n="Leviticus-27-14" xml:id="f073B-v-Leviticus-27-14" facs="#f073B-zone-Leviticus-27-14"/>
             <w xml:id="f073B-w-48995">וְאִ֗ישׁ</w>
             <w xml:id="f073B-w-48996">כִּֽי־</w>
             <w xml:id="f073B-w-48997">יַקְדִּ֨שׁ</w>
@@ -137,7 +278,7 @@
             <w xml:id="f073B-w-49012">כֵּ֥ן</w>
             <w xml:id="f073B-w-49013">יָקֽוּם</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49013">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-15" xml:id="f073B-v-Leviticus-27-15"/>
+            <milestone unit="verse" n="Leviticus-27-15" xml:id="f073B-v-Leviticus-27-15" facs="#f073B-zone-Leviticus-27-15"/>
             <w xml:id="f073B-w-49014">וְאִ֨ם־</w>
             <w xml:id="f073B-w-49015">הַמַּקְדִּ֔ישׁ</w>
           <lb xml:id="f073B-lb-1-10" n="10"/>
@@ -154,7 +295,7 @@
             <w xml:id="f073B-w-49024">וְהָ֥יָה</w>
             <w xml:id="f073B-w-49025">לֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49025">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-16" xml:id="f073B-v-Leviticus-27-16"/>
+            <milestone unit="verse" n="Leviticus-27-16" xml:id="f073B-v-Leviticus-27-16" facs="#f073B-zone-Leviticus-27-16"/>
             <w xml:id="f073B-w-49026">וְאִ֣ם</w>
             <pc type="paseq" xml:id="f073B-pc-49026">׀</pc>
             <w xml:id="f073B-w-49027">מִשְּׂדֵ֣ה</w>
@@ -177,7 +318,7 @@
             <w xml:id="f073B-w-49040">שֶׁ֥קֶל</w>
             <w xml:id="f073B-w-49041">כָּֽסֶף</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49041">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-17" xml:id="f073B-v-Leviticus-27-17"/>
+            <milestone unit="verse" n="Leviticus-27-17" xml:id="f073B-v-Leviticus-27-17" facs="#f073B-zone-Leviticus-27-17"/>
             <w xml:id="f073B-w-49042">אִם־</w>
             <w xml:id="f073B-w-49043">מִשְּׁנַ֥ת</w>
             <w xml:id="f073B-w-49044">הַיֹּבֵ֖ל</w>
@@ -188,7 +329,7 @@
           <lb xml:id="f073B-lb-1-18" n="18"/>
             <w xml:id="f073B-w-49048">יָקֽוּם</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49048">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-18" xml:id="f073B-v-Leviticus-27-18"/>
+            <milestone unit="verse" n="Leviticus-27-18" xml:id="f073B-v-Leviticus-27-18" facs="#f073B-zone-Leviticus-27-18"/>
             <w xml:id="f073B-w-49049">וְאִם־</w>
             <w xml:id="f073B-w-49050">אַחַ֣ר</w>
             <w xml:id="f073B-w-49051">הַיֹּבֵל֮</w>
@@ -213,7 +354,7 @@
             <w xml:id="f073B-w-49066">וְנִגְרַ֖ע</w>
             <w xml:id="f073B-w-49067">מֵֽעֶרְכֶּֽךָ</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49067">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-19" xml:id="f073B-v-Leviticus-27-19"/>
+            <milestone unit="verse" n="Leviticus-27-19" xml:id="f073B-v-Leviticus-27-19" facs="#f073B-zone-Leviticus-27-19"/>
             <w xml:id="f073B-w-49068">וְאִם־</w>
           <lb xml:id="f073B-lb-1-23" n="23"/>
             <w xml:id="f073B-w-49069">גָּאֹ֤ל</w>
@@ -233,7 +374,7 @@
             <w xml:id="f073B-w-49081">לֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49081">׃</pc>
           <lb xml:id="f073B-lb-1-26" n="26"/>
-            <milestone unit="verse" n="Leviticus-27-20" xml:id="f073B-v-Leviticus-27-20"/>
+            <milestone unit="verse" n="Leviticus-27-20" xml:id="f073B-v-Leviticus-27-20" facs="#f073B-zone-Leviticus-27-20"/>
             <w xml:id="f073B-w-49082">וְאִם־</w>
             <w xml:id="f073B-w-49083">לֹ֤א</w>
             <w xml:id="f073B-w-49084">יִגְאַל֙</w>
@@ -252,7 +393,7 @@
             <w xml:id="f073B-w-49094">יִגָּאֵ֖ל</w>
             <w xml:id="f073B-w-49095">עֽוֹד</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49095">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-21" xml:id="f073B-v-Leviticus-27-21"/>
+            <milestone unit="verse" n="Leviticus-27-21" xml:id="f073B-v-Leviticus-27-21" facs="#f073B-zone-Leviticus-27-21"/>
             <w xml:id="f073B-w-49096">וְהָיָ֨ה</w>
           <lb xml:id="f073B-lb-2-2" n="2"/>
             <w xml:id="f073B-w-49097">הַשָּׂדֶ֜ה</w>
@@ -283,7 +424,7 @@
             <w xml:id="f073B-w-49116">לַֽיהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49116">׃</pc>
           <lb xml:id="f073B-lb-2-7" n="7"/>
-            <milestone unit="verse" n="Leviticus-27-23" xml:id="f073B-v-Leviticus-27-23"/>
+            <milestone unit="verse" n="Leviticus-27-23" xml:id="f073B-v-Leviticus-27-23" facs="#f073B-zone-Leviticus-27-23"/>
             <w xml:id="f073B-w-49117">וְחִשַּׁב־</w>
             <w xml:id="f073B-w-49118">ל֣וֹ</w>
             <w xml:id="f073B-w-49119">הַכֹּהֵ֗ן</w>
@@ -304,7 +445,7 @@
             <w xml:id="f073B-w-49131">קֹ֖דֶשׁ</w>
             <w xml:id="f073B-w-49132">לַיהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49132">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-24" xml:id="f073B-v-Leviticus-27-24"/>
+            <milestone unit="verse" n="Leviticus-27-24" xml:id="f073B-v-Leviticus-27-24" facs="#f073B-zone-Leviticus-27-24"/>
             <w xml:id="f073B-w-49133">בִּשְׁנַ֤ת</w>
           <lb xml:id="f073B-lb-2-11" n="11"/>
             <w xml:id="f073B-w-49134">הַיּוֹבֵל֙</w>
@@ -320,7 +461,7 @@
           <lb xml:id="f073B-lb-2-13" n="13"/>
             <w xml:id="f073B-w-49143">הָאָֽרֶץ</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49143">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-25" xml:id="f073B-v-Leviticus-27-25"/>
+            <milestone unit="verse" n="Leviticus-27-25" xml:id="f073B-v-Leviticus-27-25" facs="#f073B-zone-Leviticus-27-25"/>
             <w xml:id="f073B-w-49144">וְכָל־</w>
             <w xml:id="f073B-w-49145">עֶרְכְּךָ֔</w>
             <w xml:id="f073B-w-49146">יִהְיֶ֖ה</w>
@@ -335,7 +476,7 @@
             <pc type="sof-pasuq" xml:id="f073B-pc-49152">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f073B-s-Leviticus-27-25"/>
           <lb xml:id="f073B-lb-2-16" n="16"/>
-            <milestone unit="verse" n="Leviticus-27-26" xml:id="f073B-v-Leviticus-27-26"/>
+            <milestone unit="verse" n="Leviticus-27-26" xml:id="f073B-v-Leviticus-27-26" facs="#f073B-zone-Leviticus-27-26"/>
             <w xml:id="f073B-w-49153">אַךְ־</w>
             <w xml:id="f073B-w-49154">בְּכ֞וֹר</w>
             <w xml:id="f073B-w-49155">אֲשֶׁר־</w>
@@ -356,7 +497,7 @@
             <w xml:id="f073B-w-49167">לַֽיהוָ֖ה</w>
             <w xml:id="f073B-w-49168">הֽוּא</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49168">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-27" xml:id="f073B-v-Leviticus-27-27"/>
+            <milestone unit="verse" n="Leviticus-27-27" xml:id="f073B-v-Leviticus-27-27" facs="#f073B-zone-Leviticus-27-27"/>
             <w xml:id="f073B-w-49169">וְאִ֨ם</w>
           <lb xml:id="f073B-lb-2-20" n="20"/>
             <w xml:id="f073B-w-49170">בַּבְּהֵמָ֤ה</w>
@@ -375,7 +516,7 @@
             <w xml:id="f073B-w-49181">בְּעֶרְכֶּֽךָ</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49181">׃</pc>
           <lb xml:id="f073B-lb-2-23" n="23"/>
-            <milestone unit="verse" n="Leviticus-27-28" xml:id="f073B-v-Leviticus-27-28"/>
+            <milestone unit="verse" n="Leviticus-27-28" xml:id="f073B-v-Leviticus-27-28" facs="#f073B-zone-Leviticus-27-28"/>
             <w xml:id="f073B-w-49182">אַךְ־</w>
             <w xml:id="f073B-w-49183">כָּל־</w>
             <w xml:id="f073B-w-49184">חֵ֡רֶם</w>
@@ -407,7 +548,7 @@
           <lb xml:id="f073B-lb-3-1" n="1"/>
             <w xml:id="f073B-w-49205">לַיהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49205">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-29" xml:id="f073B-v-Leviticus-27-29"/>
+            <milestone unit="verse" n="Leviticus-27-29" xml:id="f073B-v-Leviticus-27-29" facs="#f073B-zone-Leviticus-27-29"/>
             <w xml:id="f073B-w-49206">כָּל־</w>
             <w xml:id="f073B-w-49207">חֵ֗רֶם</w>
             <w xml:id="f073B-w-49208">אֲשֶׁ֧ר</w>
@@ -421,7 +562,7 @@
           <lb xml:id="f073B-lb-3-3" n="3"/>
             <w xml:id="f073B-w-49215">יוּמָֽת</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49215">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-30" xml:id="f073B-v-Leviticus-27-30"/>
+            <milestone unit="verse" n="Leviticus-27-30" xml:id="f073B-v-Leviticus-27-30" facs="#f073B-zone-Leviticus-27-30"/>
             <w xml:id="f073B-w-49216">וְכָל־</w>
             <w xml:id="f073B-w-49217">מַעְשַׂ֨ר</w>
             <w xml:id="f073B-w-49218">הָאָ֜רֶץ</w>
@@ -437,7 +578,7 @@
             <w xml:id="f073B-w-49226">לַֽיהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49226">׃</pc>
           <lb xml:id="f073B-lb-3-6" n="6"/>
-            <milestone unit="verse" n="Leviticus-27-31" xml:id="f073B-v-Leviticus-27-31"/>
+            <milestone unit="verse" n="Leviticus-27-31" xml:id="f073B-v-Leviticus-27-31" facs="#f073B-zone-Leviticus-27-31"/>
             <w xml:id="f073B-w-49227">וְאִם־</w>
             <w xml:id="f073B-w-49228">גָּאֹ֥ל</w>
             <w xml:id="f073B-w-49229">יִגְאַ֛ל</w>
@@ -449,7 +590,7 @@
           <lb xml:id="f073B-lb-3-8" n="8"/>
             <w xml:id="f073B-w-49234">עָלָֽיו</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49234">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-32" xml:id="f073B-v-Leviticus-27-32"/>
+            <milestone unit="verse" n="Leviticus-27-32" xml:id="f073B-v-Leviticus-27-32" facs="#f073B-zone-Leviticus-27-32"/>
             <w xml:id="f073B-w-49235">וְכָל־</w>
             <w xml:id="f073B-w-49236">מַעְשַׂ֤ר</w>
             <w xml:id="f073B-w-49237">בָּקָר֙</w>
@@ -467,7 +608,7 @@
             <w xml:id="f073B-w-49247">לַֽיהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49247">׃</pc>
           <lb xml:id="f073B-lb-3-11" n="11"/>
-            <milestone unit="verse" n="Leviticus-27-33" xml:id="f073B-v-Leviticus-27-33"/>
+            <milestone unit="verse" n="Leviticus-27-33" xml:id="f073B-v-Leviticus-27-33" facs="#f073B-zone-Leviticus-27-33"/>
             <w xml:id="f073B-w-49248">לֹ֧א</w>
             <w xml:id="f073B-w-49249">יְבַקֵּ֛ר</w>
             <w xml:id="f073B-w-49250">בֵּֽין־</w>
@@ -489,7 +630,7 @@
             <w xml:id="f073B-w-49263">לֹ֥א</w>
             <w xml:id="f073B-w-49264">יִגָּאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49264">׃</pc>
-            <milestone unit="verse" n="Leviticus-27-34" xml:id="f073B-v-Leviticus-27-34"/>
+            <milestone unit="verse" n="Leviticus-27-34" xml:id="f073B-v-Leviticus-27-34" facs="#f073B-zone-Leviticus-27-34"/>
             <w xml:id="f073B-w-49265">אֵ֣לֶּה</w>
           <lb xml:id="f073B-lb-3-15" n="15"/>
             <w xml:id="f073B-w-49266">הַמִּצְוֺ֗ת</w>
@@ -533,7 +674,7 @@
             <w xml:id="f073B-w-49293">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f073B-pc-49293">׃</pc>
           <lb xml:id="f073B-lb-3-25" n="25"/>
-            <milestone unit="verse" n="Numbers-1-2" xml:id="f073B-v-Numbers-1-2"/>
+            <milestone unit="verse" n="Numbers-1-2" xml:id="f073B-v-Numbers-1-2" facs="#f073B-zone-Numbers-1-2"/>
             <w xml:id="f073B-w-49294">שְׂא֗וּ</w>
             <w xml:id="f073B-w-49295">אֶת־</w>
             <w xml:id="f073B-w-49296">רֹאשׁ֙</w>

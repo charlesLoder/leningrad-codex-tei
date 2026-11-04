@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 27 verse zones (96 line segments) from Masoretica HTR page n611. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n611.json"/>
+      </change>
       <change when="2026-10-29T22:45:12.599058+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-29T22:35:53.300950+00:00" who="#contrib-charles-w-loder">Aligned Hosea 10:3 – Hosea 12:4 (348 atoms).
@@ -58,10 +65,161 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-306B">
+    <surface xml:id="surf-306B" ulx="0" uly="0" lrx="4223" lry="5343">
       <graphic xml:id="f306B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F306B.jpg">
         <desc type="sha256">298c47b1e067437123ca48aa94aff4c6da491c5b694efca2e07102ae227220a6</desc>
       </graphic>
+      <graphic xml:id="f306B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0611.jp2/full/max/0/default.jpg" width="4223px" height="5343px"/>
+      <zone xml:id="f306B-zone-Hosea-10-3" type="verse" cert="0.787" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-3-s1" ulx="2523" uly="1151" lrx="3245" lry="1387"/>
+        <zone xml:id="f306B-zone-Hosea-10-3-s2" ulx="2583" uly="1341" lrx="3266" lry="1478"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-4" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-4-s1" ulx="2509" uly="1429" lrx="3241" lry="1580"/>
+        <zone xml:id="f306B-zone-Hosea-10-4-s2" ulx="2499" uly="1524" lrx="3248" lry="1668"/>
+        <zone xml:id="f306B-zone-Hosea-10-4-s3" ulx="2872" uly="1619" lrx="3255" lry="1767"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-5" type="verse" cert="0.931" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-5-s1" ulx="2537" uly="1619" lrx="2843" lry="1767"/>
+        <zone xml:id="f306B-zone-Hosea-10-5-s2" ulx="2611" uly="1725" lrx="3252" lry="1865"/>
+        <zone xml:id="f306B-zone-Hosea-10-5-s3" ulx="2530" uly="1813" lrx="3259" lry="1964"/>
+        <zone xml:id="f306B-zone-Hosea-10-5-s4" ulx="2534" uly="1904" lrx="3255" lry="2059"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-6" type="verse" cert="0.943" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-6-s1" ulx="2527" uly="1999" lrx="3245" lry="2147"/>
+        <zone xml:id="f306B-zone-Hosea-10-6-s2" ulx="2513" uly="2091" lrx="3238" lry="2246"/>
+        <zone xml:id="f306B-zone-Hosea-10-6-s3" ulx="2611" uly="2207" lrx="3252" lry="2341"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-7" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-7-s1" ulx="2513" uly="2302" lrx="3266" lry="2439"/>
+        <zone xml:id="f306B-zone-Hosea-10-7-s2" ulx="2970" uly="2379" lrx="3255" lry="2534"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-8" type="verse" cert="0.937" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-8-s1" ulx="2562" uly="2379" lrx="2949" lry="2534"/>
+        <zone xml:id="f306B-zone-Hosea-10-8-s2" ulx="2580" uly="2492" lrx="3238" lry="2629"/>
+        <zone xml:id="f306B-zone-Hosea-10-8-s3" ulx="2544" uly="2591" lrx="3252" lry="2724"/>
+        <zone xml:id="f306B-zone-Hosea-10-8-s4" ulx="2509" uly="2679" lrx="3252" lry="2819"/>
+        <zone xml:id="f306B-zone-Hosea-10-8-s5" ulx="2960" uly="2774" lrx="3252" lry="2907"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-9" type="verse" cert="0.953" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-9-s1" ulx="2537" uly="2774" lrx="2682" lry="2907"/>
+        <zone xml:id="f306B-zone-Hosea-10-9-s2" ulx="2520" uly="2869" lrx="3234" lry="3002"/>
+        <zone xml:id="f306B-zone-Hosea-10-9-s3" ulx="2544" uly="2946" lrx="3245" lry="3097"/>
+        <zone xml:id="f306B-zone-Hosea-10-9-s4" ulx="2660" uly="3059" lrx="3238" lry="3192"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-10" type="verse" cert="0.977" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-10-s1" ulx="2495" uly="3059" lrx="2636" lry="3192"/>
+        <zone xml:id="f306B-zone-Hosea-10-10-s2" ulx="2495" uly="3147" lrx="3245" lry="3287"/>
+        <zone xml:id="f306B-zone-Hosea-10-10-s3" ulx="2657" uly="3245" lrx="3231" lry="3379"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-11" type="verse" cert="0.941" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-11-s1" ulx="2509" uly="3333" lrx="3255" lry="3474"/>
+        <zone xml:id="f306B-zone-Hosea-10-11-s2" ulx="2534" uly="3418" lrx="3231" lry="3569"/>
+        <zone xml:id="f306B-zone-Hosea-10-11-s3" ulx="2615" uly="3530" lrx="3241" lry="3664"/>
+        <zone xml:id="f306B-zone-Hosea-10-11-s4" ulx="2646" uly="3615" lrx="3241" lry="3759"/>
+        <zone xml:id="f306B-zone-Hosea-10-11-s5" ulx="2801" uly="3699" lrx="3252" lry="3872"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-12" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-12-s1" ulx="2530" uly="3699" lrx="2780" lry="3872"/>
+        <zone xml:id="f306B-zone-Hosea-10-12-s2" ulx="1615" uly="1218" lrx="2256" lry="1376"/>
+        <zone xml:id="f306B-zone-Hosea-10-12-s3" ulx="1605" uly="1334" lrx="2280" lry="1471"/>
+        <zone xml:id="f306B-zone-Hosea-10-12-s4" ulx="1629" uly="1443" lrx="2263" lry="1563"/>
+        <zone xml:id="f306B-zone-Hosea-10-12-s5" ulx="1985" uly="1510" lrx="2256" lry="1668"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-13" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-13-s1" ulx="1563" uly="1510" lrx="1939" lry="1668"/>
+        <zone xml:id="f306B-zone-Hosea-10-13-s2" ulx="1591" uly="1626" lrx="2270" lry="1770"/>
+        <zone xml:id="f306B-zone-Hosea-10-13-s3" ulx="1545" uly="1732" lrx="2263" lry="1869"/>
+        <zone xml:id="f306B-zone-Hosea-10-13-s4" ulx="1950" uly="1830" lrx="2256" lry="1954"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-10-14" type="verse" cert="0.908" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-10-14-s1" ulx="1591" uly="1830" lrx="1939" lry="1954"/>
+        <zone xml:id="f306B-zone-Hosea-10-14-s2" ulx="1563" uly="1901" lrx="2263" lry="2052"/>
+        <zone xml:id="f306B-zone-Hosea-10-14-s3" ulx="1485" uly="2013" lrx="2266" lry="2151"/>
+        <zone xml:id="f306B-zone-Hosea-10-14-s4" ulx="1605" uly="2112" lrx="2270" lry="2235"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-1" type="verse" cert="0.973" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-1-s1" ulx="1534" uly="2393" lrx="1890" lry="2534"/>
+        <zone xml:id="f306B-zone-Hosea-11-1-s2" ulx="1538" uly="2481" lrx="2273" lry="2629"/>
+        <zone xml:id="f306B-zone-Hosea-11-1-s3" ulx="2126" uly="2580" lrx="2249" lry="2724"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-2" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-2-s1" ulx="1545" uly="2580" lrx="2094" lry="2724"/>
+        <zone xml:id="f306B-zone-Hosea-11-2-s2" ulx="1665" uly="2679" lrx="2266" lry="2812"/>
+        <zone xml:id="f306B-zone-Hosea-11-2-s3" ulx="1795" uly="2763" lrx="2277" lry="2907"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-3" type="verse" cert="0.944" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-3-s1" ulx="1598" uly="2763" lrx="1781" lry="2907"/>
+        <zone xml:id="f306B-zone-Hosea-11-3-s2" ulx="1545" uly="2847" lrx="2252" lry="2995"/>
+        <zone xml:id="f306B-zone-Hosea-11-3-s3" ulx="1520" uly="2942" lrx="2266" lry="3097"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-4" type="verse" cert="0.941" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-4-s1" ulx="1693" uly="3041" lrx="2256" lry="3185"/>
+        <zone xml:id="f306B-zone-Hosea-11-4-s2" ulx="1534" uly="3147" lrx="2256" lry="3280"/>
+        <zone xml:id="f306B-zone-Hosea-11-4-s3" ulx="1545" uly="3224" lrx="2252" lry="3375"/>
+        <zone xml:id="f306B-zone-Hosea-11-4-s4" ulx="1943" uly="3323" lrx="2259" lry="3460"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-5" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-5-s1" ulx="1513" uly="3323" lrx="1900" lry="3460"/>
+        <zone xml:id="f306B-zone-Hosea-11-5-s2" ulx="1555" uly="3435" lrx="2263" lry="3558"/>
+        <zone xml:id="f306B-zone-Hosea-11-5-s3" ulx="1710" uly="3523" lrx="2256" lry="3661"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-6" type="verse" cert="0.895" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-6-s1" ulx="1538" uly="3523" lrx="1693" lry="3661"/>
+        <zone xml:id="f306B-zone-Hosea-11-6-s2" ulx="1513" uly="3604" lrx="2259" lry="3763"/>
+        <zone xml:id="f306B-zone-Hosea-11-6-s3" ulx="1911" uly="3703" lrx="2259" lry="3872"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-7" type="verse" cert="0.941" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-7-s1" ulx="1527" uly="3703" lrx="1893" lry="3872"/>
+        <zone xml:id="f306B-zone-Hosea-11-7-s2" ulx="514" uly="1225" lrx="1267" lry="1380"/>
+        <zone xml:id="f306B-zone-Hosea-11-7-s3" ulx="852" uly="1323" lrx="1274" lry="1485"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-8" type="verse" cert="0.93" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-8-s1" ulx="563" uly="1323" lrx="830" lry="1485"/>
+        <zone xml:id="f306B-zone-Hosea-11-8-s2" ulx="570" uly="1443" lrx="1267" lry="1587"/>
+        <zone xml:id="f306B-zone-Hosea-11-8-s3" ulx="531" uly="1542" lrx="1256" lry="1682"/>
+        <zone xml:id="f306B-zone-Hosea-11-8-s4" ulx="528" uly="1616" lrx="1263" lry="1781"/>
+        <zone xml:id="f306B-zone-Hosea-11-8-s5" ulx="940" uly="1728" lrx="1270" lry="1880"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-9" type="verse" cert="0.984" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-9-s1" ulx="616" uly="1728" lrx="911" lry="1880"/>
+        <zone xml:id="f306B-zone-Hosea-11-9-s2" ulx="545" uly="1816" lrx="1263" lry="1968"/>
+        <zone xml:id="f306B-zone-Hosea-11-9-s3" ulx="626" uly="1939" lrx="1260" lry="2059"/>
+        <zone xml:id="f306B-zone-Hosea-11-9-s4" ulx="584" uly="2006" lrx="1267" lry="2154"/>
+        <zone xml:id="f306B-zone-Hosea-11-9-s5" ulx="919" uly="2122" lrx="1267" lry="2256"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-10" type="verse" cert="0.909" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-10-s1" ulx="598" uly="2122" lrx="890" lry="2256"/>
+        <zone xml:id="f306B-zone-Hosea-11-10-s2" ulx="560" uly="2221" lrx="1267" lry="2344"/>
+        <zone xml:id="f306B-zone-Hosea-11-10-s3" ulx="609" uly="2295" lrx="1263" lry="2436"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-11-11" type="verse" cert="0.957" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-11-11-s1" ulx="630" uly="2401" lrx="1270" lry="2534"/>
+        <zone xml:id="f306B-zone-Hosea-11-11-s2" ulx="690" uly="2492" lrx="1277" lry="2633"/>
+        <zone xml:id="f306B-zone-Hosea-11-11-s3" ulx="538" uly="2584" lrx="1270" lry="2735"/>
+        <zone xml:id="f306B-zone-Hosea-11-11-s4" ulx="1137" uly="2682" lrx="1270" lry="2816"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-12-1" type="verse" cert="0.997" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-12-1-s1" ulx="538" uly="2682" lrx="714" lry="2816"/>
+        <zone xml:id="f306B-zone-Hosea-12-1-s2" ulx="510" uly="2784" lrx="1253" lry="2918"/>
+        <zone xml:id="f306B-zone-Hosea-12-1-s3" ulx="545" uly="2876" lrx="1277" lry="2999"/>
+        <zone xml:id="f306B-zone-Hosea-12-1-s4" ulx="616" uly="2964" lrx="1249" lry="3087"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-12-2" type="verse" cert="0.918" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-12-2-s1" ulx="521" uly="3055" lrx="1260" lry="3178"/>
+        <zone xml:id="f306B-zone-Hosea-12-2-s2" ulx="517" uly="3129" lrx="1246" lry="3280"/>
+        <zone xml:id="f306B-zone-Hosea-12-2-s3" ulx="637" uly="3224" lrx="1249" lry="3372"/>
+        <zone xml:id="f306B-zone-Hosea-12-2-s4" ulx="890" uly="3337" lrx="1246" lry="3470"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-12-3" type="verse" cert="0.899" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-12-3-s1" ulx="563" uly="3337" lrx="873" lry="3470"/>
+        <zone xml:id="f306B-zone-Hosea-12-3-s2" ulx="528" uly="3418" lrx="1249" lry="3573"/>
+        <zone xml:id="f306B-zone-Hosea-12-3-s3" ulx="570" uly="3520" lrx="1232" lry="3664"/>
+      </zone>
+      <zone xml:id="f306B-zone-Hosea-12-4" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f306B-zone-Hosea-12-4-s1" ulx="644" uly="3622" lrx="1228" lry="3759"/>
+        <zone xml:id="f306B-zone-Hosea-12-4-s2" ulx="574" uly="3699" lrx="1253" lry="3861"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +230,7 @@
         <ab>
         <cb xml:id="f306B-cb-1" n="1"/>
           <lb xml:id="f306B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Hosea-10-3" xml:id="f306B-v-Hosea-10-3"/>
+            <milestone unit="verse" n="Hosea-10-3" xml:id="f306B-v-Hosea-10-3" facs="#f306B-zone-Hosea-10-3"/>
             <w xml:id="f306B-w-208781">אֵ֥ין</w>
             <w xml:id="f306B-w-208782">מֶ֖לֶךְ</w>
             <w xml:id="f306B-w-208783">לָ֑נוּ</w>
@@ -88,7 +246,7 @@
             <w xml:id="f306B-w-208792">לָּֽנוּ</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208792">׃</pc>
           <lb xml:id="f306B-lb-1-3" n="3"/>
-            <milestone unit="verse" n="Hosea-10-4" xml:id="f306B-v-Hosea-10-4"/>
+            <milestone unit="verse" n="Hosea-10-4" xml:id="f306B-v-Hosea-10-4" facs="#f306B-zone-Hosea-10-4"/>
             <w xml:id="f306B-w-208793">דִּבְּר֣וּ</w>
             <w xml:id="f306B-w-208794">דְבָרִ֔ים</w>
             <w xml:id="f306B-w-208795">אָל֥וֹת</w>
@@ -104,7 +262,7 @@
             <w xml:id="f306B-w-208803">תַּלְמֵ֥י</w>
             <w xml:id="f306B-w-208804">שָׂדָֽי</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208804">׃</pc>
-            <milestone unit="verse" n="Hosea-10-5" xml:id="f306B-v-Hosea-10-5"/>
+            <milestone unit="verse" n="Hosea-10-5" xml:id="f306B-v-Hosea-10-5" facs="#f306B-zone-Hosea-10-5"/>
             <w xml:id="f306B-w-208805">לְעֶגְלוֹת֙</w>
             <w xml:id="f306B-w-208806">בֵּ֣ית</w>
           <lb xml:id="f306B-lb-1-6" n="6"/>
@@ -128,7 +286,7 @@
             <w xml:id="f306B-w-208822">מִמֶּֽנּוּ</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208822">׃</pc>
           <lb xml:id="f306B-lb-1-9" n="9"/>
-            <milestone unit="verse" n="Hosea-10-6" xml:id="f306B-v-Hosea-10-6"/>
+            <milestone unit="verse" n="Hosea-10-6" xml:id="f306B-v-Hosea-10-6" facs="#f306B-zone-Hosea-10-6"/>
             <w xml:id="f306B-w-208823">גַּם־</w>
             <w xml:id="f306B-w-208824">אוֹתוֹ֙</w>
             <w xml:id="f306B-w-208825">לְאַשּׁ֣וּר</w>
@@ -146,7 +304,7 @@
             <w xml:id="f306B-w-208835">מֵעֲצָתֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208835">׃</pc>
           <lb xml:id="f306B-lb-1-12" n="12"/>
-            <milestone unit="verse" n="Hosea-10-7" xml:id="f306B-v-Hosea-10-7"/>
+            <milestone unit="verse" n="Hosea-10-7" xml:id="f306B-v-Hosea-10-7" facs="#f306B-zone-Hosea-10-7"/>
             <w xml:id="f306B-w-208836">נִדְמֶ֥ה</w>
             <w xml:id="f306B-w-208837">שֹׁמְר֖וֹן</w>
             <w xml:id="f306B-w-208838">מַלְכָּ֑הּ</w>
@@ -156,7 +314,7 @@
             <w xml:id="f306B-w-208841">פְּנֵי־</w>
             <w xml:id="f306B-w-208842">מָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208842">׃</pc>
-            <milestone unit="verse" n="Hosea-10-8" xml:id="f306B-v-Hosea-10-8"/>
+            <milestone unit="verse" n="Hosea-10-8" xml:id="f306B-v-Hosea-10-8" facs="#f306B-zone-Hosea-10-8"/>
             <w xml:id="f306B-w-208843">וְנִשְׁמְד֞וּ</w>
             <w xml:id="f306B-w-208844">בָּמ֣וֹת</w>
           <lb xml:id="f306B-lb-1-14" n="14"/>
@@ -179,7 +337,7 @@
             <w xml:id="f306B-w-208858">עָלֵֽינוּ</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208858">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f306B-s-Hosea-10-8"/>
-            <milestone unit="verse" n="Hosea-10-9" xml:id="f306B-v-Hosea-10-9"/>
+            <milestone unit="verse" n="Hosea-10-9" xml:id="f306B-v-Hosea-10-9" facs="#f306B-zone-Hosea-10-9"/>
             <w xml:id="f306B-w-208859">מִימֵי֙</w>
           <lb xml:id="f306B-lb-1-18" n="18"/>
             <w xml:id="f306B-w-208860">הַגִּבְעָ֔ה</w>
@@ -197,7 +355,7 @@
             <w xml:id="f306B-w-208870">בְּנֵ֥י</w>
             <w xml:id="f306B-w-208871">עַֽלְוָֽה</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208871">׃</pc>
-            <milestone unit="verse" n="Hosea-10-10" xml:id="f306B-v-Hosea-10-10"/>
+            <milestone unit="verse" n="Hosea-10-10" xml:id="f306B-v-Hosea-10-10" facs="#f306B-zone-Hosea-10-10"/>
             <w xml:id="f306B-w-208872">בְּאַוָּתִ֖י</w>
           <lb xml:id="f306B-lb-1-21" n="21"/>
             <w xml:id="f306B-w-208873">וְאֶסֳּרֵ֑ם</w>
@@ -209,7 +367,7 @@
             <w xml:id="f306B-w-208878">לִשְׁתֵּ֥י</w>
             <w xml:id="f306B-w-208879">עינתם</w>
           <lb xml:id="f306B-lb-1-23" n="23"/>
-            <milestone unit="verse" n="Hosea-10-11" xml:id="f306B-v-Hosea-10-11"/>
+            <milestone unit="verse" n="Hosea-10-11" xml:id="f306B-v-Hosea-10-11" facs="#f306B-zone-Hosea-10-11"/>
             <w xml:id="f306B-w-208880">וְאֶפְרַ֜יִם</w>
             <w xml:id="f306B-w-208881">עֶגְלָ֤ה</w>
             <w xml:id="f306B-w-208882">מְלֻמָּדָה֙</w>
@@ -232,7 +390,7 @@
             <w xml:id="f306B-w-208895">ל֖וֹ</w>
             <w xml:id="f306B-w-208896">יַעֲקֹֽב</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208896">׃</pc>
-            <milestone unit="verse" n="Hosea-10-12" xml:id="f306B-v-Hosea-10-12"/>
+            <milestone unit="verse" n="Hosea-10-12" xml:id="f306B-v-Hosea-10-12" facs="#f306B-zone-Hosea-10-12"/>
             <w xml:id="f306B-w-208897">זִרְע֨וּ</w>
             <w xml:id="f306B-w-208898">לָכֶ֤ם</w>
         <cb xml:id="f306B-cb-2" n="2"/>
@@ -257,7 +415,7 @@
             <w xml:id="f306B-w-208913">צֶ֖דֶק</w>
             <w xml:id="f306B-w-208914">לָכֶֽם</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208914">׃</pc>
-            <milestone unit="verse" n="Hosea-10-13" xml:id="f306B-v-Hosea-10-13"/>
+            <milestone unit="verse" n="Hosea-10-13" xml:id="f306B-v-Hosea-10-13" facs="#f306B-zone-Hosea-10-13"/>
             <w xml:id="f306B-w-208915">חֲרַשְׁתֶּם־</w>
             <w xml:id="f306B-w-208916">רֶ֛שַׁע</w>
           <lb xml:id="f306B-lb-2-5" n="5"/>
@@ -274,7 +432,7 @@
             <w xml:id="f306B-w-208925">בְּרֹ֥ב</w>
             <w xml:id="f306B-w-208926">גִּבּוֹרֶֽיךָ</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208926">׃</pc>
-            <milestone unit="verse" n="Hosea-10-14" xml:id="f306B-v-Hosea-10-14"/>
+            <milestone unit="verse" n="Hosea-10-14" xml:id="f306B-v-Hosea-10-14" facs="#f306B-zone-Hosea-10-14"/>
             <w xml:id="f306B-w-208927">וְקָ֣אם</w>
             <w xml:id="f306B-w-208928">שָׁאוֹן֮</w>
           <lb xml:id="f306B-lb-2-8" n="8"/>
@@ -313,7 +471,7 @@
             <w xml:id="f306B-w-208954">מֶ֥לֶךְ</w>
             <w xml:id="f306B-w-208955">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208955">׃</pc>
-            <milestone unit="verse" n="Hosea-11-1" xml:id="f306B-v-Hosea-11-1"/>
+            <milestone unit="verse" n="Hosea-11-1" xml:id="f306B-v-Hosea-11-1" facs="#f306B-zone-Hosea-11-1"/>
             <w xml:id="f306B-w-208956">כִּ֛י</w>
             <w xml:id="f306B-w-208957">נַ֥עַר</w>
             <w xml:id="f306B-w-208958">יִשְׂרָאֵ֖ל</w>
@@ -324,7 +482,7 @@
           <lb xml:id="f306B-lb-2-15" n="15"/>
             <w xml:id="f306B-w-208962">לִבְנִֽי</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208962">׃</pc>
-            <milestone unit="verse" n="Hosea-11-2" xml:id="f306B-v-Hosea-11-2"/>
+            <milestone unit="verse" n="Hosea-11-2" xml:id="f306B-v-Hosea-11-2" facs="#f306B-zone-Hosea-11-2"/>
             <w xml:id="f306B-w-208963">קָרְא֖וּ</w>
             <w xml:id="f306B-w-208964">לָהֶ֑ם</w>
             <w xml:id="f306B-w-208965">כֵּ֚ן</w>
@@ -337,7 +495,7 @@
             <w xml:id="f306B-w-208970">וְלַפְּסִלִ֖ים</w>
             <w xml:id="f306B-w-208971">יְקַטֵּרֽוּן</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208971">׃</pc>
-            <milestone unit="verse" n="Hosea-11-3" xml:id="f306B-v-Hosea-11-3"/>
+            <milestone unit="verse" n="Hosea-11-3" xml:id="f306B-v-Hosea-11-3" facs="#f306B-zone-Hosea-11-3"/>
             <w xml:id="f306B-w-208972">וְאָנֹכִ֤י</w>
           <lb xml:id="f306B-lb-2-18" n="18"/>
             <w xml:id="f306B-w-208973">תִרְגַּ֙לְתִּי֙</w>
@@ -352,7 +510,7 @@
             <w xml:id="f306B-w-208981">רְפָאתִֽים</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208981">׃</pc>
           <lb xml:id="f306B-lb-2-20" n="20"/>
-            <milestone unit="verse" n="Hosea-11-4" xml:id="f306B-v-Hosea-11-4"/>
+            <milestone unit="verse" n="Hosea-11-4" xml:id="f306B-v-Hosea-11-4" facs="#f306B-zone-Hosea-11-4"/>
             <w xml:id="f306B-w-208982">בְּחַבְלֵ֨י</w>
             <w xml:id="f306B-w-208983">אָדָ֤ם</w>
             <w xml:id="f306B-w-208984">אֶמְשְׁכֵם֙</w>
@@ -371,7 +529,7 @@
             <w xml:id="f306B-w-208994">אֵלָ֖יו</w>
             <w xml:id="f306B-w-208995">אוֹכִֽיל</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-208995">׃</pc>
-            <milestone unit="verse" n="Hosea-11-5" xml:id="f306B-v-Hosea-11-5"/>
+            <milestone unit="verse" n="Hosea-11-5" xml:id="f306B-v-Hosea-11-5" facs="#f306B-zone-Hosea-11-5"/>
             <w xml:id="f306B-w-208996">לֹ֤א</w>
             <w xml:id="f306B-w-208997">יָשׁוּב֙</w>
             <w xml:id="f306B-w-208998">אֶל־</w>
@@ -386,7 +544,7 @@
             <w xml:id="f306B-w-209005">מֵאֲנ֖וּ</w>
             <w xml:id="f306B-w-209006">לָשֽׁוּב</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209006">׃</pc>
-            <milestone unit="verse" n="Hosea-11-6" xml:id="f306B-v-Hosea-11-6"/>
+            <milestone unit="verse" n="Hosea-11-6" xml:id="f306B-v-Hosea-11-6" facs="#f306B-zone-Hosea-11-6"/>
             <w xml:id="f306B-w-209007">וְחָלָ֥ה</w>
           <lb xml:id="f306B-lb-2-26" n="26"/>
             <w xml:id="f306B-w-209008">חֶ֙רֶב֙</w>
@@ -397,7 +555,7 @@
           <lb xml:id="f306B-lb-2-27" n="27"/>
             <w xml:id="f306B-w-209013">מִֽמֹּעֲצ֖וֹתֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209013">׃</pc>
-            <milestone unit="verse" n="Hosea-11-7" xml:id="f306B-v-Hosea-11-7"/>
+            <milestone unit="verse" n="Hosea-11-7" xml:id="f306B-v-Hosea-11-7" facs="#f306B-zone-Hosea-11-7"/>
             <w xml:id="f306B-w-209014">וְעַמִּ֥י</w>
             <w xml:id="f306B-w-209015">תְלוּאִ֖ים</w>
         <cb xml:id="f306B-cb-3" n="3"/>
@@ -411,7 +569,7 @@
             <w xml:id="f306B-w-209021">לֹ֥א</w>
             <w xml:id="f306B-w-209022">יְרוֹמֵם</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209022">׃</pc>
-            <milestone unit="verse" n="Hosea-11-8" xml:id="f306B-v-Hosea-11-8"/>
+            <milestone unit="verse" n="Hosea-11-8" xml:id="f306B-v-Hosea-11-8" facs="#f306B-zone-Hosea-11-8"/>
             <w xml:id="f306B-w-209023">אֵ֞יךְ</w>
             <w xml:id="f306B-w-209024">אֶתֶּנְךָ֣</w>
           <lb xml:id="f306B-lb-3-3" n="3"/>
@@ -433,7 +591,7 @@
             <w xml:id="f306B-w-209037">נִכְמְר֥וּ</w>
             <w xml:id="f306B-w-209038">נִחוּמָֽי</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209038">׃</pc>
-            <milestone unit="verse" n="Hosea-11-9" xml:id="f306B-v-Hosea-11-9"/>
+            <milestone unit="verse" n="Hosea-11-9" xml:id="f306B-v-Hosea-11-9" facs="#f306B-zone-Hosea-11-9"/>
             <w xml:id="f306B-w-209039">לֹ֤א</w>
             <w xml:id="f306B-w-209040">אֶֽעֱשֶׂה֙</w>
           <lb xml:id="f306B-lb-3-7" n="7"/>
@@ -457,7 +615,7 @@
             <w xml:id="f306B-w-209055">אָב֖וֹא</w>
             <w xml:id="f306B-w-209056">בְּעִֽיר</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209056">׃</pc>
-            <milestone unit="verse" n="Hosea-11-10" xml:id="f306B-v-Hosea-11-10"/>
+            <milestone unit="verse" n="Hosea-11-10" xml:id="f306B-v-Hosea-11-10" facs="#f306B-zone-Hosea-11-10"/>
             <w xml:id="f306B-w-209057">אַחֲרֵ֧י</w>
             <w xml:id="f306B-w-209058">יְהוָ֛ה</w>
           <lb xml:id="f306B-lb-3-11" n="11"/>
@@ -473,7 +631,7 @@
             <w xml:id="f306B-w-209067">מִיָּֽם</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209067">׃</pc>
           <lb xml:id="f306B-lb-3-13" n="13"/>
-            <milestone unit="verse" n="Hosea-11-11" xml:id="f306B-v-Hosea-11-11"/>
+            <milestone unit="verse" n="Hosea-11-11" xml:id="f306B-v-Hosea-11-11" facs="#f306B-zone-Hosea-11-11"/>
             <w xml:id="f306B-w-209068">יֶחֶרְד֤וּ</w>
             <w xml:id="f306B-w-209069">כְצִפּוֹר֙</w>
             <w xml:id="f306B-w-209070">מִמִּצְרַ֔יִם</w>
@@ -490,7 +648,7 @@
             <w xml:id="f306B-w-209078">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209078">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f306B-s-Hosea-11-11"/>
-            <milestone unit="verse" n="Hosea-12-1" xml:id="f306B-v-Hosea-12-1"/>
+            <milestone unit="verse" n="Hosea-12-1" xml:id="f306B-v-Hosea-12-1" facs="#f306B-zone-Hosea-12-1"/>
             <w xml:id="f306B-w-209079">סְבָבֻ֤נִי</w>
           <lb xml:id="f306B-lb-3-17" n="17"/>
             <w xml:id="f306B-w-209080">בְכַ֙חַשׁ֙</w>
@@ -510,7 +668,7 @@
             <w xml:id="f306B-w-209092">נֶאֱמָֽן</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209092">׃</pc>
           <lb xml:id="f306B-lb-3-20" n="20"/>
-            <milestone unit="verse" n="Hosea-12-2" xml:id="f306B-v-Hosea-12-2"/>
+            <milestone unit="verse" n="Hosea-12-2" xml:id="f306B-v-Hosea-12-2" facs="#f306B-zone-Hosea-12-2"/>
             <w xml:id="f306B-w-209093">אֶפְרַ֜יִם</w>
             <w xml:id="f306B-w-209094">רֹעֶ֥ה</w>
             <w xml:id="f306B-w-209095">ר֙וּחַ֙</w>
@@ -532,7 +690,7 @@
             <w xml:id="f306B-w-209108">לְמִצְרַ֥יִם</w>
             <w xml:id="f306B-w-209109">יוּבָֽל</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209109">׃</pc>
-            <milestone unit="verse" n="Hosea-12-3" xml:id="f306B-v-Hosea-12-3"/>
+            <milestone unit="verse" n="Hosea-12-3" xml:id="f306B-v-Hosea-12-3" facs="#f306B-zone-Hosea-12-3"/>
             <w xml:id="f306B-w-209110">וְרִ֥יב</w>
             <w xml:id="f306B-w-209111">לַֽיהוָ֖ה</w>
           <lb xml:id="f306B-lb-3-24" n="24"/>
@@ -548,7 +706,7 @@
             <w xml:id="f306B-w-209120">לֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f306B-pc-209120">׃</pc>
           <lb xml:id="f306B-lb-3-26" n="26"/>
-            <milestone unit="verse" n="Hosea-12-4" xml:id="f306B-v-Hosea-12-4"/>
+            <milestone unit="verse" n="Hosea-12-4" xml:id="f306B-v-Hosea-12-4" facs="#f306B-zone-Hosea-12-4"/>
             <w xml:id="f306B-w-209121">בַּבֶּ֖טֶן</w>
             <w xml:id="f306B-w-209122">עָקַ֣ב</w>
             <w xml:id="f306B-w-209123">אֶת־</w>

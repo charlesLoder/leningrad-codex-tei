@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 28 verse zones (64 line segments) from Masoretica HTR page n817. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n817.json"/>
+      </change>
       <change when="2026-11-03" who="#contrib-charles-w-loder">
       Moved the pe marker after Proverbs 1:19 to 410A column 1 line 1 (#1135).
       </change>
@@ -64,10 +71,131 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-409B">
+    <surface xml:id="surf-409B" ulx="0" uly="0" lrx="4735" lry="5499">
       <graphic xml:id="f409B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F409B.jpg">
         <desc type="sha256">24a35c377c905f7b996fc122ecf2f7fd89f725ca139e83db485011f22f3fa808</desc>
       </graphic>
+      <graphic xml:id="f409B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0817.jp2/full/max/0/default.jpg" width="4735px" height="5499px"/>
+      <zone xml:id="f409B-zone-Job-42-8" type="verse" cert="0.875" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-8-s1" ulx="2782" uly="1274" lrx="3267" lry="1444"/>
+        <zone xml:id="f409B-zone-Job-42-8-s2" ulx="2608" uly="1381" lrx="3867" lry="1554"/>
+        <zone xml:id="f409B-zone-Job-42-8-s3" ulx="2640" uly="1491" lrx="3875" lry="1657"/>
+        <zone xml:id="f409B-zone-Job-42-8-s4" ulx="2671" uly="1617" lrx="3887" lry="1748"/>
+        <zone xml:id="f409B-zone-Job-42-8-s5" ulx="2652" uly="1708" lrx="3871" lry="1838"/>
+        <zone xml:id="f409B-zone-Job-42-8-s6" ulx="3303" uly="1783" lrx="3891" lry="1961"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-9" type="verse" cert="0.785" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-9-s1" ulx="2644" uly="1783" lrx="3283" lry="1961"/>
+        <zone xml:id="f409B-zone-Job-42-9-s2" ulx="2596" uly="1905" lrx="3887" lry="2067"/>
+        <zone xml:id="f409B-zone-Job-42-9-s3" ulx="2612" uly="2032" lrx="3871" lry="2162"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-10" type="verse" cert="0.862" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-10-s1" ulx="2644" uly="2107" lrx="3887" lry="2272"/>
+        <zone xml:id="f409B-zone-Job-42-10-s2" ulx="2581" uly="2245" lrx="3871" lry="2379"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-11" type="verse" cert="0.857" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-11-s1" ulx="2608" uly="2339" lrx="3895" lry="2473"/>
+        <zone xml:id="f409B-zone-Job-42-11-s2" ulx="2675" uly="2442" lrx="3859" lry="2576"/>
+        <zone xml:id="f409B-zone-Job-42-11-s3" ulx="2687" uly="2525" lrx="3887" lry="2686"/>
+        <zone xml:id="f409B-zone-Job-42-11-s4" ulx="2573" uly="2627" lrx="3863" lry="2781"/>
+        <zone xml:id="f409B-zone-Job-42-11-s5" ulx="3437" uly="2730" lrx="3867" lry="2888"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-12" type="verse" cert="0.839" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-12-s1" ulx="2569" uly="2730" lrx="3224" lry="2888"/>
+        <zone xml:id="f409B-zone-Job-42-12-s2" ulx="2592" uly="2828" lrx="3859" lry="2986"/>
+        <zone xml:id="f409B-zone-Job-42-12-s3" ulx="2557" uly="2927" lrx="3863" lry="3097"/>
+        <zone xml:id="f409B-zone-Job-42-12-s4" ulx="3441" uly="3037" lrx="3875" lry="3203"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-13" type="verse" cert="0.845" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-13-s1" ulx="2581" uly="3037" lrx="3417" lry="3203"/>
+        <zone xml:id="f409B-zone-Job-42-13-s2" ulx="3713" uly="3160" lrx="3859" lry="3298"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-14" type="verse" cert="0.65" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-14-s1" ulx="2912" uly="3160" lrx="3697" lry="3298"/>
+        <zone xml:id="f409B-zone-Job-42-14-s2" ulx="2786" uly="3254" lrx="3804" lry="3404"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-15" type="verse" cert="0.873" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-15-s1" ulx="2604" uly="3254" lrx="2727" lry="3404"/>
+        <zone xml:id="f409B-zone-Job-42-15-s2" ulx="2608" uly="3365" lrx="3871" lry="3495"/>
+        <zone xml:id="f409B-zone-Job-42-15-s3" ulx="2754" uly="3444" lrx="3879" lry="3602"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-16" type="verse" cert="0.864" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-16-s1" ulx="2683" uly="3562" lrx="3314" lry="3684"/>
+        <zone xml:id="f409B-zone-Job-42-16-s2" ulx="2616" uly="3661" lrx="3871" lry="3815"/>
+        <zone xml:id="f409B-zone-Job-42-16-s3" ulx="3192" uly="3779" lrx="3871" lry="3917"/>
+      </zone>
+      <zone xml:id="f409B-zone-Job-42-17" type="verse" cert="0.714" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Job-42-17-s1" ulx="2719" uly="3779" lrx="3176" lry="3917"/>
+        <zone xml:id="f409B-zone-Job-42-17-s2" ulx="3094" uly="3850" lrx="3476" lry="4000"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-1" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-1-s1" ulx="1022" uly="1590" lrx="2304" lry="1858"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-2" type="verse" cert="0.857" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-2-s1" ulx="1085" uly="1779" lrx="2300" lry="1953"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-3" type="verse" cert="0.932" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-3-s1" ulx="1093" uly="1897" lrx="2308" lry="2059"/>
+        <zone xml:id="f409B-zone-Proverbs-1-3-s2" ulx="2008" uly="2000" lrx="2308" lry="2158"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-4" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-4-s1" ulx="1057" uly="2000" lrx="1716" lry="2158"/>
+        <zone xml:id="f409B-zone-Proverbs-1-4-s2" ulx="1732" uly="2103" lrx="2300" lry="2268"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-5" type="verse" cert="0.888" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-5-s1" ulx="1030" uly="2103" lrx="1543" lry="2268"/>
+        <zone xml:id="f409B-zone-Proverbs-1-5-s2" ulx="1353" uly="2189" lrx="2292" lry="2375"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-6" type="verse" cert="0.947" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-6-s1" ulx="1018" uly="2189" lrx="1326" lry="2375"/>
+        <zone xml:id="f409B-zone-Proverbs-1-6-s2" ulx="1180" uly="2312" lrx="2304" lry="2469"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-7" type="verse" cert="0.825" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-7-s1" ulx="1002" uly="2312" lrx="1129" lry="2469"/>
+        <zone xml:id="f409B-zone-Proverbs-1-7-s2" ulx="1026" uly="2406" lrx="2304" lry="2580"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-8" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-8-s1" ulx="1057" uly="2584" lrx="2277" lry="2773"/>
+        <zone xml:id="f409B-zone-Proverbs-1-8-s2" ulx="1926" uly="2710" lrx="2281" lry="2876"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-9" type="verse" cert="0.787" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-9-s1" ulx="1061" uly="2710" lrx="1756" lry="2876"/>
+        <zone xml:id="f409B-zone-Proverbs-1-9-s2" ulx="1693" uly="2817" lrx="2281" lry="2974"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-10" type="verse" cert="0.964" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-10-s1" ulx="1030" uly="2817" lrx="1464" lry="2974"/>
+        <zone xml:id="f409B-zone-Proverbs-1-10-s2" ulx="1740" uly="2911" lrx="2273" lry="3085"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-11" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-11-s1" ulx="1010" uly="2911" lrx="1630" lry="3085"/>
+        <zone xml:id="f409B-zone-Proverbs-1-11-s2" ulx="1077" uly="3022" lrx="2281" lry="3195"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-12" type="verse" cert="0.82" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-12-s1" ulx="986" uly="3128" lrx="2281" lry="3290"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-13" type="verse" cert="0.85" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-13-s1" ulx="1018" uly="3219" lrx="2225" lry="3396"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-14" type="verse" cert="0.848" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-14-s1" ulx="1046" uly="3337" lrx="2277" lry="3503"/>
+        <zone xml:id="f409B-zone-Proverbs-1-14-s2" ulx="2079" uly="3424" lrx="2277" lry="3606"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-15" type="verse" cert="0.844" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-15-s1" ulx="1034" uly="3424" lrx="2040" lry="3606"/>
+        <zone xml:id="f409B-zone-Proverbs-1-15-s2" ulx="1799" uly="3523" lrx="2277" lry="3708"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-16" type="verse" cert="0.964" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-16-s1" ulx="1002" uly="3523" lrx="1630" lry="3708"/>
+        <zone xml:id="f409B-zone-Proverbs-1-16-s2" ulx="1728" uly="3629" lrx="2285" lry="3815"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-17" type="verse" cert="0.847" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-17-s1" ulx="1046" uly="3629" lrx="1428" lry="3815"/>
+        <zone xml:id="f409B-zone-Proverbs-1-17-s2" ulx="1444" uly="3732" lrx="2253" lry="3917"/>
+      </zone>
+      <zone xml:id="f409B-zone-Proverbs-1-18" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f409B-zone-Proverbs-1-18-s1" ulx="1042" uly="3732" lrx="1342" lry="3917"/>
+        <zone xml:id="f409B-zone-Proverbs-1-18-s2" ulx="1566" uly="3846" lrx="2289" lry="4020"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -83,7 +211,7 @@
             <w xml:id="f409B-w-256163">כְּעַבְדִּ֥י</w>
             <w xml:id="f409B-w-256164">אִיּֽוֹב</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256164">׃</pc>
-            <milestone unit="verse" n="Job-42-8" xml:id="f409B-v-Job-42-8"/>
+            <milestone unit="verse" n="Job-42-8" xml:id="f409B-v-Job-42-8" facs="#f409B-zone-Job-42-8"/>
             <w xml:id="f409B-w-256165">וְעַתָּ֡ה</w>
             <w xml:id="f409B-w-256166">קְחֽוּ־</w>
             <w xml:id="f409B-w-256167">לָכֶ֣ם</w>
@@ -124,7 +252,7 @@
             <w xml:id="f409B-w-256196">כְּעַבְדִּ֥י</w>
             <w xml:id="f409B-w-256197">אִיּֽוֹב</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256197">׃</pc>
-            <milestone unit="verse" n="Job-42-9" xml:id="f409B-v-Job-42-9"/>
+            <milestone unit="verse" n="Job-42-9" xml:id="f409B-v-Job-42-9" facs="#f409B-zone-Job-42-9"/>
             <w xml:id="f409B-w-256198">וַיֵּלְכוּ֩</w>
             <w xml:id="f409B-w-256199">אֱלִיפַ֨ז</w>
             <w xml:id="f409B-w-256200">הַתֵּֽימָנִ֜י</w>
@@ -146,7 +274,7 @@
             <w xml:id="f409B-w-256214">אִיּֽוֹב</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256214">׃</pc>
           <lb xml:id="f409B-lb-1-9" n="9"/>
-            <milestone unit="verse" n="Job-42-10" xml:id="f409B-v-Job-42-10"/>
+            <milestone unit="verse" n="Job-42-10" xml:id="f409B-v-Job-42-10" facs="#f409B-zone-Job-42-10"/>
             <w xml:id="f409B-w-256215">וַֽיהוָ֗ה</w>
             <w xml:id="f409B-w-256216">שָׁ֚ב</w>
             <w xml:id="f409B-w-256217">אֶת־</w>
@@ -165,7 +293,7 @@
             <w xml:id="f409B-w-256229">לְמִשְׁנֶֽה</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256229">׃</pc>
           <lb xml:id="f409B-lb-1-11" n="11"/>
-            <milestone unit="verse" n="Job-42-11" xml:id="f409B-v-Job-42-11"/>
+            <milestone unit="verse" n="Job-42-11" xml:id="f409B-v-Job-42-11" facs="#f409B-zone-Job-42-11"/>
             <w xml:id="f409B-w-256230">וַיָּבֹ֣אוּ</w>
             <w xml:id="f409B-w-256231">אֵ֠לָיו</w>
             <w xml:id="f409B-w-256232">כָּל־</w>
@@ -205,7 +333,7 @@
             <w xml:id="f409B-w-256262">אֶחָֽד</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256262">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f409B-s-Job-42-11"/>
-            <milestone unit="verse" n="Job-42-12" xml:id="f409B-v-Job-42-12"/>
+            <milestone unit="verse" n="Job-42-12" xml:id="f409B-v-Job-42-12" facs="#f409B-zone-Job-42-12"/>
             <w xml:id="f409B-w-256263">וַֽיהוָ֗ה</w>
             <w xml:id="f409B-w-256264">בֵּרַ֛ךְ</w>
             <w xml:id="f409B-w-256265">אֶת־</w>
@@ -230,7 +358,7 @@
             <w xml:id="f409B-w-256281">וְאֶ֥לֶף</w>
             <w xml:id="f409B-w-256282">אֲתוֹנֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256282">׃</pc>
-            <milestone unit="verse" n="Job-42-13" xml:id="f409B-v-Job-42-13"/>
+            <milestone unit="verse" n="Job-42-13" xml:id="f409B-v-Job-42-13" facs="#f409B-zone-Job-42-13"/>
             <w xml:id="f409B-w-256283">וַֽיְהִי־</w>
             <w xml:id="f409B-w-256284">ל֛וֹ</w>
             <w xml:id="f409B-w-256285">שִׁבְעָ֥נָה</w>
@@ -239,7 +367,7 @@
           <lb xml:id="f409B-lb-1-19" n="19"/>
             <w xml:id="f409B-w-256288">בָנֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256288">׃</pc>
-            <milestone unit="verse" n="Job-42-14" xml:id="f409B-v-Job-42-14"/>
+            <milestone unit="verse" n="Job-42-14" xml:id="f409B-v-Job-42-14" facs="#f409B-zone-Job-42-14"/>
             <w xml:id="f409B-w-256289">וַיִּקְרָ֤א</w>
             <w xml:id="f409B-w-256290">שֵׁם־</w>
             <w xml:id="f409B-w-256291">הָֽאַחַת֙</w>
@@ -253,7 +381,7 @@
             <w xml:id="f409B-w-256298">קֶ֥רֶן</w>
             <w xml:id="f409B-w-256299">הַפּֽוּךְ</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256299">׃</pc>
-            <milestone unit="verse" n="Job-42-15" xml:id="f409B-v-Job-42-15"/>
+            <milestone unit="verse" n="Job-42-15" xml:id="f409B-v-Job-42-15" facs="#f409B-zone-Job-42-15"/>
             <w xml:id="f409B-w-256300">וְלֹ֨א</w>
           <lb xml:id="f409B-lb-1-21" n="21"/>
             <w xml:id="f409B-w-256301">נִמְצָ֜א</w>
@@ -273,7 +401,7 @@
             <pc type="sof-pasuq" xml:id="f409B-pc-256313">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f409B-s-Job-42-15"/>
           <lb xml:id="f409B-lb-1-23" n="23"/>
-            <milestone unit="verse" n="Job-42-16" xml:id="f409B-v-Job-42-16"/>
+            <milestone unit="verse" n="Job-42-16" xml:id="f409B-v-Job-42-16" facs="#f409B-zone-Job-42-16"/>
             <w xml:id="f409B-w-256314">וַיְחִ֤י</w>
             <w xml:id="f409B-w-256315">אִיּוֹב֙</w>
             <w xml:id="f409B-w-256316">אַֽחֲרֵי־</w>
@@ -292,7 +420,7 @@
             <w xml:id="f409B-w-256327">אַרְבָּעָ֖ה</w>
             <w xml:id="f409B-w-256328">דֹּרֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-256328">׃</pc>
-            <milestone unit="verse" n="Job-42-17" xml:id="f409B-v-Job-42-17"/>
+            <milestone unit="verse" n="Job-42-17" xml:id="f409B-v-Job-42-17" facs="#f409B-zone-Job-42-17"/>
             <w xml:id="f409B-w-256329">וַיָּ֣מָת</w>
             <w xml:id="f409B-w-256330">אִיּ֔וֹב</w>
             <w xml:id="f409B-w-256331">זָקֵ֖ן</w>
@@ -307,7 +435,7 @@
           <lb xml:id="f409B-lb-2-3" n="3"/>
           <lb xml:id="f409B-lb-2-4" n="4"/>
           <lb xml:id="f409B-lb-2-5" n="5"/>
-            <milestone unit="verse" n="Proverbs-1-1" xml:id="f409B-v-Proverbs-1-1"/>
+            <milestone unit="verse" n="Proverbs-1-1" xml:id="f409B-v-Proverbs-1-1" facs="#f409B-zone-Proverbs-1-1"/>
             <w xml:id="f409B-w-241076">מִ֭שְׁלֵי</w>
             <w xml:id="f409B-w-241077">שְׁלֹמֹ֣ה</w>
             <w xml:id="f409B-w-241078">בֶן־</w>
@@ -316,7 +444,7 @@
             <w xml:id="f409B-w-241081">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241081">׃</pc>
           <lb xml:id="f409B-lb-2-6" n="6"/>
-            <milestone unit="verse" n="Proverbs-1-2" xml:id="f409B-v-Proverbs-1-2"/>
+            <milestone unit="verse" n="Proverbs-1-2" xml:id="f409B-v-Proverbs-1-2" facs="#f409B-zone-Proverbs-1-2"/>
             <w xml:id="f409B-w-241082">לָדַ֣עַת</w>
             <w xml:id="f409B-w-241083">חָכְמָ֣ה</w>
             <w xml:id="f409B-w-241084">וּמוּסָ֑ר</w>
@@ -325,7 +453,7 @@
             <w xml:id="f409B-w-241087">בִינָֽה</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241087">׃</pc>
           <lb xml:id="f409B-lb-2-7" n="7"/>
-            <milestone unit="verse" n="Proverbs-1-3" xml:id="f409B-v-Proverbs-1-3"/>
+            <milestone unit="verse" n="Proverbs-1-3" xml:id="f409B-v-Proverbs-1-3" facs="#f409B-zone-Proverbs-1-3"/>
             <w xml:id="f409B-w-241088">לָ֭קַחַת</w>
             <w xml:id="f409B-w-241089">מוּסַ֣ר</w>
             <w xml:id="f409B-w-241090">הַשְׂכֵּ֑ל</w>
@@ -334,7 +462,7 @@
           <lb xml:id="f409B-lb-2-8" n="8"/>
             <w xml:id="f409B-w-241093">וּמֵישָׁרִֽים</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241093">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-4" xml:id="f409B-v-Proverbs-1-4"/>
+            <milestone unit="verse" n="Proverbs-1-4" xml:id="f409B-v-Proverbs-1-4" facs="#f409B-zone-Proverbs-1-4"/>
             <w xml:id="f409B-w-241094">לָתֵ֣ת</w>
             <w xml:id="f409B-w-241095">לִפְתָאיִ֣ם</w>
             <w xml:id="f409B-w-241096">עָרְמָ֑ה</w>
@@ -343,7 +471,7 @@
             <w xml:id="f409B-w-241098">דַּ֣עַת</w>
             <w xml:id="f409B-w-241099">וּמְזִמָּֽה</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241099">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-5" xml:id="f409B-v-Proverbs-1-5"/>
+            <milestone unit="verse" n="Proverbs-1-5" xml:id="f409B-v-Proverbs-1-5" facs="#f409B-zone-Proverbs-1-5"/>
             <w xml:id="f409B-w-241100">יִשְׁמַ֣ע</w>
             <w xml:id="f409B-w-241101">חָ֭כָם</w>
             <w xml:id="f409B-w-241102">וְי֣וֹסֶף</w>
@@ -353,7 +481,7 @@
             <w xml:id="f409B-w-241105">תַּחְבֻּל֥וֹת</w>
             <w xml:id="f409B-w-241106">יִקְנֶֽה</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241106">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-6" xml:id="f409B-v-Proverbs-1-6"/>
+            <milestone unit="verse" n="Proverbs-1-6" xml:id="f409B-v-Proverbs-1-6" facs="#f409B-zone-Proverbs-1-6"/>
             <w xml:id="f409B-w-241107">לְהָבִ֣ין</w>
             <w xml:id="f409B-w-241108">מָ֭שָׁל</w>
           <lb xml:id="f409B-lb-2-11" n="11"/>
@@ -362,7 +490,7 @@
             <w xml:id="f409B-w-241111">חֲ֝כָמִ֗ים</w>
             <w xml:id="f409B-w-241112">וְחִידֹתָֽם</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241112">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-7" xml:id="f409B-v-Proverbs-1-7"/>
+            <milestone unit="verse" n="Proverbs-1-7" xml:id="f409B-v-Proverbs-1-7" facs="#f409B-zone-Proverbs-1-7"/>
             <w xml:id="f409B-w-241113">יִרְאַ֣ת</w>
           <lb xml:id="f409B-lb-2-12" n="12"/>
             <w xml:id="f409B-w-241114">יְ֭הוָה</w>
@@ -376,7 +504,7 @@
           <lb xml:id="f409B-lb-2-13" n="13"/>
             <milestone unit="section" subtype="pe" xml:id="f409B-s-Proverbs-1-7"/>
           <lb xml:id="f409B-lb-2-14" n="14"/>
-            <milestone unit="verse" n="Proverbs-1-8" xml:id="f409B-v-Proverbs-1-8"/>
+            <milestone unit="verse" n="Proverbs-1-8" xml:id="f409B-v-Proverbs-1-8" facs="#f409B-zone-Proverbs-1-8"/>
             <w xml:id="f409B-w-241121">שְׁמַ֣ע</w>
             <w xml:id="f409B-w-241122">בְּ֭נִי</w>
             <w xml:id="f409B-w-241123">מוּסַ֣ר</w>
@@ -387,7 +515,7 @@
             <w xml:id="f409B-w-241127">תּוֹרַ֥ת</w>
             <w xml:id="f409B-w-241128">אִמֶּֽךָ</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241128">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-9" xml:id="f409B-v-Proverbs-1-9"/>
+            <milestone unit="verse" n="Proverbs-1-9" xml:id="f409B-v-Proverbs-1-9" facs="#f409B-zone-Proverbs-1-9"/>
             <w xml:id="f409B-w-241129">כִּ֤י</w>
             <pc type="paseq" xml:id="f409B-pc-241129">׀</pc>
             <w xml:id="f409B-w-241130">לִוְיַ֤ת</w>
@@ -398,7 +526,7 @@
             <w xml:id="f409B-w-241134">וַ֝עֲנָקִ֗ים</w>
             <w xml:id="f409B-w-241135">לְגַרְגְּרֹתֶֽיךָ</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241135">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-10" xml:id="f409B-v-Proverbs-1-10"/>
+            <milestone unit="verse" n="Proverbs-1-10" xml:id="f409B-v-Proverbs-1-10" facs="#f409B-zone-Proverbs-1-10"/>
             <w xml:id="f409B-w-241136">בְּנִ֡י</w>
             <w xml:id="f409B-w-241137">אִם־</w>
             <w xml:id="f409B-w-241138">יְפַתּ֥וּךָ</w>
@@ -407,7 +535,7 @@
             <w xml:id="f409B-w-241140">אַל־</w>
             <w xml:id="f409B-w-241141">תֹּבֵֽא</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241141">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-11" xml:id="f409B-v-Proverbs-1-11"/>
+            <milestone unit="verse" n="Proverbs-1-11" xml:id="f409B-v-Proverbs-1-11" facs="#f409B-zone-Proverbs-1-11"/>
             <w xml:id="f409B-w-241142">אִם־</w>
             <w xml:id="f409B-w-241143">יֹאמְרוּ֮</w>
             <w xml:id="f409B-w-241144">לְכָ֢ה</w>
@@ -420,7 +548,7 @@
             <w xml:id="f409B-w-241150">חִנָּֽם</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241150">׃</pc>
           <lb xml:id="f409B-lb-2-19" n="19"/>
-            <milestone unit="verse" n="Proverbs-1-12" xml:id="f409B-v-Proverbs-1-12"/>
+            <milestone unit="verse" n="Proverbs-1-12" xml:id="f409B-v-Proverbs-1-12" facs="#f409B-zone-Proverbs-1-12"/>
             <w xml:id="f409B-w-241151">נִ֭בְלָעֵם</w>
             <w xml:id="f409B-w-241152">כִּשְׁא֣וֹל</w>
             <w xml:id="f409B-w-241153">חַיִּ֑ים</w>
@@ -429,7 +557,7 @@
             <w xml:id="f409B-w-241156">בֽוֹר</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241156">׃</pc>
           <lb xml:id="f409B-lb-2-20" n="20"/>
-            <milestone unit="verse" n="Proverbs-1-13" xml:id="f409B-v-Proverbs-1-13"/>
+            <milestone unit="verse" n="Proverbs-1-13" xml:id="f409B-v-Proverbs-1-13" facs="#f409B-zone-Proverbs-1-13"/>
             <w xml:id="f409B-w-241157">כָּל־</w>
             <w xml:id="f409B-w-241158">ה֣וֹן</w>
             <w xml:id="f409B-w-241159">יָקָ֣ר</w>
@@ -439,7 +567,7 @@
             <w xml:id="f409B-w-241163">שָׁלָֽל</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241163">׃</pc>
           <lb xml:id="f409B-lb-2-21" n="21"/>
-            <milestone unit="verse" n="Proverbs-1-14" xml:id="f409B-v-Proverbs-1-14"/>
+            <milestone unit="verse" n="Proverbs-1-14" xml:id="f409B-v-Proverbs-1-14" facs="#f409B-zone-Proverbs-1-14"/>
             <w xml:id="f409B-w-241164">גּ֭וֹרָ֣לְךָ</w>
             <w xml:id="f409B-w-241165">תַּפִּ֣יל</w>
             <w xml:id="f409B-w-241166">בְּתוֹכֵ֑נוּ</w>
@@ -449,7 +577,7 @@
           <lb xml:id="f409B-lb-2-22" n="22"/>
             <w xml:id="f409B-w-241170">לְכֻלָּֽנוּ</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241170">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-15" xml:id="f409B-v-Proverbs-1-15"/>
+            <milestone unit="verse" n="Proverbs-1-15" xml:id="f409B-v-Proverbs-1-15" facs="#f409B-zone-Proverbs-1-15"/>
             <w xml:id="f409B-w-241171">בְּנִ֗י</w>
             <w xml:id="f409B-w-241172">אַל־</w>
             <w xml:id="f409B-w-241173">תֵּלֵ֣ךְ</w>
@@ -460,7 +588,7 @@
             <w xml:id="f409B-w-241177">רַ֝גְלְךָ֗</w>
             <w xml:id="f409B-w-241178">מִנְּתִיבָתָֽם</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241178">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-16" xml:id="f409B-v-Proverbs-1-16"/>
+            <milestone unit="verse" n="Proverbs-1-16" xml:id="f409B-v-Proverbs-1-16" facs="#f409B-zone-Proverbs-1-16"/>
             <w xml:id="f409B-w-241179">כִּ֣י</w>
             <w xml:id="f409B-w-241180">רַ֭גְלֵיהֶם</w>
             <w xml:id="f409B-w-241181">לָרַ֣ע</w>
@@ -470,7 +598,7 @@
             <w xml:id="f409B-w-241184">לִשְׁפָּךְ־</w>
             <w xml:id="f409B-w-241185">דָּֽם</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241185">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-17" xml:id="f409B-v-Proverbs-1-17"/>
+            <milestone unit="verse" n="Proverbs-1-17" xml:id="f409B-v-Proverbs-1-17" facs="#f409B-zone-Proverbs-1-17"/>
             <w xml:id="f409B-w-241186">כִּֽי־</w>
             <w xml:id="f409B-w-241187">חִ֭נָּם</w>
             <w xml:id="f409B-w-241188">מְזֹרָ֣ה</w>
@@ -481,7 +609,7 @@
             <w xml:id="f409B-w-241192">בַּ֥עַל</w>
             <w xml:id="f409B-w-241193">כָּנָֽף</w>
             <pc type="sof-pasuq" xml:id="f409B-pc-241193">׃</pc>
-            <milestone unit="verse" n="Proverbs-1-18" xml:id="f409B-v-Proverbs-1-18"/>
+            <milestone unit="verse" n="Proverbs-1-18" xml:id="f409B-v-Proverbs-1-18" facs="#f409B-zone-Proverbs-1-18"/>
             <w xml:id="f409B-w-241194">וְ֭הֵם</w>
             <w xml:id="f409B-w-241195">לְדָמָ֣ם</w>
           <lb xml:id="f409B-lb-2-26" n="26"/>

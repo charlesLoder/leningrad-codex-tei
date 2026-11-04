@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 23 verse zones (84 line segments) from Masoretica HTR page n617. Left out 2 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n617.json"/>
+      </change>
       <change when="2026-10-29" who="#contrib-charles-w-loder">
       Moved the pe marker before Amos 3:11 to column 3, line 9.
       </change>
@@ -64,10 +71,141 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-309B">
+    <surface xml:id="surf-309B" ulx="0" uly="0" lrx="4223" lry="5247">
       <graphic xml:id="f309B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F309B.jpg">
         <desc type="sha256">c39e299410948f6c71f23fd64189c771661505f9d1bab9b1be2608c459bed052</desc>
       </graphic>
+      <graphic xml:id="f309B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0617.jp2/full/max/0/default.jpg" width="4223px" height="5247px"/>
+      <zone xml:id="f309B-zone-Amos-2-7" type="verse" cert="0.809" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-7-s1" ulx="2671" uly="1189" lrx="3350" lry="1351"/>
+        <zone xml:id="f309B-zone-Amos-2-7-s2" ulx="2629" uly="1306" lrx="3350" lry="1450"/>
+        <zone xml:id="f309B-zone-Amos-2-7-s3" ulx="2618" uly="1397" lrx="3354" lry="1541"/>
+        <zone xml:id="f309B-zone-Amos-2-7-s4" ulx="3058" uly="1499" lrx="3357" lry="1640"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-8" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-8-s1" ulx="2745" uly="1499" lrx="3037" lry="1640"/>
+        <zone xml:id="f309B-zone-Amos-2-8-s2" ulx="2629" uly="1587" lrx="3350" lry="1735"/>
+        <zone xml:id="f309B-zone-Amos-2-8-s3" ulx="2734" uly="1700" lrx="3364" lry="1823"/>
+        <zone xml:id="f309B-zone-Amos-2-8-s4" ulx="3107" uly="1788" lrx="3350" lry="1925"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-9" type="verse" cert="0.902" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-9-s1" ulx="2646" uly="1788" lrx="3086" lry="1925"/>
+        <zone xml:id="f309B-zone-Amos-2-9-s2" ulx="2636" uly="1890" lrx="3354" lry="2031"/>
+        <zone xml:id="f309B-zone-Amos-2-9-s3" ulx="2699" uly="1978" lrx="3347" lry="2115"/>
+        <zone xml:id="f309B-zone-Amos-2-9-s4" ulx="2629" uly="2073" lrx="3347" lry="2217"/>
+        <zone xml:id="f309B-zone-Amos-2-9-s5" ulx="2717" uly="2178" lrx="3357" lry="2319"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-10" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-10-s1" ulx="2615" uly="2277" lrx="3364" lry="2400"/>
+        <zone xml:id="f309B-zone-Amos-2-10-s2" ulx="2745" uly="2361" lrx="3350" lry="2506"/>
+        <zone xml:id="f309B-zone-Amos-2-10-s3" ulx="2668" uly="2463" lrx="3354" lry="2597"/>
+        <zone xml:id="f309B-zone-Amos-2-10-s4" ulx="2745" uly="2544" lrx="3361" lry="2692"/>
+        <zone xml:id="f309B-zone-Amos-2-10-s5" ulx="3132" uly="2650" lrx="3343" lry="2784"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-11" type="verse" cert="0.835" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-11-s1" ulx="2675" uly="2650" lrx="3118" lry="2784"/>
+        <zone xml:id="f309B-zone-Amos-2-11-s2" ulx="2777" uly="2741" lrx="3347" lry="2875"/>
+        <zone xml:id="f309B-zone-Amos-2-11-s3" ulx="2650" uly="2840" lrx="3340" lry="2974"/>
+        <zone xml:id="f309B-zone-Amos-2-11-s4" ulx="2858" uly="2935" lrx="3361" lry="3058"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-12" type="verse" cert="0.82" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-12-s1" ulx="2632" uly="2935" lrx="2851" lry="3058"/>
+        <zone xml:id="f309B-zone-Amos-2-12-s2" ulx="2639" uly="3009" lrx="3343" lry="3150"/>
+        <zone xml:id="f309B-zone-Amos-2-12-s3" ulx="2646" uly="3114" lrx="3343" lry="3248"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-13" type="verse" cert="0.977" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-13-s1" ulx="2657" uly="3220" lrx="3340" lry="3354"/>
+        <zone xml:id="f309B-zone-Amos-2-13-s2" ulx="2770" uly="3301" lrx="3347" lry="3449"/>
+        <zone xml:id="f309B-zone-Amos-2-13-s3" ulx="2854" uly="3392" lrx="3354" lry="3540"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-14" type="verse" cert="0.937" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-14-s1" ulx="2657" uly="3392" lrx="2840" lry="3540"/>
+        <zone xml:id="f309B-zone-Amos-2-14-s2" ulx="2618" uly="3477" lrx="3350" lry="3639"/>
+        <zone xml:id="f309B-zone-Amos-2-14-s3" ulx="2636" uly="3586" lrx="3354" lry="3737"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-15" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-15-s1" ulx="2650" uly="3688" lrx="3361" lry="3839"/>
+        <zone xml:id="f309B-zone-Amos-2-15-s2" ulx="1605" uly="1119" lrx="2358" lry="1372"/>
+        <zone xml:id="f309B-zone-Amos-2-15-s3" ulx="1721" uly="1306" lrx="2344" lry="1450"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-2-16" type="verse" cert="0.997" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-2-16-s1" ulx="1629" uly="1397" lrx="2354" lry="1545"/>
+        <zone xml:id="f309B-zone-Amos-2-16-s2" ulx="1650" uly="1503" lrx="2365" lry="1640"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-1" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-1-s1" ulx="1584" uly="1700" lrx="2351" lry="1840"/>
+        <zone xml:id="f309B-zone-Amos-3-1-s2" ulx="1594" uly="1798" lrx="2340" lry="1932"/>
+        <zone xml:id="f309B-zone-Amos-3-1-s3" ulx="1594" uly="1911" lrx="2354" lry="2027"/>
+        <zone xml:id="f309B-zone-Amos-3-1-s4" ulx="1710" uly="1995" lrx="2351" lry="2115"/>
+        <zone xml:id="f309B-zone-Amos-3-1-s5" ulx="2154" uly="2090" lrx="2344" lry="2213"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-2" type="verse" cert="0.92" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-2-s1" ulx="1626" uly="2090" lrx="2126" lry="2213"/>
+        <zone xml:id="f309B-zone-Amos-3-2-s2" ulx="1707" uly="2164" lrx="2354" lry="2319"/>
+        <zone xml:id="f309B-zone-Amos-3-2-s3" ulx="1654" uly="2266" lrx="2358" lry="2411"/>
+        <zone xml:id="f309B-zone-Amos-3-2-s4" ulx="2006" uly="2354" lrx="2354" lry="2513"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-3" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-3-s1" ulx="1640" uly="2354" lrx="1971" lry="2513"/>
+        <zone xml:id="f309B-zone-Amos-3-3-s2" ulx="1781" uly="2477" lrx="2375" lry="2601"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-4" type="verse" cert="0.889" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-4-s1" ulx="1629" uly="2576" lrx="2354" lry="2689"/>
+        <zone xml:id="f309B-zone-Amos-3-4-s2" ulx="1749" uly="2660" lrx="2361" lry="2780"/>
+        <zone xml:id="f309B-zone-Amos-3-4-s3" ulx="1721" uly="2738" lrx="2368" lry="2886"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-5" type="verse" cert="0.902" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-5-s1" ulx="1640" uly="2840" lrx="2351" lry="2981"/>
+        <zone xml:id="f309B-zone-Amos-3-5-s2" ulx="1650" uly="2946" lrx="2372" lry="3069"/>
+        <zone xml:id="f309B-zone-Amos-3-5-s3" ulx="1629" uly="3016" lrx="2365" lry="3164"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-6" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-6-s1" ulx="1629" uly="3114" lrx="2358" lry="3252"/>
+        <zone xml:id="f309B-zone-Amos-3-6-s2" ulx="1689" uly="3227" lrx="2358" lry="3347"/>
+        <zone xml:id="f309B-zone-Amos-3-6-s3" ulx="1781" uly="3326" lrx="2351" lry="3445"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-8" type="verse" cert="0.949" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-8-s1" ulx="1626" uly="3607" lrx="2087" lry="3751"/>
+        <zone xml:id="f309B-zone-Amos-3-8-s2" ulx="1636" uly="3692" lrx="2361" lry="3846"/>
+        <zone xml:id="f309B-zone-Amos-3-8-s3" ulx="1200" uly="1204" lrx="1337" lry="1369"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-9" type="verse" cert="0.931" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-9-s1" ulx="598" uly="1204" lrx="1161" lry="1369"/>
+        <zone xml:id="f309B-zone-Amos-3-9-s2" ulx="743" uly="1316" lrx="1348" lry="1460"/>
+        <zone xml:id="f309B-zone-Amos-3-9-s3" ulx="739" uly="1411" lrx="1355" lry="1563"/>
+        <zone xml:id="f309B-zone-Amos-3-9-s4" ulx="605" uly="1517" lrx="1355" lry="1654"/>
+        <zone xml:id="f309B-zone-Amos-3-9-s5" ulx="602" uly="1598" lrx="1351" lry="1749"/>
+        <zone xml:id="f309B-zone-Amos-3-9-s6" ulx="1144" uly="1721" lrx="1348" lry="1844"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-10" type="verse" cert="0.949" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-10-s1" ulx="669" uly="1721" lrx="1123" lry="1844"/>
+        <zone xml:id="f309B-zone-Amos-3-10-s2" ulx="658" uly="1805" lrx="1355" lry="1943"/>
+        <zone xml:id="f309B-zone-Amos-3-10-s3" ulx="700" uly="1907" lrx="1348" lry="2048"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-11" type="verse" cert="0.922" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-11-s1" ulx="732" uly="2038" lrx="1355" lry="2228"/>
+        <zone xml:id="f309B-zone-Amos-3-11-s2" ulx="693" uly="2189" lrx="1362" lry="2330"/>
+        <zone xml:id="f309B-zone-Amos-3-11-s3" ulx="795" uly="2280" lrx="1362" lry="2418"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-12" type="verse" cert="0.894" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-12-s1" ulx="679" uly="2280" lrx="760" lry="2418"/>
+        <zone xml:id="f309B-zone-Amos-3-12-s2" ulx="609" uly="2365" lrx="1351" lry="2513"/>
+        <zone xml:id="f309B-zone-Amos-3-12-s3" ulx="648" uly="2485" lrx="1362" lry="2604"/>
+        <zone xml:id="f309B-zone-Amos-3-12-s4" ulx="619" uly="2555" lrx="1348" lry="2706"/>
+        <zone xml:id="f309B-zone-Amos-3-12-s5" ulx="690" uly="2667" lrx="1355" lry="2791"/>
+        <zone xml:id="f309B-zone-Amos-3-12-s6" ulx="792" uly="2755" lrx="1355" lry="2893"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-13" type="verse" cert="0.906" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-13-s1" ulx="619" uly="2755" lrx="750" lry="2893"/>
+        <zone xml:id="f309B-zone-Amos-3-13-s2" ulx="686" uly="2843" lrx="1365" lry="2988"/>
+        <zone xml:id="f309B-zone-Amos-3-13-s3" ulx="662" uly="2931" lrx="1351" lry="3076"/>
+      </zone>
+      <zone xml:id="f309B-zone-Amos-3-15" type="verse" cert="0.895" resp="#source-masoretica">
+        <zone xml:id="f309B-zone-Amos-3-15-s1" ulx="697" uly="3329" lrx="992" lry="3466"/>
+        <zone xml:id="f309B-zone-Amos-3-15-s2" ulx="626" uly="3424" lrx="1344" lry="3558"/>
+        <zone xml:id="f309B-zone-Amos-3-15-s3" ulx="686" uly="3509" lrx="1348" lry="3649"/>
+        <zone xml:id="f309B-zone-Amos-3-15-s4" ulx="1084" uly="3607" lrx="1358" lry="3748"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -78,7 +216,7 @@
         <ab>
         <cb xml:id="f309B-cb-1" n="1"/>
           <lb xml:id="f309B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Amos-2-7" xml:id="f309B-v-Amos-2-7"/>
+            <milestone unit="verse" n="Amos-2-7" xml:id="f309B-v-Amos-2-7" facs="#f309B-zone-Amos-2-7"/>
             <w xml:id="f309B-w-210777">אֶ֙רֶץ֙</w>
             <w xml:id="f309B-w-210778">בְּרֹ֣אשׁ</w>
             <w xml:id="f309B-w-210779">דַּלִּ֔ים</w>
@@ -99,7 +237,7 @@
             <w xml:id="f309B-w-210791">שֵׁ֥ם</w>
             <w xml:id="f309B-w-210792">קָדְשִֽׁי</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210792">׃</pc>
-            <milestone unit="verse" n="Amos-2-8" xml:id="f309B-v-Amos-2-8"/>
+            <milestone unit="verse" n="Amos-2-8" xml:id="f309B-v-Amos-2-8" facs="#f309B-zone-Amos-2-8"/>
             <w xml:id="f309B-w-210793">וְעַל־</w>
             <w xml:id="f309B-w-210794">בְּגָדִ֤ים</w>
           <lb xml:id="f309B-lb-1-5" n="5"/>
@@ -116,7 +254,7 @@
           <lb xml:id="f309B-lb-1-7" n="7"/>
             <w xml:id="f309B-w-210804">אֱלֹהֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210804">׃</pc>
-            <milestone unit="verse" n="Amos-2-9" xml:id="f309B-v-Amos-2-9"/>
+            <milestone unit="verse" n="Amos-2-9" xml:id="f309B-v-Amos-2-9" facs="#f309B-zone-Amos-2-9"/>
             <w xml:id="f309B-w-210805">וְאָ֨נֹכִ֜י</w>
             <w xml:id="f309B-w-210806">הִשְׁמַ֤דְתִּי</w>
           <lb xml:id="f309B-lb-1-8" n="8"/>
@@ -140,7 +278,7 @@
             <w xml:id="f309B-w-210821">מִתָּֽחַת</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210821">׃</pc>
           <lb xml:id="f309B-lb-1-12" n="12"/>
-            <milestone unit="verse" n="Amos-2-10" xml:id="f309B-v-Amos-2-10"/>
+            <milestone unit="verse" n="Amos-2-10" xml:id="f309B-v-Amos-2-10" facs="#f309B-zone-Amos-2-10"/>
             <w xml:id="f309B-w-210822">וְאָנֹכִ֛י</w>
             <w xml:id="f309B-w-210823">הֶעֱלֵ֥יתִי</w>
             <w xml:id="f309B-w-210824">אֶתְכֶ֖ם</w>
@@ -160,7 +298,7 @@
           <lb xml:id="f309B-lb-1-16" n="16"/>
             <w xml:id="f309B-w-210835">הָאֱמֹרִֽי</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210835">׃</pc>
-            <milestone unit="verse" n="Amos-2-11" xml:id="f309B-v-Amos-2-11"/>
+            <milestone unit="verse" n="Amos-2-11" xml:id="f309B-v-Amos-2-11" facs="#f309B-zone-Amos-2-11"/>
             <w xml:id="f309B-w-210836">וָאָקִ֤ים</w>
             <w xml:id="f309B-w-210837">מִבְּנֵיכֶם֙</w>
           <lb xml:id="f309B-lb-1-17" n="17"/>
@@ -177,7 +315,7 @@
             <w xml:id="f309B-w-210846">נְאֻם־</w>
             <w xml:id="f309B-w-210847">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210847">׃</pc>
-            <milestone unit="verse" n="Amos-2-12" xml:id="f309B-v-Amos-2-12"/>
+            <milestone unit="verse" n="Amos-2-12" xml:id="f309B-v-Amos-2-12" facs="#f309B-zone-Amos-2-12"/>
             <w xml:id="f309B-w-210848">וַתַּשְׁק֥וּ</w>
           <lb xml:id="f309B-lb-1-20" n="20"/>
             <w xml:id="f309B-w-210849">אֶת־</w>
@@ -192,7 +330,7 @@
             <w xml:id="f309B-w-210857">תִּנָּבְאֽוּ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210857">׃</pc>
           <lb xml:id="f309B-lb-1-22" n="22"/>
-            <milestone unit="verse" n="Amos-2-13" xml:id="f309B-v-Amos-2-13"/>
+            <milestone unit="verse" n="Amos-2-13" xml:id="f309B-v-Amos-2-13" facs="#f309B-zone-Amos-2-13"/>
             <w xml:id="f309B-w-210858">הִנֵּ֛ה</w>
             <w xml:id="f309B-w-210859">אָנֹכִ֥י</w>
             <w xml:id="f309B-w-210860">מֵעִ֖יק</w>
@@ -206,7 +344,7 @@
             <w xml:id="f309B-w-210866">לָ֖הּ</w>
             <w xml:id="f309B-w-210867">עָמִֽיר</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210867">׃</pc>
-            <milestone unit="verse" n="Amos-2-14" xml:id="f309B-v-Amos-2-14"/>
+            <milestone unit="verse" n="Amos-2-14" xml:id="f309B-v-Amos-2-14" facs="#f309B-zone-Amos-2-14"/>
             <w xml:id="f309B-w-210868">וְאָבַ֤ד</w>
           <lb xml:id="f309B-lb-1-25" n="25"/>
             <w xml:id="f309B-w-210869">מָנוֹס֙</w>
@@ -222,7 +360,7 @@
             <w xml:id="f309B-w-210878">נַפְשֽׁוֹ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210878">׃</pc>
           <lb xml:id="f309B-lb-1-27" n="27"/>
-            <milestone unit="verse" n="Amos-2-15" xml:id="f309B-v-Amos-2-15"/>
+            <milestone unit="verse" n="Amos-2-15" xml:id="f309B-v-Amos-2-15" facs="#f309B-zone-Amos-2-15"/>
             <w xml:id="f309B-w-210879">וְתֹפֵ֤שׂ</w>
             <w xml:id="f309B-w-210880">הַקֶּ֙שֶׁת֙</w>
             <w xml:id="f309B-w-210881">לֹ֣א</w>
@@ -241,7 +379,7 @@
             <w xml:id="f309B-w-210891">נַפְשֽׁוֹ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210891">׃</pc>
           <lb xml:id="f309B-lb-2-3" n="3"/>
-            <milestone unit="verse" n="Amos-2-16" xml:id="f309B-v-Amos-2-16"/>
+            <milestone unit="verse" n="Amos-2-16" xml:id="f309B-v-Amos-2-16" facs="#f309B-zone-Amos-2-16"/>
             <w xml:id="f309B-w-210892">וְאַמִּ֥יץ</w>
             <w xml:id="f309B-w-210893">לִבּ֖וֹ</w>
             <w xml:id="f309B-w-210894">בַּגִּבּוֹרִ֑ים</w>
@@ -256,7 +394,7 @@
           <lb xml:id="f309B-lb-2-5" n="5"/>
             <milestone unit="section" subtype="pe" xml:id="f309B-s-Amos-2-16"/>
           <lb xml:id="f309B-lb-2-6" n="6"/>
-            <milestone unit="verse" n="Amos-3-1" xml:id="f309B-v-Amos-3-1"/>
+            <milestone unit="verse" n="Amos-3-1" xml:id="f309B-v-Amos-3-1" facs="#f309B-zone-Amos-3-1"/>
             <w xml:id="f309B-w-210901">שִׁמְע֞וּ</w>
             <w xml:id="f309B-w-210902">אֶת־</w>
             <w xml:id="f309B-w-210903">הַדָּבָ֣ר</w>
@@ -280,7 +418,7 @@
           <lb xml:id="f309B-lb-2-10" n="10"/>
             <w xml:id="f309B-w-210918">לֵאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210918">׃</pc>
-            <milestone unit="verse" n="Amos-3-2" xml:id="f309B-v-Amos-3-2"/>
+            <milestone unit="verse" n="Amos-3-2" xml:id="f309B-v-Amos-3-2" facs="#f309B-zone-Amos-3-2"/>
             <w xml:id="f309B-w-210919">רַ֚ק</w>
             <w xml:id="f309B-w-210920">אֶתְכֶ֣ם</w>
             <w xml:id="f309B-w-210921">יָדַ֔עְתִּי</w>
@@ -298,7 +436,7 @@
             <w xml:id="f309B-w-210930">כָּל־</w>
             <w xml:id="f309B-w-210931">עֲוֺנֹֽתֵיכֶֽם</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210931">׃</pc>
-            <milestone unit="verse" n="Amos-3-3" xml:id="f309B-v-Amos-3-3"/>
+            <milestone unit="verse" n="Amos-3-3" xml:id="f309B-v-Amos-3-3" facs="#f309B-zone-Amos-3-3"/>
             <w xml:id="f309B-w-210932">הֲיֵלְכ֥וּ</w>
             <w xml:id="f309B-w-210933">שְׁנַ֖יִם</w>
           <lb xml:id="f309B-lb-2-14" n="14"/>
@@ -308,7 +446,7 @@
             <w xml:id="f309B-w-210937">נוֹעָֽדוּ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210937">׃</pc>
           <lb xml:id="f309B-lb-2-15" n="15"/>
-            <milestone unit="verse" n="Amos-3-4" xml:id="f309B-v-Amos-3-4"/>
+            <milestone unit="verse" n="Amos-3-4" xml:id="f309B-v-Amos-3-4" facs="#f309B-zone-Amos-3-4"/>
             <w xml:id="f309B-w-210938">הֲיִשְׁאַ֤ג</w>
             <w xml:id="f309B-w-210939">אַרְיֵה֙</w>
             <w xml:id="f309B-w-210940">בַּיַּ֔עַר</w>
@@ -326,7 +464,7 @@
             <w xml:id="f309B-w-210950">לָכָֽד</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210950">׃</pc>
           <lb xml:id="f309B-lb-2-18" n="18"/>
-            <milestone unit="verse" n="Amos-3-5" xml:id="f309B-v-Amos-3-5"/>
+            <milestone unit="verse" n="Amos-3-5" xml:id="f309B-v-Amos-3-5" facs="#f309B-zone-Amos-3-5"/>
             <w xml:id="f309B-w-210951">הֲתִפֹּ֤ל</w>
             <w xml:id="f309B-w-210952">צִפּוֹר֙</w>
             <w xml:id="f309B-w-210953">עַל־</w>
@@ -346,7 +484,7 @@
             <w xml:id="f309B-w-210965">יִלְכּֽוֹד</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210965">׃</pc>
           <lb xml:id="f309B-lb-2-21" n="21"/>
-            <milestone unit="verse" n="Amos-3-6" xml:id="f309B-v-Amos-3-6"/>
+            <milestone unit="verse" n="Amos-3-6" xml:id="f309B-v-Amos-3-6" facs="#f309B-zone-Amos-3-6"/>
             <w xml:id="f309B-w-210966">אִם־</w>
             <w xml:id="f309B-w-210967">יִתָּקַ֤ע</w>
             <w xml:id="f309B-w-210968">שׁוֹפָר֙</w>
@@ -382,7 +520,7 @@
           <lb xml:id="f309B-lb-2-26" n="26"/>
             <w xml:id="f309B-w-210992">הַנְּבִיאִֽים</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210992">׃</pc>
-            <milestone unit="verse" n="Amos-3-8" xml:id="f309B-v-Amos-3-8"/>
+            <milestone unit="verse" n="Amos-3-8" xml:id="f309B-v-Amos-3-8" facs="#f309B-zone-Amos-3-8"/>
             <w xml:id="f309B-w-210993">אַרְיֵ֥ה</w>
             <w xml:id="f309B-w-210994">שָׁאָ֖ג</w>
             <w xml:id="f309B-w-210995">מִ֣י</w>
@@ -398,7 +536,7 @@
           <lb xml:id="f309B-lb-3-1" n="1"/>
             <w xml:id="f309B-w-211003">יִנָּבֵֽא</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-211003">׃</pc>
-            <milestone unit="verse" n="Amos-3-9" xml:id="f309B-v-Amos-3-9"/>
+            <milestone unit="verse" n="Amos-3-9" xml:id="f309B-v-Amos-3-9" facs="#f309B-zone-Amos-3-9"/>
             <w xml:id="f309B-w-211004">הַשְׁמִ֙יעוּ֙</w>
             <w xml:id="f309B-w-211005">עַל־</w>
             <w xml:id="f309B-w-211006">אַרְמְנ֣וֹת</w>
@@ -424,7 +562,7 @@
           <lb xml:id="f309B-lb-3-6" n="6"/>
             <w xml:id="f309B-w-211022">בְּקִרְבָּֽהּ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-211022">׃</pc>
-            <milestone unit="verse" n="Amos-3-10" xml:id="f309B-v-Amos-3-10"/>
+            <milestone unit="verse" n="Amos-3-10" xml:id="f309B-v-Amos-3-10" facs="#f309B-zone-Amos-3-10"/>
             <w xml:id="f309B-w-211023">וְלֹֽא־</w>
             <w xml:id="f309B-w-211024">יָדְע֥וּ</w>
             <w xml:id="f309B-w-211025">עֲשׂוֹת־</w>
@@ -441,7 +579,7 @@
           <lb xml:id="f309B-lb-3-9" n="9"/>
             <milestone unit="section" subtype="pe" xml:id="f309B-s-Amos-3-10"/>
           <lb xml:id="f309B-lb-3-10" n="10"/>
-            <milestone unit="verse" n="Amos-3-11" xml:id="f309B-v-Amos-3-11"/>
+            <milestone unit="verse" n="Amos-3-11" xml:id="f309B-v-Amos-3-11" facs="#f309B-zone-Amos-3-11"/>
             <w xml:id="f309B-w-211033">לָכֵ֗ן</w>
             <w xml:id="f309B-w-211034">כֹּ֤ה</w>
             <w xml:id="f309B-w-211035">אָמַר֙</w>
@@ -458,7 +596,7 @@
             <w xml:id="f309B-w-211044">וְנָבֹ֖זּוּ</w>
             <w xml:id="f309B-w-211045">אַרְמְנוֹתָֽיִךְ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-211045">׃</pc>
-            <milestone unit="verse" n="Amos-3-12" xml:id="f309B-v-Amos-3-12"/>
+            <milestone unit="verse" n="Amos-3-12" xml:id="f309B-v-Amos-3-12" facs="#f309B-zone-Amos-3-12"/>
             <w xml:id="f309B-w-211046">כֹּה֮</w>
           <lb xml:id="f309B-lb-3-13" n="13"/>
             <w xml:id="f309B-w-211047">אָמַ֣ר</w>
@@ -488,7 +626,7 @@
             <w xml:id="f309B-w-211067">וּבִדְמֶ֥שֶׁק</w>
             <w xml:id="f309B-w-211068">עָֽרֶשׂ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-211068">׃</pc>
-            <milestone unit="verse" n="Amos-3-13" xml:id="f309B-v-Amos-3-13"/>
+            <milestone unit="verse" n="Amos-3-13" xml:id="f309B-v-Amos-3-13" facs="#f309B-zone-Amos-3-13"/>
             <w xml:id="f309B-w-211069">שִׁמְע֥וּ</w>
           <lb xml:id="f309B-lb-3-18" n="18"/>
             <w xml:id="f309B-w-211070">וְהָעִ֖ידוּ</w>
@@ -523,7 +661,7 @@
             <w xml:id="f309B-w-211092">וְנָפְל֖וּ</w>
             <w xml:id="f309B-w-211093">לָאָֽרֶץ</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-211093">׃</pc>
-            <milestone unit="verse" n="Amos-3-15" xml:id="f309B-v-Amos-3-15"/>
+            <milestone unit="verse" n="Amos-3-15" xml:id="f309B-v-Amos-3-15" facs="#f309B-zone-Amos-3-15"/>
             <w xml:id="f309B-w-211094">וְהִכֵּיתִ֥י</w>
             <w xml:id="f309B-w-211095">בֵית־</w>
           <lb xml:id="f309B-lb-3-24" n="24"/>

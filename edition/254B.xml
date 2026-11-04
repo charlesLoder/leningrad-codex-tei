@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 4 verse zones (22 line segments) from Masoretica HTR page n507. Left out 2 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n507.json"/>
+      </change>
       <change when="2026-10-28T03:26:14.522831+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-28T03:11:46.749556+00:00" who="#contrib-charles-w-loder">Aligned Jeremiah 16:11 – Jeremiah 17:13 (348 atoms).
@@ -58,10 +65,41 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-254B">
+    <surface xml:id="surf-254B" ulx="0" uly="0" lrx="4367" lry="5311">
       <graphic xml:id="f254B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F254B.jpg">
         <desc type="sha256">139023f563cc42fe6752fbdecc61e5afe1dd8dc1467b3ce5c65572c7321fff91</desc>
       </graphic>
+      <graphic xml:id="f254B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0507.jp2/full/max/0/default.jpg" width="4367px" height="5311px"/>
+      <zone xml:id="f254B-zone-Jeremiah-16-12" type="verse" cert="0.551" resp="#source-masoretica">
+        <zone xml:id="f254B-zone-Jeremiah-16-12-s1" ulx="2493" uly="1456" lrx="3111" lry="1613"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-12-s2" ulx="2431" uly="1543" lrx="3101" lry="1704"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-12-s3" ulx="2373" uly="1638" lrx="3093" lry="1795"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-12-s4" ulx="2620" uly="1740" lrx="3093" lry="1904"/>
+      </zone>
+      <zone xml:id="f254B-zone-Jeremiah-16-13" type="verse" cert="0.572" resp="#source-masoretica">
+        <zone xml:id="f254B-zone-Jeremiah-16-13-s1" ulx="2373" uly="1740" lrx="2613" lry="1904"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-13-s2" ulx="2402" uly="1856" lrx="3097" lry="2002"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-13-s3" ulx="2380" uly="1966" lrx="3101" lry="2089"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-13-s4" ulx="2420" uly="2042" lrx="3097" lry="2188"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-13-s5" ulx="2365" uly="2122" lrx="3093" lry="2282"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-13-s6" ulx="2409" uly="2231" lrx="3101" lry="2384"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-13-s7" ulx="2944" uly="2337" lrx="3090" lry="2464"/>
+      </zone>
+      <zone xml:id="f254B-zone-Jeremiah-16-14" type="verse" cert="0.566" resp="#source-masoretica">
+        <zone xml:id="f254B-zone-Jeremiah-16-14-s1" ulx="2405" uly="2337" lrx="2631" lry="2464"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-14-s2" ulx="2398" uly="2432" lrx="3101" lry="2559"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-14-s3" ulx="2431" uly="2523" lrx="3104" lry="2665"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-14-s4" ulx="2471" uly="2625" lrx="3086" lry="2763"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-14-s5" ulx="2700" uly="2712" lrx="3097" lry="2850"/>
+      </zone>
+      <zone xml:id="f254B-zone-Jeremiah-16-15" type="verse" cert="0.574" resp="#source-masoretica">
+        <zone xml:id="f254B-zone-Jeremiah-16-15-s1" ulx="2416" uly="2712" lrx="2671" lry="2850"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-15-s2" ulx="2369" uly="2810" lrx="3111" lry="2949"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-15-s3" ulx="2395" uly="2901" lrx="3108" lry="3040"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-15-s4" ulx="2333" uly="2992" lrx="3086" lry="3131"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-15-s5" ulx="2355" uly="3091" lrx="3101" lry="3229"/>
+        <zone xml:id="f254B-zone-Jeremiah-16-15-s6" ulx="2544" uly="3185" lrx="3097" lry="3327"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -90,7 +128,7 @@
             <w xml:id="f254B-w-172500">שָׁמָֽרוּ</w>
             <pc type="sof-pasuq" xml:id="f254B-pc-172500">׃</pc>
           <lb xml:id="f254B-lb-1-4" n="4"/>
-            <milestone unit="verse" n="Jeremiah-16-12" xml:id="f254B-v-Jeremiah-16-12"/>
+            <milestone unit="verse" n="Jeremiah-16-12" xml:id="f254B-v-Jeremiah-16-12" facs="#f254B-zone-Jeremiah-16-12"/>
             <w xml:id="f254B-w-172501">וְאַתֶּ֛ם</w>
             <w xml:id="f254B-w-172502">הֲרֵעֹתֶ֥ם</w>
             <w xml:id="f254B-w-172503">לַעֲשׂ֖וֹת</w>
@@ -109,7 +147,7 @@
             <w xml:id="f254B-w-172513">שְׁמֹ֥עַ</w>
             <w xml:id="f254B-w-172514">אֵלָֽי</w>
             <pc type="sof-pasuq" xml:id="f254B-pc-172514">׃</pc>
-            <milestone unit="verse" n="Jeremiah-16-13" xml:id="f254B-v-Jeremiah-16-13"/>
+            <milestone unit="verse" n="Jeremiah-16-13" xml:id="f254B-v-Jeremiah-16-13" facs="#f254B-zone-Jeremiah-16-13"/>
             <w xml:id="f254B-w-172515">וְהֵטַלְתִּ֣י</w>
           <lb xml:id="f254B-lb-1-8" n="8"/>
             <w xml:id="f254B-w-172516">אֶתְכֶ֗ם</w>
@@ -142,7 +180,7 @@
             <w xml:id="f254B-w-172538">חֲנִינָֽה</w>
             <pc type="sof-pasuq" xml:id="f254B-pc-172538">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f254B-s-Jeremiah-16-13"/>
-            <milestone unit="verse" n="Jeremiah-16-14" xml:id="f254B-v-Jeremiah-16-14"/>
+            <milestone unit="verse" n="Jeremiah-16-14" xml:id="f254B-v-Jeremiah-16-14" facs="#f254B-zone-Jeremiah-16-14"/>
             <w xml:id="f254B-w-172539">לָכֵ֛ן</w>
             <w xml:id="f254B-w-172540">הִנֵּֽה־</w>
           <lb xml:id="f254B-lb-1-14" n="14"/>
@@ -166,7 +204,7 @@
             <w xml:id="f254B-w-172555">מֵאֶ֥רֶץ</w>
             <w xml:id="f254B-w-172556">מִצְרָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f254B-pc-172556">׃</pc>
-            <milestone unit="verse" n="Jeremiah-16-15" xml:id="f254B-v-Jeremiah-16-15"/>
+            <milestone unit="verse" n="Jeremiah-16-15" xml:id="f254B-v-Jeremiah-16-15" facs="#f254B-zone-Jeremiah-16-15"/>
             <w xml:id="f254B-w-172557">כִּ֣י</w>
             <w xml:id="f254B-w-172558">אִם־</w>
             <w xml:id="f254B-w-172559">חַי־</w>

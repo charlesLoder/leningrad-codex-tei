@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 26 verse zones (94 line segments) from Masoretica HTR page n631.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n631.json"/>
+      </change>
       <change when="2026-10-30T15:50:12.587452+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-10-30T15:36:28.032181+00:00" who="#contrib-sarahmccuan">Aligned Nahum 3:15 – Habakkuk 2:5 (321 atoms).
@@ -58,10 +69,157 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-316B">
+    <surface xml:id="surf-316B" ulx="0" uly="0" lrx="4239" lry="5279">
       <graphic xml:id="f316B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F316B.jpg">
         <desc type="sha256">5897a9ecb024c058c78e0d6653197dcbdc0ca4cdbc7204394074ed62f7efbae7</desc>
       </graphic>
+      <graphic xml:id="f316B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0631.jp2/full/max/0/default.jpg" width="4239px" height="5279px"/>
+      <zone xml:id="f316B-zone-Nahum-3-16" type="verse" cert="0.969" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Nahum-3-16-s1" ulx="2596" uly="1212" lrx="2777" lry="1367"/>
+        <zone xml:id="f316B-zone-Nahum-3-16-s2" ulx="2522" uly="1304" lrx="3253" lry="1456"/>
+        <zone xml:id="f316B-zone-Nahum-3-16-s3" ulx="2936" uly="1403" lrx="3243" lry="1544"/>
+      </zone>
+      <zone xml:id="f316B-zone-Nahum-3-17" type="verse" cert="0.978" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Nahum-3-17-s1" ulx="2522" uly="1403" lrx="2904" lry="1544"/>
+        <zone xml:id="f316B-zone-Nahum-3-17-s2" ulx="2536" uly="1502" lrx="3264" lry="1639"/>
+        <zone xml:id="f316B-zone-Nahum-3-17-s3" ulx="2543" uly="1590" lrx="3239" lry="1731"/>
+        <zone xml:id="f316B-zone-Nahum-3-17-s4" ulx="2642" uly="1678" lrx="3268" lry="1827"/>
+        <zone xml:id="f316B-zone-Nahum-3-17-s5" ulx="2918" uly="1763" lrx="3250" lry="1926"/>
+      </zone>
+      <zone xml:id="f316B-zone-Nahum-3-18" type="verse" cert="0.958" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Nahum-3-18-s1" ulx="2501" uly="1763" lrx="2897" lry="1926"/>
+        <zone xml:id="f316B-zone-Nahum-3-18-s2" ulx="2505" uly="1887" lrx="3246" lry="2028"/>
+        <zone xml:id="f316B-zone-Nahum-3-18-s3" ulx="2494" uly="1989" lrx="3246" lry="2124"/>
+      </zone>
+      <zone xml:id="f316B-zone-Nahum-3-19" type="verse" cert="0.957" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Nahum-3-19-s1" ulx="2589" uly="2074" lrx="3250" lry="2212"/>
+        <zone xml:id="f316B-zone-Nahum-3-19-s2" ulx="2533" uly="2162" lrx="3250" lry="2304"/>
+        <zone xml:id="f316B-zone-Nahum-3-19-s3" ulx="2515" uly="2247" lrx="3236" lry="2389"/>
+        <zone xml:id="f316B-zone-Nahum-3-19-s4" ulx="2554" uly="2346" lrx="3239" lry="2509"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-1" type="verse" cert="0.999" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-1-s1" ulx="2497" uly="2735" lrx="3232" lry="2873"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-1-s2" ulx="3041" uly="2834" lrx="3229" lry="2968"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-2" type="verse" cert="0.98" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-2-s1" ulx="2618" uly="2834" lrx="3013" lry="2968"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-2-s2" ulx="2497" uly="2922" lrx="3232" lry="3064"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-2-s3" ulx="2589" uly="3011" lrx="3239" lry="3152"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-3" type="verse" cert="0.982" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-3-s1" ulx="2596" uly="3099" lrx="3236" lry="3251"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-3-s2" ulx="2529" uly="3212" lrx="3232" lry="3346"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-3-s3" ulx="2678" uly="3286" lrx="3250" lry="3438"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-4" type="verse" cert="0.958" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-4-s1" ulx="2494" uly="3286" lrx="2646" lry="3438"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-4-s2" ulx="2501" uly="3385" lrx="3243" lry="3533"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-4-s3" ulx="2554" uly="3491" lrx="3246" lry="3629"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-4-s4" ulx="2473" uly="3576" lrx="3239" lry="3728"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-4-s5" ulx="2791" uly="3682" lrx="3243" lry="3823"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-5" type="verse" cert="0.924" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-5-s1" ulx="2501" uly="3682" lrx="2769" lry="3823"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-5-s2" ulx="1568" uly="1212" lrx="2282" lry="1346"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-5-s3" ulx="1660" uly="1286" lrx="2261" lry="1435"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-5-s4" ulx="1770" uly="1403" lrx="2247" lry="1541"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-6" type="verse" cert="0.889" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-6-s1" ulx="1551" uly="1403" lrx="1745" lry="1541"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-6-s2" ulx="1544" uly="1488" lrx="2264" lry="1629"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-6-s3" ulx="1664" uly="1569" lrx="2250" lry="1721"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-6-s4" ulx="1505" uly="1657" lrx="2247" lry="1820"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-6-s5" ulx="1802" uly="1760" lrx="2268" lry="1919"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-7" type="verse" cert="0.997" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-7-s1" ulx="1512" uly="1760" lrx="1777" lry="1919"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-7-s2" ulx="1498" uly="1862" lrx="2247" lry="2011"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-7-s3" ulx="2127" uly="1954" lrx="2268" lry="2109"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-8" type="verse" cert="0.971" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-8-s1" ulx="1505" uly="1954" lrx="2095" lry="2109"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-8-s2" ulx="1530" uly="2049" lrx="2264" lry="2198"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-8-s3" ulx="1576" uly="2159" lrx="2254" lry="2293"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-8-s4" ulx="1554" uly="2237" lrx="2268" lry="2378"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-8-s5" ulx="2021" uly="2336" lrx="2243" lry="2495"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-9" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-9-s1" ulx="1501" uly="2336" lrx="1982" lry="2495"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-9-s2" ulx="1636" uly="2449" lrx="2250" lry="2586"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-9-s3" ulx="1699" uly="2523" lrx="2264" lry="2675"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-10" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-10-s1" ulx="1530" uly="2523" lrx="1685" lry="2675"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-10-s2" ulx="1544" uly="2647" lrx="2243" lry="2767"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-10-s3" ulx="1505" uly="2721" lrx="2254" lry="2873"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-10-s4" ulx="1477" uly="2816" lrx="2247" lry="2968"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-11" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-11-s1" ulx="1491" uly="2919" lrx="2240" lry="3060"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-11-s2" ulx="1858" uly="3000" lrx="2254" lry="3148"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-12" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-12-s1" ulx="1519" uly="3000" lrx="1837" lry="3148"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-12-s2" ulx="1561" uly="3095" lrx="2250" lry="3251"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-12-s3" ulx="1583" uly="3198" lrx="2236" lry="3343"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-12-s4" ulx="1491" uly="3286" lrx="2257" lry="3442"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-13" type="verse" cert="0.987" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-13-s1" ulx="1590" uly="3385" lrx="2250" lry="3530"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-13-s2" ulx="1533" uly="3473" lrx="2250" lry="3618"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-13-s3" ulx="1537" uly="3572" lrx="2236" lry="3728"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-13-s4" ulx="1515" uly="3671" lrx="2236" lry="3830"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-14" type="verse" cert="0.891" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-14-s1" ulx="632" uly="1215" lrx="1293" lry="1339"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-14-s2" ulx="717" uly="1283" lrx="1275" lry="1438"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-15" type="verse" cert="0.951" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-15-s1" ulx="569" uly="1283" lrx="689" lry="1438"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-15-s2" ulx="530" uly="1389" lrx="1268" lry="1544"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-15-s3" ulx="569" uly="1488" lrx="1275" lry="1636"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-15-s4" ulx="834" uly="1587" lrx="1254" lry="1724"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-16" type="verse" cert="0.921" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-16-s1" ulx="629" uly="1587" lrx="816" lry="1724"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-16-s2" ulx="707" uly="1678" lrx="1272" lry="1820"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-16-s3" ulx="548" uly="1781" lrx="1251" lry="1919"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-16-s4" ulx="643" uly="1855" lrx="1233" lry="2011"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-1-17" type="verse" cert="0.91" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-1-17-s1" ulx="523" uly="1975" lrx="1240" lry="2099"/>
+        <zone xml:id="f316B-zone-Habakkuk-1-17-s2" ulx="639" uly="2042" lrx="1247" lry="2191"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-2-1" type="verse" cert="0.957" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-2-1-s1" ulx="498" uly="2141" lrx="887" lry="2293"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-1-s2" ulx="586" uly="2230" lrx="1233" lry="2382"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-1-s3" ulx="519" uly="2321" lrx="1243" lry="2480"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-1-s4" ulx="565" uly="2438" lrx="1240" lry="2572"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-1-s5" ulx="978" uly="2523" lrx="1233" lry="2671"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-2-2" type="verse" cert="0.984" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-2-2-s1" ulx="615" uly="2523" lrx="961" lry="2671"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-2-s2" ulx="537" uly="2618" lrx="1251" lry="2763"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-2-s3" ulx="593" uly="2707" lrx="1240" lry="2859"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-2-s4" ulx="964" uly="2799" lrx="1229" lry="2958"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-2-3" type="verse" cert="0.957" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-2-3-s1" ulx="622" uly="2799" lrx="940" lry="2958"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-3-s2" ulx="565" uly="2901" lrx="1222" lry="3046"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-3-s3" ulx="540" uly="3007" lrx="1243" lry="3148"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-3-s4" ulx="562" uly="3099" lrx="1229" lry="3240"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-2-4" type="verse" cert="0.997" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-2-4-s1" ulx="622" uly="3191" lrx="1219" lry="3350"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-4-s2" ulx="505" uly="3286" lrx="1236" lry="3442"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-4-s3" ulx="1088" uly="3382" lrx="1243" lry="3526"/>
+      </zone>
+      <zone xml:id="f316B-zone-Habakkuk-2-5" type="verse" cert="0.783" resp="#source-masoretica">
+        <zone xml:id="f316B-zone-Habakkuk-2-5-s1" ulx="586" uly="3382" lrx="1070" lry="3526"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-5-s2" ulx="526" uly="3466" lrx="1240" lry="3632"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-5-s3" ulx="608" uly="3565" lrx="1226" lry="3717"/>
+        <zone xml:id="f316B-zone-Habakkuk-2-5-s4" ulx="632" uly="3657" lrx="1243" lry="3830"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -76,7 +234,7 @@
             <w xml:id="f316B-w-215395">הִֽתְכַּבְּדִ֖י</w>
             <w xml:id="f316B-w-215396">כָּאַרְבֶּֽה</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215396">׃</pc>
-            <milestone unit="verse" n="Nahum-3-16" xml:id="f316B-v-Nahum-3-16"/>
+            <milestone unit="verse" n="Nahum-3-16" xml:id="f316B-v-Nahum-3-16" facs="#f316B-zone-Nahum-3-16"/>
             <w xml:id="f316B-w-215397">הִרְבֵּית֙</w>
           <lb xml:id="f316B-lb-1-2" n="2"/>
             <w xml:id="f316B-w-215398">רֹֽכְלַ֔יִךְ</w>
@@ -87,7 +245,7 @@
             <w xml:id="f316B-w-215402">פָּשַׁ֖ט</w>
             <w xml:id="f316B-w-215403">וַיָּעֹֽף</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215403">׃</pc>
-            <milestone unit="verse" n="Nahum-3-17" xml:id="f316B-v-Nahum-3-17"/>
+            <milestone unit="verse" n="Nahum-3-17" xml:id="f316B-v-Nahum-3-17" facs="#f316B-zone-Nahum-3-17"/>
             <w xml:id="f316B-w-215404">מִנְּזָרַ֙יִךְ֙</w>
             <w xml:id="f316B-w-215405">כָּֽאַרְבֶּ֔ה</w>
           <lb xml:id="f316B-lb-1-4" n="4"/>
@@ -109,7 +267,7 @@
             <w xml:id="f316B-w-215418">מְקוֹמ֖וֹ</w>
             <w xml:id="f316B-w-215419">אַיָּֽם</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215419">׃</pc>
-            <milestone unit="verse" n="Nahum-3-18" xml:id="f316B-v-Nahum-3-18"/>
+            <milestone unit="verse" n="Nahum-3-18" xml:id="f316B-v-Nahum-3-18" facs="#f316B-zone-Nahum-3-18"/>
             <w xml:id="f316B-w-215420">נָמ֤וּ</w>
             <w xml:id="f316B-w-215421">רֹעֶ֙יךָ֙</w>
             <w xml:id="f316B-w-215422">מֶ֣לֶךְ</w>
@@ -126,7 +284,7 @@
             <w xml:id="f316B-w-215431">מְקַבֵּֽץ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215431">׃</pc>
           <lb xml:id="f316B-lb-1-10" n="10"/>
-            <milestone unit="verse" n="Nahum-3-19" xml:id="f316B-v-Nahum-3-19"/>
+            <milestone unit="verse" n="Nahum-3-19" xml:id="f316B-v-Nahum-3-19" facs="#f316B-zone-Nahum-3-19"/>
             <w xml:id="f316B-w-215432">אֵין־</w>
             <w xml:id="f316B-w-215433">כֵּהָ֣ה</w>
             <w xml:id="f316B-w-215434">לְשִׁבְרֶ֔ךָ</w>
@@ -154,7 +312,7 @@
           <lb xml:id="f316B-lb-1-15" n="15"/>
           <lb xml:id="f316B-lb-1-16" n="16"/>
           <lb xml:id="f316B-lb-1-17" n="17"/>
-            <milestone unit="verse" n="Habakkuk-1-1" xml:id="f316B-v-Habakkuk-1-1"/>
+            <milestone unit="verse" n="Habakkuk-1-1" xml:id="f316B-v-Habakkuk-1-1" facs="#f316B-zone-Habakkuk-1-1"/>
             <w xml:id="f316B-w-215450">הַמַּשָׂא֙</w>
             <w xml:id="f316B-w-215451">אֲשֶׁ֣ר</w>
             <w xml:id="f316B-w-215452">חָזָ֔ה</w>
@@ -162,7 +320,7 @@
           <lb xml:id="f316B-lb-1-18" n="18"/>
             <w xml:id="f316B-w-215454">הַנָּבִֽיא</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215454">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-2" xml:id="f316B-v-Habakkuk-1-2"/>
+            <milestone unit="verse" n="Habakkuk-1-2" xml:id="f316B-v-Habakkuk-1-2" facs="#f316B-zone-Habakkuk-1-2"/>
             <w xml:id="f316B-w-215455">עַד־</w>
             <w xml:id="f316B-w-215456">אָ֧נָה</w>
             <w xml:id="f316B-w-215457">יְהוָ֛ה</w>
@@ -178,7 +336,7 @@
             <w xml:id="f316B-w-215465">תוֹשִֽׁיעַ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215465">׃</pc>
           <lb xml:id="f316B-lb-1-21" n="21"/>
-            <milestone unit="verse" n="Habakkuk-1-3" xml:id="f316B-v-Habakkuk-1-3"/>
+            <milestone unit="verse" n="Habakkuk-1-3" xml:id="f316B-v-Habakkuk-1-3" facs="#f316B-zone-Habakkuk-1-3"/>
             <w xml:id="f316B-w-215466">לָ֣מָּה</w>
             <w xml:id="f316B-w-215467">תַרְאֵ֤נִי</w>
             <w xml:id="f316B-w-215468">אָ֙וֶן֙</w>
@@ -194,7 +352,7 @@
             <w xml:id="f316B-w-215476">וּמָד֖וֹן</w>
             <w xml:id="f316B-w-215477">יִשָּֽׂא</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215477">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-4" xml:id="f316B-v-Habakkuk-1-4"/>
+            <milestone unit="verse" n="Habakkuk-1-4" xml:id="f316B-v-Habakkuk-1-4" facs="#f316B-zone-Habakkuk-1-4"/>
             <w xml:id="f316B-w-215478">עַל־</w>
             <w xml:id="f316B-w-215479">כֵּן֙</w>
           <lb xml:id="f316B-lb-1-24" n="24"/>
@@ -218,7 +376,7 @@
             <w xml:id="f316B-w-215494">מִשְׁפָּ֖ט</w>
             <w xml:id="f316B-w-215495">מְעֻקָּֽל</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215495">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-5" xml:id="f316B-v-Habakkuk-1-5"/>
+            <milestone unit="verse" n="Habakkuk-1-5" xml:id="f316B-v-Habakkuk-1-5" facs="#f316B-zone-Habakkuk-1-5"/>
             <w xml:id="f316B-w-215496">רְא֤וּ</w>
             <w xml:id="f316B-w-215497">בַגּוֹיִם֙</w>
         <cb xml:id="f316B-cb-2" n="2"/>
@@ -237,7 +395,7 @@
             <w xml:id="f316B-w-215507">כִּ֥י</w>
             <w xml:id="f316B-w-215508">יְסֻפָּֽר</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215508">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-6" xml:id="f316B-v-Habakkuk-1-6"/>
+            <milestone unit="verse" n="Habakkuk-1-6" xml:id="f316B-v-Habakkuk-1-6" facs="#f316B-zone-Habakkuk-1-6"/>
             <w xml:id="f316B-w-215509">כִּֽי־</w>
             <w xml:id="f316B-w-215510">הִנְנִ֤י</w>
           <lb xml:id="f316B-lb-2-4" n="4"/>
@@ -258,7 +416,7 @@
             <w xml:id="f316B-w-215522">לֹּא־</w>
             <w xml:id="f316B-w-215523">לֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215523">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-7" xml:id="f316B-v-Habakkuk-1-7"/>
+            <milestone unit="verse" n="Habakkuk-1-7" xml:id="f316B-v-Habakkuk-1-7" facs="#f316B-zone-Habakkuk-1-7"/>
             <w xml:id="f316B-w-215524">אָיֹ֥ם</w>
             <w xml:id="f316B-w-215525">וְנוֹרָ֖א</w>
           <lb xml:id="f316B-lb-2-8" n="8"/>
@@ -269,7 +427,7 @@
           <lb xml:id="f316B-lb-2-9" n="9"/>
             <w xml:id="f316B-w-215530">יֵצֵֽא</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215530">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-8" xml:id="f316B-v-Habakkuk-1-8"/>
+            <milestone unit="verse" n="Habakkuk-1-8" xml:id="f316B-v-Habakkuk-1-8" facs="#f316B-zone-Habakkuk-1-8"/>
             <w xml:id="f316B-w-215531">וְקַלּ֨וּ</w>
             <w xml:id="f316B-w-215532">מִנְּמֵרִ֜ים</w>
             <w xml:id="f316B-w-215533">סוּסָ֗יו</w>
@@ -290,7 +448,7 @@
           <lb xml:id="f316B-lb-2-13" n="13"/>
             <w xml:id="f316B-w-215545">לֶאֱכֽוֹל</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215545">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-9" xml:id="f316B-v-Habakkuk-1-9"/>
+            <milestone unit="verse" n="Habakkuk-1-9" xml:id="f316B-v-Habakkuk-1-9" facs="#f316B-zone-Habakkuk-1-9"/>
             <w xml:id="f316B-w-215546">כֻּלֹּה֙</w>
             <w xml:id="f316B-w-215547">לְחָמָ֣ס</w>
             <w xml:id="f316B-w-215548">יָב֔וֹא</w>
@@ -303,7 +461,7 @@
             <w xml:id="f316B-w-215553">כַּח֖וֹל</w>
             <w xml:id="f316B-w-215554">שֶֽׁבִי</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215554">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-10" xml:id="f316B-v-Habakkuk-1-10"/>
+            <milestone unit="verse" n="Habakkuk-1-10" xml:id="f316B-v-Habakkuk-1-10" facs="#f316B-zone-Habakkuk-1-10"/>
             <w xml:id="f316B-w-215555">וְהוּא֙</w>
           <lb xml:id="f316B-lb-2-16" n="16"/>
             <w xml:id="f316B-w-215556">בַּמְּלָכִ֣ים</w>
@@ -322,7 +480,7 @@
             <w xml:id="f316B-w-215567">וַֽיִּלְכְּדָֽהּ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215567">׃</pc>
           <lb xml:id="f316B-lb-2-19" n="19"/>
-            <milestone unit="verse" n="Habakkuk-1-11" xml:id="f316B-v-Habakkuk-1-11"/>
+            <milestone unit="verse" n="Habakkuk-1-11" xml:id="f316B-v-Habakkuk-1-11" facs="#f316B-zone-Habakkuk-1-11"/>
             <w xml:id="f316B-w-215568">אָ֣ז</w>
             <w xml:id="f316B-w-215569">חָלַ֥ף</w>
             <w xml:id="f316B-w-215570">ר֛וּחַ</w>
@@ -333,7 +491,7 @@
             <w xml:id="f316B-w-215574">כֹח֖וֹ</w>
             <w xml:id="f316B-w-215575">לֵאלֹהֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215575">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-12" xml:id="f316B-v-Habakkuk-1-12"/>
+            <milestone unit="verse" n="Habakkuk-1-12" xml:id="f316B-v-Habakkuk-1-12" facs="#f316B-zone-Habakkuk-1-12"/>
             <w xml:id="f316B-w-215576">הֲל֧וֹא</w>
             <w xml:id="f316B-w-215577">אַתָּ֣ה</w>
           <lb xml:id="f316B-lb-2-21" n="21"/>
@@ -353,7 +511,7 @@
             <w xml:id="f316B-w-215589">יְסַדְתּֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215589">׃</pc>
           <lb xml:id="f316B-lb-2-24" n="24"/>
-            <milestone unit="verse" n="Habakkuk-1-13" xml:id="f316B-v-Habakkuk-1-13"/>
+            <milestone unit="verse" n="Habakkuk-1-13" xml:id="f316B-v-Habakkuk-1-13" facs="#f316B-zone-Habakkuk-1-13"/>
             <w xml:id="f316B-w-215590">טְה֤וֹר</w>
             <w xml:id="f316B-w-215591">עֵינַ֙יִם֙</w>
             <w xml:id="f316B-w-215592">מֵרְא֣וֹת</w>
@@ -377,7 +535,7 @@
             <pc type="sof-pasuq" xml:id="f316B-pc-215606">׃</pc>
         <cb xml:id="f316B-cb-3" n="3"/>
           <lb xml:id="f316B-lb-3-1" n="1"/>
-            <milestone unit="verse" n="Habakkuk-1-14" xml:id="f316B-v-Habakkuk-1-14"/>
+            <milestone unit="verse" n="Habakkuk-1-14" xml:id="f316B-v-Habakkuk-1-14" facs="#f316B-zone-Habakkuk-1-14"/>
             <w xml:id="f316B-w-215607">וַתַּעֲשֶׂ֥ה</w>
             <w xml:id="f316B-w-215608">אָדָ֖ם</w>
             <w xml:id="f316B-w-215609">כִּדְגֵ֣י</w>
@@ -388,7 +546,7 @@
             <w xml:id="f316B-w-215613">מֹשֵׁ֥ל</w>
             <w xml:id="f316B-w-215614">בּֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215614">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-15" xml:id="f316B-v-Habakkuk-1-15"/>
+            <milestone unit="verse" n="Habakkuk-1-15" xml:id="f316B-v-Habakkuk-1-15" facs="#f316B-zone-Habakkuk-1-15"/>
             <w xml:id="f316B-w-215615">כֻּלֹּה֙</w>
           <lb xml:id="f316B-lb-3-3" n="3"/>
             <w xml:id="f316B-w-215616">בְּחַכָּ֣ה</w>
@@ -404,7 +562,7 @@
             <w xml:id="f316B-w-215624">יִשְׂמַ֥ח</w>
             <w xml:id="f316B-w-215625">וְיָגִֽיל</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215625">׃</pc>
-            <milestone unit="verse" n="Habakkuk-1-16" xml:id="f316B-v-Habakkuk-1-16"/>
+            <milestone unit="verse" n="Habakkuk-1-16" xml:id="f316B-v-Habakkuk-1-16" facs="#f316B-zone-Habakkuk-1-16"/>
             <w xml:id="f316B-w-215626">עַל־</w>
             <w xml:id="f316B-w-215627">כֵּן֙</w>
           <lb xml:id="f316B-lb-3-6" n="6"/>
@@ -422,7 +580,7 @@
             <w xml:id="f316B-w-215637">בְּרִאָֽה</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215637">׃</pc>
           <lb xml:id="f316B-lb-3-9" n="9"/>
-            <milestone unit="verse" n="Habakkuk-1-17" xml:id="f316B-v-Habakkuk-1-17"/>
+            <milestone unit="verse" n="Habakkuk-1-17" xml:id="f316B-v-Habakkuk-1-17" facs="#f316B-zone-Habakkuk-1-17"/>
             <w xml:id="f316B-w-215638">הַ֥עַל</w>
             <w xml:id="f316B-w-215639">כֵּ֖ן</w>
             <w xml:id="f316B-w-215640">יָרִ֣יק</w>
@@ -436,7 +594,7 @@
             <pc type="sof-pasuq" xml:id="f316B-pc-215646">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f316B-s-Habakkuk-1-17"/>
           <lb xml:id="f316B-lb-3-11" n="11"/>
-            <milestone unit="verse" n="Habakkuk-2-1" xml:id="f316B-v-Habakkuk-2-1"/>
+            <milestone unit="verse" n="Habakkuk-2-1" xml:id="f316B-v-Habakkuk-2-1" facs="#f316B-zone-Habakkuk-2-1"/>
             <w xml:id="f316B-w-215647">עַל־</w>
             <w xml:id="f316B-w-215648">מִשְׁמַרְתִּ֣י</w>
           <lb xml:id="f316B-lb-3-12" n="12"/>
@@ -457,7 +615,7 @@
           <lb xml:id="f316B-lb-3-15" n="15"/>
             <w xml:id="f316B-w-215661">תּוֹכַחְתִּֽי</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215661">׃</pc>
-            <milestone unit="verse" n="Habakkuk-2-2" xml:id="f316B-v-Habakkuk-2-2"/>
+            <milestone unit="verse" n="Habakkuk-2-2" xml:id="f316B-v-Habakkuk-2-2" facs="#f316B-zone-Habakkuk-2-2"/>
             <w xml:id="f316B-w-215662">וַיַּעֲנֵ֤נִי</w>
             <w xml:id="f316B-w-215663">יְהוָה֙</w>
           <lb xml:id="f316B-lb-3-16" n="16"/>
@@ -474,7 +632,7 @@
             <w xml:id="f316B-w-215672">ק֥וֹרֵא</w>
             <w xml:id="f316B-w-215673">בֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215673">׃</pc>
-            <milestone unit="verse" n="Habakkuk-2-3" xml:id="f316B-v-Habakkuk-2-3"/>
+            <milestone unit="verse" n="Habakkuk-2-3" xml:id="f316B-v-Habakkuk-2-3" facs="#f316B-zone-Habakkuk-2-3"/>
             <w xml:id="f316B-w-215674">כִּ֣י</w>
             <w xml:id="f316B-w-215675">ע֤וֹד</w>
             <w xml:id="f316B-w-215676">חָזוֹן֙</w>
@@ -497,7 +655,7 @@
             <w xml:id="f316B-w-215690">יְאַחֵֽר</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215690">׃</pc>
           <lb xml:id="f316B-lb-3-22" n="22"/>
-            <milestone unit="verse" n="Habakkuk-2-4" xml:id="f316B-v-Habakkuk-2-4"/>
+            <milestone unit="verse" n="Habakkuk-2-4" xml:id="f316B-v-Habakkuk-2-4" facs="#f316B-zone-Habakkuk-2-4"/>
             <w xml:id="f316B-w-215691">הִנֵּ֣ה</w>
             <w xml:id="f316B-w-215692">עֻפְּלָ֔ה</w>
             <w xml:id="f316B-w-215693">לֹא־</w>
@@ -510,7 +668,7 @@
           <lb xml:id="f316B-lb-3-24" n="24"/>
             <w xml:id="f316B-w-215699">יִחְיֶֽה</w>
             <pc type="sof-pasuq" xml:id="f316B-pc-215699">׃</pc>
-            <milestone unit="verse" n="Habakkuk-2-5" xml:id="f316B-v-Habakkuk-2-5"/>
+            <milestone unit="verse" n="Habakkuk-2-5" xml:id="f316B-v-Habakkuk-2-5" facs="#f316B-zone-Habakkuk-2-5"/>
             <w xml:id="f316B-w-215700">וְאַף֙</w>
             <w xml:id="f316B-w-215701">כִּֽי־</w>
             <w xml:id="f316B-w-215702">הַיַּ֣יִן</w>

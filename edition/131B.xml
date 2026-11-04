@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-sarahmccuan">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 22 verse zones (74 line segments) from Masoretica HTR page n261. Left out 3 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n261.json"/>
+      </change>
       <change when="2026-10-24T16:57:03.461711+00:00" who="#contrib-sarahmccuan">Encoded by sarahmccuan.
       </change>
       <change when="2026-10-24T16:54:28.778149+00:00" who="#contrib-sarahmccuan">Aligned Joshua 18:6 – Joshua 19:6 (362 atoms).
@@ -58,10 +69,129 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-131B">
+    <surface xml:id="surf-131B" ulx="0" uly="0" lrx="4335" lry="5279">
       <graphic xml:id="f131B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F131B.jpg">
         <desc type="sha256">4d613a778d9b03dea837d21ca610f4357032a765fe56b390c5b360eebdd90d9c</desc>
       </graphic>
+      <graphic xml:id="f131B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0261.jp2/full/max/0/default.jpg" width="4335px" height="5279px"/>
+      <zone xml:id="f131B-zone-Joshua-18-7" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-7-s1" ulx="2836" uly="1265" lrx="3103" lry="1424"/>
+        <zone xml:id="f131B-zone-Joshua-18-7-s2" ulx="2865" uly="1373" lrx="3602" lry="1518"/>
+        <zone xml:id="f131B-zone-Joshua-18-7-s3" ulx="2872" uly="1463" lrx="3620" lry="1612"/>
+        <zone xml:id="f131B-zone-Joshua-18-7-s4" ulx="2872" uly="1575" lrx="3605" lry="1702"/>
+        <zone xml:id="f131B-zone-Joshua-18-7-s5" ulx="2883" uly="1662" lrx="3605" lry="1799"/>
+        <zone xml:id="f131B-zone-Joshua-18-7-s6" ulx="3186" uly="1749" lrx="3612" lry="1901"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-8" type="verse" cert="0.931" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-8-s1" ulx="2995" uly="1749" lrx="3172" lry="1901"/>
+        <zone xml:id="f131B-zone-Joshua-18-8-s2" ulx="2933" uly="1839" lrx="3605" lry="2009"/>
+        <zone xml:id="f131B-zone-Joshua-18-8-s3" ulx="2973" uly="1955" lrx="3609" lry="2081"/>
+        <zone xml:id="f131B-zone-Joshua-18-8-s4" ulx="2879" uly="2027" lrx="3616" lry="2182"/>
+        <zone xml:id="f131B-zone-Joshua-18-8-s5" ulx="2897" uly="2139" lrx="3609" lry="2284"/>
+        <zone xml:id="f131B-zone-Joshua-18-8-s6" ulx="2904" uly="2229" lrx="3609" lry="2370"/>
+        <zone xml:id="f131B-zone-Joshua-18-8-s7" ulx="3168" uly="2338" lrx="3620" lry="2464"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-9" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-9-s1" ulx="2995" uly="2338" lrx="3161" lry="2464"/>
+        <zone xml:id="f131B-zone-Joshua-18-9-s2" ulx="2944" uly="2428" lrx="3605" lry="2551"/>
+        <zone xml:id="f131B-zone-Joshua-18-9-s3" ulx="2923" uly="2515" lrx="3641" lry="2638"/>
+        <zone xml:id="f131B-zone-Joshua-18-9-s4" ulx="2901" uly="2591" lrx="3663" lry="2750"/>
+        <zone xml:id="f131B-zone-Joshua-18-9-s5" ulx="2941" uly="2710" lrx="3638" lry="2829"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-10" type="verse" cert="0.948" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-10-s1" ulx="2915" uly="2782" lrx="3638" lry="2927"/>
+        <zone xml:id="f131B-zone-Joshua-18-10-s2" ulx="2883" uly="2883" lrx="3623" lry="3024"/>
+        <zone xml:id="f131B-zone-Joshua-18-10-s3" ulx="2962" uly="2985" lrx="3645" lry="3122"/>
+        <zone xml:id="f131B-zone-Joshua-18-10-s4" ulx="3071" uly="3071" lrx="3641" lry="3223"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-11" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-11-s1" ulx="2966" uly="3165" lrx="3645" lry="3313"/>
+        <zone xml:id="f131B-zone-Joshua-18-11-s2" ulx="3009" uly="3274" lrx="3631" lry="3411"/>
+        <zone xml:id="f131B-zone-Joshua-18-11-s3" ulx="2912" uly="3368" lrx="3645" lry="3505"/>
+        <zone xml:id="f131B-zone-Joshua-18-11-s4" ulx="3508" uly="3451" lrx="3652" lry="3599"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-12" type="verse" cert="0.851" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-12-s1" ulx="2890" uly="3451" lrx="3482" lry="3599"/>
+        <zone xml:id="f131B-zone-Joshua-18-12-s2" ulx="2894" uly="3555" lrx="3645" lry="3696"/>
+        <zone xml:id="f131B-zone-Joshua-18-12-s3" ulx="2926" uly="3635" lrx="3649" lry="3794"/>
+        <zone xml:id="f131B-zone-Joshua-18-12-s4" ulx="1965" uly="1171" lrx="2594" lry="1322"/>
+        <zone xml:id="f131B-zone-Joshua-18-12-s5" ulx="2164" uly="1272" lrx="2605" lry="1424"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-13" type="verse" cert="0.903" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-13-s1" ulx="1878" uly="1272" lrx="2157" lry="1424"/>
+        <zone xml:id="f131B-zone-Joshua-18-13-s2" ulx="1907" uly="1366" lrx="2605" lry="1514"/>
+        <zone xml:id="f131B-zone-Joshua-18-13-s3" ulx="1864" uly="1485" lrx="2612" lry="1604"/>
+        <zone xml:id="f131B-zone-Joshua-18-13-s4" ulx="1868" uly="1565" lrx="2601" lry="1691"/>
+        <zone xml:id="f131B-zone-Joshua-18-13-s5" ulx="1965" uly="1644" lrx="2619" lry="1796"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-15" type="verse" cert="0.922" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-15-s1" ulx="1904" uly="2233" lrx="2395" lry="2370"/>
+        <zone xml:id="f131B-zone-Joshua-18-15-s2" ulx="1922" uly="2331" lrx="2615" lry="2450"/>
+        <zone xml:id="f131B-zone-Joshua-18-15-s3" ulx="1799" uly="2406" lrx="2644" lry="2551"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-20" type="verse" cert="0.904" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-20-s1" ulx="946" uly="1283" lrx="1618" lry="1431"/>
+        <zone xml:id="f131B-zone-Joshua-18-20-s2" ulx="874" uly="1377" lrx="1611" lry="1536"/>
+        <zone xml:id="f131B-zone-Joshua-18-20-s3" ulx="871" uly="1492" lrx="1615" lry="1630"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-21" type="verse" cert="0.968" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-21-s1" ulx="907" uly="1575" lrx="1622" lry="1716"/>
+        <zone xml:id="f131B-zone-Joshua-18-21-s2" ulx="950" uly="1673" lrx="1608" lry="1796"/>
+        <zone xml:id="f131B-zone-Joshua-18-21-s3" ulx="1116" uly="1767" lrx="1608" lry="1908"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-22" type="verse" cert="0.928" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-22-s1" ulx="965" uly="1767" lrx="1098" lry="1908"/>
+        <zone xml:id="f131B-zone-Joshua-18-22-s2" ulx="986" uly="1857" lrx="1633" lry="2009"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-23" type="verse" cert="0.995" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-23-s1" ulx="1051" uly="1962" lrx="1633" lry="2099"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-24" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-24-s1" ulx="892" uly="1962" lrx="1040" lry="2099"/>
+        <zone xml:id="f131B-zone-Joshua-18-24-s2" ulx="900" uly="2060" lrx="1618" lry="2186"/>
+        <zone xml:id="f131B-zone-Joshua-18-24-s3" ulx="997" uly="2157" lrx="1622" lry="2280"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-25" type="verse" cert="0.993" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-25-s1" ulx="853" uly="2157" lrx="990" lry="2280"/>
+        <zone xml:id="f131B-zone-Joshua-18-25-s2" ulx="1235" uly="2247" lrx="1644" lry="2370"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-26" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-26-s1" ulx="979" uly="2247" lrx="1217" lry="2370"/>
+        <zone xml:id="f131B-zone-Joshua-18-26-s2" ulx="1189" uly="2313" lrx="1636" lry="2461"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-27" type="verse" cert="0.947" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-27-s1" ulx="1019" uly="2313" lrx="1178" lry="2461"/>
+        <zone xml:id="f131B-zone-Joshua-18-27-s2" ulx="1189" uly="2403" lrx="1647" lry="2547"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-18-28" type="verse" cert="0.892" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-18-28-s1" ulx="878" uly="2403" lrx="1174" lry="2547"/>
+        <zone xml:id="f131B-zone-Joshua-18-28-s2" ulx="892" uly="2526" lrx="1644" lry="2641"/>
+        <zone xml:id="f131B-zone-Joshua-18-28-s3" ulx="936" uly="2609" lrx="1636" lry="2750"/>
+        <zone xml:id="f131B-zone-Joshua-18-28-s4" ulx="903" uly="2706" lrx="1647" lry="2847"/>
+        <zone xml:id="f131B-zone-Joshua-18-28-s5" ulx="1329" uly="2808" lrx="1640" lry="2916"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-19-1" type="verse" cert="0.918" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-19-1-s1" ulx="907" uly="2862" lrx="1651" lry="3013"/>
+        <zone xml:id="f131B-zone-Joshua-19-1-s2" ulx="874" uly="2963" lrx="1647" lry="3122"/>
+        <zone xml:id="f131B-zone-Joshua-19-1-s3" ulx="936" uly="3075" lrx="1662" lry="3223"/>
+        <zone xml:id="f131B-zone-Joshua-19-1-s4" ulx="2106" uly="3259" lrx="2521" lry="3404"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-19-3" type="verse" cert="0.944" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-19-3-s1" ulx="936" uly="3288" lrx="1087" lry="3407"/>
+        <zone xml:id="f131B-zone-Joshua-19-3-s2" ulx="1174" uly="3368" lrx="1662" lry="3508"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-19-4" type="verse" cert="0.953" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-19-4-s1" ulx="918" uly="3368" lrx="1160" lry="3508"/>
+        <zone xml:id="f131B-zone-Joshua-19-4-s2" ulx="1311" uly="3472" lrx="1669" lry="3595"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-19-5" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-19-5-s1" ulx="975" uly="3472" lrx="1311" lry="3595"/>
+        <zone xml:id="f131B-zone-Joshua-19-5-s2" ulx="1087" uly="3559" lrx="1658" lry="3696"/>
+      </zone>
+      <zone xml:id="f131B-zone-Joshua-19-6" type="verse" cert="0.737" resp="#source-masoretica">
+        <zone xml:id="f131B-zone-Joshua-19-6-s1" ulx="954" uly="3559" lrx="1087" lry="3696"/>
+        <zone xml:id="f131B-zone-Joshua-19-6-s2" ulx="950" uly="3628" lrx="1658" lry="3787"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -83,7 +213,7 @@
             <w xml:id="f131B-w-86915">יְהוָ֥ה</w>
             <w xml:id="f131B-w-86916">אֱלֹהֵֽינוּ</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-86916">׃</pc>
-            <milestone unit="verse" n="Joshua-18-7" xml:id="f131B-v-Joshua-18-7"/>
+            <milestone unit="verse" n="Joshua-18-7" xml:id="f131B-v-Joshua-18-7" facs="#f131B-zone-Joshua-18-7"/>
             <w xml:id="f131B-w-86917">כִּ֠י</w>
             <w xml:id="f131B-w-86918">אֵֽין־</w>
             <w xml:id="f131B-w-86919">חֵ֤לֶק</w>
@@ -115,7 +245,7 @@
             <w xml:id="f131B-w-86940">עֶ֥בֶד</w>
             <w xml:id="f131B-w-86941">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-86941">׃</pc>
-            <milestone unit="verse" n="Joshua-18-8" xml:id="f131B-v-Joshua-18-8"/>
+            <milestone unit="verse" n="Joshua-18-8" xml:id="f131B-v-Joshua-18-8" facs="#f131B-zone-Joshua-18-8"/>
             <w xml:id="f131B-w-86942">וַיָּקֻ֥מוּ</w>
           <lb xml:id="f131B-lb-1-8" n="8"/>
             <w xml:id="f131B-w-86943">הָאֲנָשִׁ֖ים</w>
@@ -148,7 +278,7 @@
             <w xml:id="f131B-w-86965">יְהוָ֖ה</w>
             <w xml:id="f131B-w-86966">בְּשִׁלֹֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-86966">׃</pc>
-            <milestone unit="verse" n="Joshua-18-9" xml:id="f131B-v-Joshua-18-9"/>
+            <milestone unit="verse" n="Joshua-18-9" xml:id="f131B-v-Joshua-18-9" facs="#f131B-zone-Joshua-18-9"/>
             <w xml:id="f131B-w-86967">וַיֵּלְכ֤וּ</w>
           <lb xml:id="f131B-lb-1-14" n="14"/>
             <w xml:id="f131B-w-86968">הֽ͏ָאֲנָשִׁים֙</w>
@@ -171,7 +301,7 @@
             <w xml:id="f131B-w-86982">שִׁלֹֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-86982">׃</pc>
           <lb xml:id="f131B-lb-1-18" n="18"/>
-            <milestone unit="verse" n="Joshua-18-10" xml:id="f131B-v-Joshua-18-10"/>
+            <milestone unit="verse" n="Joshua-18-10" xml:id="f131B-v-Joshua-18-10" facs="#f131B-zone-Joshua-18-10"/>
             <w xml:id="f131B-w-86983">וַיַּשְׁלֵךְ֩</w>
             <w xml:id="f131B-w-86984">לָהֶ֨ם</w>
             <w xml:id="f131B-w-86985">יְהוֹשֻׁ֧עַ</w>
@@ -193,7 +323,7 @@
             <pc type="sof-pasuq" xml:id="f131B-pc-86997">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f131B-s-Joshua-18-10"/>
           <lb xml:id="f131B-lb-1-22" n="22"/>
-            <milestone unit="verse" n="Joshua-18-11" xml:id="f131B-v-Joshua-18-11"/>
+            <milestone unit="verse" n="Joshua-18-11" xml:id="f131B-v-Joshua-18-11" facs="#f131B-zone-Joshua-18-11"/>
             <w xml:id="f131B-w-86998">וַיַּ֗עַל</w>
             <w xml:id="f131B-w-86999">גּוֹרַ֛ל</w>
             <w xml:id="f131B-w-87000">מַטֵּ֥ה</w>
@@ -213,7 +343,7 @@
           <lb xml:id="f131B-lb-1-25" n="25"/>
             <w xml:id="f131B-w-87012">יוֹסֵֽף</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87012">׃</pc>
-            <milestone unit="verse" n="Joshua-18-12" xml:id="f131B-v-Joshua-18-12"/>
+            <milestone unit="verse" n="Joshua-18-12" xml:id="f131B-v-Joshua-18-12" facs="#f131B-zone-Joshua-18-12"/>
             <w xml:id="f131B-w-87013">וַיְהִ֨י</w>
             <w xml:id="f131B-w-87014">לָהֶ֧ם</w>
             <w xml:id="f131B-w-87015">הַגְּב֛וּל</w>
@@ -241,7 +371,7 @@
             <w xml:id="f131B-w-87032">בֵּ֥ית</w>
             <w xml:id="f131B-w-87033">אָֽוֶן</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87033">׃</pc>
-            <milestone unit="verse" n="Joshua-18-13" xml:id="f131B-v-Joshua-18-13"/>
+            <milestone unit="verse" n="Joshua-18-13" xml:id="f131B-v-Joshua-18-13" facs="#f131B-zone-Joshua-18-13"/>
             <w xml:id="f131B-w-87034">וְעָבַר֩</w>
             <w xml:id="f131B-w-87035">מִשָּׁ֨ם</w>
           <lb xml:id="f131B-lb-2-3" n="3"/>
@@ -305,7 +435,7 @@
             <w xml:id="f131B-w-87082">פְּאַת־</w>
             <w xml:id="f131B-w-87083">יָֽם</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87083">׃</pc>
-            <milestone unit="verse" n="Joshua-18-15" xml:id="f131B-v-Joshua-18-15"/>
+            <milestone unit="verse" n="Joshua-18-15" xml:id="f131B-v-Joshua-18-15" facs="#f131B-zone-Joshua-18-15"/>
             <w xml:id="f131B-w-87084">וּפְאַת־</w>
             <w xml:id="f131B-w-87085">נֶ֕גְבָּה</w>
             <w xml:id="f131B-w-87086">מִקְצֵ֖ה</w>
@@ -418,7 +548,7 @@
             <w xml:id="f131B-w-87168">נֶֽגֶב</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87168">׃</pc>
           <lb xml:id="f131B-lb-3-2" n="2"/>
-            <milestone unit="verse" n="Joshua-18-20" xml:id="f131B-v-Joshua-18-20"/>
+            <milestone unit="verse" n="Joshua-18-20" xml:id="f131B-v-Joshua-18-20" facs="#f131B-zone-Joshua-18-20"/>
             <w xml:id="f131B-w-87169">וְהַיַּרְדֵּ֥ן</w>
             <w xml:id="f131B-w-87170">יִגְבֹּל־</w>
             <w xml:id="f131B-w-87171">אֹת֖וֹ</w>
@@ -435,7 +565,7 @@
             <w xml:id="f131B-w-87180">לְמִשְׁפְּחֹתָֽם</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87180">׃</pc>
           <lb xml:id="f131B-lb-3-5" n="5"/>
-            <milestone unit="verse" n="Joshua-18-21" xml:id="f131B-v-Joshua-18-21"/>
+            <milestone unit="verse" n="Joshua-18-21" xml:id="f131B-v-Joshua-18-21" facs="#f131B-zone-Joshua-18-21"/>
             <w xml:id="f131B-w-87181">וְהָי֣וּ</w>
             <w xml:id="f131B-w-87182">הֽ͏ֶעָרִ֗ים</w>
             <w xml:id="f131B-w-87183">לְמַטֵּ֛ה</w>
@@ -450,7 +580,7 @@
             <w xml:id="f131B-w-87190">וְעֵ֥מֶק</w>
             <w xml:id="f131B-w-87191">קְצִֽיץ</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87191">׃</pc>
-            <milestone unit="verse" n="Joshua-18-22" xml:id="f131B-v-Joshua-18-22"/>
+            <milestone unit="verse" n="Joshua-18-22" xml:id="f131B-v-Joshua-18-22" facs="#f131B-zone-Joshua-18-22"/>
             <w xml:id="f131B-w-87192">וּבֵ֧ית</w>
           <lb xml:id="f131B-lb-3-8" n="8"/>
             <w xml:id="f131B-w-87193">הֽ͏ָעֲרָבָ֛ה</w>
@@ -459,12 +589,12 @@
             <w xml:id="f131B-w-87196">אֵֽל</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87196">׃</pc>
           <lb xml:id="f131B-lb-3-9" n="9"/>
-            <milestone unit="verse" n="Joshua-18-23" xml:id="f131B-v-Joshua-18-23"/>
+            <milestone unit="verse" n="Joshua-18-23" xml:id="f131B-v-Joshua-18-23" facs="#f131B-zone-Joshua-18-23"/>
             <w xml:id="f131B-w-87197">וְהָעַוִּ֥ים</w>
             <w xml:id="f131B-w-87198">וְהַפָּרָ֖ה</w>
             <w xml:id="f131B-w-87199">וְעָפְרָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87199">׃</pc>
-            <milestone unit="verse" n="Joshua-18-24" xml:id="f131B-v-Joshua-18-24"/>
+            <milestone unit="verse" n="Joshua-18-24" xml:id="f131B-v-Joshua-18-24" facs="#f131B-zone-Joshua-18-24"/>
             <w xml:id="f131B-w-87200">וּכְפַ֧ר</w>
           <lb xml:id="f131B-lb-3-10" n="10"/>
             <w xml:id="f131B-w-87201">העמני</w>
@@ -476,25 +606,25 @@
             <w xml:id="f131B-w-87206">עֶשְׂרֵ֖ה</w>
             <w xml:id="f131B-w-87207">וְחַצְרֵיהֶֽן</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87207">׃</pc>
-            <milestone unit="verse" n="Joshua-18-25" xml:id="f131B-v-Joshua-18-25"/>
+            <milestone unit="verse" n="Joshua-18-25" xml:id="f131B-v-Joshua-18-25" facs="#f131B-zone-Joshua-18-25"/>
             <w xml:id="f131B-w-87208">גִּבְע֥וֹן</w>
           <lb xml:id="f131B-lb-3-12" n="12"/>
             <w xml:id="f131B-w-87209">וְהָֽרָמָ֖ה</w>
             <w xml:id="f131B-w-87210">וּבְאֵרֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87210">׃</pc>
-            <milestone unit="verse" n="Joshua-18-26" xml:id="f131B-v-Joshua-18-26"/>
+            <milestone unit="verse" n="Joshua-18-26" xml:id="f131B-v-Joshua-18-26" facs="#f131B-zone-Joshua-18-26"/>
             <w xml:id="f131B-w-87211">וְהַמִּצְפֶּ֥ה</w>
           <lb xml:id="f131B-lb-3-13" n="13"/>
             <w xml:id="f131B-w-87212">וְהַכְּפִירָ֖ה</w>
             <w xml:id="f131B-w-87213">וְהַמֹּצָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87213">׃</pc>
-            <milestone unit="verse" n="Joshua-18-27" xml:id="f131B-v-Joshua-18-27"/>
+            <milestone unit="verse" n="Joshua-18-27" xml:id="f131B-v-Joshua-18-27" facs="#f131B-zone-Joshua-18-27"/>
             <w xml:id="f131B-w-87214">וְרֶ֥קֶם</w>
           <lb xml:id="f131B-lb-3-14" n="14"/>
             <w xml:id="f131B-w-87215">וְיִרְפְּאֵ֖ל</w>
             <w xml:id="f131B-w-87216">וְתַרְאֲלָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87216">׃</pc>
-            <milestone unit="verse" n="Joshua-18-28" xml:id="f131B-v-Joshua-18-28"/>
+            <milestone unit="verse" n="Joshua-18-28" xml:id="f131B-v-Joshua-18-28" facs="#f131B-zone-Joshua-18-28"/>
             <w xml:id="f131B-w-87217">וְצֵלַ֡ע</w>
             <w xml:id="f131B-w-87218">הָאֶ֜לֶף</w>
           <lb xml:id="f131B-lb-3-15" n="15"/>
@@ -518,7 +648,7 @@
             <pc type="sof-pasuq" xml:id="f131B-pc-87232">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f131B-s-Joshua-18-28"/>
           <lb xml:id="f131B-lb-3-19" n="19"/>
-            <milestone unit="verse" n="Joshua-19-1" xml:id="f131B-v-Joshua-19-1"/>
+            <milestone unit="verse" n="Joshua-19-1" xml:id="f131B-v-Joshua-19-1" facs="#f131B-zone-Joshua-19-1"/>
             <w xml:id="f131B-w-87233">וַיֵּצֵ֞א</w>
             <w xml:id="f131B-w-87234">הַגּוֹרָ֤ל</w>
             <w xml:id="f131B-w-87235">הַשֵּׁנִי֙</w>
@@ -547,20 +677,20 @@
             <w xml:id="f131B-w-87252">וְשֶׁ֖בַע</w>
             <w xml:id="f131B-w-87253">וּמוֹלָדָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87253">׃</pc>
-            <milestone unit="verse" n="Joshua-19-3" xml:id="f131B-v-Joshua-19-3"/>
+            <milestone unit="verse" n="Joshua-19-3" xml:id="f131B-v-Joshua-19-3" facs="#f131B-zone-Joshua-19-3"/>
             <w xml:id="f131B-w-87254">וַחֲצַ֥ר</w>
           <lb xml:id="f131B-lb-3-24" n="24"/>
             <w xml:id="f131B-w-87255">שׁוּעָ֛ל</w>
             <w xml:id="f131B-w-87256">וּבָלָ֖ה</w>
             <w xml:id="f131B-w-87257">וָעָֽצֶם</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87257">׃</pc>
-            <milestone unit="verse" n="Joshua-19-4" xml:id="f131B-v-Joshua-19-4"/>
+            <milestone unit="verse" n="Joshua-19-4" xml:id="f131B-v-Joshua-19-4" facs="#f131B-zone-Joshua-19-4"/>
             <w xml:id="f131B-w-87258">וְאֶלְתּוֹלַ֥ד</w>
           <lb xml:id="f131B-lb-3-25" n="25"/>
             <w xml:id="f131B-w-87259">וּבְת֖וּל</w>
             <w xml:id="f131B-w-87260">וְחָרְמָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87260">׃</pc>
-            <milestone unit="verse" n="Joshua-19-5" xml:id="f131B-v-Joshua-19-5"/>
+            <milestone unit="verse" n="Joshua-19-5" xml:id="f131B-v-Joshua-19-5" facs="#f131B-zone-Joshua-19-5"/>
             <w xml:id="f131B-w-87261">וְצִֽקְלַ֥ג</w>
             <w xml:id="f131B-w-87262">וּבֵית־</w>
           <lb xml:id="f131B-lb-3-26" n="26"/>
@@ -568,7 +698,7 @@
             <w xml:id="f131B-w-87264">וַחֲצַ֥ר</w>
             <w xml:id="f131B-w-87265">סוּסָֽה</w>
             <pc type="sof-pasuq" xml:id="f131B-pc-87265">׃</pc>
-            <milestone unit="verse" n="Joshua-19-6" xml:id="f131B-v-Joshua-19-6"/>
+            <milestone unit="verse" n="Joshua-19-6" xml:id="f131B-v-Joshua-19-6" facs="#f131B-zone-Joshua-19-6"/>
             <w xml:id="f131B-w-87266">וּבֵ֥ית</w>
           <lb xml:id="f131B-lb-3-27" n="27"/>
             <w xml:id="f131B-w-87267">לְבָא֖וֹת</w>

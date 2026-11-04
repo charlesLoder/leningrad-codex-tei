@@ -16,6 +16,10 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-charles-w-loder">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -39,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 23 verse zones (96 line segments) from Masoretica HTR page n852.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n852.json"/>
+      </change>
       <change when="2026-11-01T21:48:27.929886+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-11-01T11:51:19.512504+00:00" who="#contrib-charles-w-loder">Aligned Ecclesiastes 4:13 – Ecclesiastes 5:19 (321 atoms).
@@ -58,10 +65,153 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-427A">
+    <surface xml:id="surf-427A" ulx="0" uly="0" lrx="4783" lry="5499">
       <graphic xml:id="f427A-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F427A.jpg">
         <desc type="sha256">2b69c28718e4fc332384e46c811010b0bd741bcebf7cfbeff2083701666b903d</desc>
       </graphic>
+      <graphic xml:id="f427A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0852.jp2/full/max/0/default.jpg" width="4783px" height="5499px"/>
+      <zone xml:id="f427A-zone-Ecclesiastes-4-13" type="verse" cert="0.648" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-4-13-s1" ulx="3543" uly="1243" lrx="4213" lry="1435"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-13-s2" ulx="3838" uly="1375" lrx="4209" lry="1542"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-4-14" type="verse" cert="0.956" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-4-14-s1" ulx="3559" uly="1375" lrx="3807" lry="1542"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-14-s2" ulx="3480" uly="1474" lrx="4193" lry="1638"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-14-s3" ulx="3547" uly="1582" lrx="4217" lry="1737"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-4-15" type="verse" cert="0.954" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-4-15-s1" ulx="3567" uly="1678" lrx="4205" lry="1829"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-15-s2" ulx="3512" uly="1793" lrx="4217" lry="1929"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-15-s3" ulx="3539" uly="1873" lrx="4221" lry="2040"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-15-s4" ulx="3783" uly="1965" lrx="4225" lry="2144"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-4-16" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-4-16-s1" ulx="3432" uly="1965" lrx="3747" lry="2144"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-16-s2" ulx="3579" uly="2072" lrx="4201" lry="2235"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-16-s3" ulx="3428" uly="2168" lrx="4201" lry="2339"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-16-s4" ulx="3476" uly="2291" lrx="4225" lry="2447"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-16-s5" ulx="3862" uly="2403" lrx="4217" lry="2542"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-4-17" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-4-17-s1" ulx="3448" uly="2403" lrx="3826" lry="2542"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-17-s2" ulx="3424" uly="2502" lrx="4201" lry="2630"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-17-s3" ulx="3464" uly="2578" lrx="4205" lry="2734"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-17-s4" ulx="3504" uly="2690" lrx="4221" lry="2829"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-17-s5" ulx="3508" uly="2785" lrx="4213" lry="2945"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-4-17-s6" ulx="4133" uly="2869" lrx="4225" lry="3048"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-1" type="verse" cert="0.987" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-1-s1" ulx="3484" uly="2869" lrx="4078" lry="3048"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-1-s2" ulx="3484" uly="2985" lrx="4233" lry="3148"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-1-s3" ulx="3428" uly="3084" lrx="4225" lry="3248"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-1-s4" ulx="3476" uly="3188" lrx="4217" lry="3347"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-1-s5" ulx="3480" uly="3279" lrx="4217" lry="3443"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-1-s6" ulx="3739" uly="3379" lrx="4221" lry="3542"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-2" type="verse" cert="0.928" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-2-s1" ulx="3460" uly="3379" lrx="3683" lry="3542"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-2-s2" ulx="3476" uly="3499" lrx="4225" lry="3638"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-2-s3" ulx="3711" uly="3582" lrx="4229" lry="3750"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-3" type="verse" cert="0.966" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-3-s1" ulx="3460" uly="3582" lrx="3679" lry="3750"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-3-s2" ulx="3504" uly="3690" lrx="4221" lry="3845"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-3-s3" ulx="3508" uly="3790" lrx="4241" lry="3965"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-3-s4" ulx="2384" uly="1279" lrx="3157" lry="1442"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-3-s5" ulx="2850" uly="1387" lrx="3173" lry="1538"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-4" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-4-s1" ulx="2403" uly="1387" lrx="2822" lry="1538"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-4-s2" ulx="2384" uly="1478" lrx="3165" lry="1638"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-4-s3" ulx="2946" uly="1586" lrx="3165" lry="1737"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-5" type="verse" cert="0.96" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-5-s1" ulx="2399" uly="1586" lrx="2902" lry="1737"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-5-s2" ulx="2364" uly="1690" lrx="3157" lry="1841"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-5-s3" ulx="2415" uly="1781" lrx="3157" lry="1937"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-5-s4" ulx="2427" uly="1885" lrx="3165" lry="2048"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-5-s5" ulx="2399" uly="1976" lrx="3153" lry="2140"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-5-s6" ulx="2643" uly="2080" lrx="3153" lry="2239"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-6" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-6-s1" ulx="2407" uly="2080" lrx="2611" lry="2239"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-6-s2" ulx="2451" uly="2180" lrx="3153" lry="2339"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-6-s3" ulx="2392" uly="2303" lrx="3169" lry="2443"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-7" type="verse" cert="0.973" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-7-s1" ulx="2388" uly="2383" lrx="3177" lry="2542"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-7-s2" ulx="2388" uly="2483" lrx="3181" lry="2642"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-7-s3" ulx="2407" uly="2578" lrx="3189" lry="2734"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-7-s4" ulx="2427" uly="2662" lrx="3173" lry="2829"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-7-s5" ulx="2954" uly="2781" lrx="3185" lry="2941"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-8" type="verse" cert="0.972" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-8-s1" ulx="2395" uly="2781" lrx="2930" lry="2941"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-8-s2" ulx="2435" uly="2881" lrx="3165" lry="3048"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-9" type="verse" cert="0.993" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-9-s1" ulx="2388" uly="3005" lrx="3173" lry="3140"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-9-s2" ulx="2579" uly="3080" lrx="3197" lry="3240"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-9-s3" ulx="2595" uly="3172" lrx="3173" lry="3339"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-10" type="verse" cert="0.934" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-10-s1" ulx="2392" uly="3172" lrx="2575" lry="3339"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-10-s2" ulx="2431" uly="3272" lrx="3177" lry="3439"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-10-s3" ulx="2463" uly="3379" lrx="3177" lry="3534"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-10-s4" ulx="2790" uly="3499" lrx="3169" lry="3634"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-11" type="verse" cert="0.955" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-11-s1" ulx="2407" uly="3499" lrx="2762" lry="3634"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-11-s2" ulx="2388" uly="3574" lrx="3181" lry="3742"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-11-s3" ulx="2407" uly="3690" lrx="3193" lry="3845"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-11-s4" ulx="2499" uly="3782" lrx="3189" lry="3965"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-11-s5" ulx="1913" uly="1267" lrx="2120" lry="1431"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-12" type="verse" cert="0.963" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-12-s1" ulx="1443" uly="1267" lrx="1905" lry="1431"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-12-s2" ulx="1399" uly="1387" lrx="2120" lry="1542"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-12-s3" ulx="1419" uly="1482" lrx="2120" lry="1642"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-12-s4" ulx="1861" uly="1602" lrx="2105" lry="1753"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-13" type="verse" cert="0.962" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-13-s1" ulx="1391" uly="1602" lrx="1849" lry="1753"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-13-s2" ulx="1339" uly="1713" lrx="2113" lry="1841"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-13-s3" ulx="1439" uly="1813" lrx="2112" lry="1945"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-14" type="verse" cert="0.983" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-14-s1" ulx="1359" uly="1913" lrx="2124" lry="2044"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-14-s2" ulx="1351" uly="1996" lrx="2124" lry="2156"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-14-s3" ulx="1323" uly="2096" lrx="2144" lry="2259"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-14-s4" ulx="1778" uly="2212" lrx="2124" lry="2363"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-15" type="verse" cert="0.927" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-15-s1" ulx="1359" uly="2212" lrx="1766" lry="2363"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-15-s2" ulx="1351" uly="2303" lrx="2120" lry="2459"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-15-s3" ulx="1319" uly="2395" lrx="2140" lry="2550"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-15-s4" ulx="1925" uly="2494" lrx="2128" lry="2650"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-16" type="verse" cert="0.882" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-16-s1" ulx="1367" uly="2494" lrx="1929" lry="2650"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-16-s2" ulx="1355" uly="2610" lrx="2128" lry="2742"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-16-s3" ulx="1909" uly="2702" lrx="2136" lry="2837"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-17" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-17-s1" ulx="1339" uly="2702" lrx="1865" lry="2837"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-17-s2" ulx="1335" uly="2781" lrx="2124" lry="2945"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-17-s3" ulx="1371" uly="2881" lrx="2136" lry="3032"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-17-s4" ulx="1355" uly="2989" lrx="2128" lry="3152"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-17-s5" ulx="1411" uly="3108" lrx="2124" lry="3244"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-17-s6" ulx="1363" uly="3204" lrx="2132" lry="3343"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-17-s7" ulx="1770" uly="3311" lrx="2120" lry="3443"/>
+      </zone>
+      <zone xml:id="f427A-zone-Ecclesiastes-5-18" type="verse" cert="0.938" resp="#source-masoretica">
+        <zone xml:id="f427A-zone-Ecclesiastes-5-18-s1" ulx="1363" uly="3311" lrx="1762" lry="3443"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-18-s2" ulx="1395" uly="3387" lrx="2124" lry="3546"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-18-s3" ulx="1375" uly="3483" lrx="2128" lry="3642"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-18-s4" ulx="1355" uly="3586" lrx="2124" lry="3746"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-18-s5" ulx="1367" uly="3690" lrx="2124" lry="3845"/>
+        <zone xml:id="f427A-zone-Ecclesiastes-5-18-s6" ulx="1578" uly="3790" lrx="2136" lry="3957"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +222,7 @@
         <ab>
         <cb xml:id="f427A-cb-1" n="1"/>
           <lb xml:id="f427A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Ecclesiastes-4-13" xml:id="f427A-v-Ecclesiastes-4-13"/>
+            <milestone unit="verse" n="Ecclesiastes-4-13" xml:id="f427A-v-Ecclesiastes-4-13" facs="#f427A-zone-Ecclesiastes-4-13"/>
             <w xml:id="f427A-w-261461">וּכְסִ֔יל</w>
             <w xml:id="f427A-w-261462">אֲשֶׁ֛ר</w>
             <w xml:id="f427A-w-261463">לֹא־</w>
@@ -81,7 +231,7 @@
             <w xml:id="f427A-w-261465">לְהִזָּהֵ֖ר</w>
             <w xml:id="f427A-w-261466">עֽוֹד</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261466">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-4-14" xml:id="f427A-v-Ecclesiastes-4-14"/>
+            <milestone unit="verse" n="Ecclesiastes-4-14" xml:id="f427A-v-Ecclesiastes-4-14" facs="#f427A-zone-Ecclesiastes-4-14"/>
             <w xml:id="f427A-w-261467">כִּֽי־</w>
             <w xml:id="f427A-w-261468">מִבֵּ֥ית</w>
           <lb xml:id="f427A-lb-1-3" n="3"/>
@@ -96,7 +246,7 @@
             <w xml:id="f427A-w-261476">רָֽשׁ</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261476">׃</pc>
           <lb xml:id="f427A-lb-1-5" n="5"/>
-            <milestone unit="verse" n="Ecclesiastes-4-15" xml:id="f427A-v-Ecclesiastes-4-15"/>
+            <milestone unit="verse" n="Ecclesiastes-4-15" xml:id="f427A-v-Ecclesiastes-4-15" facs="#f427A-zone-Ecclesiastes-4-15"/>
             <w xml:id="f427A-w-261477">רָאִ֙יתִי֙</w>
             <w xml:id="f427A-w-261478">אֶת־</w>
             <w xml:id="f427A-w-261479">כָּל־</w>
@@ -114,7 +264,7 @@
             <w xml:id="f427A-w-261488">יַעֲמֹ֖ד</w>
             <w xml:id="f427A-w-261489">תַּחְתָּֽיו</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261489">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-4-16" xml:id="f427A-v-Ecclesiastes-4-16"/>
+            <milestone unit="verse" n="Ecclesiastes-4-16" xml:id="f427A-v-Ecclesiastes-4-16" facs="#f427A-zone-Ecclesiastes-4-16"/>
             <w xml:id="f427A-w-261490">אֵֽין־</w>
             <w xml:id="f427A-w-261491">קֵ֣ץ</w>
             <w xml:id="f427A-w-261492">לְכָל־</w>
@@ -139,7 +289,7 @@
             <w xml:id="f427A-w-261507">וְרַעְי֥וֹן</w>
             <w xml:id="f427A-w-261508">רֽוּחַ</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261508">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-4-17" xml:id="f427A-v-Ecclesiastes-4-17"/>
+            <milestone unit="verse" n="Ecclesiastes-4-17" xml:id="f427A-v-Ecclesiastes-4-17" facs="#f427A-zone-Ecclesiastes-4-17"/>
             <w xml:id="f427A-w-261509">שְׁמֹ֣ר</w>
             <w xml:id="f427A-w-261510">רגליך</w>
           <lb xml:id="f427A-lb-1-13" n="13"/>
@@ -163,7 +313,7 @@
           <lb xml:id="f427A-lb-1-17" n="17"/>
             <w xml:id="f427A-w-261525">רָֽע</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261525">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-1" xml:id="f427A-v-Ecclesiastes-5-1"/>
+            <milestone unit="verse" n="Ecclesiastes-5-1" xml:id="f427A-v-Ecclesiastes-5-1" facs="#f427A-zone-Ecclesiastes-5-1"/>
             <w xml:id="f427A-w-261526">אַל־</w>
             <w xml:id="f427A-w-261527">תְּבַהֵ֨ל</w>
             <w xml:id="f427A-w-261528">עַל־</w>
@@ -192,7 +342,7 @@
             <w xml:id="f427A-w-261546">דְבָרֶ֖יךָ</w>
             <w xml:id="f427A-w-261547">מְעַטִּֽים</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261547">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-2" xml:id="f427A-v-Ecclesiastes-5-2"/>
+            <milestone unit="verse" n="Ecclesiastes-5-2" xml:id="f427A-v-Ecclesiastes-5-2" facs="#f427A-zone-Ecclesiastes-5-2"/>
             <w xml:id="f427A-w-261548">כִּ֛י</w>
             <w xml:id="f427A-w-261549">בָּ֥א</w>
           <lb xml:id="f427A-lb-1-23" n="23"/>
@@ -205,7 +355,7 @@
             <w xml:id="f427A-w-261555">בְּרֹ֥ב</w>
             <w xml:id="f427A-w-261556">דְּבָרִֽים</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261556">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-3" xml:id="f427A-v-Ecclesiastes-5-3"/>
+            <milestone unit="verse" n="Ecclesiastes-5-3" xml:id="f427A-v-Ecclesiastes-5-3" facs="#f427A-zone-Ecclesiastes-5-3"/>
             <w xml:id="f427A-w-261557">כַּאֲשֶׁר֩</w>
           <lb xml:id="f427A-lb-1-25" n="25"/>
             <w xml:id="f427A-w-261558">תִּדֹּ֨ר</w>
@@ -227,7 +377,7 @@
             <w xml:id="f427A-w-261570">תִּדֹּ֖ר</w>
             <w xml:id="f427A-w-261571">שַׁלֵּֽם</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261571">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-4" xml:id="f427A-v-Ecclesiastes-5-4"/>
+            <milestone unit="verse" n="Ecclesiastes-5-4" xml:id="f427A-v-Ecclesiastes-5-4" facs="#f427A-zone-Ecclesiastes-5-4"/>
             <w xml:id="f427A-w-261572">ט֖וֹב</w>
             <w xml:id="f427A-w-261573">אֲשֶׁ֣ר</w>
             <w xml:id="f427A-w-261574">לֹֽא־</w>
@@ -238,7 +388,7 @@
           <lb xml:id="f427A-lb-2-4" n="4"/>
             <w xml:id="f427A-w-261578">תְשַׁלֵּֽם</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261578">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-5" xml:id="f427A-v-Ecclesiastes-5-5"/>
+            <milestone unit="verse" n="Ecclesiastes-5-5" xml:id="f427A-v-Ecclesiastes-5-5" facs="#f427A-zone-Ecclesiastes-5-5"/>
             <w xml:id="f427A-w-261579">אַל־</w>
             <w xml:id="f427A-w-261580">תִּתֵּ֤ן</w>
             <w xml:id="f427A-w-261581">אֶת־</w>
@@ -268,7 +418,7 @@
             <w xml:id="f427A-w-261600">מַעֲשֵׂ֥ה</w>
             <w xml:id="f427A-w-261601">יָדֶֽיךָ</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261601">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-6" xml:id="f427A-v-Ecclesiastes-5-6"/>
+            <milestone unit="verse" n="Ecclesiastes-5-6" xml:id="f427A-v-Ecclesiastes-5-6" facs="#f427A-zone-Ecclesiastes-5-6"/>
             <w xml:id="f427A-w-261602">כִּ֣י</w>
             <w xml:id="f427A-w-261603">בְרֹ֤ב</w>
           <lb xml:id="f427A-lb-2-10" n="10"/>
@@ -283,7 +433,7 @@
             <w xml:id="f427A-w-261611">יְרָֽא</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261611">׃</pc>
           <lb xml:id="f427A-lb-2-12" n="12"/>
-            <milestone unit="verse" n="Ecclesiastes-5-7" xml:id="f427A-v-Ecclesiastes-5-7"/>
+            <milestone unit="verse" n="Ecclesiastes-5-7" xml:id="f427A-v-Ecclesiastes-5-7" facs="#f427A-zone-Ecclesiastes-5-7"/>
             <w xml:id="f427A-w-261612">אִם־</w>
             <w xml:id="f427A-w-261613">עֹ֣שֶׁק</w>
             <w xml:id="f427A-w-261614">רָ֠שׁ</w>
@@ -308,7 +458,7 @@
           <lb xml:id="f427A-lb-2-16" n="16"/>
             <w xml:id="f427A-w-261630">עֲלֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261630">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-8" xml:id="f427A-v-Ecclesiastes-5-8"/>
+            <milestone unit="verse" n="Ecclesiastes-5-8" xml:id="f427A-v-Ecclesiastes-5-8" facs="#f427A-zone-Ecclesiastes-5-8"/>
             <w xml:id="f427A-w-261631">וְיִתְר֥וֹן</w>
             <w xml:id="f427A-w-261632">אֶ֖רֶץ</w>
             <w xml:id="f427A-w-261633">בַּכֹּ֣ל</w>
@@ -319,7 +469,7 @@
             <w xml:id="f427A-w-261637">נֶעֱבָֽד</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261637">׃</pc>
           <lb xml:id="f427A-lb-2-18" n="18"/>
-            <milestone unit="verse" n="Ecclesiastes-5-9" xml:id="f427A-v-Ecclesiastes-5-9"/>
+            <milestone unit="verse" n="Ecclesiastes-5-9" xml:id="f427A-v-Ecclesiastes-5-9" facs="#f427A-zone-Ecclesiastes-5-9"/>
             <w xml:id="f427A-w-261638">אֹהֵ֥ב</w>
             <w xml:id="f427A-w-261639">כֶּ֙סֶף֙</w>
             <w xml:id="f427A-w-261640">לֹא־</w>
@@ -336,7 +486,7 @@
             <w xml:id="f427A-w-261649">זֶ֖ה</w>
             <w xml:id="f427A-w-261650">הָֽבֶל</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261650">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-10" xml:id="f427A-v-Ecclesiastes-5-10"/>
+            <milestone unit="verse" n="Ecclesiastes-5-10" xml:id="f427A-v-Ecclesiastes-5-10" facs="#f427A-zone-Ecclesiastes-5-10"/>
             <w xml:id="f427A-w-261651">בִּרְבוֹת֙</w>
           <lb xml:id="f427A-lb-2-21" n="21"/>
             <w xml:id="f427A-w-261652">הַטּוֹבָ֔ה</w>
@@ -352,7 +502,7 @@
             <w xml:id="f427A-w-261660">ראית</w>
             <w xml:id="f427A-w-261661">עֵינָֽיו</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261661">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-11" xml:id="f427A-v-Ecclesiastes-5-11"/>
+            <milestone unit="verse" n="Ecclesiastes-5-11" xml:id="f427A-v-Ecclesiastes-5-11" facs="#f427A-zone-Ecclesiastes-5-11"/>
             <w xml:id="f427A-w-261662">מְתוּקָה֙</w>
           <lb xml:id="f427A-lb-2-24" n="24"/>
             <w xml:id="f427A-w-261663">שְׁנַ֣ת</w>
@@ -373,7 +523,7 @@
           <lb xml:id="f427A-lb-3-1" n="1"/>
             <w xml:id="f427A-w-261675">לִישֽׁוֹן</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261675">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-12" xml:id="f427A-v-Ecclesiastes-5-12"/>
+            <milestone unit="verse" n="Ecclesiastes-5-12" xml:id="f427A-v-Ecclesiastes-5-12" facs="#f427A-zone-Ecclesiastes-5-12"/>
             <w xml:id="f427A-w-261676">יֵ֚שׁ</w>
             <w xml:id="f427A-w-261677">רָעָ֣ה</w>
             <w xml:id="f427A-w-261678">חוֹלָ֔ה</w>
@@ -388,7 +538,7 @@
           <lb xml:id="f427A-lb-3-4" n="4"/>
             <w xml:id="f427A-w-261685">לְרָעָתֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261685">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-13" xml:id="f427A-v-Ecclesiastes-5-13"/>
+            <milestone unit="verse" n="Ecclesiastes-5-13" xml:id="f427A-v-Ecclesiastes-5-13" facs="#f427A-zone-Ecclesiastes-5-13"/>
             <w xml:id="f427A-w-261686">וְאָבַ֛ד</w>
             <w xml:id="f427A-w-261687">הָעֹ֥שֶׁר</w>
           <lb xml:id="f427A-lb-3-5" n="5"/>
@@ -403,7 +553,7 @@
             <w xml:id="f427A-w-261695">מְאֽוּמָה</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261695">׃</pc>
           <lb xml:id="f427A-lb-3-7" n="7"/>
-            <milestone unit="verse" n="Ecclesiastes-5-14" xml:id="f427A-v-Ecclesiastes-5-14"/>
+            <milestone unit="verse" n="Ecclesiastes-5-14" xml:id="f427A-v-Ecclesiastes-5-14" facs="#f427A-zone-Ecclesiastes-5-14"/>
             <w xml:id="f427A-w-261696">כַּאֲשֶׁ֤ר</w>
             <w xml:id="f427A-w-261697">יָצָא֙</w>
             <w xml:id="f427A-w-261698">מִבֶּ֣טֶן</w>
@@ -422,7 +572,7 @@
             <w xml:id="f427A-w-261708">שֶׁיֹּלֵ֖ךְ</w>
             <w xml:id="f427A-w-261709">בְּיָדֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261709">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-15" xml:id="f427A-v-Ecclesiastes-5-15"/>
+            <milestone unit="verse" n="Ecclesiastes-5-15" xml:id="f427A-v-Ecclesiastes-5-15" facs="#f427A-zone-Ecclesiastes-5-15"/>
             <w xml:id="f427A-w-261710">וְגַם־</w>
             <w xml:id="f427A-w-261711">זֹה֙</w>
             <w xml:id="f427A-w-261712">רָעָ֣ה</w>
@@ -441,7 +591,7 @@
           <lb xml:id="f427A-lb-3-13" n="13"/>
             <w xml:id="f427A-w-261723">לָרֽוּחַ</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261723">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-16" xml:id="f427A-v-Ecclesiastes-5-16"/>
+            <milestone unit="verse" n="Ecclesiastes-5-16" xml:id="f427A-v-Ecclesiastes-5-16" facs="#f427A-zone-Ecclesiastes-5-16"/>
             <w xml:id="f427A-w-261724">גַּ֥ם</w>
             <w xml:id="f427A-w-261725">כָּל־</w>
             <w xml:id="f427A-w-261726">יָמָ֖יו</w>
@@ -454,7 +604,7 @@
           <lb xml:id="f427A-lb-3-15" n="15"/>
             <w xml:id="f427A-w-261732">וָקָֽצֶף</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261732">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-17" xml:id="f427A-v-Ecclesiastes-5-17"/>
+            <milestone unit="verse" n="Ecclesiastes-5-17" xml:id="f427A-v-Ecclesiastes-5-17" facs="#f427A-zone-Ecclesiastes-5-17"/>
             <w xml:id="f427A-w-261733">הִנֵּ֞ה</w>
             <w xml:id="f427A-w-261734">אֲשֶׁר־</w>
             <w xml:id="f427A-w-261735">רָאִ֣יתִי</w>
@@ -489,7 +639,7 @@
             <w xml:id="f427A-w-261757">ה֥וּא</w>
             <w xml:id="f427A-w-261758">חֶלְקֽוֹ</w>
             <pc type="sof-pasuq" xml:id="f427A-pc-261758">׃</pc>
-            <milestone unit="verse" n="Ecclesiastes-5-18" xml:id="f427A-v-Ecclesiastes-5-18"/>
+            <milestone unit="verse" n="Ecclesiastes-5-18" xml:id="f427A-v-Ecclesiastes-5-18" facs="#f427A-zone-Ecclesiastes-5-18"/>
             <w xml:id="f427A-w-261759">גַּ֣ם</w>
             <w xml:id="f427A-w-261760">כָּֽל־</w>
             <w xml:id="f427A-w-261761">הָאָדָ֡ם</w>

@@ -5,22 +5,21 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/sync-edition.mjs && astro build",
+    "build": "node scripts/sync-edition.mjs && node scripts/build-iiif.mjs && astro build",
     "preview": "astro preview",
     "sync": "node scripts/sync-edition.mjs",
     "astro": "astro",
-    "test": "node --test tests/"
+    "test": "node --test tests/",
+    "iiif": "node scripts/build-iiif.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
+    "@iiif/builder": "^2.0.1",
     "astro": "^7.3.2",
     "fast-xml-parser": "^5.3.0",
-    "openseadragon": "^6.1.1"
+    "triiiceratops": "^1.2.2"
   },
   "engines": {
     "node": ">=18"
-  },
-  "devDependencies": {
-    "@types/openseadragon": "^5.0.2"
   }
 }

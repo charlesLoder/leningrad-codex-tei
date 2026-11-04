@@ -16,9 +16,17 @@
           <resp>Folio mapping derived from the index of the Leningrad Codex <ptr target="https://github.com/bdenckla/MAM-basics"/></resp>
           <persName>Ben Denckla</persName>
         </respStmt>
+        <respStmt xml:id="source-masoretica">
+          <resp>Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex <ptr target="https://www.masoretica.org/htr/leningrad/"/></resp>
+          <persName>Idan Dershowitz</persName>
+        </respStmt>
         <respStmt xml:id="contrib-jossi-fresco">
           <resp>TEI encoding and alignment</resp>
           <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+        </respStmt>
+        <respStmt xml:id="contrib-charles-w-loder">
+          <resp>TEI encoding</resp>
+          <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -39,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 21 verse zones (87 line segments) from Masoretica HTR page n606. Left out 1 verse zones that did not match the folio's lines.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n606.json"/>
+      </change>
       <change when="2026-10-29T16:26:19.063838+00:00" who="#contrib-jossi-fresco">Encoded by Jossi Fresco.
       </change>
       <change when="2026-10-29T14:34:55.654020+00:00" who="#contrib-jossi-fresco">Aligned Ezekiel 48:32 – Hosea 2:10 (322 atoms).
@@ -58,10 +69,140 @@
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="surf-304A">
+    <surface xml:id="surf-304A" ulx="0" uly="0" lrx="4319" lry="5499">
       <graphic xml:id="f304A-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F304A.jpg">
         <desc type="sha256">825442c736b48d8f1727c3fefcd2b0ce06601cdbee2afabe0fc3438775496125</desc>
       </graphic>
+      <graphic xml:id="f304A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0606.jp2/full/max/0/default.jpg" width="4319px" height="5499px"/>
+      <zone xml:id="f304A-zone-Ezekiel-48-32" type="verse" cert="0.596" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Ezekiel-48-32-s1" ulx="3095" uly="1278" lrx="3804" lry="1443"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-32-s2" ulx="3218" uly="1393" lrx="3797" lry="1551"/>
+      </zone>
+      <zone xml:id="f304A-zone-Ezekiel-48-33" type="verse" cert="0.966" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Ezekiel-48-33-s1" ulx="3020" uly="1393" lrx="3200" lry="1551"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-33-s2" ulx="3009" uly="1512" lrx="3804" lry="1648"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-33-s3" ulx="2987" uly="1605" lrx="3786" lry="1749"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-33-s4" ulx="3063" uly="1706" lrx="3801" lry="1843"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-33-s5" ulx="3031" uly="1785" lrx="3808" lry="1947"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-33-s6" ulx="3646" uly="1907" lrx="3797" lry="2055"/>
+      </zone>
+      <zone xml:id="f304A-zone-Ezekiel-48-34" type="verse" cert="0.983" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Ezekiel-48-34-s1" ulx="2994" uly="1907" lrx="3610" lry="2055"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-34-s2" ulx="3092" uly="2015" lrx="3812" lry="2152"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-34-s3" ulx="3070" uly="2109" lrx="3808" lry="2246"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-34-s4" ulx="3020" uly="2199" lrx="3804" lry="2346"/>
+        <zone xml:id="f304A-zone-Ezekiel-48-34-s5" ulx="3243" uly="2303" lrx="3801" lry="2451"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-1" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-1-s1" ulx="3002" uly="2937" lrx="3794" lry="3156"/>
+        <zone xml:id="f304A-zone-Hosea-1-1-s2" ulx="3023" uly="3099" lrx="3794" lry="3250"/>
+        <zone xml:id="f304A-zone-Hosea-1-1-s3" ulx="3092" uly="3185" lrx="3812" lry="3347"/>
+        <zone xml:id="f304A-zone-Hosea-1-1-s4" ulx="3027" uly="3304" lrx="3812" lry="3448"/>
+        <zone xml:id="f304A-zone-Hosea-1-1-s5" ulx="3419" uly="3408" lrx="3804" lry="3559"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-2" type="verse" cert="0.912" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-2-s1" ulx="3066" uly="3408" lrx="3380" lry="3559"/>
+        <zone xml:id="f304A-zone-Hosea-1-2-s2" ulx="3045" uly="3505" lrx="3815" lry="3642"/>
+        <zone xml:id="f304A-zone-Hosea-1-2-s3" ulx="3027" uly="3584" lrx="3819" lry="3757"/>
+        <zone xml:id="f304A-zone-Hosea-1-2-s4" ulx="3048" uly="3696" lrx="3797" lry="3851"/>
+        <zone xml:id="f304A-zone-Hosea-1-2-s5" ulx="3099" uly="3797" lrx="3819" lry="3959"/>
+        <zone xml:id="f304A-zone-Hosea-1-2-s6" ulx="3448" uly="3901" lrx="3804" lry="4074"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-3" type="verse" cert="0.975" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-3-s1" ulx="2991" uly="3901" lrx="3419" lry="4074"/>
+        <zone xml:id="f304A-zone-Hosea-1-3-s2" ulx="1951" uly="1242" lrx="2750" lry="1443"/>
+        <zone xml:id="f304A-zone-Hosea-1-3-s3" ulx="2584" uly="1389" lrx="2732" lry="1537"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-4" type="verse" cert="0.923" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-4-s1" ulx="1951" uly="1389" lrx="2573" lry="1537"/>
+        <zone xml:id="f304A-zone-Hosea-1-4-s2" ulx="1976" uly="1497" lrx="2739" lry="1637"/>
+        <zone xml:id="f304A-zone-Hosea-1-4-s3" ulx="2062" uly="1580" lrx="2735" lry="1738"/>
+        <zone xml:id="f304A-zone-Hosea-1-4-s4" ulx="2098" uly="1695" lrx="2739" lry="1817"/>
+        <zone xml:id="f304A-zone-Hosea-1-4-s5" ulx="2080" uly="1771" lrx="2743" lry="1936"/>
+        <zone xml:id="f304A-zone-Hosea-1-4-s6" ulx="2483" uly="1900" lrx="2739" lry="2041"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-5" type="verse" cert="0.94" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-5-s1" ulx="1951" uly="1900" lrx="2462" lry="2041"/>
+        <zone xml:id="f304A-zone-Hosea-1-5-s2" ulx="1958" uly="1997" lrx="2739" lry="2145"/>
+        <zone xml:id="f304A-zone-Hosea-1-5-s3" ulx="2271" uly="2084" lrx="2739" lry="2238"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-6" type="verse" cert="0.943" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-6-s1" ulx="1976" uly="2084" lrx="2257" lry="2238"/>
+        <zone xml:id="f304A-zone-Hosea-1-6-s2" ulx="2001" uly="2188" lrx="2746" lry="2339"/>
+        <zone xml:id="f304A-zone-Hosea-1-6-s3" ulx="2059" uly="2278" lrx="2721" lry="2440"/>
+        <zone xml:id="f304A-zone-Hosea-1-6-s4" ulx="1965" uly="2393" lrx="2735" lry="2537"/>
+        <zone xml:id="f304A-zone-Hosea-1-6-s5" ulx="1965" uly="2472" lrx="2746" lry="2642"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-7" type="verse" cert="0.915" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-7-s1" ulx="2055" uly="2595" lrx="2750" lry="2739"/>
+        <zone xml:id="f304A-zone-Hosea-1-7-s2" ulx="1983" uly="2703" lrx="2757" lry="2843"/>
+        <zone xml:id="f304A-zone-Hosea-1-7-s3" ulx="1936" uly="2785" lrx="2750" lry="2940"/>
+        <zone xml:id="f304A-zone-Hosea-1-7-s4" ulx="1947" uly="2901" lrx="2757" lry="3041"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-8" type="verse" cert="0.937" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-8-s1" ulx="1965" uly="2991" lrx="2743" lry="3149"/>
+        <zone xml:id="f304A-zone-Hosea-1-8-s2" ulx="2498" uly="3106" lrx="2750" lry="3246"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-1-9" type="verse" cert="0.942" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-1-9-s1" ulx="1987" uly="3106" lrx="2476" lry="3246"/>
+        <zone xml:id="f304A-zone-Hosea-1-9-s2" ulx="1990" uly="3214" lrx="2728" lry="3333"/>
+        <zone xml:id="f304A-zone-Hosea-1-9-s3" ulx="2124" uly="3289" lrx="2753" lry="3441"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-1" type="verse" cert="0.928" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-1-s1" ulx="1983" uly="3383" lrx="2505" lry="3548"/>
+        <zone xml:id="f304A-zone-Hosea-2-1-s2" ulx="1998" uly="3505" lrx="2739" lry="3642"/>
+        <zone xml:id="f304A-zone-Hosea-2-1-s3" ulx="2030" uly="3584" lrx="2728" lry="3746"/>
+        <zone xml:id="f304A-zone-Hosea-2-1-s4" ulx="1983" uly="3692" lrx="2721" lry="3847"/>
+        <zone xml:id="f304A-zone-Hosea-2-1-s5" ulx="1965" uly="3808" lrx="2714" lry="3952"/>
+        <zone xml:id="f304A-zone-Hosea-2-1-s6" ulx="2440" uly="3905" lrx="2717" lry="4067"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-2" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-2-s1" ulx="2048" uly="3905" lrx="2426" lry="4067"/>
+        <zone xml:id="f304A-zone-Hosea-2-2-s2" ulx="943" uly="1274" lrx="1706" lry="1432"/>
+        <zone xml:id="f304A-zone-Hosea-2-2-s3" ulx="1008" uly="1389" lrx="1702" lry="1537"/>
+        <zone xml:id="f304A-zone-Hosea-2-2-s4" ulx="932" uly="1501" lrx="1710" lry="1641"/>
+        <zone xml:id="f304A-zone-Hosea-2-2-s5" ulx="1429" uly="1594" lrx="1713" lry="1731"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-3" type="verse" cert="0.999" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-3-s1" ulx="929" uly="1594" lrx="1396" lry="1731"/>
+        <zone xml:id="f304A-zone-Hosea-2-3-s2" ulx="943" uly="1677" lrx="1695" lry="1835"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-4" type="verse" cert="0.935" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-4-s1" ulx="936" uly="1785" lrx="1681" lry="1933"/>
+        <zone xml:id="f304A-zone-Hosea-2-4-s2" ulx="914" uly="1882" lrx="1688" lry="2033"/>
+        <zone xml:id="f304A-zone-Hosea-2-4-s3" ulx="921" uly="1990" lrx="1688" lry="2152"/>
+        <zone xml:id="f304A-zone-Hosea-2-4-s4" ulx="1022" uly="2091" lrx="1713" lry="2242"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-5" type="verse" cert="0.95" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-5-s1" ulx="1055" uly="2195" lrx="1699" lry="2343"/>
+        <zone xml:id="f304A-zone-Hosea-2-5-s2" ulx="1015" uly="2282" lrx="1710" lry="2447"/>
+        <zone xml:id="f304A-zone-Hosea-2-5-s3" ulx="975" uly="2393" lrx="1706" lry="2537"/>
+        <zone xml:id="f304A-zone-Hosea-2-5-s4" ulx="932" uly="2494" lrx="1681" lry="2641"/>
+        <zone xml:id="f304A-zone-Hosea-2-5-s5" ulx="1472" uly="2598" lrx="1684" lry="2746"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-6" type="verse" cert="0.967" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-6-s1" ulx="1026" uly="2598" lrx="1440" lry="2746"/>
+        <zone xml:id="f304A-zone-Hosea-2-6-s2" ulx="979" uly="2706" lrx="1695" lry="2843"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-7" type="verse" cert="0.885" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-7-s1" ulx="1026" uly="2789" lrx="1699" lry="2940"/>
+        <zone xml:id="f304A-zone-Hosea-2-7-s2" ulx="943" uly="2890" lrx="1692" lry="3045"/>
+        <zone xml:id="f304A-zone-Hosea-2-7-s3" ulx="932" uly="3001" lrx="1699" lry="3149"/>
+        <zone xml:id="f304A-zone-Hosea-2-7-s4" ulx="936" uly="3099" lrx="1702" lry="3250"/>
+        <zone xml:id="f304A-zone-Hosea-2-7-s5" ulx="1465" uly="3203" lrx="1710" lry="3343"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-8" type="verse" cert="0.862" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-8-s1" ulx="957" uly="3203" lrx="1422" lry="3343"/>
+        <zone xml:id="f304A-zone-Hosea-2-8-s2" ulx="961" uly="3304" lrx="1684" lry="3444"/>
+        <zone xml:id="f304A-zone-Hosea-2-8-s3" ulx="918" uly="3387" lrx="1699" lry="3548"/>
+      </zone>
+      <zone xml:id="f304A-zone-Hosea-2-9" type="verse" cert="0.909" resp="#source-masoretica">
+        <zone xml:id="f304A-zone-Hosea-2-9-s1" ulx="983" uly="3509" lrx="1706" lry="3649"/>
+        <zone xml:id="f304A-zone-Hosea-2-9-s2" ulx="943" uly="3592" lrx="1688" lry="3746"/>
+        <zone xml:id="f304A-zone-Hosea-2-9-s3" ulx="1037" uly="3689" lrx="1674" lry="3851"/>
+        <zone xml:id="f304A-zone-Hosea-2-9-s4" ulx="907" uly="3790" lrx="1692" lry="3952"/>
+        <zone xml:id="f304A-zone-Hosea-2-9-s5" ulx="1101" uly="3894" lrx="1681" lry="4059"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -72,7 +213,7 @@
         <ab>
         <cb xml:id="f304A-cb-1" n="1"/>
           <lb xml:id="f304A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Ezekiel-48-32" xml:id="f304A-v-Ezekiel-48-32"/>
+            <milestone unit="verse" n="Ezekiel-48-32" xml:id="f304A-v-Ezekiel-48-32" facs="#f304A-zone-Ezekiel-48-32"/>
             <w xml:id="f304A-w-207085">יוֹסֵ֜ף</w>
             <w xml:id="f304A-w-207086">אֶחָ֗ד</w>
             <w xml:id="f304A-w-207087">שַׁ֤עַר</w>
@@ -83,7 +224,7 @@
             <w xml:id="f304A-w-207091">דָּ֖ן</w>
             <w xml:id="f304A-w-207092">אֶחָֽד</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207092">׃</pc>
-            <milestone unit="verse" n="Ezekiel-48-33" xml:id="f304A-v-Ezekiel-48-33"/>
+            <milestone unit="verse" n="Ezekiel-48-33" xml:id="f304A-v-Ezekiel-48-33" facs="#f304A-zone-Ezekiel-48-33"/>
             <w xml:id="f304A-w-207093">וּפְאַת־</w>
           <lb xml:id="f304A-lb-1-3" n="3"/>
             <w xml:id="f304A-w-207094">נֶ֗גְבָּה</w>
@@ -108,7 +249,7 @@
           <lb xml:id="f304A-lb-1-7" n="7"/>
             <w xml:id="f304A-w-207110">אֶחָֽד</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207110">׃</pc>
-            <milestone unit="verse" n="Ezekiel-48-34" xml:id="f304A-v-Ezekiel-48-34"/>
+            <milestone unit="verse" n="Ezekiel-48-34" xml:id="f304A-v-Ezekiel-48-34" facs="#f304A-zone-Ezekiel-48-34"/>
             <w xml:id="f304A-w-207111">פְּאַת־</w>
             <w xml:id="f304A-w-207112">יָ֗מָּה</w>
             <w xml:id="f304A-w-207113">חֲמֵ֤שׁ</w>
@@ -150,7 +291,7 @@
           <lb xml:id="f304A-lb-1-16" n="16"/>
           <lb xml:id="f304A-lb-1-17" n="17"/>
           <lb xml:id="f304A-lb-1-18" n="18"/>
-            <milestone unit="verse" n="Hosea-1-1" xml:id="f304A-v-Hosea-1-1"/>
+            <milestone unit="verse" n="Hosea-1-1" xml:id="f304A-v-Hosea-1-1" facs="#f304A-zone-Hosea-1-1"/>
             <w xml:id="f304A-w-207137">דְּבַר־</w>
             <w xml:id="f304A-w-207138">יְהוָ֣ה</w>
             <pc type="paseq" xml:id="f304A-pc-207138">׀</pc>
@@ -178,7 +319,7 @@
             <w xml:id="f304A-w-207156">מֶ֥לֶךְ</w>
             <w xml:id="f304A-w-207157">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207157">׃</pc>
-            <milestone unit="verse" n="Hosea-1-2" xml:id="f304A-v-Hosea-1-2"/>
+            <milestone unit="verse" n="Hosea-1-2" xml:id="f304A-v-Hosea-1-2" facs="#f304A-zone-Hosea-1-2"/>
             <w xml:id="f304A-w-207158">תְּחִלַּ֥ת</w>
             <w xml:id="f304A-w-207159">דִּבֶּר־</w>
           <lb xml:id="f304A-lb-1-23" n="23"/>
@@ -207,7 +348,7 @@
             <w xml:id="f304A-w-207177">מֵֽאַחֲרֵ֖י</w>
             <w xml:id="f304A-w-207178">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207178">׃</pc>
-            <milestone unit="verse" n="Hosea-1-3" xml:id="f304A-v-Hosea-1-3"/>
+            <milestone unit="verse" n="Hosea-1-3" xml:id="f304A-v-Hosea-1-3" facs="#f304A-zone-Hosea-1-3"/>
             <w xml:id="f304A-w-207179">וַיֵּ֙לֶךְ֙</w>
             <w xml:id="f304A-w-207180">וַיִּקַּ֔ח</w>
             <w xml:id="f304A-w-207181">אֶת־</w>
@@ -222,7 +363,7 @@
             <w xml:id="f304A-w-207187">ל֖וֹ</w>
             <w xml:id="f304A-w-207188">בֵּֽן</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207188">׃</pc>
-            <milestone unit="verse" n="Hosea-1-4" xml:id="f304A-v-Hosea-1-4"/>
+            <milestone unit="verse" n="Hosea-1-4" xml:id="f304A-v-Hosea-1-4" facs="#f304A-zone-Hosea-1-4"/>
             <w xml:id="f304A-w-207189">וַיֹּ֤אמֶר</w>
             <w xml:id="f304A-w-207190">יְהוָה֙</w>
             <w xml:id="f304A-w-207191">אֵלָ֔יו</w>
@@ -249,7 +390,7 @@
           <lb xml:id="f304A-lb-2-7" n="7"/>
             <w xml:id="f304A-w-207208">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207208">׃</pc>
-            <milestone unit="verse" n="Hosea-1-5" xml:id="f304A-v-Hosea-1-5"/>
+            <milestone unit="verse" n="Hosea-1-5" xml:id="f304A-v-Hosea-1-5" facs="#f304A-zone-Hosea-1-5"/>
             <w xml:id="f304A-w-207209">וְהָיָ֖ה</w>
             <w xml:id="f304A-w-207210">בַּיּ֣וֹם</w>
             <w xml:id="f304A-w-207211">הַה֑וּא</w>
@@ -262,7 +403,7 @@
             <w xml:id="f304A-w-207216">בְּעֵ֖מֶק</w>
             <w xml:id="f304A-w-207217">יִזְרְעֶֽאל</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207217">׃</pc>
-            <milestone unit="verse" n="Hosea-1-6" xml:id="f304A-v-Hosea-1-6"/>
+            <milestone unit="verse" n="Hosea-1-6" xml:id="f304A-v-Hosea-1-6" facs="#f304A-zone-Hosea-1-6"/>
             <w xml:id="f304A-w-207218">וַתַּ֤הַר</w>
             <w xml:id="f304A-w-207219">עוֹד֙</w>
           <lb xml:id="f304A-lb-2-10" n="10"/>
@@ -291,7 +432,7 @@
             <w xml:id="f304A-w-207239">לָהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207239">׃</pc>
           <lb xml:id="f304A-lb-2-14" n="14"/>
-            <milestone unit="verse" n="Hosea-1-7" xml:id="f304A-v-Hosea-1-7"/>
+            <milestone unit="verse" n="Hosea-1-7" xml:id="f304A-v-Hosea-1-7" facs="#f304A-zone-Hosea-1-7"/>
             <w xml:id="f304A-w-207240">וְאֶת־</w>
             <w xml:id="f304A-w-207241">בֵּ֤ית</w>
             <w xml:id="f304A-w-207242">יְהוּדָה֙</w>
@@ -311,7 +452,7 @@
             <w xml:id="f304A-w-207253">וּבְפָרָשִֽׁים</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207253">׃</pc>
           <lb xml:id="f304A-lb-2-18" n="18"/>
-            <milestone unit="verse" n="Hosea-1-8" xml:id="f304A-v-Hosea-1-8"/>
+            <milestone unit="verse" n="Hosea-1-8" xml:id="f304A-v-Hosea-1-8" facs="#f304A-zone-Hosea-1-8"/>
             <w xml:id="f304A-w-207254">וַתִּגְמֹ֖ל</w>
             <w xml:id="f304A-w-207255">אֶת־</w>
             <w xml:id="f304A-w-207256">לֹ֣א</w>
@@ -321,7 +462,7 @@
             <w xml:id="f304A-w-207259">וַתֵּ֥לֶד</w>
             <w xml:id="f304A-w-207260">בֵּֽן</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207260">׃</pc>
-            <milestone unit="verse" n="Hosea-1-9" xml:id="f304A-v-Hosea-1-9"/>
+            <milestone unit="verse" n="Hosea-1-9" xml:id="f304A-v-Hosea-1-9" facs="#f304A-zone-Hosea-1-9"/>
             <w xml:id="f304A-w-207261">וַיֹּ֕אמֶר</w>
             <w xml:id="f304A-w-207262">קְרָ֥א</w>
             <w xml:id="f304A-w-207263">שְׁמ֖וֹ</w>
@@ -340,7 +481,7 @@
             <pc type="sof-pasuq" xml:id="f304A-pc-207273">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f304A-s-Hosea-1-9"/>
           <lb xml:id="f304A-lb-2-22" n="22"/>
-            <milestone unit="verse" n="Hosea-2-1" xml:id="f304A-v-Hosea-2-1"/>
+            <milestone unit="verse" n="Hosea-2-1" xml:id="f304A-v-Hosea-2-1" facs="#f304A-zone-Hosea-2-1"/>
             <w xml:id="f304A-w-207274">וְֽ֠הָיָה</w>
             <w xml:id="f304A-w-207275">מִסְפַּ֤ר</w>
             <w xml:id="f304A-w-207276">בְּנֵֽי־</w>
@@ -371,7 +512,7 @@
             <w xml:id="f304A-w-207296">אֵֽל־</w>
             <w xml:id="f304A-w-207297">חָֽי</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207297">׃</pc>
-            <milestone unit="verse" n="Hosea-2-2" xml:id="f304A-v-Hosea-2-2"/>
+            <milestone unit="verse" n="Hosea-2-2" xml:id="f304A-v-Hosea-2-2" facs="#f304A-zone-Hosea-2-2"/>
             <w xml:id="f304A-w-207298">וְ֠נִקְבְּצוּ</w>
             <w xml:id="f304A-w-207299">בְּנֵֽי־</w>
         <cb xml:id="f304A-cb-3" n="3"/>
@@ -395,7 +536,7 @@
           <lb xml:id="f304A-lb-3-4" n="4"/>
             <w xml:id="f304A-w-207314">יִזְרְעֶֽאל</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207314">׃</pc>
-            <milestone unit="verse" n="Hosea-2-3" xml:id="f304A-v-Hosea-2-3"/>
+            <milestone unit="verse" n="Hosea-2-3" xml:id="f304A-v-Hosea-2-3" facs="#f304A-zone-Hosea-2-3"/>
             <w xml:id="f304A-w-207315">אִמְר֥וּ</w>
             <w xml:id="f304A-w-207316">לַאֲחֵיכֶ֖ם</w>
           <lb xml:id="f304A-lb-3-5" n="5"/>
@@ -404,7 +545,7 @@
             <w xml:id="f304A-w-207319">רֻחָֽמָה</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207319">׃</pc>
           <lb xml:id="f304A-lb-3-6" n="6"/>
-            <milestone unit="verse" n="Hosea-2-4" xml:id="f304A-v-Hosea-2-4"/>
+            <milestone unit="verse" n="Hosea-2-4" xml:id="f304A-v-Hosea-2-4" facs="#f304A-zone-Hosea-2-4"/>
             <w xml:id="f304A-w-207320">רִ֤יבוּ</w>
             <w xml:id="f304A-w-207321">בְאִמְּכֶם֙</w>
             <w xml:id="f304A-w-207322">רִ֔יבוּ</w>
@@ -426,7 +567,7 @@
             <w xml:id="f304A-w-207335">שָׁדֶֽיהָ</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207335">׃</pc>
           <lb xml:id="f304A-lb-3-10" n="10"/>
-            <milestone unit="verse" n="Hosea-2-5" xml:id="f304A-v-Hosea-2-5"/>
+            <milestone unit="verse" n="Hosea-2-5" xml:id="f304A-v-Hosea-2-5" facs="#f304A-zone-Hosea-2-5"/>
             <w xml:id="f304A-w-207336">פֶּן־</w>
             <w xml:id="f304A-w-207337">אַפְשִׁיטֶ֣נָּה</w>
             <w xml:id="f304A-w-207338">עֲרֻמָּ֔ה</w>
@@ -445,7 +586,7 @@
           <lb xml:id="f304A-lb-3-14" n="14"/>
             <w xml:id="f304A-w-207348">בַּצָּמָֽא</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207348">׃</pc>
-            <milestone unit="verse" n="Hosea-2-6" xml:id="f304A-v-Hosea-2-6"/>
+            <milestone unit="verse" n="Hosea-2-6" xml:id="f304A-v-Hosea-2-6" facs="#f304A-zone-Hosea-2-6"/>
             <w xml:id="f304A-w-207349">וְאֶת־</w>
             <w xml:id="f304A-w-207350">בָּנֶ֖יהָ</w>
             <w xml:id="f304A-w-207351">לֹ֣א</w>
@@ -457,7 +598,7 @@
             <w xml:id="f304A-w-207356">הֵֽמָּה</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207356">׃</pc>
           <lb xml:id="f304A-lb-3-16" n="16"/>
-            <milestone unit="verse" n="Hosea-2-7" xml:id="f304A-v-Hosea-2-7"/>
+            <milestone unit="verse" n="Hosea-2-7" xml:id="f304A-v-Hosea-2-7" facs="#f304A-zone-Hosea-2-7"/>
             <w xml:id="f304A-w-207357">כִּ֤י</w>
             <w xml:id="f304A-w-207358">זָֽנְתָה֙</w>
             <w xml:id="f304A-w-207359">אִמָּ֔ם</w>
@@ -480,7 +621,7 @@
           <lb xml:id="f304A-lb-3-20" n="20"/>
             <w xml:id="f304A-w-207373">וְשִׁקּוּיָֽי</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207373">׃</pc>
-            <milestone unit="verse" n="Hosea-2-8" xml:id="f304A-v-Hosea-2-8"/>
+            <milestone unit="verse" n="Hosea-2-8" xml:id="f304A-v-Hosea-2-8" facs="#f304A-zone-Hosea-2-8"/>
             <w xml:id="f304A-w-207374">לָכֵ֛ן</w>
             <w xml:id="f304A-w-207375">הִנְנִי־</w>
             <w xml:id="f304A-w-207376">שָׂ֥ךְ</w>
@@ -497,7 +638,7 @@
             <w xml:id="f304A-w-207385">תִמְצָֽא</w>
             <pc type="sof-pasuq" xml:id="f304A-pc-207385">׃</pc>
           <lb xml:id="f304A-lb-3-23" n="23"/>
-            <milestone unit="verse" n="Hosea-2-9" xml:id="f304A-v-Hosea-2-9"/>
+            <milestone unit="verse" n="Hosea-2-9" xml:id="f304A-v-Hosea-2-9" facs="#f304A-zone-Hosea-2-9"/>
             <w xml:id="f304A-w-207386">וְרִדְּפָ֤ה</w>
             <w xml:id="f304A-w-207387">אֶת־</w>
             <w xml:id="f304A-w-207388">מְאַהֲבֶ֙יהָ֙</w>
