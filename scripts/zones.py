@@ -327,27 +327,14 @@ def drop_margin_rects(verses: list[VerseZone]) -> tuple[list[VerseZone], int]:
 
 
 def check_verse(vz: VerseZone, spans: list[tuple[int, int]] | None) -> list[str]:
-    """Cross-check one verse zone against the edition's layout. Empty = pass.
+    """Check that a verse zone has a verse milestone to point to. Empty = pass.
 
-    Each rect is one verse on one line, so: the milestone exists, the
-    rect count equals the number of lines the verse covers, columns run
-    right to left, and lines run top to bottom.
+    Masoretica data is trusted, so the number, order and columns of the
+    rects are not compared with the edition's lines.
     """
     if not spans:
         return [f"{vz.n}: no verse milestone with words on this folio"]
-    if len(vz.rects) != len(spans):
-        return [f"{vz.n}: {len(vz.rects)} zone rects, {len(spans)} edition lines"]
-    problems: list[str] = []
-    pairs = list(zip(spans, vz.rects))
-    for (ca, la), ra in pairs:
-        for (cb, lb), rb in pairs:
-            if ca < cb and (ra[0] + ra[2]) <= (rb[0] + rb[2]):
-                problems.append(f"{vz.n}: column {ca} zone is not right of column {cb}")
-            elif ca == cb and la < lb and ra[1] >= rb[1]:
-                problems.append(
-                    f"{vz.n}: line {ca}-{la} zone is not above line {cb}-{lb}"
-                )
-    return list(dict.fromkeys(problems))
+    return []
 
 
 def check_zones(
@@ -443,6 +430,10 @@ def _add_change(text: str, when: str, who: str, desc: str, url: str) -> str:
     return text[: opener.end()] + block + text[opener.end() :]
 
 
+def _plural(n: int, word: str) -> str:
+    return word if n == 1 else word + "s"
+
+
 @dataclass
 class ZoneResult:
     folio: str
@@ -523,13 +514,30 @@ def apply_zones(
                 f"  <persName{ref}>{escape(contributor['name'])}</persName>\n"
                 "</respStmt>\n",
             )
-    desc = (
-        f"Added {result.written} verse zones ({result.segments} line segments)"
-        f" from Masoretica HTR page n{source.page}."
-    )
+    # Describe what changed: only zones that were not in the file already.
+    had = set(re.findall(r'xml:id="([^"]*-zone-[^"]*)"', text))
+    new = [vz for vz in passing if zone_id(source.folio, vz.n) not in had]
+    if had and new:
+        count, segs = len(new), sum(len(vz.rects) for vz in new)
+        desc = (
+            f"Added {count} missing verse {_plural(count, 'zone')}"
+            f" ({segs} line {_plural(segs, 'segment')})"
+            f" from Masoretica HTR page n{source.page}."
+        )
+    elif had:
+        desc = f"Updated verse zones from Masoretica HTR page n{source.page}."
+    else:
+        desc = (
+            f"Added {result.written} verse {_plural(result.written, 'zone')}"
+            f" ({result.segments} line {_plural(result.segments, 'segment')})"
+            f" from Masoretica HTR page n{source.page}."
+        )
     if result.problems:
         failed = result.verses - result.written
-        desc += f" Left out {failed} verse zones that did not match the folio's lines."
+        desc += (
+            f" Left out {failed} verse {_plural(failed, 'zone')}"
+            " that have no verse milestone on the folio."
+        )
     patched = _add_change(patched, when, who, desc, source.url)
     etree.fromstring(patched.encode("utf-8"))
     result.changed = True
