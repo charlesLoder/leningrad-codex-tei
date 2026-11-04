@@ -31,6 +31,8 @@ Because tanach.us serves only the current release, the pipeline gets UXLC 2.5 fr
 
 The text determined to be on each folio was derived from Ben Denckla's index of the [Leningrad Codex](https://github.com/bdenckla/MAM-basics).
 
+The verse zones on the facsimile images come from the [Masoretica](https://www.masoretica.org/htr/leningrad/) handwritten text recognition (HTR) of the Leningrad Codex by Idan Dershowitz.
+
 ### Goals
 
 The goals of this project are as follows:
