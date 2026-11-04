@@ -37,7 +37,12 @@
         <moduleRef key="textstructure" include="TEI text body div"/>
 
         <!-- Module 4: Core Elements (Milestones & Prose) -->
-        <moduleRef key="core" include="p title pb cb lb milestone ptr name label"/>
+        <moduleRef key="core" include="p title pb cb lb milestone ptr name label graphic desc"/>
+
+        <!-- Module 4a: Facsimile (one surface per folio side; scripts/zones.py adds
+             the Archive.org graphic and one zone per verse, holding one child
+             zone per line segment, in Archive.org image pixels) -->
+        <moduleRef key="transcr" include="facsimile surface zone"/>
 
         <!-- Module 5: Words and punctuation (generate-tei splits trailing
              sof-pasuq / paseq off each UXLC atom into pc; w keeps the atom) -->
