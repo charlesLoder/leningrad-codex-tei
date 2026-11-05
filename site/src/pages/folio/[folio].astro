@@ -2,6 +2,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import iiifLogo from '../../assets/iiif.svg';
 import Base from '../../layouts/Base.astro';
 import FeedbackForm from '../../components/FeedbackForm.astro';
 import FolioCredits from '../../components/FolioCredits.astro';
@@ -73,6 +74,17 @@ const viewData = buildViewData(doc, {
       <Fragment set:html={icons.image} />
       <Fragment set:html={icons.imageOff} />
     </button>
+    <a class="quiet header-link" href={`/edition/${folio}.xml`} target="_blank" rel="noopener noreferrer" aria-label="TEI XML (opens in a new tab)" title="TEI XML">
+      <Fragment set:html={icons.codeXml} />
+    </a>
+    {iiifManifest && (
+      <a class="quiet header-link" href={iiifManifest} target="_blank" rel="noopener noreferrer" aria-label="IIIF manifest (opens in a new tab)" title="IIIF manifest">
+        <img src={iiifLogo.src} alt="" width="20" height="20" />
+      </a>
+    )}
+    <button class="quiet print-button" id="print-folio" type="button" aria-label="Print folio" title="Print folio">
+      <Fragment set:html={icons.printer} />
+    </button>
     <FolioMenu folio={folio ?? ''} manifest={iiifManifest} />
   </Fragment>
 
@@ -103,11 +115,15 @@ const viewData = buildViewData(doc, {
 
 <style>
   /* The icon shows the state: an image while it is open, a crossed-out image while it is closed. */
-  .image-toggle {
+  .image-toggle,
+  .header-link,
+  .print-button {
     min-width: 2.4rem;
   }
 
-  .image-toggle :global(.lucide) {
+  .image-toggle :global(.lucide),
+  .header-link :global(.lucide),
+  .print-button :global(.lucide) {
     width: 1.35em;
     height: 1.35em;
   }
@@ -119,6 +135,14 @@ const viewData = buildViewData(doc, {
   .image-toggle[aria-pressed='true'] :global(.lucide-image-off),
   .image-toggle[aria-pressed='false'] :global(.lucide-image) {
     display: none;
+  }
+
+  /* On small screens the menu holds these links, so the header stays short. */
+  @media (max-width: 759px) {
+    .header-link,
+    .print-button {
+      display: none;
+    }
   }
 
   .desk {

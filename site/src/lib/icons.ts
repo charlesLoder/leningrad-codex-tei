@@ -4,12 +4,14 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
+  CodeXml,
   Ellipsis,
   ExternalLink,
   Image,
   ImageOff,
   Minus,
   Plus,
+  Printer,
   X,
 } from 'lucide-static';
 
@@ -21,11 +23,13 @@ export const icons = {
   arrowRight: decorative(ArrowRight),
   chevronLeft: decorative(ChevronLeft),
   chevronRight: decorative(ChevronRight),
+  codeXml: decorative(CodeXml),
   ellipsis: decorative(Ellipsis),
   externalLink: decorative(ExternalLink),
   image: decorative(Image),
   imageOff: decorative(ImageOff),
   minus: decorative(Minus),
   plus: decorative(Plus),
+  printer: decorative(Printer),
   x: decorative(X),
 };

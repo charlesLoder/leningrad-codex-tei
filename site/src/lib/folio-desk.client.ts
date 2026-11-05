@@ -364,7 +364,7 @@ document.addEventListener('click', (e) => {
   if (menu && (!target.closest('#folio-menu') || target.closest('a, button'))) menu.open = false;
   if (jump && !target.closest('#folio-jump')) jump.open = false;
 });
-$('#print-folio')?.addEventListener('click', () => window.print());
+for (const id of ['#print-folio', '#print-folio-menu']) $(id)?.addEventListener('click', () => window.print());
 $('#copy-folio-citation')?.addEventListener('click', (e) => {
   void copy(e.currentTarget as HTMLElement, folioCitation(data.folio, data.version));
 });
