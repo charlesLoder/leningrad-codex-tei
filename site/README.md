@@ -5,7 +5,7 @@ project: its own dependencies, README, and Netlify deployment.
 
 ## Develop
 
-Prerequisites: Node.js 18+.
+Prerequisites: Node.js 26+.
 
 ```bash
 cd site

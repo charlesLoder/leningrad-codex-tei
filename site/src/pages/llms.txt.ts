@@ -16,6 +16,7 @@ const BODY = `# Leningrad Codex TEI
 - / lists every folio side with a client-side filter (human use).
 - /folio/Fxxx[A|B]/ renders one folio side as columns and lines, with verse milestones, samekh/pe divisions, sof-pasuq and paseq inline (human use). A = recto, B = verso.
 - /edition/ serves the raw TEI XML (machine use; see below).
+- /iiif/ serves one IIIF manifest per folio side (machine use; see below).
 
 Each folio document encodes the main biblical text only (ketiv consonantal text as written), laid out in columns and lines, with verse milestones marking where each verse begins and samekh/pe paragraph-division markers. Per-word biblical references are derived at index time, not stored per word.
 
@@ -32,12 +33,14 @@ You never need to crawl the HTML viewer. Work directly with the XML files instea
 - Manifest of all folio sides: /edition/index.xml (entry elements with folio, href, title, and passage range)
 - Single folio side, TEI XML: /edition/{FOLIO}.xml (for example /edition/001B.xml)
 - Whole edition as one zip (ready-to-use bundle, shipped with every release): https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip
+- IIIF Presentation 3 manifest per folio side, with verse zones as annotations on the page image: /iiif/{FOLIO}.json (for example /iiif/015A.json). Only folio sides that have verse zones get a manifest, so a missing file means no zones yet. The canvas paints the Archive.org image through its IIIF Image API service, and the zones are in that image's pixels.
 - Source repository and pipeline: https://github.com/charlesLoder/leningrad-codex-tei (generated files live in edition/)
 
 Examples:
 
 curl https://leningrad-codex-tei.netlify.app/edition/index.xml
 curl https://leningrad-codex-tei.netlify.app/edition/001B.xml -o 001B.xml
+curl https://leningrad-codex-tei.netlify.app/iiif/015A.json -o 015A.iiif.json
 curl -L https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip -o leningrad-codex.zip
 
 ## License

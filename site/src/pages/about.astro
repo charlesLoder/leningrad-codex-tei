@@ -51,7 +51,7 @@ import Base from '../layouts/Base.astro';
       The text determined to be on each folio was derived from Ben Denckla's index of the <a href="https://github.com/bdenckla/MAM-basics" target="_blank">Leningrad Codex</a>.
     </p>
     <p>
-      The verse zones that mark where each verse sits on the facsimile image come from the
+      The verse zones that mark where each verse sits on the facsimile image come from the{" "}
       <a href="https://www.masoretica.org/htr/leningrad/" target="_blank">Masoretica</a> handwritten text recognition (HTR)
       of the Leningrad Codex by Idan Dershowitz.
     </p>
@@ -74,8 +74,7 @@ import Base from '../layouts/Base.astro';
     </ul>
     <p>
       The pipeline and prompts are published in the repository, and the full history is visible
-      in git. The project used Google's Gemini models for their image-transcription quality,
-      cost, and batch inference options.
+      in git. Contributors were allowed to use any model. Each folio page indicates which model was used for alignment.
     </p>
 
     <h2>Reproducibility</h2>
@@ -90,7 +89,8 @@ import Base from '../layouts/Base.astro';
     <p>
       The edition is MIT licensed. Browse it <a href="/">folio by folio</a>, fetch raw TEI
       per folio at <code>/edition/Fxxx[A|B].xml</code>, read the manifest at
-      <code>/edition/index.xml</code>, or grab the{" "}
+      <code>/edition/index.xml</code>, fetch an
+      IIIF manifest with the verse zones per folio at <code>/iiif/Fxxx[A|B].json</code>, or grab the{" "}
       <a href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">whole-edition zip</a>.
       Agents should prefer the XML over scraping this site — see <a href="/llms.txt">/llms.txt</a>.
     </p>
@@ -98,13 +98,13 @@ import Base from '../layouts/Base.astro';
     <h2>The Author</h2>
     <p>
       I'm Charles Loder, the initial author of this project. You can find more about my work and contact me through my social media profiles:
-      <ul>
-        <li><a href="https://github.com/charlesLoder" target="_blank">GitHub</a></li>
-        <li><a href="https://independentresearcher.academia.edu/CharlesLoder" target="_blank">Academia.edu</a></li>
-        <li><a href="https://x.com/charles_loder" target="_blank">Twitter</a></li>
-        <li><a href="https://bsky.app/profile/charlesloder.bsky.social" target="_blank">Bluesky</a></li>
-      </ul>
     </p>
+    <ul>
+      <li><a href="https://github.com/charlesLoder" target="_blank">GitHub</a></li>
+      <li><a href="https://independentresearcher.academia.edu/CharlesLoder" target="_blank">Academia.edu</a></li>
+      <li><a href="https://x.com/charles_loder" target="_blank">Twitter</a></li>
+      <li><a href="https://bsky.app/profile/charlesloder.bsky.social" target="_blank">Bluesky</a></li>
+    </ul>
   </Prose>
 </Base>
 
