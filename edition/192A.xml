@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 2 missing verse zones (6 line segments) from Masoretica HTR page n382.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n382.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 15 verse zones (60 line segments) from Masoretica HTR page n382. Left out 2 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n382.json"/>
       </change>
@@ -70,6 +73,11 @@
         <desc type="sha256">30d0fd3153e40bfb0dc696c6828b1dceadce9d99f2597a2bd844b1e599b30aad</desc>
       </graphic>
       <graphic xml:id="f192A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0382.jp2/full/max/0/default.jpg" width="4303px" height="5407px"/>
+      <zone xml:id="f192A-zone-Kings_1-9-14" type="verse" cert="0.791" resp="#source-masoretica">
+        <zone xml:id="f192A-zone-Kings_1-9-14-s1" ulx="1366" uly="3650" lrx="1918" lry="3822"/>
+        <zone xml:id="f192A-zone-Kings_1-9-14-s2" ulx="1524" uly="3758" lrx="1926" lry="3923"/>
+        <zone xml:id="f192A-zone-Kings_1-9-14-s3" ulx="3421" uly="1291" lrx="3916" lry="1449"/>
+      </zone>
       <zone xml:id="f192A-zone-Kings_1-9-15" type="verse" cert="0.913" resp="#source-masoretica">
         <zone xml:id="f192A-zone-Kings_1-9-15-s1" ulx="3206" uly="1291" lrx="3414" lry="1449"/>
         <zone xml:id="f192A-zone-Kings_1-9-15-s2" ulx="3245" uly="1409" lrx="3901" lry="1545"/>
@@ -160,6 +168,11 @@
         <zone xml:id="f192A-zone-Kings_1-10-1-s2" ulx="2159" uly="3471" lrx="2919" lry="3607"/>
         <zone xml:id="f192A-zone-Kings_1-10-1-s3" ulx="2546" uly="3553" lrx="2908" lry="3704"/>
       </zone>
+      <zone xml:id="f192A-zone-Kings_1-10-2" type="verse" cert="0.634" resp="#source-masoretica">
+        <zone xml:id="f192A-zone-Kings_1-10-2-s1" ulx="2166" uly="3553" lrx="2539" lry="3704"/>
+        <zone xml:id="f192A-zone-Kings_1-10-2-s2" ulx="2169" uly="3675" lrx="2905" lry="3801"/>
+        <zone xml:id="f192A-zone-Kings_1-10-2-s3" ulx="2177" uly="3765" lrx="2897" lry="3915"/>
+      </zone>
     </surface>
   </facsimile>
 
@@ -170,7 +183,7 @@
         <ab>
         <cb xml:id="f192A-cb-1" n="1"/>
           <lb xml:id="f192A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Kings_1-9-14" xml:id="f192A-v-Kings_1-9-14"/>
+            <milestone unit="verse" n="Kings_1-9-14" xml:id="f192A-v-Kings_1-9-14" facs="#f192A-zone-Kings_1-9-14"/>
             <w xml:id="f192A-w-129713">וְעֶשְׂרִ֖ים</w>
             <w xml:id="f192A-w-129714">כִּכַּ֥ר</w>
             <w xml:id="f192A-w-129715">זָהָֽב</w>
@@ -491,7 +504,7 @@
             <w xml:id="f192A-w-129943">לְנַסֹּת֖וֹ</w>
             <w xml:id="f192A-w-129944">בְּחִידֽוֹת</w>
             <pc type="sof-pasuq" xml:id="f192A-pc-129944">׃</pc>
-            <milestone unit="verse" n="Kings_1-10-2" xml:id="f192A-v-Kings_1-10-2"/>
+            <milestone unit="verse" n="Kings_1-10-2" xml:id="f192A-v-Kings_1-10-2" facs="#f192A-zone-Kings_1-10-2"/>
             <w xml:id="f192A-w-129945">וַתָּבֹ֣א</w>
             <w xml:id="f192A-w-129946">יְרוּשָׁלְַ֗מָה</w>
           <lb xml:id="f192A-lb-2-26" n="26"/>

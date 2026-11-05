@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 3 missing verse zones (11 line segments) from Masoretica HTR page n155.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n155.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 15 verse zones (48 line segments) from Masoretica HTR page n155. Left out 3 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n155.json"/>
       </change>
@@ -137,6 +140,14 @@
         <zone xml:id="f078B-zone-Numbers-7-12-s2" ulx="2485" uly="3464" lrx="3216" lry="3612"/>
         <zone xml:id="f078B-zone-Numbers-7-12-s3" ulx="2540" uly="3564" lrx="3216" lry="3715"/>
       </zone>
+      <zone xml:id="f078B-zone-Numbers-7-13" type="verse" cert="0.904" resp="#source-masoretica">
+        <zone xml:id="f078B-zone-Numbers-7-13-s1" ulx="465" uly="1673" lrx="838" lry="1798"/>
+        <zone xml:id="f078B-zone-Numbers-7-13-s2" ulx="476" uly="1743" lrx="1204" lry="1891"/>
+        <zone xml:id="f078B-zone-Numbers-7-13-s3" ulx="469" uly="1832" lrx="1230" lry="1979"/>
+        <zone xml:id="f078B-zone-Numbers-7-13-s4" ulx="469" uly="1942" lrx="1215" lry="2061"/>
+        <zone xml:id="f078B-zone-Numbers-7-13-s5" ulx="521" uly="2020" lrx="1204" lry="2149"/>
+        <zone xml:id="f078B-zone-Numbers-7-13-s6" ulx="462" uly="2112" lrx="1207" lry="2234"/>
+      </zone>
       <zone xml:id="f078B-zone-Numbers-7-14" type="verse" cert="0.956" resp="#source-masoretica">
         <zone xml:id="f078B-zone-Numbers-7-14-s1" ulx="469" uly="2208" lrx="1207" lry="2327"/>
         <zone xml:id="f078B-zone-Numbers-7-14-s2" ulx="1027" uly="2290" lrx="1211" lry="2437"/>
@@ -149,6 +160,15 @@
       <zone xml:id="f078B-zone-Numbers-7-16" type="verse" cert="0.894" resp="#source-masoretica">
         <zone xml:id="f078B-zone-Numbers-7-16-s1" ulx="539" uly="2471" lrx="1012" lry="2618"/>
         <zone xml:id="f078B-zone-Numbers-7-16-s2" ulx="975" uly="2563" lrx="1215" lry="2703"/>
+      </zone>
+      <zone xml:id="f078B-zone-Numbers-7-17" type="verse" cert="0.63" resp="#source-masoretica">
+        <zone xml:id="f078B-zone-Numbers-7-17-s1" ulx="484" uly="2563" lrx="945" lry="2703"/>
+        <zone xml:id="f078B-zone-Numbers-7-17-s2" ulx="517" uly="2663" lrx="1222" lry="2792"/>
+        <zone xml:id="f078B-zone-Numbers-7-17-s3" ulx="465" uly="2748" lrx="1222" lry="2892"/>
+      </zone>
+      <zone xml:id="f078B-zone-Numbers-7-29" type="verse" cert="0.532" resp="#source-masoretica">
+        <zone xml:id="f078B-zone-Numbers-7-29-s1" ulx="436" uly="2855" lrx="1222" lry="2984"/>
+        <zone xml:id="f078B-zone-Numbers-7-29-s2" ulx="1012" uly="2928" lrx="1219" lry="3058"/>
       </zone>
       <zone xml:id="f078B-zone-Numbers-7-30" type="verse" cert="0.922" resp="#source-masoretica">
         <zone xml:id="f078B-zone-Numbers-7-30-s1" ulx="510" uly="2973" lrx="1226" lry="3165"/>
@@ -340,7 +360,7 @@
             <pc type="sof-pasuq" xml:id="f078B-pc-52457">׃</pc>
         <cb xml:id="f078B-cb-2" n="2"/>
           <lb xml:id="f078B-lb-2-1" n="1"/>
-            <milestone unit="verse" n="Numbers-7-13" xml:id="f078B-v-Numbers-7-13"/>
+            <milestone unit="verse" n="Numbers-7-13" xml:id="f078B-v-Numbers-7-13" facs="#f078B-zone-Numbers-7-13"/>
             <w xml:id="f078B-w-52458">וְקָרְבָּנ֞וֹ</w>
             <w xml:id="f078B-w-52459">קֽ͏ַעֲרַת־</w>
             <w xml:id="f078B-w-52460">כֶּ֣סֶף</w>
@@ -399,7 +419,7 @@
           <lb xml:id="f078B-lb-2-10" n="10"/>
             <w xml:id="f078B-w-52498">לְחַטָּֽאת</w>
             <pc type="sof-pasuq" xml:id="f078B-pc-52498">׃</pc>
-            <milestone unit="verse" n="Numbers-7-17" xml:id="f078B-v-Numbers-7-17"/>
+            <milestone unit="verse" n="Numbers-7-17" xml:id="f078B-v-Numbers-7-17" facs="#f078B-zone-Numbers-7-17"/>
             <w xml:id="f078B-w-52499">וּלְזֶ֣בַח</w>
             <w xml:id="f078B-w-52500">הַשְּׁלָמִים֮</w>
           <lb xml:id="f078B-lb-2-11" n="11"/>
@@ -595,7 +615,7 @@
           <lb xml:id="f078B-lb-3-16" n="16"/>
             <w xml:id="f078B-w-52632">לְחַטָּֽאת</w>
             <pc type="sof-pasuq" xml:id="f078B-pc-52632">׃</pc>
-            <milestone unit="verse" n="Numbers-7-29" xml:id="f078B-v-Numbers-7-29"/>
+            <milestone unit="verse" n="Numbers-7-29" xml:id="f078B-v-Numbers-7-29" facs="#f078B-zone-Numbers-7-29"/>
             <w xml:id="f078B-w-52633">וּלְזֶ֣בַח</w>
             <w xml:id="f078B-w-52634">הַשְּׁלָמִים֮</w>
           <lb xml:id="f078B-lb-3-17" n="17"/>

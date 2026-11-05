@@ -47,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 2 missing verse zones (7 line segments) from Masoretica HTR page n302.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n302.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 21 verse zones (92 line segments) from Masoretica HTR page n302. Left out 2 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n302.json"/>
       </change>
@@ -77,6 +80,10 @@
         <desc type="sha256">214abc3fc72331347ca307ae79e67866f2b81eb4da4bea9c38bee2fe0a11a10c</desc>
       </graphic>
       <graphic xml:id="f152A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0302.jp2/full/max/0/default.jpg" width="4431px" height="5279px"/>
+      <zone xml:id="f152A-zone-Samuel_1-3-19" type="verse" cert="0.643" resp="#source-masoretica">
+        <zone xml:id="f152A-zone-Samuel_1-3-19-s1" ulx="2444" uly="941" lrx="2947" lry="1093"/>
+        <zone xml:id="f152A-zone-Samuel_1-3-19-s2" ulx="3301" uly="1266" lrx="4029" lry="1440"/>
+      </zone>
       <zone xml:id="f152A-zone-Samuel_1-3-20" type="verse" cert="0.962" resp="#source-masoretica">
         <zone xml:id="f152A-zone-Samuel_1-3-20-s1" ulx="3349" uly="1388" lrx="4043" lry="1517"/>
         <zone xml:id="f152A-zone-Samuel_1-3-20-s2" ulx="3316" uly="1466" lrx="4028" lry="1624"/>
@@ -147,6 +154,13 @@
         <zone xml:id="f152A-zone-Samuel_1-4-9-s2" ulx="2282" uly="2521" lrx="3039" lry="2662"/>
         <zone xml:id="f152A-zone-Samuel_1-4-9-s3" ulx="2334" uly="2632" lrx="3035" lry="2754"/>
         <zone xml:id="f152A-zone-Samuel_1-4-9-s4" ulx="2337" uly="2702" lrx="3054" lry="2850"/>
+      </zone>
+      <zone xml:id="f152A-zone-Samuel_1-4-10" type="verse" cert="0.858" resp="#source-masoretica">
+        <zone xml:id="f152A-zone-Samuel_1-4-10-s1" ulx="2256" uly="2702" lrx="2300" lry="2850"/>
+        <zone xml:id="f152A-zone-Samuel_1-4-10-s2" ulx="2275" uly="2791" lrx="3054" lry="2953"/>
+        <zone xml:id="f152A-zone-Samuel_1-4-10-s3" ulx="2271" uly="2894" lrx="3046" lry="3042"/>
+        <zone xml:id="f152A-zone-Samuel_1-4-10-s4" ulx="2374" uly="2979" lrx="3039" lry="3138"/>
+        <zone xml:id="f152A-zone-Samuel_1-4-10-s5" ulx="2537" uly="3068" lrx="3039" lry="3230"/>
       </zone>
       <zone xml:id="f152A-zone-Samuel_1-4-11" type="verse" cert="0.912" resp="#source-masoretica">
         <zone xml:id="f152A-zone-Samuel_1-4-11-s1" ulx="2356" uly="3068" lrx="2533" lry="3230"/>
@@ -221,7 +235,7 @@
         <ab>
         <cb xml:id="f152A-cb-1" n="1"/>
           <lb xml:id="f152A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Samuel_1-3-19" xml:id="f152A-v-Samuel_1-3-19"/>
+            <milestone unit="verse" n="Samuel_1-3-19" xml:id="f152A-v-Samuel_1-3-19" facs="#f152A-zone-Samuel_1-3-19"/>
             <w xml:id="f152A-w-101165">וְלֹֽא־</w>
             <w xml:id="f152A-w-101166">הִפִּ֥יל</w>
             <w xml:id="f152A-w-101167">מִכָּל־</w>
@@ -480,7 +494,7 @@
             <w xml:id="f152A-w-101354">וְנִלְחַמְתֶּֽם</w>
             <pc type="sof-pasuq" xml:id="f152A-pc-101354">׃</pc>
           <lb xml:id="f152A-lb-2-17" n="17"/>
-            <milestone unit="verse" n="Samuel_1-4-10" xml:id="f152A-v-Samuel_1-4-10"/>
+            <milestone unit="verse" n="Samuel_1-4-10" xml:id="f152A-v-Samuel_1-4-10" facs="#f152A-zone-Samuel_1-4-10"/>
             <w xml:id="f152A-w-101355">וַיִּלָּחֲמ֣וּ</w>
             <w xml:id="f152A-w-101356">פְלִשְׁתִּ֗ים</w>
             <w xml:id="f152A-w-101357">וַיִּנָּ֤גֶף</w>

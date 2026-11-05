@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 3 missing verse zones (12 line segments) from Masoretica HTR page n445.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n445.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 24 verse zones (89 line segments) from Masoretica HTR page n445. Left out 3 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n445.json"/>
       </change>
@@ -85,11 +88,23 @@
         <zone xml:id="f223B-zone-Isaiah-8-10-s1" ulx="2509" uly="1954" lrx="3223" lry="2112"/>
         <zone xml:id="f223B-zone-Isaiah-8-10-s2" ulx="2627" uly="2068" lrx="3238" lry="2193"/>
       </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-11" type="verse" cert="0.796" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-11-s1" ulx="2517" uly="2145" lrx="2965" lry="2285"/>
+        <zone xml:id="f223B-zone-Isaiah-8-11-s2" ulx="2583" uly="2200" lrx="3227" lry="2381"/>
+        <zone xml:id="f223B-zone-Isaiah-8-11-s3" ulx="2476" uly="2329" lrx="3238" lry="2480"/>
+        <zone xml:id="f223B-zone-Isaiah-8-11-s4" ulx="3050" uly="2417" lrx="3238" lry="2565"/>
+      </zone>
       <zone xml:id="f223B-zone-Isaiah-8-12" type="verse" cert="0.825" resp="#source-masoretica">
         <zone xml:id="f223B-zone-Isaiah-8-12-s1" ulx="2498" uly="2417" lrx="3013" lry="2565"/>
         <zone xml:id="f223B-zone-Isaiah-8-12-s2" ulx="2509" uly="2513" lrx="3234" lry="2657"/>
         <zone xml:id="f223B-zone-Isaiah-8-12-s3" ulx="2513" uly="2627" lrx="3223" lry="2756"/>
         <zone xml:id="f223B-zone-Isaiah-8-12-s4" ulx="2859" uly="2723" lrx="3238" lry="2844"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-8-13" type="verse" cert="0.814" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-8-13-s1" ulx="2597" uly="2723" lrx="2840" lry="2844"/>
+        <zone xml:id="f223B-zone-Isaiah-8-13-s2" ulx="2498" uly="2807" lrx="3238" lry="2947"/>
+        <zone xml:id="f223B-zone-Isaiah-8-13-s3" ulx="2528" uly="2911" lrx="3245" lry="3039"/>
+        <zone xml:id="f223B-zone-Isaiah-8-13-s4" ulx="3109" uly="2988" lrx="3249" lry="3128"/>
       </zone>
       <zone xml:id="f223B-zone-Isaiah-8-14" type="verse" cert="0.765" resp="#source-masoretica">
         <zone xml:id="f223B-zone-Isaiah-8-14-s1" ulx="2528" uly="2988" lrx="3249" lry="3128"/>
@@ -148,6 +163,12 @@
         <zone xml:id="f223B-zone-Isaiah-8-23-s3" ulx="1501" uly="2984" lrx="2049" lry="3139"/>
         <zone xml:id="f223B-zone-Isaiah-8-23-s4" ulx="1545" uly="3102" lrx="2219" lry="3231"/>
         <zone xml:id="f223B-zone-Isaiah-8-23-s5" ulx="1637" uly="3198" lrx="2248" lry="3326"/>
+      </zone>
+      <zone xml:id="f223B-zone-Isaiah-9-1" type="verse" cert="0.859" resp="#source-masoretica">
+        <zone xml:id="f223B-zone-Isaiah-9-1-s1" ulx="1505" uly="3198" lrx="1611" lry="3326"/>
+        <zone xml:id="f223B-zone-Isaiah-9-1-s2" ulx="1586" uly="3286" lrx="2244" lry="3407"/>
+        <zone xml:id="f223B-zone-Isaiah-9-1-s3" ulx="1578" uly="3352" lrx="2259" lry="3518"/>
+        <zone xml:id="f223B-zone-Isaiah-9-1-s4" ulx="1821" uly="3485" lrx="2230" lry="3602"/>
       </zone>
       <zone xml:id="f223B-zone-Isaiah-9-2" type="verse" cert="0.875" resp="#source-masoretica">
         <zone xml:id="f223B-zone-Isaiah-9-2-s1" ulx="1501" uly="3485" lrx="1895" lry="3602"/>
@@ -275,7 +296,7 @@
             <pc type="sof-pasuq" xml:id="f223B-pc-151647">׃</pc>
             <milestone unit="section" subtype="samekh" xml:id="f223B-s-Isaiah-8-10"/>
           <lb xml:id="f223B-lb-1-10" n="10"/>
-            <milestone unit="verse" n="Isaiah-8-11" xml:id="f223B-v-Isaiah-8-11"/>
+            <milestone unit="verse" n="Isaiah-8-11" xml:id="f223B-v-Isaiah-8-11" facs="#f223B-zone-Isaiah-8-11"/>
             <w xml:id="f223B-w-151648">כִּי֩</w>
             <w xml:id="f223B-w-151649">כֹ֨ה</w>
             <w xml:id="f223B-w-151650">אָמַ֧ר</w>
@@ -313,7 +334,7 @@
             <w xml:id="f223B-w-151674">וְלֹ֥א</w>
             <w xml:id="f223B-w-151675">תַעֲרִֽיצוּ</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151675">׃</pc>
-            <milestone unit="verse" n="Isaiah-8-13" xml:id="f223B-v-Isaiah-8-13"/>
+            <milestone unit="verse" n="Isaiah-8-13" xml:id="f223B-v-Isaiah-8-13" facs="#f223B-zone-Isaiah-8-13"/>
             <w xml:id="f223B-w-151676">אֶת־</w>
             <w xml:id="f223B-w-151677">יְהוָ֥ה</w>
           <lb xml:id="f223B-lb-1-17" n="17"/>
@@ -503,7 +524,7 @@
             <w xml:id="f223B-w-151807">הַגּוֹיִֽם</w>
             <pc type="sof-pasuq" xml:id="f223B-pc-151807">׃</pc>
           <lb xml:id="f223B-lb-2-22" n="22"/>
-            <milestone unit="verse" n="Isaiah-9-1" xml:id="f223B-v-Isaiah-9-1"/>
+            <milestone unit="verse" n="Isaiah-9-1" xml:id="f223B-v-Isaiah-9-1" facs="#f223B-zone-Isaiah-9-1"/>
             <w xml:id="f223B-w-151808">הָעָם֙</w>
             <w xml:id="f223B-w-151809">הַהֹלְכִ֣ים</w>
             <w xml:id="f223B-w-151810">בַּחֹ֔שֶׁךְ</w>

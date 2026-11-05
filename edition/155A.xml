@@ -47,6 +47,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (2 line segments) from Masoretica HTR page n308.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n308.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 24 verse zones (93 line segments) from Masoretica HTR page n308. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n308.json"/>
       </change>
@@ -77,6 +80,10 @@
         <desc type="sha256">ea243bf2553dac1369d85016ce4b88f5b7096730dad4a50db84308fb632dfa0a</desc>
       </graphic>
       <graphic xml:id="f155A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0308.jp2/full/max/0/default.jpg" width="4447px" height="5311px"/>
+      <zone xml:id="f155A-zone-Samuel_1-10-6" type="verse" cert="0.574" resp="#source-masoretica">
+        <zone xml:id="f155A-zone-Samuel_1-10-6-s1" ulx="2257" uly="1008" lrx="2346" lry="1090"/>
+        <zone xml:id="f155A-zone-Samuel_1-10-6-s2" ulx="3232" uly="1338" lrx="3917" lry="1497"/>
+      </zone>
       <zone xml:id="f155A-zone-Samuel_1-10-7" type="verse" cert="0.964" resp="#source-masoretica">
         <zone xml:id="f155A-zone-Samuel_1-10-7-s1" ulx="3202" uly="1453" lrx="3932" lry="1583"/>
         <zone xml:id="f155A-zone-Samuel_1-10-7-s2" ulx="3209" uly="1520" lrx="3917" lry="1675"/>
@@ -228,7 +235,7 @@
         <ab>
         <cb xml:id="f155A-cb-1" n="1"/>
           <lb xml:id="f155A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Samuel_1-10-6" xml:id="f155A-v-Samuel_1-10-6"/>
+            <milestone unit="verse" n="Samuel_1-10-6" xml:id="f155A-v-Samuel_1-10-6" facs="#f155A-zone-Samuel_1-10-6"/>
             <w xml:id="f155A-w-103346">עִמָּ֑ם</w>
             <w xml:id="f155A-w-103347">וְנֶהְפַּכְתָּ֖</w>
             <w xml:id="f155A-w-103348">לְאִ֥ישׁ</w>

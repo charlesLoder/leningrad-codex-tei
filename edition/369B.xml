@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (2 line segments) from Masoretica HTR page n737.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n737.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 41 verse zones (80 line segments) from Masoretica HTR page n737. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n737.json"/>
       </change>
@@ -70,6 +73,10 @@
         <desc type="sha256">d25074338158a367a09f4832fe9851dd0c385443291d9bb9c9eb7539376fdae9</desc>
       </graphic>
       <graphic xml:id="f369B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0737.jp2/full/max/0/default.jpg" width="4535px" height="5375px"/>
+      <zone xml:id="f369B-zone-Psalms-22-4" type="verse" cert="0.785" resp="#source-masoretica">
+        <zone xml:id="f369B-zone-Psalms-22-4-s1" ulx="1160" uly="1043" lrx="1602" lry="1240"/>
+        <zone xml:id="f369B-zone-Psalms-22-4-s2" ulx="3038" uly="1372" lrx="3651" lry="1542"/>
+      </zone>
       <zone xml:id="f369B-zone-Psalms-22-5" type="verse" cert="0.968" resp="#source-masoretica">
         <zone xml:id="f369B-zone-Psalms-22-5-s1" ulx="2419" uly="1372" lrx="3012" lry="1542"/>
         <zone xml:id="f369B-zone-Psalms-22-5-s2" ulx="3371" uly="1493" lrx="3654" lry="1644"/>
@@ -242,7 +249,7 @@
         <ab>
         <cb xml:id="f369B-cb-1" n="1"/>
           <lb xml:id="f369B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Psalms-22-4" xml:id="f369B-v-Psalms-22-4"/>
+            <milestone unit="verse" n="Psalms-22-4" xml:id="f369B-v-Psalms-22-4" facs="#f369B-zone-Psalms-22-4"/>
             <w xml:id="f369B-w-223811">י֝וֹשֵׁ֗ב</w>
             <w xml:id="f369B-w-223812">תְּהִלּ֥וֹת</w>
             <w xml:id="f369B-w-223813">יִשְׂרָאֵֽל</w>

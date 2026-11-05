@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (2 line segments) from Masoretica HTR page n42.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n42.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 29 verse zones (100 line segments) from Masoretica HTR page n42. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n42.json"/>
       </change>
@@ -80,6 +83,10 @@
         <desc type="sha256">ffcb58d5a4357cf09a00b395370d4c673d6001ecf360cbee878bc85d86b1e9d8</desc>
       </graphic>
       <graphic xml:id="f022A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0042.jp2/full/max/0/default.jpg" width="4447px" height="5279px"/>
+      <zone xml:id="f022A-zone-Genesis-36-1" type="verse" cert="0.564" resp="#source-masoretica">
+        <zone xml:id="f022A-zone-Genesis-36-1-s1" ulx="3452" uly="1277" lrx="3711" lry="1388"/>
+        <zone xml:id="f022A-zone-Genesis-36-1-s2" ulx="3747" uly="1366" lrx="3908" lry="1510"/>
+      </zone>
       <zone xml:id="f022A-zone-Genesis-36-2" type="verse" cert="0.995" resp="#source-masoretica">
         <zone xml:id="f022A-zone-Genesis-36-2-s1" ulx="3165" uly="1366" lrx="3711" lry="1510"/>
         <zone xml:id="f022A-zone-Genesis-36-2-s2" ulx="3180" uly="1451" lrx="3915" lry="1606"/>
@@ -249,7 +256,7 @@
         <cb xml:id="f022A-cb-1" n="1"/>
           <lb xml:id="f022A-lb-1-1" n="1"/>
           <lb xml:id="f022A-lb-1-2" n="2"/>
-            <milestone unit="verse" n="Genesis-36-1" xml:id="f022A-v-Genesis-36-1"/>
+            <milestone unit="verse" n="Genesis-36-1" xml:id="f022A-v-Genesis-36-1" facs="#f022A-zone-Genesis-36-1"/>
             <w xml:id="f022A-w-13913">אֱדֽוֹם</w>
             <pc type="sof-pasuq" xml:id="f022A-pc-13913">׃</pc>
             <milestone unit="verse" n="Genesis-36-2" xml:id="f022A-v-Genesis-36-2" facs="#f022A-zone-Genesis-36-2"/>

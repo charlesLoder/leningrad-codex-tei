@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import dataclasses
 import importlib.util
 import json
 import sys
@@ -209,18 +210,14 @@ def test_check_zones_passes_matching_layout(zones_dir):
     assert zones_stage.check_zones(source, zones_stage.verse_lines(TEI)) == []
 
 
-def test_check_zones_reports_count_column_and_missing(zones_dir):
+def test_check_zones_only_reports_missing_milestone(zones_dir):
     source = zones_stage.load_zones(zones_dir, "001B")
     v1, v2 = sorted(source.verses, key=lambda v: v.n)
     v1.rects = v1.rects[:1]
     v2.rects = list(reversed(v2.rects))
     source.verses.append(zones_stage.VerseZone(n="Genesis-1-3", cert=1, rects=[]))
     problems = zones_stage.check_zones(source, zones_stage.verse_lines(TEI))
-    assert sorted(problems) == [
-        "Genesis-1-1: 1 zone rects, 2 edition lines",
-        "Genesis-1-2: column 1 zone is not right of column 2",
-        "Genesis-1-3: no verse milestone with words on this folio",
-    ]
+    assert problems == ["Genesis-1-3: no verse milestone with words on this folio"]
 
 
 def test_apply_zones_patches_in_place(zones_dir, tei_path):
@@ -300,27 +297,28 @@ def test_apply_zones_rerun_with_new_data_replaces_zones(zones_dir, tei_path):
     assert text.count('xml:id="source-masoretica"') == 1
 
 
-def test_apply_zones_leaves_out_failed_verses(zones_dir, tei_path):
+def test_apply_zones_keeps_verses_with_different_rect_count(zones_dir, tei_path):
     source = zones_stage.load_zones(zones_dir, "001B")
     bad = next(vz for vz in source.verses if vz.n == "Genesis-1-2")
     bad.rects = bad.rects[:1]
     result = zones_stage.apply_zones(tei_path, source, when="2026-10-22")
-    assert result.problems == ["Genesis-1-2: 1 zone rects, 2 edition lines"]
-    assert (result.verses, result.written, result.changed) == (2, 1, True)
-    text = tei_path.read_text()
-    assert 'xml:id="f001B-zone-Genesis-1-1"' in text
-    assert "f001B-zone-Genesis-1-2" not in text
-    assert "Added 1 verse zones (2 line segments)" in text
-    assert "Left out 1 verse zones that did not match the folio's lines." in text
+    assert result.problems == []
+    assert (result.verses, result.written, result.changed) == (2, 2, True)
+    assert 'xml:id="f001B-zone-Genesis-1-2"' in tei_path.read_text()
 
 
-def test_apply_zones_writes_nothing_when_no_verse_passes(zones_dir, tei_path):
+def test_apply_zones_leaves_out_verse_without_milestone(zones_dir, tei_path):
     source = zones_stage.load_zones(zones_dir, "001B")
-    for vz in source.verses:
-        vz.rects = vz.rects[:1]
+    source.verses.append(
+        zones_stage.VerseZone(n="Genesis-1-3", cert=1, rects=[(1, 1, 2, 2)])
+    )
     result = zones_stage.apply_zones(tei_path, source, when="2026-10-22")
-    assert result.written == 0 and not result.changed
-    assert tei_path.read_text() == TEI
+    assert result.problems == [
+        "Genesis-1-3: no verse milestone with words on this folio"
+    ]
+    text = tei_path.read_text()
+    assert "f001B-zone-Genesis-1-3" not in text
+    assert "Left out 1 verse zone that have no verse milestone on the folio." in text
 
 
 def test_drop_margin_rects_removes_masora_matches():
@@ -358,3 +356,15 @@ def test_add_command_fails_without_downloaded_zones(tmp_path, monkeypatch, capsy
     monkeypatch.setattr(zones_stage, "ZONES", tmp_path)
     assert zones_stage.main(["add", "--folio", "002A"]) == 1
     assert "no zones for 002A" in capsys.readouterr().err
+
+
+def test_apply_zones_change_counts_only_missing_zones(zones_dir, tei_path):
+    source = zones_stage.load_zones(zones_dir, "001B")
+    first = zones_stage.VerseZone(**{**source.verses[0].__dict__})
+    zones_stage.apply_zones(
+        tei_path, dataclasses.replace(source, verses=[first]), when="2026-10-22"
+    )
+    zones_stage.apply_zones(tei_path, source, when="2026-10-23")
+    text = tei_path.read_text()
+    assert "Added 1 verse zone (2 line segments)" in text
+    assert "Added 1 missing verse zone (2 line segments)" in text

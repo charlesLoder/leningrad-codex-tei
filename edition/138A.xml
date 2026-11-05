@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (3 line segments) from Masoretica HTR page n274.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n274.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 20 verse zones (89 line segments) from Masoretica HTR page n274. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n274.json"/>
       </change>
@@ -70,6 +73,11 @@
         <desc type="sha256">4c8397b516e81bf2f418762304ff53396927eb8a83e03958534897094fd59173</desc>
       </graphic>
       <graphic xml:id="f138A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0274.jp2/full/max/0/default.jpg" width="4431px" height="5375px"/>
+      <zone xml:id="f138A-zone-Judges-4-2" type="verse" cert="0.715" resp="#source-masoretica">
+        <zone xml:id="f138A-zone-Judges-4-2-s1" ulx="1950" uly="1019" lrx="1987" lry="1189"/>
+        <zone xml:id="f138A-zone-Judges-4-2-s2" ulx="3268" uly="1362" lrx="3962" lry="1510"/>
+        <zone xml:id="f138A-zone-Judges-4-2-s3" ulx="3305" uly="1469" lrx="3977" lry="1610"/>
+      </zone>
       <zone xml:id="f138A-zone-Judges-4-3" type="verse" cert="0.955" resp="#source-masoretica">
         <zone xml:id="f138A-zone-Judges-4-3-s1" ulx="3323" uly="1558" lrx="3984" lry="1709"/>
         <zone xml:id="f138A-zone-Judges-4-3-s2" ulx="3224" uly="1643" lrx="3981" lry="1798"/>
@@ -209,7 +217,7 @@
         <ab>
         <cb xml:id="f138A-cb-1" n="1"/>
           <lb xml:id="f138A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Judges-4-2" xml:id="f138A-v-Judges-4-2"/>
+            <milestone unit="verse" n="Judges-4-2" xml:id="f138A-v-Judges-4-2" facs="#f138A-zone-Judges-4-2"/>
             <w xml:id="f138A-w-91424">בְּחָצ֑וֹר</w>
             <w xml:id="f138A-w-91425">וְשַׂר־</w>
             <w xml:id="f138A-w-91426">צְבָאוֹ֙</w>

@@ -417,7 +417,7 @@ uv run python scripts/zones.py add --folio 001B
 The `add` command does these steps:
 
 - It removes the rects in the top and bottom margins. The HTR also finds verse words that the masora quotes there.
-- It compares each verse's zone with the columns and lines of the folio. When they do not agree, the verse gets no zone and the command prints the verse. A verse that does not agree can be an alignment error. Examine it.
+- It trusts the Masoretica data: it does not compare the zones with the columns and lines of the folio. A verse with no verse milestone on the folio gets no zone, and the command prints the verse.
 - It adds the Archive.org image (the zones use its pixels), the zones, a `facs` on each verse milestone, a `respStmt` for Masoretica, and a `<change>`.
 
 When you run it again with the same data, it does not change the file.

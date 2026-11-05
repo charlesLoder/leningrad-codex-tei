@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 3 missing verse zones (11 line segments) from Masoretica HTR page n571.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n571.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 19 verse zones (81 line segments) from Masoretica HTR page n571. Left out 3 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n571.json"/>
       </change>
@@ -180,10 +183,27 @@
         <zone xml:id="f286B-zone-Ezekiel-21-5-s2" ulx="674" uly="2438" lrx="1330" lry="2554"/>
         <zone xml:id="f286B-zone-Ezekiel-21-5-s3" ulx="989" uly="2513" lrx="1334" lry="2637"/>
       </zone>
+      <zone xml:id="f286B-zone-Ezekiel-21-6" type="verse" cert="0.946" resp="#source-masoretica">
+        <zone xml:id="f286B-zone-Ezekiel-21-6-s1" ulx="824" uly="2513" lrx="877" lry="2637"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-6-s2" ulx="637" uly="2562" lrx="1345" lry="2745"/>
+      </zone>
       <zone xml:id="f286B-zone-Ezekiel-21-7" type="verse" cert="0.982" resp="#source-masoretica">
         <zone xml:id="f286B-zone-Ezekiel-21-7-s1" ulx="723" uly="2693" lrx="1315" lry="2839"/>
         <zone xml:id="f286B-zone-Ezekiel-21-7-s2" ulx="592" uly="2775" lrx="1334" lry="2936"/>
         <zone xml:id="f286B-zone-Ezekiel-21-7-s3" ulx="611" uly="2880" lrx="1333" lry="3026"/>
+      </zone>
+      <zone xml:id="f286B-zone-Ezekiel-21-8" type="verse" cert="0.917" resp="#source-masoretica">
+        <zone xml:id="f286B-zone-Ezekiel-21-8-s1" ulx="622" uly="2981" lrx="1330" lry="3124"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-8-s2" ulx="659" uly="3082" lrx="1315" lry="3210"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-8-s3" ulx="637" uly="3157" lrx="1334" lry="3303"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-8-s4" ulx="1090" uly="3273" lrx="1341" lry="3401"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-8-s5" ulx="671" uly="3367" lrx="1169" lry="3498"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-8-s6" ulx="1142" uly="3446" lrx="1322" lry="3592"/>
+      </zone>
+      <zone xml:id="f286B-zone-Ezekiel-21-9" type="verse" cert="0.717" resp="#source-masoretica">
+        <zone xml:id="f286B-zone-Ezekiel-21-9-s1" ulx="641" uly="3446" lrx="1322" lry="3592"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-9-s2" ulx="622" uly="3532" lrx="1326" lry="3689"/>
+        <zone xml:id="f286B-zone-Ezekiel-21-9-s3" ulx="1176" uly="3648" lrx="1326" lry="3775"/>
       </zone>
       <zone xml:id="f286B-zone-Ezekiel-21-10" type="verse" cert="0.82" resp="#source-masoretica">
         <zone xml:id="f286B-zone-Ezekiel-21-10-s1" ulx="607" uly="3648" lrx="1176" lry="3775"/>
@@ -589,7 +609,7 @@
             <pc type="sof-pasuq" xml:id="f286B-pc-195538">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f286B-s-Ezekiel-21-5"/>
           <lb xml:id="f286B-lb-3-15" n="15"/>
-            <milestone unit="verse" n="Ezekiel-21-6" xml:id="f286B-v-Ezekiel-21-6"/>
+            <milestone unit="verse" n="Ezekiel-21-6" xml:id="f286B-v-Ezekiel-21-6" facs="#f286B-zone-Ezekiel-21-6"/>
             <w xml:id="f286B-w-195539">וַיְהִ֥י</w>
             <w xml:id="f286B-w-195540">דְבַר־</w>
             <w xml:id="f286B-w-195541">יְהוָ֖ה</w>
@@ -615,7 +635,7 @@
             <w xml:id="f286B-w-195556">יִשְׂרָאֵֽל</w>
             <pc type="sof-pasuq" xml:id="f286B-pc-195556">׃</pc>
           <lb xml:id="f286B-lb-3-19" n="19"/>
-            <milestone unit="verse" n="Ezekiel-21-8" xml:id="f286B-v-Ezekiel-21-8"/>
+            <milestone unit="verse" n="Ezekiel-21-8" xml:id="f286B-v-Ezekiel-21-8" facs="#f286B-zone-Ezekiel-21-8"/>
             <w xml:id="f286B-w-195557">וְאָמַרְתָּ֞</w>
             <w xml:id="f286B-w-195558">לְאַדְמַ֣ת</w>
             <w xml:id="f286B-w-195559">יִשְׂרָאֵ֗ל</w>
@@ -635,7 +655,7 @@
             <w xml:id="f286B-w-195570">צַדִּ֥יק</w>
             <w xml:id="f286B-w-195571">וְרָשָֽׁע</w>
             <pc type="sof-pasuq" xml:id="f286B-pc-195571">׃</pc>
-            <milestone unit="verse" n="Ezekiel-21-9" xml:id="f286B-v-Ezekiel-21-9"/>
+            <milestone unit="verse" n="Ezekiel-21-9" xml:id="f286B-v-Ezekiel-21-9" facs="#f286B-zone-Ezekiel-21-9"/>
             <w xml:id="f286B-w-195572">יַ֛עַן</w>
           <lb xml:id="f286B-lb-3-23" n="23"/>
             <w xml:id="f286B-w-195573">אֲשֶׁר־</w>

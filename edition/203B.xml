@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 2 missing verse zones (7 line segments) from Masoretica HTR page n405.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n405.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 21 verse zones (84 line segments) from Masoretica HTR page n405. Left out 2 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n405.json"/>
       </change>
@@ -73,6 +76,17 @@
         <desc type="sha256">798364dd936dd5bc1788834f81060eefc8663cdcae36d8ef4c6af1a5f4d6cec8</desc>
       </graphic>
       <graphic xml:id="f203B-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0405.jp2/full/max/0/default.jpg" width="4591px" height="5295px"/>
+      <zone xml:id="f203B-zone-Kings_2-2-13" type="verse" cert="0.578" resp="#source-masoretica">
+        <zone xml:id="f203B-zone-Kings_2-2-13-s1" ulx="2674" uly="1247" lrx="3294" lry="1396"/>
+        <zone xml:id="f203B-zone-Kings_2-2-13-s2" ulx="2594" uly="1343" lrx="3290" lry="1500"/>
+      </zone>
+      <zone xml:id="f203B-zone-Kings_2-2-14" type="verse" cert="0.744" resp="#source-masoretica">
+        <zone xml:id="f203B-zone-Kings_2-2-14-s1" ulx="2594" uly="1343" lrx="2797" lry="1500"/>
+        <zone xml:id="f203B-zone-Kings_2-2-14-s2" ulx="2567" uly="1442" lrx="3294" lry="1588"/>
+        <zone xml:id="f203B-zone-Kings_2-2-14-s3" ulx="2556" uly="1542" lrx="3294" lry="1668"/>
+        <zone xml:id="f203B-zone-Kings_2-2-14-s4" ulx="2579" uly="1634" lrx="3317" lry="1760"/>
+        <zone xml:id="f203B-zone-Kings_2-2-14-s5" ulx="2693" uly="1722" lrx="3302" lry="1856"/>
+      </zone>
       <zone xml:id="f203B-zone-Kings_2-2-15" type="verse" cert="0.926" resp="#source-masoretica">
         <zone xml:id="f203B-zone-Kings_2-2-15-s1" ulx="2674" uly="1825" lrx="3302" lry="1951"/>
         <zone xml:id="f203B-zone-Kings_2-2-15-s2" ulx="2525" uly="1913" lrx="3283" lry="2043"/>
@@ -209,10 +223,10 @@
         <ab>
         <cb xml:id="f203B-cb-1" n="1"/>
           <lb xml:id="f203B-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Kings_2-2-13" xml:id="f203B-v-Kings_2-2-13"/>
+            <milestone unit="verse" n="Kings_2-2-13" xml:id="f203B-v-Kings_2-2-13" facs="#f203B-zone-Kings_2-2-13"/>
             <w xml:id="f203B-w-137949">הַיַּרְדֵּֽן</w>
             <pc type="sof-pasuq" xml:id="f203B-pc-137949">׃</pc>
-            <milestone unit="verse" n="Kings_2-2-14" xml:id="f203B-v-Kings_2-2-14"/>
+            <milestone unit="verse" n="Kings_2-2-14" xml:id="f203B-v-Kings_2-2-14" facs="#f203B-zone-Kings_2-2-14"/>
             <w xml:id="f203B-w-137950">וַיִּקַּח֩</w>
             <w xml:id="f203B-w-137951">אֶת־</w>
             <w xml:id="f203B-w-137952">אַדֶּ֨רֶת</w>

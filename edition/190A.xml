@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (3 line segments) from Masoretica HTR page n378.
+        <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n378.json"/>
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 22 verse zones (94 line segments) from Masoretica HTR page n378. Left out 1 verse zones that did not match the folio's lines.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n378.json"/>
       </change>
@@ -73,6 +76,11 @@
         <desc type="sha256">9dc4bae96925c9a022374c616dfc36b066e8711cf6489254e181c7932e576335</desc>
       </graphic>
       <graphic xml:id="f190A-img-archive" url="https://iiif.archive.org/image/iiif/3/Leningrad_Codex_Color_Images%2FLeningrad_Codex_Color_jp2.zip%2FLeningrad_Codex_Color_jp2%2FLeningrad_Codex_Color_0378.jp2/full/max/0/default.jpg" width="4383px" height="5375px"/>
+      <zone xml:id="f190A-zone-Kings_1-7-49" type="verse" cert="0.658" resp="#source-masoretica">
+        <zone xml:id="f190A-zone-Kings_1-7-49-s1" ulx="1256" uly="1074" lrx="1563" lry="1194"/>
+        <zone xml:id="f190A-zone-Kings_1-7-49-s2" ulx="3214" uly="1391" lrx="3864" lry="1545"/>
+        <zone xml:id="f190A-zone-Kings_1-7-49-s3" ulx="3452" uly="1479" lrx="3883" lry="1632"/>
+      </zone>
       <zone xml:id="f190A-zone-Kings_1-7-50" type="verse" cert="0.979" resp="#source-masoretica">
         <zone xml:id="f190A-zone-Kings_1-7-50-s1" ulx="3057" uly="1479" lrx="3455" lry="1632"/>
         <zone xml:id="f190A-zone-Kings_1-7-50-s2" ulx="3141" uly="1585" lrx="3875" lry="1713"/>
@@ -221,7 +229,7 @@
         <ab>
         <cb xml:id="f190A-cb-1" n="1"/>
           <lb xml:id="f190A-lb-1-1" n="1"/>
-            <milestone unit="verse" n="Kings_1-7-49" xml:id="f190A-v-Kings_1-7-49"/>
+            <milestone unit="verse" n="Kings_1-7-49" xml:id="f190A-v-Kings_1-7-49" facs="#f190A-zone-Kings_1-7-49"/>
             <w xml:id="f190A-w-128268">זָהָ֣ב</w>
             <w xml:id="f190A-w-128269">סָג֑וּר</w>
             <w xml:id="f190A-w-128270">וְהַפֶּ֧רַח</w>
