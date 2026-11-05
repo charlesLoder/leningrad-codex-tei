@@ -10,20 +10,16 @@ import SearchField from '../components/SearchField.astro';
 import folios from '../data/folios.json';
 import { countLabel, paginate, type FolioRow } from '../lib/folio-list';
 import { abbreviateRange } from '../lib/tei';
-import { folioRangeKeys } from '../lib/verses';
+import { folioRangeSpans } from '../lib/verses';
 
 const PAGE_SIZE = 60;
 
-const rows: FolioRow[] = folios.map((f) => {
-  const { start, end } = folioRangeKeys(f.range);
-  return {
-    folio: f.folio,
-    range: abbreviateRange(f.range),
-    search: `${f.folio} ${f.title} ${f.range}`.toLowerCase(),
-    start,
-    end,
-  };
-});
+const rows: FolioRow[] = folios.map((f) => ({
+  folio: f.folio,
+  range: abbreviateRange(f.range),
+  search: `${f.folio} ${f.title} ${f.range}`.toLowerCase(),
+  spans: folioRangeSpans(f.range),
+}));
 
 // Only the first page is server-rendered; the client script renders the rest from #folio-data.
 const first = paginate(rows.length, 1, PAGE_SIZE);

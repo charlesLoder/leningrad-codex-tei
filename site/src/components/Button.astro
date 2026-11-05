@@ -91,11 +91,6 @@ const isLink = typeof href === 'string';
     flex: none;
   }
 
-  .button :global(.external-icon) {
-    vertical-align: -0.15em;
-    margin-inline-start: 0.25rem;
-  }
-
   .button:hover {
     background: var(--button-hover-bg);
     color: var(--button-hover-color);
@@ -116,10 +111,10 @@ const isLink = typeof href === 'string';
 
   .button[data-variant='primary'] {
     --button-bg: var(--accent);
-    --button-color: #fff;
+    --button-color: var(--on-accent);
     --button-border-color: var(--accent);
-    --button-hover-bg: #5e2315;
-    --button-hover-color: #fff;
+    --button-hover-bg: var(--accent-strong);
+    --button-hover-color: var(--on-accent);
   }
 
   .button[disabled] {

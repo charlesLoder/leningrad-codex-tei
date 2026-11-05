@@ -1,0 +1,171 @@
+---
+---
+<aside class="verse-card" id="verse-card" aria-live="polite" hidden></aside>
+<div class="verse-tip" id="verse-tip" hidden></div>
+
+<!-- The page script writes the card's contents, so these selectors are global. -->
+<style is:global>
+  .verse-card {
+    position: fixed;
+    z-index: 20;
+    left: 50%;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: max-content;
+    max-width: min(40rem, calc(100vw - 2rem));
+    padding: 0.3rem 0.4rem 0.3rem 0.9rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+    box-shadow: 0 0.5rem 1.6rem var(--shadow);
+  }
+
+  .verse-card[hidden] {
+    display: none;
+  }
+
+  /* With the image open, the card sits on the image so it never covers a line. */
+  .desk[data-view='both'] ~ .verse-card {
+    left: 79.17%;
+    max-width: 40vw;
+  }
+
+  .verse-card-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 2.2rem;
+  }
+
+  .verse-card-ref {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .verse-card-where {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
+  .verse-card-warn {
+    padding: 0.02rem 0.45rem;
+    border-radius: 1rem;
+    background: var(--warn-soft);
+    color: var(--warn);
+    font: 0.74rem/1.5 system-ui, sans-serif;
+    white-space: nowrap;
+  }
+
+  .verse-card-actions {
+    display: flex;
+    align-items: center;
+    margin-inline-start: auto;
+  }
+
+  .verse-card-actions .quiet {
+    min-width: 2rem;
+    padding-inline: 0.4rem;
+  }
+
+  .verse-card-more {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.1rem 0.4rem;
+    padding-block: 0.15rem 0.25rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
+  .verse-card-more .quiet {
+    min-height: 1.9rem;
+    color: var(--accent);
+    font-size: 0.84rem;
+  }
+
+  .verse-card-more > span {
+    padding-inline-end: 0.4rem;
+  }
+
+  .verse-crops {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    max-height: 8rem;
+    overflow: auto;
+    padding-block-start: 0.35rem;
+    padding-inline-end: 0.5rem;
+  }
+
+  .verse-crops img {
+    flex: none;
+    max-width: 100%;
+    min-width: 8rem;
+    height: 2.75rem;
+    background: var(--line);
+    border-radius: 2px;
+  }
+
+  .verse-tip {
+    position: fixed;
+    z-index: 28;
+    padding: 0.05rem 0.45rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 0.3rem;
+    font: 0.72rem/1.5 system-ui, sans-serif;
+    pointer-events: none;
+    transform: translate(-50%, -100%);
+    white-space: nowrap;
+    animation: verse-tip-late 0.3s steps(1) both;
+  }
+
+  .verse-tip[hidden] {
+    display: none;
+  }
+
+  @keyframes verse-tip-late {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 759px) {
+    .verse-card,
+    .desk[data-view='both'] ~ .verse-card {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: none;
+      width: auto;
+      max-width: none;
+      padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+      padding-block-end: env(safe-area-inset-bottom, 0px);
+      border-width: 1px 0 0;
+      border-radius: 0.7rem 0.7rem 0 0;
+    }
+
+    .verse-tip {
+      display: none;
+    }
+  }
+
+  @media print {
+    .verse-card,
+    .verse-tip {
+      display: none !important;
+    }
+  }
+</style>

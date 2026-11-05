@@ -9,6 +9,8 @@ interface Props {
   imageAlt?: string;
   type?: 'website' | 'article';
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+  /** Full-width page with the compact header (the folio page). */
+  desk?: boolean;
 }
 const {
   title,
@@ -17,6 +19,7 @@ const {
   imageAlt = 'Leningrad Codex TEI — the oldest complete manuscript of the Hebrew Bible, folio by folio.',
   type = 'website',
   jsonLd,
+  desk = false,
 } = Astro.props;
 const site = (Astro.site?.toString() ?? 'https://leningrad-codex-tei.netlify.app').replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, `${site}/`).toString();
@@ -66,10 +69,14 @@ const graph = [websiteSchema, webpageSchema, ...(jsonLd ? (Array.isArray(jsonLd)
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <slot name="head" />
   </head>
   <body>
-    <SiteHeader />
-    <main class="wrap">
+    <SiteHeader compact={desk}>
+      <slot name="header-center" slot="center" />
+      <slot name="header-actions" slot="actions" />
+    </SiteHeader>
+    <main class:list={{ wrap: !desk }}>
       <slot />
     </main>
     <SiteFooter />

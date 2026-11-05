@@ -27,6 +27,17 @@ The dev server reads TEI directly from `../edition/`.
   at a time. The query and page are kept in the URL (`?q=…&page=…`).
 - `/folio/Fxxx[A|B]/` renders columns and lines as encoded in TEI,
   with verse milestones, samekh/pe divisions, sof-pasuq and paseq inline.
+  The text and the page image share one verse selection, built from the
+  `<zone type="verse">` segments in the TEI. A link such as
+  `/folio/021A/#Gen-34-12` opens with that verse selected. A double click on
+  the text zooms the image to the verse, and opens the image if it is closed.
+- The page image uses `triiiceratops`, pinned to an exact version. All calls
+  to it live in `src/lib/iiif-stage.ts`. Its controls and annotation shapes
+  are off, and that module draws the zones in its own overlay. The ruler and
+  color chart stay hidden behind a mask from `leafBounds` in
+  `src/lib/folio-view.ts`, which is an estimate and not a measurement.
+- `/folios.json` is the folio list for the go-to search. The browser fetches
+  it only when a reader opens the search.
 - Raw TEI per folio is served at `/edition/Fxxx[A|B].xml`.
 
 ## Deploy (Netlify)

@@ -6,10 +6,65 @@
   --card: #fffdf8;
   --accent: #7a2e1d;
   --accent-soft: #f3e2d3;
-  --parchment: #f4e8c9;
-  --parchment-edge: #cdb98c;
-  --parchment-rule: rgba(110, 85, 45, 0.18);
-  --parchment-shadow: rgba(60, 40, 20, 0.18);
+  --parchment: #f6edd6;
+  /* The separate leaf shown when the image is closed. */
+  --leaf-bg: #f4e8c9;
+  --leaf-edge: #cdb98c;
+  --leaf-rule: rgba(110, 85, 45, 0.18);
+  --leaf-shadow: rgba(60, 40, 20, 0.18);
+  --faint: #a39a8b;
+  --on-accent: #fff;
+  --accent-strong: #5e2315;
+  --hl: #eedbab;
+  --hl-pin: #e8cd8e;
+  --plate: #2a2622;
+  --plate-ink: #e9e2d5;
+  --plate-btn: rgba(42, 38, 34, 0.86);
+  --zone: #f0a500;
+  --zone-alt: #3b86b8;
+  --warn: #8a5a00;
+  --warn-soft: #f6e6bf;
+  --shadow: rgba(40, 25, 10, 0.2);
+  /* Heights of the folio page's sticky rows. */
+  --head: 3.25rem;
+  --strip: 2.75rem;
+}
+
+/* Screen only, so a dark system setting never changes what prints. */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #15181c;
+    --ink: #e8eaed;
+    --muted: #9da4ae;
+    --faint: #666d78;
+    --line: #2c3138;
+    --card: #1c2025;
+    --accent: #8fb8de;
+    --accent-soft: #25323f;
+    --on-accent: #101316;
+    --accent-strong: #a9cbea;
+    --parchment: #15181c;
+    --leaf-bg: #1c2025;
+    --leaf-edge: #3a4048;
+    --leaf-rule: rgba(200, 215, 235, 0.12);
+    --leaf-shadow: rgba(0, 0, 0, 0.45);
+    --hl: #29405a;
+    --hl-pin: #345274;
+    --plate: #0c0e11;
+    --plate-ink: #e8eaed;
+    --plate-btn: rgba(28, 32, 37, 0.9);
+    --zone: #4f9be6;
+    --warn: #e6c26a;
+    --warn-soft: #3a3320;
+    --shadow: rgba(0, 0, 0, 0.55);
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  a {
+    color: var(--accent);
+  }
 }
 
 * {
@@ -49,6 +104,61 @@ body > main {
   display: none;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Lucide icons take their size and color from the text around them. */
+.lucide {
+  flex: none;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+/* A control with no box until it is pointed at. */
+.quiet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.2rem;
+  padding: 0.2rem 0.6rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-radius: 0.45rem;
+  cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.quiet::-webkit-details-marker {
+  display: none;
+}
+
+.quiet:hover,
+details[open] > .quiet {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.quiet[aria-pressed='true'] {
+  color: var(--accent);
+}
+
+.quiet:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 @media print {
   @page {
     margin: 12mm;
@@ -75,6 +185,7 @@ body > main {
   .folio-toolbar,
   .iiif,
   .pager,
+  .column-pick,
   #feedback-open,
   #feedback-dialog,
   #feedback-pickbar,

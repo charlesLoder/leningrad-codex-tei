@@ -1,11 +1,10 @@
-import { parseVerseQuery } from './verses.ts';
+import { parseVerseQuery, spanOverlaps, type VerseSpan } from './verses.ts';
 
 export interface FolioRow {
   folio: string;
   range: string;
   search: string;
-  start: number | null;
-  end: number | null;
+  spans: VerseSpan[];
 }
 
 export interface PageSlice {
@@ -20,7 +19,7 @@ export function filterFolios(rows: FolioRow[], raw: string): FolioRow[] {
   if (!query) return rows;
   const span = parseVerseQuery(query);
   if (span) {
-    return rows.filter((row) => row.start !== null && row.end !== null && span.start <= row.end && row.start <= span.end);
+    return rows.filter((row) => row.spans.some((s) => spanOverlaps(s, span)));
   }
   const needle = query.toLowerCase();
   return rows.filter((row) => row.search.includes(needle));

@@ -1,103 +1,66 @@
 ---
+import { lineHtml } from '../lib/folio-view';
 import type { TeiLine as TeiLineType } from '../lib/tei';
 
 interface Props {
   col: string | number;
   line: TeiLineType;
-  showLineNumber?: boolean;
+  firstVerse: string | null;
 }
 
-const { col, line, showLineNumber = false } = Astro.props;
-
-const verseMarks = [
-  ...new Map(
-    line.tokens
-      .flatMap((t) => t.marks)
-      .filter((mk) => mk.kind === 'verse')
-      .map((mk) => [mk.ref, mk]),
-  ).values(),
-];
+const { col, line, firstVerse } = Astro.props;
+const five = Number(line.n) % 5 === 0;
 ---
 
-<div class:list={['tei-line', { numbered: showLineNumber }]} data-col={col} data-line={line.n}>
+<div class:list={['tei-line', { five }]} data-col={col} data-line={line.n}>
   <span class="ln">{line.n}</span>
-  <div class="gutter">
-    {verseMarks.map((mk) => (
-      <span class="verse-tag" data-verse={mk.ref} title="Highlight verse">{mk.ref}</span>
-    ))}
-  </div>
-  <p class="he">
-    {line.tokens.map((t, i) => (
-      <>
-        {t.kind === "sof-pasuq" && i > 0 ? '\u00A0' : ""}
-        <span class={`${t.kind === 'w' ? '' : t.kind}${t.text.endsWith("־") ? ' maqaf' : ''}`.trim()} data-verse={t.verse}>
-          {t.text}
-        </span>
-        {t.marks.filter((mk) => mk.kind === 'section').map((mk) => (
-          <span class="section-tag" data-verse={t.verse} title="Paragraph division">
-            {mk.subtype === 'samekh' ? 'ס' : mk.subtype === 'pe' ? 'פ' : mk.subtype}
-          </span>
-        ))}{line.tokens[i + 1]?.kind === "sof-pasuq" ? "" : ' '}
-      </>
-    ))}
-    {line.marks.map((mk) => (
-      <span class="section-tag" title="Paragraph division">
-        {mk.subtype === 'samekh' ? 'ס' : mk.subtype === 'pe' ? 'פ' : mk.subtype}
-      </span>
-    ))}
-  </p>
+  <p class="he" lang="he"><span class="he-inner" set:html={lineHtml(line, firstVerse) || '&nbsp;'} /></p>
 </div>
 
 <style>
-  /* Narrow screens: every column shows line numbers in their own track. */
   .tei-line {
-    display: grid;
-    grid-template-columns: 1.6rem 3.4rem 1fr;
-    gap: 0.6rem;
-    padding: 0;
-    /* Hebrew hangs from the line, so the rule sits above each row. */
-    border-top: 1px solid var(--parchment-rule);
-  }
-
-  /* Wide screens: only the first column keeps its line numbers. */
-  @container (min-width: 60rem) {
-    .tei-line {
-      grid-template-columns: 3.4rem 1fr;
-    }
-
-    .tei-line.numbered {
-      grid-template-columns: 1.6rem 3.4rem 1fr;
-    }
-
-    .ln {
-      display: none;
-    }
-
-    .numbered .ln {
-      display: block;
-    }
-  }
-
-  .ln {
-    color: var(--muted);
-    font-size: 0.75rem;
-    line-height: 2.4;
-    text-align: center;
-  }
-
-  .gutter {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.15rem;
+    align-items: center;
+    height: var(--row, 2em);
+    scroll-margin: calc(var(--head) + var(--strip) + 1rem) 0 1rem;
+  }
+
+  :global(.desk[data-view='text']) .tei-line {
+    scroll-margin-bottom: 7rem;
+  }
+
+  /* Every fifth line is numbered; the others show on hover or when linked. */
+  .ln {
+    position: absolute;
+    inset-inline-start: -1.7rem;
+    width: 1.3rem;
+    text-align: center;
+    color: var(--faint);
+    font: 0.66rem system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transition: opacity 0.12s;
+  }
+
+  :global(.column.first) .five .ln,
+  :global(.column.first) .tei-line:hover .ln,
+  :global(.tei-line.cur) .ln {
+    opacity: 1;
+  }
+
+  :global(.tei-line.cur) .ln {
+    color: var(--accent);
+    font-weight: 700;
   }
 
   .he {
-    direction: rtl;
-    /* Fluid with the container (.columns-frame); never below 1rem. */
-    font-size: clamp(1rem, 5cqi, 1.4rem);
-    line-height: 1.7;
+    width: 100%;
+    min-width: 0;
     margin: 0;
+    direction: rtl;
+    line-height: 1;
+    white-space: nowrap;
     font-family: 'SBL Hebrew', 'Noto Serif Hebrew', 'Ezra SIL', 'Cardo', 'Times New Roman', serif;
     /* Alternate glyphs: keep contextual alternates on so the font
        uses its alternate ayin when ayin carries a vowel. Named
@@ -107,71 +70,102 @@ const verseMarks = [
     font-variant-ligatures: contextual;
   }
 
-  /* Wide enough for several columns side by side. */
-  @container (min-width: 60rem) {
-    .he {
-      font-size: clamp(1rem, 2.1cqi, 1.4rem);
-    }
-  }
-
-  /* Blank manuscript lines (e.g. open petucha lines) carry no words.
-     Hold their full line height so the line stays visible. */
-  .he:empty::before {
-    content: '\00A0';
-  }
-
-  .verse-tag {
-    direction: ltr;
-    font-size: 0.68rem;
-    line-height: 1.3;
-    text-align: right;
-    color: var(--muted);
-    font-family: system-ui, sans-serif;
-    cursor: pointer;
-  }
-
-  .verse-tag:hover {
-    color: var(--accent);
-  }
-
-  .he :global(span.hl) {
-    background: #eed9a8;
-    box-shadow: 0.18em 0 0 #eed9a8, -0.18em 0 0 #eed9a8;
-  }
-
-  .he :global(span.hl.maqaf) {
-    box-shadow: 0.18em 0 0 #eed9a8, 0 0 0 #eed9a8;
-  }
-
-  .he :global(span.hl.sof-pasuq) {
-    box-shadow: 0 0 0 #eed9a8, -0.18em 0 0 #eed9a8;
-  }
-
-  .section-tag {
+  .he-inner {
     display: inline-block;
-    direction: ltr;
-    font-size: 0.68rem;
-    vertical-align: middle;
-    border: 1px solid var(--line);
-    border-radius: 0.3rem;
-    padding: 0 0.3rem;
-    margin-inline-end: 0.35rem;
-    color: var(--muted);
-    font-family: system-ui, sans-serif;
   }
 
-  .he :global(.sof-pasuq) {
-    color: var(--accent);
-    margin-inline-start: -0.18em;
+  .he :global(.verse-run) {
+    padding-block: 0.34em;
+    border-radius: 0.18em;
+    cursor: pointer;
+    transition: background-color 0.1s;
   }
 
+  .he :global(.verse-run.on) {
+    background: var(--hl);
+  }
+
+  .he :global(.verse-run.pin) {
+    background: var(--hl-pin);
+  }
+
+  .he :global(.sof-pasuq),
   .he :global(.paseq),
   .he :global(.inverted-nun) {
     color: var(--muted);
   }
 
-  .he :global(.maqaf) {
-    margin-inline-end: -0.35rem;
+  .he :global(.section-tag) {
+    padding-inline: 0.4em;
+    font-size: 0.72em;
+    color: var(--muted);
+  }
+
+  .he :global(.verse-num) {
+    display: none;
+    padding-inline: 0.1em 0.3em;
+    direction: ltr;
+    unicode-bidi: isolate;
+    font: 500 0.48em system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    vertical-align: 0.6em;
+  }
+
+  :global(.columns.show-verses) .he :global(.verse-num) {
+    display: inline;
+  }
+
+  @media screen and (max-width: 759px) {
+    .ln {
+      inset-inline-start: -1.45rem;
+    }
+
+    .five .ln {
+      opacity: 1;
+    }
+  }
+
+  /* Image closed: ruled lines, every line numbered, and marked punctuation. */
+  @media screen and (min-width: 760px) {
+    :global(.desk[data-view='text']) .tei-line {
+      height: auto;
+      padding-inline-start: 4rem;
+      border-top: 1px solid var(--leaf-rule);
+    }
+
+    :global(.desk[data-view='text'] .column.first) .tei-line {
+      padding-inline-start: 6.2rem;
+    }
+
+    :global(.desk[data-view='text']) .ln {
+      inset-inline-start: 0;
+      width: 1.6rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    :global(.desk[data-view='text'] .column.first) .ln {
+      opacity: 1;
+    }
+
+    :global(.desk[data-view='text']) .he {
+      line-height: 1.7;
+    }
+
+    :global(.desk[data-view='text']) .he :global(.sof-pasuq) {
+      color: var(--accent);
+    }
+
+    :global(.desk[data-view='text']) .he :global(.section-tag) {
+      display: inline-block;
+      margin-inline-end: 0.35rem;
+      padding: 0 0.3rem;
+      border: 1px solid var(--line);
+      border-radius: 0.3rem;
+      font: 0.68rem system-ui, sans-serif;
+      vertical-align: middle;
+    }
   }
 
   /* Feedback pick mode is toggled on <body>; keep selectors global */
@@ -196,51 +190,37 @@ const verseMarks = [
     border-radius: 0.4rem;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .ln,
+    .he :global(.verse-run) {
+      transition: none;
+    }
+  }
+
   @media print {
-    .tei-line,
-    .tei-line.numbered {
-      break-inside: avoid;
-      border-top: 0;
+    .tei-line {
+      height: auto;
       padding: 0.12rem 0;
-      grid-template-columns: 1fr;
+      break-inside: avoid;
     }
 
-    .gutter,
-    .tei-line .ln {
+    .ln,
+    .he :global(.section-tag) {
       display: none;
     }
 
-    /* Verse markers print only when the toggle is on. */
-    :global(.columns.show-verses) .tei-line {
-      grid-template-columns: 1.9rem 1fr;
-      gap: 0.25rem;
-    }
-
-    :global(.columns.show-verses) .gutter {
-      display: flex;
-    }
-
-    .verse-tag {
-      font-size: 0.42rem;
-      line-height: 1.2;
-      color: #000;
-    }
-
     .he {
-      font-size: 1.75vh;
       line-height: 1.7;
       color: #000;
     }
 
-    .he :global(span.hl) {
+    .he :global(.verse-run.on),
+    .he :global(.verse-run.pin) {
       background: none;
-      box-shadow: none;
     }
 
-    .section-tag {
-      display: none;
-    }
-
+    /* Verse numbers print only when the toggle is on. */
+    .he :global(.verse-num),
     .he :global(.sof-pasuq),
     .he :global(.paseq),
     .he :global(.inverted-nun) {
