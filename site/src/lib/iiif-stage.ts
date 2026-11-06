@@ -82,6 +82,13 @@ function verseBox(v: ViewVerse): Box {
   };
 }
 
+function placeRect(rect: SVGRectElement, s: ZoneSegment): void {
+  rect.setAttribute('x', String(s[0]));
+  rect.setAttribute('y', String(s[1]));
+  rect.setAttribute('width', String(s[2] - s[0]));
+  rect.setAttribute('height', String(s[3] - s[1]));
+}
+
 const contains = (s: ZoneSegment, p: Point): boolean => p.x >= s[0] && p.x <= s[2] && p.y >= s[1] && p.y <= s[3];
 
 function waitFor(ready: () => boolean): Promise<void> {
@@ -116,18 +123,19 @@ export async function mountStage(plate: HTMLElement, data: FolioViewData, events
   const layer = document.createElementNS(SVG, 'g');
   for (const v of verses) {
     const group = document.createElementNS(SVG, 'g');
+    group.classList.add('zone');
     group.dataset.verse = v.ref;
-    v.segments.forEach((s, i) => {
+    for (const s of v.segments) {
       const rect = document.createElementNS(SVG, 'rect');
-      rect.dataset.segment = String(i);
-      rect.setAttribute('x', String(s[0]));
-      rect.setAttribute('y', String(s[1]));
-      rect.setAttribute('width', String(s[2] - s[0]));
-      rect.setAttribute('height', String(s[3] - s[1]));
+      placeRect(rect, s);
       group.append(rect);
-    });
+    }
     layer.append(group);
   }
+  const cur = document.createElementNS(SVG, 'rect');
+  cur.classList.add('zone-cur');
+  cur.style.display = 'none';
+  layer.append(cur);
   overlay.append(layer);
 
   let showRuler = false;
@@ -226,14 +234,14 @@ export async function mountStage(plate: HTMLElement, data: FolioViewData, events
   const find = (ref: string) => verses.find((v) => v.ref === ref) ?? null;
   return {
     mark(active, pinned, segment) {
-      for (const group of layer.children as HTMLCollectionOf<SVGGElement>) {
+      for (const group of layer.querySelectorAll<SVGGElement>('g.zone')) {
         const ref = group.dataset.verse;
         group.classList.toggle('on', ref === active);
         group.classList.toggle('pin', ref === pinned);
-        for (const rect of group.children as HTMLCollectionOf<SVGRectElement>) {
-          rect.classList.toggle('cur', ref === active && Number(rect.dataset.segment) === segment);
-        }
       }
+      const box = active && segment !== null ? find(active)?.segments[segment] : null;
+      cur.style.display = box ? '' : 'none';
+      if (box) placeRect(cur, box);
     },
     showVerse(ref) {
       const v = find(ref);

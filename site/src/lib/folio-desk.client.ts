@@ -4,6 +4,7 @@
  */
 import { folioCitation } from './citation.ts';
 import {
+  chapterAndVerse,
   hashToKey,
   lineSummary,
   refKey,
@@ -58,9 +59,9 @@ const oneSegmentPerLine = (v: ViewVerse) => v.segments.length === v.lines.length
 
 function paint(): void {
   const active = hover?.ref ?? pinned;
-  document.querySelectorAll('.verse-run.on, .verse-run.pin').forEach((n) => n.classList.remove('on', 'pin'));
+  columns.querySelectorAll('.verse-run.on, .verse-run.pin, .verse-num.on, .verse-num.pin').forEach((n) => n.classList.remove('on', 'pin'));
   document.querySelectorAll('.tei-line.cur').forEach((n) => n.classList.remove('cur'));
-  const runs = (ref: string) => columns.querySelectorAll(`.verse-run[data-verse="${CSS.escape(ref)}"]`);
+  const runs = (ref: string) => columns.querySelectorAll(`:is(.verse-run, .verse-num)[data-verse="${CSS.escape(ref)}"]`);
   if (pinned) runs(pinned).forEach((n) => n.classList.add('pin'));
   if (active) runs(active).forEach((n) => n.classList.add('on'));
 
@@ -199,26 +200,26 @@ columns.addEventListener('pointerover', (e) => {
   const ref = run?.dataset.verse;
   if (!run || !ref) {
     setHover(null);
-    tip.hidden = true;
+    tip.togglePopover(false);
     return;
   }
   const line = run.closest<HTMLElement>('.tei-line');
   const v = verses.get(ref);
   const segment = v?.lines.findIndex(([c, l]) => c === line?.dataset.col && l === line?.dataset.line) ?? -1;
   setHover({ ref, segment });
-  if (pinned === ref) {
-    tip.hidden = true;
+  if (pinned === ref || !line) {
+    tip.togglePopover(false);
     return;
   }
-  const r = run.getBoundingClientRect();
-  tip.textContent = ref;
-  tip.hidden = false;
-  tip.style.left = `${r.left + r.width / 2}px`;
-  tip.style.top = `${r.top - 4}px`;
+  const r = (line.querySelector('.he') as HTMLElement).getBoundingClientRect();
+  tip.textContent = chapterAndVerse(ref);
+  tip.style.left = `${r.right + 4}px`;
+  tip.style.top = `${r.top + r.height / 2}px`;
+  tip.togglePopover(true);
 });
 columns.addEventListener('pointerleave', () => {
   setHover(null);
-  tip.hidden = true;
+  tip.togglePopover(false);
 });
 columns.addEventListener('click', (e) => {
   if (isPicking()) return;
@@ -343,19 +344,18 @@ $('#plate-more')?.addEventListener('click', (e) => {
 });
 
 /* ---------- Verse numbers, menu ---------- */
-const verseToggle = $<HTMLInputElement>('#toggle-verses');
+const verseToggle = $('#toggle-verses');
 function applyVerseNumbers(on: boolean): void {
   // Print styles key off this class so print follows the toggle.
   columns.classList.toggle('show-verses', on);
-  fitWidth();
+  verseToggle?.setAttribute('aria-pressed', String(on));
+  verseToggle?.setAttribute('title', on ? 'Hide verse numbers' : 'Show verse numbers');
 }
-if (verseToggle) {
-  verseToggle.checked = store.get('folio-verses') === '1';
-  verseToggle.addEventListener('change', () => {
-    store.set('folio-verses', verseToggle.checked ? '1' : '0');
-    applyVerseNumbers(verseToggle.checked);
-  });
-}
+verseToggle?.addEventListener('click', () => {
+  const on = verseToggle.getAttribute('aria-pressed') !== 'true';
+  store.set('folio-verses', on ? '1' : '0');
+  applyVerseNumbers(on);
+});
 
 const menu = $<HTMLDetailsElement>('#folio-menu');
 const jump = $<HTMLDetailsElement>('#folio-jump');
@@ -441,7 +441,7 @@ function routeHash(): void {
   if (match !== pinned) setPin(match);
 }
 
-applyVerseNumbers(verseToggle?.checked ?? false);
+applyVerseNumbers(store.get('folio-verses') === '1');
 applyView();
 routeHash();
 addEventListener('hashchange', routeHash);

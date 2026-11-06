@@ -6,10 +6,12 @@ import { fileURLToPath } from 'node:url';
 import { folioCitation } from '../src/lib/citation.ts';
 import {
   buildViewData,
+  chapterAndVerse,
   hashToKey,
   leafBounds,
   lineHtml,
   lineSummary,
+  lineVerseNumbers,
   refKey,
   refToHash,
   searchFolios,
@@ -87,7 +89,7 @@ describe('lineHtml', () => {
     assert.equal(
       html,
       '<span class="verse-run" data-verse="Gen 1:1">א<span class="sof-pasuq">׃</span></span> ' +
-        '<span class="verse-run" data-verse="Gen 1:2"><span class="verse-num">2</span>ב</span>',
+        '<span class="verse-run" data-verse="Gen 1:2">ב</span>',
     );
   });
 
@@ -96,15 +98,33 @@ describe('lineHtml', () => {
     assert.match(html, /את־כל/);
   });
 
-  it('shows the chapter at verse 1 and at the first verse of the folio', () => {
-    const start = (ref) => lineHtml({ n: '1', marks: [], tokens: [word('א', ref, [{ kind: 'verse', ref }])] }, 'Gen 34:11');
-    assert.match(start('Gen 35:1'), />35:1</);
-    assert.match(start('Gen 34:11'), />34:11</);
-    assert.match(start('Gen 34:12'), />12</);
-  });
-
   it('keeps a paragraph mark on a line with no words', () => {
     assert.match(lineHtml({ n: '9', tokens: [], marks: [{ kind: 'section', subtype: 'pe' }] }), /section-tag.*פ/);
+  });
+});
+
+describe('verse gutter', () => {
+  const start = (ref) => word('א', ref, [{ kind: 'verse', ref }]);
+  const labels = (...refs) => lineVerseNumbers({ n: '1', marks: [], tokens: refs.map(start) }, 'Gen 34:11').map((v) => v.label);
+
+  it('shows the chapter at verse 1 and at the first verse of the folio', () => {
+    assert.deepEqual(labels('Gen 35:1'), ['35:1']);
+    assert.deepEqual(labels('Gen 34:11'), ['34:11']);
+    assert.deepEqual(labels('Gen 34:12'), ['12']);
+  });
+
+  it('lists two verses that start on a line, and makes more into a range', () => {
+    assert.deepEqual(labels('Gen 34:12', 'Gen 34:13'), ['12', '13']);
+    assert.deepEqual(labels('Gen 34:12', 'Gen 34:13', 'Gen 34:14'), ['12–14']);
+  });
+
+  it('skips a word that continues a verse', () => {
+    assert.deepEqual(lineVerseNumbers({ n: '1', marks: [], tokens: [word('א', 'Gen 1:1')] }), []);
+  });
+
+  it('removes the book but keeps a numbered book whole', () => {
+    assert.equal(chapterAndVerse('Gen 34:12'), '34:12');
+    assert.equal(chapterAndVerse('1 Kgs 3:14'), '3:14');
   });
 });
 

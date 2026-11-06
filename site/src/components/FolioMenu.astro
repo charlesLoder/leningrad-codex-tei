@@ -12,8 +12,6 @@ const { folio, manifest } = Astro.props;
 <details class="folio-menu" id="folio-menu">
   <summary class="quiet" aria-label="More options"><Fragment set:html={icons.ellipsis} /></summary>
   <div class="menu-body">
-    <label><input type="checkbox" id="toggle-verses" /> Verse numbers</label>
-    <hr />
     <div class="mobile-only">
       <a href={`/edition/${folio}.xml`} target="_blank" rel="noopener noreferrer">TEI XML <Fragment set:html={icons.externalLink} /></a>
       {manifest && <a href={manifest} target="_blank" rel="noopener noreferrer">IIIF manifest <Fragment set:html={icons.externalLink} /></a>}
@@ -49,8 +47,7 @@ const { folio, manifest } = Astro.props;
   }
 
   .menu-body a,
-  .menu-body button,
-  .menu-body label {
+  .menu-body button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -68,8 +65,7 @@ const { folio, manifest } = Astro.props;
   }
 
   .menu-body a:hover,
-  .menu-body button:hover,
-  .menu-body label:hover {
+  .menu-body button:hover {
     background: var(--accent-soft);
   }
 
@@ -77,13 +73,6 @@ const { folio, manifest } = Astro.props;
     width: 1em;
     height: 1em;
     color: var(--muted);
-  }
-
-  .menu-body input {
-    width: 1rem;
-    height: 1rem;
-    margin: 0;
-    accent-color: var(--accent);
   }
 
   .mobile-only {

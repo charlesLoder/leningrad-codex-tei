@@ -9,6 +9,9 @@ interface Props {
 
 const { columns, firstVerse } = Astro.props;
 const rows = Math.max(1, ...columns.map((c) => c.lines.length));
+// Rows line up across columns, so one column carries the line numbers: the leftmost that reaches every fifth line.
+const fifths = (c: TeiColumn) => Math.floor(c.lines.length / 5);
+const ruler = columns.findLastIndex((c) => fifths(c) === Math.max(...columns.map(fifths)));
 ---
 
 {columns.length > 1 && (
@@ -24,7 +27,7 @@ const rows = Math.max(1, ...columns.map((c) => c.lines.length));
 <div class="columns-frame">
   <div class="columns" style={`--n: ${columns.length}; --rows: ${rows};`}>
     {columns.map((col, i) => (
-      <ManuscriptColumn col={col} first={i === 0} firstVerse={firstVerse} />
+      <ManuscriptColumn col={col} first={i === 0} ruler={i === ruler} firstVerse={firstVerse} />
     ))}
   </div>
 </div>
@@ -39,7 +42,8 @@ const rows = Math.max(1, ...columns.map((c) => c.lines.length));
     scrolls instead. --fs-w is the measured width limit, set by the page script.
   */
   .columns {
-    --col-gap: 3rem;
+    /* Room for the verse gutter of one column and the line number of the next. */
+    --col-gap: 3.75rem;
     --pad: 0.75rem;
     --avail: calc(100dvh - var(--head) - var(--strip));
     --row-avail: calc((var(--avail) - 2 * var(--pad)) / var(--rows));
@@ -86,7 +90,7 @@ const rows = Math.max(1, ...columns.map((c) => c.lines.length));
 
   @media screen and (max-width: 1399px) {
     .columns {
-      --col-gap: 2rem;
+      --col-gap: 3.25rem;
     }
   }
 
@@ -139,6 +143,12 @@ const rows = Math.max(1, ...columns.map((c) => c.lines.length));
       padding-block: 0;
       overflow: visible;
       color: inherit;
+    }
+
+    /* Room for each verse gutter, also the one to the right of the first column. */
+    .columns.show-verses {
+      column-gap: 2.25rem;
+      padding-inline-start: 2.25rem;
     }
   }
 </style>

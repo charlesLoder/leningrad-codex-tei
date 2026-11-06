@@ -118,11 +118,26 @@ function verseNumber(ref: string, firstVerse: string | null): string {
 }
 
 /**
+ * The verse numbers for the gutter of one line, one for each verse that starts on it.
+ * A gutter has room for two, so three or more become a range.
+ */
+export function lineVerseNumbers(line: TeiLine, firstVerse: string | null = null): { ref: string; label: string }[] {
+  const starts = line.tokens.flatMap((t) =>
+    t.verse && t.marks.some((m) => m.kind === 'verse') ? [{ ref: t.verse, label: verseNumber(t.verse, firstVerse) }] : [],
+  );
+  if (starts.length < 3) return starts;
+  return [{ ref: starts[0].ref, label: `${starts[0].label}–${starts[starts.length - 1].label}` }];
+}
+
+/** `1 Kgs 3:14` -> `3:14`. The header names the book, and this fits in a gutter. */
+export const chapterAndVerse = (ref: string): string => ref.slice(ref.lastIndexOf(' ') + 1);
+
+/**
  * One manuscript line as HTML. Words of the same verse share a `.verse-run`, so
  * a highlight also covers the spaces between them. No space follows a maqaf or
  * comes before a sof pasuq.
  */
-export function lineHtml(line: TeiLine, firstVerse: string | null = null): string {
+export function lineHtml(line: TeiLine): string {
   const runs: { verse: string | null; tokens: Token[] }[] = [];
   for (const token of line.tokens) {
     const last = runs[runs.length - 1];
@@ -130,13 +145,10 @@ export function lineHtml(line: TeiLine, firstVerse: string | null = null): strin
     else runs.push({ verse: token.verse, tokens: [token] });
   }
   const tokenHtml = (t: Token): string => {
-    const start = t.marks.some((m) => m.kind === 'verse') && t.verse
-      ? `<span class="verse-num">${verseNumber(t.verse, firstVerse)}</span>`
-      : '';
     const text = escapeHtml(t.text);
     const body = t.kind === 'w' ? text : `<span class="${t.kind}">${text}</span>`;
     const sections = t.marks.flatMap((m) => (m.kind === 'section' ? [sectionHtml(m.subtype)] : [])).join('');
-    return start + body + sections;
+    return body + sections;
   };
   const noSpaceAfter = (t: Token): boolean => t.text.endsWith('־');
   let html = '';

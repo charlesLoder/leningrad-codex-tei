@@ -76,33 +76,37 @@ const { manifestUrl, imageUrl, folio } = Astro.props;
     pointer-events: none;
   }
 
+  /*
+    The segments of a verse overlap, so the opacity belongs on the group: the browser
+    paints the group as one shape, and an overlap is no darker than the rest of it.
+  */
   .plate-zones :global(rect) {
-    fill: transparent;
-  }
-
-  .plate-zones :global(g.on rect) {
     fill: var(--zone);
-    fill-opacity: 0.28;
   }
 
-  .plate-zones :global(g.pin rect) {
-    fill: var(--zone);
-    fill-opacity: 0.36;
+  .plate-zones :global(g.zone) {
+    opacity: 0;
   }
 
-  .plate-zones :global(rect.cur) {
-    fill: var(--zone) !important;
-    fill-opacity: 0.62 !important;
+  :global(.show-all-zones) .plate-zones :global(g.zone) {
+    opacity: 0.24;
   }
 
-  :global(.show-all-zones) .plate-zones :global(g rect) {
-    fill: var(--zone);
-    fill-opacity: 0.24;
-  }
-
-  :global(.show-all-zones) .plate-zones :global(g:nth-child(even) rect) {
+  :global(.show-all-zones) .plate-zones :global(g.zone:nth-child(even) rect) {
     fill: var(--zone-alt);
-    fill-opacity: 0.24;
+  }
+
+  .plate-zones :global(g.zone.on) {
+    opacity: 0.28;
+  }
+
+  .plate-zones :global(g.zone.pin) {
+    opacity: 0.36;
+  }
+
+  /* The one line segment under the pointer, drawn over its verse. */
+  .plate-zones :global(rect.zone-cur) {
+    fill-opacity: 0.42;
   }
 
   .plate-image {

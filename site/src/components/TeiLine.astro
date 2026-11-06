@@ -1,5 +1,5 @@
 ---
-import { lineHtml } from '../lib/folio-view';
+import { lineHtml, lineVerseNumbers } from '../lib/folio-view';
 import type { TeiLine as TeiLineType } from '../lib/tei';
 
 interface Props {
@@ -10,11 +10,17 @@ interface Props {
 
 const { col, line, firstVerse } = Astro.props;
 const five = Number(line.n) % 5 === 0;
+const verseNumbers = lineVerseNumbers(line, firstVerse);
 ---
 
 <div class:list={['tei-line', { five }]} data-col={col} data-line={line.n}>
   <span class="ln">{line.n}</span>
-  <p class="he" lang="he"><span class="he-inner" set:html={lineHtml(line, firstVerse) || '&nbsp;'} /></p>
+  {verseNumbers.length > 0 && (
+    <span class="verse-nums">
+      {verseNumbers.map((v) => <span class="verse-num" data-verse={v.ref}>{v.label}</span>)}
+    </span>
+  )}
+  <p class="he" lang="he"><span class="he-inner" set:html={lineHtml(line) || '&nbsp;'} /></p>
 </div>
 
 <style>
@@ -30,10 +36,10 @@ const five = Number(line.n) % 5 === 0;
     scroll-margin-bottom: 7rem;
   }
 
-  /* Every fifth line is numbered; the others show on hover or when linked. */
+  /* To the left of the line. One column shows every fifth number; the others show on hover or when linked. */
   .ln {
     position: absolute;
-    inset-inline-start: -1.7rem;
+    inset-inline-end: -1.7rem;
     width: 1.3rem;
     text-align: center;
     color: var(--faint);
@@ -43,8 +49,8 @@ const five = Number(line.n) % 5 === 0;
     transition: opacity 0.12s;
   }
 
-  :global(.column.first) .five .ln,
-  :global(.column.first) .tei-line:hover .ln,
+  :global(.column.ruler) .five .ln,
+  .tei-line:hover .ln,
   :global(.tei-line.cur) .ln {
     opacity: 1;
   }
@@ -101,51 +107,77 @@ const five = Number(line.n) % 5 === 0;
     color: var(--muted);
   }
 
-  .he :global(.verse-num) {
+  /* To the right of the line, where a Hebrew line starts. It takes no space, so the toggle moves no text. */
+  .verse-nums {
+    position: absolute;
+    left: calc(100% - var(--gutter, 0px));
     display: none;
-    padding-inline: 0.1em 0.3em;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline-start: 0.4rem;
     direction: ltr;
-    unicode-bidi: isolate;
-    font: 500 0.48em system-ui, sans-serif;
+    color: var(--accent);
+    font: 600 0.66rem/1.1 system-ui, sans-serif;
     font-variant-numeric: tabular-nums;
-    color: var(--muted);
-    vertical-align: 0.6em;
+    white-space: nowrap;
+    pointer-events: none;
   }
 
-  :global(.columns.show-verses) .he :global(.verse-num) {
-    display: inline;
+  :global(.columns.show-verses) .verse-nums {
+    display: flex;
+  }
+
+  .verse-num {
+    padding-inline: 0.15rem;
+    border-radius: 0.2rem;
+  }
+
+  :global(.verse-num.on) {
+    background: var(--hl);
+  }
+
+  :global(.verse-num.pin) {
+    background: var(--hl-pin);
   }
 
   @media screen and (max-width: 759px) {
     .ln {
-      inset-inline-start: -1.45rem;
+      inset-inline-end: -1.45rem;
     }
 
+    /* One column shows at a time, so each one numbers its own lines. */
     .five .ln {
       opacity: 1;
     }
+
+    .verse-nums {
+      padding-inline-start: 0.25rem;
+      font-size: 0.6rem;
+    }
   }
 
-  /* Image closed: ruled lines, every line numbered, and marked punctuation. */
+  /* Image closed: ruled lines, every line numbered in the ruler column, and marked punctuation. */
   @media screen and (min-width: 760px) {
     :global(.desk[data-view='text']) .tei-line {
+      --gutter: 4rem;
+
       height: auto;
-      padding-inline-start: 4rem;
+      padding-inline-start: var(--gutter);
       border-top: 1px solid var(--leaf-rule);
     }
 
     :global(.desk[data-view='text'] .column.first) .tei-line {
-      padding-inline-start: 6.2rem;
+      --gutter: 2.4rem;
     }
 
     :global(.desk[data-view='text']) .ln {
-      inset-inline-start: 0;
+      inset-inline-end: -1.9rem;
       width: 1.6rem;
       color: var(--muted);
       font-size: 0.75rem;
     }
 
-    :global(.desk[data-view='text'] .column.first) .ln {
+    :global(.desk[data-view='text'] .column.ruler) .ln {
       opacity: 1;
     }
 
@@ -214,13 +246,24 @@ const five = Number(line.n) % 5 === 0;
       color: #000;
     }
 
+    .verse-nums {
+      font-size: 0.55rem;
+      font-weight: 400;
+      padding-inline-start: 0.25rem;
+    }
+
+    .verse-num {
+      padding-inline: 0;
+      background: none !important;
+    }
+
     .he :global(.verse-run.on),
     .he :global(.verse-run.pin) {
       background: none;
     }
 
     /* Verse numbers print only when the toggle is on. */
-    .he :global(.verse-num),
+    .verse-nums,
     .he :global(.sof-pasuq),
     .he :global(.paseq),
     .he :global(.inverted-nun) {

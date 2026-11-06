@@ -1,7 +1,7 @@
 ---
 ---
 <aside class="verse-card" id="verse-card" aria-live="polite" hidden></aside>
-<div class="verse-tip" id="verse-tip" hidden></div>
+<div class="verse-tip" id="verse-tip" popover="manual"></div>
 
 <!-- The page script writes the card's contents, so these selectors are global. -->
 <style is:global>
@@ -115,22 +115,21 @@
     border-radius: 2px;
   }
 
+  /* In the verse gutter to the right of the line, so it never covers text. The page script sets left and top. */
   .verse-tip {
     position: fixed;
-    z-index: 28;
-    padding: 0.05rem 0.45rem;
+    inset: auto;
+    margin: 0;
+    padding: 0.05rem 0.35rem;
     background: var(--ink);
     color: var(--bg);
+    border: 0;
     border-radius: 0.3rem;
     font: 0.72rem/1.5 system-ui, sans-serif;
     pointer-events: none;
-    transform: translate(-50%, -100%);
+    transform: translateY(-50%);
     white-space: nowrap;
     animation: verse-tip-late 0.3s steps(1) both;
-  }
-
-  .verse-tip[hidden] {
-    display: none;
   }
 
   @keyframes verse-tip-late {

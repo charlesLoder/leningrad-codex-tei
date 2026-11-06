@@ -5,13 +5,14 @@ import TeiLine from './TeiLine.astro';
 interface Props {
   col: TeiColumn;
   first?: boolean;
+  ruler?: boolean;
   firstVerse: string | null;
 }
 
-const { col, first = false, firstVerse } = Astro.props;
+const { col, first = false, ruler = false, firstVerse } = Astro.props;
 ---
 
-<section class:list={['column', { first }]} data-column={col.n}>
+<section class:list={['column', { first, ruler }]} data-column={col.n}>
   <h2 class="sr-only">Column {col.n}</h2>
   {col.lines.map((line) => (
     <TeiLine col={col.n} line={line} firstVerse={firstVerse} />
@@ -28,7 +29,8 @@ const { col, first = false, firstVerse } = Astro.props;
     .column {
       flex: 0 0 100%;
       scroll-snap-align: start;
-      padding-inline: calc(max(1rem, env(safe-area-inset-right, 0px)) + 1.1rem) max(1rem, env(safe-area-inset-left, 0px));
+      /* The verse gutter is on the right and the line numbers are on the left. */
+      padding-inline: calc(env(safe-area-inset-right, 0px) + 3rem) calc(env(safe-area-inset-left, 0px) + 1.6rem);
     }
   }
 

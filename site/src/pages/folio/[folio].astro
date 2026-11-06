@@ -70,6 +70,9 @@ const viewData = buildViewData(doc, {
 
   <FolioHead slot="header-center" title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
   <Fragment slot="header-actions">
+    <button class="quiet verse-toggle" id="toggle-verses" type="button" aria-label="Verse numbers" aria-pressed="false" title="Show verse numbers">
+      <Fragment set:html={icons.hash} />
+    </button>
     <button class="quiet image-toggle" id="toggle-image" type="button" aria-label="Page image" aria-pressed="true" title="Hide page image">
       <Fragment set:html={icons.image} />
       <Fragment set:html={icons.imageOff} />
@@ -91,7 +94,7 @@ const viewData = buildViewData(doc, {
   <Pager
     prev={shortNeighbor(prevEntry)}
     next={shortNeighbor(nextEntry)}
-    hint={iiifManifest ? 'Hover over text to find it on the page. Click to keep it selected. Double-click to zoom the image.' : 'Click a word to select its verse.'}
+    hint={iiifManifest ? 'Hover text to see it on the page. Click to select. Double-click to zoom.' : 'Click a word to select its verse.'}
     touchHint={iiifManifest ? 'Tap a word to see it on the page.' : 'Tap a word to select its verse.'}
   />
 
@@ -115,12 +118,14 @@ const viewData = buildViewData(doc, {
 
 <style>
   /* The icon shows the state: an image while it is open, a crossed-out image while it is closed. */
+  .verse-toggle,
   .image-toggle,
   .header-link,
   .print-button {
     min-width: 2.4rem;
   }
 
+  .verse-toggle :global(.lucide),
   .image-toggle :global(.lucide),
   .header-link :global(.lucide),
   .print-button :global(.lucide) {
@@ -128,6 +133,7 @@ const viewData = buildViewData(doc, {
     height: 1.35em;
   }
 
+  .verse-toggle[aria-pressed='true'],
   .image-toggle[aria-pressed='true'] {
     background: var(--accent-soft);
   }
@@ -178,7 +184,8 @@ const viewData = buildViewData(doc, {
 
   .leaf {
     min-width: 0;
-    padding-inline: max(2.5rem, env(safe-area-inset-right, 0px)) max(2.25rem, env(safe-area-inset-left, 0px));
+    /* The right padding is the verse gutter of the first column. */
+    padding-inline: max(2.25rem, env(safe-area-inset-left, 0px)) max(3.5rem, env(safe-area-inset-right, 0px));
   }
 
   /* Image closed: the leaf sits on the page, with room to scroll its last lines out from under the verse card. */
@@ -195,7 +202,7 @@ const viewData = buildViewData(doc, {
 
   @media screen and (max-width: 1399px) {
     .leaf {
-      padding-inline: 1.75rem;
+      padding-inline: 1.75rem 3.25rem;
     }
   }
 
