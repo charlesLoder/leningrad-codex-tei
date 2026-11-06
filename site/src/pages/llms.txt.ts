@@ -2,11 +2,11 @@ import type { APIRoute } from 'astro';
 
 const BODY = `# Leningrad Codex TEI
 
-> The Leningrad Codex (Firkovich B 19 A, National Library of Russia) encoded as TEI XML. One TEI document per folio side, openly licensed (MIT), with a human-readable viewer on this site.
+> A digital edition of the Leningrad Codex (Firkovich B 19 A, National Library of Russia), encoded as TEI XML. One TEI document per folio side, openly licensed (MIT), with a human-readable viewer on this site.
 
 ## Goals
 
-- Accessibility: open, permissively licensed (MIT) TEI on GitHub, plus a ready-to-use download and a web viewer.
+- Accessibility: an open, permissively licensed (MIT) digital edition on GitHub, encoded in TEI, plus a ready-to-use download and a web viewer.
 - Transparency: the generation process, including AI use, is documented in git history, TEI headers (facsimile URL and sha256, model and parameters, prompt commit), and the published pipeline and prompts.
 - Reproducibility: the pipeline that generated the edition is published and configurable to other models and inference strategies.
 - Community: unaffiliated, community-driven project. See the contributing guide in the repository.

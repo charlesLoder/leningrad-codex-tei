@@ -4,13 +4,13 @@ import Hero from '../components/Hero.astro';
 import Prose from '../components/Prose.astro';
 import Base from '../layouts/Base.astro';
 ---
-<Base title="About · Leningrad Codex TEI" description="About the Leningrad Codex TEI project: goals, method, transparency, and reuse.">
+<Base title="About · Leningrad Codex TEI" description="About the digital edition of the Leningrad Codex: goals, method, transparency, and reuse.">
   <Hero>
     <h1>About</h1>
     <p>
       The <a href="https://en.wikipedia.org/wiki/Leningrad_Codex">Leningrad Codex</a> is the oldest
       complete manuscript of the Hebrew Bible. Many projects have transcribed its biblical text;
-      few have encoded its layout. This project treats the codex not just as a text, but as an object.
+      few have encoded its layout. This digital edition treats the codex not just as a text, but as an object.
     </p>
     <div class="hero-buttons">
       <Button variant="primary" href="https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip">Download whole edition (.zip)</Button>
@@ -21,7 +21,7 @@ import Base from '../layouts/Base.astro';
   <Prose>
     <h2>Goals</h2>
     <ul class="goals">
-      <li><strong>Accessibility</strong> — the codex as an open, TEI-encoded document under a permissive MIT license, with a quick download link and this online viewer.</li>
+      <li><strong>Accessibility</strong> — a digital edition of the codex, encoded in TEI and released under a permissive MIT license, with a quick download link and this online viewer.</li>
       <li><strong>Transparency</strong> — the generation process is documented, with special regard to how AI was used.</li>
       <li><strong>Reproducibility</strong> — the pipeline that produced the edition is published and configurable.</li>
       <li><strong>Community</strong> — an unaffiliated, community-driven endeavor. See the <a href="https://github.com/charlesLoder/leningrad-codex-tei/blob/main/CONTRIBUTING.MD">contributing guide</a>.</li>
@@ -29,7 +29,7 @@ import Base from '../layouts/Base.astro';
 
     <h2>Method</h2>
     <p>
-      The Text Encoding Initiative (TEI) provides the framework for encoding the manuscript in a
+      The edition is encoded with the Text Encoding Initiative (TEI), which provides the framework for describing the manuscript in a
       machine-readable way using XML. Recent advances in AI, combined with existing open data, make
       this work feasible at scale: multi-modal models draft the columnar layout of each folio side,
       which is then cross-checked and corrected.
@@ -43,7 +43,7 @@ import Base from '../layouts/Base.astro';
 
     <h2>Data</h2>
     <p>
-      The biblical text in the document was not transcribed directly from the images.
+      The biblical text in the edition was not transcribed directly from the images.
       The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christopher V. Kimball and accessible on the <a href="https://www.tanach.us//Books/TEIHeaders/TanachHeader.TEI.html">tanach.us</a> site.
       For this reason, the text in the edition may differ from the images in the manuscript. That is an intentional choice.
     </p>

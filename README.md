@@ -1,7 +1,8 @@
 # Leningrad Codex TEI
 
-The Leningrad Codex encoded as a TEI document.
+A digital edition of the Leningrad Codex.
 
+The edition is encoded in TEI XML.
 To learn more about this project and its goals, see the [About](#about) section.
 
 To set up the project locally, see the [Contributing](./CONTRIBUTING.MD) guide.
@@ -37,14 +38,14 @@ The verse zones on the facsimile images come from the [Masoretica](https://www.m
 
 The goals of this project are as follows:
 
-- **Accessibility** — Make the Leningrad Codex available online as an open, TEI-encoded document, permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
+- **Accessibility** — Make the Leningrad Codex available as an open digital edition, encoded in TEI and permissively licensed (MIT) and available through a web interface ([read more](#accessibility)).
 - **Transparency** — Make transparent the process by which the document was generated, with special regard to AI use ([read more](#transparency)).
 - **Reproducibility** — Make the results of the process reproducible ([read more](#reproducibility)).
 - **Community** — Make this a community-driven project ([read more](#community)).
 
 ### Accessibility
 
-The primary aim of this project is to make the Leningrad Codex encoded as a TEI document freely available.
+The primary aim of this project is to make a digital edition of the Leningrad Codex, encoded in TEI, freely available.
 
 This is accomplished through:
 
@@ -56,9 +57,9 @@ Additional measures are taken to make this project accessible to scholars who ma
 - A quick download link for the XML files (see below)
 - An online viewer, available at https://leningrad-codex-tei.netlify.app
 
-The entire document is available in the [/edition](./edition/) directory.
+The entire edition is available in the [/edition](./edition/) directory.
 
-Every release also ships a zip of the complete document:
+Every release also ships a zip of the complete edition:
 
 <https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip>
 
@@ -66,7 +67,7 @@ The code for the viewer is stored in `/site`.
 
 ### Transparency
 
-Beyond making the document accessible, the project seeks to make the process of how the artifact was generated transparent.
+Beyond making the document accessible, the project seeks to make the process of how the edition was generated transparent.
 
 This is accomplished through:
 
@@ -96,7 +97,7 @@ The pipeline allows contributors to choose their preferred method of AI use:
 
 ### Reproducibility
 
-This project also aims to make this work reproducible by providing the pipeline used to generate the document, with the realization that AI outputs are not always reproducible.
+This project also aims to make this work reproducible by providing the pipeline used to generate the edition, with the realization that AI outputs are not always reproducible.
 
 Future researchers can easily configure the pipeline to use different models, inference strategies, etc.
 
