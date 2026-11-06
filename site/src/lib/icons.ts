@@ -11,8 +11,11 @@ import {
   Image,
   ImageOff,
   Minus,
+  Monitor,
+  Moon,
   Plus,
   Printer,
+  Sun,
   X,
 } from 'lucide-static';
 
@@ -31,7 +34,10 @@ export const icons = {
   image: decorative(Image),
   imageOff: decorative(ImageOff),
   minus: decorative(Minus),
+  monitor: decorative(Monitor),
+  moon: decorative(Moon),
   plus: decorative(Plus),
   printer: decorative(Printer),
+  sun: decorative(Sun),
   x: decorative(X),
 };
