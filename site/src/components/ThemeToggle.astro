@@ -1,0 +1,59 @@
+---
+import { icons } from '../lib/icons';
+---
+
+<button class="quiet theme-toggle" type="button" data-theme-toggle data-mode="system">
+  <span class="mode mode-light"><Fragment set:html={icons.sun} /></span>
+  <span class="mode mode-dark"><Fragment set:html={icons.moon} /></span>
+  <span class="mode mode-system"><Fragment set:html={icons.monitor} /></span>
+</button>
+
+<style>
+  .theme-toggle .mode {
+    display: none;
+  }
+
+  .theme-toggle[data-mode='light'] .mode-light,
+  .theme-toggle[data-mode='dark'] .mode-dark,
+  .theme-toggle[data-mode='system'] .mode-system {
+    display: inline-flex;
+  }
+</style>
+
+<script>
+  const modes = ['system', 'light', 'dark'] as const;
+  type Mode = (typeof modes)[number];
+  const labels: Record<Mode, string> = { system: 'System', light: 'Light', dark: 'Dark' };
+
+  const read = (): Mode => {
+    try {
+      const v = localStorage.getItem('theme');
+      return v === 'light' || v === 'dark' ? v : 'system';
+    } catch {
+      return 'system';
+    }
+  };
+
+  const apply = (mode: Mode) => {
+    const root = document.documentElement;
+    if (mode === 'system') delete root.dataset.theme;
+    else root.dataset.theme = mode;
+    try {
+      if (mode === 'system') localStorage.removeItem('theme');
+      else localStorage.setItem('theme', mode);
+    } catch {}
+    for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+      btn.dataset.mode = mode;
+      btn.setAttribute('aria-label', `Theme: ${labels[mode]}. Switch theme.`);
+      btn.title = `Theme: ${labels[mode]}`;
+    }
+  };
+
+  apply(read());
+  for (const btn of document.querySelectorAll('[data-theme-toggle]')) {
+    btn.addEventListener('click', () => {
+      const next = modes[(modes.indexOf(read()) + 1) % modes.length];
+      apply(next);
+    });
+  }
+</script>
