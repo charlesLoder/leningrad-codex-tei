@@ -1,4 +1,5 @@
 ---
+import { icons } from '../lib/icons';
 import Button from './Button.astro';
 
 interface Props {
@@ -11,9 +12,9 @@ const { label = 'Folio pages', page = 1, pages = 1 } = Astro.props;
 ---
 
 <nav class="list-pager" data-list-pager aria-label={label} hidden={pages <= 1}>
-  <Button data-page-step="-1" disabled={page <= 1}>← Previous</Button>
+  <Button data-page-step="-1" disabled={page <= 1}><Fragment set:html={icons.arrowLeft} /> Previous</Button>
   <span class="status" data-page-status>Page {page} of {pages}</span>
-  <Button data-page-step="1" disabled={page >= pages}>Next →</Button>
+  <Button data-page-step="1" disabled={page >= pages}>Next <Fragment set:html={icons.arrowRight} /></Button>
 </nav>
 
 <style>

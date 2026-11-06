@@ -1,73 +1,209 @@
 ---
 /**
- * IIIF viewer (triiiceratops web component).
- * Renders the per-folio manifest from /iiif/<folio>.json with verse zones
- * as annotations. Only folios with zones have a built manifest.
+ * The page image. The triiiceratops viewer paints it; lib/iiif-stage.ts starts
+ * the viewer when the panel opens and draws the verse zones in the overlay.
+ * A folio with no zones has no manifest, so it shows the plain image.
  */
+import { icons } from '../lib/icons';
+
 interface Props {
-  manifestUrl: string;
+  manifestUrl: string | null;
+  imageUrl: string | null;
   folio: string;
 }
 
-const { manifestUrl, folio } = Astro.props;
+const { manifestUrl, imageUrl, folio } = Astro.props;
 ---
 
-<section id="facsimile" class="iiif" aria-label={`IIIF viewer for folio ${folio}`}>
-  <h2 class="iiif-heading">Facsimile</h2>
-  <p class="iiif-note">
-    OCR courtesy of <a href="https://www.masoretica.org" target="_blank" rel="noopener noreferrer">Masoretica</a>.
-  </p>
-  <triiiceratops-viewer
-    id="iiif-viewer"
-    manifest-id={manifestUrl}
-  ></triiiceratops-viewer>
-  <noscript>
-    <a href={manifestUrl} target="_blank" rel="noopener noreferrer">View the IIIF manifest for folio {folio}</a>
-  </noscript>
+<section id="facsimile" class="plate iiif" aria-label={`Page image of folio ${folio}`}>
+  {manifestUrl ? (
+    <>
+      <triiiceratops-viewer id="iiif-viewer"></triiiceratops-viewer>
+      <div class="plate-mask" hidden></div>
+      <svg class="plate-zones" aria-hidden="true"></svg>
+      <div class="plate-controls">
+        <button type="button" id="plate-out" aria-label="Zoom out"><Fragment set:html={icons.minus} /></button>
+        <button type="button" id="plate-in" aria-label="Zoom in"><Fragment set:html={icons.plus} /></button>
+        <button type="button" id="plate-fit">Fit</button>
+        <button type="button" id="plate-more" aria-expanded="false" aria-label="More image options"><Fragment set:html={icons.ellipsis} /></button>
+        <button type="button" id="plate-whole" data-plate-extra hidden>With ruler</button>
+        <button type="button" id="plate-all" data-plate-extra aria-pressed="false" hidden>All zones</button>
+        <button type="button" id="plate-expand">Expand</button>
+      </div>
+      <noscript>
+        <a class="plate-note" href={manifestUrl}>View the IIIF manifest for folio {folio}</a>
+      </noscript>
+    </>
+  ) : (
+    <>
+      {imageUrl && <img class="plate-image" src={imageUrl} alt={`Page image of folio ${folio}`} loading="lazy" />}
+      <p class="plate-note">This folio has no verse zones yet, so the text cannot point to the image here.</p>
+    </>
+  )}
 </section>
 
-<script>
-  import 'triiiceratops/element/register';
-import 'triiiceratops/style.css';
-
-  const viewer = /** @type {any} */ (document.getElementById('iiif-viewer'));
-  if (viewer) {
-    // With the annotations panel open, the viewer shows every verse zone.
-    // `config` is a property-tier input.
-    viewer.config = { information: { open: true }, annotations: { open: true } };
-
-    // The viewer hardcodes annotations above information, with no config for
-    // the order. If an update renames these internals, the panel only goes
-    // back below the annotations.
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync('.panel-slot:has([data-panel-id="metadata"]) { order: -1; }');
-    viewer.shadowRoot?.adoptedStyleSheets.push(sheet);
-  }
-</script>
-
 <style>
-  .iiif {
-    padding-bottom: 1.5rem;
+  .plate {
+    position: sticky;
+    top: calc(var(--head) + var(--strip));
+    height: calc(100dvh - var(--head) - var(--strip));
+    min-height: 22rem;
+    overflow: hidden;
+    background: var(--plate);
   }
-  .iiif-heading {
-    font-size: 1.1rem;
-    margin: 0 0 0.25rem;
-  }
-  .iiif-note {
-    color: var(--muted);
-    font-size: 0.88rem;
-    margin: 0 0 0.5rem;
-  }
-  /* Wider than the text column: up to 90vw, centered on the column.
-     Soften verse overlays: no borders, faint fill. These tokens pierce
-     the viewer's shadow DOM by inheritance. */
+
   triiiceratops-viewer {
-    position: relative;
-    left: calc((100% - max(100%, 90vw)) / 2);
+    position: absolute;
+    inset: 0;
     display: block;
-    width: max(100%, 90vw);
-    height: clamp(24rem, 65vh, 44rem);
-    --tri-annotation-border-width: 0px;
-    --tri-annotation-fill-opacity: 15%;
+  }
+
+  /* Covers the ruler and color chart around the leaf. It never takes the pointer. */
+  .plate-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 0 200vmax var(--plate);
+    pointer-events: none;
+  }
+
+  .plate-zones {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+
+  /*
+    The segments of a verse overlap, so the opacity belongs on the group: the browser
+    paints the group as one shape, and an overlap is no darker than the rest of it.
+  */
+  .plate-zones :global(rect) {
+    fill: var(--zone);
+  }
+
+  .plate-zones :global(g.zone) {
+    opacity: 0;
+  }
+
+  :global(.show-all-zones) .plate-zones :global(g.zone) {
+    opacity: 0.24;
+  }
+
+  :global(.show-all-zones) .plate-zones :global(g.zone:nth-child(even) rect) {
+    fill: var(--zone-alt);
+  }
+
+  .plate-zones :global(g.zone.on) {
+    opacity: 0.28;
+  }
+
+  .plate-zones :global(g.zone.pin) {
+    opacity: 0.36;
+  }
+
+  /* The one line segment under the pointer, drawn over its verse. */
+  .plate-zones :global(rect.zone-cur) {
+    fill-opacity: 0.42;
+  }
+
+  .plate-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .plate-note {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    max-width: calc(100% - 1.2rem);
+    margin: 0;
+    padding: 0.35rem 0.6rem;
+    background: var(--plate-btn);
+    color: var(--plate-ink);
+    border-radius: 0.4rem;
+    font: 0.8rem/1.35 system-ui, sans-serif;
+  }
+
+  /* Shown when the pointer is on the image, or always on touch screens. */
+  .plate-controls {
+    position: absolute;
+    top: 0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1rem;
+    width: max-content;
+    max-width: calc(100% - 1.2rem);
+    padding: 0.25rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+    box-shadow: 0 0.5rem 1.6rem var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+
+  .plate:hover .plate-controls,
+  .plate:focus-within .plate-controls {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (hover: none) {
+    .plate-controls {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  .plate-controls button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.2rem;
+    min-height: 2.2rem;
+    padding: 0.2rem 0.6rem;
+    background: none;
+    color: var(--ink);
+    border: 0;
+    border-radius: 0.45rem;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .plate-controls button[hidden] {
+    display: none;
+  }
+
+  .plate-controls button:hover,
+  .plate-controls button[aria-pressed='true'] {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .plate-controls button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 1199px) {
+    #plate-expand {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plate-controls {
+      transition: none;
+    }
   }
 </style>

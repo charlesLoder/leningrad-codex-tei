@@ -74,18 +74,30 @@ function parseSingleRef(ref: string): VerseSpan | null {
   return { start: key, end: key };
 }
 
-export function folioRangeKeys(range: string): { start: number | null; end: number | null } {
-  if (!range || !range.trim()) return { start: null, end: null };
-  const parts = range.split(/\s*[–—]\s*/);
-  const bounds = parts.length > 1 ? parts : range.split(/\s+-\s+/);
-  if (bounds.length === 1) {
-    const single = parseSingleRef(bounds[0]);
-    return single ? { start: single.start, end: single.end } : { start: null, end: null };
+const BOOK_SIZE = 1000000;
+const bookStart = (key: number): number => Math.floor(key / BOOK_SIZE) * BOOK_SIZE;
+const bookEnd = (key: number): number => bookStart(key) + BOOK_SIZE - 1;
+
+/**
+ * The verses of a folio's range, as one span per book. BOOKS is not in codex
+ * order, so one span across two books would also cover the books between them.
+ * A range has no gap inside a part, and a `;` separates parts that do not touch.
+ */
+export function folioRangeSpans(range: string): VerseSpan[] {
+  const spans: VerseSpan[] = [];
+  for (const part of range.split(/\s*;\s*/)) {
+    const dashed = part.split(/\s*[–—]\s*/);
+    const bounds = dashed.length > 1 ? dashed : part.split(/\s+-\s+/);
+    const first = parseSingleRef(bounds[0]);
+    const last = parseSingleRef(bounds[bounds.length - 1]);
+    if (!first || !last) continue;
+    if (bookStart(first.start) === bookStart(last.start)) {
+      spans.push({ start: first.start, end: last.end });
+    } else {
+      spans.push({ start: first.start, end: bookEnd(first.start) }, { start: bookStart(last.start), end: last.end });
+    }
   }
-  const first = parseSingleRef(bounds[0]);
-  const last = parseSingleRef(bounds[bounds.length - 1]);
-  if (!first || !last) return { start: null, end: null };
-  return { start: Math.min(first.start, last.start), end: Math.max(first.end, last.end) };
+  return spans;
 }
 
 export function parseVerseQuery(input: string): VerseSpan | null {

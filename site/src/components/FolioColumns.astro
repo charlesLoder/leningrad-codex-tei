@@ -4,92 +4,151 @@ import type { TeiColumn } from '../lib/tei';
 
 interface Props {
   columns: TeiColumn[];
+  firstVerse: string | null;
 }
 
-const { columns } = Astro.props;
+const { columns, firstVerse } = Astro.props;
+const rows = Math.max(1, ...columns.map((c) => c.lines.length));
+// Rows line up across columns, so one column carries the line numbers: the leftmost that reaches every fifth line.
+const fifths = (c: TeiColumn) => Math.floor(c.lines.length / 5);
+const ruler = columns.findLastIndex((c) => fifths(c) === Math.max(...columns.map(fifths)));
 ---
 
-<p class="small-screen-note">Best viewed on larger screens</p>
+{columns.length > 1 && (
+  <div class="column-pick" id="column-pick" role="group" aria-label="Column">
+    <span>Column</span>
+    {columns.map((c, i) => (
+      <button class="quiet" type="button" data-col={c.n} aria-pressed={i === 0 ? 'true' : 'false'}>{c.n}</button>
+    ))}
+  </div>
+)}
 
-<!-- The frame is the size container that the Hebrew text scales against. -->
+<!-- The frame is the size container that the Hebrew text falls back to before it is measured. -->
 <div class="columns-frame">
-  <div class="columns" data-cols={String(columns.length)}>
+  <div class="columns" style={`--n: ${columns.length}; --rows: ${rows};`}>
     {columns.map((col, i) => (
-      <ManuscriptColumn col={col} showLineNumbers={i === 0} />
+      <ManuscriptColumn col={col} first={i === 0} ruler={i === ruler} firstVerse={firstVerse} />
     ))}
   </div>
 </div>
 
 <style>
-  .small-screen-note {
-    display: none;
-    padding-bottom: 0.75rem;
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-
-  @media screen and (max-width: 1099px) {
-    .small-screen-note {
-      display: block;
-    }
-  }
-
   .columns-frame {
     container-type: inline-size;
   }
 
-  /* Narrow screens: columns stack as separate cards. */
+  /*
+    Fit every line in one window when the height allows. Below 16px the page
+    scrolls instead. --fs-w is the measured width limit, set by the page script.
+  */
   .columns {
+    /* Room for the verse gutter of one column and the line number of the next. */
+    --col-gap: 3.75rem;
+    --pad: 0.75rem;
+    --avail: calc(100dvh - var(--head) - var(--strip));
+    --row-avail: calc((var(--avail) - 2 * var(--pad)) / var(--rows));
+    --fs-fallback: calc((100cqi - (var(--n) - 1) * var(--col-gap)) / var(--n) / 14);
+    --fs: min(var(--fs-w, var(--fs-fallback)), var(--fs-cap, 24px), max(16px, calc(var(--row-avail) / 1.5)));
+    --row: max(calc(var(--fs) * 1.4), min(var(--row-avail), calc(var(--fs) * 1.95)));
+
     display: grid;
-    gap: 1.2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    align-content: center;
+    min-height: var(--avail);
+    padding-block: var(--pad);
     direction: rtl;
+    font-size: var(--fs);
     color: var(--ink);
   }
 
-  /* Wide screens: one parchment leaf holding all columns, like the codex page. */
-  @container (min-width: 60rem) {
-    .columns {
-      gap: 0;
+  /* Image closed: one parchment leaf in the page width, sized as before the image panel. */
+  @media screen and (min-width: 760px) {
+    :global(.desk[data-view='text']) .columns-frame {
+      max-width: 72rem;
+      margin-inline: auto;
+    }
+
+    :global(.desk[data-view='text']) .columns {
+      --fs: min(var(--fs-w, 100px), clamp(1rem, 2.1cqi, 1.4rem));
+
+      grid-template-columns: repeat(var(--n), auto);
+      column-gap: 0;
+      align-content: start;
+      min-height: 0;
       padding: 2.2rem 2rem 2.6rem;
-      background: var(--parchment);
-      border: 1px solid var(--parchment-edge);
+      background: var(--leaf-bg);
+      border: 1px solid var(--leaf-edge);
       border-radius: 0.4rem;
-      box-shadow: 0 0.6rem 1.6rem var(--parchment-shadow);
+      box-shadow: 0 0.6rem 1.6rem var(--leaf-shadow);
+    }
+  }
+
+  .column-pick {
+    display: none;
+  }
+
+  @media screen and (max-width: 1399px) {
+    .columns {
+      --col-gap: 3.25rem;
+    }
+  }
+
+  /* Phones: one column at a time, moved sideways. */
+  @media screen and (max-width: 759px) {
+    .column-pick {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      padding-block-start: 0.5rem;
+      color: var(--muted);
+      font-size: 0.84rem;
     }
 
-    .columns[data-cols='3'] {
-      grid-template-columns: repeat(3, auto);
+    .column-pick button {
+      min-width: 2.2rem;
     }
 
-    .columns[data-cols='2'] {
-      grid-template-columns: repeat(2, auto);
+    .column-pick button[aria-pressed='true'] {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .columns {
+      --fs: min(var(--fs-w, 7cqi), 25px);
+      --row: calc(var(--fs) * 1.85);
+
+      display: flex;
+      min-height: 0;
+      padding-block: 0.75rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .columns::-webkit-scrollbar {
+      display: none;
     }
   }
 
   @media print {
     .columns {
-      gap: 0.9rem;
-      margin-bottom: 0;
-      padding: 0;
-      background: none;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
+      --fs: 1.75vh;
+
+      display: grid;
+      grid-template-columns: repeat(var(--n), 1fr);
+      column-gap: 0.9rem;
+      min-height: 0;
+      padding-block: 0;
+      overflow: visible;
       color: inherit;
     }
 
-    .columns[data-cols='3'] {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .columns[data-cols='2'] {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .columns[data-cols='1'] {
-      grid-template-columns: 1fr;
+    /* Room for each verse gutter, also the one to the right of the first column. */
+    .columns.show-verses {
+      column-gap: 2.25rem;
+      padding-inline-start: 2.25rem;
     }
   }
 </style>

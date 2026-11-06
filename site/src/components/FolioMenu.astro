@@ -1,0 +1,96 @@
+---
+import { icons } from '../lib/icons';
+
+interface Props {
+  folio: string;
+  manifest: string | null;
+}
+
+const { folio, manifest } = Astro.props;
+---
+
+<details class="folio-menu" id="folio-menu">
+  <summary class="quiet" aria-label="More options"><Fragment set:html={icons.ellipsis} /></summary>
+  <div class="menu-body">
+    <div class="mobile-only">
+      <a href={`/edition/${folio}.xml`} target="_blank" rel="noopener noreferrer">TEI XML <Fragment set:html={icons.externalLink} /></a>
+      {manifest && <a href={manifest} target="_blank" rel="noopener noreferrer">IIIF manifest <Fragment set:html={icons.externalLink} /></a>}
+      <button type="button" id="print-folio-menu">Print</button>
+    </div>
+    <button type="button" id="copy-folio-citation">Copy citation</button>
+    <button type="button" id="feedback-open">Report an issue</button>
+    <hr />
+    <a href="/about/">About</a>
+    <a href="https://github.com/charlesLoder/leningrad-codex-tei">GitHub</a>
+  </div>
+</details>
+
+<style>
+  .folio-menu {
+    position: relative;
+  }
+
+  .menu-body {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 0.35rem);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    width: 14rem;
+    padding: 0.35rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    box-shadow: 0 0.6rem 1.8rem var(--shadow);
+  }
+
+  .menu-body a,
+  .menu-body button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.4rem 0.55rem;
+    font: inherit;
+    font-size: 0.9rem;
+    text-align: left;
+    text-decoration: none;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    border-radius: 0.35rem;
+    cursor: pointer;
+  }
+
+  .menu-body a:hover,
+  .menu-body button:hover {
+    background: var(--accent-soft);
+  }
+
+  .menu-body a :global(.lucide) {
+    width: 1em;
+    height: 1em;
+    color: var(--muted);
+  }
+
+  .mobile-only {
+    display: none;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  @media (max-width: 759px) {
+    .mobile-only {
+      display: flex;
+    }
+  }
+
+  .menu-body hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin-block: 0.15rem;
+  }
+</style>

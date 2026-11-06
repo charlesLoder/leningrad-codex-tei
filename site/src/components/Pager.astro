@@ -1,24 +1,87 @@
 ---
-import Button from './Button.astro';
+import { icons } from '../lib/icons';
 
 interface Props {
-  prev?: { folio: string } | null;
-  next?: { folio: string } | null;
+  prev?: { folio: string; range: string } | null;
+  next?: { folio: string; range: string } | null;
+  /** Directions shown between the two links. */
+  hint: string;
+  touchHint: string;
 }
 
-const { prev, next } = Astro.props;
+const { prev, next, hint, touchHint } = Astro.props;
 ---
 
-<div class="pager">
-  <span>{next ? <Button data-direction="next" href={`/folio/${next.folio}/`}>← {next.folio}</Button> : <span />}</span>
-  <span>{prev ? <Button data-direction="prev" href={`/folio/${prev.folio}/`}>{prev.folio} →</Button> : <span />}</span>
-</div>
+<nav class="pager" aria-label="Turn the page">
+  {next ? (
+    <a class="quiet" rel="next" href={`/folio/${next.folio}/`} title={`Next: ${next.range}`}><Fragment set:html={icons.arrowLeft} /> Next <span class="code">{next.folio}</span></a>
+  ) : <span />}
+  <p class="hint"><span class="pointer-hint">{hint}</span><span class="touch-hint">{touchHint}</span></p>
+  {prev ? (
+    <a class="quiet" rel="prev" href={`/folio/${prev.folio}/`} title={`Previous: ${prev.range}`}><span class="code">{prev.folio}</span> Previous <Fragment set:html={icons.arrowRight} /></a>
+  ) : <span />}
+</nav>
 
 <style>
   .pager {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin: 0 0 1.5rem;
+    position: sticky;
+    top: var(--head);
+    z-index: 24;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, auto) 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: var(--strip);
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pager a:first-child {
+    justify-self: start;
+  }
+
+  .pager a:last-child {
+    justify-self: end;
+  }
+
+  .code {
+    color: var(--faint);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hint {
+    margin: 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.25;
+  }
+
+  .touch-hint {
+    display: none;
+  }
+
+  @media (hover: none) {
+    .pointer-hint {
+      display: none;
+    }
+
+    .touch-hint {
+      display: inline;
+    }
+  }
+
+  @media (max-width: 759px) {
+    .pager {
+      position: static;
+      gap: 0.25rem;
+      padding-inline: 0.25rem;
+    }
+
+    .code {
+      display: none;
+    }
   }
 </style>

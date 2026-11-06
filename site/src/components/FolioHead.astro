@@ -2,38 +2,127 @@
 interface Props {
   title: string;
   range: string;
+  /** e.g. `Recto · side 40 of 920` */
+  detail: string;
 }
 
-const { title, range } = Astro.props;
+const { title, range, detail } = Astro.props;
 ---
 
-<section class="folio-head">
-  <h1>{title}</h1>
-  <p class="range">{range}</p>
-  <slot />
-</section>
+<details class="folio-jump" id="folio-jump">
+  <summary class="quiet folio-title" aria-label={`${title}. Go to a folio or verse`}>
+    <h1>{title}</h1>
+    <span>{range}</span>
+  </summary>
+  <div class="jump-body">
+    <label>
+      <span class="sr-only">Go to a folio or verse</span>
+      <input id="goto-input" type="search" autocomplete="off" placeholder="Go to Exod 3:14 or 250A" />
+    </label>
+    <ul id="goto-list" hidden></ul>
+    <p>{detail}</p>
+  </div>
+</details>
 
 <style>
-  .folio-head {
-    padding: 2rem 0 0.5rem;
+  .folio-jump {
+    position: relative;
   }
 
-  .folio-head h1 {
+  .folio-title {
+    flex-direction: column;
+    gap: 0;
+    min-height: 2.7rem;
+    padding-inline: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .folio-title h1 {
     margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
   }
 
-  .folio-head .range {
+  .folio-title span {
+    font-size: 0.76rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .jump-body {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 0.35rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: min(21rem, calc(100vw - 2rem));
+    padding: 0.55rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    box-shadow: 0 0.6rem 1.8rem var(--shadow);
+  }
+
+  .jump-body input {
+    width: 100%;
+    min-height: 2.3rem;
+    padding: 0.25rem 0.6rem;
+    font: inherit;
+    color: inherit;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 0.45rem;
+  }
+
+  .jump-body input::placeholder {
     color: var(--muted);
-    margin: 0.3rem 0 1rem;
   }
 
-  @media print {
-    .folio-head {
-      padding: 0 0 0.4rem;
-    }
-    .folio-head h1,
-    .folio-head .range {
-      display: none;
-    }
+  .jump-body p {
+    margin: 0;
+    padding: 0.1rem 0.2rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  #goto-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #goto-list[hidden] {
+    display: none;
+  }
+
+  #goto-list :global(a) {
+    display: flex;
+    flex-direction: column;
+    padding: 0.35rem 0.55rem;
+    border-radius: 0.35rem;
+    color: var(--ink);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  #goto-list :global(a:hover),
+  #goto-list :global(a.first) {
+    background: var(--accent-soft);
+  }
+
+  #goto-list :global(small),
+  #goto-list :global(.goto-none) {
+    color: var(--muted);
+    font-size: 0.76rem;
+  }
+
+  #goto-list :global(.goto-none) {
+    padding: 0.35rem 0.55rem;
   }
 </style>

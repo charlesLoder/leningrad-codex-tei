@@ -10,6 +10,11 @@ export function bibliographyEntry(version?: string | null): string {
   return `${CITATION.author}. ${CITATION.title}${v}. ${CITATION.year}. ${CITATION.siteUrl}.`;
 }
 
+export function folioCitation(folio: string, version?: string | null): string {
+  const v = version ? ` (${version})` : '';
+  return `${CITATION.author}. "Folio ${folio}." ${CITATION.title}${v}. ${CITATION.year}. ${CITATION.siteUrl}/folio/${folio}/.`;
+}
+
 export function risRecord(version?: string | null): string {
   const now = new Date();
   const pad = (n: number): string => String(n).padStart(2, '0');

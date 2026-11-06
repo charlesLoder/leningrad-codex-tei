@@ -9,8 +9,6 @@ interface Props {
 const { folio, version } = Astro.props;
 ---
 
-<Button id="feedback-open" type="button">Report issue</Button>
-
 <dialog id="feedback-dialog" aria-labelledby="feedback-title">
   <form
     id="feedback-form"
@@ -39,6 +37,7 @@ const { folio, version } = Astro.props;
         <option value="verse-marker">Verse marker</option>
         <option value="section-marker">Samekh / pe marker</option>
         <option value="image-mismatch">Image vs text mismatch</option>
+        <option value="verse-zone">Verse zone in the wrong place</option>
         <option value="other">Other</option>
       </select>
     </label>
@@ -87,6 +86,8 @@ const { folio, version } = Astro.props;
 </div>
 
 <script>
+  import { icons } from '../lib/icons';
+
   const openBtn = document.querySelector('#feedback-open');
   const dialog = document.querySelector('#feedback-dialog') as HTMLDialogElement | null;
   const form = document.querySelector('#feedback-form') as HTMLFormElement | null;
@@ -109,8 +110,8 @@ const { folio, version } = Astro.props;
   const lineLabel = (el: HTMLElement): string => {
     const col = el.dataset.col ?? '?';
     const line = el.dataset.line ?? '?';
-    const verses = [...el.querySelectorAll('.verse-tag')]
-      .map((v) => (v as HTMLElement).dataset.verse ?? v.textContent ?? '')
+    const verses = [...el.querySelectorAll('.verse-run')]
+      .map((v) => (v as HTMLElement).dataset.verse ?? '')
       .filter(Boolean);
     const seen = [...new Set(verses)];
     return `Col ${col} L${line}${seen.length ? ` (${seen.join(', ')})` : ''}`;
@@ -128,7 +129,7 @@ const { folio, version } = Astro.props;
       chip.textContent = lineLabel(el) + ' ';
       const drop = document.createElement('button');
       drop.type = 'button';
-      drop.textContent = '×';
+      drop.innerHTML = icons.x;
       drop.setAttribute('aria-label', `Remove ${lineLabel(el)}`);
       drop.addEventListener('click', () => {
         el.classList.remove('picked');
@@ -148,9 +149,21 @@ const { folio, version } = Astro.props;
     });
   };
 
-  openBtn?.addEventListener('click', () => {
+  const openDialog = () => {
     if (status) status.textContent = '';
     dialog?.showModal();
+  };
+  openBtn?.addEventListener('click', openDialog);
+
+  // A report from a selected verse starts with that verse's lines picked.
+  document.addEventListener('feedback:open', (e) => {
+    const lines = ((e as CustomEvent).detail?.lines ?? []) as [string, string][];
+    pickedLines().forEach((el) => el.classList.remove('picked'));
+    lines.forEach(([col, line]) => {
+      columns?.querySelector(`.tei-line[data-col="${col}"][data-line="${line}"]`)?.classList.add('picked');
+    });
+    refresh();
+    openDialog();
   });
 
   document.querySelector('#feedback-cancel')?.addEventListener('click', () => dialog?.close());
@@ -272,7 +285,7 @@ const { folio, version } = Astro.props;
   .feedback-row input[type='email'] {
     font: inherit;
     color: inherit;
-    background: #fff;
+    background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 0.55rem;
     padding: 0.5rem 0.7rem;
@@ -319,8 +332,13 @@ const { folio, version } = Astro.props;
     border: 1px solid var(--line);
     background: var(--card);
     border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 1.4rem;
     height: 1.4rem;
+    padding: 0;
+    font-size: 0.75rem;
     line-height: 1;
     cursor: pointer;
   }
@@ -357,7 +375,7 @@ const { folio, version } = Astro.props;
     border: 1px solid var(--accent);
     border-radius: 0.9rem;
     padding: 0.7rem 1rem;
-    box-shadow: 0 0.5rem 2rem rgba(35, 32, 26, 0.2);
+    box-shadow: 0 0.5rem 2rem var(--shadow);
     max-width: calc(100vw - 2rem);
   }
 

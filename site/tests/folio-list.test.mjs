@@ -1,13 +1,13 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { countLabel, filterFolios, paginate } from '../src/lib/folio-list.ts';
-import { folioRangeKeys } from '../src/lib/verses.ts';
+import { folioRangeSpans } from '../src/lib/verses.ts';
 
 const row = (folio, range) => ({
   folio,
   range,
   search: `${folio} ${range}`.toLowerCase(),
-  ...folioRangeKeys(range),
+  spans: folioRangeSpans(range),
 });
 
 const rows = [
@@ -32,6 +32,44 @@ describe('filterFolios', () => {
 
   it('returns nothing for a verse no row covers', () => {
     assert.equal(filterFolios(rows, 'Ruth 1:1').length, 0);
+  });
+});
+
+describe('filterFolios on folios that cross a book', () => {
+  // BOOKS has Proverbs before Job and Song before Ruth; the codex has the reverse.
+  const crossing = [
+    row('409B', 'Job 42:7 – Job 42:17; Proverbs 1:1 – Proverbs 1:19'),
+    row('421A', 'Proverbs 31:23 – Proverbs 31:31; Ruth 1:1 – Ruth 1:17'),
+    row('423A', 'Ruth 4:13 – Ruth 4:22; Song_of_Songs 1:1 – Song_of_Songs 2:5'),
+    row('031B', 'Genesis 50:16 – Exodus 1:18'),
+    row('133B', 'Joshua 21:32 – Joshua 21:35; Joshua 21:38 – Joshua 22:10'),
+  ];
+  const hits = (q) => filterFolios(crossing, q).map((r) => r.folio);
+
+  it('finds both books of a folio', () => {
+    assert.deepEqual(hits('Job 42:17'), ['409B']);
+    assert.deepEqual(hits('Prov 1:1'), ['409B']);
+    assert.deepEqual(hits('Ruth 4:22'), ['423A']);
+    assert.deepEqual(hits('Song 1:1'), ['423A']);
+  });
+
+  it('does not match the books between them', () => {
+    assert.deepEqual(hits('Prov 5:1'), []);
+    assert.deepEqual(hits('Job 5:1'), []);
+    assert.deepEqual(hits('Song 3:1'), []);
+    assert.deepEqual(hits('Ruth 2:1'), []);
+  });
+
+  it('finds both sides of a book change with no semicolon', () => {
+    assert.deepEqual(hits('Gen 50:26'), ['031B']);
+    assert.deepEqual(hits('Exod 1:1'), ['031B']);
+    assert.deepEqual(hits('Gen 49:1'), []);
+    assert.deepEqual(hits('Exod 2:1'), []);
+  });
+
+  it('keeps the gap inside a range', () => {
+    assert.deepEqual(hits('Josh 21:36'), []);
+    assert.deepEqual(hits('Josh 21:38'), ['133B']);
   });
 });
 

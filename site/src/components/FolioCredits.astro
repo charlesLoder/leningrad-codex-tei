@@ -7,47 +7,73 @@ interface Props {
 }
 
 const { credits, model = null } = Astro.props;
+
+const host = (href: string): string => {
+  try {
+    return new URL(href).hostname.replace(/^www\./, '');
+  } catch {
+    return href;
+  }
+};
 ---
 
 {(credits.length > 0 || model) && (
   <section class="credits" aria-labelledby="credits-heading">
-    <h2 id="credits-heading">Credits</h2>
-    <ul>
-      {credits.map((c) => (
-        <li>
-          <span class="names">{c.names.join(', ')}</span>
-          <span class="resp">
-            {c.resp.map((p) => (p.href ? <a href={p.href}>{p.href}</a> : p.text))}
-          </span>
-        </li>
-      ))}
-      {model && (
-        <li>
-          <span class="names">{model}</span>
-          <span class="resp">AI model used to align the text to the columns and lines</span>
-        </li>
-      )}
-    </ul>
+    <div class="wrap credits-inner">
+      <h2 id="credits-heading">How this page was made</h2>
+      <p>
+        The text comes from UXLC. It was not transcribed from this image, so the two can differ on purpose.
+        An AI model aligned the text to columns and lines, and a handwriting model located each verse on the image.
+      </p>
+      <ul>
+        {credits.map((c) => (
+          <li>
+            <span class="names">{c.names.join(', ')}</span>
+            <span class="resp">
+              {c.resp.map((p) => (p.href ? <a href={p.href}>{host(p.href)}</a> : p.text))}
+            </span>
+          </li>
+        ))}
+        {model && (
+          <li>
+            <span class="names">{model}</span>
+            <span class="resp">AI model used to align the text to the columns and lines</span>
+          </li>
+        )}
+      </ul>
+    </div>
   </section>
 )}
 
 <style>
   .credits {
+    padding-block: 2.5rem;
+    background: var(--bg);
     border-top: 1px solid var(--line);
-    padding: 1rem 0;
     color: var(--muted);
     font-size: 0.9rem;
   }
 
+  .credits-inner {
+    display: grid;
+    gap: 0.75rem;
+  }
+
   .credits h2 {
-    margin: 0 0 0.5rem;
+    margin: 0;
     font-size: 1rem;
     color: var(--ink);
   }
 
+  .credits p {
+    margin: 0;
+    max-width: 65ch;
+  }
+
   .credits ul {
     display: grid;
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.9rem 2rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -67,9 +93,7 @@ const { credits, model = null } = Astro.props;
   .resp a {
     overflow-wrap: anywhere;
   }
-</style>
 
-<style>
   @media print {
     .credits {
       display: none;

@@ -50,6 +50,26 @@ export interface Credit {
   names: string[];
 }
 
+/** A zone segment in image pixels: `[ulx, uly, lrx, lry]`. */
+export type ZoneSegment = [number, number, number, number];
+
+export interface VerseZone {
+  /** Masoretica recognition score for the verse, or null when the TEI has none. */
+  cert: number | null;
+  /** One segment per line that the verse crosses, in reading order. */
+  segments: ZoneSegment[];
+}
+
+export interface Facsimile {
+  /** Size of the surface in image pixels, or null when the TEI does not state it. */
+  width: number | null;
+  height: number | null;
+  /** IIIF Image API service of the Archive.org graphic, which the zones use. */
+  imageService: string | null;
+  /** Zones keyed by verse reference, as in `FolioDoc.verses` (e.g. `Gen 34:12`). */
+  zones: Record<string, VerseZone>;
+}
+
 export interface FolioDoc {
   title: string;
   credits: Credit[];
@@ -58,6 +78,7 @@ export interface FolioDoc {
   graphicUrl: string | null;
   columns: TeiColumn[];
   verses: string[];
+  facsimile: Facsimile;
 }
 
 type XmlAttrs = Record<string, string>;
@@ -263,14 +284,53 @@ function parseModel(ordered: OrderedNode[]): string | null {
   return null;
 }
 
+const IIIF_FULL_SUFFIX = '/full/max/0/default.jpg';
+
+function parseFacsimile(ordered: OrderedNode[]): Facsimile {
+  const surface = findFirst(ordered, 'surface');
+  const out: Facsimile = { width: null, height: null, imageService: null, zones: {} };
+  if (!surface) return out;
+  const attrs = nodeAttrs(surface);
+  out.width = Number(attrs['lrx']) || null;
+  out.height = Number(attrs['lry']) || null;
+  for (const child of childrenOf(surface, 'surface')) {
+    const a = nodeAttrs(child);
+    if ('graphic' in child && (a['id'] ?? '').endsWith('-img-archive')) {
+      const url = a['url'] ?? '';
+      if (url.endsWith(IIIF_FULL_SUFFIX)) out.imageService = url.slice(0, -IIIF_FULL_SUFFIX.length);
+    }
+    if (!('zone' in child) || a['type'] !== 'verse') continue;
+    const segments: ZoneSegment[] = [];
+    for (const seg of childrenOf(child, 'zone')) {
+      if (!('zone' in seg)) continue;
+      const s = nodeAttrs(seg);
+      const box = [s['ulx'], s['uly'], s['lrx'], s['lry']].map(Number);
+      if (box.every(Number.isFinite)) segments.push(box as ZoneSegment);
+    }
+    const ref = formatRef((a['id'] ?? '').replace(/^f[^-]+-zone-/, ''));
+    out.zones[ref] = { cert: a['cert'] ? Number(a['cert']) : null, segments };
+  }
+  return out;
+}
+
+const emptyDoc = (): FolioDoc => ({
+  title: 'Folio',
+  credits: [],
+  model: null,
+  graphicUrl: null,
+  columns: [],
+  verses: [],
+  facsimile: { width: null, height: null, imageService: null, zones: {} },
+});
+
 export function parseFolioXml(xml: string): FolioDoc {
   let ordered: OrderedNode[];
   try {
     ordered = teiParser.parse(xml) as OrderedNode[];
   } catch {
-    return { title: 'Folio', credits: [], model: null, graphicUrl: null, columns: [], verses: [] };
+    return emptyDoc();
   }
-  if (!Array.isArray(ordered)) return { title: 'Folio', credits: [], model: null, graphicUrl: null, columns: [], verses: [] };
+  if (!Array.isArray(ordered)) return emptyDoc();
 
   const titleNode = findFirst(ordered, 'title');
   const title = titleNode ? innerText(childrenOf(titleNode, 'title')).trim() || 'Folio' : 'Folio';
@@ -342,7 +402,15 @@ export function parseFolioXml(xml: string): FolioDoc {
   }
   flushLine();
   if (started) columns.push(currentCol);
-  return { title, credits: parseCredits(ordered), model: parseModel(ordered), graphicUrl, columns, verses };
+  return {
+    title,
+    credits: parseCredits(ordered),
+    model: parseModel(ordered),
+    graphicUrl,
+    columns,
+    verses,
+    facsimile: parseFacsimile(ordered),
+  };
 }
 
 export function abbreviateRange(range: string): string {

@@ -2,16 +2,18 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import iiifLogo from '../../assets/iiif.svg';
 import Base from '../../layouts/Base.astro';
-import Button from '../../components/Button.astro';
 import FeedbackForm from '../../components/FeedbackForm.astro';
 import FolioCredits from '../../components/FolioCredits.astro';
 import FolioColumns from '../../components/FolioColumns.astro';
 import FolioHead from '../../components/FolioHead.astro';
-import FolioToolbar from '../../components/FolioToolbar.astro';
+import FolioMenu from '../../components/FolioMenu.astro';
 import IiifViewer from '../../components/IiifViewer.astro';
 import Pager from '../../components/Pager.astro';
-import Toggle from '../../components/Toggle.astro';
+import VerseCard from '../../components/VerseCard.astro';
+import { buildViewData } from '../../lib/folio-view';
+import { icons } from '../../lib/icons';
 import { parseFolioXml, folioSideLabel, abbreviateRange } from '../../lib/tei';
 import folios from '../../data/folios.json';
 import meta from '../../data/meta.json';
@@ -31,8 +33,11 @@ const iiifPath = join(here, '../../../public/iiif', `${folio}.json`);
 const iiifManifest = existsSync(iiifPath) ? `/iiif/${folio}.json` : null;
 
 const idx = folios.findIndex((f) => f.folio === folio);
-const prev = idx > 0 ? folios[idx - 1] : null;
-const next = idx >= 0 && idx < folios.length - 1 ? folios[idx + 1] : null;
+const prevEntry = idx > 0 ? folios[idx - 1] : null;
+const nextEntry = idx >= 0 && idx < folios.length - 1 ? folios[idx + 1] : null;
+const neighbor = (f: { folio: string; range: string } | null) => (f ? { folio: f.folio, range: f.range } : null);
+const shortNeighbor = (f: { folio: string; range: string } | null) =>
+  f ? { folio: f.folio, range: abbreviateRange(f.range) } : null;
 
 const folioTitle = `Folio ${folioSideLabel(folio ?? '')} · Leningrad Codex TEI`;
 const folioRef = entry ? abbreviateRange(entry.range) : doc.title;
@@ -47,57 +52,176 @@ const folioSchema = {
   inLanguage: ['en', 'he'],
   isPartOf: { '@type': 'Collection', name: 'Leningrad Codex TEI' },
 };
+const side = folio?.endsWith('A') ? 'Recto' : 'Verso';
+const viewData = buildViewData(doc, {
+  folio: folio ?? '',
+  version: meta.version,
+  manifest: iiifManifest,
+  prev: neighbor(prevEntry),
+  next: neighbor(nextEntry),
+});
 ---
 
-<Base title={folioTitle} description={folioDescription} type="article" jsonLd={folioSchema}>
-  <FolioHead title={`Folio ${folioSideLabel(folio ?? '')}`} range={entry ? abbreviateRange(entry.range) : doc.title}>
-    <p class="print-only">{folioIdLine}</p>
-    <Pager prev={prev} next={next} />
-    <FolioToolbar>
-      <Button variant="primary" href={`/edition/${folio}.xml`} target="_blank">Raw TEI XML <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg></Button>
-      {iiifManifest && <Button href="#facsimile">View Facsimile</Button>}
-      <Button id="print-folio" type="button">Print</Button>
-      <Toggle />
-      <FeedbackForm folio={folio ?? ''} version={meta.version} />
-    </FolioToolbar>
-  </FolioHead>
+<Base title={folioTitle} description={folioDescription} type="article" jsonLd={folioSchema} desk>
+  <Fragment slot="head">
+    {iiifManifest && <link rel="preload" as="fetch" href={iiifManifest} crossorigin="anonymous" />}
+    {iiifManifest && <link rel="preconnect" href="https://iiif.archive.org" crossorigin="anonymous" />}
+  </Fragment>
 
-  <FolioColumns columns={doc.columns} />
+  <FolioHead slot="header-center" title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
+  <Fragment slot="header-actions">
+    <button class="quiet verse-toggle" id="toggle-verses" type="button" aria-label="Verse numbers" aria-pressed="false" title="Show verse numbers">
+      <Fragment set:html={icons.hash} />
+    </button>
+    <button class="quiet image-toggle" id="toggle-image" type="button" aria-label="Page image" aria-pressed="true" title="Hide page image">
+      <Fragment set:html={icons.image} />
+      <Fragment set:html={icons.imageOff} />
+    </button>
+    <a class="quiet header-link" href={`/edition/${folio}.xml`} target="_blank" rel="noopener noreferrer" aria-label="TEI XML (opens in a new tab)" title="TEI XML">
+      <Fragment set:html={icons.codeXml} />
+    </a>
+    {iiifManifest && (
+      <a class="quiet header-link" href={iiifManifest} target="_blank" rel="noopener noreferrer" aria-label="IIIF manifest (opens in a new tab)" title="IIIF manifest">
+        <img src={iiifLogo.src} alt="" width="20" height="20" />
+      </a>
+    )}
+    <button class="quiet print-button" id="print-folio" type="button" aria-label="Print folio" title="Print folio">
+      <Fragment set:html={icons.printer} />
+    </button>
+    <FolioMenu folio={folio ?? ''} manifest={iiifManifest} />
+  </Fragment>
 
-  {iiifManifest && (
-    <IiifViewer manifestUrl={iiifManifest} folio={folio ?? ''} />
-  )}
+  <Pager
+    prev={shortNeighbor(prevEntry)}
+    next={shortNeighbor(nextEntry)}
+    hint={iiifManifest ? 'Hover text to see it on the page. Click to select. Double-click to zoom.' : 'Click a word to select its verse.'}
+    touchHint={iiifManifest ? 'Tap a word to see it on the page.' : 'Tap a word to select its verse.'}
+  />
+
+  <div class="desk" id="desk" data-view="both">
+    <section class="leaf" aria-label="Transcription">
+      <p class="print-only">{folioIdLine}</p>
+      <FolioColumns columns={doc.columns} firstVerse={doc.verses[0] ?? null} />
+    </section>
+    <IiifViewer manifestUrl={iiifManifest} imageUrl={doc.graphicUrl} folio={folio ?? ''} />
+  </div>
+  <VerseCard />
 
   <FolioCredits credits={doc.credits} model={doc.model} />
+  <FeedbackForm folio={folio ?? ''} version={meta.version} />
 
+  <script type="application/json" id="folio-data" set:html={JSON.stringify(viewData).replace(/</g, '\\u003c')} />
   <script>
-    const toggle = document.querySelector('#toggle-verses') as HTMLInputElement | null;
-    const apply = (on: boolean) => {
-      // Print styles key off this class so print follows the toggle.
-      document.querySelector('.columns')?.classList.toggle('show-verses', on);
-      document.querySelectorAll('.verse-tag').forEach((el) => {
-        (el as HTMLElement).style.display = on ? '' : 'none';
-      });
-    };
-    toggle?.addEventListener('change', (e) => apply((e.target as HTMLInputElement).checked));
-    apply(toggle?.checked ?? false);
-
-    document.querySelector('#print-folio')?.addEventListener('click', () => window.print());
-
-    const columns = document.querySelector('.columns');
-    const highlight = (ref: string | null, on: boolean) => {
-      if (!ref) return;
-      columns?.querySelectorAll(`span[data-verse="${ref}"]`).forEach((el) => {
-        el.classList.toggle('hl', on);
-      });
-    };
-    columns?.addEventListener('mouseover', (e) => {
-      const tag = (e.target as HTMLElement).closest('.verse-tag') as HTMLElement | null;
-      highlight(tag?.dataset.verse ?? null, true);
-    });
-    columns?.addEventListener('mouseout', (e) => {
-      const tag = (e.target as HTMLElement).closest('.verse-tag') as HTMLElement | null;
-      highlight(tag?.dataset.verse ?? null, false);
-    });
+    import '../../lib/folio-desk.client.ts';
   </script>
 </Base>
+
+<style>
+  /* The icon shows the state: an image while it is open, a crossed-out image while it is closed. */
+  .verse-toggle,
+  .image-toggle,
+  .header-link,
+  .print-button {
+    min-width: 2.4rem;
+  }
+
+  .verse-toggle :global(.lucide),
+  .image-toggle :global(.lucide),
+  .header-link :global(.lucide),
+  .print-button :global(.lucide) {
+    width: 1.35em;
+    height: 1.35em;
+  }
+
+  .verse-toggle[aria-pressed='true'],
+  .image-toggle[aria-pressed='true'] {
+    background: var(--accent-soft);
+  }
+
+  .image-toggle[aria-pressed='true'] :global(.lucide-image-off),
+  .image-toggle[aria-pressed='false'] :global(.lucide-image) {
+    display: none;
+  }
+
+  /* On small screens the menu holds these links, so the header stays short. */
+  @media (max-width: 759px) {
+    .header-link,
+    .print-button {
+      display: none;
+    }
+  }
+
+  .desk {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+    background: var(--parchment);
+  }
+
+  .desk[data-view='text'],
+  .desk[data-view='image'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .desk[data-view='text'] :global(.plate) {
+    display: none;
+  }
+
+  .desk[data-view='image'] .leaf {
+    display: none;
+  }
+
+  /* Before the page script runs: below this width there is no room for both. */
+  @media (max-width: 1199px) {
+    .desk[data-view='both'] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .desk[data-view='both'] :global(.plate) {
+      display: none;
+    }
+  }
+
+  .leaf {
+    min-width: 0;
+    /* The right padding is the verse gutter of the first column. */
+    padding-inline: max(2.25rem, env(safe-area-inset-left, 0px)) max(3.5rem, env(safe-area-inset-right, 0px));
+  }
+
+  /* Image closed: the leaf sits on the page, with room to scroll its last lines out from under the verse card. */
+  @media screen and (min-width: 760px) {
+    .desk[data-view='text'] {
+      background: var(--bg);
+    }
+
+    .desk[data-view='text'] .leaf {
+      padding-block: 1.5rem 4.5rem;
+      padding-inline: 1.25rem;
+    }
+  }
+
+  @media screen and (max-width: 1399px) {
+    .leaf {
+      padding-inline: 1.75rem 3.25rem;
+    }
+  }
+
+  @media screen and (max-width: 759px) {
+    .leaf {
+      padding-inline: 0;
+      padding-block-end: 5rem;
+    }
+  }
+
+  @media print {
+    .desk {
+      display: block;
+      background: none;
+    }
+
+    .desk .leaf {
+      display: block;
+      padding: 0;
+    }
+  }
+</style>

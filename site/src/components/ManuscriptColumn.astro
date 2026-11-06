@@ -4,77 +4,40 @@ import TeiLine from './TeiLine.astro';
 
 interface Props {
   col: TeiColumn;
-  showLineNumbers?: boolean;
+  first?: boolean;
+  ruler?: boolean;
+  firstVerse: string | null;
 }
 
-const { col, showLineNumbers = false } = Astro.props;
+const { col, first = false, ruler = false, firstVerse } = Astro.props;
 ---
 
-<section class="column">
-  <h2>Column {col.n}</h2>
+<section class:list={['column', { first, ruler }]} data-column={col.n}>
+  <h2 class="sr-only">Column {col.n}</h2>
   {col.lines.map((line) => (
-    <TeiLine col={col.n} line={line} showLineNumber={showLineNumbers} />
+    <TeiLine col={col.n} line={line} firstVerse={firstVerse} />
   ))}
 </section>
 
 <style>
-  /* Narrow screens: each column is its own card, with a visible title. */
   .column {
-    direction: rtl;
     min-width: 0;
-    max-width: 500px;
-    justify-self: center;
-    background: var(--parchment);
-    border: 1px solid var(--parchment-edge);
-    border-radius: 0.4rem;
-    padding: 1rem 1.1rem;
+    direction: rtl;
   }
 
-  .column h2 {
-    margin: 0 0 0.6rem;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* Wide screens: columns share one page, with no titles; keep the
-     heading for screen readers. */
-  @container (min-width: 60rem) {
+  @media screen and (max-width: 759px) {
     .column {
-      max-width: none;
-      justify-self: stretch;
-      background: none;
-      border: none;
-      border-radius: 0;
-      padding: 0;
-    }
-
-    .column h2 {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      /* The verse gutter is on the right and the line numbers are on the left. */
+      padding-inline: calc(env(safe-area-inset-right, 0px) + 3rem) calc(env(safe-area-inset-left, 0px) + 1.6rem);
     }
   }
 
   @media print {
     .column {
-      max-width: none;
-      justify-self: stretch;
-      background: none;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
       padding: 0;
       break-inside: auto;
-    }
-
-    .column h2 {
-      display: none;
     }
   }
 </style>
