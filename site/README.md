@@ -1,6 +1,6 @@
 # Leningrad Viewer (`site/`)
 
-Astro viewer for the TEI files in `/edition`. Treated as a separate
+Astro viewer for the digital edition of the Leningrad Codex, read from the TEI files in `/edition`. Treated as a separate
 project: its own dependencies, README, and Netlify deployment.
 
 ## Develop
