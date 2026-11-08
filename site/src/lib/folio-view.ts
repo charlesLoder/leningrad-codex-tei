@@ -133,16 +133,35 @@ export function lineVerseNumbers(line: TeiLine, firstVerse: string | null = null
 export const chapterAndVerse = (ref: string): string => ref.slice(ref.lastIndexOf(' ') + 1);
 
 /**
+ * An erasure: the erased words struck through, and a box for the part that
+ * cannot be read. `whole` makes the box fill a line that has nothing else.
+ */
+export function erasureHtml(t: Token, whole = false): string {
+  const label = 'Erased text that cannot be read';
+  const gap = `<span class="erased-gap${whole ? ' whole' : ''}" role="img" aria-label="${label}" title="${label}"></span>`;
+  const text = (s: string) => `<del class="erased-text" title="Erased by the scribe">${escapeHtml(s)}</del>`;
+  // Keep the TEI order: a gap may come before, between or after the readable words.
+  const parts = t.parts ?? [...(t.text ? [t.text] : []), ...(t.illegible ? [null] : [])];
+  return `<span class="erasure">${parts.map((p) => (p === null ? gap : text(p))).join(' ')}</span>`;
+}
+
+/** True when a line holds only erasures that cannot be read, e.g. a fully erased line. */
+export const isErasedLine = (line: TeiLine): boolean =>
+  line.tokens.length > 0 && line.tokens.every((t) => t.kind === 'erasure' && !t.text);
+
+/**
  * One manuscript line as HTML. Words of the same verse share a `.verse-run`, so
  * a highlight also covers the spaces between them. No space follows a maqaf or
- * comes before a sof pasuq.
+ * comes before a sof pasuq. An erasure stands outside the verse runs.
  */
 export function lineHtml(line: TeiLine): string {
-  const runs: { verse: string | null; tokens: Token[] }[] = [];
+  const whole = isErasedLine(line);
+  const runs: { verse: string | null; tokens: Token[]; erasure: boolean }[] = [];
   for (const token of line.tokens) {
     const last = runs[runs.length - 1];
-    if (last && last.verse === token.verse) last.tokens.push(token);
-    else runs.push({ verse: token.verse, tokens: [token] });
+    const erasure = token.kind === 'erasure';
+    if (last && !erasure && !last.erasure && last.verse === token.verse) last.tokens.push(token);
+    else runs.push({ verse: token.verse, tokens: [token], erasure });
   }
   const tokenHtml = (t: Token): string => {
     const text = escapeHtml(t.text);
@@ -153,6 +172,11 @@ export function lineHtml(line: TeiLine): string {
   const noSpaceAfter = (t: Token): boolean => t.text.endsWith('־');
   let html = '';
   runs.forEach((run, r) => {
+    if (run.erasure) {
+      html += erasureHtml(run.tokens[0], whole);
+      if (r < runs.length - 1) html += ' ';
+      return;
+    }
     let body = '';
     run.tokens.forEach((t, i) => {
       body += tokenHtml(t);

@@ -1,5 +1,5 @@
 ---
-import { lineHtml, lineVerseNumbers } from '../lib/folio-view';
+import { isErasedLine, lineHtml, lineVerseNumbers } from '../lib/folio-view';
 import type { TeiLine as TeiLineType } from '../lib/tei';
 
 interface Props {
@@ -11,9 +11,10 @@ interface Props {
 const { col, line, firstVerse } = Astro.props;
 const five = Number(line.n) % 5 === 0;
 const verseNumbers = lineVerseNumbers(line, firstVerse);
+const erased = isErasedLine(line);
 ---
 
-<div class:list={['tei-line', { five }]} data-col={col} data-line={line.n}>
+<div class:list={['tei-line', { five, erased }]} data-col={col} data-line={line.n}>
   <span class="ln">{line.n}</span>
   {verseNumbers.length > 0 && (
     <span class="verse-nums">
@@ -99,6 +100,39 @@ const verseNumbers = lineVerseNumbers(line, firstVerse);
   .he :global(.paseq),
   .he :global(.inverted-nun) {
     color: var(--muted);
+  }
+
+  /* Erasures: erased words struck through and dimmed; a box where the text cannot be read. */
+  .he :global(.erased-text) {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--faint);
+  }
+
+  .he :global(.erased-gap) {
+    display: inline-block;
+    width: 2.5em;
+    height: 0.75em;
+    border-radius: 0.15em;
+    background: var(--erasure);
+    vertical-align: middle;
+  }
+
+  /* A line with nothing but an erasure: the box fills the line. */
+  .erased .he-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    width: 100%;
+  }
+
+  .erased .he :global(.erasure),
+  .erased .he :global(.erased-gap.whole) {
+    flex: 1;
+  }
+
+  .erased .he :global(.erasure) {
+    display: flex;
   }
 
   .he :global(.section-tag) {
@@ -244,6 +278,15 @@ const verseNumbers = lineVerseNumbers(line, firstVerse);
     .he {
       line-height: 1.7;
       color: #000;
+    }
+
+    .he :global(.erased-text) {
+      color: #555;
+    }
+
+    .he :global(.erased-gap) {
+      background: none;
+      border: 1px solid #999;
     }
 
     .verse-nums {

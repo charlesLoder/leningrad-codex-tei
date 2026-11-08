@@ -8,6 +8,7 @@ import {
   buildViewData,
   chapterAndVerse,
   hashToKey,
+  isErasedLine,
   leafBounds,
   lineHtml,
   lineSummary,
@@ -100,6 +101,41 @@ describe('lineHtml', () => {
 
   it('keeps a paragraph mark on a line with no words', () => {
     assert.match(lineHtml({ n: '9', tokens: [], marks: [{ kind: 'section', subtype: 'pe' }] }), /section-tag.*פ/);
+  });
+
+  const erasure = (text, illegible = false) => ({ text, kind: 'erasure', marks: [], verse: null, illegible });
+
+  it('strikes through erased words outside the verse runs', () => {
+    const html = lineHtml({ n: '13', marks: [], tokens: [word('פה', 'Judg 18:3'), erasure('ויאמר')] });
+    assert.equal(
+      html,
+      '<span class="verse-run" data-verse="Judg 18:3">פה</span> ' +
+        '<span class="erasure"><del class="erased-text" title="Erased by the scribe">ויאמר</del></span>',
+    );
+  });
+
+  it('splits a verse run around an erasure', () => {
+    const html = lineHtml({ n: '1', marks: [], tokens: [word('א', 'Gen 1:1'), erasure('', true), word('ב', 'Gen 1:1')] });
+    assert.equal((html.match(/class="verse-run"/g) ?? []).length, 2);
+    assert.match(html, /<span class="erased-gap" role="img" aria-label="Erased text that cannot be read"/);
+  });
+
+  it('fills a line that has only an illegible erasure', () => {
+    const l = { n: '4', marks: [], tokens: [erasure('', true)] };
+    assert.ok(isErasedLine(l));
+    assert.match(lineHtml(l), /class="erased-gap whole"/);
+    assert.ok(!isErasedLine({ n: '5', marks: [], tokens: [erasure('', true), word('א', 'Gen 1:1')] }));
+  });
+
+  it('draws a gap before the words when the TEI has it first', () => {
+    const token = { ...erasure('אשר', true), parts: [null, 'אשר'] };
+    const html = lineHtml({ n: '1', marks: [], tokens: [token] });
+    assert.ok(html.indexOf('erased-gap') < html.indexOf('erased-text'));
+  });
+
+  it('gives an erasure no verse number or verse line', () => {
+    const l = { n: '1', marks: [], tokens: [erasure('מחשבות')] };
+    assert.deepEqual(lineVerseNumbers(l), []);
   });
 });
 

@@ -14,12 +14,12 @@ const BODY = `# Leningrad Codex TEI
 ## Site structure
 
 - / lists every folio side with a client-side filter (human use).
-- /folio/Fxxx[A|B]/ renders one folio side as columns and lines, with verse milestones, samekh/pe divisions, sof-pasuq and paseq inline (human use). A = recto, B = verso.
+- /folio/Fxxx[A|B]/ renders one folio side as columns and lines, with verse milestones, samekh/pe divisions, sof-pasuq and paseq inline, and scribal erasures (erased words struck through; a grey box where the erased text cannot be read) (human use). A = recto, B = verso.
 - /codex/ shows the codex as a 3D book with turning leaves; it reads the same TEI files (human use). /codex/#Fxxx[A|B] opens it at a folio side. A phone-sized screen gets a link to the folio page instead.
 - /edition/ serves the raw TEI XML (machine use; see below).
 - /iiif/ serves one IIIF manifest per folio side (machine use; see below).
 
-Each folio document encodes the main biblical text only (ketiv consonantal text as written), laid out in columns and lines, with verse milestones marking where each verse begins and samekh/pe paragraph-division markers. Per-word biblical references are derived at index time, not stored per word.
+Each folio document encodes the main biblical text only (ketiv consonantal text as written), laid out in columns and lines, with verse milestones marking where each verse begins and samekh/pe paragraph-division markers. Scribal erasures are <del rend="erasure">: readable erased words are <w> with no xml:id, and unreadable text is <gap reason="illegible"/>; erased words are not biblical text. Per-word biblical references are derived at index time, not stored per word.
 
 ## Valid folio numbers
 
