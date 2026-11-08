@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-07" who="#contrib-charles-w-loder">
+      Encoded scribal erasures as del rend="erasure". Readable erased words are w (no xml:id), with the consonants and only the marks that can be seen. Text that cannot be read is gap reason="illegible". Erasures over more than one line are joined with next/prev. Removed a stray line break inside word 115363.
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (7 line segments) from Masoretica HTR page n341.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n341.json"/>
       </change>
@@ -379,13 +382,16 @@
           <lb xml:id="f171B-lb-1-27" n="27"/>
             <w xml:id="f171B-w-115362">חֲדָשָֽׁה</w>
             <pc type="sof-pasuq" xml:id="f171B-pc-115362">׃</pc>
+            <del xml:id="f171B-del-1-27" rend="erasure" next="#f171B-del-2-1"><w>וישאהו</w> <w>מבית</w></del>
         <cb xml:id="f171B-cb-2" n="2"/>
           <lb xml:id="f171B-lb-2-1" n="1"/>
+            <del xml:id="f171B-del-2-1" rend="erasure" prev="#f171B-del-1-27" next="#f171B-del-2-2"><gap reason="illegible"/> <w>אשר</w> <w>בגבעה</w> <w>ועזא</w></del>
           <lb xml:id="f171B-lb-2-2" n="2"/>
+            <del xml:id="f171B-del-2-2" rend="erasure" prev="#f171B-del-2-1" next="#f171B-del-2-3"><w>ואחיו</w> <w>בני</w> <w>אבינדב</w> <w>נהגים</w></del>
           <lb xml:id="f171B-lb-2-3" n="3"/>
+            <del xml:id="f171B-del-2-3" rend="erasure" prev="#f171B-del-2-2"><w>את</w> <w>העגלה</w> <w>חדשה</w><pc type="sof-pasuq">׃</pc></del>
             <milestone unit="verse" n="Samuel_2-6-4" xml:id="f171B-v-Samuel_2-6-4" facs="#f171B-zone-Samuel_2-6-4"/>
-            <w xml:id="f171B-w-115363">
-וַיִּשָּׂאֻ֗הוּ</w>
+            <w xml:id="f171B-w-115363">וַיִּשָּׂאֻ֗הוּ</w>
           <lb xml:id="f171B-lb-2-4" n="4"/>
             <w xml:id="f171B-w-115364">מִבֵּ֤ית</w>
             <w xml:id="f171B-w-115365">אֲבִֽינָדָב֙</w>
