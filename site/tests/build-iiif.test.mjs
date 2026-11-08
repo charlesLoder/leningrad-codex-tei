@@ -53,3 +53,10 @@ test('buildManifest skips a folio without the Archive.org graphic', () => {
   const tei = tei001B.replace(/<graphic xml:id="f001B-img-archive"[^>]*\/>/, '');
   assert.equal(buildManifest('001B', tei), null);
 });
+
+test('buildManifest credits Masoretica in a requiredStatement', () => {
+  const { manifest } = buildManifest('001B', tei001B);
+  assert.deepEqual(manifest.requiredStatement.label, { en: ['Attribution'] });
+  assert.match(manifest.requiredStatement.value.en[0], /Masoretica/);
+  assert.match(manifest.requiredStatement.value.en[0], /Idan Dershowitz/);
+});
