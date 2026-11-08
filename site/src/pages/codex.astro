@@ -183,6 +183,7 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
     --muted: var(--page-muted);
     --hl: var(--page-hl);
     --hl-pin: var(--page-hl-pin);
+    --erasure: var(--page-erasure);
 
     overflow: hidden;
     color: var(--ink);
@@ -273,6 +274,35 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
     font-size: 0.72em;
   }
 
+  /* Erasures, as on the folio page: erased words struck through and dimmed; a box where the text cannot be read. */
+  .codex-page .erased-text {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  .codex-page .erased-gap {
+    display: inline-block;
+    width: 2.5em;
+    height: 0.75em;
+    border-radius: 0.15em;
+    background: var(--erasure);
+    vertical-align: middle;
+  }
+
+  /* A line with nothing but an erasure: the box fills the line. */
+  .codex-line:has(.erased-gap.whole) .codex-he {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  .codex-page .erasure:has(.whole),
+  .codex-page .erased-gap.whole {
+    display: flex;
+    flex: 1;
+  }
+
   .codex-foliation {
     position: absolute;
     top: 3.2%;
@@ -298,8 +328,14 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
     pointer-events: none;
   }
 
-  [data-mode='photo'] .codex-page .verse-run {
+  [data-mode='photo'] .codex-page .verse-run,
+  [data-mode='photo'] .codex-page .erased-gap {
     background: none;
+  }
+
+  [data-mode='photo'] .codex-page .erased-text {
+    color: transparent;
+    text-decoration-color: transparent;
   }
 
   [data-mode='photo'] .codex-page .codex-he {
