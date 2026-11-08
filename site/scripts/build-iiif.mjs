@@ -32,7 +32,16 @@ const parser = new XMLParser({
   removeNSPrefix: true,
 });
 
-const toArray = (v) => (v == null ? [] : Array.isArray(v) ? v : [v]);
+export const REQUIRED_STATEMENT = {
+  label: { en: ['Attribution'] },
+  value: {
+    en: [
+      'Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex by Idan Dershowitz: <a href="https://www.masoretica.org/htr/leningrad/">masoretica.org/htr/leningrad</a>',
+    ],
+  },
+};
+
+const toArray =(v) => (v == null ? [] : Array.isArray(v) ? v : [v]);
 
 // `Kings_1-21-10` -> `1 Kings 21:10`
 export function formatRef(n) {
@@ -157,6 +166,8 @@ export function buildManifest(folio, tei) {
     });
   });
   const manifest = builder.toPresentation3({ id: manifestId, type: 'Manifest' });
+  // Viewers must show this credit; the verse zones come from Masoretica.
+  manifest.requiredStatement = REQUIRED_STATEMENT;
   // The vault mangles complex targets (it collapses target lists and
   // drops SVG selectors), so restore the per-verse targets verbatim.
   for (const canvas of manifest.items ?? []) {
