@@ -282,6 +282,7 @@ def verse_lines(tei_text: str) -> dict[str, list[tuple[int, int]]]:
     """Verse ``@n`` -> distinct (column, line) pairs holding its words, in order.
 
     Single-column pages have no ``<cb>``; their lines are column 1.
+    A ``<w>`` inside a ``<del>`` (an erased word) is not verse text.
     """
     root = etree.fromstring(tei_text.encode("utf-8"))
     body = root.find(f".//{{{TEI_NS}}}body")
@@ -298,7 +299,12 @@ def verse_lines(tei_text: str) -> dict[str, list[tuple[int, int]]]:
         elif tag == "milestone" and el.get("unit") == "verse":
             verse = el.get("n")
             lines.setdefault(verse, [])
-        elif tag == "w" and verse is not None and (col, line) not in lines[verse]:
+        elif (
+            tag == "w"
+            and verse is not None
+            and (col, line) not in lines[verse]
+            and next(el.iterancestors(f"{{{TEI_NS}}}del"), None) is None
+        ):
             lines[verse].append((col, line))
     return lines
 

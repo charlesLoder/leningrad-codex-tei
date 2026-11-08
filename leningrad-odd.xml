@@ -37,7 +37,7 @@
         <moduleRef key="textstructure" include="TEI text body div"/>
 
         <!-- Module 4: Core Elements (Milestones & Prose) -->
-        <moduleRef key="core" include="p title pb cb lb milestone ptr name label graphic desc"/>
+        <moduleRef key="core" include="p title pb cb lb milestone ptr name label graphic desc del gap"/>
 
         <!-- Module 4a: Facsimile (one surface per folio side; scripts/zones.py adds
              the Archive.org graphic and one zone per verse, holding one child
@@ -47,7 +47,34 @@
         <!-- Module 5: Words and punctuation (generate-tei splits trailing
              sof-pasuq / paseq off each UXLC atom into pc; w keeps the atom) -->
         <moduleRef key="analysis" include="w pc"/>
-        <moduleRef key="link" include="ab"/>
+        <!-- linking also gives att.global.linking (@next/@prev on del) -->
+        <moduleRef key="linking" include="ab"/>
+
+        <!-- Erasures (hand edits, not a pipeline stage): one del per line,
+             so lb stays a child of ab. An erasure over more than one line
+             joins its parts with @next/@prev. Readable erased words are
+             w (no xml:id: they have no UXLC atom), with the consonants
+             and only the marks that can be seen (e.g. rafe); a
+             visible sof pasuq is pc. Text that cannot be read is
+             gap reason="illegible". A w in a del is not part of the
+             biblical text: consumers must skip it. -->
+        <elementSpec ident="del" mode="change">
+          <constraintSpec ident="del-content" scheme="schematron" mode="add">
+            <constraint>
+              <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron" context="tei:del">
+                <sch:assert test="not(.//tei:lb or .//tei:cb or .//tei:milestone)">A del must not contain lb, cb or milestone.</sch:assert>
+                <sch:assert test="not(.//tei:w[@xml:id] or .//tei:pc[@xml:id])">A w or pc in a del must not have an xml:id (it has no UXLC atom).</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="rend" mode="change" usage="req">
+              <valList type="closed">
+                <valItem ident="erasure"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
 
         <!-- Custom constraint: 'unit' is required on milestones; 'n' is required
              on verse milestones only (section milestones are identified by xml:id) -->
