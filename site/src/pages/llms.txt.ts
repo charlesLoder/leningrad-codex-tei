@@ -15,6 +15,7 @@ const BODY = `# Leningrad Codex TEI
 
 - / lists every folio side with a client-side filter (human use).
 - /folio/Fxxx[A|B]/ renders one folio side as columns and lines, with verse milestones, samekh/pe divisions, sof-pasuq and paseq inline (human use). A = recto, B = verso.
+- /codex/ shows the codex as a 3D book with turning leaves; it reads the same TEI files (human use). /codex/#Fxxx[A|B] opens it at a folio side. A phone-sized screen gets a link to the folio page instead.
 - /edition/ serves the raw TEI XML (machine use; see below).
 - /iiif/ serves one IIIF manifest per folio side (machine use; see below).
 

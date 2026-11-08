@@ -1,5 +1,6 @@
 ---
 import meta from '../data/meta.json';
+import { icons } from '../lib/icons';
 import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
@@ -21,6 +22,7 @@ const { compact = false } = Astro.props;
     {compact && <div class="header-center"><slot name="center" /></div>}
     {compact && <div class="header-actions"><slot name="actions" /><ThemeToggle /></div>}
     {!compact && <nav class="nav">
+      <a class="nav-labeled" href="/codex/">Codex <Fragment set:html={icons.flaskConical} /></a>
       <a href="/about/">About</a>
       <ThemeToggle />
       <a class="icon-link" href="https://github.com/charlesLoder/leningrad-codex-tei" aria-label="GitHub repository">
@@ -89,6 +91,12 @@ const { compact = false } = Astro.props;
 
   .icon-link {
     display: inline-flex;
+  }
+
+  .nav-labeled {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
   }
 
   .compact {

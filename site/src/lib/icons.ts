@@ -7,6 +7,7 @@ import {
   CodeXml,
   Ellipsis,
   ExternalLink,
+  FlaskConical,
   Hash,
   Image,
   ImageOff,
@@ -15,7 +16,10 @@ import {
   Moon,
   Plus,
   Printer,
+  RotateCcw,
+  ScanSearch,
   Sun,
+  Type,
   X,
 } from 'lucide-static';
 
@@ -30,6 +34,7 @@ export const icons = {
   codeXml: decorative(CodeXml),
   ellipsis: decorative(Ellipsis),
   externalLink: decorative(ExternalLink),
+  flaskConical: decorative(FlaskConical),
   hash: decorative(Hash),
   image: decorative(Image),
   imageOff: decorative(ImageOff),
@@ -38,6 +43,9 @@ export const icons = {
   moon: decorative(Moon),
   plus: decorative(Plus),
   printer: decorative(Printer),
+  rotateCcw: decorative(RotateCcw),
+  scanSearch: decorative(ScanSearch),
   sun: decorative(Sun),
+  type: decorative(Type),
   x: decorative(X),
 };
