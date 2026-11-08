@@ -21,6 +21,7 @@ const { folio, manifest } = Astro.props;
     <button type="button" id="feedback-open">Report an issue</button>
     <hr />
     <a href="/about/">About</a>
+    <a href={`/codex/#${folio}`}>Codex <Fragment set:html={icons.flaskConical} /></a>
     <a href="https://github.com/charlesLoder/leningrad-codex-tei">GitHub</a>
   </div>
 </details>

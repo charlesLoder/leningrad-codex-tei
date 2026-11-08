@@ -11,6 +11,8 @@ interface Props {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
   /** Full-width page with the compact header (the folio page). */
   desk?: boolean;
+  /** Leave the footer out, for a page that fills the window. */
+  footer?: boolean;
 }
 const {
   title,
@@ -20,6 +22,7 @@ const {
   type = 'website',
   jsonLd,
   desk = false,
+  footer = true,
 } = Astro.props;
 const site = (Astro.site?.toString() ?? 'https://leningrad-codex-tei.netlify.app').replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, `${site}/`).toString();
@@ -85,7 +88,7 @@ const graph = [websiteSchema, webpageSchema, ...(jsonLd ? (Array.isArray(jsonLd)
     <main class:list={{ wrap: !desk }}>
       <slot />
     </main>
-    <SiteFooter />
+    {footer && <SiteFooter />}
   </body>
 </html>
 

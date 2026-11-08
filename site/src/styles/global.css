@@ -1,22 +1,31 @@
 :root {
+  /* The pages of the book at /codex/ keep these colors in every theme. */
+  --page-bg: #f4e8c9;
+  --page-edge: #cdb98c;
+  --page-ink: #23201a;
+  --page-muted: #6f675c;
+  --page-hl: #eedbab;
+  --page-hl-pin: #e8cd8e;
+  --page-shadow: rgba(60, 40, 20, 0.18);
+
   --bg: #faf8f2;
-  --ink: #23201a;
-  --muted: #6f675c;
+  --ink: var(--page-ink);
+  --muted: var(--page-muted);
   --line: #e4ddcd;
   --card: #fffdf8;
   --accent: #7a2e1d;
   --accent-soft: #f3e2d3;
   --parchment: #f6edd6;
   /* The separate leaf shown when the image is closed. */
-  --leaf-bg: #f4e8c9;
-  --leaf-edge: #cdb98c;
+  --leaf-bg: var(--page-bg);
+  --leaf-edge: var(--page-edge);
   --leaf-rule: rgba(110, 85, 45, 0.18);
-  --leaf-shadow: rgba(60, 40, 20, 0.18);
+  --leaf-shadow: var(--page-shadow);
   --faint: #a39a8b;
   --on-accent: #fff;
   --accent-strong: #5e2315;
-  --hl: #eedbab;
-  --hl-pin: #e8cd8e;
+  --hl: var(--page-hl);
+  --hl-pin: var(--page-hl-pin);
   --plate: #2a2622;
   --plate-ink: #e9e2d5;
   --plate-btn: rgba(42, 38, 34, 0.86);
