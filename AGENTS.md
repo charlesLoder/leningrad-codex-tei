@@ -36,7 +36,7 @@ If making updates to the Python code, check if the README, AGENTS, or CONTRIBUTI
 - **Folio side**: One physical page of the codex, identified as `Fxxx{A|B}` (A = recto, B = verso). The atom of the edition: one TEI document per folio side.
 - **Column**: A written column on a folio side. The codex has multiple columns per side.
 - **Line**: A written line within a column. The finest unit of layout the edition encodes.
-- **Word**: A single word of text. Carries biblical reference properties (book/chapter/verse).
+- **Word**: A single word of text. Carries biblical reference properties (book/chapter/verse). Exception: an erased word (a `<w>` inside a `<del>`) has no UXLC atom, no `xml:id` and no biblical reference.
 - **Biblical reference**: Logical address (e.g. Exod 3:24). *Not* structural: marked by verse milestones within folio documents; per-word references are derived by the index build, not stored on each word.
 - **Ketiv**: The consonantal text as written in the codex; what is physically on the page.
 - **Verse milestone**: A TEI `<milestone unit="verse">` marking the point where a verse's text begins within a folio document; present on every folio that contains words of that verse, enabling per-folio search by reference.
@@ -49,7 +49,8 @@ If making updates to the Python code, check if the README, AGENTS, or CONTRIBUTI
 - **Locate-known-text**: The alignment method where the model is given the folio image plus the expected seeded words and maps the *known* atoms onto columns/lines, rather than transcribing the page cold.
 - **Audit trail**: Per-folio record of which AI runs touched the folio: prompt version, model, inputs, results, check outcomes.
 - **Verified folio**: A folio whose automated cross-checks passed and whose informal human review is complete.
-- **Main biblical text**: The continuous scriptural text only; excludes marginalia (masora etc.) and Documentary Hypothesis tags.
+- **Main biblical text**: The continuous scriptural text only; excludes marginalia (masora etc.), Documentary Hypothesis tags, and erased text.
+- **Erasure**: Writing that the scribe erased. Encoded by hand (not a pipeline stage; `generate-tei` does not keep it) as `<del rend="erasure">`, one per line so `<lb>` stays a child of `<ab>`. The parts of an erasure that crosses lines or columns are joined with `@next`/`@prev`; ids are `f{folio}-del-{column}-{line}`. Readable erased words are `<w>` with no `xml:id`, holding the consonants and only the marks that can be seen (e.g. rafe); a visible sof pasuq is `<pc>`. Text that cannot be read is `<gap reason="illegible"/>`. A `<del>` never holds `<lb>`, `<cb>` or a milestone, and verse milestones stay outside it. Code that reads words from the edition must skip a `<w>` inside a `<del>`. See the `del` spec in `leningrad-odd.xml`.
 - **Verse zone**: A TEI `<zone type="verse">` in the facsimile with one child zone per line segment of the verse, in Archive.org image pixels. The verse milestone points to it with `facs`. Source: Masoretica HTR (Idan Dershowitz), added to a committed folio by `scripts/zones.py` as a hand edit, not a pipeline stage; `generate-tei` does not keep it.
 - **Batch job**: One Batch API submission. Lives in `{alignments}/batch/{ts}/`, where `{alignments}` is `config.paths.alignments` and `{ts}` is the submit timestamp.
 

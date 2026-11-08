@@ -43,6 +43,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-11-07" who="#contrib-charles-w-loder">
+      Encoded scribal erasures as del rend="erasure". Readable erased words are w (no xml:id), with the consonants and only the marks that can be seen. Erasures over more than one line are joined with next/prev.
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 21 verse zones (90 line segments) from Masoretica HTR page n295.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n295.json"/>
       </change>
@@ -262,7 +265,9 @@
             <w xml:id="f148B-w-98640">הוֹצֵ֗א</w>
             <w xml:id="f148B-w-98641">אֶת־</w>
           <lb xml:id="f148B-lb-1-9" n="9"/>
+            <del xml:id="f148B-del-1-9" rend="erasure" next="#f148B-del-1-10"><w>האיש</w> <w>בעל</w> <w>הבית</w> <w>הזקן</w></del>
           <lb xml:id="f148B-lb-1-10" n="10"/>
+            <del xml:id="f148B-del-1-10" rend="erasure" prev="#f148B-del-1-9"><w>לאמר</w> <w>הוצא</w> <w>את</w></del>
             <w xml:id="f148B-w-98642">הָאִ֛ישׁ</w>
           <lb xml:id="f148B-lb-1-11" n="11"/>
             <w xml:id="f148B-w-98643">אֲשֶׁר־</w>
