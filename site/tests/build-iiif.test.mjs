@@ -54,9 +54,13 @@ test('buildManifest skips a folio without the Archive.org graphic', () => {
   assert.equal(buildManifest('001B', tei), null);
 });
 
-test('buildManifest credits Masoretica in a requiredStatement', () => {
+test('buildManifest credits Masoretica and the photographers in a requiredStatement', () => {
   const { manifest } = buildManifest('001B', tei001B);
   assert.deepEqual(manifest.requiredStatement.label, { en: ['Attribution'] });
   assert.match(manifest.requiredStatement.value.en[0], /Masoretica/);
   assert.match(manifest.requiredStatement.value.en[0], /Idan Dershowitz/);
+  assert.match(
+    manifest.requiredStatement.value.en[1],
+    /Bruce Zuckerman, West Semitic Research, with the collaboration of the Ancient Biblical Manuscript Center/,
+  );
 });
