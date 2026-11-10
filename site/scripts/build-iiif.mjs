@@ -37,6 +37,7 @@ export const REQUIRED_STATEMENT = {
   value: {
     en: [
       'Verse zones from the Masoretica handwritten text recognition (HTR) of the Leningrad Codex by Idan Dershowitz: <a href="https://www.masoretica.org/htr/leningrad/">masoretica.org/htr/leningrad</a>',
+      'Photographs courtesy of Bruce Zuckerman, West Semitic Research, with the collaboration of the Ancient Biblical Manuscript Center.',
     ],
   },
 };
@@ -166,7 +167,9 @@ export function buildManifest(folio, tei) {
     });
   });
   const manifest = builder.toPresentation3({ id: manifestId, type: 'Manifest' });
-  // Viewers must show this credit; the verse zones come from Masoretica.
+  // Viewers must show these credits: the verse zones come from Masoretica,
+  // and the photographs are courtesy of Bruce Zuckerman / West Semitic
+  // Research with the collaboration of the Ancient Biblical Manuscript Center.
   manifest.requiredStatement = REQUIRED_STATEMENT;
   // The vault mangles complex targets (it collapses target lists and
   // drops SVG selectors), so restore the per-verse targets verbatim.
