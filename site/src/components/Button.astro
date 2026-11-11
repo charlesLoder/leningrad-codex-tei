@@ -1,7 +1,7 @@
 ---
 interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'ghost';
   type?: 'button' | 'submit' | 'reset';
   id?: string;
   target?: string;
@@ -115,6 +115,22 @@ const isLink = typeof href === 'string';
     --button-border-color: var(--accent);
     --button-hover-bg: var(--accent-strong);
     --button-hover-color: var(--on-accent);
+  }
+
+  /* Ghost: no chrome at rest, ink text; hover fills with the accent-soft wash. */
+  .button[data-variant='ghost'] {
+    --button-padding: 0.3rem 0.55rem;
+    min-height: 2.2rem;
+    --button-bg: transparent;
+    --button-color: var(--ink);
+    --button-border-color: transparent;
+    --button-hover-bg: var(--accent-soft);
+    --button-hover-color: var(--accent);
+  }
+
+  .button[data-variant='ghost']:hover,
+  .button[data-variant='ghost']:focus-visible {
+    border-color: transparent;
   }
 
   .button[disabled] {
