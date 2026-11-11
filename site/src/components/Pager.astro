@@ -4,7 +4,7 @@ import { icons } from '../lib/icons';
 interface Props {
   prev?: { folio: string; range: string } | null;
   next?: { folio: string; range: string } | null;
-  /** Directions shown between the two links. */
+  /** Directions shown inside the info panel. */
   hint: string;
   touchHint: string;
 }
@@ -12,20 +12,28 @@ interface Props {
 const { prev, next, hint, touchHint } = Astro.props;
 ---
 
-<nav class="pager" aria-label="Turn the page">
+<div class="pager">
   {next ? (
     <a class="quiet" rel="next" href={`/folio/${next.folio}/`} title={`Next: ${next.range}`}><Fragment set:html={icons.arrowLeft} /> Next <span class="code">{next.folio}</span></a>
   ) : <span />}
-  <p class="hint"><span class="pointer-hint">{hint}</span><span class="touch-hint">{touchHint}</span></p>
+  <div class="pager-middle">
+    <slot />
+    <details class="hint-info">
+      <summary class="quiet" aria-label="How to use this page" title="How to use this page"><Fragment set:html={icons.info} /></summary>
+      <div class="hint-body">
+        <span class="pointer-hint">{hint}</span><span class="touch-hint">{touchHint}</span>
+      </div>
+    </details>
+  </div>
   {prev ? (
     <a class="quiet" rel="prev" href={`/folio/${prev.folio}/`} title={`Previous: ${prev.range}`}><span class="code">{prev.folio}</span> Previous <Fragment set:html={icons.arrowRight} /></a>
   ) : <span />}
-</nav>
+</div>
 
 <style>
   .pager {
     position: sticky;
-    top: var(--head);
+    top: 0;
     z-index: 24;
     display: grid;
     grid-template-columns: 1fr minmax(0, auto) 1fr;
@@ -37,12 +45,18 @@ const { prev, next, hint, touchHint } = Astro.props;
     border-bottom: 1px solid var(--line);
   }
 
-  .pager a:first-child {
+  .pager > a:first-child {
     justify-self: start;
   }
 
-  .pager a:last-child {
+  .pager > a:last-child {
     justify-self: end;
+  }
+
+  .pager-middle {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
   }
 
   .code {
@@ -51,9 +65,21 @@ const { prev, next, hint, touchHint } = Astro.props;
     font-variant-numeric: tabular-nums;
   }
 
-  .hint {
-    margin: 0;
-    text-align: center;
+  .hint-info {
+    position: relative;
+  }
+
+  .hint-body {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 0.35rem);
+    right: 0;
+    width: min(21rem, calc(100vw - 2rem));
+    padding: 0.55rem 0.7rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    box-shadow: 0 0.6rem 1.8rem var(--shadow);
     color: var(--muted);
     font-size: 0.84rem;
     line-height: 1.25;
@@ -75,13 +101,25 @@ const { prev, next, hint, touchHint } = Astro.props;
 
   @media (max-width: 759px) {
     .pager {
-      position: static;
       gap: 0.25rem;
       padding-inline: 0.25rem;
+      /* Containing block for the full-width info panel. */
+      position: relative;
     }
 
     .code {
       display: none;
+    }
+
+    /* The panel spans the row so it never clips off screen. */
+    .hint-info {
+      position: static;
+    }
+
+    .hint-body {
+      left: 0.5rem;
+      right: 0.5rem;
+      width: auto;
     }
   }
 </style>

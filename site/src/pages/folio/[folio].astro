@@ -68,8 +68,15 @@ const viewData = buildViewData(doc, {
     {iiifManifest && <link rel="preconnect" href="https://iiif.archive.org" crossorigin="anonymous" />}
   </Fragment>
 
-  <FolioHead slot="header-center" title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
-  <Fragment slot="header-actions">
+  <div class="head-bar">
+    <FolioHead title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
+  </div>
+  <Pager
+    prev={shortNeighbor(prevEntry)}
+    next={shortNeighbor(nextEntry)}
+    hint={iiifManifest ? 'Hover text to see it on the page. Click to select. Double-click to zoom.' : 'Click a word to select its verse.'}
+    touchHint={iiifManifest ? 'Tap a word to see it on the page.' : 'Tap a word to select its verse.'}
+  >
     <button class="quiet verse-toggle" id="toggle-verses" type="button" aria-label="Verse numbers" aria-pressed="false" title="Show verse numbers">
       <Fragment set:html={icons.hash} />
     </button>
@@ -89,14 +96,7 @@ const viewData = buildViewData(doc, {
       <Fragment set:html={icons.printer} />
     </button>
     <FolioMenu folio={folio ?? ''} manifest={iiifManifest} />
-  </Fragment>
-
-  <Pager
-    prev={shortNeighbor(prevEntry)}
-    next={shortNeighbor(nextEntry)}
-    hint={iiifManifest ? 'Hover text to see it on the page. Click to select. Double-click to zoom.' : 'Click a word to select its verse.'}
-    touchHint={iiifManifest ? 'Tap a word to see it on the page.' : 'Tap a word to select its verse.'}
-  />
+  </Pager>
 
   <div class="desk" id="desk" data-view="both">
     <section class="leaf" aria-label="Transcription">
@@ -117,6 +117,16 @@ const viewData = buildViewData(doc, {
 </Base>
 
 <style>
+  .head-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+    padding-block: 0.35rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
   /* The icon shows the state: an image while it is open, a crossed-out image while it is closed. */
   .verse-toggle,
   .image-toggle,

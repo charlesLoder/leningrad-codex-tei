@@ -45,7 +45,7 @@ const ruler = columns.findLastIndex((c) => fifths(c) === Math.max(...columns.map
     /* Room for the verse gutter of one column and the line number of the next. */
     --col-gap: 3.75rem;
     --pad: 0.75rem;
-    --avail: calc(100dvh - var(--head) - var(--strip));
+    --avail: calc(100dvh - var(--strip));
     --row-avail: calc((var(--avail) - 2 * var(--pad)) / var(--rows));
     --fs-fallback: calc((100cqi - (var(--n) - 1) * var(--col-gap)) / var(--n) / 14);
     --fs: min(var(--fs-w, var(--fs-fallback)), var(--fs-cap, 24px), max(16px, calc(var(--row-avail) / 1.5)));

@@ -11,9 +11,10 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
 ---
 
 <Base title="Codex · Leningrad Codex TEI" description={description} desk footer={false}>
-  <FolioHead slot="header-center" title={`Folio ${start.folio}`} range={abbreviateRange(start.range)} detail="Codex" />
-
   <div class="codex" id="codex">
+    <div class="codex-head">
+      <FolioHead title={`Folio ${start.folio}`} range={abbreviateRange(start.range)} detail="Codex" />
+    </div>
     <div class="codex-books" id="codex-books" dir="rtl" role="group" aria-label="Books of the codex, in codex order"></div>
 
     <div class="codex-small" id="codex-small">
@@ -102,22 +103,33 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
 <style is:global>
   .codex {
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr);
-    height: calc(100dvh - var(--head));
+    grid-template-rows: auto auto minmax(0, 1fr);
+    flex: 1;
+    min-height: 0;
     overflow: hidden;
     background: var(--bg);
     color: var(--ink);
   }
 
+  .codex-head {
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+    padding-block: 0.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+
   .codex-main {
     position: relative;
-    grid-row: 2;
+    grid-row: 3;
     min-height: 0;
   }
 
   .codex-small {
     display: none;
-    grid-row: 2;
+    grid-row: 3;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -148,13 +160,8 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
 
     .codex-books,
     .codex-main,
-    .header-center {
+    .codex-head {
       display: none;
-    }
-
-    /* With no title in the middle column, the theme toggle stays on the right. */
-    .header-actions {
-      grid-column: 3;
     }
   }
 
@@ -481,6 +488,7 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
   }
 
   .codex-books {
+    grid-row: 2;
     display: flex;
     gap: 1px;
     overflow: hidden;
