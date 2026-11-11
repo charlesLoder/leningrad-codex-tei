@@ -8,7 +8,6 @@ import FeedbackForm from '../../components/FeedbackForm.astro';
 import FolioCredits from '../../components/FolioCredits.astro';
 import FolioColumns from '../../components/FolioColumns.astro';
 import FolioHead from '../../components/FolioHead.astro';
-import FolioMenu from '../../components/FolioMenu.astro';
 import IiifViewer from '../../components/IiifViewer.astro';
 import Pager from '../../components/Pager.astro';
 import VerseCard from '../../components/VerseCard.astro';
@@ -70,6 +69,9 @@ const viewData = buildViewData(doc, {
 
   <div class="head-bar">
     <FolioHead title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
+    <button class="quiet copy-citation" id="copy-folio-citation" type="button" aria-label="Copy citation" title="Copy citation">
+      <Fragment set:html={icons.copy} />
+    </button>
   </div>
   <Pager
     prev={shortNeighbor(prevEntry)}
@@ -95,7 +97,9 @@ const viewData = buildViewData(doc, {
     <button class="quiet print-button" id="print-folio" type="button" aria-label="Print folio" title="Print folio">
       <Fragment set:html={icons.printer} />
     </button>
-    <FolioMenu folio={folio ?? ''} manifest={iiifManifest} />
+    <button class="quiet report-button" id="feedback-open" type="button" aria-label="Report an issue" title="Report an issue">
+      <Fragment set:html={icons.bug} />
+    </button>
   </Pager>
 
   <div class="desk" id="desk" data-view="both">
@@ -118,7 +122,8 @@ const viewData = buildViewData(doc, {
 
 <style>
   .head-bar {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 0.5rem;
     padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
@@ -127,18 +132,32 @@ const viewData = buildViewData(doc, {
     background: var(--bg);
   }
 
+  .head-bar :global(.folio-jump) {
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  .copy-citation {
+    grid-column: 3;
+    justify-self: end;
+    min-width: 2.4rem;
+  }
+
   /* The icon shows the state: an image while it is open, a crossed-out image while it is closed. */
   .verse-toggle,
   .image-toggle,
   .header-link,
-  .print-button {
+  .print-button,
+  .report-button {
     min-width: 2.4rem;
   }
 
   .verse-toggle :global(.lucide),
   .image-toggle :global(.lucide),
   .header-link :global(.lucide),
-  .print-button :global(.lucide) {
+  .print-button :global(.lucide),
+  .report-button :global(.lucide),
+  .copy-citation :global(.lucide) {
     width: 1.35em;
     height: 1.35em;
   }
@@ -151,16 +170,6 @@ const viewData = buildViewData(doc, {
   .image-toggle[aria-pressed='true'] :global(.lucide-image-off),
   .image-toggle[aria-pressed='false'] :global(.lucide-image) {
     display: none;
-  }
-
-  /* On small screens the menu holds these, so the header stays short. */
-  @media (max-width: 759px) {
-    .verse-toggle,
-    .image-toggle,
-    .header-link,
-    .print-button {
-      display: none;
-    }
   }
 
   .desk {

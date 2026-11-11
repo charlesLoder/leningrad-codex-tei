@@ -285,16 +285,15 @@ type View = 'both' | 'text' | 'image';
 let view: View = (store.get('folio-view') as View | null) ?? 'both';
 const currentView = (): View => (view === 'both' && !isWide() ? 'text' : view);
 
-const imageToggles = () => [...document.querySelectorAll<HTMLElement>('#toggle-image, #toggle-image-menu')];
+const imageToggle = () => document.querySelector<HTMLElement>('#toggle-image');
 
 function applyView(): void {
   const current = currentView();
   desk.dataset.view = current;
   // The accessible name stays "Page image"; aria-pressed alone carries the state.
-  for (const toggle of imageToggles()) {
-    toggle.setAttribute('aria-pressed', String(current !== 'text'));
-    toggle.setAttribute('title', current === 'text' ? 'Show page image' : 'Hide page image');
-  }
+  const toggle = imageToggle();
+  toggle?.setAttribute('aria-pressed', String(current !== 'text'));
+  toggle?.setAttribute('title', current === 'text' ? 'Show page image' : 'Hide page image');
   const expand = $('#plate-expand');
   if (expand) expand.textContent = current === 'image' ? 'Collapse' : 'Expand';
   if (current !== 'text') void startStage();
@@ -332,12 +331,10 @@ async function startStage(): Promise<void> {
   pendingZoom = null;
 }
 
-for (const sel of ['#toggle-image', '#toggle-image-menu']) {
-  $(sel)?.addEventListener('click', () => {
-    if (currentView() === 'text') setView(isWide() ? 'both' : 'image');
-    else setView('text');
-  });
-}
+$('#toggle-image')?.addEventListener('click', () => {
+  if (currentView() === 'text') setView(isWide() ? 'both' : 'image');
+  else setView('text');
+});
 $('#plate-expand')?.addEventListener('click', () => setView(currentView() === 'image' ? 'both' : 'image'));
 $('#plate-more')?.addEventListener('click', (e) => {
   const button = e.currentTarget as HTMLElement;
@@ -348,34 +345,29 @@ $('#plate-more')?.addEventListener('click', (e) => {
   });
 });
 
-/* ---------- Verse numbers, menu ---------- */
-const verseToggles = () => [...document.querySelectorAll<HTMLElement>('#toggle-verses, #toggle-verses-menu')];
+/* ---------- Verse numbers ---------- */
+const verseToggle = () => document.querySelector<HTMLElement>('#toggle-verses');
 function applyVerseNumbers(on: boolean): void {
   // Print styles key off this class so print follows the toggle.
   columns.classList.toggle('show-verses', on);
-  for (const toggle of verseToggles()) {
-    toggle.setAttribute('aria-pressed', String(on));
-    toggle.setAttribute('title', on ? 'Hide verse numbers' : 'Show verse numbers');
-  }
+  const toggle = verseToggle();
+  toggle?.setAttribute('aria-pressed', String(on));
+  toggle?.setAttribute('title', on ? 'Hide verse numbers' : 'Show verse numbers');
 }
-for (const sel of ['#toggle-verses', '#toggle-verses-menu']) {
-  $(sel)?.addEventListener('click', () => {
-    const on = $(sel)?.getAttribute('aria-pressed') !== 'true';
-    store.set('folio-verses', on ? '1' : '0');
-    applyVerseNumbers(on);
-  });
-}
+$('#toggle-verses')?.addEventListener('click', () => {
+  const on = $('#toggle-verses')?.getAttribute('aria-pressed') !== 'true';
+  store.set('folio-verses', on ? '1' : '0');
+  applyVerseNumbers(on);
+});
 
-const menu = $<HTMLDetailsElement>('#folio-menu');
 const jump = $<HTMLDetailsElement>('#folio-jump');
 const hint = $<HTMLDetailsElement>('.hint-info');
 document.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
-  if (menu && (!target.closest('#folio-menu') || (target.closest('a, button') && !target.closest('[data-keep-open]')))) menu.open = false;
   if (jump && !target.closest('#folio-jump')) jump.open = false;
   if (hint && !target.closest('.hint-info')) hint.open = false;
 });
-for (const id of ['#print-folio', '#print-folio-menu']) $(id)?.addEventListener('click', () => window.print());
+$('#print-folio')?.addEventListener('click', () => window.print());
 $('#copy-folio-citation')?.addEventListener('click', (e) => {
   void copy(e.currentTarget as HTMLElement, folioCitation(data.folio, data.version));
 });
@@ -435,7 +427,6 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'j') step(1);
   else if (e.key === 'k') step(-1);
   else if (e.key === 'Escape') {
-    if (menu) menu.open = false;
     if (jump) jump.open = false;
     setPin(null);
   } else if (e.key === '/' && jump) {
