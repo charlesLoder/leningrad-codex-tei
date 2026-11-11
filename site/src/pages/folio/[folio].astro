@@ -69,9 +69,6 @@ const viewData = buildViewData(doc, {
 
   <div class="head-bar">
     <FolioHead title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
-    <button class="quiet copy-citation" id="copy-folio-citation" type="button" aria-label="Copy citation" title="Copy citation">
-      <Fragment set:html={icons.copy} />
-    </button>
   </div>
   <Pager
     prev={shortNeighbor(prevEntry)}
@@ -122,25 +119,14 @@ const viewData = buildViewData(doc, {
 
 <style>
   .head-bar {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 0.5rem;
     padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
     padding-block: 0.35rem;
     border-bottom: 1px solid var(--line);
     background: var(--bg);
-  }
-
-  .head-bar :global(.folio-jump) {
-    grid-column: 2;
-    justify-self: center;
-  }
-
-  .copy-citation {
-    grid-column: 3;
-    justify-self: end;
-    min-width: 2.4rem;
   }
 
   /* The icon shows the state: an image while it is open, a crossed-out image while it is closed. */
@@ -156,8 +142,7 @@ const viewData = buildViewData(doc, {
   .image-toggle :global(.lucide),
   .header-link :global(.lucide),
   .print-button :global(.lucide),
-  .report-button :global(.lucide),
-  .copy-citation :global(.lucide) {
+  .report-button :global(.lucide) {
     width: 1.35em;
     height: 1.35em;
   }

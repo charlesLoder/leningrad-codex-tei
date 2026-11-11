@@ -2,7 +2,6 @@
  * Browser behavior of the folio page: one verse selection shared by the text and
  * the image, the views, the go-to search, and the keyboard.
  */
-import { folioCitation } from './citation.ts';
 import {
   chapterAndVerse,
   hashToKey,
@@ -368,9 +367,7 @@ document.addEventListener('click', (e) => {
   if (hint && !target.closest('.hint-info')) hint.open = false;
 });
 $('#print-folio')?.addEventListener('click', () => window.print());
-$('#copy-folio-citation')?.addEventListener('click', (e) => {
-  void copy(e.currentTarget as HTMLElement, folioCitation(data.folio, data.version));
-});
+
 
 /* ---------- Go to ---------- */
 const gotoInput = $<HTMLInputElement>('#goto-input');
