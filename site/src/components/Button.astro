@@ -20,14 +20,17 @@ const {
   rel,
   disabled,
   download,
+  class: className,
   ...rest
 } = Astro.props;
+
+const classes = ['button', className].filter(Boolean).join(' ');
 
 const isLink = typeof href === 'string';
 ---
 {isLink ? (
   <a
-    class="button"
+    class={classes}
     data-variant={variant}
     href={href}
     id={id}
@@ -38,7 +41,7 @@ const isLink = typeof href === 'string';
   ><slot /></a>
 ) : (
   <button
-    class="button"
+    class={classes}
     data-variant={variant}
     type={type}
     id={id}
