@@ -143,8 +143,10 @@ const viewData = buildViewData(doc, {
     display: none;
   }
 
-  /* On small screens the menu holds these links, so the header stays short. */
+  /* On small screens the menu holds these, so the header stays short. */
   @media (max-width: 759px) {
+    .verse-toggle,
+    .image-toggle,
     .header-link,
     .print-button {
       display: none;

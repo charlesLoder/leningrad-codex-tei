@@ -285,13 +285,16 @@ type View = 'both' | 'text' | 'image';
 let view: View = (store.get('folio-view') as View | null) ?? 'both';
 const currentView = (): View => (view === 'both' && !isWide() ? 'text' : view);
 
+const imageToggles = () => [...document.querySelectorAll<HTMLElement>('#toggle-image, #toggle-image-menu')];
+
 function applyView(): void {
   const current = currentView();
   desk.dataset.view = current;
   // The accessible name stays "Page image"; aria-pressed alone carries the state.
-  const toggle = $('#toggle-image');
-  toggle?.setAttribute('aria-pressed', String(current !== 'text'));
-  toggle?.setAttribute('title', current === 'text' ? 'Show page image' : 'Hide page image');
+  for (const toggle of imageToggles()) {
+    toggle.setAttribute('aria-pressed', String(current !== 'text'));
+    toggle.setAttribute('title', current === 'text' ? 'Show page image' : 'Hide page image');
+  }
   const expand = $('#plate-expand');
   if (expand) expand.textContent = current === 'image' ? 'Collapse' : 'Expand';
   if (current !== 'text') void startStage();
@@ -329,10 +332,12 @@ async function startStage(): Promise<void> {
   pendingZoom = null;
 }
 
-$('#toggle-image')?.addEventListener('click', () => {
-  if (currentView() === 'text') setView(isWide() ? 'both' : 'image');
-  else setView('text');
-});
+for (const sel of ['#toggle-image', '#toggle-image-menu']) {
+  $(sel)?.addEventListener('click', () => {
+    if (currentView() === 'text') setView(isWide() ? 'both' : 'image');
+    else setView('text');
+  });
+}
 $('#plate-expand')?.addEventListener('click', () => setView(currentView() === 'image' ? 'both' : 'image'));
 $('#plate-more')?.addEventListener('click', (e) => {
   const button = e.currentTarget as HTMLElement;
@@ -344,24 +349,28 @@ $('#plate-more')?.addEventListener('click', (e) => {
 });
 
 /* ---------- Verse numbers, menu ---------- */
-const verseToggle = $('#toggle-verses');
+const verseToggles = () => [...document.querySelectorAll<HTMLElement>('#toggle-verses, #toggle-verses-menu')];
 function applyVerseNumbers(on: boolean): void {
   // Print styles key off this class so print follows the toggle.
   columns.classList.toggle('show-verses', on);
-  verseToggle?.setAttribute('aria-pressed', String(on));
-  verseToggle?.setAttribute('title', on ? 'Hide verse numbers' : 'Show verse numbers');
+  for (const toggle of verseToggles()) {
+    toggle.setAttribute('aria-pressed', String(on));
+    toggle.setAttribute('title', on ? 'Hide verse numbers' : 'Show verse numbers');
+  }
 }
-verseToggle?.addEventListener('click', () => {
-  const on = verseToggle.getAttribute('aria-pressed') !== 'true';
-  store.set('folio-verses', on ? '1' : '0');
-  applyVerseNumbers(on);
-});
+for (const sel of ['#toggle-verses', '#toggle-verses-menu']) {
+  $(sel)?.addEventListener('click', () => {
+    const on = $(sel)?.getAttribute('aria-pressed') !== 'true';
+    store.set('folio-verses', on ? '1' : '0');
+    applyVerseNumbers(on);
+  });
+}
 
 const menu = $<HTMLDetailsElement>('#folio-menu');
 const jump = $<HTMLDetailsElement>('#folio-jump');
 document.addEventListener('click', (e) => {
   const target = e.target as HTMLElement;
-  if (menu && (!target.closest('#folio-menu') || target.closest('a, button'))) menu.open = false;
+  if (menu && (!target.closest('#folio-menu') || (target.closest('a, button') && !target.closest('[data-keep-open]')))) menu.open = false;
   if (jump && !target.closest('#folio-jump')) jump.open = false;
 });
 for (const id of ['#print-folio', '#print-folio-menu']) $(id)?.addEventListener('click', () => window.print());
@@ -431,7 +440,7 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault();
     jump.open = true;
   } else if (e.key === 'i') $('#toggle-image')?.click();
-  else if (e.key === 'v') verseToggle?.click();
+  else if (e.key === 'v') $('#toggle-verses')?.click();
 });
 
 /* ---------- Start ---------- */

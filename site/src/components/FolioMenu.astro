@@ -13,6 +13,8 @@ const { folio, manifest } = Astro.props;
   <summary class="quiet" aria-label="More options"><Fragment set:html={icons.ellipsis} /></summary>
   <div class="menu-body">
     <div class="mobile-only">
+      <button type="button" id="toggle-verses-menu" data-keep-open aria-pressed="false">Verse numbers <Fragment set:html={icons.hash} /></button>
+      <button type="button" id="toggle-image-menu" data-keep-open aria-pressed="true">Page image <Fragment set:html={icons.image} /></button>
       <a href={`/edition/${folio}.xml`} target="_blank" rel="noopener noreferrer">TEI XML <Fragment set:html={icons.externalLink} /></a>
       {manifest && <a href={manifest} target="_blank" rel="noopener noreferrer">IIIF manifest <Fragment set:html={icons.externalLink} /></a>}
       <button type="button" id="print-folio-menu">Print</button>
@@ -74,6 +76,14 @@ const { folio, manifest } = Astro.props;
     width: 1em;
     height: 1em;
     color: var(--muted);
+  }
+
+  .menu-body button[aria-pressed='true'] {
+    color: var(--accent);
+  }
+
+  .menu-body button[aria-pressed='true'] :global(.lucide) {
+    color: var(--accent);
   }
 
   .mobile-only {
