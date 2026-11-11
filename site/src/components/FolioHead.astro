@@ -1,4 +1,6 @@
 ---
+import { icons } from '../lib/icons';
+
 interface Props {
   title: string;
   range: string;
@@ -11,8 +13,11 @@ const { title, range, detail } = Astro.props;
 
 <details class="folio-jump" id="folio-jump">
   <summary class="quiet folio-title" aria-label={`${title}. Go to a folio or verse`}>
-    <h1>{title}</h1>
-    <span>{range}</span>
+    <span class="folio-title-text">
+      <h1>{title}</h1>
+      <span>{range}</span>
+    </span>
+    <Fragment set:html={icons.search} />
   </summary>
   <div class="jump-body">
     <label>
@@ -30,11 +35,15 @@ const { title, range, detail } = Astro.props;
   }
 
   .folio-title {
-    flex-direction: column;
-    gap: 0;
+    gap: 0.5rem;
     min-height: 2.7rem;
     padding-inline: 0.9rem;
     line-height: 1.2;
+  }
+
+  .folio-title-text {
+    display: grid;
+    text-align: left;
   }
 
   .folio-title h1 {
