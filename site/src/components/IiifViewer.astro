@@ -45,8 +45,8 @@ const { manifestUrl, imageUrl, folio } = Astro.props;
 <style>
   .plate {
     position: sticky;
-    top: calc(var(--head) + var(--strip));
-    height: calc(100dvh - var(--head) - var(--strip));
+    top: var(--strip);
+    height: calc(100dvh - var(--strip));
     min-height: 22rem;
     overflow: hidden;
     background: var(--plate);

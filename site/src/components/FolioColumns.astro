@@ -1,5 +1,6 @@
 ---
 import ManuscriptColumn from './ManuscriptColumn.astro';
+import Button from './Button.astro';
 import type { TeiColumn } from '../lib/tei';
 
 interface Props {
@@ -18,7 +19,7 @@ const ruler = columns.findLastIndex((c) => fifths(c) === Math.max(...columns.map
   <div class="column-pick" id="column-pick" role="group" aria-label="Column">
     <span>Column</span>
     {columns.map((c, i) => (
-      <button class="quiet" type="button" data-col={c.n} aria-pressed={i === 0 ? 'true' : 'false'}>{c.n}</button>
+      <Button variant="ghost" type="button" data-col={c.n} aria-pressed={i === 0 ? 'true' : 'false'}>{c.n}</Button>
     ))}
   </div>
 )}
@@ -45,7 +46,7 @@ const ruler = columns.findLastIndex((c) => fifths(c) === Math.max(...columns.map
     /* Room for the verse gutter of one column and the line number of the next. */
     --col-gap: 3.75rem;
     --pad: 0.75rem;
-    --avail: calc(100dvh - var(--head) - var(--strip));
+    --avail: calc(100dvh - var(--strip));
     --row-avail: calc((var(--avail) - 2 * var(--pad)) / var(--rows));
     --fs-fallback: calc((100cqi - (var(--n) - 1) * var(--col-gap)) / var(--n) / 14);
     --fs: min(var(--fs-w, var(--fs-fallback)), var(--fs-cap, 24px), max(16px, calc(var(--row-avail) / 1.5)));

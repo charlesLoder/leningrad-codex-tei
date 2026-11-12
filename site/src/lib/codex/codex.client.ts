@@ -527,7 +527,7 @@ function showOpening(): void {
   const title = sides.length ? `Folio${sides.length > 1 ? 's' : ''} ${sides.join(' · ')}` : 'Blank opening';
   const range = sides.map(rangeLabel).join(' · ') || 'No encoded text on this opening';
   $('.folio-title h1').textContent = title;
-  $('.folio-title span').textContent = range;
+  $('.folio-title .folio-range').textContent = range;
   $('.jump-body p').textContent = `Opening ${opening - first + 1} of ${last - first + 1}`;
   document.title = `${title} · Codex · Leningrad Codex TEI`;
   const anchor = sides[0];
@@ -915,8 +915,8 @@ $('#codex-hint-close').addEventListener('click', dismissHint);
 
 document.addEventListener('keydown', (event) => {
   if (event.metaKey || event.ctrlKey || event.altKey) return;
-  if ((event.target as Element).closest?.('input, select, textarea, summary')) return;
-  const jump = $<HTMLDetailsElement>('#folio-jump');
+  if ((event.target as Element).closest?.('input, select, textarea, [popover]')) return;
+  const jump = $<HTMLElement>('#folio-jump-body');
   const handled = () => {
     event.preventDefault();
     dismissHint();
@@ -934,9 +934,8 @@ document.addEventListener('keydown', (event) => {
   else if (event.key === 'p') (handled(), setMode('photo'));
   else if (event.key === '/') {
     handled();
-    jump.open = true;
+    if (!jump.matches(':popover-open')) jump.showPopover();
   } else if (event.key === 'Escape') {
-    jump.open = false;
     setPin(null);
     getSelection()?.removeAllRanges();
   }
@@ -944,7 +943,7 @@ document.addEventListener('keydown', (event) => {
 
 /* ---------- Go to ---------- */
 
-const jump = $<HTMLDetailsElement>('#folio-jump');
+const jump = $<HTMLElement>('#folio-jump-body');
 const gotoInput = $<HTMLInputElement>('#goto-input');
 const gotoList = $('#goto-list');
 let firstRoute: string | null = null;
@@ -974,8 +973,8 @@ function renderGoTo(): void {
       : [Object.assign(document.createElement('li'), { className: 'goto-none', textContent: 'No match. Try Exod 3:14 or 250A.' })]),
   );
 }
-jump.addEventListener('toggle', () => {
-  if (jump.open) gotoInput.focus();
+jump.addEventListener('toggle', (event) => {
+  if ((event as ToggleEvent).newState === 'open') gotoInput.focus();
 });
 gotoInput.addEventListener('input', renderGoTo);
 gotoInput.addEventListener('keydown', (event) => {
@@ -983,10 +982,9 @@ gotoInput.addEventListener('keydown', (event) => {
     event.preventDefault();
     if (firstRoute) location.hash = firstRoute;
   }
-  if (event.key === 'Escape') jump.open = false;
 });
 gotoList.addEventListener('click', () => {
-  jump.open = false;
+  jump.hidePopover();
 });
 
 /* ---------- Theme ---------- */
@@ -1007,7 +1005,7 @@ async function followRoute(): Promise<void> {
   if (n === null) return;
   if (isNarrow()) focusSide = route.side.endsWith('A') ? 'left' : 'right';
   if (n !== opening) await jumpTo(n);
-  jump.open = false;
+  jump.hidePopover();
   if (route.verse) {
     const key = hashToKey(route.verse);
     const entry = await store.ensure(route.side);

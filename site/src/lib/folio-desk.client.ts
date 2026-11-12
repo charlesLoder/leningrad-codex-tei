@@ -2,7 +2,6 @@
  * Browser behavior of the folio page: one verse selection shared by the text and
  * the image, the views, the go-to search, and the keyboard.
  */
-import { folioCitation } from './citation.ts';
 import {
   chapterAndVerse,
   hashToKey,
@@ -285,11 +284,13 @@ type View = 'both' | 'text' | 'image';
 let view: View = (store.get('folio-view') as View | null) ?? 'both';
 const currentView = (): View => (view === 'both' && !isWide() ? 'text' : view);
 
+const imageToggle = () => document.querySelector<HTMLElement>('#toggle-image');
+
 function applyView(): void {
   const current = currentView();
   desk.dataset.view = current;
   // The accessible name stays "Page image"; aria-pressed alone carries the state.
-  const toggle = $('#toggle-image');
+  const toggle = imageToggle();
   toggle?.setAttribute('aria-pressed', String(current !== 'text'));
   toggle?.setAttribute('title', current === 'text' ? 'Show page image' : 'Hide page image');
   const expand = $('#plate-expand');
@@ -343,31 +344,24 @@ $('#plate-more')?.addEventListener('click', (e) => {
   });
 });
 
-/* ---------- Verse numbers, menu ---------- */
-const verseToggle = $('#toggle-verses');
+/* ---------- Verse numbers ---------- */
+const verseToggle = () => document.querySelector<HTMLElement>('#toggle-verses');
 function applyVerseNumbers(on: boolean): void {
   // Print styles key off this class so print follows the toggle.
   columns.classList.toggle('show-verses', on);
-  verseToggle?.setAttribute('aria-pressed', String(on));
-  verseToggle?.setAttribute('title', on ? 'Hide verse numbers' : 'Show verse numbers');
+  const toggle = verseToggle();
+  toggle?.setAttribute('aria-pressed', String(on));
+  toggle?.setAttribute('title', on ? 'Hide verse numbers' : 'Show verse numbers');
 }
-verseToggle?.addEventListener('click', () => {
-  const on = verseToggle.getAttribute('aria-pressed') !== 'true';
+$('#toggle-verses')?.addEventListener('click', () => {
+  const on = $('#toggle-verses')?.getAttribute('aria-pressed') !== 'true';
   store.set('folio-verses', on ? '1' : '0');
   applyVerseNumbers(on);
 });
 
-const menu = $<HTMLDetailsElement>('#folio-menu');
-const jump = $<HTMLDetailsElement>('#folio-jump');
-document.addEventListener('click', (e) => {
-  const target = e.target as HTMLElement;
-  if (menu && (!target.closest('#folio-menu') || target.closest('a, button'))) menu.open = false;
-  if (jump && !target.closest('#folio-jump')) jump.open = false;
-});
-for (const id of ['#print-folio', '#print-folio-menu']) $(id)?.addEventListener('click', () => window.print());
-$('#copy-folio-citation')?.addEventListener('click', (e) => {
-  void copy(e.currentTarget as HTMLElement, folioCitation(data.folio, data.version));
-});
+const jump = $<HTMLElement>('#folio-jump-body');
+$('#print-folio')?.addEventListener('click', () => window.print());
+
 
 /* ---------- Go to ---------- */
 const gotoInput = $<HTMLInputElement>('#goto-input');
@@ -397,8 +391,9 @@ async function renderGoTo(): Promise<void> {
         .join('')
     : '<li class="goto-none">No match. Try Exod 3:14 or 250A.</li>';
 }
-jump?.addEventListener('toggle', () => {
-  if (jump.open) {
+// Popovers light-dismiss on outside click and close on Escape, so no manual handling is needed.
+jump?.addEventListener('toggle', (event) => {
+  if ((event as ToggleEvent).newState === 'open') {
     gotoInput?.focus();
     void loadFolioList();
   }
@@ -409,14 +404,13 @@ gotoInput?.addEventListener('keydown', (e) => {
     e.preventDefault();
     if (firstHit) location.assign(firstHit);
   }
-  if (e.key === 'Escape' && jump) jump.open = false;
 });
 
 /* ---------- Keyboard ---------- */
 document.addEventListener('keydown', (e) => {
   const target = e.target as HTMLElement;
   if (e.metaKey || e.ctrlKey || e.altKey || isPicking()) return;
-  if (target.closest('input, select, textarea, dialog, triiiceratops-viewer')) return;
+  if (target.closest('input, select, textarea, dialog, triiiceratops-viewer, [popover]')) return;
   const follow = (rel: string) => document.querySelector<HTMLAnchorElement>(`a[rel="${rel}"]`)?.click();
   // The codex reads right to left, so the next page is to the left.
   if (e.key === 'ArrowLeft') follow('next');
@@ -424,14 +418,12 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'j') step(1);
   else if (e.key === 'k') step(-1);
   else if (e.key === 'Escape') {
-    if (menu) menu.open = false;
-    if (jump) jump.open = false;
     setPin(null);
   } else if (e.key === '/' && jump) {
     e.preventDefault();
-    jump.open = true;
+    if (!jump.matches(':popover-open')) jump.showPopover();
   } else if (e.key === 'i') $('#toggle-image')?.click();
-  else if (e.key === 'v') verseToggle?.click();
+  else if (e.key === 'v') $('#toggle-verses')?.click();
 });
 
 /* ---------- Start ---------- */

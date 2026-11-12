@@ -5,10 +5,10 @@ import { fileURLToPath } from 'node:url';
 import iiifLogo from '../../assets/iiif.svg';
 import Base from '../../layouts/Base.astro';
 import FeedbackForm from '../../components/FeedbackForm.astro';
+import Button from '../../components/Button.astro';
 import FolioCredits from '../../components/FolioCredits.astro';
 import FolioColumns from '../../components/FolioColumns.astro';
 import FolioHead from '../../components/FolioHead.astro';
-import FolioMenu from '../../components/FolioMenu.astro';
 import IiifViewer from '../../components/IiifViewer.astro';
 import Pager from '../../components/Pager.astro';
 import VerseCard from '../../components/VerseCard.astro';
@@ -68,35 +68,37 @@ const viewData = buildViewData(doc, {
     {iiifManifest && <link rel="preconnect" href="https://iiif.archive.org" crossorigin="anonymous" />}
   </Fragment>
 
-  <FolioHead slot="header-center" title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
-  <Fragment slot="header-actions">
-    <button class="quiet verse-toggle" id="toggle-verses" type="button" aria-label="Verse numbers" aria-pressed="false" title="Show verse numbers">
-      <Fragment set:html={icons.hash} />
-    </button>
-    <button class="quiet image-toggle" id="toggle-image" type="button" aria-label="Page image" aria-pressed="true" title="Hide page image">
-      <Fragment set:html={icons.image} />
-      <Fragment set:html={icons.imageOff} />
-    </button>
-    <a class="quiet header-link" href={`/edition/${folio}.xml`} target="_blank" rel="noopener noreferrer" aria-label="TEI XML (opens in a new tab)" title="TEI XML">
-      <Fragment set:html={icons.codeXml} />
-    </a>
-    {iiifManifest && (
-      <a class="quiet header-link" href={iiifManifest} target="_blank" rel="noopener noreferrer" aria-label="IIIF manifest (opens in a new tab)" title="IIIF manifest">
-        <img src={iiifLogo.src} alt="" width="20" height="20" />
-      </a>
-    )}
-    <button class="quiet print-button" id="print-folio" type="button" aria-label="Print folio" title="Print folio">
-      <Fragment set:html={icons.printer} />
-    </button>
-    <FolioMenu folio={folio ?? ''} manifest={iiifManifest} />
-  </Fragment>
-
+  <div class="head-bar">
+    <FolioHead title={`Folio ${folio}`} range={folioRef} detail={`${side} · side ${idx + 1} of ${folios.length}`} />
+  </div>
   <Pager
     prev={shortNeighbor(prevEntry)}
     next={shortNeighbor(nextEntry)}
     hint={iiifManifest ? 'Hover text to see it on the page. Click to select. Double-click to zoom.' : 'Click a word to select its verse.'}
     touchHint={iiifManifest ? 'Tap a word to see it on the page.' : 'Tap a word to select its verse.'}
-  />
+  >
+    <Button variant="ghost" class="verse-toggle" id="toggle-verses" type="button" aria-label="Verse numbers" aria-pressed="false" title="Show verse numbers">
+      <Fragment set:html={icons.hash} />
+    </Button>
+    <Button variant="ghost" class="image-toggle" id="toggle-image" type="button" aria-label="Page image" aria-pressed="true" title="Hide page image">
+      <Fragment set:html={icons.image} />
+      <Fragment set:html={icons.imageOff} />
+    </Button>
+    <Button variant="ghost" class="header-link" href={`/edition/${folio}.xml`} target="_blank" rel="noopener noreferrer" aria-label="TEI XML (opens in a new tab)" title="TEI XML">
+      <Fragment set:html={icons.codeXml} />
+    </Button>
+    {iiifManifest && (
+      <Button variant="ghost" class="header-link" href={iiifManifest} target="_blank" rel="noopener noreferrer" aria-label="IIIF manifest (opens in a new tab)" title="IIIF manifest">
+        <img src={iiifLogo.src} alt="" width="20" height="20" />
+      </Button>
+    )}
+    <Button variant="ghost" class="print-button" id="print-folio" type="button" aria-label="Print folio" title="Print folio">
+      <Fragment set:html={icons.printer} />
+    </Button>
+    <Button variant="ghost" class="report-button" id="feedback-open" type="button" aria-label="Report an issue" title="Report an issue">
+      <Fragment set:html={icons.bug} />
+    </Button>
+  </Pager>
 
   <div class="desk" id="desk" data-view="both">
     <section class="leaf" aria-label="Transcription">
@@ -117,18 +119,31 @@ const viewData = buildViewData(doc, {
 </Base>
 
 <style>
+  .head-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: max(1rem, env(safe-area-inset-left, 0px)) max(1rem, env(safe-area-inset-right, 0px));
+    padding-block: 0.35rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
   /* The icon shows the state: an image while it is open, a crossed-out image while it is closed. */
   .verse-toggle,
   .image-toggle,
   .header-link,
-  .print-button {
+  .print-button,
+  .report-button {
     min-width: 2.4rem;
   }
 
   .verse-toggle :global(.lucide),
   .image-toggle :global(.lucide),
   .header-link :global(.lucide),
-  .print-button :global(.lucide) {
+  .print-button :global(.lucide),
+  .report-button :global(.lucide) {
     width: 1.35em;
     height: 1.35em;
   }
@@ -141,14 +156,6 @@ const viewData = buildViewData(doc, {
   .image-toggle[aria-pressed='true'] :global(.lucide-image-off),
   .image-toggle[aria-pressed='false'] :global(.lucide-image) {
     display: none;
-  }
-
-  /* On small screens the menu holds these links, so the header stays short. */
-  @media (max-width: 759px) {
-    .header-link,
-    .print-button {
-      display: none;
-    }
   }
 
   .desk {

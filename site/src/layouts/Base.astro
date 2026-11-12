@@ -9,7 +9,7 @@ interface Props {
   imageAlt?: string;
   type?: 'website' | 'article';
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
-  /** Full-width page with the compact header (the folio page). */
+  /** Full-width page (the folio and codex pages). */
   desk?: boolean;
   /** Leave the footer out, for a page that fills the window. */
   footer?: boolean;
@@ -81,10 +81,7 @@ const graph = [websiteSchema, webpageSchema, ...(jsonLd ? (Array.isArray(jsonLd)
     <slot name="head" />
   </head>
   <body>
-    <SiteHeader compact={desk}>
-      <slot name="header-center" slot="center" />
-      <slot name="header-actions" slot="actions" />
-    </SiteHeader>
+    <SiteHeader />
     <main class:list={{ wrap: !desk }}>
       <slot />
     </main>

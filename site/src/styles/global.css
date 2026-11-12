@@ -34,8 +34,7 @@
   --warn: #8a5a00;
   --warn-soft: #f6e6bf;
   --shadow: rgba(40, 25, 10, 0.2);
-  /* Heights of the folio page's sticky rows. */
-  --head: 3.25rem;
+  /* Height of the folio page's sticky row. */
   --strip: 2.75rem;
 }
 
@@ -70,7 +69,7 @@
     --shadow: rgba(0, 0, 0, 0.55);
   }
 
-  :root:not([data-theme='light']) a {
+  :root:not([data-theme='light']) a:not(.button) {
     color: var(--accent);
   }
 }
@@ -104,7 +103,7 @@
     --shadow: rgba(0, 0, 0, 0.55);
   }
 
-  :root[data-theme='dark'] a {
+  :root[data-theme='dark'] a:not(.button) {
     color: var(--accent);
   }
 }
@@ -138,6 +137,8 @@ body {
 body > main {
   flex: 1;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrap {
@@ -176,22 +177,16 @@ body > main {
   padding: 0.2rem 0.6rem;
   font: inherit;
   font-size: 0.9rem;
-  color: var(--muted);
+  color: var(--ink);
   background: none;
   border: 0;
   border-radius: 0.45rem;
   cursor: pointer;
-  list-style: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.quiet::-webkit-details-marker {
-  display: none;
-}
-
-.quiet:hover,
-details[open] > .quiet {
+.quiet:hover {
   background: var(--accent-soft);
   color: var(--accent);
 }
