@@ -19,12 +19,12 @@ const { prev, next, hint, touchHint } = Astro.props;
   ) : <span />}
   <div class="pager-middle">
     <slot />
-    <details class="hint-info">
-      <summary class="quiet" aria-label="How to use this page" title="How to use this page"><Fragment set:html={icons.info} /></summary>
-      <div class="hint-body">
+    <div class="hint-info">
+      <Button variant="ghost" popovertarget="hint-body" aria-label="How to use this page" title="How to use this page"><Fragment set:html={icons.info} /></Button>
+      <div class="hint-body" id="hint-body" popover>
         <span class="pointer-hint">{hint}</span><span class="touch-hint">{touchHint}</span>
       </div>
-    </details>
+    </div>
   </div>
   {prev ? (
     <Button variant="ghost" rel="prev" href={`/folio/${prev.folio}/`} title={`Previous: ${prev.range}`} aria-label={`Previous: ${prev.folio} ${prev.range}`}><span class="code">{prev.folio}</span> <span class="pager-word">Previous</span> <Fragment set:html={icons.arrowRight} /></Button>
@@ -66,15 +66,19 @@ const { prev, next, hint, touchHint } = Astro.props;
     font-variant-numeric: tabular-nums;
   }
 
-  .hint-info {
-    position: relative;
+  /* Author display beats the UA's hide rule for closed popovers, so hide it explicitly. */
+  .hint-body:not(:popover-open) {
+    display: none;
   }
 
+  /* The popover's invoker is an implicit anchor, so position-area can tether it. Auto margin/inset resolve to 0 with position-area set. */
   .hint-body {
-    position: absolute;
-    z-index: 30;
-    top: calc(100% + 0.35rem);
-    right: 0;
+    margin: 0;
+    position-area: bottom span-left;
+    justify-self: end;
+    margin-block-start: 0.35rem;
+    max-block-size: 70vh;
+    overflow: auto;
     width: min(21rem, calc(100vw - 2rem));
     padding: 0.55rem 0.7rem;
     background: var(--card);
@@ -104,8 +108,6 @@ const { prev, next, hint, touchHint } = Astro.props;
     .pager {
       gap: 0.25rem;
       padding-inline: 0.25rem;
-      /* Containing block for the full-width info panel. */
-      position: relative;
     }
 
     .pager-middle {
@@ -117,14 +119,11 @@ const { prev, next, hint, touchHint } = Astro.props;
       display: none;
     }
 
-    /* The panel spans the row so it never clips off screen. */
-    .hint-info {
-      position: static;
-    }
-
+    /* The panel spans the screen so it never clips off screen. */
     .hint-body {
-      left: 0.5rem;
-      right: 0.5rem;
+      position-area: bottom;
+      justify-self: stretch;
+      margin-inline: 0.5rem;
       width: auto;
     }
   }

@@ -1,5 +1,6 @@
 ---
 import { icons } from '../lib/icons';
+import Button from './Button.astro';
 
 interface Props {
   title: string;
@@ -11,15 +12,15 @@ interface Props {
 const { title, range, detail } = Astro.props;
 ---
 
-<details class="folio-jump" id="folio-jump">
-  <summary class="quiet folio-title" aria-label={`${title}. Go to a folio or verse`}>
+<div class="folio-jump">
+  <Button variant="ghost" class="folio-title" popovertarget="folio-jump-body" aria-label={`${title}. Go to a folio or verse`}>
     <span class="folio-title-text">
       <h1>{title}</h1>
       <span class="folio-range">{range}</span>
     </span>
     <Fragment set:html={icons.search} />
-  </summary>
-  <div class="jump-body">
+  </Button>
+  <div class="jump-body" id="folio-jump-body" popover>
     <label>
       <span class="sr-only">Go to a folio or verse</span>
       <input id="goto-input" type="search" autocomplete="off" placeholder="Go to Exod 3:14 or 250A" />
@@ -27,18 +28,13 @@ const { title, range, detail } = Astro.props;
     <ul id="goto-list" hidden></ul>
     <p>{detail}</p>
   </div>
-</details>
+</div>
 
 <style>
-  .folio-jump {
-    position: relative;
-  }
-
-  .folio-title {
+  .folio-title[data-variant='ghost'] {
     gap: 0.5rem;
-    min-height: 2.2rem;
-    padding-inline: 0.9rem;
     line-height: 1.2;
+    padding-inline: 0.9rem;
   }
 
   .folio-title-text {
@@ -60,12 +56,19 @@ const { title, range, detail } = Astro.props;
     font-variant-numeric: tabular-nums;
   }
 
+  /* Author display beats the UA's hide rule for closed popovers, so hide it explicitly. */
+  .jump-body:not(:popover-open) {
+    display: none;
+  }
+
+  /* The popover's invoker is an implicit anchor, so position-area can tether it. Auto margin/inset resolve to 0 with position-area set. */
   .jump-body {
-    position: absolute;
-    z-index: 30;
-    top: calc(100% + 0.35rem);
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0;
+    position-area: bottom;
+    justify-self: anchor-center;
+    margin-block-start: 0.35rem;
+    max-block-size: 70vh;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;

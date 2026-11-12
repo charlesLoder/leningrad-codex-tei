@@ -359,13 +359,7 @@ $('#toggle-verses')?.addEventListener('click', () => {
   applyVerseNumbers(on);
 });
 
-const jump = $<HTMLDetailsElement>('#folio-jump');
-const hint = $<HTMLDetailsElement>('.hint-info');
-document.addEventListener('click', (e) => {
-  const target = e.target as HTMLElement;
-  if (jump && !target.closest('#folio-jump')) jump.open = false;
-  if (hint && !target.closest('.hint-info')) hint.open = false;
-});
+const jump = $<HTMLElement>('#folio-jump-body');
 $('#print-folio')?.addEventListener('click', () => window.print());
 
 
@@ -397,8 +391,9 @@ async function renderGoTo(): Promise<void> {
         .join('')
     : '<li class="goto-none">No match. Try Exod 3:14 or 250A.</li>';
 }
-jump?.addEventListener('toggle', () => {
-  if (jump.open) {
+// Popovers light-dismiss on outside click and close on Escape, so no manual handling is needed.
+jump?.addEventListener('toggle', (event) => {
+  if ((event as ToggleEvent).newState === 'open') {
     gotoInput?.focus();
     void loadFolioList();
   }
@@ -409,14 +404,13 @@ gotoInput?.addEventListener('keydown', (e) => {
     e.preventDefault();
     if (firstHit) location.assign(firstHit);
   }
-  if (e.key === 'Escape' && jump) jump.open = false;
 });
 
 /* ---------- Keyboard ---------- */
 document.addEventListener('keydown', (e) => {
   const target = e.target as HTMLElement;
   if (e.metaKey || e.ctrlKey || e.altKey || isPicking()) return;
-  if (target.closest('input, select, textarea, dialog, triiiceratops-viewer')) return;
+  if (target.closest('input, select, textarea, dialog, triiiceratops-viewer, [popover]')) return;
   const follow = (rel: string) => document.querySelector<HTMLAnchorElement>(`a[rel="${rel}"]`)?.click();
   // The codex reads right to left, so the next page is to the left.
   if (e.key === 'ArrowLeft') follow('next');
@@ -424,11 +418,10 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'j') step(1);
   else if (e.key === 'k') step(-1);
   else if (e.key === 'Escape') {
-    if (jump) jump.open = false;
     setPin(null);
   } else if (e.key === '/' && jump) {
     e.preventDefault();
-    jump.open = true;
+    if (!jump.matches(':popover-open')) jump.showPopover();
   } else if (e.key === 'i') $('#toggle-image')?.click();
   else if (e.key === 'v') $('#toggle-verses')?.click();
 });
