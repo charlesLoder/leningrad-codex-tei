@@ -1,12 +1,13 @@
 ---
 import { icons } from '../lib/icons';
+import Button from './Button.astro';
 ---
 
-<button class="quiet theme-toggle" type="button" data-theme-toggle data-mode="system">
+<Button variant="ghost" class="theme-toggle" type="button" data-theme-toggle data-mode="system">
   <span class="mode mode-light"><Fragment set:html={icons.sun} /></span>
   <span class="mode mode-dark"><Fragment set:html={icons.moon} /></span>
   <span class="mode mode-system"><Fragment set:html={icons.monitor} /></span>
-</button>
+</Button>
 
 <style>
   .theme-toggle .mode {

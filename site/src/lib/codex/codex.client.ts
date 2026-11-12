@@ -527,7 +527,7 @@ function showOpening(): void {
   const title = sides.length ? `Folio${sides.length > 1 ? 's' : ''} ${sides.join(' · ')}` : 'Blank opening';
   const range = sides.map(rangeLabel).join(' · ') || 'No encoded text on this opening';
   $('.folio-title h1').textContent = title;
-  $('.folio-title span').textContent = range;
+  $('.folio-title .folio-range').textContent = range;
   $('.jump-body p').textContent = `Opening ${opening - first + 1} of ${last - first + 1}`;
   document.title = `${title} · Codex · Leningrad Codex TEI`;
   const anchor = sides[0];

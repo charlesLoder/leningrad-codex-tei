@@ -48,25 +48,25 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
 
         <div class="codex-bar">
           <div class="codex-tools" role="group" aria-label="What the page shows">
-            <button class="quiet codex-tool" type="button" data-mode-choice="text" aria-pressed="true" title="The transcription (T)"><Fragment set:html={icons.type} /><span>Text</span></button>
-            <button class="quiet codex-tool" type="button" data-mode-choice="lens" aria-pressed="false" title="A lens over the photograph (L)"><Fragment set:html={icons.scanSearch} /><span>Lens</span></button>
-            <button class="quiet codex-tool" type="button" data-mode-choice="photo" aria-pressed="false" title="The photograph (P)"><Fragment set:html={icons.image} /><span>Photo</span></button>
+            <Button variant="ghost" class="codex-tool" type="button" data-mode-choice="text" aria-pressed="true" title="The transcription (T)"><Fragment set:html={icons.type} /><span>Text</span></Button>
+            <Button variant="ghost" class="codex-tool" type="button" data-mode-choice="lens" aria-pressed="false" title="A lens over the photograph (L)"><Fragment set:html={icons.scanSearch} /><span>Lens</span></Button>
+            <Button variant="ghost" class="codex-tool" type="button" data-mode-choice="photo" aria-pressed="false" title="The photograph (P)"><Fragment set:html={icons.image} /><span>Photo</span></Button>
           </div>
 
           <div class="codex-nav">
-            <button class="quiet codex-tool" id="codex-next" type="button" aria-label="Next page" title="Next page (←)"><Fragment set:html={icons.chevronLeft} /></button>
+            <Button variant="ghost" class="codex-tool" id="codex-next" type="button" aria-label="Next page" title="Next page (←)"><Fragment set:html={icons.chevronLeft} /></Button>
             <div class="codex-scrub">
               <label class="sr-only" for="codex-scrub">Move through the codex</label>
               <input id="codex-scrub" type="range" dir="rtl" min="1" max="462" value="1" />
               <output id="codex-scrub-label" for="codex-scrub"></output>
             </div>
-            <button class="quiet codex-tool" id="codex-prev" type="button" aria-label="Previous page" title="Previous page (→)"><Fragment set:html={icons.chevronRight} /></button>
+            <Button variant="ghost" class="codex-tool" id="codex-prev" type="button" aria-label="Previous page" title="Previous page (→)"><Fragment set:html={icons.chevronRight} /></Button>
           </div>
 
           <div class="codex-tools" role="group" aria-label="Camera">
-            <button class="quiet codex-tool" id="codex-zoom-out" type="button" aria-label="Move back" title="Move back (-)"><Fragment set:html={icons.minus} /></button>
-            <button class="quiet codex-tool" id="codex-zoom-in" type="button" aria-label="Come closer" title="Come closer (+)"><Fragment set:html={icons.plus} /></button>
-            <button class="quiet codex-tool" id="codex-reset" type="button" aria-label="Reset the view" title="Reset the view (0)"><Fragment set:html={icons.rotateCcw} /></button>
+            <Button variant="ghost" class="codex-tool" id="codex-zoom-out" type="button" aria-label="Move back" title="Move back (-)"><Fragment set:html={icons.minus} /></Button>
+            <Button variant="ghost" class="codex-tool" id="codex-zoom-in" type="button" aria-label="Come closer" title="Come closer (+)"><Fragment set:html={icons.plus} /></Button>
+            <Button variant="ghost" class="codex-tool" id="codex-reset" type="button" aria-label="Reset the view" title="Reset the view (0)"><Fragment set:html={icons.rotateCcw} /></Button>
           </div>
         </div>
       </div>

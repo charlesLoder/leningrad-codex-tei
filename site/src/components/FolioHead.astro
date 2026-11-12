@@ -15,7 +15,7 @@ const { title, range, detail } = Astro.props;
   <summary class="quiet folio-title" aria-label={`${title}. Go to a folio or verse`}>
     <span class="folio-title-text">
       <h1>{title}</h1>
-      <span>{range}</span>
+      <span class="folio-range">{range}</span>
     </span>
     <Fragment set:html={icons.search} />
   </summary>
@@ -55,7 +55,7 @@ const { title, range, detail } = Astro.props;
     color: var(--ink);
   }
 
-  .folio-title span {
+  .folio-title .folio-range {
     font-size: 0.76rem;
     font-variant-numeric: tabular-nums;
   }

@@ -1,5 +1,6 @@
 ---
 import { icons } from '../lib/icons';
+import Button from './Button.astro';
 
 interface Props {
   prev?: { folio: string; range: string } | null;
@@ -14,7 +15,7 @@ const { prev, next, hint, touchHint } = Astro.props;
 
 <div class="pager">
   {next ? (
-    <a class="quiet" rel="next" href={`/folio/${next.folio}/`} title={`Next: ${next.range}`} aria-label={`Next: ${next.folio} ${next.range}`}><Fragment set:html={icons.arrowLeft} /> <span class="pager-word">Next</span> <span class="code">{next.folio}</span></a>
+    <Button variant="ghost" rel="next" href={`/folio/${next.folio}/`} title={`Next: ${next.range}`} aria-label={`Next: ${next.folio} ${next.range}`}><Fragment set:html={icons.arrowLeft} /> <span class="pager-word">Next</span> <span class="code">{next.folio}</span></Button>
   ) : <span />}
   <div class="pager-middle">
     <slot />
@@ -26,7 +27,7 @@ const { prev, next, hint, touchHint } = Astro.props;
     </details>
   </div>
   {prev ? (
-    <a class="quiet" rel="prev" href={`/folio/${prev.folio}/`} title={`Previous: ${prev.range}`} aria-label={`Previous: ${prev.folio} ${prev.range}`}><span class="code">{prev.folio}</span> <span class="pager-word">Previous</span> <Fragment set:html={icons.arrowRight} /></a>
+    <Button variant="ghost" rel="prev" href={`/folio/${prev.folio}/`} title={`Previous: ${prev.range}`} aria-label={`Previous: ${prev.folio} ${prev.range}`}><span class="code">{prev.folio}</span> <span class="pager-word">Previous</span> <Fragment set:html={icons.arrowRight} /></Button>
   ) : <span />}
 </div>
 

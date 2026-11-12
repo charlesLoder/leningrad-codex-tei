@@ -1,5 +1,6 @@
 ---
 import ManuscriptColumn from './ManuscriptColumn.astro';
+import Button from './Button.astro';
 import type { TeiColumn } from '../lib/tei';
 
 interface Props {
@@ -18,7 +19,7 @@ const ruler = columns.findLastIndex((c) => fifths(c) === Math.max(...columns.map
   <div class="column-pick" id="column-pick" role="group" aria-label="Column">
     <span>Column</span>
     {columns.map((c, i) => (
-      <button class="quiet" type="button" data-col={c.n} aria-pressed={i === 0 ? 'true' : 'false'}>{c.n}</button>
+      <Button variant="ghost" type="button" data-col={c.n} aria-pressed={i === 0 ? 'true' : 'false'}>{c.n}</Button>
     ))}
   </div>
 )}
