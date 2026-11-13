@@ -41,14 +41,21 @@
 
         <!-- Module 4a: Facsimile (one surface per folio side; scripts/zones.py adds
              the Archive.org graphic and one zone per verse, holding one child
-             zone per line segment, in Archive.org image pixels) -->
-        <moduleRef key="transcr" include="facsimile surface zone"/>
+             zone per line segment, in Archive.org image pixels).
+             transcr also gives damageSpan: hand edits (not a pipeline stage)
+             mark text obscured but still legible, e.g. by tape. Mark the
+             start of the damaged span with damageSpan (@agent names the
+             cause, e.g. "tape"; @spanTo points at the anchor that ends the
+             span). The damaged words keep their xml:id: they are biblical
+             text and stay in the index. damageSpan and anchor are empty. -->
+        <moduleRef key="transcr" include="facsimile surface zone damageSpan"/>
 
         <!-- Module 5: Words and punctuation (generate-tei splits trailing
              sof-pasuq / paseq off each UXLC atom into pc; w keeps the atom) -->
         <moduleRef key="analysis" include="w pc"/>
-        <!-- linking also gives att.global.linking (@next/@prev on del) -->
-        <moduleRef key="linking" include="ab"/>
+        <!-- linking also gives att.global.linking (@next/@prev on del);
+             anchor marks the end of a damageSpan -->
+        <moduleRef key="linking" include="ab anchor"/>
 
         <!-- Erasures (hand edits, not a pipeline stage): one del per line,
              so lb stays a child of ab. An erasure over more than one line
