@@ -120,6 +120,31 @@ describe('lineHtml', () => {
     assert.match(html, /<span class="erased-gap" role="img" aria-label="Erased text that cannot be read"/);
   });
 
+  it('wraps one damaged span around the damaged words and keeps it in the verse run', () => {
+    const damaged = (text) => ({ ...word(text, 'Lev 25:50'), damage: 'tape' });
+    const html = lineHtml({
+      n: '21',
+      marks: [],
+      tokens: [word('א', 'Lev 25:50'), damaged('בְּמִסְפַּ֣ר'), damaged('שָׁנִים')],
+    });
+    assert.equal((html.match(/class="verse-run"/g) ?? []).length, 1);
+    assert.equal((html.match(/class="damaged"/g) ?? []).length, 1);
+    assert.match(
+      html,
+      /<span class="damaged" title="Text obscured by tape">בְּמִסְפַּ֣ר שָׁנִים<\/span>/,
+    );
+  });
+
+  it('splits the damaged span at an undamaged token', () => {
+    const damaged = (text) => ({ ...word(text, 'Lev 25:50'), damage: 'tape' });
+    const html = lineHtml({
+      n: '21',
+      marks: [],
+      tokens: [damaged('א'), word('ב', 'Lev 25:50'), damaged('ג')],
+    });
+    assert.equal((html.match(/class="damaged"/g) ?? []).length, 2);
+  });
+
   it('fills a line that has only an illegible erasure', () => {
     const l = { n: '4', marks: [], tokens: [erasure('', true)] };
     assert.ok(isErasedLine(l));
