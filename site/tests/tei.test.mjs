@@ -188,3 +188,43 @@ it('parseFolioXml reads credits, skips the project entry, and drops emails', () 
   assert.equal(doc.model, 'gemini-3.8-flash');
   assert.ok(uxlc.resp.some((p) => p.href?.includes('tanach.us')));
 });
+
+describe('damage spans', () => {
+  const read = (folio) => parseFolioXml(readFileSync(join(editionDir, `${folio}.xml`), 'utf8'));
+  const line = (doc, col, n) => doc.columns.find((c) => c.n === col).lines.find((l) => l.n === n);
+
+  it('reads the words of a damageSpan as damaged verse text (072A col. 2 line 21)', () => {
+    const tokens = line(read('072A'), '2', '21').tokens;
+    assert.deepEqual(tokens.map((t) => t.damage), Array(6).fill('tape'));
+    assert.ok(tokens.every((t) => t.verse === 'Lev 25:50'));
+  });
+
+  it('closes the span at the anchor and leaves later words untouched', () => {
+    const tokens = line(read('072A'), '2', '22').tokens;
+    assert.ok(tokens.every((t) => !t.damage));
+  });
+
+  it('matches spanTo with or without a leading hash', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="1"/><lb n="1"/>
+      <milestone unit="verse" n="Genesis-1-1"/>
+      <damageSpan agent="tape" spanTo="end"/><w xml:id="w1">a</w>
+      <anchor xml:id="end"/><w xml:id="w2">b</w>
+    </div></body></text></TEI>`;
+    const [a, b] = parseFolioXml(xml).columns[0].lines[0].tokens;
+    assert.equal(a.damage, 'tape');
+    assert.equal(b.damage, undefined);
+  });
+
+  it('defaults the agent and keeps the damage out of erasures', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="1"/><lb n="1"/>
+      <damageSpan spanTo="#end"/><w xml:id="w1">a</w>
+      <del rend="erasure"><w>b</w></del>
+      <anchor xml:id="end"/>
+    </div></body></text></TEI>`;
+    const [w, erasure] = parseFolioXml(xml).columns[0].lines[0].tokens;
+    assert.equal(w.damage, 'damage');
+    assert.equal(erasure.damage, undefined);
+  });
+});

@@ -118,6 +118,42 @@ const erased = isErasedLine(line);
     vertical-align: middle;
   }
 
+  /*
+    Tape over legible but damaged text: a semi-opaque off-white strip painted
+    over the ink, so the letters show through faintly. Torn edges where the
+    browser knows border-shape.
+  */
+  .he :global(.damaged) {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.4em;
+    margin-inline: 0.08em;
+  }
+
+  .he :global(.damaged)::after {
+    content: '';
+    position: absolute;
+    inset: -0.08em 0;
+    border-radius: 2px;
+    background: #f5f2e8;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  /* Torn ends, where the browser supports border-shape (experimental). */
+  @supports (border-shape: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)) {
+    .he :global(.damaged)::after {
+      border-radius: 0;
+      border-shape: polygon(
+        0.5% 6%, 2% 0%, 97.5% 1.5%, 100% 9%,
+        98.4% 22%, 100% 35%, 98.6% 49%, 100% 63%,
+        98.4% 76%, 100% 89%, 97.6% 100%,
+        2.2% 98.5%, 0% 90%, 1.8% 77%, 0% 64%,
+        1.9% 50%, 0% 37%, 1.6% 22%
+      );
+    }
+  }
+
   /* A line with nothing but an erasure: the box fills the line. */
   .erased .he-inner {
     display: flex;
@@ -287,6 +323,14 @@ const erased = isErasedLine(line);
     .he :global(.erased-gap) {
       background: none;
       border: 1px solid #999;
+    }
+
+    .he :global(.damaged) {
+      border-bottom: 1px dashed #999;
+    }
+
+    .he :global(.damaged)::after {
+      content: none;
     }
 
     .verse-nums {

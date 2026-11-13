@@ -26,6 +26,8 @@ export interface Token {
   marks: InlineMark[];
   /** Always null for an erasure. */
   verse: string | null;
+  /** Set when the token sits in a `<damageSpan>`: the agent of the damage (e.g. "tape"). The text is still verse text. */
+  damage?: string;
   /** Erasure only: part of it cannot be read (a `<gap>`). `text` holds the part that can. */
   illegible?: boolean;
   /** Erasure only: its parts in TEI order, a string for readable text and null for a `<gap>`. */
@@ -166,7 +168,9 @@ interface EditionToken {
 }
 
 // `del` is a token, not a container: the words in an erasure are not verse text.
-const TOKEN_TAGS = new Set(['cb', 'lb', 'milestone', 'w', 'pc', 'del']);
+// `damageSpan` and `anchor` are not tokens either: they mark a span of legible
+// but damaged text (e.g. obscured by tape), and the words in it stay verse text.
+const TOKEN_TAGS = new Set(['cb', 'lb', 'milestone', 'w', 'pc', 'del', 'damageSpan', 'anchor']);
 
 function collectTokens(nodes: OrderedNode[], out: EditionToken[]): void {
   for (const node of nodes) {
@@ -380,6 +384,9 @@ export function parseFolioXml(xml: string): FolioDoc {
   let pending: InlineMark[] = [];
   let started = false;
   let currentVerse: string | null = null;
+  // Open damageSpan: the agent of the damage and the xml:id its closing anchor carries.
+  let damageAgent: string | null = null;
+  let damageEnd: string | null = null;
 
   const flushLine = () => {
     if (currentLine) currentCol.lines.push(currentLine);
@@ -414,6 +421,16 @@ export function parseFolioXml(xml: string): FolioDoc {
         else if (currentLine) currentLine.marks.push(mark);
         else pending.push(mark);
       }
+    } else if (tok.tag === 'damageSpan') {
+      damageAgent = tok.attrs['agent'] ?? 'damage';
+      damageEnd = (tok.attrs['spanTo'] ?? '').replace(/^#/, '') || null;
+    } else if (tok.tag === 'anchor') {
+      // removeNSPrefix drops the `xml:` on `xml:id`, so the attribute arrives as `id`.
+      const anchorId = tok.attrs['xml:id'] ?? tok.attrs['id'];
+      if (damageEnd && anchorId === damageEnd) {
+        damageAgent = null;
+        damageEnd = null;
+      }
     } else if (tok.tag === 'del') {
       // An erasure takes no verse and no pending marks: a verse starts at its first real word.
       const { text, illegible, parts } = erasureContent(tok.children);
@@ -438,7 +455,9 @@ export function parseFolioXml(xml: string): FolioDoc {
         const t = tok.attrs['type'] ?? '';
         kind = t === 'paseq' || t === 'inverted-nun' ? t : 'sof-pasuq';
       }
-      currentLine.tokens.push({ text, kind, marks: pending, verse: currentVerse });
+      const token: Token = { text, kind, marks: pending, verse: currentVerse };
+      if (damageAgent) token.damage = damageAgent;
+      currentLine.tokens.push(token);
       pending = [];
     }
   }

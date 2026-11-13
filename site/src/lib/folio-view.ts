@@ -170,6 +170,27 @@ export function lineHtml(line: TeiLine): string {
     return body + sections;
   };
   const noSpaceAfter = (t: Token): boolean => t.text.endsWith('־');
+  // Words of a token list with the usual spacing rules (no space before a sof pasuq, none after a maqaf).
+  const joinTokens = (tokens: Token[]): string => {
+    let out = '';
+    tokens.forEach((t, i) => {
+      out += tokenHtml(t);
+      const next = tokens[i + 1];
+      if (next && next.kind !== 'sof-pasuq' && !noSpaceAfter(t)) out += ' ';
+    });
+    return out;
+  };
+  // One .damaged span around each run of consecutive tokens damaged by the same agent,
+  // from the first damaged word to the anchor that ends the damageSpan.
+  const chunkTokens = (tokens: Token[]): Token[][] => {
+    const chunks: Token[][] = [];
+    for (const t of tokens) {
+      const last = chunks[chunks.length - 1];
+      if (t.damage && last && last[0].damage === t.damage) last.push(t);
+      else chunks.push([t]);
+    }
+    return chunks;
+  };
   let html = '';
   runs.forEach((run, r) => {
     if (run.erasure) {
@@ -177,11 +198,16 @@ export function lineHtml(line: TeiLine): string {
       if (r < runs.length - 1) html += ' ';
       return;
     }
+    const chunks = chunkTokens(run.tokens);
     let body = '';
-    run.tokens.forEach((t, i) => {
-      body += tokenHtml(t);
-      const next = run.tokens[i + 1];
-      if (next && next.kind !== 'sof-pasuq' && !noSpaceAfter(t)) body += ' ';
+    chunks.forEach((chunk, i) => {
+      const inner = joinTokens(chunk);
+      const agent = chunk[0].damage;
+      body += agent
+        ? `<span class="damaged" title="${escapeHtml(`Text obscured by ${agent}`)}">${inner}</span>`
+        : inner;
+      const next = chunks[i + 1];
+      if (next && next[0].kind !== 'sof-pasuq' && !noSpaceAfter(chunk[chunk.length - 1])) body += ' ';
     });
     html += `<span class="verse-run" data-verse="${escapeHtml(run.verse ?? '')}">${body}</span>`;
     const lastToken = run.tokens[run.tokens.length - 1];

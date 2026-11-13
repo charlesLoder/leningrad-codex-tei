@@ -296,6 +296,37 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
     vertical-align: middle;
   }
 
+  /* Tape over legible but damaged text (e.g. obscured by tape): a semi-opaque strip painted over the ink. As on the folio page. */
+  .codex-page .damaged {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.4em;
+    margin-inline: 0.08em;
+  }
+
+  .codex-page .damaged::after {
+    content: '';
+    position: absolute;
+    inset: -0.08em 0;
+    border-radius: 2px;
+    background: #f5f2e8;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  @supports (border-shape: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)) {
+    .codex-page .damaged::after {
+      border-radius: 0;
+      border-shape: polygon(
+        0.5% 6%, 2% 0%, 97.5% 1.5%, 100% 9%,
+        98.4% 22%, 100% 35%, 98.6% 49%, 100% 63%,
+        98.4% 76%, 100% 89%, 97.6% 100%,
+        2.2% 98.5%, 0% 90%, 1.8% 77%, 0% 64%,
+        1.9% 50%, 0% 37%, 1.6% 22%
+      );
+    }
+  }
+
   /* A line with nothing but an erasure: the box fills the line. */
   .codex-line:has(.erased-gap.whole) .codex-he {
     display: flex;
@@ -338,6 +369,10 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
   [data-mode='photo'] .codex-page .verse-run,
   [data-mode='photo'] .codex-page .erased-gap {
     background: none;
+  }
+
+  [data-mode='photo'] .codex-page .damaged::after {
+    content: none;
   }
 
   [data-mode='photo'] .codex-page .erased-text {
