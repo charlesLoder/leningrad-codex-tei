@@ -61,6 +61,6 @@ test('buildManifest credits Masoretica and the photographers in a requiredStatem
   assert.match(manifest.requiredStatement.value.en[0], /Idan Dershowitz/);
   assert.match(
     manifest.requiredStatement.value.en[1],
-    /Bruce Zuckerman, West Semitic Research, with the collaboration of the Ancient Biblical Manuscript Center/,
+    /Bruce and Kenneth Zuckerman, West Semitic Research, with the collaboration of the Ancient Biblical Manuscript Center/,
   );
 });
