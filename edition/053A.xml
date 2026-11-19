@@ -50,6 +50,9 @@
       <change when="2026-11-09" who="#contrib-charles-w-loder">
       Add photo credit to the titleStmt: photographs courtesy of Bruce Zuckerman, West Semitic Research, with the collaboration of the Ancient Biblical Manuscript Center.
       </change>
+      <change when="2026-11-07" who="#contrib-charles-w-loder">
+      Encoded scribal erasures as del rend="erasure". Readable erased words are w (no xml:id), with the consonants and only the marks that can be seen. Erasures over more than one line are joined with next/prev.
+      </change>
       <change when="2026-11-04" who="#contrib-charles-w-loder">Added 1 missing verse zone (4 line segments) from Masoretica HTR page n104.
         <ptr type="zones" target="https://www.masoretica.org/htr/leningrad/n104.json"/>
       </change>
@@ -265,8 +268,11 @@
             <w xml:id="f053A-w-34735">שֶׁ֥מֶן</w>
             <w xml:id="f053A-w-34736">הַמָּאֽוֹר</w>
             <pc type="sof-pasuq" xml:id="f053A-pc-34736">׃</pc>
+            <del xml:id="f053A-del-1-3" rend="erasure" next="#f053A-del-1-4"><w>ואת־</w><w>מזבח</w></del>
           <lb xml:id="f053A-lb-1-4" n="4"/>
+            <del xml:id="f053A-del-1-4" rend="erasure" prev="#f053A-del-1-3" next="#f053A-del-1-5"><w>הקטרת</w> <w>ואת־</w><w>בדיו</w> <w>ואת</w> <w>שמן</w></del>
           <lb xml:id="f053A-lb-1-5" n="5"/>
+            <del xml:id="f053A-del-1-5" rend="erasure" prev="#f053A-del-1-4"><w>המאור</w><pc type="sof-pasuq">׃</pc></del>
             <milestone unit="verse" n="Exodus-35-15" xml:id="f053A-v-Exodus-35-15" facs="#f053A-zone-Exodus-35-15"/>
             <w xml:id="f053A-w-34737">וְאֶת־</w>
             <w xml:id="f053A-w-34738">מִזְבַּ֤ח</w>
