@@ -4,3 +4,10 @@
 # In Netlify, the base directory of the repo is set to /site
 [build.environment]
   NODE_VERSION = "26"
+
+# IIIF manifests are meant to be read by viewers on other origins, so they
+# must allow cross-origin GET requests.
+[[headers]]
+  for = "/iiif/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
