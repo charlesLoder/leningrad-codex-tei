@@ -119,6 +119,21 @@ const erased = isErasedLine(line);
   }
 
   /*
+    Uncertain reading (<unclear>): a superscript '?' after the word so the
+    Hebrew and niqqud stay sharp and easy to spot.
+  */
+  .he :global(.unclear)::after {
+    content: '?';
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.6em;
+    font-weight: 600;
+    color: var(--warn);
+    vertical-align: super;
+    line-height: 0;
+    margin-inline-start: 0.12em;
+  }
+
+  /*
     Tape over legible but damaged text: a semi-opaque off-white strip painted
     over the ink, so the letters show through faintly. Torn edges where the
     browser knows border-shape.
@@ -323,6 +338,10 @@ const erased = isErasedLine(line);
     .he :global(.erased-gap) {
       background: none;
       border: 1px solid #999;
+    }
+
+    .he :global(.unclear)::after {
+      color: #555;
     }
 
     .he :global(.damaged) {

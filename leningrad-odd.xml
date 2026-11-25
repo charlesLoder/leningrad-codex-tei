@@ -37,7 +37,7 @@
         <moduleRef key="textstructure" include="TEI text body div"/>
 
         <!-- Module 4: Core Elements (Milestones & Prose) -->
-        <moduleRef key="core" include="p title pb cb lb milestone ptr name label graphic desc del gap"/>
+        <moduleRef key="core" include="p title pb cb lb milestone ptr name label graphic desc del gap unclear"/>
 
         <!-- Module 4a: Facsimile (one surface per folio side; scripts/zones.py adds
              the Archive.org graphic and one zone per verse, holding one child
@@ -81,6 +81,20 @@
               </valList>
             </attDef>
           </attList>
+        </elementSpec>
+
+        <!-- Uncertain readings (hand edits, not a pipeline stage): wrap
+             one or more words on a single line in unclear (keeping lb, cb,
+             and milestone as children of ab). Unlike del, a w inside
+             unclear keeps its xml:id because it is biblical text. -->
+        <elementSpec ident="unclear" mode="change">
+          <constraintSpec ident="unclear-content" scheme="schematron" mode="add">
+            <constraint>
+              <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron" context="tei:unclear">
+                <sch:assert test="not(.//tei:lb or .//tei:cb or .//tei:milestone)">An unclear must not contain lb, cb or milestone.</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
         </elementSpec>
 
         <!-- Custom constraint: 'unit' is required on milestones; 'n' is required

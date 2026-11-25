@@ -228,3 +228,20 @@ describe('damage spans', () => {
     assert.equal(erasure.damage, undefined);
   });
 });
+
+describe('unclear parsing', () => {
+  it('marks words inside <unclear> with its reason and keeps them in the verse', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="3"/><lb n="14"/>
+      <milestone unit="verse" n="Samuel_2-3-3"/>
+      <w xml:id="w1">אֵ֖שֶׁת</w>
+      <unclear reason="illegible"><w xml:id="w2">נָבָ֣ל</w></unclear>
+      <unclear><w xml:id="w3">ב</w></unclear>
+    </div></body></text></TEI>`;
+    const [a, b, c] = parseFolioXml(xml).columns[0].lines[0].tokens;
+    assert.equal(a.unclear, undefined);
+    assert.equal(b.unclear, 'illegible');
+    assert.equal(b.verse, '2 Sam 3:3');
+    assert.equal(c.unclear, 'unclear');
+  });
+});
