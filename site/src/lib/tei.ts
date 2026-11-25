@@ -28,6 +28,8 @@ export interface Token {
   verse: string | null;
   /** Set when the token sits in a `<damageSpan>`: the agent of the damage (e.g. "tape"). The text is still verse text. */
   damage?: string;
+  /** Set when the token sits in an `<unclear>` element: the `@reason` (e.g. "illegible"), or "unclear" if omitted. The text is still verse text. */
+  unclear?: string;
   /** Erasure only: part of it cannot be read (a `<gap>`). `text` holds the part that can. */
   illegible?: boolean;
   /** Erasure only: its parts in TEI order, a string for readable text and null for a `<gap>`. */
@@ -165,6 +167,7 @@ interface EditionToken {
   tag: string;
   attrs: XmlAttrs;
   children: OrderedNode[];
+  unclear?: string;
 }
 
 // `del` is a token, not a container: the words in an erasure are not verse text.
@@ -172,7 +175,7 @@ interface EditionToken {
 // but damaged text (e.g. obscured by tape), and the words in it stay verse text.
 const TOKEN_TAGS = new Set(['cb', 'lb', 'milestone', 'w', 'pc', 'del', 'damageSpan', 'anchor']);
 
-function collectTokens(nodes: OrderedNode[], out: EditionToken[]): void {
+function collectTokens(nodes: OrderedNode[], out: EditionToken[], unclearReason?: string): void {
   for (const node of nodes) {
     const attrs = nodeAttrs(node);
     for (const [key, value] of Object.entries(node)) {
@@ -180,9 +183,12 @@ function collectTokens(nodes: OrderedNode[], out: EditionToken[]): void {
       if (!Array.isArray(value)) continue;
       const kids = value as OrderedNode[];
       if (TOKEN_TAGS.has(key)) {
-        out.push({ tag: key, attrs, children: kids });
+        const tok: EditionToken = { tag: key, attrs, children: kids };
+        if (unclearReason) tok.unclear = unclearReason;
+        out.push(tok);
       } else {
-        collectTokens(kids, out);
+        const nextUnclear = key === 'unclear' ? attrs['reason'] || 'unclear' : unclearReason;
+        collectTokens(kids, out, nextUnclear);
       }
     }
   }
@@ -457,6 +463,7 @@ export function parseFolioXml(xml: string): FolioDoc {
       }
       const token: Token = { text, kind, marks: pending, verse: currentVerse };
       if (damageAgent) token.damage = damageAgent;
+      if (tok.unclear) token.unclear = tok.unclear;
       currentLine.tokens.push(token);
       pending = [];
     }

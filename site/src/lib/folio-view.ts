@@ -180,14 +180,17 @@ export function lineHtml(line: TeiLine): string {
     });
     return out;
   };
-  // One .damaged span around each run of consecutive tokens damaged by the same agent,
-  // from the first damaged word to the anchor that ends the damageSpan.
+  // One span around each run of consecutive tokens sharing the same damage/unclear state,
+  // so text stays inside its verse run.
   const chunkTokens = (tokens: Token[]): Token[][] => {
     const chunks: Token[][] = [];
     for (const t of tokens) {
       const last = chunks[chunks.length - 1];
-      if (t.damage && last && last[0].damage === t.damage) last.push(t);
-      else chunks.push([t]);
+      if (last && (last[0].damage ?? null) === (t.damage ?? null) && (last[0].unclear ?? null) === (t.unclear ?? null)) {
+        last.push(t);
+      } else {
+        chunks.push([t]);
+      }
     }
     return chunks;
   };
@@ -201,11 +204,17 @@ export function lineHtml(line: TeiLine): string {
     const chunks = chunkTokens(run.tokens);
     let body = '';
     chunks.forEach((chunk, i) => {
-      const inner = joinTokens(chunk);
+      let inner = joinTokens(chunk);
+      const reason = chunk[0].unclear;
+      if (reason) {
+        const title = reason === 'unclear' ? 'Unclear reading' : `Unclear reading (${reason})`;
+        inner = `<span class="unclear" title="${escapeHtml(title)}">${inner}</span>`;
+      }
       const agent = chunk[0].damage;
-      body += agent
-        ? `<span class="damaged" title="${escapeHtml(`Text obscured by ${agent}`)}">${inner}</span>`
-        : inner;
+      if (agent) {
+        inner = `<span class="damaged" title="${escapeHtml(`Text obscured by ${agent}`)}">${inner}</span>`;
+      }
+      body += inner;
       const next = chunks[i + 1];
       if (next && next[0].kind !== 'sof-pasuq' && !noSpaceAfter(chunk[chunk.length - 1])) body += ' ';
     });

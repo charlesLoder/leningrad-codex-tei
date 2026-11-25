@@ -145,6 +145,17 @@ describe('lineHtml', () => {
     assert.equal((html.match(/class="damaged"/g) ?? []).length, 2);
   });
 
+  it('wraps unclear words in an unclear span inside the verse run', () => {
+    const unclear = (text, reason = 'illegible') => ({ ...word(text, '2 Sam 3:3'), unclear: reason });
+    const html = lineHtml({
+      n: '14',
+      marks: [],
+      tokens: [word('אֵ֖שֶׁת', '2 Sam 3:3'), unclear('נָבָ֣ל')],
+    });
+    assert.equal((html.match(/class="verse-run"/g) ?? []).length, 1);
+    assert.match(html, /<span class="unclear" title="Unclear reading \(illegible\)">נָבָ֣ל<\/span>/);
+  });
+
   it('fills a line that has only an illegible erasure', () => {
     const l = { n: '4', marks: [], tokens: [erasure('', true)] };
     assert.ok(isErasedLine(l));

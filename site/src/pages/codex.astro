@@ -296,6 +296,18 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
     vertical-align: middle;
   }
 
+  /* Uncertain reading (<unclear>): a superscript '?' after the word. As on the folio page. */
+  .codex-page .unclear::after {
+    content: '?';
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.6em;
+    font-weight: 600;
+    color: #8a5a00;
+    vertical-align: super;
+    line-height: 0;
+    margin-inline-start: 0.12em;
+  }
+
   /* Tape over legible but damaged text (e.g. obscured by tape): a semi-opaque strip painted over the ink. As on the folio page. */
   .codex-page .damaged {
     position: relative;
@@ -369,6 +381,10 @@ const description = 'Read the Leningrad Codex as a book: turn its leaves in 3D, 
   [data-mode='photo'] .codex-page .verse-run,
   [data-mode='photo'] .codex-page .erased-gap {
     background: none;
+  }
+
+  [data-mode='photo'] .codex-page .unclear::after {
+    content: none;
   }
 
   [data-mode='photo'] .codex-page .damaged::after {
