@@ -1,5 +1,5 @@
 ---
-import { lineHtml, lineVerseNumbers } from '../lib/folio-view';
+import { isErasedLine, lineHtml, lineVerseNumbers } from '../lib/folio-view';
 import type { TeiLine as TeiLineType } from '../lib/tei';
 
 interface Props {
@@ -11,9 +11,10 @@ interface Props {
 const { col, line, firstVerse } = Astro.props;
 const five = Number(line.n) % 5 === 0;
 const verseNumbers = lineVerseNumbers(line, firstVerse);
+const erased = isErasedLine(line);
 ---
 
-<div class:list={['tei-line', { five }]} data-col={col} data-line={line.n}>
+<div class:list={['tei-line', { five, erased }]} data-col={col} data-line={line.n}>
   <span class="ln">{line.n}</span>
   {verseNumbers.length > 0 && (
     <span class="verse-nums">
@@ -99,6 +100,90 @@ const verseNumbers = lineVerseNumbers(line, firstVerse);
   .he :global(.paseq),
   .he :global(.inverted-nun) {
     color: var(--muted);
+  }
+
+  /* Erasures: erased words struck through and dimmed; a box where the text cannot be read. */
+  .he :global(.erased-text) {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--faint);
+  }
+
+  .he :global(.erased-gap) {
+    display: inline-block;
+    width: 2.5em;
+    height: 0.75em;
+    border-radius: 0.15em;
+    background: var(--erasure);
+    vertical-align: middle;
+  }
+
+  /*
+    Uncertain reading (<unclear>): a superscript '?' after the word so the
+    Hebrew and niqqud stay sharp and easy to spot.
+  */
+  .he :global(.unclear)::after {
+    content: '?';
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.6em;
+    font-weight: 600;
+    color: var(--warn);
+    vertical-align: super;
+    line-height: 0;
+    margin-inline-start: 0.12em;
+  }
+
+  /*
+    Tape over legible but damaged text: a semi-opaque off-white strip painted
+    over the ink, so the letters show through faintly. Torn edges where the
+    browser knows border-shape.
+  */
+  .he :global(.damaged) {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.4em;
+    margin-inline: 0.08em;
+  }
+
+  .he :global(.damaged)::after {
+    content: '';
+    position: absolute;
+    inset: -0.08em 0;
+    border-radius: 2px;
+    background: #f5f2e8;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  /* Torn ends, where the browser supports border-shape (experimental). */
+  @supports (border-shape: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)) {
+    .he :global(.damaged)::after {
+      border-radius: 0;
+      border-shape: polygon(
+        0.5% 6%, 2% 0%, 97.5% 1.5%, 100% 9%,
+        98.4% 22%, 100% 35%, 98.6% 49%, 100% 63%,
+        98.4% 76%, 100% 89%, 97.6% 100%,
+        2.2% 98.5%, 0% 90%, 1.8% 77%, 0% 64%,
+        1.9% 50%, 0% 37%, 1.6% 22%
+      );
+    }
+  }
+
+  /* A line with nothing but an erasure: the box fills the line. */
+  .erased .he-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    width: 100%;
+  }
+
+  .erased .he :global(.erasure),
+  .erased .he :global(.erased-gap.whole) {
+    flex: 1;
+  }
+
+  .erased .he :global(.erasure) {
+    display: flex;
   }
 
   .he :global(.section-tag) {
@@ -244,6 +329,27 @@ const verseNumbers = lineVerseNumbers(line, firstVerse);
     .he {
       line-height: 1.7;
       color: #000;
+    }
+
+    .he :global(.erased-text) {
+      color: #555;
+    }
+
+    .he :global(.erased-gap) {
+      background: none;
+      border: 1px solid #999;
+    }
+
+    .he :global(.unclear)::after {
+      color: #555;
+    }
+
+    .he :global(.damaged) {
+      border-bottom: 1px dashed #999;
+    }
+
+    .he :global(.damaged)::after {
+      content: none;
     }
 
     .verse-nums {

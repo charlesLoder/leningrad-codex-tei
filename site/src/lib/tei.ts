@@ -21,9 +21,19 @@ export type InlineMark = VerseMark | SectionMark;
 
 export interface Token {
   text: string;
-  kind: 'w' | 'sof-pasuq' | 'paseq' | 'inverted-nun';
+  /** `erasure` is a `<del rend="erasure">`: writing the scribe erased. It is not verse text. */
+  kind: 'w' | 'sof-pasuq' | 'paseq' | 'inverted-nun' | 'erasure';
   marks: InlineMark[];
+  /** Always null for an erasure. */
   verse: string | null;
+  /** Set when the token sits in a `<damageSpan>`: the agent of the damage (e.g. "tape"). The text is still verse text. */
+  damage?: string;
+  /** Set when the token sits in an `<unclear>` element: the `@reason` (e.g. "illegible"), or "unclear" if omitted. The text is still verse text. */
+  unclear?: string;
+  /** Erasure only: part of it cannot be read (a `<gap>`). `text` holds the part that can. */
+  illegible?: boolean;
+  /** Erasure only: its parts in TEI order, a string for readable text and null for a `<gap>`. */
+  parts?: (string | null)[];
 }
 
 export interface TeiLine {
@@ -157,11 +167,15 @@ interface EditionToken {
   tag: string;
   attrs: XmlAttrs;
   children: OrderedNode[];
+  unclear?: string;
 }
 
-const TOKEN_TAGS = new Set(['cb', 'lb', 'milestone', 'w', 'pc']);
+// `del` is a token, not a container: the words in an erasure are not verse text.
+// `damageSpan` and `anchor` are not tokens either: they mark a span of legible
+// but damaged text (e.g. obscured by tape), and the words in it stay verse text.
+const TOKEN_TAGS = new Set(['cb', 'lb', 'milestone', 'w', 'pc', 'del', 'damageSpan', 'anchor']);
 
-function collectTokens(nodes: OrderedNode[], out: EditionToken[]): void {
+function collectTokens(nodes: OrderedNode[], out: EditionToken[], unclearReason?: string): void {
   for (const node of nodes) {
     const attrs = nodeAttrs(node);
     for (const [key, value] of Object.entries(node)) {
@@ -169,9 +183,12 @@ function collectTokens(nodes: OrderedNode[], out: EditionToken[]): void {
       if (!Array.isArray(value)) continue;
       const kids = value as OrderedNode[];
       if (TOKEN_TAGS.has(key)) {
-        out.push({ tag: key, attrs, children: kids });
+        const tok: EditionToken = { tag: key, attrs, children: kids };
+        if (unclearReason) tok.unclear = unclearReason;
+        out.push(tok);
       } else {
-        collectTokens(kids, out);
+        const nextUnclear = key === 'unclear' ? attrs['reason'] || 'unclear' : unclearReason;
+        collectTokens(kids, out, nextUnclear);
       }
     }
   }
@@ -224,6 +241,31 @@ function formatRef(n: string): string {
   if (!m) return n.replace(/-/g, ' ');
   const book = SBL_ABBREVIATIONS[m[1]] ?? SBL_ABBREVIATIONS[m[1].replace(/\.DH$/, '')] ?? m[1].replace(/_/g, ' ');
   return `${book} ${m[2]}:${m[3]}`;
+}
+
+/** An erasure's parts in order (text, or null for a gap), its readable text, and whether part of it cannot be read. */
+function erasureContent(nodes: OrderedNode[]): { text: string; illegible: boolean; parts: (string | null)[] } {
+  const parts: (string | null)[] = [];
+  const walk = (list: OrderedNode[]) => {
+    for (const node of list) {
+      for (const [key, value] of Object.entries(node)) {
+        if (key === ':@' || key === '#text' || !Array.isArray(value)) continue;
+        const kids = value as OrderedNode[];
+        if (key === 'gap') {
+          if (parts[parts.length - 1] !== null) parts.push(null);
+        } else if (key === 'w' || key === 'pc') {
+          const word = innerText(kids).trim();
+          if (!word) continue;
+          const last = parts[parts.length - 1];
+          if (typeof last !== 'string') parts.push(word);
+          else parts[parts.length - 1] = key === 'pc' || last.endsWith('־') ? last + word : `${last} ${word}`;
+        } else walk(kids);
+      }
+    }
+  };
+  walk(nodes);
+  const text = parts.filter((p): p is string => p !== null).join(' ');
+  return { text, illegible: parts.includes(null), parts };
 }
 
 function collectByTag(nodes: OrderedNode[], tag: string, out: OrderedNode[]): void {
@@ -348,6 +390,9 @@ export function parseFolioXml(xml: string): FolioDoc {
   let pending: InlineMark[] = [];
   let started = false;
   let currentVerse: string | null = null;
+  // Open damageSpan: the agent of the damage and the xml:id its closing anchor carries.
+  let damageAgent: string | null = null;
+  let damageEnd: string | null = null;
 
   const flushLine = () => {
     if (currentLine) currentCol.lines.push(currentLine);
@@ -376,11 +421,31 @@ export function parseFolioXml(xml: string): FolioDoc {
         // so they belong at the end of the current line — not pending
         // for the next token.
         const mark: SectionMark = { kind: 'section', subtype: a['subtype'] ?? 'section' };
-        const last = currentLine?.tokens[currentLine.tokens.length - 1];
+        // Not an erasure: it is not verse text, so the division belongs to the word before it.
+        const last = currentLine?.tokens.findLast((t) => t.kind !== 'erasure');
         if (last) last.marks.push(mark);
         else if (currentLine) currentLine.marks.push(mark);
         else pending.push(mark);
       }
+    } else if (tok.tag === 'damageSpan') {
+      damageAgent = tok.attrs['agent'] ?? 'damage';
+      damageEnd = (tok.attrs['spanTo'] ?? '').replace(/^#/, '') || null;
+    } else if (tok.tag === 'anchor') {
+      // removeNSPrefix drops the `xml:` on `xml:id`, so the attribute arrives as `id`.
+      const anchorId = tok.attrs['xml:id'] ?? tok.attrs['id'];
+      if (damageEnd && anchorId === damageEnd) {
+        damageAgent = null;
+        damageEnd = null;
+      }
+    } else if (tok.tag === 'del') {
+      // An erasure takes no verse and no pending marks: a verse starts at its first real word.
+      const { text, illegible, parts } = erasureContent(tok.children);
+      if (!text && !illegible) continue;
+      if (!currentLine) {
+        currentLine = { n: '', tokens: [], marks: [] };
+        started = true;
+      }
+      currentLine.tokens.push({ text, kind: 'erasure', marks: [], verse: null, illegible, parts });
     } else {
       const text = innerText(tok.children).trim();
       if (!text) {
@@ -396,7 +461,10 @@ export function parseFolioXml(xml: string): FolioDoc {
         const t = tok.attrs['type'] ?? '';
         kind = t === 'paseq' || t === 'inverted-nun' ? t : 'sof-pasuq';
       }
-      currentLine.tokens.push({ text, kind, marks: pending, verse: currentVerse });
+      const token: Token = { text, kind, marks: pending, verse: currentVerse };
+      if (damageAgent) token.damage = damageAgent;
+      if (tok.unclear) token.unclear = tok.unclear;
+      currentLine.tokens.push(token);
       pending = [];
     }
   }

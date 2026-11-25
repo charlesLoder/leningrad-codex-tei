@@ -90,11 +90,6 @@ The latter is fully documented in a few different ways:
 - The model and parameters are documented in the TEI header.
 - The prompt is linked to a commit sha.
 
-The pipeline allows contributors to choose their preferred method of AI use:
-
-- Google's Gemini via an API
-- An agent harness using any model
-
 ### Reproducibility
 
 This project also aims to make this work reproducible by providing the pipeline used to generate the edition, with the realization that AI outputs are not always reproducible.

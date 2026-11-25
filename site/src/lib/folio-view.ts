@@ -133,16 +133,35 @@ export function lineVerseNumbers(line: TeiLine, firstVerse: string | null = null
 export const chapterAndVerse = (ref: string): string => ref.slice(ref.lastIndexOf(' ') + 1);
 
 /**
+ * An erasure: the erased words struck through, and a box for the part that
+ * cannot be read. `whole` makes the box fill a line that has nothing else.
+ */
+export function erasureHtml(t: Token, whole = false): string {
+  const label = 'Erased text that cannot be read';
+  const gap = `<span class="erased-gap${whole ? ' whole' : ''}" role="img" aria-label="${label}" title="${label}"></span>`;
+  const text = (s: string) => `<del class="erased-text" title="Erased by the scribe">${escapeHtml(s)}</del>`;
+  // Keep the TEI order: a gap may come before, between or after the readable words.
+  const parts = t.parts ?? [...(t.text ? [t.text] : []), ...(t.illegible ? [null] : [])];
+  return `<span class="erasure">${parts.map((p) => (p === null ? gap : text(p))).join(' ')}</span>`;
+}
+
+/** True when a line holds only erasures that cannot be read, e.g. a fully erased line. */
+export const isErasedLine = (line: TeiLine): boolean =>
+  line.tokens.length > 0 && line.tokens.every((t) => t.kind === 'erasure' && !t.text);
+
+/**
  * One manuscript line as HTML. Words of the same verse share a `.verse-run`, so
  * a highlight also covers the spaces between them. No space follows a maqaf or
- * comes before a sof pasuq.
+ * comes before a sof pasuq. An erasure stands outside the verse runs.
  */
 export function lineHtml(line: TeiLine): string {
-  const runs: { verse: string | null; tokens: Token[] }[] = [];
+  const whole = isErasedLine(line);
+  const runs: { verse: string | null; tokens: Token[]; erasure: boolean }[] = [];
   for (const token of line.tokens) {
     const last = runs[runs.length - 1];
-    if (last && last.verse === token.verse) last.tokens.push(token);
-    else runs.push({ verse: token.verse, tokens: [token] });
+    const erasure = token.kind === 'erasure';
+    if (last && !erasure && !last.erasure && last.verse === token.verse) last.tokens.push(token);
+    else runs.push({ verse: token.verse, tokens: [token], erasure });
   }
   const tokenHtml = (t: Token): string => {
     const text = escapeHtml(t.text);
@@ -151,13 +170,53 @@ export function lineHtml(line: TeiLine): string {
     return body + sections;
   };
   const noSpaceAfter = (t: Token): boolean => t.text.endsWith('־');
+  // Words of a token list with the usual spacing rules (no space before a sof pasuq, none after a maqaf).
+  const joinTokens = (tokens: Token[]): string => {
+    let out = '';
+    tokens.forEach((t, i) => {
+      out += tokenHtml(t);
+      const next = tokens[i + 1];
+      if (next && next.kind !== 'sof-pasuq' && !noSpaceAfter(t)) out += ' ';
+    });
+    return out;
+  };
+  // One span around each run of consecutive tokens sharing the same damage/unclear state,
+  // so text stays inside its verse run.
+  const chunkTokens = (tokens: Token[]): Token[][] => {
+    const chunks: Token[][] = [];
+    for (const t of tokens) {
+      const last = chunks[chunks.length - 1];
+      if (last && (last[0].damage ?? null) === (t.damage ?? null) && (last[0].unclear ?? null) === (t.unclear ?? null)) {
+        last.push(t);
+      } else {
+        chunks.push([t]);
+      }
+    }
+    return chunks;
+  };
   let html = '';
   runs.forEach((run, r) => {
+    if (run.erasure) {
+      html += erasureHtml(run.tokens[0], whole);
+      if (r < runs.length - 1) html += ' ';
+      return;
+    }
+    const chunks = chunkTokens(run.tokens);
     let body = '';
-    run.tokens.forEach((t, i) => {
-      body += tokenHtml(t);
-      const next = run.tokens[i + 1];
-      if (next && next.kind !== 'sof-pasuq' && !noSpaceAfter(t)) body += ' ';
+    chunks.forEach((chunk, i) => {
+      let inner = joinTokens(chunk);
+      const reason = chunk[0].unclear;
+      if (reason) {
+        const title = reason === 'unclear' ? 'Unclear reading' : `Unclear reading (${reason})`;
+        inner = `<span class="unclear" title="${escapeHtml(title)}">${inner}</span>`;
+      }
+      const agent = chunk[0].damage;
+      if (agent) {
+        inner = `<span class="damaged" title="${escapeHtml(`Text obscured by ${agent}`)}">${inner}</span>`;
+      }
+      body += inner;
+      const next = chunks[i + 1];
+      if (next && next[0].kind !== 'sof-pasuq' && !noSpaceAfter(chunk[chunk.length - 1])) body += ' ';
     });
     html += `<span class="verse-run" data-verse="${escapeHtml(run.verse ?? '')}">${body}</span>`;
     const lastToken = run.tokens[run.tokens.length - 1];

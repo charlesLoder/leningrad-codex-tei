@@ -205,6 +205,17 @@ def test_verse_lines_tracks_columns_and_lines():
     }
 
 
+def test_verse_lines_skips_erased_words():
+    tei = (
+        '<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><ab>'
+        '<cb n="1"/><lb n="1"/>'
+        '<milestone unit="verse" n="Genesis-1-1"/><w xml:id="w-1">a</w>'
+        '<lb n="2"/><del rend="erasure"><w>b</w></del>'
+        "</ab></body></text></TEI>"
+    )
+    assert zones_stage.verse_lines(tei) == {"Genesis-1-1": [(1, 1)]}
+
+
 def test_check_zones_passes_matching_layout(zones_dir):
     source = zones_stage.load_zones(zones_dir, "001B")
     assert zones_stage.check_zones(source, zones_stage.verse_lines(TEI)) == []

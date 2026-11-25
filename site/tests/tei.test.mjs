@@ -117,6 +117,64 @@ describe('parseFolioXml', () => {
   });
 });
 
+describe('erasures', () => {
+  const read = (folio) => parseFolioXml(readFileSync(join(editionDir, `${folio}.xml`), 'utf8'));
+  const line = (doc, col, n) => doc.columns.find((c) => c.n === col).lines.find((l) => l.n === n);
+
+  it('reads erased words as one erasure token with no verse', () => {
+    const tokens = line(read('147A'), '3', '13').tokens;
+    const last = tokens[tokens.length - 1];
+    assert.deepEqual(last, { text: 'ויאמר', kind: 'erasure', marks: [], verse: null, illegible: false, parts: ['ויאמר'] });
+  });
+
+  it('joins words with spaces and a sof pasuq with none', () => {
+    assert.equal(line(read('148B'), '1', '10').tokens[0].text, 'לאמר הוצא את');
+    assert.equal(line(read('053A'), '1', '5').tokens[0].text, 'המאור׃');
+  });
+
+  it('marks a gap as illegible', () => {
+    const [erasure] = line(read('080B'), '1', '24').tokens;
+    assert.deepEqual(erasure, { text: '', kind: 'erasure', marks: [], verse: null, illegible: true, parts: [null] });
+  });
+
+  it('keeps a gap and words in TEI order', () => {
+    const [erasure] = line(read('171B'), '2', '1').tokens;
+    assert.deepEqual(erasure.parts, [null, 'אשר בגבעה ועזא']);
+    assert.equal(erasure.text, 'אשר בגבעה ועזא');
+    assert.equal(erasure.illegible, true);
+  });
+
+  it('keeps a pe on a line that holds only an erasure', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="1"/><lb n="1"/>
+      <milestone unit="section" subtype="pe"/>
+      <del rend="erasure"><gap reason="illegible"/></del>
+    </div></body></text></TEI>`;
+    const l = parseFolioXml(xml).columns[0].lines[0];
+    assert.equal(l.tokens[0].kind, 'erasure');
+    assert.deepEqual(l.marks, [{ kind: 'section', subtype: 'pe' }]);
+  });
+
+  it('starts the verse at the first real word after an erasure', () => {
+    const [erasure, first] = line(read('415A'), '1', '1').tokens;
+    assert.equal(erasure.kind, 'erasure');
+    assert.deepEqual(first.marks, [{ kind: 'verse', ref: 'Prov 15:26' }]);
+    assert.equal(first.verse, 'Prov 15:26');
+  });
+
+  it('gives a section mark to the word before an erasure', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="1"/><lb n="1"/>
+      <milestone unit="verse" n="Genesis-1-1"/><w xml:id="w1">a</w>
+      <del rend="erasure"><gap reason="illegible"/></del>
+      <milestone unit="section" subtype="samekh"/>
+    </div></body></text></TEI>`;
+    const [w, erasure] = parseFolioXml(xml).columns[0].lines[0].tokens;
+    assert.deepEqual(w.marks.at(-1), { kind: 'section', subtype: 'samekh' });
+    assert.deepEqual(erasure.marks, []);
+  });
+});
+
 it('parseFolioXml reads credits, skips the project entry, and drops emails', () => {
   const xml = readFileSync(join(editionDir, '001B.xml'), 'utf8');
   const doc = parseFolioXml(xml);
@@ -129,4 +187,61 @@ it('parseFolioXml reads credits, skips the project entry, and drops emails', () 
   const uxlc = doc.credits.find((c) => c.id === 'source-uxlc');
   assert.equal(doc.model, 'gemini-3.8-flash');
   assert.ok(uxlc.resp.some((p) => p.href?.includes('tanach.us')));
+});
+
+describe('damage spans', () => {
+  const read = (folio) => parseFolioXml(readFileSync(join(editionDir, `${folio}.xml`), 'utf8'));
+  const line = (doc, col, n) => doc.columns.find((c) => c.n === col).lines.find((l) => l.n === n);
+
+  it('reads the words of a damageSpan as damaged verse text (072A col. 2 line 21)', () => {
+    const tokens = line(read('072A'), '2', '21').tokens;
+    assert.deepEqual(tokens.map((t) => t.damage), Array(6).fill('tape'));
+    assert.ok(tokens.every((t) => t.verse === 'Lev 25:50'));
+  });
+
+  it('closes the span at the anchor and leaves later words untouched', () => {
+    const tokens = line(read('072A'), '2', '22').tokens;
+    assert.ok(tokens.every((t) => !t.damage));
+  });
+
+  it('matches spanTo with or without a leading hash', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="1"/><lb n="1"/>
+      <milestone unit="verse" n="Genesis-1-1"/>
+      <damageSpan agent="tape" spanTo="end"/><w xml:id="w1">a</w>
+      <anchor xml:id="end"/><w xml:id="w2">b</w>
+    </div></body></text></TEI>`;
+    const [a, b] = parseFolioXml(xml).columns[0].lines[0].tokens;
+    assert.equal(a.damage, 'tape');
+    assert.equal(b.damage, undefined);
+  });
+
+  it('defaults the agent and keeps the damage out of erasures', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="1"/><lb n="1"/>
+      <damageSpan spanTo="#end"/><w xml:id="w1">a</w>
+      <del rend="erasure"><w>b</w></del>
+      <anchor xml:id="end"/>
+    </div></body></text></TEI>`;
+    const [w, erasure] = parseFolioXml(xml).columns[0].lines[0].tokens;
+    assert.equal(w.damage, 'damage');
+    assert.equal(erasure.damage, undefined);
+  });
+});
+
+describe('unclear parsing', () => {
+  it('marks words inside <unclear> with its reason and keeps them in the verse', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="edition">
+      <cb n="3"/><lb n="14"/>
+      <milestone unit="verse" n="Samuel_2-3-3"/>
+      <w xml:id="w1">אֵ֖שֶׁת</w>
+      <unclear reason="illegible"><w xml:id="w2">נָבָ֣ל</w></unclear>
+      <unclear><w xml:id="w3">ב</w></unclear>
+    </div></body></text></TEI>`;
+    const [a, b, c] = parseFolioXml(xml).columns[0].lines[0].tokens;
+    assert.equal(a.unclear, undefined);
+    assert.equal(b.unclear, 'illegible');
+    assert.equal(b.verse, '2 Sam 3:3');
+    assert.equal(c.unclear, 'unclear');
+  });
 });
